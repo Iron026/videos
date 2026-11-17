@@ -34,6 +34,20 @@ As imagens ficaram fora do repositório (material de terceiros).
 7. **Fechamento com chamada para comentar:** "COMENTE 'METRÔ'", "SABIA? COMENTE…", "QUER APRENDER… SEGUE O Desmontando o Mundo", com o personagem acenando.
 8. **Títulos em pergunta sobre coisas do dia a dia,** muitas vezes com um subtítulo contra-intuitivo ("Ele não fabrica frio!", "Não é de dentro para fora!").
 
+**Processo criativo (página pública do curso, `desmontandoomundo.com.br`, lida em 17/11/2026).**
+O vídeo de processo exige login no YouTube ("Faça login para confirmar que você não é um bot") e não foi assistido. O que a página do curso afirma, nas palavras dela:
+- "Aprenda o processo que eu uso para fazer um vídeo do Desmontando o Mundo **usando só o Claude**"; "até o plano mais barato do Claude já funciona"; "curso + kit para usar no Claude".
+- **Seis etapas:** preparação; escolha da ideia; roteiro ("gancho, ritmo e fechamento: as regras que eu uso para o roteiro prender do início ao fim"); produção ("o Claude no trabalho pesado"); refinamento ("o que ajustar, o que cortar"); publicação. Há ainda um bônus sobre nicho, marca e identidade.
+- "A IA faz o trabalho braçal; você faz o trabalho criativo." O processo é "pensado para vídeos sem câmera" e serve para "qualquer nicho, desde que o vídeo seja uma animação".
+- **Números divulgados pela própria página (não verificados):** 21 vídeos, mais de 180 milhões de visualizações, 1 milhão de seguidores somados em 12 dias.
+- A página **não diz** qual software de 3D ou de render é usado. Não comprei o curso nem o kit, e eles não fazem parte deste projeto.
+
+**Leitura técnica (inferência, não confirmada):**
+- O visual observado (low-poly facetado, cores chapadas e saturadas, sombras suaves e simples, sem refração nem volumes) é compatível com render em tempo real.
+- Se for isso, a distância entre a v1 e a referência **era de direção de arte, não de motor**, e esse caminho é ordens de grandeza mais barato que os 3–19 min por quadro do Cycles.
+- Recomendo, antes da Etapa C, **um quadro de teste no estilo "brinquedo" em tempo real** (Three.js com sombras suaves e oclusão de ambiente), comparado lado a lado com o mesmo quadro no Cycles. Assim escolhemos o motor pelo resultado na tela, não pela suposição.
+- O roteiro é tratado pela referência como o centro do método (gancho, ritmo, fechamento). Vale aplicar esse critério ao roteiro aprovado antes de gravar a voz.
+
 **O que isso muda na nossa proposta (sem copiar personagem, cenários nem identidade):**
 - **A maior lacuna dos nossos quadros é o personagem.** Os 5 quadros v2 são vistas técnicas bem construídas, mas sem ninguém agindo ou reagindo. Recomendo **produzir um modelo 3D do mascote oficial, fiel à imagem aprovada, e submetê-lo à sua aprovação antes de qualquer uso.** O briefing proíbe inventar outro personagem, não fazer o modelo 3D do oficial. Até lá, operários genéricos podem fazer o papel de "você".
 - **Estilo:** a referência é mais saturada e mais "brinquedo" que a nossa v2, que puxou para uma visualização de engenharia. Proponho subir a saturação e a luz principal, facetar mais a geometria (árvores, terreno) e usar materiais mais simples. Isso também **reduz o custo de render**: os quadros sem água volumétrica (2 e 5) levaram 3–4 min, contra 15–19 min dos que têm.
