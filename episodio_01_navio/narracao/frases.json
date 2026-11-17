@@ -1,0 +1,114 @@
+[
+ {
+  "paragrafo": 1,
+  "frase": 1,
+  "texto": "Este navio pesa milhares de toneladas.",
+  "inicio": 0.3,
+  "fim": 3.023
+ },
+ {
+  "paragrafo": 1,
+  "frase": 2,
+  "texto": "Então por que ele flutua, enquanto um pequeno pedaço de aço afunda?",
+  "inicio": 3.443,
+  "fim": 7.732
+ },
+ {
+  "paragrafo": 2,
+  "frase": 1,
+  "texto": "O segredo não está no material.",
+  "inicio": 8.2,
+  "fim": 10.486
+ },
+ {
+  "paragrafo": 2,
+  "frase": 2,
+  "texto": "Está no formato do casco.",
+  "inicio": 10.906,
+  "fim": 12.819
+ },
+ {
+  "paragrafo": 3,
+  "frase": 1,
+  "texto": "Um bloco maciço de aço ocupa pouco espaço em relação ao seu peso e afunda.",
+  "inicio": 13.3,
+  "fim": 18.199
+ },
+ {
+  "paragrafo": 3,
+  "frase": 2,
+  "texto": "Já o navio tem um casco enorme, que envolve muito espaço e mantém grandes volumes sem água.",
+  "inicio": 20.6,
+  "fim": 26.114
+ },
+ {
+  "paragrafo": 4,
+  "frase": 1,
+  "texto": "Quando ele entra no mar, desloca água.",
+  "inicio": 28.3,
+  "fim": 30.649
+ },
+ {
+  "paragrafo": 4,
+  "frase": 2,
+  "texto": "E a água exerce uma força para cima chamada empuxo.",
+  "inicio": 31.9,
+  "fim": 35.212
+ },
+ {
+  "paragrafo": 5,
+  "frase": 1,
+  "texto": "Pelo princípio de Arquimedes, o empuxo equivale ao peso da água deslocada.",
+  "inicio": 36.3,
+  "fim": 41.037
+ },
+ {
+  "paragrafo": 5,
+  "frase": 2,
+  "texto": "Quando essa força iguala o peso total do navio, ele flutua.",
+  "inicio": 41.6,
+  "fim": 44.996
+ },
+ {
+  "paragrafo": 6,
+  "frase": 1,
+  "texto": "Coloque mais contêineres e o navio afunda um pouco mais, até deslocar a água necessária para sustentar a carga.",
+  "inicio": 47.3,
+  "fim": 54.235
+ },
+ {
+  "paragrafo": 7,
+  "frase": 1,
+  "texto": "Se água entrar em excesso no casco, o navio pode perder a capacidade de flutuar.",
+  "inicio": 56.4,
+  "fim": 61.626
+ },
+ {
+  "paragrafo": 8,
+  "frase": 1,
+  "texto": "Portanto, não é a leveza do aço.",
+  "inicio": 63.4,
+  "fim": 65.653
+ },
+ {
+  "paragrafo": 8,
+  "frase": 2,
+  "texto": "É o volume de água que o casco consegue deslocar.",
+  "inicio": 66.073,
+  "fim": 69.374
+ },
+ {
+  "paragrafo": 9,
+  "frase": 1,
+  "texto": "De Olho no Invisível.",
+  "inicio": 70.6,
+  "fim": 72.249
+ },
+ {
+  "paragrafo": 9,
+  "frase": 2,
+  "texto": "O invisível ganha forma.",
+  "inicio": 72.669,
+  "fim": 74.489
+ }
+]

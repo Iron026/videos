@@ -1,0 +1,136 @@
+1
+00:00:00,250 --> 00:00:03,000
+Este navio pesa milhares de toneladas.
+
+2
+00:00:03,393 --> 00:00:04,953
+Então por que ele flutua,
+
+3
+00:00:04,973 --> 00:00:06,833
+enquanto um pequeno pedaço de
+
+4
+00:00:06,853 --> 00:00:07,783
+aço afunda?
+
+5
+00:00:08,150 --> 00:00:10,360
+O segredo não está no material.
+
+6
+00:00:10,856 --> 00:00:12,966
+Está no formato do casco.
+
+7
+00:00:13,250 --> 00:00:15,270
+Um bloco maciço de aço ocupa
+
+8
+00:00:15,290 --> 00:00:17,050
+pouco espaço em relação ao seu
+
+9
+00:00:17,070 --> 00:00:18,354
+peso e afunda.
+
+10
+00:00:20,550 --> 00:00:22,500
+Já o navio tem um casco enorme,
+
+11
+00:00:22,590 --> 00:00:24,410
+que envolve muito espaço e mantém
+
+12
+00:00:24,430 --> 00:00:26,220
+grandes volumes sem água.
+
+13
+00:00:28,250 --> 00:00:29,650
+Quando ele entra no mar,
+
+14
+00:00:29,670 --> 00:00:30,740
+desloca água.
+
+15
+00:00:31,850 --> 00:00:33,590
+E a água exerce uma força para
+
+16
+00:00:33,610 --> 00:00:35,380
+cima chamada empuxo.
+
+17
+00:00:36,250 --> 00:00:38,080
+Pelo princípio de Arquimedes,
+
+18
+00:00:38,130 --> 00:00:39,870
+o empuxo equivale ao peso da
+
+19
+00:00:39,890 --> 00:00:41,120
+água deslocada.
+
+20
+00:00:41,550 --> 00:00:43,170
+Quando essa força iguala o peso
+
+21
+00:00:43,190 --> 00:00:44,190
+total do navio,
+
+22
+00:00:44,210 --> 00:00:45,100
+ele flutua.
+
+23
+00:00:47,250 --> 00:00:49,030
+Coloque mais contêineres e o
+
+24
+00:00:49,050 --> 00:00:50,410
+navio afunda um pouco mais,
+
+25
+00:00:50,430 --> 00:00:52,730
+até deslocar a água necessária
+
+26
+00:00:52,750 --> 00:00:54,220
+para sustentar a carga.
+
+27
+00:00:56,350 --> 00:00:57,950
+Se água entrar em excesso no
+
+28
+00:00:57,970 --> 00:01:00,090
+casco, o navio pode perder a
+
+29
+00:01:00,110 --> 00:01:01,660
+capacidade de flutuar.
+
+30
+00:01:03,350 --> 00:01:05,800
+Portanto, não é a leveza do aço.
+
+31
+00:01:06,023 --> 00:01:08,003
+É o volume de água que o casco
+
+32
+00:01:08,023 --> 00:01:09,513
+consegue deslocar.
+
+33
+00:01:10,550 --> 00:01:12,260
+De Olho no Invisível.
+
+34
+00:01:12,619 --> 00:01:14,509
+O invisível ganha forma.
+

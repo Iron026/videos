@@ -1,0 +1,1200 @@
+[
+{
+"inicio": 0.25,
+"fim": 3.0,
+"texto": "Este navio pesa milhares de toneladas.",
+"palavras": [
+{
+"palavra": "Este",
+"inicio": 0.25,
+"fim": 0.55,
+"frase": 0
+},
+{
+"palavra": "navio",
+"inicio": 0.55,
+"fim": 0.97,
+"frase": 0
+},
+{
+"palavra": "pesa",
+"inicio": 0.97,
+"fim": 1.45,
+"frase": 0
+},
+{
+"palavra": "milhares",
+"inicio": 1.45,
+"fim": 2.01,
+"frase": 0
+},
+{
+"palavra": "de",
+"inicio": 2.01,
+"fim": 2.13,
+"frase": 0
+},
+{
+"palavra": "toneladas.",
+"inicio": 2.13,
+"fim": 2.75,
+"frase": 0
+}
+]
+},
+{
+"inicio": 3.393,
+"fim": 4.953,
+"texto": "Então por que ele flutua,",
+"palavras": [
+{
+"palavra": "Então",
+"inicio": 3.393,
+"fim": 3.833,
+"frase": 1
+},
+{
+"palavra": "por",
+"inicio": 3.946,
+"fim": 4.146,
+"frase": 1
+},
+{
+"palavra": "que",
+"inicio": 4.06,
+"fim": 4.26,
+"frase": 1
+},
+{
+"palavra": "ele",
+"inicio": 4.173,
+"fim": 4.333,
+"frase": 1
+},
+{
+"palavra": "flutua,",
+"inicio": 4.333,
+"fim": 4.973,
+"frase": 1
+}
+]
+},
+{
+"inicio": 4.973,
+"fim": 6.833,
+"texto": "enquanto um pequeno pedaço de",
+"palavras": [
+{
+"palavra": "enquanto",
+"inicio": 4.973,
+"fim": 5.513,
+"frase": 1
+},
+{
+"palavra": "um",
+"inicio": 5.513,
+"fim": 5.773,
+"frase": 1
+},
+{
+"palavra": "pequeno",
+"inicio": 5.773,
+"fim": 6.153,
+"frase": 1
+},
+{
+"palavra": "pedaço",
+"inicio": 6.153,
+"fim": 6.673,
+"frase": 1
+},
+{
+"palavra": "de",
+"inicio": 6.673,
+"fim": 6.853,
+"frase": 1
+}
+]
+},
+{
+"inicio": 6.853,
+"fim": 7.783,
+"texto": "aço afunda?",
+"palavras": [
+{
+"palavra": "aço",
+"inicio": 6.853,
+"fim": 7.133,
+"frase": 1
+},
+{
+"palavra": "afunda?",
+"inicio": 7.133,
+"fim": 7.533,
+"frase": 1
+}
+]
+},
+{
+"inicio": 8.15,
+"fim": 10.36,
+"texto": "O segredo não está no material.",
+"palavras": [
+{
+"palavra": "O",
+"inicio": 8.15,
+"fim": 8.29,
+"frase": 2
+},
+{
+"palavra": "segredo",
+"inicio": 8.29,
+"fim": 8.93,
+"frase": 2
+},
+{
+"palavra": "não",
+"inicio": 8.93,
+"fim": 9.15,
+"frase": 2
+},
+{
+"palavra": "está",
+"inicio": 9.15,
+"fim": 9.49,
+"frase": 2
+},
+{
+"palavra": "no",
+"inicio": 9.49,
+"fim": 9.69,
+"frase": 2
+},
+{
+"palavra": "material.",
+"inicio": 9.69,
+"fim": 10.11,
+"frase": 2
+}
+]
+},
+{
+"inicio": 10.856,
+"fim": 12.966,
+"texto": "Está no formato do casco.",
+"palavras": [
+{
+"palavra": "Está",
+"inicio": 10.856,
+"fim": 11.176,
+"frase": 3
+},
+{
+"palavra": "no",
+"inicio": 11.176,
+"fim": 11.376,
+"frase": 3
+},
+{
+"palavra": "formato",
+"inicio": 11.376,
+"fim": 11.936,
+"frase": 3
+},
+{
+"palavra": "do",
+"inicio": 11.936,
+"fim": 12.116,
+"frase": 3
+},
+{
+"palavra": "casco.",
+"inicio": 12.116,
+"fim": 12.716,
+"frase": 3
+}
+]
+},
+{
+"inicio": 13.25,
+"fim": 15.27,
+"texto": "Um bloco maciço de aço ocupa",
+"palavras": [
+{
+"palavra": "Um",
+"inicio": 13.25,
+"fim": 13.43,
+"frase": 4
+},
+{
+"palavra": "bloco",
+"inicio": 13.43,
+"fim": 13.79,
+"frase": 4
+},
+{
+"palavra": "maciço",
+"inicio": 13.79,
+"fim": 14.27,
+"frase": 4
+},
+{
+"palavra": "de",
+"inicio": 14.27,
+"fim": 14.45,
+"frase": 4
+},
+{
+"palavra": "aço",
+"inicio": 14.45,
+"fim": 14.89,
+"frase": 4
+},
+{
+"palavra": "ocupa",
+"inicio": 14.89,
+"fim": 15.29,
+"frase": 4
+}
+]
+},
+{
+"inicio": 15.29,
+"fim": 17.05,
+"texto": "pouco espaço em relação ao seu",
+"palavras": [
+{
+"palavra": "pouco",
+"inicio": 15.29,
+"fim": 15.55,
+"frase": 4
+},
+{
+"palavra": "espaço",
+"inicio": 15.55,
+"fim": 16.01,
+"frase": 4
+},
+{
+"palavra": "em",
+"inicio": 16.01,
+"fim": 16.35,
+"frase": 4
+},
+{
+"palavra": "relação",
+"inicio": 16.35,
+"fim": 16.67,
+"frase": 4
+},
+{
+"palavra": "ao",
+"inicio": 16.67,
+"fim": 16.93,
+"frase": 4
+},
+{
+"palavra": "seu",
+"inicio": 16.93,
+"fim": 17.07,
+"frase": 4
+}
+]
+},
+{
+"inicio": 17.07,
+"fim": 18.354,
+"texto": "peso e afunda.",
+"palavras": [
+{
+"palavra": "peso",
+"inicio": 17.07,
+"fim": 17.43,
+"frase": 4
+},
+{
+"palavra": "e",
+"inicio": 17.43,
+"fim": 17.61,
+"frase": 4
+},
+{
+"palavra": "afunda.",
+"inicio": 17.904,
+"fim": 18.104,
+"frase": 4
+}
+]
+},
+{
+"inicio": 20.55,
+"fim": 22.5,
+"texto": "Já o navio tem um casco enorme,",
+"palavras": [
+{
+"palavra": "Já",
+"inicio": 20.55,
+"fim": 20.77,
+"frase": 5
+},
+{
+"palavra": "o",
+"inicio": 20.77,
+"fim": 20.85,
+"frase": 5
+},
+{
+"palavra": "navio",
+"inicio": 20.85,
+"fim": 21.15,
+"frase": 5
+},
+{
+"palavra": "tem",
+"inicio": 21.15,
+"fim": 21.35,
+"frase": 5
+},
+{
+"palavra": "um",
+"inicio": 21.35,
+"fim": 21.49,
+"frase": 5
+},
+{
+"palavra": "casco",
+"inicio": 21.49,
+"fim": 21.87,
+"frase": 5
+},
+{
+"palavra": "enorme,",
+"inicio": 21.87,
+"fim": 22.25,
+"frase": 5
+}
+]
+},
+{
+"inicio": 22.59,
+"fim": 24.41,
+"texto": "que envolve muito espaço e mantém",
+"palavras": [
+{
+"palavra": "que",
+"inicio": 22.59,
+"fim": 22.69,
+"frase": 5
+},
+{
+"palavra": "envolve",
+"inicio": 22.69,
+"fim": 23.11,
+"frase": 5
+},
+{
+"palavra": "muito",
+"inicio": 23.11,
+"fim": 23.35,
+"frase": 5
+},
+{
+"palavra": "espaço",
+"inicio": 23.35,
+"fim": 23.73,
+"frase": 5
+},
+{
+"palavra": "e",
+"inicio": 23.73,
+"fim": 24.05,
+"frase": 5
+},
+{
+"palavra": "mantém",
+"inicio": 24.05,
+"fim": 24.43,
+"frase": 5
+}
+]
+},
+{
+"inicio": 24.43,
+"fim": 26.22,
+"texto": "grandes volumes sem água.",
+"palavras": [
+{
+"palavra": "grandes",
+"inicio": 24.43,
+"fim": 24.85,
+"frase": 5
+},
+{
+"palavra": "volumes",
+"inicio": 24.85,
+"fim": 25.27,
+"frase": 5
+},
+{
+"palavra": "sem",
+"inicio": 25.27,
+"fim": 25.57,
+"frase": 5
+},
+{
+"palavra": "água.",
+"inicio": 25.57,
+"fim": 25.97,
+"frase": 5
+}
+]
+},
+{
+"inicio": 28.25,
+"fim": 29.65,
+"texto": "Quando ele entra no mar,",
+"palavras": [
+{
+"palavra": "Quando",
+"inicio": 28.25,
+"fim": 28.51,
+"frase": 6
+},
+{
+"palavra": "ele",
+"inicio": 28.51,
+"fim": 28.69,
+"frase": 6
+},
+{
+"palavra": "entra",
+"inicio": 28.69,
+"fim": 28.97,
+"frase": 6
+},
+{
+"palavra": "no",
+"inicio": 28.97,
+"fim": 29.15,
+"frase": 6
+},
+{
+"palavra": "mar,",
+"inicio": 29.15,
+"fim": 29.43,
+"frase": 6
+}
+]
+},
+{
+"inicio": 29.67,
+"fim": 30.74,
+"texto": "desloca água.",
+"palavras": [
+{
+"palavra": "desloca",
+"inicio": 29.67,
+"fim": 30.15,
+"frase": 6
+},
+{
+"palavra": "água.",
+"inicio": 30.25,
+"fim": 30.49,
+"frase": 6
+}
+]
+},
+{
+"inicio": 31.85,
+"fim": 33.59,
+"texto": "E a água exerce uma força para",
+"palavras": [
+{
+"palavra": "E",
+"inicio": 31.85,
+"fim": 32.01,
+"frase": 7
+},
+{
+"palavra": "a",
+"inicio": 32.01,
+"fim": 32.11,
+"frase": 7
+},
+{
+"palavra": "água",
+"inicio": 32.11,
+"fim": 32.39,
+"frase": 7
+},
+{
+"palavra": "exerce",
+"inicio": 32.39,
+"fim": 32.83,
+"frase": 7
+},
+{
+"palavra": "uma",
+"inicio": 32.83,
+"fim": 32.95,
+"frase": 7
+},
+{
+"palavra": "força",
+"inicio": 32.95,
+"fim": 33.35,
+"frase": 7
+},
+{
+"palavra": "para",
+"inicio": 33.35,
+"fim": 33.61,
+"frase": 7
+}
+]
+},
+{
+"inicio": 33.61,
+"fim": 35.38,
+"texto": "cima chamada empuxo.",
+"palavras": [
+{
+"palavra": "cima",
+"inicio": 33.61,
+"fim": 33.95,
+"frase": 7
+},
+{
+"palavra": "chamada",
+"inicio": 33.95,
+"fim": 34.49,
+"frase": 7
+},
+{
+"palavra": "empuxo.",
+"inicio": 34.49,
+"fim": 35.13,
+"frase": 7
+}
+]
+},
+{
+"inicio": 36.25,
+"fim": 38.08,
+"texto": "Pelo princípio de Arquimedes,",
+"palavras": [
+{
+"palavra": "Pelo",
+"inicio": 36.25,
+"fim": 36.51,
+"frase": 8
+},
+{
+"palavra": "princípio",
+"inicio": 36.51,
+"fim": 37.09,
+"frase": 8
+},
+{
+"palavra": "de",
+"inicio": 37.09,
+"fim": 37.19,
+"frase": 8
+},
+{
+"palavra": "Arquimedes,",
+"inicio": 37.19,
+"fim": 37.83,
+"frase": 8
+}
+]
+},
+{
+"inicio": 38.13,
+"fim": 39.87,
+"texto": "o empuxo equivale ao peso da",
+"palavras": [
+{
+"palavra": "o",
+"inicio": 38.13,
+"fim": 38.33,
+"frase": 8
+},
+{
+"palavra": "empuxo",
+"inicio": 38.33,
+"fim": 38.81,
+"frase": 8
+},
+{
+"palavra": "equivale",
+"inicio": 38.81,
+"fim": 39.25,
+"frase": 8
+},
+{
+"palavra": "ao",
+"inicio": 39.25,
+"fim": 39.39,
+"frase": 8
+},
+{
+"palavra": "peso",
+"inicio": 39.39,
+"fim": 39.69,
+"frase": 8
+},
+{
+"palavra": "da",
+"inicio": 39.69,
+"fim": 39.89,
+"frase": 8
+}
+]
+},
+{
+"inicio": 39.89,
+"fim": 41.12,
+"texto": "água deslocada.",
+"palavras": [
+{
+"palavra": "água",
+"inicio": 39.89,
+"fim": 40.17,
+"frase": 8
+},
+{
+"palavra": "deslocada.",
+"inicio": 40.17,
+"fim": 40.87,
+"frase": 8
+}
+]
+},
+{
+"inicio": 41.55,
+"fim": 43.17,
+"texto": "Quando essa força iguala o peso",
+"palavras": [
+{
+"palavra": "Quando",
+"inicio": 41.55,
+"fim": 41.77,
+"frase": 9
+},
+{
+"palavra": "essa",
+"inicio": 41.77,
+"fim": 41.99,
+"frase": 9
+},
+{
+"palavra": "força",
+"inicio": 41.99,
+"fim": 42.31,
+"frase": 9
+},
+{
+"palavra": "iguala",
+"inicio": 42.31,
+"fim": 42.89,
+"frase": 9
+},
+{
+"palavra": "o",
+"inicio": 42.89,
+"fim": 42.97,
+"frase": 9
+},
+{
+"palavra": "peso",
+"inicio": 42.97,
+"fim": 43.19,
+"frase": 9
+}
+]
+},
+{
+"inicio": 43.19,
+"fim": 44.19,
+"texto": "total do navio,",
+"palavras": [
+{
+"palavra": "total",
+"inicio": 43.19,
+"fim": 43.57,
+"frase": 9
+},
+{
+"palavra": "do",
+"inicio": 43.57,
+"fim": 43.75,
+"frase": 9
+},
+{
+"palavra": "navio,",
+"inicio": 43.75,
+"fim": 44.13,
+"frase": 9
+}
+]
+},
+{
+"inicio": 44.21,
+"fim": 45.1,
+"texto": "ele flutua.",
+"palavras": [
+{
+"palavra": "ele",
+"inicio": 44.21,
+"fim": 44.29,
+"frase": 9
+},
+{
+"palavra": "flutua.",
+"inicio": 44.29,
+"fim": 44.85,
+"frase": 9
+}
+]
+},
+{
+"inicio": 47.25,
+"fim": 49.03,
+"texto": "Coloque mais contêineres e o",
+"palavras": [
+{
+"palavra": "Coloque",
+"inicio": 47.25,
+"fim": 47.67,
+"frase": 10
+},
+{
+"palavra": "mais",
+"inicio": 47.67,
+"fim": 47.93,
+"frase": 10
+},
+{
+"palavra": "contêineres",
+"inicio": 47.93,
+"fim": 48.87,
+"frase": 10
+},
+{
+"palavra": "e",
+"inicio": 48.87,
+"fim": 48.97,
+"frase": 10
+},
+{
+"palavra": "o",
+"inicio": 48.97,
+"fim": 49.05,
+"frase": 10
+}
+]
+},
+{
+"inicio": 49.05,
+"fim": 50.41,
+"texto": "navio afunda um pouco mais,",
+"palavras": [
+{
+"palavra": "navio",
+"inicio": 49.05,
+"fim": 49.33,
+"frase": 10
+},
+{
+"palavra": "afunda",
+"inicio": 49.33,
+"fim": 49.67,
+"frase": 10
+},
+{
+"palavra": "um",
+"inicio": 49.67,
+"fim": 49.81,
+"frase": 10
+},
+{
+"palavra": "pouco",
+"inicio": 49.81,
+"fim": 49.99,
+"frase": 10
+},
+{
+"palavra": "mais,",
+"inicio": 49.99,
+"fim": 50.43,
+"frase": 10
+}
+]
+},
+{
+"inicio": 50.43,
+"fim": 52.73,
+"texto": "até deslocar a água necessária",
+"palavras": [
+{
+"palavra": "até",
+"inicio": 50.43,
+"fim": 51.13,
+"frase": 10
+},
+{
+"palavra": "deslocar",
+"inicio": 51.13,
+"fim": 51.79,
+"frase": 10
+},
+{
+"palavra": "a",
+"inicio": 51.79,
+"fim": 51.87,
+"frase": 10
+},
+{
+"palavra": "água",
+"inicio": 51.87,
+"fim": 52.09,
+"frase": 10
+},
+{
+"palavra": "necessária",
+"inicio": 52.09,
+"fim": 52.75,
+"frase": 10
+}
+]
+},
+{
+"inicio": 52.75,
+"fim": 54.22,
+"texto": "para sustentar a carga.",
+"palavras": [
+{
+"palavra": "para",
+"inicio": 52.75,
+"fim": 52.97,
+"frase": 10
+},
+{
+"palavra": "sustentar",
+"inicio": 52.97,
+"fim": 53.55,
+"frase": 10
+},
+{
+"palavra": "a",
+"inicio": 53.55,
+"fim": 53.69,
+"frase": 10
+},
+{
+"palavra": "carga.",
+"inicio": 53.69,
+"fim": 53.97,
+"frase": 10
+}
+]
+},
+{
+"inicio": 56.35,
+"fim": 57.95,
+"texto": "Se água entrar em excesso no",
+"palavras": [
+{
+"palavra": "Se",
+"inicio": 56.35,
+"fim": 56.53,
+"frase": 11
+},
+{
+"palavra": "água",
+"inicio": 56.65,
+"fim": 56.79,
+"frase": 11
+},
+{
+"palavra": "entrar",
+"inicio": 56.79,
+"fim": 57.15,
+"frase": 11
+},
+{
+"palavra": "em",
+"inicio": 57.15,
+"fim": 57.35,
+"frase": 11
+},
+{
+"palavra": "excesso",
+"inicio": 57.35,
+"fim": 57.87,
+"frase": 11
+},
+{
+"palavra": "no",
+"inicio": 57.87,
+"fim": 57.97,
+"frase": 11
+}
+]
+},
+{
+"inicio": 57.97,
+"fim": 60.09,
+"texto": "casco, o navio pode perder a",
+"palavras": [
+{
+"palavra": "casco,",
+"inicio": 57.97,
+"fim": 58.57,
+"frase": 11
+},
+{
+"palavra": "o",
+"inicio": 58.89,
+"fim": 58.97,
+"frase": 11
+},
+{
+"palavra": "navio",
+"inicio": 58.97,
+"fim": 59.27,
+"frase": 11
+},
+{
+"palavra": "pode",
+"inicio": 59.27,
+"fim": 59.53,
+"frase": 11
+},
+{
+"palavra": "perder",
+"inicio": 59.53,
+"fim": 59.97,
+"frase": 11
+},
+{
+"palavra": "a",
+"inicio": 59.97,
+"fim": 60.11,
+"frase": 11
+}
+]
+},
+{
+"inicio": 60.11,
+"fim": 61.66,
+"texto": "capacidade de flutuar.",
+"palavras": [
+{
+"palavra": "capacidade",
+"inicio": 60.11,
+"fim": 60.79,
+"frase": 11
+},
+{
+"palavra": "de",
+"inicio": 60.79,
+"fim": 60.95,
+"frase": 11
+},
+{
+"palavra": "flutuar.",
+"inicio": 60.95,
+"fim": 61.41,
+"frase": 11
+}
+]
+},
+{
+"inicio": 63.35,
+"fim": 65.8,
+"texto": "Portanto, não é a leveza do aço.",
+"palavras": [
+{
+"palavra": "Portanto,",
+"inicio": 63.35,
+"fim": 63.89,
+"frase": 12
+},
+{
+"palavra": "não",
+"inicio": 63.99,
+"fim": 64.23,
+"frase": 12
+},
+{
+"palavra": "é",
+"inicio": 64.23,
+"fim": 64.53,
+"frase": 12
+},
+{
+"palavra": "a",
+"inicio": 64.53,
+"fim": 64.61,
+"frase": 12
+},
+{
+"palavra": "leveza",
+"inicio": 64.61,
+"fim": 64.97,
+"frase": 12
+},
+{
+"palavra": "do",
+"inicio": 64.97,
+"fim": 65.13,
+"frase": 12
+},
+{
+"palavra": "aço.",
+"inicio": 65.13,
+"fim": 65.55,
+"frase": 12
+}
+]
+},
+{
+"inicio": 66.023,
+"fim": 68.003,
+"texto": "É o volume de água que o casco",
+"palavras": [
+{
+"palavra": "É",
+"inicio": 66.023,
+"fim": 66.203,
+"frase": 13
+},
+{
+"palavra": "o",
+"inicio": 66.203,
+"fim": 66.283,
+"frase": 13
+},
+{
+"palavra": "volume",
+"inicio": 66.283,
+"fim": 66.643,
+"frase": 13
+},
+{
+"palavra": "de",
+"inicio": 66.643,
+"fim": 66.903,
+"frase": 13
+},
+{
+"palavra": "água",
+"inicio": 66.903,
+"fim": 67.223,
+"frase": 13
+},
+{
+"palavra": "que",
+"inicio": 67.223,
+"fim": 67.483,
+"frase": 13
+},
+{
+"palavra": "o",
+"inicio": 67.483,
+"fim": 67.583,
+"frase": 13
+},
+{
+"palavra": "casco",
+"inicio": 67.583,
+"fim": 68.023,
+"frase": 13
+}
+]
+},
+{
+"inicio": 68.023,
+"fim": 69.513,
+"texto": "consegue deslocar.",
+"palavras": [
+{
+"palavra": "consegue",
+"inicio": 68.023,
+"fim": 68.463,
+"frase": 13
+},
+{
+"palavra": "deslocar.",
+"inicio": 68.463,
+"fim": 69.263,
+"frase": 13
+}
+]
+},
+{
+"inicio": 70.55,
+"fim": 72.26,
+"texto": "De Olho no Invisível.",
+"palavras": [
+{
+"palavra": "De",
+"inicio": 70.55,
+"fim": 70.81,
+"frase": 14
+},
+{
+"palavra": "Olho",
+"inicio": 70.81,
+"fim": 71.07,
+"frase": 14
+},
+{
+"palavra": "no",
+"inicio": 71.07,
+"fim": 71.31,
+"frase": 14
+},
+{
+"palavra": "Invisível.",
+"inicio": 71.31,
+"fim": 72.01,
+"frase": 14
+}
+]
+},
+{
+"inicio": 72.619,
+"fim": 74.509,
+"texto": "O invisível ganha forma.",
+"palavras": [
+{
+"palavra": "O",
+"inicio": 72.619,
+"fim": 72.779,
+"frase": 15
+},
+{
+"palavra": "invisível",
+"inicio": 72.779,
+"fim": 73.379,
+"frase": 15
+},
+{
+"palavra": "ganha",
+"inicio": 73.379,
+"fim": 73.899,
+"frase": 15
+},
+{
+"palavra": "forma.",
+"inicio": 73.899,
+"fim": 74.259,
+"frase": 15
+}
+]
+}
+]
