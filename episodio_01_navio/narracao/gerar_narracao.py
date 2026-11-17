@@ -23,6 +23,9 @@ ALVOS = [
     [70.60, None],  # Cena 09 (assinatura)
 ]
 PAUSA = 0.42  # pausa mínima entre frases
+# Correções de pronúncia no nível de fonemas (o fonemizador dá [lj] para o "lh" do nome do canal;
+# o palatal [ʎ] é o som correto em pt-BR). Só afeta frases em que o padrão ocorre.
+FONEMAS = [('ˈoljʊ', 'ˈoʎʊ')]
 
 def aparar(a, lim=0.004):
     idx = np.where(np.abs(a) > lim)[0]
@@ -45,7 +48,12 @@ def main():
         sents = re.split(r'(?<=[.?!])\s+', p)
         assert len(sents) == len(alvos), (p, alvos)
         for si, (s, alvo) in enumerate(zip(sents, alvos)):
-            audio, sr = k.create(s, voice=a.voz, speed=a.velocidade, lang='pt-br')
+            fon = k.tokenizer.phonemize(s, 'pt-br'); fon2 = fon
+            for de, para in FONEMAS: fon2 = fon2.replace(de, para)
+            if fon2 != fon:
+                audio, sr = k.create(fon2, voice=a.voz, speed=a.velocidade, is_phonemes=True)
+            else:
+                audio, sr = k.create(s, voice=a.voz, speed=a.velocidade, lang='pt-br')
             assert sr == SR
             audio = aparar(audio.astype(np.float32))
             ini = max(alvo if alvo is not None else 0.0, fim_ant + PAUSA if fim_ant else 0.0)

@@ -38,14 +38,13 @@ for b in blocos:
     l = b.strip().split('\n'); i, f = [ts(x.strip()) for x in l[1].split('-->')]; leg.append((i, f, ' '.join(l[2:])))
 probs = [f'#{k+1}' for k, (i, f, _) in enumerate(leg) if f <= i or (k and i < leg[k - 1][1]) or f > res['arquivo']['duracao']]
 def norm(w):
-    w = unicodedata.normalize('NFD', w.lower()); return re.sub(r'[^a-z0-9 ]', '', ''.join(c for c in w if unicodedata.category(c) != 'Mn'))
+    w = unicodedata.normalize('NFD', w.lower()); w = re.sub(r'\s+', ' ', w); return re.sub(r'[^a-z0-9 ]', '', ''.join(c for c in w if unicodedata.category(c) != 'Mn'))
 roteiro = open(os.path.join(RAIZ, 'narracao/roteiro.txt'), encoding='utf-8').read()
 res['legendas'] = dict(blocos=len(leg), problemas_tempo=probs, texto_identico_ao_roteiro=norm(' '.join(x[2] for x in leg)).split() == norm(roteiro).split(),
                        primeira=leg[0][0], ultima=leg[-1][1])
 
 # integridade da narração: ASR sobre o áudio FINAL mixado
 from faster_whisper import WhisperModel
-pcm = run(['ffmpeg', '-v', 'error', '-i', video, '-vn', '-ac', '1', '-ar', '16000', '-f', 'f32le', '-']).stdout if False else None
 raw = subprocess.run(['ffmpeg', '-v', 'error', '-i', video, '-vn', '-ac', '1', '-ar', '16000', '-f', 'f32le', '-'], capture_output=True).stdout
 audio = np.frombuffer(raw, dtype=np.float32)
 m = WhisperModel(modelo, device='cpu', compute_type='int8')

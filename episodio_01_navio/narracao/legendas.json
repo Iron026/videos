@@ -1137,62 +1137,62 @@
 },
 {
 "inicio": 70.55,
-"fim": 72.26,
+"fim": 72.22,
 "texto": "De Olho no Invisível.",
 "palavras": [
 {
 "palavra": "De",
 "inicio": 70.55,
-"fim": 70.81,
+"fim": 70.85,
 "frase": 14
 },
 {
 "palavra": "Olho",
-"inicio": 70.81,
-"fim": 71.07,
+"inicio": 70.85,
+"fim": 71.05,
 "frase": 14
 },
 {
 "palavra": "no",
-"inicio": 71.07,
-"fim": 71.31,
+"inicio": 71.05,
+"fim": 71.27,
 "frase": 14
 },
 {
 "palavra": "Invisível.",
-"inicio": 71.31,
-"fim": 72.01,
+"inicio": 71.27,
+"fim": 71.97,
 "frase": 14
 }
 ]
 },
 {
-"inicio": 72.619,
-"fim": 74.509,
+"inicio": 72.584,
+"fim": 74.474,
 "texto": "O invisível ganha forma.",
 "palavras": [
 {
 "palavra": "O",
-"inicio": 72.619,
-"fim": 72.779,
+"inicio": 72.584,
+"fim": 72.744,
 "frase": 15
 },
 {
 "palavra": "invisível",
-"inicio": 72.779,
-"fim": 73.379,
+"inicio": 72.744,
+"fim": 73.344,
 "frase": 15
 },
 {
 "palavra": "ganha",
-"inicio": 73.379,
-"fim": 73.899,
+"inicio": 73.344,
+"fim": 73.864,
 "frase": 15
 },
 {
 "palavra": "forma.",
-"inicio": 73.899,
-"fim": 74.259,
+"inicio": 73.864,
+"fim": 74.224,
 "frase": 15
 }
 ]

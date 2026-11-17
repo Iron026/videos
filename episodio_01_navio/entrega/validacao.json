@@ -1,0 +1,68 @@
+{
+ "video": {
+  "codec": "h264",
+  "perfil": "High",
+  "largura": 1080,
+  "altura": 1920,
+  "fps": 30.0,
+  "pix_fmt": "yuv420p",
+  "quadros": 2250,
+  "duracao": 75.0
+ },
+ "audio": {
+  "codec": "aac",
+  "taxa": 48000,
+  "canais": 2,
+  "duracao": 75.0
+ },
+ "arquivo": {
+  "duracao": 75.0,
+  "tamanho_mb": 76.97,
+  "taxa_kbps": 8211
+ },
+ "quadros_pretos": [],
+ "congelamentos": [],
+ "loudness": {
+  "integrado_lufs": -14.1,
+  "lra_lu": 2.3,
+  "pico_real_dbtp": -1.4
+ },
+ "legendas": {
+  "blocos": 34,
+  "problemas_tempo": [],
+  "texto_identico_ao_roteiro": true,
+  "primeira": 0.25,
+  "ultima": 74.474
+ },
+ "narracao": {
+  "palavras_roteiro": 160,
+  "wer_percent": 5.0,
+  "diferencas": [
+   [
+    "por que",
+    "porque"
+   ],
+   [
+    "afunda",
+    "a funda"
+   ],
+   [
+    "",
+    "a"
+   ],
+   [
+    "conteineres",
+    "containers"
+   ],
+   [
+    "",
+    "a"
+   ],
+   [
+    "",
+    "a"
+   ]
+  ],
+  "transcricao": "Este navio pesa milhares de toneladas, então porque ele flutua enquanto um pequeno pedaço de aço afunda. O segredo não está no material, está no formato do casco. Um bloco maciço de aço ocupa pouco espaço em relação ao seu peso e a funda. Já o navio tem um casco enorme, que envolve muito espaço e mantém grandes volumes sem água. Quando ele entra no mar, desloca a água. E a água exerce uma força para cima chamada empuxo. Pelo princípio de Arquimedes, o empuxo equivale ao peso da água deslocada. Quando essa força iguala o peso total do navio, ele flutua. Coloque mais containers e o navio afunda um pouco mais, até deslocar a água necessária para sustentar a carga. Se a água entrar em excesso no casco, o navio pode perder a capacidade de flutuar. Portanto, não é a leveza do aço. É o volume de água que o casco consegue deslocar. De olho no Invisível. O Invisível ganha a forma."
+ }
+}
