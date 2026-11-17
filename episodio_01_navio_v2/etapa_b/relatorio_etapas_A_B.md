@@ -7,17 +7,39 @@ Nenhum episódio completo foi produzido, nada foi publicado e os arquivos finais
 
 ---
 
-## 0. Referência criativa — limitação de acesso
+## 0. Referência criativa — Desmontando o Mundo (análise feita após liberar o acesso)
 
-**Não consegui examinar o canal Desmontando o Mundo nem o vídeo sobre o processo criativo.**
-A rede desta sessão bloqueia `www.youtube.com`. Mesmo liberando esse endereço, os vídeos vêm de servidores `*.googlevideo.com`, e o ambiente não aceita curingas.
-A busca na web também não trouxe material sobre o canal.
+**O que pude examinar:**
+- a página do canal (descrição e os 25 Shorts mais recentes, com títulos e visualizações);
+- 3 quadros automáticos por Short (a 25%, 50% e 75% da duração, 75 quadros no total), que o YouTube publica como miniaturas em `i.ytimg.com`;
+- a miniatura e o título do vídeo de processo.
 
-Por isso, **nenhuma observação deste relatório é atribuída ao canal**. Os critérios usados (modelagem, composição vertical, luz, cenários, câmera, ritmo) são os da Seção 3 do briefing, aplicados com conhecimento geral de animação 3D explicativa.
+**O que não pude examinar:**
+- os vídeos em movimento, o áudio e a transcrição. A página do vídeo cai na verificação anti-robô do Google, e a reprodução vem de `*.googlevideo.com`, que não pode ser liberado.
+- Sobre o vídeo "Desmontando o Vídeo - Como fazer um vídeo como os nossos?" (7:38), sei só o título, a miniatura e o que diz a descrição do canal: criado por Felipe Brandt, estrelado pelo personagem Zé Parafuso, com curso e kit pagos e "uso de ferramentas de IA para a edição", mas com a maior parte do trabalho humano.
 
-**Para a próxima etapa:** envie 5 a 10 capturas de tela, ou trechos curtos em MP4, de vídeos que representem o nível desejado. Com o material dentro do repositório, consigo fazer a análise quadro a quadro que o briefing pede.
+Tudo abaixo vem desses quadros. Ritmo, movimento de câmera e narração **não foram observados**.
+As imagens ficaram fora do repositório (material de terceiros).
 
----
+**Observações (75 quadros, 25 Shorts de 1,1 a 10 milhões de visualizações cada):**
+1. **Personagem no centro:** o apresentador (um boneco low-poly articulado, de camisa amarela e às vezes capacete) aparece em quase todos os quadros. Ele age, reage com expressões exageradas (susto, enjoo com o rosto verde, choro) e muitas vezes representa o espectador: as legendas dizem "Você" e os planos são em ponto de vista (bungee, paraquedas, elevador, carro).
+2. **Estilo:** low-poly facetado, de cores saturadas e luz clara e alta, com sombras suaves e céu limpo. O visual é de brinquedo, não fotorrealista, e se lê muito bem no celular.
+3. **Cenários do cotidiano, cheios de objetos:** casas, ruas, cozinhas, canteiros de obras e estádio, com carros, árvores, cachorro e figurantes. Há humor visual (ladrão, "BUM!").
+4. **Muita variedade de planos:** close-up do rosto, contra-plongée, isométrico de cima, cortes em raio-X (barragem, fundação, telhado), tela dividida (cinto de segurança) e indicadores de painel (altitude e velocidade no paraquedas, ícone ⏩ para salto no tempo).
+5. **Informação econômica:**
+   - um rótulo curto por vez, em pílula branca com ponto vermelho ("• SEM PILARES", "• 3 TONELADAS", "• COLCHÃO DE AR");
+   - setas coloridas simples dentro da cena;
+   - na barragem, as setas de pressão da água crescem com a profundidade e a do peso aponta para baixo, o mesmo princípio físico do nosso Quadro 4.
+6. **Legenda de uma palavra por vez,** grande, branca com contorno escuro, no centro do terço inferior, às vezes com a palavra-chave em amarelo.
+7. **Fechamento com chamada para comentar:** "COMENTE 'METRÔ'", "SABIA? COMENTE…", "QUER APRENDER… SEGUE O Desmontando o Mundo", com o personagem acenando.
+8. **Títulos em pergunta sobre coisas do dia a dia,** muitas vezes com um subtítulo contra-intuitivo ("Ele não fabrica frio!", "Não é de dentro para fora!").
+
+**O que isso muda na nossa proposta (sem copiar personagem, cenários nem identidade):**
+- **A maior lacuna dos nossos quadros é o personagem.** Os 5 quadros v2 são vistas técnicas bem construídas, mas sem ninguém agindo ou reagindo. Recomendo **produzir um modelo 3D do mascote oficial, fiel à imagem aprovada, e submetê-lo à sua aprovação antes de qualquer uso.** O briefing proíbe inventar outro personagem, não fazer o modelo 3D do oficial. Até lá, operários genéricos podem fazer o papel de "você".
+- **Estilo:** a referência é mais saturada e mais "brinquedo" que a nossa v2, que puxou para uma visualização de engenharia. Proponho subir a saturação e a luz principal, facetar mais a geometria (árvores, terreno) e usar materiais mais simples. Isso também **reduz o custo de render**: os quadros sem água volumétrica (2 e 5) levaram 3–4 min, contra 15–19 min dos que têm.
+- **Câmera:** incluir close-ups e planos em ponto de vista. Os nossos 5 quadros são todos planos gerais ou médios.
+- **Texto:** adotar a regra de um rótulo curto por vez, com legenda palavra a palavra, em estilo próprio do canal (azul e amarelo da marca, sem imitar a pílula com ponto vermelho).
+- **Fechamento:** decidir se haverá chamada para comentar. É uma decisão editorial sua, então não a incluí.
 
 ## ETAPA A — Auditoria crítica do Episódio 01 original
 
@@ -66,7 +88,7 @@ Base da análise: folha de contato do MP4 final, com uma amostra a cada 2 s (38 
 |---|---|---|
 | Sem GPU (4 núcleos de CPU, 15 GB) | WebGL por software, cerca de 2,8 s por quadro com qualidade baixa | Continua. Agora uso o Cycles (CPU) com qualidade alta, mas cada quadro custa minutos (ver B5) |
 | Blender ausente | Toda a cena foi feita em Three.js | **Resolvido:** Blender 5.1 instalado como módulo Python (`pip install bpy`) |
-| YouTube bloqueado | — | A referência não pôde ser analisada (seção 0) |
+| YouTube | — | Liberado depois. Páginas e quadros públicos analisados; a reprodução dos vídeos continua bloqueada (seção 0) |
 | HuggingFace bloqueado | Modelos de voz e ASR obtidos via npm | Irrelevante para a ElevenLabs |
 | ElevenLabs | — | Host liberado no ambiente; **a chave de API não foi fornecida** (B4) |
 
@@ -170,7 +192,7 @@ Comparação lado a lado com os quadros equivalentes da v1: `etapa_b/comparacao_
   Recomendo (a). O animatic de 10–15 s da Etapa C (300–450 quadros) cabe neste ambiente em qualidade de prévia.
 - O mascote existe só como imagem 2D. Não há modelo 3D fiel, então ele aparece apenas na assinatura, como o briefing permite.
 - Os quadros são estáticos por definição. O movimento (cabos, água, partículas) será validado no animatic.
-- A referência Desmontando o Mundo não foi analisada (seção 0).
+- A referência Desmontando o Mundo foi analisada só por quadros estáticos (75 quadros de 25 Shorts). Movimento, ritmo e áudio não foram observados (seção 0).
 
 ### B6. Recomendações para a Etapa C (após sua aprovação)
 1. **Animatic de 12 s:** bloco cai do cais e afunda (plano 1), *match cut* das chapas para o estaleiro (plano 2) e o pórtico desce o bloco de costado no lugar (plano 3).

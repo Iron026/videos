@@ -64,7 +64,7 @@ code{font-size:.9em;background:var(--superficie);border:1px solid var(--linha);p
       <span class="chip ok">5 quadros renderizados</span>
       <span class="chip ok">Assinatura com o mascote oficial</span>
       <span class="chip alerta">Voz: aguardando chave da ElevenLabs</span>
-      <span class="chip alerta">Referência no YouTube inacessível</span>
+      <span class="chip">Referência analisada por quadros estáticos</span>
       <span class="chip">Aguardando sua aprovação</span>
     </div>
   </header>
@@ -126,6 +126,18 @@ code{font-size:.9em;background:var(--superficie);border:1px solid var(--linha);p
     </div>
   </section>
 
+  <section aria-labelledby="t-ref">
+    <h2 id="t-ref">Referência: Desmontando o Mundo</h2>
+    <p>Analisei 75 quadros públicos (25%, 50% e 75% de cada um dos 25 Shorts mais recentes, de 1,1 a 10 milhões de visualizações). Os vídeos em movimento e o vídeo de processo continuam inacessíveis, pela verificação anti-robô do Google. Por isso ritmo, câmera em movimento e narração não foram observados.</p>
+    <div class="grade">
+      <div class="item"><h3>Personagem no centro</h3><p class="nota">O apresentador aparece em quase todo quadro, agindo e reagindo, e muitas vezes representa o espectador ("Você", planos em ponto de vista).</p></div>
+      <div class="item"><h3>Estilo brinquedo</h3><p class="nota">Low-poly facetado, cores saturadas, luz clara, sombras suaves. Mais lúdico que a nossa v2, que puxou para visualização de engenharia.</p></div>
+      <div class="item"><h3>Planos variados</h3><p class="nota">Close-ups, contra-plongée, isométrico, raio-X, tela dividida e indicadores de painel. Os nossos cinco quadros são todos gerais ou médios.</p></div>
+      <div class="item"><h3>Pouco texto</h3><p class="nota">Um rótulo curto por vez, setas coloridas simples e legenda de uma palavra por vez. A barragem usa setas de pressão crescendo com a profundidade, como o nosso Quadro 4.</p></div>
+    </div>
+    <p><strong>Maior lacuna nossa: o personagem.</strong> Proponho fazer um modelo 3D fiel do mascote oficial e submetê-lo à sua aprovação antes de usá-lo. Também proponho subir saturação e luz, facetar mais a geometria e incluir close-ups e planos em ponto de vista, sem copiar personagem, cenários ou identidade.</p>
+  </section>
+
   <section aria-labelledby="t-auditoria">
     <h2 id="t-auditoria">Auditoria da v1</h2>
     <div class="grade">
@@ -165,7 +177,7 @@ code{font-size:.9em;background:var(--superficie);border:1px solid var(--linha);p
         <tr><td>Render Cycles, 4 núcleos, sem GPU</td><td>3,2 a 18,6 min por quadro (média de 10,9 min)</td><td>Um episódio de 90 s (2.700 quadros) levaria cerca de 490 h aqui. Precisa de GPU.</td></tr>
         <tr><td>EEVEE por software (Mesa)</td><td>58 s numa cena trivial (Cycles: 6 s)</td><td>Sem GPU, não serve como atalho</td></tr>
         <tr><td>Animatic da Etapa C</td><td>300 a 450 quadros</td><td>Cabe aqui em qualidade de prévia</td></tr>
-        <tr><td>Referência Desmontando o Mundo</td><td>YouTube bloqueado (inclui <code>*.googlevideo.com</code>)</td><td>Nenhuma observação foi atribuída ao canal</td></tr>
+        <tr><td>Referência Desmontando o Mundo</td><td>Páginas e quadros públicos liberados; reprodução bloqueada (anti-robô e <code>*.googlevideo.com</code>)</td><td>Análise só por quadros estáticos</td></tr>
       </tbody>
     </table></div>
   </section>
@@ -175,7 +187,8 @@ code{font-size:.9em;background:var(--superficie);border:1px solid var(--linha);p
     <ol>
       <li>Aprovar, ou pedir ajustes, na direção visual dos cinco quadros e da assinatura.</li>
       <li>Para o teste de voz: fornecer a chave da ElevenLabs, de preferência de um plano pago por causa da licença comercial.</li>
-      <li>Opcional: enviar de 5 a 10 capturas de tela do Desmontando o Mundo para a análise de referência.</li>
+      <li>Autorizar (ou não) a criação de um modelo 3D fiel do mascote oficial, a ser aprovado por você antes de qualquer uso.</li>
+      <li>Opcional: enviar trechos em MP4 de um ou dois vídeos de referência, se quiser que eu analise ritmo e movimento.</li>
       <li>Para a produção final: definir onde renderizar (um computador com GPU NVIDIA ou Apple Silicon roda os mesmos scripts).</li>
     </ol>
     <p>Não avancei para a Etapa C. Nada foi publicado.</p>
