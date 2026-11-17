@@ -107,8 +107,9 @@ def andaime(x0, x1, y, z1, mat, mplat, passo=2.5, nivel=2.0):
     return objs
 
 
-def quadro2():
-    """Estaleiro (v3): navio em construção por blocos, já reconhecível; o pórtico iça o painel que falta."""
+def quadro2(off_painel=0.0):
+    """Estaleiro (v3): navio em construção por blocos, já reconhecível; o pórtico iça o painel que falta.
+    off_painel: afastamento da chapa para fora do costado (0 = quadro aprovado; o animatic usa 0,12 no encaixe)."""
     lib.nova_cena()
     lib.ceu_estilizado(sol_elev=30, sol_rot=70, sol_forca=4.4, nuvens=0.5, zenite='#3a7bd0', meio='#8cc2ee', horizonte='#f7dcb4', sol_cor=(1.0, 0.88, 0.70))
     mg = lib.mat_concreto('chao', (162, 158, 148), escala=0.04)
@@ -147,7 +148,8 @@ def quadro2():
     zlev = 13.0; ydes = 8.0
     pv = bpy.data.objects.new('painel_icado', None); lib.ligar(pv)
     mazul = lib.mat_pintura('primer_azul', '#4f6f8f', rug=0.55, metal=0.15, variacao=0.08)
-    pn = navio.painel_costado('painel_icado_m', 70.0, 78.0, 7.5, navio.PONTAL, 1, mazul, folga=0.04)
+    OFF = off_painel   # no animatic a chapa assenta POR FORA das cavernas (modeladas com menos pontos, avançam até ~10 cm no abaulado da proa)
+    pn = navio.painel_costado('painel_icado_m', 70.0, 78.0, 7.5, navio.PONTAL, 1, mazul, folga=0.04, desloc=OFF)
     pn.parent = pv
     ma = lib.mat_aco('aco_estrut', (120, 122, 126), rug=0.4, escovado=False)
     for xx in (71.5, 74.0, 76.5):
@@ -155,10 +157,10 @@ def quadro2():
         lib.tubo('reforco', pts, r=0.22, mat=ma).parent = pv
     pv.location = (0, ydes, Z0 + zlev)
     # centro de massa da chapa (média sobre a superfície) e posição dos olhais (mundo)
-    amostras = [(x, navio.meia_boca(x, z) + 0.03 - 0.07 + ydes, Z0 + zlev + z) for x in np.linspace(70.2, 77.8, 12) for z in np.linspace(7.6, 17.9, 14)]
+    amostras = [(x, navio.meia_boca(x, z) + 0.03 - 0.07 + OFF + ydes, Z0 + zlev + z) for x in np.linspace(70.2, 77.8, 12) for z in np.linspace(7.6, 17.9, 14)]
     cg = Vector(np.mean(np.array(amostras), axis=0))
     ztopo = Z0 + zlev + navio.PONTAL - 0.04
-    olhais = [Vector((xx, navio.meia_boca(xx, navio.PONTAL - 0.04) + 0.03 - 0.07 + ydes, ztopo + 0.35)) for xx in (71.2, 76.8)]
+    olhais = [Vector((xx, navio.meia_boca(xx, navio.PONTAL - 0.04) + 0.03 - 0.07 + OFF + ydes, ztopo + 0.35)) for xx in (71.2, 76.8)]
     mol = lib.mat_pintura('olhal', '#f3b544', rug=0.4, metal=0.3)
     for o_ in olhais:
         lib.caixa('olhal', (0.7, 0.16, 0.8), tuple(o_ - Vector((0, 0, 0.15))), mol, bisel=0.06)

@@ -134,7 +134,7 @@ def plano1(pasta):
 # =====================================================================================
 # PLANOS 2 e 3 — o mesmo estaleiro: vista ampla → close do encaixe do painel
 def plano23(pasta):
-    quadros.quadro2()
+    quadros.quadro2(off_painel=0.12)
     s = bpy.context.scene
     painel = bpy.data.objects['painel_icado']
     gancho = bpy.data.objects['gancho']; xg = gancho.location.x; yg = gancho.location.y
@@ -161,6 +161,9 @@ def plano23(pasta):
     moitao = next(o for o in membros if o.name.split('.')[0] == 'moitao')
     z_topo_cabo = 46.0 + 3.5
     g0 = grupo.location.copy(); ydes, zlev = 8.0, 13.0
+    # braço do pêndulo: do ponto de giro (gancho) até a borda inferior da chapa
+    pm = [o for o in painel.children_recursive if o.type == 'MESH'] + ([painel] if painel.type == 'MESH' else [])
+    Lb = g0.z - min((o.matrix_world @ v.co).z for o in pm for v in o.data.vertices)
     cam = s.camera
     t0p, t1p = PLANOS[23]
 
@@ -178,6 +181,9 @@ def plano23(pasta):
         if 12.5 <= t <= 14.4:
             h = 1 / 240.0; acel = (dy_slide(t + h) - 2 * dy_slide(t) + dy_slide(t - h)) / (h * h)
             bal = max(-0.035, min(0.035, -acel / G))   # pêndulo ≈ −a/g, contido pelos cabos-guia (±2°)
+            # na frenagem a base balança PARA o casco: os cabos-guia limitam o giro à folga que ainda resta
+            # (sem isso a borda inferior atravessaria as cavernas nos últimos centímetros do encaixe)
+            if bal < 0: bal = max(bal, -max(0.0, dy - 0.03) / Lb)
         return dy, dz, bal
 
     def anim(f):

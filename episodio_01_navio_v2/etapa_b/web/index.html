@@ -61,23 +61,41 @@ code{font-size:.9em;background:var(--superficie);border:1px solid var(--linha);p
     <h1>Como um navio de aço consegue flutuar?</h1>
     <p>Etapas A (auditoria) e B (nova direção visual e teste de voz). Os cinco quadros abaixo saíram do motor que fará o episódio, Blender 5.1 com Cycles, em 1080×1920, sem retoque. À esquerda de cada um está o quadro equivalente da versão rejeitada.</p>
     <div class="estado">
+      <span class="chip ok">Animatic montado</span>
+      <span class="chip ok">Amostra Will - Deep analisada</span>
+      <span class="chip">Narração definitiva pendente</span>
       <span class="chip ok">Composição final v3c</span>
       <span class="chip ok">Ajustes v3b</span>
       <span class="chip ok">Motor v2 + benchmark</span>
-      <span class="chip alerta">Voz: plano gratuito bloqueado pela ElevenLabs</span>
+      <span class="chip alerta">Conector ElevenLabs: sem novas gerações</span>
       <span class="chip ok">Revisão v3: quadros 2, 3 e 4</span>
       <span class="chip ok">Protótipo do mascote</span>
       <span class="chip ok">Benchmark dos motores</span>
       <span class="chip ok">5 quadros renderizados</span>
       <span class="chip ok">Assinatura com o mascote oficial</span>
-      <span class="chip">Voz Will - Deep: pendente</span>
       <span class="chip">Referência analisada por quadros estáticos</span>
       <span class="chip">Aguardando sua aprovação</span>
     </div>
   </header>
 
+  <section aria-labelledby="t-anim">
+    <span class="rotulo">Entrega mais recente · animatic (narração definitiva pendente)</span>
+    <h2 id="t-anim">Animatic do Episódio 01</h2>
+    <div class="assinatura">
+      <figure class="v2"><video src="animatic_web.mp4" poster="animatic_poster.jpg" controls playsinline preload="metadata" style="width:100%;aspect-ratio:9/16;border-radius:10px;display:block;background:#000;box-shadow:0 0 0 3px var(--amarelo)"></video><figcaption>19,5 s · 1080×1920 (prévia em 720×1280 nesta página)</figcaption></figure>
+      <div style="display:grid;gap:12px">
+        <p>Quatro planos no motor Three.js v2: o bloco de aço afunda no cais, o estaleiro visto do alto, o painel encaixado no vão do costado e a assinatura com o mascote oficial.</p>
+        <p class="nota"><strong>Voz:</strong> só a amostra real que você gerou (Will - Deep, plano gratuito, só para avaliação), na assinatura, a partir de 15,20 s. Nos planos 1–3 o roteiro aparece apenas como legenda, com tempos estimados no ritmo da amostra. Kokoro e outras vozes não foram usados, e o conector não fez nenhuma geração.</p>
+        <p class="nota"><strong>Física:</strong> o bloco cai com empuxo, massa adicional e arrasto. A chapa desce por fora do casco (folga de 2,2 m), entra no vão levada pelo carro do pórtico e balança como um pêndulo, no máximo ±2° e nunca além da folga restante.</p>
+        <p class="nota"><strong>Áudio:</strong> efeitos originais sincronizados com a simulação (água em 3,13 s, leito em 3,76 s, encaixe em 14,40 s). Master em −14 LUFS e −1,5 dBTP.</p>
+      </div>
+    </div>
+    <img src="animatic_folha.jpg" alt="Folha de contato do animatic: 12 quadros ao longo dos 19,5 segundos" style="width:100%;border-radius:10px;display:block">
+    <p class="nota">Duração de 19,5 s, acima dos 10–15 s previstos para este trecho, por causa do texto completo no ritmo medido da amostra. Os tempos serão refeitos sobre as palavras da narração definitiva.</p>
+  </section>
+
   <section aria-labelledby="t-c2">
-    <span class="rotulo">Entrega mais recente · revisão final de composição (Three.js v2)</span>
+    <span class="rotulo">Entrega anterior · revisão final de composição (Three.js v2)</span>
     <h2 id="t-c2">Quadros 2, 3 e 4 corrigidos</h2>
     <div class="grade">
       <figure class="v2"><img src="q2_v3c.jpg" alt="Quadro 2: casco e pórtico em primeiro plano, bulbo alongado, painel suspenso por lingas presas a olhais"><figcaption>Quadro 2 · estaleiro</figcaption></figure>
