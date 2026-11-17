@@ -93,3 +93,13 @@ def exportar_seg(pasta, g0, g1, anim, rot=None, extra=None):
     exportar_rt2.exportar_atual(pasta, n=n, anim=af, fps=FPS, extra_meta=dict(extra or {}, g0=g0, g1=g1), agrupar=True)
     json.dump(dict(g0=g0, fps=FPS, quadros=rot.quadros[:n]), open(os.path.join(pasta, 'rotulos2d.json'), 'w'), ensure_ascii=False)
     print('SEGMENTO', pasta, g0, g1, n, 'quadros')
+
+
+def camera_planos(cam, planos, g):
+    """Decupagem: planos = [(t_inicio, chaves), ...]; corte seco entre planos; dentro do plano, trilha(chaves).
+    As chaves podem ser funções do tempo (para acompanhar objetos em movimento): (t, pos, alvo, lente) com pos/alvo
+    sendo tuplas ou callables g -> Vector."""
+    ativo = [p for p in planos if p[0] <= g + 1e-6]
+    chaves = (ativo[-1] if ativo else planos[0])[1]
+    ch = [(t, (p(g) if callable(p) else p), (a(g) if callable(a) else a), l) for (t, p, a, l) in chaves]
+    p, a, l = trilha(ch, g); camera_em(cam, p, a, l)

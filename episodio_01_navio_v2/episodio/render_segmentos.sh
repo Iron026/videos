@@ -4,7 +4,7 @@
 #   revisao: 540×960, GTAO 4 amostras, sem MSAA, 30 fps           — versão de revisão
 #   final  : 1080×1920, GTAO 8, MSAA 4×, 30 fps                   — NÃO executar sem aprovação
 P=${1:-previa}; shift
-SEGS=${@:-02 03 04 05 0607 08a 08b 09 10 11 12 13}
+SEGS=${@:-02 03 04 05 0607 08a 08b 09 10 11 12x 12 13}
 case $P in
   previa)  Q="escala=0.25&ao=0&msaa=0"; PASSO=3 ;;
   revisao) Q="escala=0.5&aoamostras=4&msaa=0"; PASSO=1 ;;

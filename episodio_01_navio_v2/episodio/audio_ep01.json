@@ -3,14 +3,15 @@
   "apito": 5.0,
   "encaixe": 23.6,
   "flutua": 46.1,
-  "empuxo": 61.45,
+  "empuxo": 61.85,
   "bloco_leito": 82.12,
+  "experimento_agua": 86.24,
   "pousos": [
    101.6,
    102.95,
    104.45
   ],
-  "avaria": 136.6,
+  "avaria": 134.9,
   "divisorias": 151.05,
   "assinatura": 166.25
  },

@@ -61,10 +61,13 @@ m = amb_mar(4.3, 15.2, -33); L += m; R += np.roll(m, 700)
 n = int(2.2 * SR); t = np.arange(n) / SR
 apito = sum(a * np.sin(2 * np.pi * f * t + 0.3 * np.sin(2 * np.pi * 5 * t)) for a, f in ((1, 73.4), (0.6, 146.8), (0.35, 220.2), (0.2, 293.6)))
 por(5.0, lp(apito, 1200) * np.minimum(1, t / 0.25) * np.clip((2.2 - t) / 0.5, 0, 1), db(-24)); ev['apito'] = 5.0
+mo = motor(4.4, 15.1, f=38, g=-35); L += mo; R += mo                                  # máquinas do navio navegando
+proa = bp(ruido(N), 250, 3500) * janela(11.0, 13.5, 0.3, 0.4) * db(-25); L += proa; R += proa * 0.8  # onda de proa
+por(13.4, whoosh(1.4), db(-27))
 por(4.40, whoosh(), db(-28))
 # 15,10–30,30 · estaleiro: ambiente, motor do pórtico, encaixe (23,60), solda, chapas chegando ao casco
 a_ = lp(ruido(N), 1200) * janela(15.1, 30.4, 0.3, 0.4) * db(-36); L += a_; R += np.roll(a_, 1500)
-mo = motor(15.1, 21.7, g=-32) + motor(21.7, 23.6, g=-29); L += mo; R += mo
+mo = motor(15.1, 21.7, g=-32) + motor(21.7, 23.6, g=-29) + motor(17.2, 19.0, f=150, g=-27); L += mo; R += mo
 por(15.10, whoosh(), db(-28)); por(23.60, clank(), db(-13)); ev['encaixe'] = 23.60
 for t0 in np.arange(23.75, 26.4, 0.07):
     if rng.random() < 0.55: por(float(t0), hp(ruido(int(0.05 * SR)), 2500) * env(int(0.05 * SR), 0.001, 0.02), db(-30), pan=0.6)
@@ -81,16 +84,22 @@ range_ = (lp(ruido(n), 900) * np.exp(-t / 0.25) + 0.6 * np.sin(2 * np.pi * (140 
 por(46.10, range_, db(-24)); por(46.15, thud(42, 0.8), db(-27)); ev['flutua'] = 46.10
 # 48,00–74,85 · seção submersa: ambiente abafado, setas, empuxo, volume deslocado, peso
 s_ = sub(48.0, 74.9); L += s_; R += s_
+n = int(1.2 * SR); mergulho = bp(ruido(n), 200, 2500) * np.sin(np.linspace(0, np.pi, n)) ** 2; por(49.0, mergulho, db(-22))   # câmera mergulha
+n = int(2.5 * SR); t = np.arange(n) / SR; mapa = np.sin(2 * np.pi * 110 * t) * np.sin(np.pi * t / 2.5) ** 2; por(50.75, mapa, db(-30))
 for i, t0 in enumerate(np.linspace(50.9, 53.2, 10)): por(float(t0), tique(1700 + 90 * i), db(-31), pan=0.3 + 0.4 * (i % 2))
-por(58.6, whoosh(0.5), db(-32)); por(60.3, whoosh(1.1), db(-30)); por(61.45, mais(brilho(1.4, 880.0), 0.5 * thud(60, 0.8)), db(-24)); ev['empuxo'] = 61.45
-por(66.4, brilho(1.6, 1046.5), db(-28)); por(71.2, mais(brilho(1.2, 698.46), 0.5 * thud(52, 0.8)), db(-25))
+por(58.3, whoosh(0.5), db(-32)); por(58.7, tique(1200, 0.12), db(-30)); por(59.8, whoosh(1.6), db(-29)); por(61.85, mais(brilho(1.4, 880.0), 0.5 * thud(60, 0.8)), db(-24)); ev['empuxo'] = 61.85
+n = int(2.3 * SR); t = np.arange(n) / SR; enche = np.sin(2 * np.pi * (330 * t + 60 * t * t)) * np.sin(np.pi * t / 2.3) ** 2; por(63.2, enche, db(-32))
+por(65.6, brilho(1.6, 1046.5), db(-28)); por(67.2, tique(900, 0.15), db(-28)); por(71.15, mais(brilho(1.2, 698.46), 0.5 * thud(52, 0.8)), db(-25))
 # 74,85–83,85 · o bloco em câmera lenta e o leito (82,12)
 s_ = sub(74.85, 83.9, -24); L += s_; R += s_
 lento = lp(ruido(int(7.5 * SR)), 140) * np.linspace(0.4, 1, int(7.5 * SR)); por(74.85, lento, db(-26))
 por(82.12, thud(40, 0.9), db(-12)); ev['bloco_leito'] = 82.12
+por(82.15, lp(ruido(int(1.2 * SR)), 900) * env(int(1.2 * SR), 0.02, 0.4), db(-24))   # sedimento
 # 83,85–94,55 · cubo de aço maciço afunda; volume deslocado do casco; forças
 s_ = sub(83.85, 94.6, -27); L += s_; R += s_
-por(84.4, tique(1500, 0.1), db(-30)); por(85.0, tique(1900, 0.1), db(-30)); por(85.6, lp(ruido(int(3.2 * SR)), 180) * np.linspace(1, 0, int(3.2 * SR)), db(-22))
+por(84.2, tique(1500, 0.1), db(-30)); t_ag = 85.6 + (2 * 2.0 / 9.81) ** 0.5
+por(t_ag, splash(1.4, 1.7), db(-15), pan=0.35); por(t_ag + 0.02, splash(1.2, 1.4), db(-17), pan=0.65); ev['experimento_agua'] = round(t_ag, 2)
+por(t_ag + 0.2, lp(ruido(int(2.6 * SR)), 180) * np.linspace(1, 0, int(2.6 * SR)), db(-22)); por(t_ag + 1.2, thud(38, 1.0), db(-28))
 por(84.6, brilho(1.4, 1318.5), db(-31)); por(90.0, brilho(1.6, 1046.5), db(-28))
 # 94,55–117,20 · porto: ambiente, portêineres, três pousos (101,60 · 102,95 · 104,45), lotes do time-lapse
 a_ = lp(ruido(N), 1500) * janela(94.5, 134.1, 0.4, 0.4) * db(-37); L += a_; R += np.roll(a_, 1800)
@@ -110,12 +119,14 @@ por(125.9, brilho(0.8, 1567.98), db(-32)); por(127.6, whoosh(1.2), db(-27)); [po
 # 134,00–154,60 · avaria: rasgo (136,6), água entrando, hipótese grave (tensão), divisórias (151,05)
 m = amb_mar(134.0, 154.7, -34); L += m; R += np.roll(m, 600)
 n = int(0.9 * SR); crunch = lp(ruido(n), 1800) * env(n, 0.002, 0.25) + 0.6 * clank(180, 0.9, 0.2)[:n]
-por(136.6, crunch, db(-16)); ev['avaria'] = 136.6
+por(134.9, crunch, db(-16)); ev['avaria'] = 134.9
+gorgolejo = bp(ruido(N), 150, 1200) * janela(135.0, 137.2, 0.2, 0.3) * (0.7 + 0.3 * np.sin(2 * np.pi * 7 * np.arange(N) / SR)) * db(-24); L += gorgolejo; R += gorgolejo
 jorro = bp(ruido(N), 250, 2200) * janela(136.9, 145.8, 0.3, 1.0) * db(-27); L += jorro; R += jorro * 0.8
 n = int(2.8 * SR); t = np.arange(n) / SR; drone = (np.sin(2 * np.pi * 55 * t) + 0.5 * np.sin(2 * np.pi * 58.3 * t)) * np.sin(np.pi * t / 2.8)
 por(147.9, drone, db(-24)); [por(147.9 + 0.45 * i, tique(700 - 60 * i, 0.12), db(-30)) for i in range(5)]; por(151.05, mais(clank(523, 1.6, 0.6) * 0.6, brilho(1.2, 1046.5)), db(-24)); ev['divisorias'] = 151.05
 # 154,60–166,30 · conclusão; 166,25 assinatura
 m = amb_mar(154.5, 166.6, -35); L += m; R += np.roll(m, 800)
+t_c = 155.2 + (4.0 / 9.81) ** 0.5; por(t_c, splash(1.4, 1.8), db(-17)); por(t_c + 0.2, lp(ruido(int(2.4 * SR)), 180) * np.linspace(1, 0, int(2.4 * SR)), db(-24))
 por(159.6, brilho(2.0, 1046.5), db(-28)); por(161.4, mais(brilho(1.4, 783.99), 0.4 * thud(50, 0.8)), db(-27))
 por(166.0, whoosh(0.6), db(-29))
 n = int(3.0 * SR); t = np.arange(n) / SR

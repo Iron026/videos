@@ -8,8 +8,10 @@ from PIL import Image, ImageDraw, ImageFont
 
 A = os.path.dirname(os.path.abspath(__file__)); RAIZ = os.path.join(A, '..')
 PERFIL = sys.argv[1] if len(sys.argv) > 1 else 'previa'
-W, H = {'previa': (540, 960), 'revisao': (1080, 1920), 'final': (1080, 1920)}[PERFIL]
+W, H = {'previa': (540, 960), 'previa30': (540, 960), 'revisao': (1080, 1920), 'final': (1080, 1920)}[PERFIL]
 PASSO = 3 if PERFIL == 'previa' else 1
+T_INI = float(sys.argv[3]) if len(sys.argv) > 3 else 0.0      # trecho (previa30: amostras a 30 fps)
+T_FIM = float(sys.argv[4]) if len(sys.argv) > 4 else None
 FPS = 30; DUR = 171.0; ESC = W / 1080
 SAIDA = sys.argv[2] if len(sys.argv) > 2 else os.path.join(A, f'ep01_{PERFIL}.mp4')
 FONTE = os.path.join(RAIZ, 'fontes')
@@ -21,7 +23,7 @@ AZUL, CREME, AMARELO, ESCURO = (32, 43, 87), (246, 244, 236), (243, 181, 68), (1
 # (nome, início, fim) no tempo global; 's01' = plano 1 aprovado do animatic r2; 'ass' = assinatura
 SEGS = [('s01', 0.00, 4.40), ('s02', 4.40, 15.10), ('s03', 15.10, 30.30), ('s04', 30.30, 41.55), ('s05', 41.55, 48.00),
         ('s0607', 48.00, 74.85), ('s08a', 74.85, 83.85), ('s08b', 83.85, 94.55), ('s09', 94.55, 117.20), ('s10', 117.20, 123.65),
-        ('s11', 123.65, 134.00), ('s12', 134.00, 154.60), ('s13', 154.60, 166.30), ('ass', 166.20, DUR)]
+        ('s11', 123.65, 134.00), ('s12x', 134.00, 137.00), ('s12', 137.00, 154.60), ('s13', 154.60, 166.30), ('ass', 166.20, DUR)]
 FUSAO = 0.20
 # avisos honestos de tempo (canto superior direito)
 CHIPS = [(2.05, 3.70, 'Câmera lenta'), (41.6, 48.0, 'Tempo acelerado'), (74.85, 82.1, 'Câmera lenta'),
@@ -31,7 +33,8 @@ CHIPS = [(2.05, 3.70, 'Câmera lenta'), (41.6, 48.0, 'Tempo acelerado'), (74.85,
 def pasta(nome):
     if nome == 's01': return os.path.join(RAIZ, 'animatic', 'quadros_r2_p1'), 1
     if nome == 'ass': return os.path.join(A, 'assinatura_q'), 1
-    return os.path.join(A, f'quadros_{PERFIL}', nome), PASSO
+    if PERFIL == 'previa30' and os.path.isdir(os.path.join(A, 'quadros_previa30', nome)): return os.path.join(A, 'quadros_previa30', nome), 1
+    return os.path.join(A, f'quadros_{"previa" if PERFIL == "previa30" else PERFIL}', nome), PASSO
 
 
 _cache = {}
@@ -149,12 +152,13 @@ def loudness(au):
 
 if __name__ == '__main__':
     au = os.path.join(A, 'audio_ep01.wav'); af = loudness(au)
-    n = int(round(DUR * FPS))
+    t_fim = T_FIM if T_FIM is not None else DUR
+    n = int(round((t_fim - T_INI) * FPS))
     ff = subprocess.Popen(['ffmpeg', '-y', '-v', 'error', '-f', 'rawvideo', '-pix_fmt', 'rgb24', '-s', f'{W}x{H}', '-r', str(FPS), '-i', '-',
-                           '-i', au, '-af', af, '-c:v', 'libx264', '-preset', 'medium', '-crf', '20' if PERFIL != 'final' else '17',
+                           '-ss', f'{T_INI:.3f}', '-i', au, '-af', af, '-c:v', 'libx264', '-preset', 'medium', '-crf', '20' if PERFIL != 'final' else '17',
                            '-pix_fmt', 'yuv420p', '-c:a', 'aac', '-b:a', '192k', '-ar', '48000', '-shortest', '-movflags', '+faststart',
                            '-metadata', 'title=De Olho no Invisível · Ep. 01 · versão de revisão (não publicar)', SAIDA], stdin=subprocess.PIPE)
     for i in range(n):
-        ff.stdin.write(compor(i / FPS).tobytes())
+        ff.stdin.write(compor(T_INI + i / FPS).tobytes())
         if i % 300 == 0: print('quadro', i, '/', n, flush=True)
     ff.stdin.close(); ff.wait(); print('ok', SAIDA)
