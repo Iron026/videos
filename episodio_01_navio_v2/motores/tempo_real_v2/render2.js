@@ -258,9 +258,15 @@ function materialRaio(m) {
 }
 
 // ------------------------------------------------------------------ geometria
+const matProfOcl = new THREE.MeshBasicMaterial({ colorWrite: false, side: THREE.DoubleSide });
 let tris = 0; const caixa = new THREE.Box3(); const matsAgua = [], matsRaio = [];
-const ANIM = meta.animacao; const animados = {};
-function registrarAnim(mesh, m) { if (m.objeto) { mesh.matrixAutoUpdate = false; (animados[m.objeto] ||= []).push(mesh); } }
+const ANIM = meta.animacao; const animados = {}; const SURG = meta.surgir || {}; const surgem = [];
+const cenaOclusor = new THREE.Scene();   // só profundidade: impede a água de aparecer dentro do casco em cortes
+function registrarAnim(mesh, m) {
+  if (!m.objeto) return; mesh.matrixAutoUpdate = false;
+  if (SURG[m.objeto]) { const sv = SURG[m.objeto]; surgem.push({ mesh, sv, Mrel: new THREE.Matrix4().fromArray(sv.M), op: mesh.material.opacity }); mesh.visible = false; }
+  else (animados[m.objeto] ||= []).push(mesh);
+}
 const ONDAS = (meta.ondas || []).slice(0, 2); const uTempo = { value: 0 };
 for (const m of meta.materiais.filter(m => m.tipo === 'agua')) {
   const b = new Float32Array(await (await fetch(CENA + m.arquivo)).arrayBuffer());
@@ -275,7 +281,8 @@ await Promise.all(meta.materiais.map(async (m) => {
   tris += n / 3;
   if (m.tipo === 'agua') { const mat = materialAgua(m); matsAgua.push(mat); const ma = new THREE.Mesh(g, mat); registrarAnim(ma, m); cenaTransp.add(ma); return; }
   if (m.tipo === 'raio_luz') { const mat = materialRaio(m); matsRaio.push(mat); const r = new THREE.Mesh(g, mat); r.renderOrder = 2; cenaTransp.add(r); return; }
-  if (m.tipo === 'fantasma') { const mat = new THREE.MeshBasicMaterial({ color: new THREE.Color(...m.cor).multiplyScalar(m.brilho ?? 1), transparent: true, opacity: m.alfa ?? 0.35, depthWrite: false, side: THREE.DoubleSide }); scene.add(new THREE.Mesh(g, mat)); return; }
+  if (m.tipo === 'fantasma') { const mat = new THREE.MeshBasicMaterial({ color: new THREE.Color(...m.cor).multiplyScalar(m.brilho ?? 1), transparent: true, opacity: m.alfa ?? 0.35, depthWrite: false, side: THREE.DoubleSide }); const mf = new THREE.Mesh(g, mat); registrarAnim(mf, m); scene.add(mf); return; }
+  if (m.tipo === 'oclusor') { const mo = new THREE.Mesh(g, matProfOcl); registrarAnim(mo, m); cenaOclusor.add(mo); return; }
   if (m.tipo === 'bolha') { const mat = new THREE.MeshPhysicalMaterial({ color: 0xf2fbff, transmission: 0, transparent: true, opacity: 0.55, roughness: 0.05, emissive: 0x9fd8ee, emissiveIntensity: 0.35 }); const mb = new THREE.Mesh(g, mat); mb.renderOrder = 3; registrarAnim(mb, m); cenaTransp.add(mb); return; }
   const mesh = new THREE.Mesh(g, criarMaterial(m)); registrarAnim(mesh, m);
   mesh.castShadow = m.tipo !== 'emissivo' && !/^(mar_longe|longe)/.test(m.chave || ''); mesh.receiveShadow = true; scene.add(mesh);
@@ -309,6 +316,17 @@ function posicionar(i) {   // animação: câmera e objetos do quadro i; benchma
     camera.lookAt(camera.position.clone().add(new THREE.Vector3(...q.camera.dir)));
     for (const [nome, arr] of Object.entries(q.objetos)) for (const ms of (animados[nome] || [])) { ms.matrix.fromArray(arr); ms.matrixWorldNeedsUpdate = true; }
     uTempo.value = q.t ?? i / ANIM.fps;   // tempo de cena exportado (câmera lenta) ou tempo do quadro
+    const t = uTempo.value, ease = (x) => { x = Math.min(Math.max(x, 0), 1); return x * x * (3 - 2 * x); };
+    for (const s of surgem) {   // objetos que surgem/somem: deslocamento d·(1−k), escala k, opacidade dos fantasmas
+      const sv = s.sv, k = ease((t - sv.t0) / (sv.dur || 0.4)), k1 = sv.t1 != null ? 1 - ease((t - sv.t1) / (sv.dur1 || 0.4)) : 1;
+      s.mesh.visible = t >= sv.t0 && k1 > 0.001;
+      if (!s.mesh.visible) continue;
+      const M = new THREE.Matrix4(); if (sv.pai && q.objetos[sv.pai]) M.fromArray(q.objetos[sv.pai]);
+      const d = sv.d || [0, 0, 0]; M.multiply(new THREE.Matrix4().makeTranslation(d[0] * (1 - k), d[1] * (1 - k), d[2] * (1 - k))).multiply(s.Mrel);
+      if (sv.escala) { const e = Math.max(1e-3, sv.escala === 'z' ? 1 : Math.min(k, k1)); M.multiply(new THREE.Matrix4().makeScale(sv.escala === 'z' ? 1 : e, sv.escala === 'z' ? 1 : e, sv.escala === 'z' ? Math.max(1e-3, Math.min(k, k1)) : e)); }
+      s.mesh.matrix.copy(M); s.mesh.matrixWorldNeedsUpdate = true;
+      if (s.mesh.material.transparent) s.mesh.material.opacity = s.op * Math.min(k, k1);
+    }
   } else {
     camera.position.copy(base).add(new THREE.Vector3(-0.8 * i, 0.5 * i, 0.1 * i));
     camera.lookAt(camera.position.clone().add(fwd));
@@ -342,7 +360,8 @@ const gl = renderer.getContext(); const px = new Uint8Array(4);
 window.quadro = (i) => {
   posicionar(i); const t0 = performance.now();
   if (cenaTransp.children.length) { scene.overrideMaterial = matProf; const vis = ceu.visible; ceu.visible = false;
-    renderer.setRenderTarget(rtProf); renderer.clear(); renderer.render(scene, camera); scene.overrideMaterial = null; ceu.visible = vis; }
+    renderer.setRenderTarget(rtProf); renderer.clear(); renderer.render(scene, camera); scene.overrideMaterial = null; ceu.visible = vis;
+    if (cenaOclusor.children.length) { const ac = renderer.autoClear; renderer.autoClear = false; renderer.render(cenaOclusor, camera); renderer.autoClear = ac; } }
   composer.render(); gl.readPixels(0, 0, 1, 1, gl.RGBA, gl.UNSIGNED_BYTE, px); return performance.now() - t0;
 };
 const ROT = meta.rotulos || [];

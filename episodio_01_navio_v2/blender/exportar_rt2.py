@@ -111,16 +111,33 @@ def _mat_coluna(M):
     return [float(M[r][c]) for c in range(4) for r in range(4)]
 
 
-def exportar_atual(pasta, n=0, anim=None, fps=30, extra_meta=None):
+def _ancora(o):
+    """Ancestral (ou o próprio objeto) mais próximo marcado com 'anim': é ele que recebe a matriz por quadro."""
+    while o is not None:
+        if o.get('anim'): return o
+        o = o.parent
+    return None
+
+
+def exportar_atual(pasta, n=0, anim=None, fps=30, extra_meta=None, agrupar=False):
     """Exporta a cena JÁ MONTADA. Objetos com a propriedade 'anim' (ou filhos deles) vão em coordenadas locais,
-    um grupo por objeto, e recebem uma matriz de mundo por quadro; anim(f) posiciona a cena no quadro f."""
+    um grupo por objeto, e recebem uma matriz de mundo por quadro; anim(f) posiciona a cena no quadro f.
+    agrupar=True (episódio): a geometria dos filhos vai no espaço da ÂNCORA animada (um navio inteiro = 1 matriz/quadro);
+    objetos com o['surge'] = json {t0, dur, d, t1, dur1, escala} aparecem/somem no tempo de cena, presos à âncora;
+    objetos com o['oclusor'] só escrevem profundidade para a água (ar dentro do casco em cortes)."""
     os.makedirs(pasta, exist_ok=True)
     s = bpy.context.scene; dg = bpy.context.evaluated_depsgraph_get()
-    grupos, metas, anim_objs = {}, {}, {}
+    grupos, metas, anim_objs, surgir = {}, {}, {}, {}
     for o in s.objects:
         if o.type not in ('MESH', 'CURVE', 'FONT') or o.hide_render: continue
         if any(c.hide_render for c in o.users_collection if c != s.collection): continue
         mov = _animado(o)
+        anc = _ancora(o) if (agrupar and mov) else (o if mov else None)
+        surge = json.loads(o['surge']) if (agrupar and 'surge' in o.keys()) else None
+        if surge is not None:   # aparece no tempo: geometria local + matriz relativa à âncora (ou ao mundo)
+            pai = _ancora(o.parent) if o.parent is not None else None
+            Mrel = (pai.matrix_world.inverted() @ o.matrix_world) if pai else o.matrix_world.copy()
+            surgir[o.name] = dict(surge, pai=pai.name if pai else None, M=_mat_coluna(Mrel)); mov = True; anc = None
         oe = o.evaluated_get(dg)
         try: me = oe.to_mesh()
         except RuntimeError: continue
@@ -131,7 +148,12 @@ def exportar_atual(pasta, n=0, anim=None, fps=30, extra_meta=None):
         loop_v = np.empty(len(me.loops), dtype=np.int64); me.loops.foreach_get('vertex_index', loop_v)
         co = np.empty(len(me.vertices) * 3, dtype=np.float32); me.vertices.foreach_get('co', co); co = co.reshape(-1, 3)
         nrm = np.empty(len(me.loops) * 3, dtype=np.float32); me.corner_normals.foreach_get('vector', nrm); nrm = nrm.reshape(-1, 3)
-        if mov:
+        if surge is not None:
+            P, Nw = co, nrm
+        elif mov and anc is not None and anc is not o:   # filho de âncora: coordenadas no espaço da âncora
+            Ma = np.array(anc.matrix_world.inverted() @ o.matrix_world); Na = np.array((anc.matrix_world.inverted() @ o.matrix_world).to_3x3().inverted().transposed())
+            P = co @ Ma[:3, :3].T + Ma[:3, 3]; Nw = nrm @ Na.T
+        elif mov:
             P, Nw = co, nrm
         else:
             M = np.array(o.matrix_world); N = np.array(o.matrix_world.to_3x3().inverted().transposed())
@@ -140,13 +162,17 @@ def exportar_atual(pasta, n=0, anim=None, fps=30, extra_meta=None):
         lo, hi = co.min(0), co.max(0); G = (co - lo) / np.maximum(hi - lo, 1e-6)
         for mi in np.unique(tri_mat):
             mat = o.material_slots[mi].material if mi < len(o.material_slots) else None
-            rt = meta_material(mat, o)
+            rt = meta_material(mat, o) if not o.get('oclusor') else {'tipo': 'oclusor'}
             chave = (mat.name if mat else 'sem') + (('_' + '_'.join(f'{c:.3f}' for c in rt['cor'])) if rt['tipo'] == 'conteiner' else '')
-            if mov: chave = 'ANIM|' + o.name + '|' + chave; anim_objs[o.name] = o
-            metas[chave] = dict(rt, objeto=o.name if mov else None)
+            if surge is not None: chave = 'SURGE|' + o.name + '|' + chave; nome_obj = o.name
+            elif mov: chave = 'ANIM|' + anc.name + '|' + chave; anim_objs[anc.name] = anc; nome_obj = anc.name
+            else: nome_obj = None
+            metas[chave] = dict(rt, objeto=nome_obj)
             loops = tri_loops[np.repeat(tri_mat == mi, 3)]; vid = loop_v[loops]
             grupos.setdefault(chave, []).append(np.concatenate([P[vid], Nw[loops], co[vid], G[vid]], axis=1).astype(np.float32))
         oe.to_mesh_clear()
+    for sv in surgir.values():          # âncoras usadas só por objetos que surgem também precisam de matriz por quadro
+        if sv['pai'] and sv['pai'] not in anim_objs: anim_objs[sv['pai']] = bpy.data.objects[sv['pai']]
     lista = []
     for i, (k, partes) in enumerate(grupos.items()):
         arr = np.concatenate(partes); arq = f'm{i:03d}.bin'; arr.tofile(os.path.join(pasta, arq))
@@ -175,7 +201,8 @@ def exportar_atual(pasta, n=0, anim=None, fps=30, extra_meta=None):
     c0 = cam_estado()
     meta = dict(materiais=lista, camera=dict(c0, largura=s.render.resolution_x, altura=s.render.resolution_y),
                 sol=dict(dir=list(sol.matrix_world.to_3x3() @ Vector((0, 0, -1))), cor=list(sol.data.color), energia=sol.data.energy, angulo=sol.data.angle),
-                luzes=luzes, ceu=ceu, rotulos=list(lib.ROTULOS), animacao=dict(fps=fps, quadros=quadros_anim) if n else None)
+                luzes=luzes, ceu=ceu, rotulos=list(lib.ROTULOS), animacao=dict(fps=fps, quadros=quadros_anim) if n else None,
+                surgir=surgir or None)
     if extra_meta: meta.update(extra_meta)
     json.dump(meta, open(os.path.join(pasta, 'cena.json'), 'w'))
     print(f'EXPORTADO {len(lista)} grupos ({len(anim_objs)} objetos animados), {sum(m["vertices"] for m in lista)//3} triângulos, {n} quadros -> {pasta}')

@@ -69,7 +69,7 @@ def bloco_trajetoria(by=6.5):
     return estado, t_agua, t_fundo
 
 
-def plano1(pasta, n=None, tempo=None, camera=None):
+def plano1(pasta, n=None, tempo=None, camera=None, exportador=None):
     """tempo(f) -> tempo de CENA do quadro f (padrão: tempo real); camera(cam, t_cena, f, info) substitui a câmera v1."""
     quadros.quadro1()
     remover(['bloco', 'bolhas', 'bolhas2', 'bloco_resto'])
@@ -106,8 +106,7 @@ def plano1(pasta, n=None, tempo=None, camera=None):
     cam = bpy.context.scene.camera
     t0p, t1p = PLANOS[1]
 
-    def anim(f):
-        t = tempo(f) if tempo else t0p + f / FPS
+    def posicionar(t):                # bloco, bolhas e respingos no tempo de cena t
         p, ang = estado(t)
         bloco.location = p; bloco.rotation_euler = Euler((0.0, -ang, 0.0))
         bpos = p
@@ -123,6 +122,13 @@ def plano1(pasta, n=None, tempo=None, camera=None):
             if pp.z < 0.0 and dtg > 0.05: o.scale = (0, 0, 0)
             else: o.scale = (1, 1, 1)
             o.location = pp
+        return p
+
+    if exportador: return exportador(posicionar, cam, dict(bloco=bloco, estado=estado, t_agua=t_agua, t_fundo=t_fundo, by=by, x_imp=p_imp.x))
+
+    def anim(f):
+        t = tempo(f) if tempo else t0p + f / FPS
+        p = posicionar(t)
         if camera: camera(cam, t, f, dict(bloco=p, t_agua=t_agua, t_fundo=t_fundo, by=by)); return t
         # câmera: meio dentro, meio fora d'água; leve aproximação e inclinação acompanhando a queda
         k = suave5((t - 0.0) / 5.6)
@@ -135,7 +141,7 @@ def plano1(pasta, n=None, tempo=None, camera=None):
 
 # =====================================================================================
 # PLANOS 2 e 3 — o mesmo estaleiro: vista ampla → close do encaixe do painel
-def plano23(pasta, n=None, tempo=None, camera=None):
+def plano23(pasta, n=None, tempo=None, camera=None, exportador=None):
     """tempo(f) -> (t_global, t_guindaste): remapeia o MESMO movimento do pórtico; camera(cam, t_global, t_guindaste) substitui a v1."""
     quadros.quadro2(off_painel=0.12)
     s = bpy.context.scene
@@ -189,8 +195,7 @@ def plano23(pasta, n=None, tempo=None, camera=None):
             if bal < 0: bal = max(bal, -max(0.0, dy - 0.03) / Lb)
         return dy, dz, bal
 
-    def anim(f):
-        tg, t = tempo(f) if tempo else (None, t0p + f / FPS)
+    def posicionar(t):              # estado do pórtico/carga no tempo do guindaste t
         dy, dz, bal = deslocamento(t)
         grupo.location = g0 + Vector((0, dy - ydes, dz - zlev)); grupo.rotation_euler = (bal, 0, 0)
         for o in carro: o.location = base_carro[o.name] + Vector((0, dy - ydes, 0))
@@ -199,6 +204,12 @@ def plano23(pasta, n=None, tempo=None, camera=None):
         for (c, dx) in cabos:
             topo = Vector((xg + dx, topo_moitao.y, z_topo_cabo)); L = topo.z - topo_moitao.z
             c.location = topo; c.scale = (1, 1, L); c.rotation_euler = (0, 0, 0)
+
+    if exportador: return exportador(posicionar, cam, dict(grupo=grupo, painel=painel, xg=xg))
+
+    def anim(f):
+        tg, t = tempo(f) if tempo else (None, t0p + f / FPS)
+        posicionar(t)
         if camera: camera(cam, tg, t); return None
         if t < 11.5:   # plano 2: vista aérea ampla do estaleiro → aproximação até o enquadramento aprovado
             k = suave5((t - 5.25) / 6.25)
