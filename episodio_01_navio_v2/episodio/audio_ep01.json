@@ -1,0 +1,21 @@
+{
+ "eventos": {
+  "apito": 5.0,
+  "encaixe": 23.6,
+  "contato_agua": 43.0,
+  "flutua": 46.2,
+  "empuxo": 61.75,
+  "bloco_leito": 82.12,
+  "pousos": [
+   101.6,
+   102.95,
+   104.45
+  ],
+  "avaria": 136.6,
+  "divisorias": 151.05,
+  "assinatura": 166.25
+ },
+ "duracao": 171.0,
+ "pico_dbfs": -1.0,
+ "trilha": "original (sintetizada neste script)"
+}
