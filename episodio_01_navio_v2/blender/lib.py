@@ -24,6 +24,7 @@ def srgb(h):
 # ---------------------------------------------------------------- cena
 def nova_cena(amostras=128, luz_rapida=False):
     bpy.ops.wm.read_factory_settings(use_empty=True)
+    _MATS.clear()   # materiais da cena anterior deixam de existir
     s = bpy.context.scene
     s.render.engine = 'CYCLES'
     c = s.cycles
@@ -111,6 +112,7 @@ def luz_area(pos, alvo, tam=10, energia=1000, cor=(1, 1, 1)):
     d = bpy.data.lights.new('area', 'AREA'); d.size = tam; d.energy = energia; d.color = cor
     o = bpy.data.objects.new('area', d); bpy.context.scene.collection.objects.link(o)
     o.location = pos; o.rotation_euler = (Vector(alvo) - Vector(pos)).to_track_quat('-Z', 'Y').to_euler()
+    o.visible_camera = False; o.visible_glossy = False; o.visible_transmission = False   # preenchimento: não aparece nem em reflexos
     return o
 
 
@@ -610,4 +612,21 @@ def mat_corte_linha_dagua(nome='corte_ld', acima='#efe9da', abaixo='#cfe6ee', li
     mx2 = nt.nodes.new('ShaderNodeMix'); mx2.data_type = 'RGBA'; mx2.inputs[7].default_value = srgb(linha)
     nt.links.new(ln.outputs[0], mx2.inputs[0]); nt.links.new(mx.outputs[2], mx2.inputs[6])
     nt.links.new(mx2.outputs[2], p.inputs['Base Color']); p.inputs['Roughness'].default_value = 0.55
+    _MATS[nome] = m; return m
+
+
+def mat_fantasma(nome='fantasma', cor='#3cc6ff', alfa=0.32, brilho=0.9):
+    """Volume translúcido (volume deslocado): transparência + emissão suave, bordas mais claras (Fresnel)."""
+    if nome in _MATS: return _MATS[nome]
+    m = bpy.data.materials.new(nome)
+    try: m.use_nodes = True
+    except Exception: pass
+    nt = m.node_tree; nt.nodes.clear()
+    out = nt.nodes.new('ShaderNodeOutputMaterial'); em = nt.nodes.new('ShaderNodeEmission'); tr = nt.nodes.new('ShaderNodeBsdfTransparent')
+    fr = nt.nodes.new('ShaderNodeLayerWeight'); fr.inputs['Blend'].default_value = 0.35
+    mr = nt.nodes.new('ShaderNodeMapRange'); mr.inputs['To Min'].default_value = alfa; mr.inputs['To Max'].default_value = min(1, alfa * 2.2)
+    nt.links.new(fr.outputs['Facing'], mr.inputs[0])
+    mx = nt.nodes.new('ShaderNodeMixShader'); nt.links.new(mr.outputs[0], mx.inputs[0])
+    em.inputs['Color'].default_value = srgb(cor); em.inputs['Strength'].default_value = brilho
+    nt.links.new(tr.outputs[0], mx.inputs[1]); nt.links.new(em.outputs[0], mx.inputs[2]); nt.links.new(mx.outputs[0], out.inputs['Surface'])
     _MATS[nome] = m; return m

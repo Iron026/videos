@@ -250,3 +250,47 @@ def galpao(pos, tam, cor='#c9ccc8', rot=0.0):
         objs.append(lib.caixa('telhado', (lx + 0.6, ly / 2 / math.cos(0.25) + 0.4, 0.3),
                               (x, y + s * ly / 4, z + lz + ly / 4 * math.tan(0.25)), mt, rot=(-s * 0.25, 0, rot)))
     return objs
+
+
+def arvore(pos, altura=8.0, semente=0):
+    """Árvore low-poly facetada (copa em icosfera deformada)."""
+    rnd = random.Random(semente)
+    mt = lib.mat_pintura('tronco', '#6b4a32', rug=0.9)
+    mc = lib.mat_pintura('copa' + str(semente % 3), ['#4f8a3c', '#5f9a45', '#3f7a3a'][semente % 3], rug=0.8, variacao=0.12)
+    x, y, z = pos; objs = [lib.cilindro('tronco', 0.25 * altura / 8, altura * 0.45, (x, y, z + altura * 0.22), mt, lados=7, suave=False)]
+    for k in range(rnd.randint(1, 3)):
+        bm = bmesh.new(); bmesh.ops.create_icosphere(bm, subdivisions=1, radius=1.0)
+        for v in bm.verts: v.co *= 1 + rnd.uniform(-0.18, 0.18)
+        me = bpy.data.meshes.new('copa'); bm.to_mesh(me); bm.free()
+        o = lib.ligar(bpy.data.objects.new('copa', me)); o.data.materials.append(mc)
+        r = altura * rnd.uniform(0.26, 0.36)
+        o.location = (x + rnd.uniform(-0.3, 0.3) * r, y + rnd.uniform(-0.3, 0.3) * r, z + altura * 0.62 + k * r * 0.5); o.scale = (r, r, r * 1.1)
+        objs.append(o)
+    return objs
+
+
+def empilhadeira(pos, rot=0.0):
+    ma = lib.mat_pintura('empilhadeira', '#f3b544', rug=0.45); mp = lib.mat_pintura('preto', '#1b1c20', rug=0.6)
+    x, y, z = pos; objs = []
+    objs.append(lib.caixa('emp_corpo', (3.0, 1.6, 1.4), (x, y, z + 1.1), ma, bisel=0.15))
+    objs.append(lib.caixa('emp_cabine', (1.2, 1.5, 1.6), (x - 0.4, y, z + 2.6), mp, bisel=0.05))
+    objs.append(lib.caixa('emp_torre', (0.25, 1.2, 3.6), (x + 1.6, y, z + 1.9), mp))
+    for dy in (-0.4, 0.4): objs.append(lib.caixa('emp_garfo', (1.6, 0.15, 0.1), (x + 2.4, y + dy, z + 0.3), mp))
+    for dx in (-1.0, 1.0):
+        for dy in (-0.8, 0.8): objs.append(lib.cilindro('emp_roda', 0.4, 0.3, (x + dx, y + dy, z + 0.4), mp, rot=(math.pi / 2, 0, 0)))
+    for o in objs:
+        d = Vector(o.location) - Vector(pos); d.rotate(Matrix.Rotation(rot, 3, 'Z')); o.location = Vector(pos) + d; o.rotation_euler.z += rot
+    return objs
+
+
+def bandeira(pos, cor='#202b57', altura=8.0):
+    mm = lib.mat_aco('mastro', (190, 192, 196), rug=0.3, escovado=False); mb = lib.mat_pintura('bandeira' + cor, cor, rug=0.7)
+    x, y, z = pos
+    o = [lib.cilindro('mastro', 0.07, altura, (x, y, z + altura / 2), mm, lados=8)]
+    vs, fs = [], []
+    for i in range(7):
+        for j in range(2):
+            vs.append((x + i * 0.4, y + 0.25 * math.sin(i * 0.9), z + altura - 0.2 - j * 1.4))
+    for i in range(6): fs.append((2 * i, 2 * i + 2, 2 * i + 3, 2 * i + 1))
+    o.append(lib.malha('bandeira', vs, fs, mb, suave=True))
+    return o

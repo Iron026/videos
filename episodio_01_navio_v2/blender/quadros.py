@@ -108,101 +108,89 @@ def andaime(x0, x1, y, z1, mat, mplat, passo=2.5, nivel=2.0):
 
 
 def quadro2():
-    """Estaleiro: casco em construção — popa chapeada, proa em cavernas; pórtico içando um bloco."""
+    """Estaleiro (v3): navio em construção por blocos, já reconhecível; o pórtico iça o painel que falta."""
     lib.nova_cena()
-    lib.ceu_estilizado(sol_elev=30, sol_rot=100, sol_forca=4.2, nuvens=0.5, horizonte='#f5dfc0', meio='#9cc4e6', sol_cor=(1.0, 0.88, 0.72))
-    mg = lib.mat_concreto('chao', (158, 154, 144), escala=0.04)
+    lib.ceu_estilizado(sol_elev=30, sol_rot=70, sol_forca=4.4, nuvens=0.5, zenite='#3a7bd0', meio='#8cc2ee', horizonte='#f7dcb4', sol_cor=(1.0, 0.88, 0.70))
+    mg = lib.mat_concreto('chao', (162, 158, 148), escala=0.04)
     lib.caixa('chao', (1400, 860, 2), (0, 270, -1.0), mg)
     ml = lib.mat_pintura('linha', '#e9b545', rug=0.6)
-    for y in (-30, 30):
-        lib.caixa('faixa', (300, 0.4, 0.02), (0, y, 0.01), ml)
-    # mar ao fundo (lado -y) com cais
-    magua = lib.mat_agua('agua2', absorcao=(0.25, 0.65, 0.75), densidade=0.04, marola=0.5, rug=0.06)
-    lib.bloco_agua('mar', -900, 900, -1200, -158, -20, lib.mat_pintura('mar_longe', '#2c6f8f', rug=0.12, variacao=0.08, escala_var=0.02), res=20, amp=0.0, so_superficie=True)
+    for y in (-30, 30): lib.caixa('faixa', (320, 0.45, 0.02), (0, y, 0.01), ml)
+    mz = lib.mat_pintura('zona', '#5d7f9c', rug=0.8)
+    lib.caixa('zona_pintada', (60, 24, 0.02), (95, 46, 0.01), mz)
+    lib.bloco_agua('mar', -900, 900, -1200, -158, -20, lib.mat_pintura('mar_longe', '#2c78a0', rug=0.12, variacao=0.08, escala_var=0.02), res=20, amp=0.0, so_superficie=True)
     for o in bpy.data.objects:
         if o.name.startswith('mar'): o.location.z = -1.2
     lib.caixa('borda_cais', (1800, 4, 6), (0, -158, -3.0), lib.mat_concreto('concreto_cais', (156, 151, 140)))
     Z0 = 1.6
-    # picadeiros (blocos de apoio)
-    mm = lib.mat_pintura('picadeiro', '#6a4f35', rug=0.9)
-    mbl = lib.mat_concreto('picad_conc', (140, 136, 128))
-    for x in np.arange(-92, 92, 7.0):
+    mm = lib.mat_pintura('picadeiro', '#6a4f35', rug=0.9); mbl = lib.mat_concreto('picad_conc', (140, 136, 128))
+    for x in np.arange(-92, 96, 7.0):
         k = navio.quilha(x)
         lib.caixa('picad', (1.4, 2.2, Z0 + k - 0.3), (x, 0, (Z0 + k - 0.3) / 2), mbl, bisel=0.05)
         lib.caixa('picad_m', (1.6, 2.4, 0.3), (x, 0, Z0 + k - 0.15), mm, bisel=0.03)
-        if -40 < x < 60:
-            for s in (-1, 1):
-                lib.caixa('picad_l', (1.2, 1.6, Z0 - 0.3), (x, s * 9.0, (Z0 - 0.3) / 2), mbl, bisel=0.05)
+        if -40 < x < 70:
+            for s_ in (-1, 1): lib.caixa('picad_l', (1.2, 1.6, Z0 - 0.3), (x, s_ * 9.0, (Z0 - 0.3) / 2), mbl, bisel=0.05)
     raiz = bpy.data.objects.new('navio', None); lib.ligar(raiz)
-    for o in navio.estrutura_construcao(x_chapa=-6.0):
+    objs, faltantes = navio.construcao_em_blocos(semente=4, faltam={(1, 13, 2), (1, 13, 3)})
+    for o in objs:
         if o.parent is None: o.parent = raiz
     raiz.location = (0, 0, Z0)
-    # convés provisório na parte chapeada + superestrutura só iniciada (primer)
-    mp = lib.mat_pintura('primer', navio.COR['primer'], rug=0.55, metal=0.2)
-    lib.caixa('super_ini', (15, 26, 5.8), (-79, 0, Z0 + navio.PONTAL + 2.9), mp, bisel=0.1)
-    # andaimes ao longo do costado chapeado (bombordo, lado da câmera)
-    mand = lib.mat_aco('andaime', (150, 152, 156), rug=0.4, escovado=False)
-    mplat = lib.mat_pintura('plataforma', '#8a6a44', rug=0.9)
-    for (x0, x1) in ((-70, -45), (-38, -12)):
-        b = max(navio.meia_boca((x0 + x1) / 2, 12), 10)
-        andaime(x0, x1, b + 1.0, 19.5, mand, mplat)
-    # pórtico (goliath) sobre a proa, içando um bloco pré-fabricado de costado
-    xg = 46.0; hg = 58.0; zb = 27.0
-    cenario.guindaste_portico(xg, 84, hg, y_c=0.0, gancho=(xg, 6.0, zb + 8.5))
-    # bloco de costado: chapa curva com cavernas e longarinas soldadas
-    mr = lib.mat_pintura('primer_verm', navio.COR['primer_verm'], rug=0.6, metal=0.15)
-    xs = np.linspace(0, 12, 7); zs = np.linspace(0, 9, 7)
-    v = []; f = []
-    for i, x in enumerate(xs):
-        for j, z in enumerate(zs):
-            v.append((x - 6, 0.6 * math.sin(z / 9 * math.pi) * 0 + 0.9 * (z / 9) ** 2, z - 4.5))
-    for i in range(len(xs) - 1):
-        for j in range(len(zs) - 1):
-            a = i * len(zs) + j; f.append((a, a + len(zs), a + len(zs) + 1, a + 1))
-    bl = lib.malha('bloco_costado', v, f, mp, suave=True)
-    sd = bl.modifiers.new('esp', 'SOLIDIFY'); sd.thickness = 0.25
-    blocos = [bl]
-    for x in np.linspace(-5.4, 5.4, 5):
-        pts = [(x, 0.9 * (z / 9) ** 2 + 0.45, z - 4.5) for z in np.linspace(0, 9, 8)]
-        blocos.append(lib.tubo('cav_bloco', pts, r=0.3, mat=mr))
-    for z in (-2.0, 1.0, 3.5):
-        zz = z + 4.5; blocos.append(lib.tubo('lng_bloco', [(-6, 0.9 * (zz / 9) ** 2 + 0.4, z), (6, 0.9 * (zz / 9) ** 2 + 0.4, z)], r=0.22, mat=mr))
-    piv = bpy.data.objects.new('bloco', None); lib.ligar(piv)
-    for o in blocos: o.parent = piv
-    piv.location = (xg, 6.0, zb); piv.rotation_euler = (0, 0, math.radians(8))
+    # andaimes ao longo do costado (bombordo)
+    mand = lib.mat_aco('andaime', (150, 152, 156), rug=0.4, escovado=False); mplat = lib.mat_pintura('plataforma', '#8a6a44', rug=0.9)
+    for (x0, x1) in ((-74, -50), (-28, -4), (18, 40)):
+        b = navio.meia_boca((x0 + x1) / 2, 12)
+        andaime(x0, x1, b + 1.2, 19.5, mand, mplat)
+    # pórtico sobre a proa içando o painel de costado que falta (bombordo, x 54–62, z 7,5–12)
+    xg = 74.0; hg = 60.0
+    zlev = 14.0; ydes = 9.0
+    pv = bpy.data.objects.new('painel_icado', None); lib.ligar(pv)
+    mazul = lib.mat_pintura('primer_azul', '#4f6f8f', rug=0.55, metal=0.15, variacao=0.08)
+    pn = navio.painel_costado('painel_icado_m', 70.0, 78.0, 7.5, navio.PONTAL, 1, mazul, folga=0.04)
+    pn.parent = pv
+    ma = lib.mat_aco('aco_estrut', (120, 122, 126), rug=0.4, escovado=False)
+    for xx in (71.5, 74.0, 76.5):
+        pts = [(xx, navio.meia_boca(xx, z) - 0.35, z) for z in np.linspace(7.7, 17.6, 9)]
+        lib.tubo('reforco', pts, r=0.22, mat=ma).parent = pv
+    pv.location = (0, ydes, Z0 + zlev)  # sem rotação: o pivô fica na origem do navio
+    yc = navio.meia_boca(74, 10) + ydes
+    cenario.guindaste_portico(xg, 88, hg, y_c=0.0, gancho=(xg, yc, Z0 + zlev + navio.PONTAL + 6.0))
     mcabo = lib.mat_aco('cabo', (60, 60, 64), rug=0.4, escovado=False)
-    for dx in (-5.5, 5.5):
-        lib.tubo('linga', [(xg, 6.0, zb + 8.0), (xg + dx * math.cos(0.14), 6.0 + dx * math.sin(0.14) + 0.5, zb + 4.6)], r=0.06, mat=mcabo)
-    # chapas, perfis e operários no pátio
-    for i, (x, y, r) in enumerate([(70, 34, 0.1), (84, 30, 0.0), (58, 40, 0.15), (-20, 40, 0.0)]):
-        cenario.pilha_chapas((x, y, 0), n=6 + i, tam=(9.0, 2.6, 0.18), rot=r, semente=i, mat=mp if i % 2 else None)
-    for i, (x, y, r) in enumerate([(62, 26, 1.2), (66, 27.5, 3.6), (75, 22, 2.4), (30, 22, 0.4), (-5, 24, 2.0), (52, 18, 3.0)]):
-        cenario.operario((x, y, 0), rot=r, colete=['#f08a24', '#e9e6dc', '#f08a24'][i % 3])
-    # faíscas de solda na emenda chapeado/estrutura
-    mf = lib.mat_emissivo('faisca', '#ffcf7a', 40.0)
-    rnd = random.Random(2)
-    for k, (zs_, ys_) in enumerate([(9.0, 1), (14.0, 1), (5.0, 1)]):
-        b = navio.meia_boca(-6.0, zs_)
-        c = Vector((-6.0, ys_ * (b + 0.1), Z0 + zs_))
-        luz = bpy.data.lights.new('solda', 'POINT'); luz.energy = 1500; luz.color = (1.0, 0.75, 0.45); luz.shadow_soft_size = 0.2
-        o = bpy.data.objects.new('solda', luz); lib.ligar(o); o.location = c + Vector((0.5, 0.6, 0))
-        for i in range(14):
-            d = Vector((rnd.uniform(0.2, 1.2), rnd.uniform(0.2, 1.5), rnd.uniform(-1.6, 0.4)))
-            lib.tubo('faisca', [tuple(c), tuple(c + d * 0.6)], r=0.03, mat=mf)
-    # galpões e outro guindaste ao fundo
-    for i, (x, y, w, d, h) in enumerate([(-150, -95, 90, 46, 26), (-40, -110, 70, 40, 22), (70, -105, 110, 44, 30), (190, -95, 70, 40, 20)]):
-        cenario.galpao((x, y, 0), (w, d, h), cor=['#c9ccc8', '#b9c6cf', '#d9d2c3', '#c4c9c0'][i])
-    cenario.guindaste_portico(-150, 70, 50, y_c=10.0, gancho=(-150, 0, 25))
-    # blocos pré-fabricados aguardando montagem e contêineres-escritório
+    topo_linga = (xg, yc, Z0 + zlev + navio.PONTAL + 5.4)
+    for xx in (71.0, 77.0):
+        lib.tubo('linga', [topo_linga, (xx, yc - 0.8, Z0 + zlev + navio.PONTAL + 0.1)], r=0.06, mat=mcabo)
+    # equipe e logística no pátio
+    for i, (x, y, r) in enumerate([(70, 24, 1.2), (73, 25.5, 3.6), (64, 21, 2.4), (40, 23, 0.4), (88, 30, 2.0), (52, 19, 3.0),
+                                   (100, 36, 1.0), (104, 34, 2.8), (28, 26, 1.6), (-10, 24, 0.2)]):
+        cenario.operario((x, y, 0), rot=r, colete=['#f08a24', '#e9e6dc', '#f08a24', '#3a7bd0'][i % 4])
+    cenario.empilhadeira((128, 8, 0), rot=2.0)
+    cenario.pilha_chapas((118, 16, 0), n=9, tam=(9.0, 2.6, 0.18), rot=0.35, semente=7)
+    for (x, y, r, c) in ((122, 22, 2.6, '#3a7bd0'), (114, 21, 0.4, '#f08a24'), (131, 13, 3.4, '#e9e6dc')):
+        cenario.operario((x, y, 0), rot=r, colete=c)
+    mr = lib.mat_pintura('primer_verm', navio.COR['primer_verm'], rug=0.6, metal=0.15)
     mcz = lib.mat_pintura('primer', navio.COR['primer'], rug=0.55, metal=0.2)
-    for i, (x, y, sx, sy, sz, r) in enumerate([(62, 52, 14, 10, 6, 0.0), (80, 46, 12, 9, 5, 0.1), (40, 58, 12, 12, 7, 0.0), (22, 44, 10, 8, 4, 0.2)]):
-        b = lib.caixa('prefab', (sx, sy, sz), (x, y, sz / 2 + 0.3), mr if i % 2 == 0 else mcz, bisel=0.12, rot=(0, 0, r))
+    for i, (x, y, r) in enumerate([(78, 50, 0.1), (94, 48, 0.0), (66, 56, 0.15)]):
+        cenario.pilha_chapas((x, y, 0), n=6 + i, tam=(9.0, 2.6, 0.18), rot=r, semente=i, mat=mcz if i % 2 else None)
+    for i, (x, y, sx, sy, sz) in enumerate([(60, 66, 12, 9, 6), (40, 52, 10, 8, 5)]):
+        lib.caixa('prefab', (sx, sy, sz), (x, y, sz / 2 + 0.3), mr if i == 0 else mcz, bisel=0.12)
         for k in range(4):
-            lib.caixa('prefab_nerv', (0.35, sy + 0.1, sz + 0.1), (x - sx / 2 + (k + 0.5) * sx / 4, y, sz / 2 + 0.3), mcz if i % 2 == 0 else mr, rot=(0, 0, r))
-    for i, (x, y, cor) in enumerate([(-8, 52, '#2f5d8a'), (-8, 55, '#e9e6dc'), (5, 60, '#3f7f6e')]):
-        o = lib.caixa('escritorio', navio.CONT, (x, y, navio.CONT[2] / 2), lib.mat_conteiner(), bisel=0.05)
-        o.color = lib.srgb(cor)
-    lib.camera((128, 88, 64), (22, -6, 10), lente=26, foco=(46, 6, 27), fstop=11)
+            lib.caixa('prefab_nerv', (0.35, sy + 0.1, sz + 0.1), (x - sx / 2 + (k + 0.5) * sx / 4, y, sz / 2 + 0.3), mcz if i == 0 else mr)
+    # faíscas de solda nas costuras do bloco de vante
+    mf = lib.mat_emissivo('faisca', '#ffcf7a', 40.0); rnd = random.Random(2)
+    for (xs_, zs_) in ((46.0, 7.5), (30.0, 12.0)):
+        b = navio.meia_boca(xs_, zs_); c = Vector((xs_, b + 0.15, Z0 + zs_))
+        luz = bpy.data.lights.new('solda', 'POINT'); luz.energy = 1800; luz.color = (1.0, 0.75, 0.45); luz.shadow_soft_size = 0.2
+        o = bpy.data.objects.new('solda', luz); lib.ligar(o); o.location = c + Vector((0.4, 0.8, 0))
+        for i in range(16):
+            d = Vector((rnd.uniform(-0.6, 1.2), rnd.uniform(0.2, 1.6), rnd.uniform(-1.8, 0.4)))
+            lib.tubo('faisca', [tuple(c), tuple(c + d * 0.7)], r=0.03, mat=mf)
+    # entorno vivo: galpões, árvores, bandeiras, outro pórtico
+    for i, (x, y, w, d, h) in enumerate([(-150, -95, 90, 46, 26), (-40, -110, 70, 40, 22), (70, -105, 110, 44, 30), (190, -95, 70, 40, 20)]):
+        cenario.galpao((x, y, 0), (w, d, h), cor=['#e4ddd0', '#b9cde0', '#f0e6d2', '#c8d8c4'][i])
+    cenario.guindaste_portico(-150, 70, 50, y_c=10.0, gancho=(-150, 0, 25))
+    for i, x in enumerate(np.arange(-210, 260, 14.0)):
+        cenario.arvore((x + (i % 3) * 3, -70 + (i % 2) * 4, 0), altura=7 + (i % 4), semente=i)
+    for i, x in enumerate((130, 136, 142)):
+        cenario.bandeira((x, 70, 0), cor=['#202b57', '#f3b544', '#f6f4ec'][i], altura=10)
+    lib.camera((155, 30, 16), (78, 8, 22), lente=22, foco=(88, 10, 14), fstop=11)
     return 'quadro2'
 
 
@@ -217,11 +205,12 @@ def pintar_face_corte(o, x_corte, mat, eixo=0, tol=0.02):
         if abs(c[eixo] - x_corte) < tol and nrm[eixo] > 0.95: pg.material_index = idx
 
 
-def navio_em_corte(XC, calado, col_cortadores=None):
-    """Navio pronto cortado no plano x = XC (coordenadas do navio); retorna (raiz, casco_solido_oculto)."""
+def navio_em_corte(XC, calado, col_cortadores=None, carga_porao=True, porao_aberto=False, filtro_conves=None):
+    """Navio pronto cortado no plano x = XC (coordenadas do navio); retorna (raiz, casco_solido_oculto).
+    porao_aberto: sem tampa de escotilha na baía cortada (o vão do porão fica à vista, com braçolas e cavernas)."""
     raiz = bpy.data.objects.new('navio', None); lib.ligar(raiz)
     mh = navio.mat_casco()
-    mcorte = lib.mat_corte_linha_dagua(z0=0.0, abaixo='#a9d8e8', esp=0.28)  # coordenada do mundo: linha d'água em z = 0
+    mcorte = lib.mat_corte_linha_dagua(z0=0.0, abaixo='#a9d8e8', esp=0.45)  # coordenada do mundo: linha d'água em z = 0
     mporao = lib.mat_pintura('porao', '#a9aca6', rug=0.6)
     mtanque = lib.mat_pintura('primer_verm', navio.COR['primer_verm'], rug=0.6, metal=0.15)
     casco = navio.malha_casco('casco', mh, navio.POPA, XC, n=110)
@@ -236,14 +225,39 @@ def navio_em_corte(XC, calado, col_cortadores=None):
     for s_ in (-1, 1):
         for (za, zb) in ((2.6, 6.0), (6.45, 9.85), (10.3, 13.7), (14.15, 17.0)):
             lib.caixa('cel_l', (XC + 2 - x0c, 1.4, zb - za), ((x0c + XC + 2) / 2, s_ * 15.0, (za + zb) / 2), mtanque, colecao=cort)
+    if porao_aberto:  # abertura da escotilha da baía cortada (o porão fica aberto para cima)
+        lib.caixa('escotilha', (XC + 2 + 9.9, 25.0, 4.0), ((XC + 2 - 9.9) / 2, 0, navio.PONTAL + 1.0), mporao, colecao=cort)
     cort.hide_render = True; cort.hide_viewport = True
     lib.booleana(casco, cort, 'DIFFERENCE'); lib.aplicar(casco)
     pintar_face_corte(casco, XC, mcorte)
     casco.parent = raiz
     objs = navio.leme_e_helice() + navio.superestrutura()
     for o in navio.conves_e_tampas():
-        if o.location.x < XC - 0.5: objs.append(o)
+        if o.location.x < XC - 0.5 and not (porao_aberto and o.name.startswith('tampa') and o.location.x > -10): objs.append(o)
         else: bpy.data.objects.remove(o)
+    if porao_aberto:
+        ma = lib.mat_aco('aco_estrut', (120, 122, 126), rug=0.4, escovado=False)
+        mbr = lib.mat_pintura('bracola', navio.COR['amarelo'], rug=0.45)
+        # braçolas da escotilha
+        for s_ in (-1, 1):
+            objs.append(lib.caixa('bracola', (XC + 9.9, 0.35, 1.6), ((XC - 9.9) / 2, s_ * 12.65, navio.PONTAL + 0.8), mbr, bisel=0.05))
+        objs.append(lib.caixa('bracola_t', (0.35, 25.6, 1.6), (-9.9, 0, navio.PONTAL + 0.8), mbr, bisel=0.05))
+        # cavernas reforçadas nas paredes internas do porão + longitudinais
+        for xw in np.arange(-8.5, XC - 0.3, 3.4):
+            for s_ in (-1, 1):
+                yi = s_ * (navio.meia_boca(xw, 10) - 2.0)
+                objs.append(lib.caixa('caverna_p', (0.25, 1.0, navio.PONTAL - 2.8), (xw, yi - s_ * 0.5, (navio.PONTAL + 2.2) / 2 + 0.2), mporao))
+        for zl in (5.0, 8.5, 12.0, 15.5):
+            for s_ in (-1, 1):
+                yi = s_ * (navio.meia_boca(-3, zl) - 2.0)
+                objs.append(lib.caixa('long_p', (XC + 10.0, 0.6, 0.2), ((XC - 10.6) / 2, yi - s_ * 0.3, zl), mporao))
+        # guias de célula dos contêineres (cantoneiras verticais) e escada
+        for yg in np.arange(-11.0, 11.01, 2.75):
+            objs.append(lib.caixa('guia', (0.22, 0.22, navio.PONTAL - 2.2), (-10.3, yg, (navio.PONTAL + 2.2) / 2), ma))
+        for dy in (-0.3, 0.3):
+            objs.append(lib.caixa('escada', (0.08, 0.08, navio.PONTAL - 2.2), (-10.2, 11.8 + dy, (navio.PONTAL + 2.2) / 2), ma))
+        for zz in np.arange(2.6, navio.PONTAL, 0.6):
+            objs.append(lib.caixa('degrau', (0.06, 0.6, 0.05), (-10.2, 11.8, zz), ma))
     mc = lib.mat_pintura('conves', navio.COR['conves'], rug=0.7)
     # antepara transversal atrás da baía cortada
     xa = -10.6
@@ -253,13 +267,13 @@ def navio_em_corte(XC, calado, col_cortadores=None):
     # contêineres no porão da baía em corte (5 camadas) e no convés
     rnd = random.Random(11); matc = lib.mat_conteiner()
     sx, sy, sz = navio.CONT; xb = -3.6
-    for j in range(10):
+    for j in (range(10) if carga_porao else []):
         y = (j - 4.5) * (sy + 0.2)
         for n in range(5):
             if rnd.random() < 0.06: continue
             o = lib.caixa('cp', navio.CONT, (xb, y, 2.25 + sz / 2 + n * (sz + 0.05)), matc, bisel=0.06, seg=1)
             o.color = lib.srgb(rnd.choice(navio.PALETA_CONT)); objs.append(o)
-    objs += navio.carga(4, filtro=lambda k, j, n: navio.BAIAS[k] < XC - 6.2)
+    objs += navio.carga(4, filtro=filtro_conves or (lambda k, j, n: navio.BAIAS[k] < XC - 6.2))
     for o in objs:
         if o.parent is None: o.parent = raiz
     # casco sólido inteiro (oculto) para escavar a água
@@ -271,37 +285,45 @@ def navio_em_corte(XC, calado, col_cortadores=None):
 
 
 def quadro3():
-    """Corte transversal a meia-nau do navio carregado, flutuando (água e leito também em corte)."""
+    """Corte (v3): porão vazio e aberto — o casco envolve um grande volume que NÃO é aço maciço; linha d'água marcada."""
     lib.nova_cena()
-    lib.ceu_estilizado(sol_elev=34, sol_rot=150, sol_forca=4.0, nuvens=0.45)
-    XC, calado = 3.2, 10.0
-    raiz, solido = navio_em_corte(XC, calado)
+    lib.ceu_estilizado(sol_elev=46, sol_rot=120, sol_forca=4.4, nuvens=0.45, zenite='#3a7bd0', meio='#8cc2ee')
+    XC, calado = 3.2, 9.0
+    raiz, solido = navio_em_corte(XC, calado, carga_porao=False, porao_aberto=True,
+                                  filtro_conves=lambda k, j, n: navio.BAIAS[k] < -12 and n < 3)
+    # operário no fundo do porão (escala) e outro no convés lateral
+    for (x, y, z, r) in ((-1.5, 2.0, 2.2, 1.9), (-4.0, -3.5, 2.2, 0.6), (0.5, 14.4, navio.PONTAL + 0.02, 2.4)):
+        for o in cenario.operario((x, y, z), rot=r, colete='#f08a24'):
+            o.parent = raiz
+    # linha d'água atravessando a seção inteira (o piso do porão vazio fica ~7 m ABAIXO do nível do mar)
+    bmeia = navio.meia_boca(XC, calado)
+    lib.tubo('linha_dagua_corte', [(XC + 0.15, -bmeia - 1.2, 0.0), (XC + 0.15, bmeia + 1.2, 0.0)], r=0.2, mat=lib.mat_emissivo('linha_dagua', '#f3b544', 3.0))
     bpy.context.view_layer.update()
-    magua = lib.mat_agua('agua3', absorcao=(0.22, 0.62, 0.78), densidade=0.035, espalha=0.0, marola=0.4, escala_marola=0.25)
-    agua = lib.bloco_agua('agua', -220, XC, -150, 150, -42, magua, res=2.0, amp=0.35, escala=1.0)
+    magua = lib.mat_agua('agua3', absorcao=(0.22, 0.62, 0.78), densidade=0.03, espalha=0.0, marola=0.4, escala_marola=0.25)
+    agua = lib.bloco_agua('agua', -220, XC, -150, 150, -32, magua, res=2.0, amp=0.3, escala=1.0)
     lib.booleana(agua, solido, 'DIFFERENCE'); lib.aplicar(agua)
-    mlonge = lib.mat_pintura('mar_longe', '#2c6f8f', rug=0.1, variacao=0.06, escala_var=0.02)
+    mlonge = lib.mat_pintura('mar_longe', '#2c78a0', rug=0.1, variacao=0.06, escala_var=0.02)
     for (x0, x1, y0, y1) in ((-1500, -220, -1500, 1500), (-220, XC, 150, 1500), (-220, XC, -1500, -150)):
-        lib.bloco_agua('longe', x0, x1, y0, y1, -40, mlonge, res=60, amp=0.0, so_superficie=True)
-    def leito(X, Y): return -40 + 0.8 * np.sin(Y * 0.05) + 0.5 * np.sin(X * 0.08 + 1.0)
-    grade('leito', -220, XC + 0.05, -150, 150, leito, lib.mat_areia('areia3'), res=3.0, fundo=-55)
+        lib.bloco_agua('longe', x0, x1, y0, y1, -30, mlonge, res=60, amp=0.0, so_superficie=True)
+    def leito(X, Y): return -30 + 0.8 * np.sin(Y * 0.05) + 0.5 * np.sin(X * 0.08 + 1.0)
+    grade('leito', -220, XC + 0.05, -150, 150, leito, lib.mat_areia('areia3'), res=3.0, fundo=-120)
     mr = lib.mat_pintura('rocha', '#6d7275', rug=0.85, variacao=0.15)
     rnd = random.Random(3)
-    for i in range(10):
-        x, y = rnd.uniform(-60, XC - 3), rnd.uniform(-60, 60)
-        lib.rocha('rocha', (x, y, float(leito(np.array(x), np.array(y)))), rnd.uniform(1.0, 2.6), mr, semente=i)
-    lib.raios_luz(10, -60, XC - 4, -60, 60, 0.0, 30.0, 4.0, inclinacao=(0.3, 0.1), semente=2, mat=lib.mat_raio_luz('raio3', forca=0.12))
+    for i in range(12):
+        x, y = rnd.uniform(-50, XC - 3), rnd.uniform(-40, 40)
+        lib.rocha('rocha', (x, y, float(leito(np.array(x), np.array(y)))), rnd.uniform(0.8, 2.2), mr, semente=i)
+    lib.raios_luz(10, -50, XC - 4, -40, 40, 0.0, 26.0, 4.0, inclinacao=(0.3, 0.1), semente=2, mat=lib.mat_raio_luz('raio3', forca=0.12))
     mp = lib.mat_pintura('peixe', '#c9d6dd', rug=0.3, metal=0.5)
-    cenario.cardume((XC - 6, 30, -24), 6.0, 26, 0.55, mp, semente=1, direcao=math.radians(100))
-    lib.camera((XC + 70, 48, 4), (XC - 12, -1, -8), lente=27, foco=(XC, 0, -2), fstop=16)
+    cenario.cardume((XC - 6, 24, -20), 5.0, 20, 0.55, mp, semente=1, direcao=math.radians(100))
+    lib.camera((XC + 58, 4, 28), (XC - 7, 0, -3.0), lente=21, foco=(XC - 4, 0, 0), fstop=16)
     return 'quadro3'
 
 
 # =====================================================================================
-def setas_pressao(x0, calado, mat, escala=0.32, n=17, r=0.32):
+def setas_pressao(x0, calado, mat, escala=0.32, n=17, r=0.32, pular_centro=0.0, x_secao=None):
     """Setas de pressão hidrostática normais ao casco na seção x0 (coordenadas do mundo: linha d'água z=0).
     Comprimento ∝ profundidade (p = ρ·g·h): curtas perto da superfície, máximas no fundo."""
-    sec = navio._secao(x0, 60)
+    sec = navio._secao(x_secao if x_secao is not None else x0, 60)
     pts = [(y, z - calado) for y, z in sec if z - calado < -3.0]
     objs = []
     # reamostra uniformemente pelo perímetro molhado
@@ -316,6 +338,7 @@ def setas_pressao(x0, calado, mat, escala=0.32, n=17, r=0.32):
         nrm = Vector((0, tz, -ty)).normalized()      # normal (orientação conferida abaixo)
         if Vector((0, y, z + calado * 0.5)).dot(nrm) < 0: nrm = -nrm   # aponta para fora do casco
         comp = -z * escala * 1.5
+        if abs(y) < pular_centro and z < -calado + 0.5: continue
         ponta = Vector((x0, y, z)) + nrm * 0.25
         base = ponta + nrm * comp
         objs.append(lib.seta3d('pressao', tuple(base), tuple(-nrm), comp, r=r, mat=mat, cabeca=2.4))
@@ -323,31 +346,54 @@ def setas_pressao(x0, calado, mat, escala=0.32, n=17, r=0.32):
 
 
 def quadro4():
-    """Vista subaquática: casco visto de baixo, setas de pressão e a resultante (empuxo)."""
+    """Empuxo (v4): corte a meia-nau com o navio flutuando. A área submersa da seção (aço + porão vazio)
+    em ciano = volume deslocado por metro de comprimento; setas de pressão no plano do corte (∝ profundidade);
+    empuxo e peso iguais e opostos na mesma vertical (equilíbrio)."""
     lib.nova_cena(amostras=128)
-    lib.ceu_estilizado(sol_elev=55, sol_rot=150, sol_forca=4.5, nuvens=0.3)
-    calado = 10.0
-    raiz = bpy.data.objects.new('navio', None); lib.ligar(raiz)
-    for o in navio.navio_pronto(nivel_carga=4):
-        if o.parent is None: o.parent = raiz
-    raiz.location = (0, 0, -calado)
-    magua = lib.mat_agua('agua4', absorcao=(0.25, 0.66, 0.80), densidade=0.016, espalha=0.007, cor_esp=(0.5, 0.8, 0.95),
-                         marola=0.5, escala_marola=0.3)
-    lib.bloco_agua('agua', -320, 320, -260, 260, -400, magua, res=2.5, amp=0.45)
-    lib.luz_area((10, -10, -90), (10, 0, -10), tam=80, energia=2.4e5, cor=(0.72, 0.88, 1.0))  # retorno difuso vindo do fundo
-    mseta = lib.mat_emissivo('seta_pressao', '#e6f6ff', 2.4)
-    mres = lib.mat_emissivo('seta_empuxo', '#f3b544', 2.2)
-    setas = setas_pressao(10.0, calado, mseta, escala=0.36, n=15, r=0.5)
-    setas.append(lib.seta3d('empuxo', (10.0, 0, -calado - 30), (0, 0, 1), 19.0, r=1.7, mat=mres, cabeca=2.5))
-    for o in setas:   # setas são diagrama: não refletem no casco nem projetam sombra (evita "setas fantasma")
-        o.visible_glossy = False; o.visible_shadow = False; o.visible_transmission = False
-    mc = bpy.data.materials.get('casco')
-    if mc: mc.node_tree.nodes['Principled BSDF'].inputs['Coat Weight'].default_value = 0.0; mc.node_tree.nodes['Principled BSDF'].inputs['Roughness'].default_value = 0.6
-    lib.raios_luz(16, -80, 90, -70, 20, 0.0, 55.0, 6.0, inclinacao=(0.22, 0.25), semente=7, mat=lib.mat_raio_luz('raio4', forca=0.08))
+    lib.ceu_estilizado(sol_elev=50, sol_rot=120, sol_forca=4.4, nuvens=0.4, zenite='#3a7bd0', meio='#8cc2ee')
+    XC, calado = 3.2, 9.0
+    raiz, solido = navio_em_corte(XC, calado, carga_porao=False, porao_aberto=False,
+                                  filtro_conves=lambda k, j, n: navio.BAIAS[k] < XC - 6.2 and n < 3)
+    bpy.context.view_layer.update()
+    # área submersa da seção (coordenadas do mundo: linha d'água z = 0)
+    sec = navio._secao(XC, 80)
+    pts = [(y, z - calado) for y, z in sec if z <= calado]
+    b = navio.meia_boca(XC, calado)
+    poly = [(b, 0.0)] + pts + [(-b, 0.0)]
+    vs = [(XC + 0.06, y, z) for y, z in poly]
+    area = lib.malha('area_deslocada', vs, [tuple(range(len(vs)))], lib.mat_fantasma('volume_deslocado', '#2fc4ff', alfa=0.55, brilho=1.3))
+    area.visible_shadow = False
+    # linha d'água na face do corte e no costado
+    mamar = lib.mat_emissivo('linha_dagua', '#f3b544', 3.0)
+    lib.tubo('linha_dagua_corte', [(XC + 0.12, -b - 0.6, 0.0), (XC + 0.12, b + 0.6, 0.0)], r=0.22, mat=mamar)
+    for lado in (1, -1):
+        xs = np.linspace(navio.POPA + 1, XC, 70)
+        lib.tubo('linha_dagua_costado', [(x, lado * (navio.meia_boca(x, calado) + 0.15), 0.02) for x in xs], r=0.2, mat=mamar)
+    # oceano límpido em corte no mesmo plano
+    magua = lib.mat_agua('agua4', absorcao=(0.30, 0.74, 0.84), densidade=0.012, espalha=0.0, marola=0.35, escala_marola=0.3)
+    agua = lib.bloco_agua('agua', -260, XC, -150, 150, -30, magua, res=2.0, amp=0.25)
+    lib.booleana(agua, solido, 'DIFFERENCE'); lib.aplicar(agua)
+    mlonge = lib.mat_pintura('mar_longe', '#2c78a0', rug=0.1, variacao=0.06, escala_var=0.02)
+    for (x0, x1, y0, y1) in ((-1500, -260, -1500, 1500), (-260, XC, 150, 1500), (-260, XC, -1500, -150)):
+        lib.bloco_agua('longe', x0, x1, y0, y1, -30, mlonge, res=60, amp=0.0, so_superficie=True)
+    def leito(X, Y): return -28 + 0.7 * np.sin(Y * 0.06) + 0.5 * np.sin(X * 0.07)
+    grade('leito', -260, XC + 0.05, -150, 150, leito, lib.mat_areia('areia4'), res=3.0, fundo=-120)
+    mr = lib.mat_pintura('rocha', '#6d7275', rug=0.85, variacao=0.15); rnd = random.Random(5)
+    for i in range(12):
+        x, y = rnd.uniform(-60, XC - 3), rnd.uniform(-40, 40)
+        lib.rocha('rocha', (x, y, float(leito(np.array(x), np.array(y)))), rnd.uniform(0.8, 2.0), mr, semente=i)
+    # setas no plano do corte (à frente da face): pressão ∝ profundidade; empuxo = peso
+    mseta = lib.mat_emissivo('seta_pressao', '#eaf7ff', 1.8)
+    setas = setas_pressao(XC + 0.9, calado, mseta, escala=0.32, n=17, r=0.36, pular_centro=3.2, x_secao=XC)
+    comp = 13.0
+    setas.append(lib.seta3d('empuxo', (XC + 0.9, 0, -calado - 0.4 - comp), (0, 0, 1), comp, r=1.0, mat=lib.mat_emissivo('seta_empuxo', '#f3b544', 1.3), cabeca=2.4))
+    topo = navio.PONTAL - calado + 0.9 + 0.4
+    setas.append(lib.seta3d('peso', (XC + 0.9, 0, topo + comp), (0, 0, -1), comp, r=1.0, mat=lib.mat_emissivo('seta_peso', '#3f56b0', 1.8), cabeca=2.4))
+    for o in setas: o.visible_glossy = False; o.visible_shadow = False
+    lib.luz_area((XC + 40, 0, -30), (XC - 10, 0, -5), tam=50, energia=5e4, cor=(0.8, 0.92, 1.0))
     mp = lib.mat_pintura('peixe', '#c9d6dd', rug=0.3, metal=0.5)
-    cenario.cardume((52, -30, -40), 3.5, 24, 0.5, mp, semente=4, direcao=math.radians(200))
-    cenario.cardume((-30, -40, -18), 7.0, 22, 0.5, mp, semente=9, direcao=math.radians(170))
-    lib.camera((78, -36, -30), (8, 0, -13), lente=22, foco=(10, 0, -12), fstop=22)
+    cenario.cardume((XC - 10, 26, -18), 4.0, 16, 0.5, mp, semente=4, direcao=math.radians(100))
+    lib.camera((XC + 96, 21, 1.0), (XC - 8, 0, -1.0), lente=24, foco=(XC, 0, -2), fstop=22)
     return 'quadro4'
 
 

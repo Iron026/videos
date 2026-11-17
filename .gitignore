@@ -5,3 +5,5 @@ episodio_01_navio_v2/etapa_b/previas/
 episodio_01_navio_v2/etapa_b/quadros_r1/
 episodio_01_navio_v2/etapa_b/*.log
 __pycache__/
+episodio_01_navio_v2/motores/cena_*/
+episodio_01_navio_v2/mascote/*_40.png

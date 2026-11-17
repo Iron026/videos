@@ -346,3 +346,104 @@ def disco_plimsoll(x, lado=1, mat=None):
     objs.append(lib.caixa('barra', (4.6, 0.04, 0.22), (x, b(z0), z0), mat))
     objs.append(lib.caixa('linha_conves', (3.0, 0.04, 0.22), (x, b(PONTAL - 1.4), PONTAL - 1.4), mat))
     return objs
+
+
+# ---------------------------------------------------------------- construção em blocos (v3)
+def painel_costado(nome, x0, x1, z0, z1, lado, mat, folga=0.0, desloc=0.0, nx=None, nz=None, esp=0.14):
+    """Chapa de costado curva entre x0..x1 e z0..z1 (segue a forma real do casco).
+    desloc: afasta a chapa do casco (para o bloco içado); folga: recuo nas bordas (costura visível)."""
+    import bpy
+    x0 += folga; x1 -= folga; z0 += folga; z1 -= folga
+    nx = nx or max(2, int((x1 - x0) / 0.8) + 1); nz = nz or max(2, int((z1 - z0) / 0.4) + 1)
+    vs, fs = [], []
+    for i in range(nx):
+        for j in range(nz):
+            z = z0 + (z1 - z0) * j / (nz - 1)
+            xe = min(x1, limite_proa(z) - 0.05)
+            x = x0 + (xe - x0) * i / (nx - 1)
+            b = meia_boca(x, z)
+            vs.append((x, lado * (b + 0.03 + desloc), z))
+    for i in range(nx - 1):
+        for j in range(nz - 1):
+            a = i * nz + j
+            f = (a, a + nz, a + nz + 1, a + 1) if lado > 0 else (a, a + 1, a + nz + 1, a + nz)
+            fs.append(f)
+    o = lib.malha(nome, vs, fs, mat, suave=True, angulo=50)
+    sd = o.modifiers.new('esp', 'SOLIDIFY'); sd.thickness = esp; sd.offset = -1
+    return o
+
+
+def painel_fundo(nome, x0, x1, mat, folga=0.0):
+    """Chapeamento do fundo plano (dos dois bordos), do eixo até o início do bojo."""
+    vs, fs = [], []
+    xs = np.arange(x0 + folga, x1 - folga + 1e-6, 1.0)
+    for x in xs:
+        k = quilha(x); b = max(meia_boca(x, k + 0.02) - 0.1, 0.0)
+        vs += [(x, -b, k - 0.02), (x, b, k - 0.02)]
+    for i in range(len(xs) - 1):
+        fs.append((2 * i, 2 * i + 1, 2 * i + 3, 2 * i + 2))
+    o = lib.malha(nome, vs, fs, mat)
+    sd = o.modifiers.new('esp', 'SOLIDIFY'); sd.thickness = 0.14
+    return o
+
+
+def construcao_em_blocos(semente=4, faltam=None):
+    """Casco em construção por blocos: popa chapeada, meia-nau com painéis faltando, proa em cavernas
+    com bulbo e pé de proa chapeados. Retorna (objs, lista_de_painéis_faltantes)."""
+    import bpy
+    rnd = random.Random(semente)
+    mcinza = lib.mat_pintura('primer', COR['primer'], rug=0.55, metal=0.2, variacao=0.08)
+    mverm = lib.mat_pintura('primer_verm', COR['primer_verm'], rug=0.6, metal=0.15, variacao=0.08)
+    mazul = lib.mat_pintura('primer_azul', '#4f6f8f', rug=0.55, metal=0.15, variacao=0.08)
+    ma = lib.mat_aco('aco_estrut', (120, 122, 126), rug=0.4, escovado=False)
+    objs = []
+    # cavernas (esqueleto) da meia-nau à proa: aparecem através dos vãos e na proa aberta
+    for o in estrutura_construcao(x_chapa=-34.0, col=None, passo=3.4):
+        if o.name.startswith('casco_chapeado'): bpy.data.objects.remove(o); continue
+        objs.append(o)
+    # popa (x < -34): bloco inteiro chapeado
+    objs.append(malha_casco('popa_chapeada', mcinza, POPA, -34.0, n=70))
+    # grade de painéis do costado (blocos de 8 m × ~4,5 m), dos dois bordos
+    xs = list(np.arange(-34.0, 98.0, 8.0)); zs = [0.0, 3.0, 7.5, 12.0, PONTAL]
+    faltantes = []
+    for lado in (1, -1):
+        for i, (xa, xb) in enumerate(zip(xs, xs[1:])):
+            for j, (za, zb) in enumerate(zip(zs, zs[1:])):
+                if xa >= limite_proa(za) - 1.0: continue
+                proa = 62.0 <= xa < 82.0
+                # regra de montagem: fundo e bojo completos; bloco de proa (x ≥ 82) inteiro;
+                # costado alto vai rareando entre a meia-nau e o bloco de proa
+                if j == 0 or xa >= 82.0: tem = True
+                elif proa: tem = (j == 1)
+                else:
+                    p = 0.92 - 0.11 * j - 0.010 * max(0, xa)
+                    tem = rnd.random() < p
+                if faltam is not None and (lado, i, j) in faltam: tem = False
+                if not tem:
+                    if lado == 1: faltantes.append((xa, xb, za, zb))
+                    continue
+                cor = mverm if j <= 1 else (mazul if (i + j) % 3 == 0 else mcinza)
+                objs.append(painel_costado(f'painel{lado}_{i}_{j}', xa, xb, max(za, quilha(xa) if j == 0 else za), zb, lado, cor, folga=0.04))
+    objs.append(painel_fundo('fundo', -34.0, 92.0, mverm))
+    # bulbo e pé de proa chapeados (silhueta da proa desde já)
+    bb = bulbo('bulbo_c', mverm); objs.append(bb)
+    # roda de proa (barra curva) e cinta do convés na proa
+    pts = [(limite_proa(z) - 0.15, 0, z) for z in np.linspace(2.5, PONTAL + 0.6, 18)]
+    objs.append(lib.tubo('roda_proa', pts, r=0.42, mat=ma))
+    for lado in (1, -1):
+        pts = [(x, lado * (meia_boca(x, PONTAL) - 0.1), PONTAL) for x in np.arange(-34, limite_proa(PONTAL) - 0.3, 1.5)]
+        objs.append(lib.tubo('cinta', pts, r=0.3, mat=ma))
+    # convés montado só na popa e em parte da meia-nau
+    mc = lib.mat_pintura('conves_primer', '#7d8a86', rug=0.7)
+    vs, fs = [], []
+    for x in np.arange(POPA + 0.5, -6.0, 1.0):
+        b = meia_boca(x, PONTAL)
+        if b < 0.2: continue
+        vs += [(x, -b + 0.05, PONTAL + 0.02), (x, b - 0.05, PONTAL + 0.02)]
+    for j in range(len(vs) // 2 - 1): fs.append((2 * j, 2 * j + 2, 2 * j + 3, 2 * j + 1))
+    objs.append(lib.malha('conves_c', vs, fs, mc))
+    # superestrutura em montagem (dois pavimentos) e leme
+    objs.append(lib.caixa('super_ini', (15, 26, 5.8), (-79, 0, PONTAL + 2.9), mcinza, bisel=0.1))
+    objs.append(lib.caixa('super_ini2', (14, 25, 2.9), (-79, 0, PONTAL + 7.25), mazul, bisel=0.1))
+    objs.append(lib.caixa('leme_c', (5.5, 0.9, 8.0), (-98.0, 0, 4.6), mverm, bisel=0.3))
+    return objs, faltantes

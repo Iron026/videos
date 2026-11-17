@@ -1,0 +1,7 @@
+MONTAGEM 0.4s RENDER 190.2s -> ../etapa_c0/quadros/quadro2_v3.png
+MONTAGEM 2.6s RENDER 335.9s -> ../etapa_c0/quadros/quadro3_v3.png
+MONTAGEM 2.9s RENDER 290.2s -> ../etapa_c0/quadros/quadro4_v3.png
+OK 34
+Traceback (most recent call last):
+ReferenceError: StructRNA of type Material has been removed
+FIM
