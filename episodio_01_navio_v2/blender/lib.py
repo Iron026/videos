@@ -630,3 +630,44 @@ def mat_fantasma(nome='fantasma', cor='#3cc6ff', alfa=0.32, brilho=0.9):
     em.inputs['Color'].default_value = srgb(cor); em.inputs['Strength'].default_value = brilho
     nt.links.new(tr.outputs[0], mx.inputs[1]); nt.links.new(em.outputs[0], mx.inputs[2]); nt.links.new(mx.outputs[0], out.inputs['Surface'])
     _MATS[nome] = m; return m
+
+
+# ---------------------------------------------------------------- metadados para o motor em tempo real
+# Cada construtor de material grava seus parâmetros em m['rt'] (JSON). O exportador lê esses metadados
+# e o renderizador Three.js reproduz o mesmo material (ruído de cor/rugosidade, relevo, faixas, água...).
+import json as _json, inspect as _inspect
+
+
+def _jsonavel(v):
+    if isinstance(v, (list, tuple)): return [_jsonavel(x) for x in v]
+    if isinstance(v, (int, float, str, bool)) or v is None: return v
+    return str(v)
+
+
+def _rotular(f, tipo):
+    sig = _inspect.signature(f)
+    def g(*a, **k):
+        m = f(*a, **k)
+        try:
+            if 'rt' not in m.keys():
+                b = sig.bind(*a, **k); b.apply_defaults()
+                m['rt'] = _json.dumps(dict(tipo=tipo, **{kk: _jsonavel(v) for kk, v in b.arguments.items()}))
+        except Exception:
+            pass
+        return m
+    g.__wrapped__ = f
+    return g
+
+
+for _nome, _tipo in [('mat_pintura', 'pintura'), ('mat_aco', 'aco'), ('mat_emissivo', 'emissivo'), ('mat_concreto', 'concreto'),
+                     ('mat_areia', 'areia'), ('mat_agua', 'agua'), ('mat_vidro_escuro', 'vidro'), ('mat_conteiner', 'conteiner'),
+                     ('mat_faixas_z', 'faixas_z'), ('mat_bolha', 'bolha'), ('mat_raio_luz', 'raio_luz'),
+                     ('mat_corte_linha_dagua', 'corte_ld'), ('mat_fantasma', 'fantasma')]:
+    globals()[_nome] = _rotular(globals()[_nome], _tipo)
+
+_ceu_original = ceu_estilizado
+def ceu_estilizado(*a, **k):
+    o = _ceu_original(*a, **k)
+    b = _inspect.signature(_ceu_original).bind(*a, **k); b.apply_defaults()
+    bpy.context.scene.world['rt'] = _json.dumps({kk: _jsonavel(v) for kk, v in b.arguments.items()})
+    return o

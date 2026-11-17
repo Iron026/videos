@@ -1,0 +1,87 @@
+[
+ {
+  "nome": "ref128",
+  "amostras": 128,
+  "tempos_s": [
+   88.93
+  ],
+  "W": 540,
+  "H": 960
+ },
+ {
+  "nome": "s64",
+  "amostras": 64,
+  "tempos_s": [
+   56.3
+  ],
+  "W": 540,
+  "H": 960
+ },
+ {
+  "nome": "s32",
+  "amostras": 32,
+  "quadros": 2,
+  "tempos_s": [
+   30.73,
+   31.3
+  ],
+  "W": 540,
+  "H": 960
+ },
+ {
+  "nome": "s16",
+  "amostras": 16,
+  "tempos_s": [
+   17.24
+  ],
+  "W": 540,
+  "H": 960
+ },
+ {
+  "nome": "s32_lim05",
+  "amostras": 32,
+  "limiar": 0.05,
+  "tempos_s": [
+   30.27
+  ],
+  "W": 540,
+  "H": 960
+ },
+ {
+  "nome": "s32_saltos",
+  "amostras": 32,
+  "saltos": [
+   4,
+   2,
+   2,
+   4
+  ],
+  "tempos_s": [
+   31.1
+  ],
+  "W": 540,
+  "H": 960
+ },
+ {
+  "nome": "s32_p35",
+  "amostras": 32,
+  "pct": 35,
+  "tempos_s": [
+   15.47
+  ],
+  "W": 378,
+  "H": 672
+ },
+ {
+  "nome": "s32_persist",
+  "amostras": 32,
+  "quadros": 2,
+  "persistente": true,
+  "tempos_s": [
+   30.2,
+   28.12
+  ],
+  "W": 540,
+  "H": 960
+ }
+]

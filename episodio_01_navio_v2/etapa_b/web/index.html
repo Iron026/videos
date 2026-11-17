@@ -61,6 +61,9 @@ code{font-size:.9em;background:var(--superficie);border:1px solid var(--linha);p
     <h1>Como um navio de aço consegue flutuar?</h1>
     <p>Etapas A (auditoria) e B (nova direção visual e teste de voz). Os cinco quadros abaixo saíram do motor que fará o episódio, Blender 5.1 com Cycles, em 1080×1920, sem retoque. À esquerda de cada um está o quadro equivalente da versão rejeitada.</p>
     <div class="estado">
+      <span class="chip ok">Ajustes v3b</span>
+      <span class="chip ok">Motor v2 + benchmark</span>
+      <span class="chip">Voz: fila gratuita ocupada</span>
       <span class="chip ok">Revisão v3: quadros 2, 3 e 4</span>
       <span class="chip ok">Protótipo do mascote</span>
       <span class="chip ok">Benchmark dos motores</span>
@@ -71,6 +74,35 @@ code{font-size:.9em;background:var(--superficie);border:1px solid var(--linha);p
       <span class="chip">Aguardando sua aprovação</span>
     </div>
   </header>
+
+  <section aria-labelledby="t-c1">
+    <span class="rotulo">Entrega mais recente · ajustes v3b, motor v2, benchmark e voz</span>
+    <h2 id="t-c1">Quadros 3 e 4 corrigidos</h2>
+    <div class="par">
+      <figure class="v2"><img src="q3_v3b.jpg" alt="Quadro 3 sem contêineres no convés: porão vazio, estrutura e linha d'água"><figcaption>Quadro 3 · sem contêineres no convés</figcaption></figure>
+      <figure class="v2"><img src="q4_v3b.jpg" alt="Quadro 4 com setas de pressão no costado, no bojo curvo e no fundo plano"><figcaption>Quadro 4 · pressão por regime</figcaption></figure>
+    </div>
+    <p class="nota">Quadro 4, verificação numérica na seção real: a soma horizontal das pressões dá 0, e a vertical dá 285,098 ρg por metro, igual à área submersa (diferença de 0,000%). As setas agora mostram os três regimes: costado vertical (horizontais, crescendo com a profundidade), bojo curvo (a direção gira com a curva) e fundo plano (verticais e iguais). O Quadro 2 continua o PNG v3 apresentado abaixo.</p>
+
+    <h2>Cycles × tempo real v2</h2>
+    <p>Mesma cena, câmera e luz. O motor v2 reproduz os materiais do Blender, tem céu com nuvens, rebatimento simulado, sombras ajustadas e água com espessura real (absorção, refração e Fresnel).</p>
+    <figure><img src="cmp_v2_q3.jpg" alt="Comparação Cycles e tempo real v2 no Quadro 3 com detalhes ampliados" style="aspect-ratio:auto"><figcaption>Quadro 3 (água): inteiro e três detalhes ampliados</figcaption></figure>
+    <figure><img src="cmp_v2_q2.jpg" alt="Comparação Cycles e tempo real v2 no Quadro 2 com detalhes ampliados" style="aspect-ratio:auto"><figcaption>Quadro 2 (estaleiro): inteiro e três detalhes ampliados</figcaption></figure>
+    <p class="nota">Ainda diferentes: a luz rebatida colorida (no tempo real, as sombras ficam mais azuladas), o mar mais azul e com marolas mais finas, e o aço um pouco granulado de perto.</p>
+    <div class="tabela"><table>
+      <thead><tr><th>Configuração (nesta máquina, sem GPU)</th><th>Por quadro</th><th>SSIM</th><th>Episódio de 93 s</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Tempo real v2 recomendado</strong> (cache de sombra + GTAO 8)</td><td>8,2–10,5 s</td><td>0,997–0,998</td><td><strong>≈ 7,3 h</strong></td></tr>
+        <tr><td>Tempo real v2, qualidade máxima</td><td>9,3–10,9 s</td><td>1,000</td><td>≈ 7,8 h</td></tr>
+        <tr><td>Cycles, 32 amostras (antes 128), resolução cheia</td><td>68–123 s</td><td>0,996</td><td>53–95 h</td></tr>
+        <tr><td>Reduzir a resolução para 75% (qualquer motor)</td><td>−40%</td><td>0,971–0,979</td><td>perda visível, não recomendado</td></tr>
+      </tbody>
+    </table></div>
+    <p class="nota">SSIM compara cada variante com a qualidade máxima do mesmo motor (1 = idêntico; ≥ 0,99 costuma ser imperceptível). No Cycles, cair de 128 para 32 amostras deixa o render 2,9 vezes mais rápido sem perda visível; mexer no limiar adaptativo ou nos saltos de luz não mudou nada. O grande ganho restante seria uma GPU (estimativa).</p>
+
+    <h2>Voz Will - Deep</h2>
+    <p>O conector da ElevenLabs está autenticado: plano gratuito, 0 de 10.000 créditos usados, sem cobrança extra. O nó está pronto com <code>eleven_multilingual_v2</code>, stability 0,50, similarity 0,75, style 0, speed 1,0 e o texto pedido, a um custo estimado de 204 créditos. Tentei a geração única duas vezes e, nas duas, a fila gratuita estava ocupada: nada foi gerado e nada foi cobrado. Na próxima vez que você pedir, rodo de novo.</p>
+  </section>
 
   <section aria-labelledby="t-v3">
     <span class="rotulo">Revisão v3 · correções antes da Etapa C</span>
@@ -106,7 +138,7 @@ code{font-size:.9em;background:var(--superficie);border:1px solid var(--linha);p
   </section>
 
   <section aria-labelledby="t-mascote">
-    <h2 id="t-mascote">Protótipo 3D do mascote</h2>
+    <h2 id="t-mascote">Protótipo 3D do mascote (suspenso a seu pedido)</h2>
     <div class="grade">
       <figure><img src="mascote_oficial.jpg" alt="Imagem oficial do mascote" style="aspect-ratio:1/1"><figcaption>Imagem oficial (preservada)</figcaption></figure>
       <figure class="v2"><img src="mascote_34.jpg" alt="Protótipo 3D em três quartos" style="aspect-ratio:1/1"><figcaption>Protótipo · três quartos</figcaption></figure>
@@ -251,10 +283,9 @@ code{font-size:.9em;background:var(--superficie);border:1px solid var(--linha);p
   <section class="destaque" aria-labelledby="t-decisao">
     <h2 id="t-decisao">O que preciso de você</h2>
     <ol>
-      <li>Aprovar, ou pedir ajustes, nos quadros 2, 3 e 4 da revisão v3. No Quadro 3: manter ou remover os contêineres do convés?</li>
-      <li>Mascote: escolher entre escultura manual com base no protótipo ou mais iterações por código, parte por parte.</li>
-      <li>Motor: aprovar o tempo real para a animação, começando por um quadro de teste refeito, ou optar pelo Cycles numa máquina com GPU.</li>
-      <li>Voz: quando houver, colocar em <code>voz/</code> uma amostra da Will - Deep gerada no site, com licença comercial.</li>
+      <li>Avaliar o Quadro 2 v3 e aprovar, ou ajustar, os quadros 3 e 4 v3b.</li>
+      <li>Avaliar a comparação Cycles × tempo real v2. As diferenças restantes (rebatimento colorido e superfície do mar) precisam ser resolvidas antes do animatic?</li>
+      <li>Voz: pedir uma nova tentativa da geração única quando quiser.</li>
     </ol>
     <p>Não iniciei o animatic. Nada foi publicado.</p>
   </section>
