@@ -158,9 +158,11 @@ def exportar_atual(pasta, n=0, anim=None, fps=30, extra_meta=None):
                     up=list(cam.matrix_world.to_3x3() @ Vector((0, 1, 0))), fov=math.degrees(2 * math.atan(sh / 2 / cd.lens)))
     quadros_anim = []
     for f in range(n):
-        if anim: anim(f)
+        tc = anim(f) if anim else None   # anim pode devolver o tempo de CENA do quadro (câmera lenta / remapeamento)
         bpy.context.view_layer.update()
-        quadros_anim.append(dict(camera=cam_estado(), objetos={nm: _mat_coluna(ob.matrix_world) for nm, ob in anim_objs.items()}))
+        q = dict(camera=cam_estado(), objetos={nm: _mat_coluna(ob.matrix_world) for nm, ob in anim_objs.items()})
+        if tc is not None: q['t'] = float(tc)
+        quadros_anim.append(q)
     if n: (anim(0) if anim else None); bpy.context.view_layer.update()
     cam = s.camera
     sol = next(o for o in s.objects if o.type == 'LIGHT' and o.data.type == 'SUN')

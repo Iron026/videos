@@ -16,6 +16,8 @@ FUSOES = [(5.25, 5.60), (14.80, 15.15)]
 LEGENDAS = [(0.30, 2.45, 'Se eu jogar este bloco'), (2.45, 4.17, 'de aço na água,'), (4.17, 5.05, 'ele afunda.'),
             (5.50, 8.08, 'Mas e se eu usar toneladas'), (8.08, 10.23, 'do mesmo aço para construir'), (10.23, 11.10, 'um navio?'),
             (11.60, 12.50, 'Parece impossível.'), (12.90, 14.50, 'Então vamos montar um.')]
+T_TAG, TAG_TXT = 14.95, 'ANIMATIC · narração definitiva pendente (texto)'   # etiqueta muda quando entra a voz real
+SAIDA, AUDIO, MONTAGEM = 'animatic_ep01.mp4', 'audio_animatic.wav', 'montagem'
 
 
 def quadro_plano(nome, t0, t):
@@ -45,19 +47,19 @@ def compor(t):
     dr = ImageDraw.Draw(img)
     for a, b, txt in LEGENDAS:
         if a <= t < b: texto_contorno(dr, (W // 2, 1330), txt, F_LEG, BRANCO)
-    if t < 14.95: etiqueta(img, 'ANIMATIC · narração definitiva pendente (texto)')
+    if t < T_TAG: etiqueta(img, TAG_TXT)
     else: etiqueta(img, 'Amostra real · Will - Deep (avaliação)')
     return img
 
 
-if __name__ == '__main__':
-    out = os.path.join(A, 'montagem'); shutil.rmtree(out, ignore_errors=True); os.makedirs(out)
+def montar():
+    out = os.path.join(A, MONTAGEM); shutil.rmtree(out, ignore_errors=True); os.makedirs(out)
     n = int(round(DUR * FPS))
     for i in range(n):
         compor(i / FPS).save(os.path.join(out, f'f{i:04d}.jpg'), quality=94)
     # áudio: −14 LUFS integrado / −1,5 dBTP. O loudnorm de 2 passagens cai no modo dinâmico aqui (LRA 20 LU: impacto
     # forte × ambiente baixo) e erra o alvo; então: ganho fixo + limitador, com o ganho ajustado pela medição real.
-    au = os.path.join(A, 'audio_animatic.wav'); tmp = os.path.join(out, 'teste.m4a')
+    au = os.path.join(A, AUDIO); tmp = os.path.join(out, 'teste.m4a')
     def medir(g):
         subprocess.run(['ffmpeg', '-y', '-v', 'error', '-i', au, '-af', filtro_g(g), '-c:a', 'aac', '-b:a', '192k', '-ar', '48000', tmp], check=True)
         e = subprocess.run(['ffmpeg', '-hide_banner', '-i', tmp, '-af', 'ebur128=peak=true', '-f', 'null', '-'], capture_output=True, text=True).stderr
@@ -69,9 +71,13 @@ if __name__ == '__main__':
         if abs(i_med + 14) < 0.15: break
         g += -14 - i_med
     filtro = filtro_g(g); print('ganho', round(g, 2), 'dB →', i_med, 'LUFS')
-    saida = os.path.join(A, 'animatic_ep01.mp4')
+    saida = os.path.join(A, SAIDA)
     subprocess.run(['ffmpeg', '-y', '-v', 'error', '-framerate', str(FPS), '-i', os.path.join(out, 'f%04d.jpg'), '-i', au,
                     '-af', filtro, '-c:v', 'libx264', '-preset', 'slow', '-crf', '17', '-pix_fmt', 'yuv420p', '-profile:v', 'high',
                     '-c:a', 'aac', '-b:a', '192k', '-ar', '48000', '-shortest', '-movflags', '+faststart',
                     '-metadata', 'title=De Olho no Invisível · Ep. 01 · animatic (avaliação)', saida], check=True)
     print('ok', saida, n, 'quadros')
+
+
+if __name__ == '__main__':
+    montar()

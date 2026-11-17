@@ -1,0 +1,9 @@
+{
+ "origem": "narracao_48k.wav (derivada da amostra original, que não foi alterada)",
+ "edicao": [
+  "pausa entre as frases 0,455 s → 0,22 s (corte em silêncio, fusão de 10 ms)",
+  "fim aparado após 3,88 s",
+  "atempo 1,05 (+5%, altura preservada)"
+ ],
+ "duracao_s": 3.465
+}

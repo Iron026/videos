@@ -69,7 +69,8 @@ def bloco_trajetoria(by=6.5):
     return estado, t_agua, t_fundo
 
 
-def plano1(pasta):
+def plano1(pasta, n=None, tempo=None, camera=None):
+    """tempo(f) -> tempo de CENA do quadro f (padrão: tempo real); camera(cam, t_cena, f, info) substitui a câmera v1."""
     quadros.quadro1()
     remover(['bloco', 'bolhas', 'bolhas2', 'bloco_resto'])
     # água sem os anéis estáticos (as ondas do impacto são animadas no shader)
@@ -106,7 +107,7 @@ def plano1(pasta):
     t0p, t1p = PLANOS[1]
 
     def anim(f):
-        t = t0p + f / FPS
+        t = tempo(f) if tempo else t0p + f / FPS
         p, ang = estado(t)
         bloco.location = p; bloco.rotation_euler = Euler((0.0, -ang, 0.0))
         bpos = p
@@ -122,10 +123,11 @@ def plano1(pasta):
             if pp.z < 0.0 and dtg > 0.05: o.scale = (0, 0, 0)
             else: o.scale = (1, 1, 1)
             o.location = pp
+        if camera: camera(cam, t, f, dict(bloco=p, t_agua=t_agua, t_fundo=t_fundo, by=by)); return t
         # câmera: meio dentro, meio fora d'água; leve aproximação e inclinação acompanhando a queda
         k = suave5((t - 0.0) / 5.6)
         camera_em(cam, lerpv((2.9, -18.0, 0.9), (2.4, -14.4, -0.9), k), lerpv((3.7, 6.0, 1.0), (2.7, 6.0, -2.6), suave((t - 1.9) / 2.6)), 40)
-    exportar_rt2.exportar_atual(pasta, n=int(round((t1p - t0p) * FPS)) + 1, anim=anim, fps=FPS,
+    exportar_rt2.exportar_atual(pasta, n=n or int(round((t1p - t0p) * FPS)) + 1, anim=anim, fps=FPS,
                                 extra_meta=dict(plano=1, t_inicio=t0p, ondas=[dict(x=p_imp.x, y=by, t0=t_agua - t0p)],
                                                 eventos=dict(t_agua=t_agua, t_fundo=t_fundo)))
     print('EVENTOS', json.dumps(dict(t_agua=round(t_agua, 3), t_fundo=round(t_fundo, 3), x_imp=round(p_imp.x, 2))))
@@ -133,7 +135,8 @@ def plano1(pasta):
 
 # =====================================================================================
 # PLANOS 2 e 3 — o mesmo estaleiro: vista ampla → close do encaixe do painel
-def plano23(pasta):
+def plano23(pasta, n=None, tempo=None, camera=None):
+    """tempo(f) -> (t_global, t_guindaste): remapeia o MESMO movimento do pórtico; camera(cam, t_global, t_guindaste) substitui a v1."""
     quadros.quadro2(off_painel=0.12)
     s = bpy.context.scene
     painel = bpy.data.objects['painel_icado']
@@ -187,7 +190,7 @@ def plano23(pasta):
         return dy, dz, bal
 
     def anim(f):
-        t = t0p + f / FPS
+        tg, t = tempo(f) if tempo else (None, t0p + f / FPS)
         dy, dz, bal = deslocamento(t)
         grupo.location = g0 + Vector((0, dy - ydes, dz - zlev)); grupo.rotation_euler = (bal, 0, 0)
         for o in carro: o.location = base_carro[o.name] + Vector((0, dy - ydes, 0))
@@ -196,13 +199,14 @@ def plano23(pasta):
         for (c, dx) in cabos:
             topo = Vector((xg + dx, topo_moitao.y, z_topo_cabo)); L = topo.z - topo_moitao.z
             c.location = topo; c.scale = (1, 1, L); c.rotation_euler = (0, 0, 0)
+        if camera: camera(cam, tg, t); return None
         if t < 11.5:   # plano 2: vista aérea ampla do estaleiro → aproximação até o enquadramento aprovado
             k = suave5((t - 5.25) / 6.25)
             camera_em(cam, lerpv((232, 138, 92), (158, 34, 11), k), lerpv((30, 0, 6), (87, 6, 17), k), lerp(24, 24, k))
         else:          # plano 3: close no vão do costado, leve aproximação
             k = suave((t - 11.5) / 3.65)
             camera_em(cam, lerpv((97, 35, 25), (93, 32.5, 23), k), lerpv((73, 14.5, 16.5), (73.5, 14.5, 15.5), k), 30)
-    exportar_rt2.exportar_atual(pasta, n=int(round((t1p - t0p) * FPS)) + 1, anim=anim, fps=FPS, extra_meta=dict(plano=23, t_inicio=t0p))
+    exportar_rt2.exportar_atual(pasta, n=n or int(round((t1p - t0p) * FPS)) + 1, anim=anim, fps=FPS, extra_meta=dict(plano=23, t_inicio=t0p))
 
 
 if __name__ == '__main__':

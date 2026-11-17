@@ -308,7 +308,7 @@ function posicionar(i) {   // animação: câmera e objetos do quadro i; benchma
     camera.position.set(...q.camera.pos); camera.up.set(...q.camera.up); camera.fov = q.camera.fov;
     camera.lookAt(camera.position.clone().add(new THREE.Vector3(...q.camera.dir)));
     for (const [nome, arr] of Object.entries(q.objetos)) for (const ms of (animados[nome] || [])) { ms.matrix.fromArray(arr); ms.matrixWorldNeedsUpdate = true; }
-    uTempo.value = i / ANIM.fps;
+    uTempo.value = q.t ?? i / ANIM.fps;   // tempo de cena exportado (câmera lenta) ou tempo do quadro
   } else {
     camera.position.copy(base).add(new THREE.Vector3(-0.8 * i, 0.5 * i, 0.1 * i));
     camera.lookAt(camera.position.clone().add(fwd));
