@@ -661,7 +661,7 @@ def seg11(pasta):
             alvo = pmundo(xm, 9.4); pos = alvo + Vector((-2.6, -4.2, 0.4)); a = alvo; l = 34
         else:              # marca de linha de carga (meia-nau), aproximando
             k = suave((g - 127.9) / 2.2); alvo = pmundo(-3.85, zs['S'] + 0.05)
-            pos = alvo + Vector((-1.2, -3.6, 0.3)).lerp(Vector((-0.6, -2.0, 0.15)), k); a = alvo; l = 34
+            pos = alvo + Vector((-1.9, -5.4, 0.35)).lerp(Vector((-1.3, -4.0, 0.2)), k); a = alvo + Vector((0.2, 0, 0)); l = 32
         camera_em(cam, pos, a, l)
     rot.add('Marcas de calado', lambda g: pmundo(xm, 10.6), 125.9, 127.9, dx=0.07, dy=-0.06)
     rot.add('Marca de linha de carga', lambda g: pmundo(-4.0, zs['S'] + 0.15), 128.3, 133.9, dx=0.05, dy=-0.10)

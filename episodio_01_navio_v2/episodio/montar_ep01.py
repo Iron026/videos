@@ -75,7 +75,7 @@ def legendas():
         txt = ' '.join(x['palavra'] for x in cur); fim_frase = w['palavra'][-1] in '.?!:;,'
         prox = p[i + 1] if i + 1 < len(p) else None
         pausa = prox is not None and prox['inicio'] - w['fim'] > 0.30
-        longo = len(txt) > 24 or (w['fim'] - cur[0]['inicio']) > 2.2
+        longo = (prox is not None and len(txt + ' ' + prox['palavra']) > 26) or (w['fim'] - cur[0]['inicio']) > 2.2
         if prox is None or fim_frase or pausa or longo:
             blocos.append([cur[0]['inicio'], w['fim'], txt]); cur = []
     for i in range(len(blocos)):
