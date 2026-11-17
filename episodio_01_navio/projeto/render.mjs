@@ -30,6 +30,24 @@ const quadros = arg('quadros');
 if (quadros) {
   const pasta = arg('pasta', 'stills'); fs.mkdirSync(pasta, { recursive: true });
   for (const t of quadros.split(',').map(Number)) { const t0 = Date.now(); fs.writeFileSync(path.join(pasta, `t_${t.toFixed(2).padStart(6, '0')}.jpg`), await foto(t)); console.log('quadro', t, Date.now() - t0, 'ms'); }
+} else if (arg('segmentos')) {
+  // Modo retomável: segmentos de N segundos; cada um é gravado em .tmp e renomeado ao concluir.
+  const pasta = arg('segmentos'), dseg = +arg('dseg', 2), proc = +arg('proc', 0), nproc = +arg('nproc', 1);
+  fs.mkdirSync(pasta, { recursive: true });
+  const nseg = Math.ceil((fim - ini) / dseg); const t0 = Date.now(); let feitos = 0;
+  for (let k = 0; k < nseg; k++) {
+    if (k % nproc !== proc) continue;
+    const final = path.join(pasta, `seg_${String(k).padStart(3, '0')}.mp4`); if (fs.existsSync(final)) continue;
+    const tmp = final.replace('.mp4', '.tmp.mp4');
+    const ff = spawn('ffmpeg', ['-y', '-loglevel', 'error', '-f', 'image2pipe', '-framerate', String(fps), '-c:v', 'mjpeg', '-i', '-',
+      '-c:v', 'libx264', '-preset', arg('preset', 'medium'), '-crf', arg('crf', '16'), '-pix_fmt', 'yuv420p', '-r', String(fps), '-f', 'mp4', tmp], { stdio: ['pipe', 'inherit', 'inherit'] });
+    const n0 = Math.round((ini + k * dseg) * fps), n1 = Math.min(Math.round(fim * fps), Math.round((ini + (k + 1) * dseg) * fps));
+    for (let n = n0; n < n1; n++) { const img = await foto(n / fps); if (!ff.stdin.write(img)) await new Promise(r => ff.stdin.once('drain', r)); }
+    ff.stdin.end(); const cod = await new Promise(r => ff.on('close', r));
+    if (cod !== 0) { console.error('ffmpeg falhou no segmento', k); process.exit(1); }
+    fs.renameSync(tmp, final); feitos += n1 - n0;
+    console.log(`segmento ${k}/${nseg - 1} pronto  ${((Date.now() - t0) / 1000 / feitos).toFixed(2)} s/quadro`);
+  }
 } else {
   const saida = arg('saida', 'saida.mp4');
   const ff = spawn('ffmpeg', ['-y', '-loglevel', 'error', '-f', 'image2pipe', '-framerate', String(fps), '-c:v', 'mjpeg', '-i', '-',

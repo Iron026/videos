@@ -15,9 +15,10 @@ if [[ "$PREVIA" == "--previa" ]]; then
   (cd projeto && node render.mjs --saida ../render/previa.mp4 --escala 0.4 --fps 15 --preset veryfast --crf 22)
   VIDEO=render/previa.mp4; SAIDA=render/previa_com_audio.mp4
 else
-  # 4 trechos em paralelo (render determinístico: cada quadro depende só de t)
-  (cd projeto && for i in 0 1 2 3; do node render.mjs --saida ../render/parte_$i.mp4 --inicio $(echo "$i*18.75" | bc) --fim $(echo "($i+1)*18.75" | bc) --crf 15 --preset slow > ../render/parte_$i.log 2>&1 & done; wait)
-  printf "file 'parte_%d.mp4'\n" 0 1 2 3 > render/partes.txt
+  # Render retomável: segmentos de 2 s em 4 processos; rodar de novo continua de onde parou.
+  (cd projeto && for i in 0 1 2 3; do node render.mjs --segmentos ../render/segmentos --dseg 2 --proc $i --nproc 4 --crf 15 --preset slow > ../render/proc_$i.log 2>&1 & done; wait)
+  n=$(ls render/segmentos/seg_*.mp4 | grep -v tmp | wc -l); [[ $n -eq 38 ]] || { echo "Segmentos incompletos: $n/38"; exit 1; }
+  ls render/segmentos/seg_*.mp4 | grep -v tmp | sort | sed "s#^render/#file '#; s#\$#'#" > render/partes.txt
   ffmpeg -y -loglevel error -f concat -safe 0 -i render/partes.txt -c copy render/video_sem_audio.mp4
   VIDEO=render/video_sem_audio.mp4; SAIDA=entrega/episodio_01_navio_final.mp4
 fi
