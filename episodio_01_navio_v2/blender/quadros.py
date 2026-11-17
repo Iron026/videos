@@ -290,7 +290,7 @@ def quadro3():
     lib.ceu_estilizado(sol_elev=46, sol_rot=120, sol_forca=4.4, nuvens=0.45, zenite='#3a7bd0', meio='#8cc2ee')
     XC, calado = 3.2, 9.0
     raiz, solido = navio_em_corte(XC, calado, carga_porao=False, porao_aberto=True,
-                                  filtro_conves=lambda k, j, n: navio.BAIAS[k] < -12 and n < 3)
+                                  filtro_conves=lambda k, j, n: False)   # sem contêineres: o foco é o espaço interno vazio
     # operário no fundo do porão (escala) e outro no convés lateral
     for (x, y, z, r) in ((-1.5, 2.0, 2.2, 1.9), (-4.0, -3.5, 2.2, 0.6), (0.5, 14.4, navio.PONTAL + 0.02, 2.4)):
         for o in cenario.operario((x, y, z), rot=r, colete='#f08a24'):
@@ -320,25 +320,43 @@ def quadro3():
 
 
 # =====================================================================================
-def setas_pressao(x0, calado, mat, escala=0.32, n=17, r=0.32, pular_centro=0.0, x_secao=None):
-    """Setas de pressão hidrostática normais ao casco na seção x0 (coordenadas do mundo: linha d'água z=0).
-    Comprimento ∝ profundidade (p = ρ·g·h): curtas perto da superfície, máximas no fundo."""
-    sec = navio._secao(x_secao if x_secao is not None else x0, 60)
-    pts = [(y, z - calado) for y, z in sec if z - calado < -3.0]
+def setas_pressao(x0, calado, mat, escala=0.32, n=17, r=0.32, pular_centro=0.0, x_secao=None,
+                  prof_costado=(1.2, 3.2, 5.2), ang_bojo=(22.5, 45.0, 67.5), fundo_y=(4.4, 7.2, 10.0)):
+    """Setas de pressão hidrostática na seção (mundo: linha d'água em z = 0).
+    Cada seta é perpendicular à superfície local do casco e aponta PARA o casco (compressão);
+    comprimento ∝ profundidade (p = ρ·g·h). Pontos escolhidos para mostrar os três regimes:
+    costado vertical (setas horizontais, crescendo com a profundidade), bojo curvo (a direção gira
+    continuamente de horizontal para vertical) e fundo plano (setas verticais, todas iguais).
+    Verificação numérica (seção a meia-nau, calado 9 m): ∮p·n ds horizontal = 0; vertical = área submersa."""
+    sec = navio._secao(x_secao if x_secao is not None else x0, 400)
+    pts = [(y, z - calado) for y, z in sec if z - calado < -0.05]
+    amostras = []                     # (y, z, normal_para_fora)
+    for (ya, za), (yb, zb) in zip(pts, pts[1:]):
+        ds = math.hypot(yb - ya, zb - za)
+        if ds < 1e-6: continue
+        nrm = Vector((0, (zb - za) / ds, -(yb - ya) / ds))
+        ym, zm = (ya + yb) / 2, (za + zb) / 2
+        if Vector((0, ym, zm + calado * 0.5)).dot(nrm) < 0: nrm = -nrm
+        amostras.append((ym, zm, nrm))
+    def mais_perto(cond, chave):
+        cand = [a for a in amostras if cond(a)]
+        return min(cand, key=chave) if cand else None
+    escolhidos = []
+    for lado in (1, -1):
+        for h in prof_costado:          # costado vertical
+            a = mais_perto(lambda a: a[0] * lado > 0 and abs(a[2].y) > 0.995, lambda a: abs(-a[1] - h))
+            if a: escolhidos.append(a)
+        for ang in ang_bojo:            # bojo: ângulo da normal medido a partir da horizontal
+            a = mais_perto(lambda a: a[0] * lado > 0, lambda a: abs(math.degrees(math.atan2(-a[2].z, abs(a[2].y))) - ang))
+            if a: escolhidos.append(a)
+    zf = min(a[1] for a in amostras)                                 # fundo plano (z constante)
+    yplano = max(abs(a[0]) for a in amostras if a[2].z < -0.999 and abs(a[1] - zf) < 1e-3) * 2  # segmento único: ponto médio = metade
+    for yy in [s_ * v for v in fundo_y for s_ in (1, -1)]:
+        if abs(yy) < pular_centro or abs(yy) > yplano: continue
+        escolhidos.append((yy, zf, Vector((0, 0, -1))))
     objs = []
-    # reamostra uniformemente pelo perímetro molhado
-    L = [0.0]
-    for (ya, za), (yb, zb) in zip(pts, pts[1:]): L.append(L[-1] + math.hypot(yb - ya, zb - za))
-    alvo = np.linspace(0, L[-1], n)
-    for t in alvo:
-        i = max(0, min(len(pts) - 2, int(np.searchsorted(L, t)) - 1))
-        f = (t - L[i]) / max(L[i + 1] - L[i], 1e-6)
-        y = pts[i][0] + f * (pts[i + 1][0] - pts[i][0]); z = pts[i][1] + f * (pts[i + 1][1] - pts[i][1])
-        ty, tz = pts[i + 1][0] - pts[i][0], pts[i + 1][1] - pts[i][1]
-        nrm = Vector((0, tz, -ty)).normalized()      # normal (orientação conferida abaixo)
-        if Vector((0, y, z + calado * 0.5)).dot(nrm) < 0: nrm = -nrm   # aponta para fora do casco
+    for (y, z, nrm) in escolhidos:
         comp = -z * escala * 1.5
-        if abs(y) < pular_centro and z < -calado + 0.5: continue
         ponta = Vector((x0, y, z)) + nrm * 0.25
         base = ponta + nrm * comp
         objs.append(lib.seta3d('pressao', tuple(base), tuple(-nrm), comp, r=r, mat=mat, cabeca=2.4))
