@@ -31,7 +31,7 @@ const cena = new THREE.Scene();
 const pmrem = new THREE.PMREMGenerator(renderer);
 cena.environment = pmrem.fromScene(new RoomEnvironment(), 0.04).texture;
 cena.environmentIntensity = 0.55;
-const camera = new THREE.PerspectiveCamera(45, LARG / ALT, 0.5, 9000);
+const camera = new THREE.PerspectiveCamera(45, LARG / ALT, 1.5, 9000);
 
 // ---------- Luz ----------
 cena.add(new THREE.HemisphereLight('#cfe3f2', '#33405f', 1.15));
@@ -70,9 +70,9 @@ const gCasco = solidoCasco({ tampaTopo: false });
 const matCasco = matPadrao('#ffffff', { vertexColors: true, roughness: 0.5, metalness: 0.15 }, { tampa: AMARELO });
 navio.add(malha(gCasco, matCasco));
 const matInterno = matPadrao('#b9c4d2', { roughness: 0.75 }, { tampa: AMARELO });
-navio.add(malha(solidoCasco({ folga: 0.7, inverter: true, tampaTopo: false }), matInterno, false));
+navio.add(malha(solidoCasco({ folga: 0.7, inverter: true, tampaTopo: false, x1: 86 }), matInterno, false));
 const matConves = matPadrao('#5f6e6a', { roughness: 0.8 }, { tampa: AMARELO });
-navio.add(malha(placaHorizontal(PONTAL + 0.5, 0.5, 0), matConves));
+navio.add(malha(placaHorizontal(PONTAL, 0.5, 0), matConves));
 navio.add(malha(placaHorizontal(2.4, 0.45, 0.7, -58.5, 86), matPadrao('#8d99a8', { roughness: 0.8 }, { tampa: AMARELO })));
 const matAntepara = matPadrao('#a7b3c2', { roughness: 0.75 }, { tampa: AMARELO });
 for (const x of ANTEPARAS) navio.add(malha(antepara(x, 0.5, 0.7), matAntepara, false));
@@ -144,7 +144,7 @@ function atualizarConteineres(t) {
     if (c.pouso !== undefined) {
       const ini = c.pouso - 0.55;
       if (t < ini) esc = 0;
-      else if (t < c.pouso) { const f = (t - ini) / 0.55; y = c.y + 34 * (1 - f * f); }
+      else if (t < c.pouso) { const f = (t - ini) / 0.55; y = c.y + 22 * (1 - f * f); }
       else { const d = t - c.pouso; y = c.y + 0.35 * Math.exp(-d * 9) * Math.abs(Math.sin(d * 18)); }
     }
     _p.set(c.x, y, c.z); _s.setScalar(esc ? 1 : 0.0001); _m.compose(_p, _q, _s); instConteiner.setMatrixAt(i, _m);
@@ -159,11 +159,11 @@ window.FIS = FIS;
 // ---------- Volume deslocado (fantasma) ----------
 const matFantasma = new THREE.ShaderMaterial({
   transparent: true, depthWrite: false, side: THREE.DoubleSide,
-  uniforms: { uA: { value: 0 }, uCor: { value: new THREE.Color('#58d2ff') }, uTempo: U.uTempo, uBrilho: { value: 0 } },
+  uniforms: { uA: { value: 0 }, uCor: { value: new THREE.Color('#3cc6ff') }, uTempo: U.uTempo, uBrilho: { value: 0 } },
   vertexShader: `varying vec3 vN; varying vec3 vV; varying vec3 vL; void main(){ vL=position; vec4 w=modelMatrix*vec4(position,1.0); vN=normalize(mat3(modelMatrix)*normal); vV=normalize(cameraPosition-w.xyz); gl_Position=projectionMatrix*viewMatrix*w; }`,
   fragmentShader: `uniform float uA; uniform vec3 uCor; uniform float uTempo; uniform float uBrilho; varying vec3 vN; varying vec3 vV; varying vec3 vL;
     void main(){ float f=pow(1.0-abs(dot(normalize(vN),vV)),2.0); float faixas=0.5+0.5*sin(vL.y*3.0-uTempo*3.0);
-      float a=uA*(0.22+0.55*f+0.08*faixas+0.25*uBrilho); vec3 c=uCor*(1.0+0.6*f+0.5*uBrilho)+vec3(0.15)*faixas;
+      float a=uA*(0.5+0.4*f+0.06*faixas+0.2*uBrilho); vec3 c=uCor*(0.55+0.3*f+0.35*uBrilho)+vec3(0.03)*faixas;
       gl_FragColor=vec4(c,a);
       #include <tonemapping_fragment>
       #include <colorspace_fragment>
@@ -198,7 +198,7 @@ volInterno.renderOrder = 7; navio.add(volInterno);
 { const gi = volInterno.geometry; const pos = gi.attributes.position; for (let i = 0; i < pos.count; i++) if (pos.getY(i) < 2.85) pos.setY(i, 2.85); gi.computeVertexNormals(); }
 
 // ---------- Setas de força ----------
-function geoSeta(raio = 1, cabeca = 2.6, compCabeca = 5.5) {
+function geoSeta(raio = 1.4, cabeca = 3.4, compCabeca = 6.5) {
   const haste = new THREE.CylinderGeometry(raio, raio, 1, 20); haste.translate(0, 0.5, 0);
   const ponta = new THREE.ConeGeometry(cabeca, compCabeca, 24); ponta.translate(0, compCabeca / 2, 0);
   return { haste, ponta, compCabeca };
@@ -424,6 +424,7 @@ function quadro(t) {
   U.uTempo.value = t;
   const [nx, nz, d] = corteNoInstante(t); U.uCorte.value.set(nx, 0, nz, d);
   U.uOndas.value = ondasNoInstante(t);
+  U.uVisSub.value = t < T.fatiaInicio ? 0 : t < T.transicao4 ? 0.5 : t < T.transicao7 ? 1 : t < T.transicao8 ? 0.6 : 1;
   const calado = FIS.calado(t);
   U.uCalado.value = calado;
   // balanço suave somente em plano aberto (sem cortes técnicos)
@@ -447,7 +448,7 @@ function quadro(t) {
   if (traj.fase === 'fundo') bloco.rotation.set(0, 0.7, 0);
   const aCubo = janela(t, 15.0, T.transicao3b - 0.2, 0.6, 0.4);
   cuboAgua.visible = aCubo > 0.01; cuboAgua.material.opacity = 0.28 * aCubo; cuboAguaArestas.material.opacity = aCubo;
-  cuboAgua.position.set(BLOCO.x, FUNDO_BLOCO + 0.02, BLOCO.z + BLOCO.aresta + 1.6); cuboAgua.rotation.set(0, 0.7, 0);
+  cuboAgua.position.set(BLOCO.x + BLOCO.aresta + 2.2, FUNDO_BLOCO + 0.02, BLOCO.z); cuboAgua.rotation.set(0, 0.7, 0);
   atualizarParticulas(t, traj, calado);
 
   // volume deslocado
@@ -491,9 +492,9 @@ function quadro(t) {
   // Cena 02
   sob.rotulo({ texto: 'Formato do casco', ancora: P(-30, 0.6 - calado, 0), dx: 40, dy: 280, a: janela(t, MARCOS.formato, T.cena3 - 0.2, 0.3, 0.3) });
   // Cena 03a
-  sob.rotulo({ texto: 'Bloco maciço\nde aço', ancora: P(BLOCO.x, FUNDO_BLOCO + 1, BLOCO.z), dx: -170, dy: -260, a: janela(t, MARCOS.bloco + 0.2, 18.6, 0.3, 0.3) });
-  sob.rotulo({ texto: 'mesmo volume\nde água', ancora: P(BLOCO.x, FUNDO_BLOCO + 1, BLOCO.z + BLOCO.aresta + 1.6), dx: 190, dy: 230, cor: '#6FD6F7', a: janela(t, 15.4, 18.6, 0.3, 0.3) });
-  sob.painelDensidade(janela(t, 14.9, 18.7, 0.4, 0.35), suave(15.1, 16.2, t));
+  sob.rotulo({ texto: 'Bloco maciço\nde aço', ancora: P(BLOCO.x, FUNDO_BLOCO + 1, BLOCO.z), dx: -170, dy: 260, a: janela(t, 14.55, 18.3, 0.3, 0.3) });
+  sob.rotulo({ texto: 'mesmo volume\nde água', ancora: P(BLOCO.x + BLOCO.aresta + 2.2, FUNDO_BLOCO + 1, BLOCO.z), dx: 170, dy: 260, cor: '#6FD6F7', a: janela(t, 15.4, 18.3, 0.3, 0.3) });
+  sob.painelDensidade(janela(t, 14.9, 18.45, 0.4, 0.35), suave(15.1, 16.2, t));
   // Cena 03b
   sob.rotulo({ texto: 'Casco de aço', ancora: P(10, 9 - calado, -meiaBoca(10, 9)), dx: 0, dy: -300, a: janela(t, MARCOS.navio3 + 0.6, T.transicao4 - 0.15, 0.3, 0.2) });
   sob.rotulo({ texto: 'Muito espaço\nsem água', ancora: P(10, 4 - calado, 0), dx: 0, dy: 330, a: janela(t, MARCOS.semAgua - 1.6, T.transicao4 - 0.15, 0.3, 0.2) });
@@ -535,5 +536,6 @@ function centroCarenaCache(calado) {
 
 window.quadro = (t) => { quadro(t); return true; };
 window.DURACAO = DURACAO;
+window.DBG = { cena, superficie, faceCorte, navio, fantasma, U };
 window.pronto = true;
 document.title = 'pronto';

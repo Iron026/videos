@@ -16,9 +16,10 @@ export const U = {
   uMascaraCasco: { value: 1 },                   // 1 = água não entra no casco
   uSol: { value: new THREE.Vector3(0.45, 0.62, 0.64).normalize() },
   uOndas: { value: 1 },
-  uNeblina: { value: new THREE.Color('#cfe0e8') },
-  uCeuTopo: { value: new THREE.Color('#4f7fb8') },
+  uNeblina: { value: new THREE.Color('#c4dbe8') },
+  uCeuTopo: { value: new THREE.Color('#3f74b5') },
   uCalado: { value: 8 },
+  uVisSub: { value: 0 },                         // 1 = modo diagrama: água mais transparente
 };
 
 // Ondas: soma de senoides direcionais (mesma função em JS e GLSL).
@@ -49,7 +50,7 @@ const GLSL_ONDAS = (() => {
 
 const GLSL_COMUM = /* glsl */`
 uniform float uTempo; uniform vec3 uNavio; uniform vec4 uCorte; uniform float uMascaraCasco; uniform vec3 uSol;
-uniform float uOndas; uniform vec3 uNeblina; uniform vec3 uCeuTopo; uniform float uCalado;
+uniform float uOndas; uniform vec3 uNeblina; uniform vec3 uCeuTopo; uniform float uCalado; uniform float uVisSub;
 ${GLSL_CASCO}
 ${GLSL_ONDAS}
 float hash12(vec2 p){ vec3 p3=fract(vec3(p.xyx)*.1031); p3+=dot(p3,p3.yzx+33.33); return fract((p3.x+p3.y)*p3.z); }
@@ -60,7 +61,9 @@ bool cortado(vec3 p){ return dot(uCorte.xyz,p)>uCorte.w; }
 vec3 corCeu(vec3 d){
   float y=d.y;
   vec3 c=mix(uNeblina, uCeuTopo, smoothstep(0.0,0.55,y));
-  c=mix(c, vec3(0.125,0.168,0.341), smoothstep(0.0,-0.25,y));
+  c=mix(c, vec3(0.0144,0.0242,0.0953), smoothstep(0.0,-0.06,y));
+  if(y>0.0){ vec2 uv=d.xz/(y+0.06)*0.55; float nv=fbm(uv*1.3+vec2(uTempo*0.012,0.0))*0.65+fbm(uv*3.1)*0.35;
+    float cl=smoothstep(0.50,0.80,nv)*smoothstep(0.015,0.16,y); c=mix(c,mix(vec3(0.80,0.84,0.90),vec3(1.0,0.98,0.95),smoothstep(0.5,0.9,nv)),cl*0.85); }
   float s=max(dot(d,uSol),0.0); c+=vec3(1.0,0.92,0.75)*(pow(s,600.0)*4.0+pow(s,12.0)*0.18);
   return c;
 }
@@ -100,7 +103,7 @@ function gradeRadial(n, raio) {
 }
 export function criarSuperficie() {
   const mat = new THREE.ShaderMaterial({
-    uniforms: U, transparent: false,
+    uniforms: U, transparent: true, depthWrite: true, side: THREE.DoubleSide,
     vertexShader: GLSL_COMUM + /* glsl */`
       varying vec3 vW; varying float vDist;
       void main(){
@@ -115,11 +118,16 @@ export function criarSuperficie() {
         if(cortado(vW)) discard;
         vec3 l=vW-uNavio;
         if(uMascaraCasco>0.5 && dentroCasco(vec3(l.x,clamp(l.y,quilhaG(l.x)+0.02,PONTAL-0.02),l.z),0.0)) discard;
+        if(!gl_FrontFacing){ float dd=clamp(length(cameraPosition-vW)/220.0,0.0,1.0);
+          gl_FragColor=vec4(mix(vec3(0.30,0.70,0.82),vec3(0.05,0.20,0.32),dd),0.28);
+          #include <tonemapping_fragment>
+          #include <colorspace_fragment>
+          return; }
         vec3 oi=ondaInfo(vW.xz,uTempo);
         // micro-ondulações
         vec2 q=vW.xz*0.35+vec2(uTempo*0.35,uTempo*0.2);
         float e=0.15; float r0=fbm(q); vec2 dr=vec2(fbm(q+vec2(e,0.0))-r0, fbm(q+vec2(0.0,e))-r0)/e;
-        vec3 n=normalize(vec3(-oi.y-dr.x*0.10, 1.0, -oi.z-dr.y*0.10));
+        float perto=1.0-smoothstep(150.0,700.0,vDist); vec3 n=normalize(vec3(-oi.y-dr.x*0.10*perto, 1.0, -oi.z-dr.y*0.10*perto));
         vec3 v=normalize(cameraPosition-vW);
         float fres=0.02+0.98*pow(1.0-max(dot(n,v),0.0),5.0);
         vec3 refl=corCeu(reflect(-v,n));
@@ -135,7 +143,7 @@ export function criarSuperficie() {
         c=mix(c,vec3(0.93,0.96,0.97),clamp(esp,0.0,0.9));
         // brilho no limite do corte (aresta da fatia)
         float dc=uCorte.w-dot(uCorte.xyz,vW); c=mix(c,vec3(0.75,0.93,1.0),(1.0-smoothstep(0.0,0.8,dc))*0.6);
-        float nevoa=smoothstep(350.0,1600.0,vDist);
+        float nevoa=smoothstep(900.0,2600.0,vDist)*0.85;
         c=mix(c,uNeblina*0.95,nevoa);
         gl_FragColor=vec4(c,1.0);
         #include <tonemapping_fragment>
@@ -171,13 +179,13 @@ export function criarFaceCorte() {
         if(uMascaraCasco>0.5 && dentroCasco(l,0.0)) discard;
         float topo=ondaInfo(vW.xz,uTempo).x;
         float prof=clamp((topo-vW.y)/${PROFUNDIDADE.toFixed(1)},0.0,1.0);
-        vec3 raso=vec3(0.16,0.55,0.70), fundo=vec3(0.07,0.12,0.30);
+        vec3 raso=vec3(0.035,0.36,0.52), fundo=vec3(0.006,0.05,0.16);
         vec3 c=mix(raso,fundo,pow(prof,0.7));
         // raios de luz e cáusticas
         vec3 n=normalize(vec3(uCorte.x,0.0,uCorte.z)); float s=dot(vW,vec3(-n.z,0.0,n.x));
         float raios=pow(max(0.0,sin(s*0.09+uTempo*0.25+sin(s*0.023)*3.0)),6.0)*(1.0-prof)*0.35;
-        c+=vec3(0.6,0.85,1.0)*raios;
-        float a=mix(0.30,0.62,pow(prof,0.8));
+        c+=vec3(0.25,0.55,0.75)*raios;
+        float a=mix(0.38,0.80,pow(prof,0.8))*(1.0-0.5*uVisSub);
         // menisco brilhante na superfície
         float m=1.0-smoothstep(0.0,0.45,topo-vW.y); c=mix(c,vec3(0.85,0.97,1.0),m*0.9); a=max(a,m*0.95);
         float lateral=smoothstep(900.0,1350.0,abs(s)); a*=1.0-lateral;
@@ -207,10 +215,10 @@ export function criarLeito() {
       vW=vec3(b.x, position.y>0.0? -${PROFUNDIDADE.toFixed(1)} : -${(PROFUNDIDADE + 9).toFixed(1)}, b.z); gl_Position=projectionMatrix*viewMatrix*vec4(vW,1.0); }`,
     fragmentShader: GLSL_COMUM + `varying vec3 vW; void main(){ float d=-${PROFUNDIDADE.toFixed(1)}-vW.y; vec3 n=normalize(vec3(uCorte.x,0.0,uCorte.z));
       float s=dot(vW,vec3(-n.z,0.0,n.x)); float camadas=0.5+0.5*sin(d*2.2+fbm(vec2(s*0.05,d))*4.0);
-      vec3 c=mix(vec3(0.62,0.52,0.36),vec3(0.42,0.33,0.24),smoothstep(0.0,9.0,d)); c*=0.85+0.15*camadas;
-      c=mix(c,vec3(0.125,0.168,0.341),smoothstep(6.0,9.0,d)*0.6);
+      vec3 c=mix(vec3(0.20,0.15,0.09),vec3(0.07,0.05,0.04),smoothstep(0.0,9.0,d)); c*=0.85+0.15*camadas;
+      c=mix(c,vec3(0.0144,0.0242,0.0953),smoothstep(5.0,9.0,d)*0.8);
       float lateral=smoothstep(900.0,1350.0,abs(s)); if(lateral>0.99) discard;
-      gl_FragColor=vec4(mix(c,vec3(0.125,0.168,0.341),lateral),1.0);
+      gl_FragColor=vec4(mix(c,vec3(0.0144,0.0242,0.0953),lateral),1.0);
       #include <tonemapping_fragment>
       #include <colorspace_fragment>
     }`,
@@ -231,7 +239,7 @@ export function aplicarSubaquatico(mat, { areia = false, seco = false, tampa = n
           wp=instanceMatrix*wp;
         #endif
         vWS=(modelMatrix*wp).xyz; }`);
-    const capa = tc ? `if(!gl_FrontFacing){ gl_FragColor=linearToOutputTexel(vec4(${tc.r.toFixed(4)},${tc.g.toFixed(4)},${tc.b.toFixed(4)},1.0)); return; }` : '';
+    const capa = tc ? `if(!gl_FrontFacing && abs(dot(uCorte.xyz,vWS)-uCorte.w)<3.0){ gl_FragColor=linearToOutputTexel(vec4(${tc.r.toFixed(4)},${tc.g.toFixed(4)},${tc.b.toFixed(4)},1.0)); return; }` : '';
     sh.fragmentShader = 'varying vec3 vWS;\n' + GLSL_COMUM + sh.fragmentShader
       .replace('void main() {', `void main() {\n if(cortado(vWS)) discard;\n ${capa}`)
       .replace('#include <opaque_fragment>', `#include <opaque_fragment>
@@ -241,7 +249,7 @@ export function aplicarSubaquatico(mat, { areia = false, seco = false, tampa = n
         bool noPorao = ${seco ? 'true' : 'false'} || (uMascaraCasco>0.5 && dentroCasco(l,0.25));
         if(vWS.y<topo-0.05 && !noPorao){
           float prof=topo-vWS.y;
-          float f=clamp(0.22+prof*0.016,0.0,0.72);
+          float f=clamp(0.22+prof*0.016,0.0,0.72)*(1.0-0.45*uVisSub);
           vec3 agua=mix(vec3(0.045,0.20,0.30),vec3(0.02,0.045,0.12),clamp(prof/${PROFUNDIDADE.toFixed(1)},0.0,1.0));
           vec3 cor=gl_FragColor.rgb;
           cor+= vec3(0.45,0.75,0.9)*causticas(vWS.xz+vWS.y*0.3,uTempo)*${areia ? '0.45' : '0.2'}*(1.0-prof/${(PROFUNDIDADE + 6).toFixed(1)});

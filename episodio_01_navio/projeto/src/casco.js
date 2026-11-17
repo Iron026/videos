@@ -145,12 +145,12 @@ export function solidoCasco({ x0 = POPA, x1 = PROA, topo = PONTAL, folga = 0, in
   for (const s of secoes) for (const p of s) pos.push(...p);
   for (let i = 0; i < secoes.length - 1; i++) for (let j = 0; j < m - 1; j++) {
     const a = i * m + j, b = (i + 1) * m + j, c = (i + 1) * m + j + 1, d = i * m + j + 1;
-    idx.push(a, d, b, b, d, c);
+    idx.push(a, b, d, b, c, d);
   }
   // tampa superior (plano do convés ou da linha d'água): faixa entre pontos extremos das seções
   if (tampaTopo) for (let i = 0; i < secoes.length - 1; i++) {
     const a = i * m, b = i * m + m - 1, c = (i + 1) * m, d = (i + 1) * m + m - 1;
-    idx.push(a, c, b, b, c, d);
+    idx.push(a, b, c, b, d, c);
   }
   // tampas das extremidades (leque a partir do centro da seção)
   const tampa = (i, sentido) => {

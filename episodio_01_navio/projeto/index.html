@@ -1,0 +1,19 @@
+<!doctype html>
+<html lang="pt-BR"><head><meta charset="utf-8"><title>Ep01 navio</title>
+<style>
+@font-face{font-family:Montserrat;font-weight:600;src:url(node_modules/@fontsource/montserrat/files/montserrat-latin-600-normal.woff2) format('woff2')}
+@font-face{font-family:Montserrat;font-weight:700;src:url(node_modules/@fontsource/montserrat/files/montserrat-latin-700-normal.woff2) format('woff2')}
+@font-face{font-family:Montserrat;font-weight:800;src:url(node_modules/@fontsource/montserrat/files/montserrat-latin-800-normal.woff2) format('woff2')}
+@font-face{font-family:Montserrat;font-weight:900;src:url(node_modules/@fontsource/montserrat/files/montserrat-latin-900-normal.woff2) format('woff2')}
+html,body{margin:0;background:#202B57;overflow:hidden}
+canvas{position:absolute;left:0;top:0;display:block}
+</style>
+<script type="importmap">{"imports":{"three":"./node_modules/three/build/three.module.js","three/addons/":"./node_modules/three/examples/jsm/"}}</script>
+</head><body>
+<canvas id="gl"></canvas><canvas id="ov"></canvas>
+<script type="module">
+await Promise.all([600,700,800,900].map(w=>document.fonts.load(`${w} 40px Montserrat`,'Água ç ã é')));
+window.addEventListener('error',e=>{window.erro=String(e.message)});
+try{ await import('./src/main.js'); }catch(e){ window.erro=String(e.stack||e); }
+</script>
+</body></html>
