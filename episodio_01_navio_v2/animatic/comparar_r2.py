@@ -21,7 +21,7 @@ def quadro(video, t, w=300):
 
 W = 40 + len(MOMENTOS) * 320; img = Image.new('RGB', (W, 1720), AZUL); d = ImageDraw.Draw(img)
 d.text((40, 30), 'Animatic Ep. 01 · v1 × r2', font=f_t, fill=CREME)
-esc = (W - 200) / 19.5
+esc = (W - 280) / 19.5
 for k, (nome, pl, tot) in enumerate((('v1', V1, 19.5), ('r2', R2, 16.85))):
     y = 100 + k * 70; d.text((40, y + 8), nome, font=f_t, fill=AMAR if nome == 'r2' else CINZA)
     for rot, a, b in pl:
@@ -30,6 +30,6 @@ for k, (nome, pl, tot) in enumerate((('v1', V1, 19.5), ('r2', R2, 16.85))):
     d.text((120 + tot * esc + 10, y + 12), f'{tot:.2f} s', font=f_s, fill=CREME)
 for i, (rot, t1, t2) in enumerate(MOMENTOS):
     x = 40 + i * 320; d.text((x, 260), rot, font=f_s, fill=CREME)
-    img.paste(quadro('animatic_ep01.mp4', t1), (x, 300)); d.text((x + 6, 306), f'v1 · {t1:.2f} s', font=f_s, fill=CINZA, stroke_width=3, stroke_fill=(0, 0, 0))
-    img.paste(quadro('animatic_ep01_r2.mp4', t2), (x, 300 + 540)); d.text((x + 6, 846), f'r2 · {t2:.2f} s', font=f_s, fill=AMAR, stroke_width=3, stroke_fill=(0, 0, 0))
+    img.paste(quadro('animatic_ep01.mp4', t1), (x, 300)); d.text((x + 6, 306), f'v1 · {t1:.2f} s', font=f_s, fill=CINZA, stroke_width=2, stroke_fill=(0, 0, 0))
+    img.paste(quadro('animatic_ep01_r2.mp4', t2), (x, 300 + 540)); d.text((x + 6, 846), f'r2 · {t2:.2f} s', font=f_s, fill=AMAR, stroke_width=2, stroke_fill=(0, 0, 0))
 img = img.crop((0, 0, W, 300 + 540 * 2 + 20)); img.save(os.path.join(A, 'comparativo_r2.jpg'), quality=88); print('ok', img.size)

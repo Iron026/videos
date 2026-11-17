@@ -46,7 +46,18 @@ Tudo isso foi feito numa cópia derivada (`voz/amostra_assinatura/narracao_assin
 | 13,30 | voz real (J-cut) | |
 | 13,75–16,85 | 4 · Assinatura curta | (voz) |
 
-{{VALIDACAO}}
+## Validação técnica (`animatic/validacao_animatic_r2.json`)
+
+| Verificação | Resultado |
+|---|---|
+| Vídeo | H.264, 1080×1920, 30 fps, 505 quadros, 16,83 s |
+| Quadros pretos / congelamentos ≥ 1 s | nenhum / nenhum |
+| Loudness integrado · pico real | −14,0 LUFS · −1,7 dBTP |
+| Posição da voz (correlação com a cópia editada) | 13,303 s, prevista 13,30 s (+3 ms) |
+| Transcrição da voz no MP4 (Whisper) | "De olho no invisível, o invisível ganha a forma." Frase inteira reconhecida mesmo com a pausa encurtada e +5% de velocidade |
+| Custo de render | plano 1: 145 quadros a 7,4 s/quadro · planos 2/3: 275 quadros a 10,1 s/quadro (≈ 64 min no total, sem GPU) |
+
+Comparativo visual: `animatic/comparativo_r2.jpg`. Folha de contato: `animatic/folha_contato_r2.jpg`.
 
 ## Limitações
 
