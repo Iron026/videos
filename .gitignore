@@ -1,3 +1,7 @@
 node_modules/
 episodio_01_navio/render/
 *.tgz
+episodio_01_navio_v2/etapa_b/previas/
+episodio_01_navio_v2/etapa_b/quadros_r1/
+episodio_01_navio_v2/etapa_b/*.log
+__pycache__/
