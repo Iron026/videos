@@ -140,13 +140,14 @@ def mar_aberto(ext=700, res=4.0, fundo=-70):
 # =====================================================================================  SEG02 · o gigante (4,40–15,10)
 def espuma(raiz, T, L=104.0):
     """Onda de proa e esteira (espuma) presas ao navio, na superfície (z = T em coordenadas do navio)."""
-    mf = lib.mat_fantasma('espuma', '#f4fbff', alfa=0.55, brilho=1.25); objs = []
+    mf = lib.mat_fantasma('espuma', '#ffffff', alfa=0.85, brilho=1.45); objs = []
     zt = T + 0.28
     for s_ in (1, -1):   # onda de proa (V) e faixa de espuma ao longo do costado
-        objs.append(lib.malha('onda_proa', [(L - 1, s_ * 0.5, zt), (L - 1, s_ * 2.6, zt), (L - 34, s_ * 21.0, zt), (L - 30, s_ * 17.5, zt)], [(0, 1, 2, 3)], mf))
+        objs.append(lib.malha('onda_proa', [(L - 1, s_ * 0.5, zt), (L - 1, s_ * 3.6, zt), (L - 36, s_ * 23.0, zt), (L - 30, s_ * 16.5, zt)], [(0, 1, 2, 3)], mf))
+        objs.append(lib.malha('onda_proa_v', [(L - 2, s_ * (navio.meia_boca(L - 2, T) + 0.1), T - 0.3), (L - 20, s_ * (navio.meia_boca(L - 20, T) + 0.1), T - 0.3), (L - 20, s_ * (navio.meia_boca(L - 20, T) + 0.4), T + 1.1), (L - 2, s_ * (navio.meia_boca(L - 2, T) + 0.4), T + 1.6)], [(0, 1, 2, 3)], mf))
         objs.append(lib.malha('espuma_costado', [(L - 6, s_ * (navio.meia_boca(L - 6, T) + 0.2), zt), (L - 6, s_ * (navio.meia_boca(L - 6, T) + 2.2), zt),
                                                  (-40, s_ * (navio.MEIA_BOCA + 3.0), zt), (-40, s_ * (navio.MEIA_BOCA + 0.3), zt)], [(0, 1, 2, 3)],
-                              lib.mat_fantasma('espuma_c', '#eaf6fb', alfa=0.32, brilho=1.15)))
+                              lib.mat_fantasma('espuma_c', '#f4fbff', alfa=0.5, brilho=1.3)))
         objs.append(lib.malha('esteira', [(-96, s_ * 4.0, zt), (-96, s_ * 9.0, zt), (-260, s_ * 46.0, zt), (-260, s_ * 30.0, zt)], [(0, 1, 2, 3)],
                               lib.mat_fantasma('esteira', '#e8f4f8', alfa=0.28, brilho=1.1)))
     objs.append(lib.malha('esteira_c', [(-98, -5.0, zt), (-98, 5.0, zt), (-300, 14.0, zt), (-300, -14.0, zt)], [(0, 1, 2, 3)],
@@ -216,7 +217,14 @@ def seg03(pasta):
                  (Vector((70.2, navio.meia_boca(70.2, 12.0) + 0.2, Z0 + 12.0)), 24.0, 25.4),
                  (Vector((38.0, navio.meia_boca(38.0, 1.0) + 0.25, Z0 + 1.0)), 24.9, 26.4),
                  (Vector((22.0, navio.meia_boca(22.0, 1.0) + 0.25, Z0 + 1.0)), 25.1, 26.4)]
+        mhalo = lib.mat_fantasma('halo_solda', '#ffb347', alfa=0.55, brilho=3.0)
         for (c, ta, tb) in focos:
+            nrm = Vector((0, 1 if c.y > 0 else -1, 0))
+            for j in range(int((tb - ta) / 0.12)):                         # halo da solda: tremula (luz forte e irregular)
+                rr = rnd.uniform(0.5, 0.9); t0 = ta + j * 0.12
+                vs_h = [tuple(c + nrm * 0.25)] + [tuple(c + nrm * 0.25 + V(rr * math.cos(2 * math.pi * q_ / 20), 0, rr * math.sin(2 * math.pi * q_ / 20))) for q_ in range(20)]
+                hq = lib.malha('halo', vs_h, [(0, 1 + q_, 1 + (q_ + 1) % 20) for q_ in range(20)], mhalo); hq.visible_shadow = False   # disco
+                surge(hq, t0, dur=0.02, t1=t0 + rnd.uniform(0.06, 0.11), dur1=0.02)
             for i in range(24):
                 d = Vector((rnd.uniform(-0.6, 1.0), (1 if c.y > 0 else -1) * rnd.uniform(0.2, 1.4), rnd.uniform(-1.6, 0.4)))
                 f = lib.tubo('faisca', [tuple(c), tuple(c + d * 0.9)], r=0.05, mat=mf)
@@ -340,7 +348,7 @@ def seg05(pasta):
     for x in np.arange(-92, 96, 7.0):
         k = navio.quilha(x); h = 1.6 + k - 0.3
         lib.caixa('picad', (1.4, 2.2, h), (x, 0, Z_PISO + h / 2), mbl, bisel=0.05)
-        lib.caixa('picad_m', (1.6, 2.4, 0.3), (x, 0, Z_PISO + h + 0.15), mm, bisel=0.03)
+        lib.caixa('picad_m', (1.6, 2.4, 0.3), (x, 0, Z_PISO + h + 0.15), lib.mat_emissivo('picad_topo', '#f3b544', 1.2), bisel=0.03)
     raiz, _, _ = navio_completo(0.0, com_carga=False); raiz.location.z = Z_QUILHA0
     # jatos de entrada pelas aberturas da comporta (só enquanto o nível de dentro está abaixo do de fora)
     mj = lib.mat_fantasma('jato_dique', '#eef9ff', alfa=0.55, brilho=1.4)
@@ -359,7 +367,7 @@ def seg05(pasta):
         elif g < 44.55:         # 22 rente à água, subindo com o nível junto aos picadeiros da proa
             p = Vector((104 - 2.0 * (g - 43.2), -21.5, L + 1.4)); a = Vector((80, 0, L - 2.0)); l = 22
         elif g < 47.0:          # 23 corte ilustrativo: a quilha deixa os picadeiros e acompanha o nível
-            k = suave((g - 44.55) / 2.45); p = Vector((60, -62, -8.0)).lerp(Vector((58, -56, -7.5)), k); a = Vector((52, 0, -9.5)); l = 36
+            k = suave((g - 44.55) / 2.45); p = Vector((60, -46, -9.5)).lerp(Vector((58, -42, -9.2)), k); a = Vector((54, 0, -10.6)); l = 40
         else:                   # 24 marcas de calado: linha d'água parada em 8M enquanto o dique enche
             alvo = Vector((xm + 0.3, yb, L + 0.2)); p = alvo + Vector((-4.5, -6.0, 1.0)); a = alvo; l = 33
         camera_em(cam, p, a, l)
@@ -468,6 +476,28 @@ def seg0607(pasta):
     exportar_seg(pasta, 48.00, 74.85, anim, rot, extra=dict(segmento='0607', KB=KB, T=T))
 
 
+def seg0607b(pasta):
+    """Respiro de perspectiva no meio do empuxo (63,1–65,8 s, "Foi Arquimedes quem explicou o princípio"): o navio
+    vazio INTEIRO flutuando (corte na água a 8 m do costado); o volume de água deslocada se enche da quilha à linha d'água."""
+    lib.nova_cena()
+    lib.ceu_estilizado(**CEU_DIA)
+    T = navio.CALADO_LEVE
+    raiz, _, _ = navio_completo(0.0, com_carga=False); raiz.location.z = -T
+    Y0 = -navio.MEIA_BOCA - 8.0
+    magua = lib.mat_agua('agua_fim', espalha=0.0, rug=0.05, **dict(AGUA_MAR, densidade=0.03))
+    lib.bloco_agua('agua', -600, 600, Y0, 600, -80, magua, res=3.0, amp=0.2)
+    mlonge = lib.mat_pintura('mar_longe', '#2c78a0', rug=0.1, variacao=0.06, escala_var=0.02)
+    for (a0, a1, b0, b1) in ((-4000, -600, -4000, 4000), (600, 4000, -4000, 4000), (-600, 600, 600, 4000)):
+        lib.bloco_agua('longe', a0, a1, b0, b1, -30, mlonge, res=400, amp=0.0, so_superficie=True)
+    vol = volume_submerso('vol_desl_inteiro', T, infla=0.18); vol['anim'] = 1; vol.parent = raiz
+    cam = bpy.context.scene.camera or lib.camera((0, -50, 0), (0, 0, 0))
+    rot = Rotulos(); rot.add('Água deslocada', (-20, -navio.MEIA_BOCA, -T * 0.5), 64.9, 65.8, dx=0.05, dy=0.08)
+    def anim(g):
+        k = suave((g - 63.25) / 2.2); vol.scale = (1, 1, max(k, 1e-4))
+        p, a, l = trilha([(63.1, (150, -118, 2.0), (0, 0, -2.5), 24), (65.8, (136, -108, 1.0), (0, 0, -3.0), 24)], g); camera_em(cam, p, a, l)
+    exportar_seg(pasta, 63.10, 65.80, anim, rot, extra=dict(segmento='0607b', calado=T))
+
+
 # =====================================================================================  SEG08a · compare com o bloco (74,85–83,85)
 def seg08a(pasta):
     """O mesmo bloco do início, já submerso, em câmera lenta (tempo de cena 3,22→3,65 s em 7 s de tela), com o peso
@@ -573,12 +603,13 @@ def seg08b(pasta):
         v0 = G * t_ag; tt = t - t_ag; return -v0 * tt - 0.5 * 7.9 * tt * tt
     rot.add('Mesma massa do navio vazio', lambda g: Vector((XC, yc, base_cubo(g) + a)), 84.0, 86.6, dx=0.03, dy=-0.09)
     rot.add('Aço maciço: 17 m', lambda g: Vector((XC, yc, base_cubo(g) + a / 2)), 84.5, 87.0, dx=0.05, dy=0.08)
+    rot.add('Navio vazio', lambda g: Vector((XC, 8.0, quilha(g) + navio.PONTAL)), 84.0, 86.6, dx=0.04, dy=-0.07)
     rot.add('Ar', lambda g: Vector((XC, 4.0, quilha(g) + 9.0)), 88.7, 89.7, dx=0.07, dy=0.09)
     rot.add('Água deslocada', (XC, -8.0, -4.5), 90.2, 94.5, dx=0.06, dy=0.10)
     rot.add('Empuxo = peso', lambda g: Vector((xs, 0, quilha(g) + zB + 3.2)), 91.0, 94.5, dx=0.06, dy=0.04)
     cam = bpy.context.scene.camera or lib.camera((0, -50, 0), (0, 0, 0))
-    P = [(83.85, [(83.85, (XC + 108, -24, 9), (XC - 6, -18, 4), 22), (85.60, (XC + 104, -24, 8), (XC - 6, -18, 3), 22)]),       # 37 suspensos
-         (85.60, [(85.60, (XC + 100, -22, 1.0), (XC - 6, -18, -3), 22), (88.60, (XC + 98, -22, -1.0), (XC - 6, -16, -9), 22)]),    # 38 soltos
+    P = [(83.85, [(83.85, (XC + 74, -12, 6), (XC - 6, -12, 3), 22), (85.60, (XC + 72, -12, 5), (XC - 6, -12, 2), 22)]),         # 37 suspensos (os dois enchem o quadro)
+         (85.60, [(85.60, (XC + 72, -12, 2.0), (XC - 6, -12, -2), 22), (88.60, (XC + 76, -12, -2.0), (XC - 6, -12, -9), 22)]),     # 38 soltos
          (88.60, [(88.60, (XC + 56, 0, 0), (XC - 3, 0, -1), 22), (89.70, (XC + 54, 0, 0), (XC - 3, 0, -1), 22)]),                  # 39 ar
          (89.70, [(89.70, (XC + 62, -2, 1), (XC - 4, 0, -1.5), 22), (94.55, (XC + 54, 0, 1), (XC - 4, 0, -1.5), 22)])]             # 40 síntese
     def anim(g):
@@ -751,16 +782,17 @@ def seg09(pasta):
     K4 = [(104.9, (xm - 14, yb - 26, 20), (xm, yb, 8), 26), (106.3, (xm - 3.5, yb - 5.6, 0.75), (xm + 0.2, yb, 0.15), 34),
           (109.6, (xm - 3.0, yb - 4.8, 0.55), (xm + 0.2, yb, 0.0), 36)]
     K5 = [(109.6, (112, -104, 22), (34, -20, 7), 24), (117.2, (104, -96, 18), (34, -20, 6), 24)]
-    G0 = P['gru'][0]
-    def pouso(): return (P['raiz'].matrix_world @ G0['Mloc']).translation
+    def pouso(i): return (P['raiz'].matrix_world @ P['gru'][i]['Mloc']).translation
     def anim(g):
         _posicionar_porto(P, g); barras(g, 1.0 if g >= 112.6 else 1e-4)
         if g < 97.6: p, a, l = trilha([(94.55, (176, -160, 74), (0, -20, 6), 24), (97.6, (150, -136, 60), (4, -20, 6), 24)], g)       # 41 vazio
         elif g < 100.1: p, a, l = trilha([(97.6, (xa + 34, -8, 22), (xa, 20, 12), 24), (100.1, (xa + 32, -12, 26), (xa, 12, 22), 24)], g)  # 42 ergue do caminhão
-        elif g < 101.9:                                                                                                                 # 43 close do pouso
-            q = pouso(); p, a, l = trilha([(100.1, tuple(q + V(15, -21, 2.4)), tuple(q + V(0, 0, 3.0)), 34), (101.9, tuple(q + V(13, -19, 1.8)), tuple(q + V(0, 0, 1.4)), 34)], g)
-        elif g < 103.2: p, a, l = trilha(K2, g)                                                                                         # 44 outro
-        elif g < 104.9: p, a, l = trilha(K3, g)                                                                                         # 45 mais outro
+        elif g < 101.9:                                                                                                                 # 43 pouso do 1º (do convés, baía vizinha)
+            q = pouso(0); p, a, l = trilha([(100.1, tuple(q + V(-17, -13, 10.0)), tuple(q + V(0, 0, 4.5)), 30), (101.9, tuple(q + V(-15, -12, 8.5)), tuple(q + V(0, 0, 1.6)), 30)], g)
+        elif g < 103.2:                                                                                                                 # 44 pouso do 2º
+            q = pouso(1); p, a, l = trilha([(101.9, tuple(q + V(-17, -14, 10.0)), tuple(q + V(0, 0, 4.5)), 30), (103.2, tuple(q + V(-15, -13, 8.5)), tuple(q + V(0, 0, 1.6)), 30)], g)
+        elif g < 104.9:                                                                                                                 # 45 pouso do 3º (do lado da proa)
+            q = pouso(2); p, a, l = trilha([(103.2, tuple(q + V(17, -14, 10.0)), tuple(q + V(0, 0, 4.5)), 30), (104.9, tuple(q + V(15, -13, 8.5)), tuple(q + V(0, 0, 1.6)), 30)], g)
         elif g < 109.6: p, a, l = trilha(K4, g)                                                                                         # 46 linha d'água
         elif g < 112.6:                                                                                                                 # 47 zenital: o convés enche
             k = suave((g - 109.6) / 3.0); cam.location = (2 * k, YN, lerp(190, 176, k)); cam.rotation_euler = (0, 0, -math.pi / 2); cam.data.lens = 24
@@ -837,8 +869,8 @@ def seg11(pasta):
             alvo = pmundo(x + 3.0 - 0.95 * k * 3.0 + 0.0, zl); alvo.x = lerp(xm, -3.85, k) + 0.2 * k
             pos = pmundo(x, zl) + Vector((0, -4.5 + 0.5 * k, 0.4 - 0.1 * k)); a = alvo; l = 34
         else:              # marca de linha de carga: aproxima e acompanha cada linha que acende
-            k = suave((g - 128.8) / 5.2); alvo = pmundo(-3.65, z_linha(g))
-            pos = alvo + Vector((-1.7, -5.0, 0.3)).lerp(Vector((-1.1, -3.6, 0.15)), k); a = alvo; l = 32
+            k = suave((g - 128.8) / 1.6); k2 = suave((g - 130.3) / 1.0); alvo = pmundo(-3.65, z_linha(g))
+            pos = alvo + Vector((-1.7, -5.0, 0.3)).lerp(Vector((-1.1, -3.6, 0.15)), k).lerp(Vector((-0.5, -1.7, 0.08)), k2); a = alvo; l = lerp(32, 38, k2)
         pos.z = max(pos.z, 0.55)                                              # nunca abaixo da superfície (cena sem corte)
         camera_em(cam, pos, a, l)
     rot.add('Marcas de calado', lambda g: pmundo(xm, 10.6), 125.9, 127.9, dx=0.07, dy=-0.06)
@@ -1083,14 +1115,14 @@ def seg13(pasta):
     a = (hidro.RHO * hidro.carena(navio.CALADO_LEVE)[0] / 7.85) ** (1 / 3)
     cubo = bpy.data.objects.new('cubo_fim', None); lib.ligar(cubo); cubo['anim'] = 1
     lib.caixa('cubo_fim_m', (a, a, a), (0, 0, 0), lib.mat_pintura('aco_macico', '#7b8087', rug=0.35, metal=0.6, variacao=0.05), bisel=0.12).parent = cubo
-    XB, TS = 128.0, 155.2
+    XB, TS = 126.0, 155.2
     def zc(g):
         if g < TS: return a / 2 + 2.0
         t = g - TS; t_ag = math.sqrt(4.0 / G)
         if t < t_ag: return a / 2 + 2.0 - 0.5 * G * t * t
         v0 = G * t_ag; tt = t - t_ag; return a / 2 - v0 * tt - 0.5 * 7.9 * tt * tt
     rot.add('Aço maciço', lambda g: Vector((XB, -a / 2, zc(g) + a / 2)), 154.8, 156.8, dx=-0.08, dy=-0.07)
-    P = [(154.6, [(154.6, (196, -112, 5.0), (60, 0, -2), 24), (158.7, (186, -104, 3.0), (56, 0, -4), 24)]),     # 63 bloco afunda × navio flutua
+    P = [(154.6, [(154.6, (168, -66, 6.0), (100, 0, 0), 26), (158.7, (160, -62, 2.0), (98, 0, -4), 26)]),     # 63 bloco afunda ao lado da proa × navio flutua
          (158.7, [(158.7, (70, -60, -6), (-20, 0, -5), 24), (162.4, (64, -56, -7), (-16, 0, -5), 24)]),          # 64 volume deslocado acende
          (162.4, [(162.4, (70, -82, 0.6), (0, 0, -2.5), 24), (166.3, (96, -100, 3.0), (0, 0, -1.5), 24)])]       # 65 peso = empuxo, recuo
     def anim(g):
@@ -1101,7 +1133,7 @@ def seg13(pasta):
     exportar_seg(pasta, 154.60, 166.30, anim, rot, extra=dict(segmento='13', calado=T))
 
 
-SEGMENTOS = {'12x': seg12x, '12': seg12, '13': seg13, '09': seg09, '10': seg10, '11': seg11, '02': seg02, '03': seg03, '04': seg04, '05': seg05, '0607': seg0607, '08a': seg08a, '08b': seg08b}
+SEGMENTOS = {'0607b': seg0607b, '12x': seg12x, '12': seg12, '13': seg13, '09': seg09, '10': seg10, '11': seg11, '02': seg02, '03': seg03, '04': seg04, '05': seg05, '0607': seg0607, '08a': seg08a, '08b': seg08b}
 
 if __name__ == '__main__':
     SEGMENTOS[sys.argv[1]](sys.argv[2])

@@ -8,7 +8,7 @@ from PIL import Image, ImageDraw, ImageFont
 
 A = os.path.dirname(os.path.abspath(__file__)); RAIZ = os.path.join(A, '..')
 PERFIL = sys.argv[1] if len(sys.argv) > 1 else 'previa'
-W, H = {'previa': (540, 960), 'previa30': (540, 960), 'revisao': (1080, 1920), 'final': (1080, 1920)}[PERFIL]
+W, H = {'previa': (540, 960), 'previa30': (540, 960), 'teste': (540, 960), 'revisao': (540, 960), 'final': (1080, 1920)}[PERFIL]
 PASSO = 3 if PERFIL == 'previa' else 1
 T_INI = float(sys.argv[3]) if len(sys.argv) > 3 else 0.0      # trecho (previa30: amostras a 30 fps)
 T_FIM = float(sys.argv[4]) if len(sys.argv) > 4 else None
@@ -22,7 +22,7 @@ AZUL, CREME, AMARELO, ESCURO = (32, 43, 87), (246, 244, 236), (243, 181, 68), (1
 
 # (nome, início, fim) no tempo global; 's01' = plano 1 aprovado do animatic r2; 'ass' = assinatura
 SEGS = [('s01', 0.00, 4.40), ('s02', 4.40, 15.10), ('s03', 15.10, 30.30), ('s04', 30.30, 41.55), ('s05', 41.55, 48.00),
-        ('s0607', 48.00, 74.85), ('s08a', 74.85, 83.85), ('s08b', 83.85, 94.55), ('s09', 94.55, 117.20), ('s10', 117.20, 123.65),
+        ('s0607', 48.00, 63.10), ('s0607b', 63.10, 65.80), ('s0607_2', 65.80, 74.85), ('s08a', 74.85, 83.85), ('s08b', 83.85, 94.55), ('s09', 94.55, 117.20), ('s10', 117.20, 123.65),
         ('s11', 123.65, 134.00), ('s12x', 134.00, 137.00), ('s12', 137.00, 154.60), ('s13', 154.60, 166.30), ('ass', 166.20, DUR)]
 FUSAO = 0.20
 # avisos honestos de tempo (canto superior direito)
@@ -30,20 +30,26 @@ CHIPS = [(2.05, 3.70, 'Câmera lenta'), (41.6, 48.0, 'Tempo acelerado'), (74.85,
          (105.4, 117.2, 'Tempo acelerado'), (137.0, 146.0, 'Tempo acelerado')]
 
 
+ALIAS = {'s0607_2': ('s0607', 48.00)}   # mesmo segmento renderizado, retomado depois do respiro (base de tempo original)
+
+
 def pasta(nome):
+    nome = ALIAS.get(nome, (nome,))[0]
     if nome == 's01': return os.path.join(RAIZ, 'animatic', 'quadros_r2_p1'), 1
     if nome == 'ass': return os.path.join(A, 'assinatura_q'), 1
     if PERFIL == 'previa30' and os.path.isdir(os.path.join(A, 'quadros_previa30', nome)): return os.path.join(A, 'quadros_previa30', nome), 1
+    if PERFIL == 'teste': return os.path.join(A, 'quadros_revisao', nome), 1
     return os.path.join(A, f'quadros_{"previa" if PERFIL == "previa30" else PERFIL}', nome), PASSO
 
 
 _cache = {}
 GRADE = {}
 def nivelar(nome, img):
+    nome = ALIAS.get(nome, (nome,))[0]
     if nome in ('s01', 'ass'): return img
     if not GRADE:
         for n_, _, _ in SEGS:
-            if n_ in ('s01', 'ass'): continue
+            if n_ in ('s01', 'ass') or n_ in ALIAS: continue
             d, passo = pasta(n_); fs = sorted(f for f in os.listdir(d) if f.endswith('.jpg'))[::8]
             st = [np.asarray(Image.open(os.path.join(d, f)).convert('HSV'), dtype=np.float32).reshape(-1, 3).mean(0) for f in fs]
             GRADE[n_] = np.mean(st, 0)
@@ -59,6 +65,7 @@ def nivelar(nome, img):
 def quadro_seg(nome, g0, g):
     d, passo = pasta(nome)
     if d not in _cache: _cache[d] = sorted(int(f[1:5]) for f in os.listdir(d) if f.endswith('.jpg'))
+    g0 = ALIAS.get(nome, (None, g0))[1]
     idx = _cache[d]; f = int(round((g - g0) * FPS)); f = min(max(f, idx[0]), idx[-1])
     f = idx[int(np.searchsorted(idx, f, side='right')) - 1]
     return nivelar(nome, Image.open(os.path.join(d, f'q{f:04d}.jpg')).convert('RGB').resize((W, H), Image.BICUBIC))
@@ -68,8 +75,8 @@ ROT = {}
 def rotulos(nome, g0, g):
     if nome in ('s01', 'ass'): return []
     if nome not in ROT:
-        p = os.path.join(A, 'cenas', nome, 'rotulos2d.json'); ROT[nome] = json.load(open(p))['quadros'] if os.path.exists(p) else []
-    q = ROT[nome]; f = int(round((g - g0) * FPS))
+        p = os.path.join(A, 'cenas', ALIAS.get(nome, (nome,))[0], 'rotulos2d.json'); ROT[nome] = json.load(open(p))['quadros'] if os.path.exists(p) else []
+    q = ROT[nome]; g0 = ALIAS.get(nome, (None, g0))[1]; f = int(round((g - g0) * FPS))
     return q[f] if 0 <= f < len(q) else []
 
 
