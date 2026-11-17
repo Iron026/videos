@@ -136,7 +136,7 @@ def compor(g):
 
 
 def loudness(au):
-    tmp = os.path.join(A, '_teste.m4a')
+    tmp = os.path.join(A, f'_teste_{os.getpid()}.m4a')   # nome único: montagens simultâneas não colidem
     def filtro(g): return f'volume={g:.2f}dB,alimiter=limit=-2.2dB:attack=3:release=60:level=disabled:asc=1'
     def medir(g):
         subprocess.run(['ffmpeg', '-y', '-v', 'error', '-i', au, '-af', filtro(g), '-c:a', 'aac', '-b:a', '192k', tmp], check=True)
