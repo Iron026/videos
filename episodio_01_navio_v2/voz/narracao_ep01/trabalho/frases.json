@@ -1,0 +1,247 @@
+[
+ {
+  "inicio": 0.0,
+  "fim": 1.92,
+  "texto": "Este bloco é feito de aço."
+ },
+ {
+  "inicio": 2.16,
+  "fim": 4.0,
+  "texto": "Quando cai na água, ele afunda."
+ },
+ {
+  "inicio": 4.62,
+  "fim": 6.04,
+  "texto": "Mas olha este gigante:"
+ },
+ {
+  "inicio": 6.46,
+  "fim": 12.98,
+  "texto": "um navio feito do mesmo aço, carregando milhares de toneladas, e ainda assim flutuando."
+ },
+ {
+  "inicio": 13.44,
+  "fim": 14.72,
+  "texto": "Como isso é possível?"
+ },
+ {
+  "inicio": 15.22,
+  "fim": 18.6,
+  "texto": "Vamos descobrir construindo um navio, peça por peça."
+ },
+ {
+  "inicio": 19.0,
+  "fim": 22.88,
+  "texto": "No estaleiro, um guindaste ergue enormes chapas de aço."
+ },
+ {
+  "inicio": 22.88,
+  "fim": 28.18,
+  "texto": "Elas são soldadas, formando o fundo, as laterais e a proa."
+ },
+ {
+  "inicio": 28.52,
+  "fim": 29.92,
+  "texto": "O casco vai tomando forma."
+ },
+ {
+  "inicio": 30.44,
+  "fim": 32.56,
+  "texto": "E aqui está o primeiro detalhe importante:"
+ },
+ {
+  "inicio": 33.2,
+  "fim": 35.3,
+  "texto": "ele não é um bloco maciço."
+ },
+ {
+  "inicio": 35.64,
+  "fim": 41.3,
+  "texto": "É uma estrutura enorme, com compartimentos e muito espaço interno que permanece seco."
+ },
+ {
+  "inicio": 41.62,
+  "fim": 44.04,
+  "texto": "Agora, o casco entra na água."
+ },
+ {
+  "inicio": 44.38,
+  "fim": 46.08,
+  "texto": "Ele afunda um pouco..."
+ },
+ {
+  "inicio": 46.08,
+  "fim": 47.04,
+  "texto": "e para."
+ },
+ {
+  "inicio": 47.54,
+  "fim": 47.72,
+  "texto": "Por quê?"
+ },
+ {
+  "inicio": 48.14,
+  "fim": 50.66,
+  "texto": "Repare no que acontece debaixo da superfície."
+ },
+ {
+  "inicio": 50.66,
+  "fim": 53.72,
+  "texto": "A água pressiona o casco por todos os lados."
+ },
+ {
+  "inicio": 54.14,
+  "fim": 56.54,
+  "texto": "Quanto mais fundo, maior a pressão."
+ },
+ {
+  "inicio": 56.94,
+  "fim": 61.66,
+  "texto": "As forças de cada lado se compensam e, no conjunto, surge uma força para cima:"
+ },
+ {
+  "inicio": 62.06,
+  "fim": 62.86,
+  "texto": "o empuxo."
+ },
+ {
+  "inicio": 63.14,
+  "fim": 65.4,
+  "texto": "Foi Arquimedes quem explicou o princípio."
+ },
+ {
+  "inicio": 65.8,
+  "fim": 70.24,
+  "texto": "A intensidade do empuxo é igual ao peso da água que o navio desloca."
+ },
+ {
+  "inicio": 70.7,
+  "fim": 74.72,
+  "texto": "Quando o empuxo equilibra o peso total do navio, ele flutua."
+ },
+ {
+  "inicio": 74.96,
+  "fim": 76.3,
+  "texto": "Compare com o bloco."
+ },
+ {
+  "inicio": 76.3,
+  "fim": 81.5,
+  "texto": "Mesmo completamente submerso, ele desloca pouca água para o peso que tem."
+ },
+ {
+  "inicio": 81.88,
+  "fim": 83.42,
+  "texto": "Por isso, afunda."
+ },
+ {
+  "inicio": 83.94,
+  "fim": 89.32,
+  "texto": "Já o casco ocupa um volume muito maior sem ser feito inteiramente de aço."
+ },
+ {
+  "inicio": 89.74,
+  "fim": 94.38,
+  "texto": "Assim, consegue deslocar água suficiente para sustentar seu peso."
+ },
+ {
+  "inicio": 94.68,
+  "fim": 97.36,
+  "texto": "Mas o navio ainda está vazio."
+ },
+ {
+  "inicio": 97.68,
+  "fim": 100.12,
+  "texto": "O que acontece quando colocamos contêineres?"
+ },
+ {
+  "inicio": 100.12,
+  "fim": 101.82,
+  "texto": "Um guindaste traz o primeiro."
+ },
+ {
+  "inicio": 102.1,
+  "fim": 103.14,
+  "texto": "Depois outro."
+ },
+ {
+  "inicio": 103.14,
+  "fim": 104.74,
+  "texto": "E mais outro."
+ },
+ {
+  "inicio": 105.1,
+  "fim": 106.5,
+  "texto": "Observe a linha d'água:"
+ },
+ {
+  "inicio": 106.82,
+  "fim": 109.34,
+  "texto": "a cada carga, o casco desce um pouco."
+ },
+ {
+  "inicio": 109.66,
+  "fim": 116.84,
+  "texto": "Mais casco fica submerso, mais água é deslocada, e o empuxo aumenta até surgir um novo equilíbrio."
+ },
+ {
+  "inicio": 117.22,
+  "fim": 123.46,
+  "texto": "Essa profundidade, medida da quilha até a superfície da água, se chama calado."
+ },
+ {
+  "inicio": 123.82,
+  "fim": 125.38,
+  "texto": "E aquelas marcas no costado?"
+ },
+ {
+  "inicio": 125.82,
+  "fim": 133.78,
+  "texto": "Algumas indicam o calado; outras, os limites seguros de carregamento, que variam conforme as condições de navegação."
+ },
+ {
+  "inicio": 134.24,
+  "fim": 136.6,
+  "texto": "Agora imagine uma avaria."
+ },
+ {
+  "inicio": 137.0,
+  "fim": 139.24,
+  "texto": "Um compartimento começa a receber água."
+ },
+ {
+  "inicio": 139.64,
+  "fim": 144.32,
+  "texto": "A parte interna antes seca perde sua contribuição para a flutuação."
+ },
+ {
+  "inicio": 144.86,
+  "fim": 150.56,
+  "texto": "O navio pode afundar mais, inclinar e, se a inundação for grave, naufragar."
+ },
+ {
+  "inicio": 150.96,
+  "fim": 154.6,
+  "texto": "Por isso, divisórias estanques ajudam a limitar os danos."
+ },
+ {
+  "inicio": 154.6,
+  "fim": 158.72,
+  "texto": "No fim, o segredo não está em fazer o aço ficar leve."
+ },
+ {
+  "inicio": 159.14,
+  "fim": 166.12,
+  "texto": "Está em projetar um casco que desloque água suficiente para equilibrar todo o peso do navio."
+ },
+ {
+  "inicio": 166.56,
+  "fim": 167.92,
+  "texto": "De Olho no Invisível."
+ },
+ {
+  "inicio": 168.28,
+  "fim": 169.86,
+  "texto": "O invisível ganha forma."
+ }
+]

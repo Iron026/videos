@@ -1,0 +1,25 @@
+Este bloco é feito de aço. Quando cai na água, ele afunda. Mas olha este gigante: um navio feito do mesmo aço, carregando milhares de toneladas, e ainda assim flutuando. Como isso é possível?
+
+Vamos descobrir construindo um navio, peça por peça.
+
+No estaleiro, um guindaste ergue enormes chapas de aço. Elas são soldadas, formando o fundo, as laterais e a proa. O casco vai tomando forma. E aqui está o primeiro detalhe importante: ele não é um bloco maciço. É uma estrutura enorme, com compartimentos e muito espaço interno que permanece seco.
+
+Agora, o casco entra na água. Ele afunda um pouco... e para. Por quê?
+
+Repare no que acontece debaixo da superfície. A água pressiona o casco por todos os lados. Quanto mais fundo, maior a pressão. As forças de cada lado se compensam e, no conjunto, surge uma força para cima: o empuxo.
+
+Foi Arquimedes quem explicou o princípio. A intensidade do empuxo é igual ao peso da água que o navio desloca. Quando o empuxo equilibra o peso total do navio, ele flutua.
+
+Compare com o bloco. Mesmo completamente submerso, ele desloca pouca água para o peso que tem. Por isso, afunda. Já o casco ocupa um volume muito maior sem ser feito inteiramente de aço. Assim, consegue deslocar água suficiente para sustentar seu peso.
+
+Mas o navio ainda está vazio. O que acontece quando colocamos contêineres?
+
+Um guindaste traz o primeiro. Depois outro. E mais outro. Observe a linha d'água: a cada carga, o casco desce um pouco. Mais casco fica submerso, mais água é deslocada, e o empuxo aumenta até surgir um novo equilíbrio.
+
+Essa profundidade, medida da quilha até a superfície da água, se chama calado. E aquelas marcas no costado? Algumas indicam o calado; outras, os limites seguros de carregamento, que variam conforme as condições de navegação.
+
+Agora imagine uma avaria. Um compartimento começa a receber água. A parte interna antes seca perde sua contribuição para a flutuação. O navio pode afundar mais, inclinar e, se a inundação for grave, naufragar. Por isso, divisórias estanques ajudam a limitar os danos.
+
+No fim, o segredo não está em fazer o aço ficar leve. Está em projetar um casco que desloque água suficiente para equilibrar todo o peso do navio.
+
+De Olho no Invisível. O invisível ganha forma.

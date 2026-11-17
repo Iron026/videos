@@ -1,0 +1,2306 @@
+[
+ {
+  "palavra": "Este",
+  "inicio": 0.0,
+  "fim": 0.44,
+  "confianca": 0.69
+ },
+ {
+  "palavra": "bloco",
+  "inicio": 0.44,
+  "fim": 0.88,
+  "confianca": 0.99
+ },
+ {
+  "palavra": "é",
+  "inicio": 0.88,
+  "fim": 1.04,
+  "confianca": 0.99
+ },
+ {
+  "palavra": "feito",
+  "inicio": 1.04,
+  "fim": 1.24,
+  "confianca": 0.99
+ },
+ {
+  "palavra": "de",
+  "inicio": 1.24,
+  "fim": 1.54,
+  "confianca": 0.99
+ },
+ {
+  "palavra": "aço.",
+  "inicio": 1.54,
+  "fim": 1.92,
+  "confianca": 0.95
+ },
+ {
+  "palavra": "Quando",
+  "inicio": 2.16,
+  "fim": 2.5,
+  "confianca": 0.99
+ },
+ {
+  "palavra": "cai",
+  "inicio": 2.5,
+  "fim": 2.7,
+  "confianca": 0.96
+ },
+ {
+  "palavra": "na",
+  "inicio": 2.7,
+  "fim": 2.86,
+  "confianca": 0.99
+ },
+ {
+  "palavra": "água,",
+  "inicio": 2.86,
+  "fim": 3.18,
+  "confianca": 0.99
+ },
+ {
+  "palavra": "ele",
+  "inicio": 3.4,
+  "fim": 3.56,
+  "confianca": 1.0
+ },
+ {
+  "palavra": "afunda.",
+  "inicio": 3.56,
+  "fim": 4.0,
+  "confianca": 0.97
+ },
+ {
+  "palavra": "Mas",
+  "inicio": 4.62,
+  "fim": 4.84,
+  "confianca": 0.99
+ },
+ {
+  "palavra": "olha",
+  "inicio": 4.84,
+  "fim": 5.16,
+  "confianca": 0.94
+ },
+ {
+  "palavra": "este",
+  "inicio": 5.16,
+  "fim": 5.52,
+  "confianca": 0.92
+ },
+ {
+  "palavra": "gigante:",
+  "inicio": 5.52,
+  "fim": 6.04,
+  "confianca": 1.0
+ },
+ {
+  "palavra": "um",
+  "inicio": 6.46,
+  "fim": 6.62,
+  "confianca": 0.99
+ },
+ {
+  "palavra": "navio",
+  "inicio": 6.62,
+  "fim": 6.94,
+  "confianca": 1.0
+ },
+ {
+  "palavra": "feito",
+  "inicio": 6.94,
+  "fim": 7.3,
+  "confianca": 1.0
+ },
+ {
+  "palavra": "do",
+  "inicio": 7.3,
+  "fim": 7.58,
+  "confianca": 0.98
+ },
+ {
+  "palavra": "mesmo",
+  "inicio": 7.58,
+  "fim": 7.94,
+  "confianca": 1.0
+ },
+ {
+  "palavra": "aço,",
+  "inicio": 7.94,
+  "fim": 8.38,
+  "confianca": 0.99
+ },
+ {
+  "palavra": "carregando",
+  "inicio": 8.7,
+  "fim": 9.18,
+  "confianca": 1.0
+ },
+ {
+  "palavra": "milhares",
+  "inicio": 9.18,
+  "fim": 9.76,
+  "confianca": 0.99
+ },
+ {
+  "palavra": "de",
+  "inicio": 9.76,
+  "fim": 9.92,
+  "confianca": 1.0
+ },
+ {
+  "palavra": "toneladas,",
+  "inicio": 9.92,
+  "fim": 10.5,
+  "confianca": 0.99
+ },
+ {
+  "palavra": "e",
+  "inicio": 10.5,
+  "fim": 11.1,
+  "confianca": 0.72
+ },
+ {
+  "palavra": "ainda",
+  "inicio": 11.18,
+  "fim": 11.44,
+  "confianca": 1.0
+ },
+ {
+  "palavra": "assim",
+  "inicio": 11.44,
+  "fim": 11.86,
+  "confianca": 0.99
+ },
+ {
+  "palavra": "flutuando.",
+  "inicio": 12.32,
+  "fim": 12.98,
+  "confianca": 0.99
+ },
+ {
+  "palavra": "Como",
+  "inicio": 13.44,
+  "fim": 13.7,
+  "confianca": 0.99
+ },
+ {
+  "palavra": "isso",
+  "inicio": 13.7,
+  "fim": 13.96,
+  "confianca": 0.99
+ },
+ {
+  "palavra": "é",
+  "inicio": 13.96,
+  "fim": 14.08,
+  "confianca": 1.0
+ },
+ {
+  "palavra": "possível?",
+  "inicio": 14.08,
+  "fim": 14.72,
+  "confianca": 1.0
+ },
+ {
+  "palavra": "Vamos",
+  "inicio": 15.22,
+  "fim": 15.42,
+  "confianca": 0.99
+ },
+ {
+  "palavra": "descobrir",
+  "inicio": 15.42,
+  "fim": 15.88,
+  "confianca": 1.0
+ },
+ {
+  "palavra": "construindo",
+  "inicio": 15.88,
+  "fim": 16.58,
+  "confianca": 0.99
+ },
+ {
+  "palavra": "um",
+  "inicio": 16.58,
+  "fim": 16.74,
+  "confianca": 1.0
+ },
+ {
+  "palavra": "navio,",
+  "inicio": 16.74,
+  "fim": 17.14,
+  "confianca": 1.0
+ },
+ {
+  "palavra": "peça",
+  "inicio": 17.14,
+  "fim": 17.88,
+  "confianca": 0.86
+ },
+ {
+  "palavra": "por",
+  "inicio": 17.88,
+  "fim": 18.1,
+  "confianca": 0.93
+ },
+ {
+  "palavra": "peça.",
+  "inicio": 18.1,
+  "fim": 18.6,
+  "confianca": 1.0
+ },
+ {
+  "palavra": "No",
+  "inicio": 19.0,
+  "fim": 19.14,
+  "confianca": 0.99
+ },
+ {
+  "palavra": "estaleiro,",
+  "inicio": 19.14,
+  "fim": 19.76,
+  "confianca": 0.92
+ },
+ {
+  "palavra": "um",
+  "inicio": 20.12,
+  "fim": 20.2,
+  "confianca": 0.99
+ },
+ {
+  "palavra": "guindaste",
+  "inicio": 20.2,
+  "fim": 20.74,
+  "confianca": 0.71
+ },
+ {
+  "palavra": "ergue",
+  "inicio": 20.74,
+  "fim": 21.12,
+  "confianca": 0.93
+ },
+ {
+  "palavra": "enormes",
+  "inicio": 21.12,
+  "fim": 21.82,
+  "confianca": 0.99
+ },
+ {
+  "palavra": "chapas",
+  "inicio": 21.82,
+  "fim": 22.32,
+  "confianca": 0.97
+ },
+ {
+  "palavra": "de",
+  "inicio": 22.32,
+  "fim": 22.5,
+  "confianca": 1.0
+ },
+ {
+  "palavra": "aço.",
+  "inicio": 22.5,
+  "fim": 22.88,
+  "confianca": 1.0
+ },
+ {
+  "palavra": "Elas",
+  "inicio": 22.88,
+  "fim": 23.62,
+  "confianca": 0.52
+ },
+ {
+  "palavra": "são",
+  "inicio": 23.62,
+  "fim": 23.92,
+  "confianca": 0.99
+ },
+ {
+  "palavra": "soldadas,",
+  "inicio": 23.92,
+  "fim": 24.68,
+  "confianca": 0.99
+ },
+ {
+  "palavra": "formando",
+  "inicio": 25.0,
+  "fim": 25.58,
+  "confianca": 1.0
+ },
+ {
+  "palavra": "o",
+  "inicio": 25.58,
+  "fim": 25.8,
+  "confianca": 0.82
+ },
+ {
+  "palavra": "fundo,",
+  "inicio": 25.8,
+  "fim": 26.08,
+  "confianca": 1.0
+ },
+ {
+  "palavra": "as",
+  "inicio": 26.58,
+  "fim": 26.72,
+  "confianca": 0.98
+ },
+ {
+  "palavra": "laterais",
+  "inicio": 26.72,
+  "fim": 27.36,
+  "confianca": 0.99
+ },
+ {
+  "palavra": "e",
+  "inicio": 27.36,
+  "fim": 27.64,
+  "confianca": 0.8
+ },
+ {
+  "palavra": "a",
+  "inicio": 27.64,
+  "fim": 27.76,
+  "confianca": 0.99
+ },
+ {
+  "palavra": "proa.",
+  "inicio": 27.76,
+  "fim": 28.18,
+  "confianca": 0.96
+ },
+ {
+  "palavra": "O",
+  "inicio": 28.52,
+  "fim": 28.64,
+  "confianca": 0.99
+ },
+ {
+  "palavra": "casco",
+  "inicio": 28.64,
+  "fim": 29.0,
+  "confianca": 0.99
+ },
+ {
+  "palavra": "vai",
+  "inicio": 29.0,
+  "fim": 29.18,
+  "confianca": 1.0
+ },
+ {
+  "palavra": "tomando",
+  "inicio": 29.18,
+  "fim": 29.54,
+  "confianca": 1.0
+ },
+ {
+  "palavra": "forma.",
+  "inicio": 29.54,
+  "fim": 29.92,
+  "confianca": 0.99
+ },
+ {
+  "palavra": "E",
+  "inicio": 30.44,
+  "fim": 30.48,
+  "confianca": 0.96
+ },
+ {
+  "palavra": "aqui",
+  "inicio": 30.48,
+  "fim": 30.6,
+  "confianca": 0.96
+ },
+ {
+  "palavra": "está",
+  "inicio": 30.6,
+  "fim": 30.86,
+  "confianca": 0.99
+ },
+ {
+  "palavra": "o",
+  "inicio": 30.86,
+  "fim": 30.96,
+  "confianca": 0.99
+ },
+ {
+  "palavra": "primeiro",
+  "inicio": 30.96,
+  "fim": 31.34,
+  "confianca": 0.99
+ },
+ {
+  "palavra": "detalhe",
+  "inicio": 31.34,
+  "fim": 31.92,
+  "confianca": 0.97
+ },
+ {
+  "palavra": "importante:",
+  "inicio": 32.04,
+  "fim": 32.56,
+  "confianca": 0.97
+ },
+ {
+  "palavra": "ele",
+  "inicio": 33.2,
+  "fim": 33.44,
+  "confianca": 0.96
+ },
+ {
+  "palavra": "não",
+  "inicio": 33.44,
+  "fim": 33.78,
+  "confianca": 1.0
+ },
+ {
+  "palavra": "é",
+  "inicio": 33.78,
+  "fim": 34.1,
+  "confianca": 1.0
+ },
+ {
+  "palavra": "um",
+  "inicio": 34.1,
+  "fim": 34.24,
+  "confianca": 1.0
+ },
+ {
+  "palavra": "bloco",
+  "inicio": 34.24,
+  "fim": 34.62,
+  "confianca": 0.99
+ },
+ {
+  "palavra": "maciço.",
+  "inicio": 34.62,
+  "fim": 35.3,
+  "confianca": 0.95
+ },
+ {
+  "palavra": "É",
+  "inicio": 35.64,
+  "fim": 35.8,
+  "confianca": 0.99
+ },
+ {
+  "palavra": "uma",
+  "inicio": 35.8,
+  "fim": 35.94,
+  "confianca": 1.0
+ },
+ {
+  "palavra": "estrutura",
+  "inicio": 35.94,
+  "fim": 36.42,
+  "confianca": 1.0
+ },
+ {
+  "palavra": "enorme,",
+  "inicio": 36.42,
+  "fim": 36.88,
+  "confianca": 1.0
+ },
+ {
+  "palavra": "com",
+  "inicio": 36.88,
+  "fim": 37.16,
+  "confianca": 0.69
+ },
+ {
+  "palavra": "compartimentos",
+  "inicio": 37.16,
+  "fim": 38.22,
+  "confianca": 0.98
+ },
+ {
+  "palavra": "e",
+  "inicio": 38.22,
+  "fim": 38.42,
+  "confianca": 0.97
+ },
+ {
+  "palavra": "muito",
+  "inicio": 38.42,
+  "fim": 38.84,
+  "confianca": 1.0
+ },
+ {
+  "palavra": "espaço",
+  "inicio": 38.84,
+  "fim": 39.22,
+  "confianca": 1.0
+ },
+ {
+  "palavra": "interno",
+  "inicio": 39.22,
+  "fim": 39.86,
+  "confianca": 1.0
+ },
+ {
+  "palavra": "que",
+  "inicio": 39.86,
+  "fim": 40.28,
+  "confianca": 0.78
+ },
+ {
+  "palavra": "permanece",
+  "inicio": 40.28,
+  "fim": 40.8,
+  "confianca": 1.0
+ },
+ {
+  "palavra": "seco.",
+  "inicio": 40.8,
+  "fim": 41.3,
+  "confianca": 0.99
+ },
+ {
+  "palavra": "Agora,",
+  "inicio": 41.62,
+  "fim": 42.08,
+  "confianca": 0.99
+ },
+ {
+  "palavra": "o",
+  "inicio": 42.44,
+  "fim": 42.72,
+  "confianca": 1.0
+ },
+ {
+  "palavra": "casco",
+  "inicio": 42.72,
+  "fim": 43.16,
+  "confianca": 1.0
+ },
+ {
+  "palavra": "entra",
+  "inicio": 43.16,
+  "fim": 43.46,
+  "confianca": 1.0
+ },
+ {
+  "palavra": "na",
+  "inicio": 43.46,
+  "fim": 43.68,
+  "confianca": 1.0
+ },
+ {
+  "palavra": "água.",
+  "inicio": 43.68,
+  "fim": 44.04,
+  "confianca": 1.0
+ },
+ {
+  "palavra": "Ele",
+  "inicio": 44.38,
+  "fim": 44.58,
+  "confianca": 0.99
+ },
+ {
+  "palavra": "afunda",
+  "inicio": 44.58,
+  "fim": 45.58,
+  "confianca": 0.97
+ },
+ {
+  "palavra": "um",
+  "inicio": 45.58,
+  "fim": 45.8,
+  "confianca": 1.0
+ },
+ {
+  "palavra": "pouco...",
+  "inicio": 45.8,
+  "fim": 46.08,
+  "confianca": 1.0
+ },
+ {
+  "palavra": "e",
+  "inicio": 46.08,
+  "fim": 46.66,
+  "confianca": 0.87
+ },
+ {
+  "palavra": "para.",
+  "inicio": 46.66,
+  "fim": 47.04,
+  "confianca": 0.94
+ },
+ {
+  "palavra": "Por",
+  "inicio": 47.54,
+  "fim": 47.54,
+  "confianca": 0.74
+ },
+ {
+  "palavra": "quê?",
+  "inicio": 47.54,
+  "fim": 47.72,
+  "confianca": 0.8
+ },
+ {
+  "palavra": "Repare",
+  "inicio": 48.14,
+  "fim": 48.54,
+  "confianca": 0.97
+ },
+ {
+  "palavra": "no",
+  "inicio": 48.54,
+  "fim": 48.72,
+  "confianca": 0.89
+ },
+ {
+  "palavra": "que",
+  "inicio": 48.72,
+  "fim": 48.82,
+  "confianca": 0.99
+ },
+ {
+  "palavra": "acontece",
+  "inicio": 48.82,
+  "fim": 49.3,
+  "confianca": 1.0
+ },
+ {
+  "palavra": "debaixo",
+  "inicio": 49.3,
+  "fim": 49.8,
+  "confianca": 0.92
+ },
+ {
+  "palavra": "da",
+  "inicio": 49.8,
+  "fim": 49.94,
+  "confianca": 1.0
+ },
+ {
+  "palavra": "superfície.",
+  "inicio": 49.94,
+  "fim": 50.66,
+  "confianca": 0.99
+ },
+ {
+  "palavra": "A",
+  "inicio": 50.66,
+  "fim": 51.14,
+  "confianca": 0.25
+ },
+ {
+  "palavra": "água",
+  "inicio": 51.14,
+  "fim": 51.38,
+  "confianca": 0.87
+ },
+ {
+  "palavra": "pressiona",
+  "inicio": 51.38,
+  "fim": 51.84,
+  "confianca": 0.98
+ },
+ {
+  "palavra": "o",
+  "inicio": 51.84,
+  "fim": 52.0,
+  "confianca": 0.9
+ },
+ {
+  "palavra": "casco",
+  "inicio": 52.0,
+  "fim": 52.34,
+  "confianca": 0.98
+ },
+ {
+  "palavra": "por",
+  "inicio": 52.34,
+  "fim": 52.56,
+  "confianca": 0.99
+ },
+ {
+  "palavra": "todos",
+  "inicio": 52.56,
+  "fim": 53.12,
+  "confianca": 0.91
+ },
+ {
+  "palavra": "os",
+  "inicio": 53.12,
+  "fim": 53.44,
+  "confianca": 0.99
+ },
+ {
+  "palavra": "lados.",
+  "inicio": 53.44,
+  "fim": 53.72,
+  "confianca": 1.0
+ },
+ {
+  "palavra": "Quanto",
+  "inicio": 54.14,
+  "fim": 54.48,
+  "confianca": 0.98
+ },
+ {
+  "palavra": "mais",
+  "inicio": 54.48,
+  "fim": 54.72,
+  "confianca": 1.0
+ },
+ {
+  "palavra": "fundo,",
+  "inicio": 54.72,
+  "fim": 55.06,
+  "confianca": 1.0
+ },
+ {
+  "palavra": "maior",
+  "inicio": 55.46,
+  "fim": 55.88,
+  "confianca": 0.99
+ },
+ {
+  "palavra": "a",
+  "inicio": 55.88,
+  "fim": 56.12,
+  "confianca": 0.99
+ },
+ {
+  "palavra": "pressão.",
+  "inicio": 56.12,
+  "fim": 56.54,
+  "confianca": 1.0
+ },
+ {
+  "palavra": "As",
+  "inicio": 56.94,
+  "fim": 57.12,
+  "confianca": 0.97
+ },
+ {
+  "palavra": "forças",
+  "inicio": 57.12,
+  "fim": 57.54,
+  "confianca": 1.0
+ },
+ {
+  "palavra": "de",
+  "inicio": 57.54,
+  "fim": 57.72,
+  "confianca": 1.0
+ },
+ {
+  "palavra": "cada",
+  "inicio": 57.72,
+  "fim": 57.92,
+  "confianca": 1.0
+ },
+ {
+  "palavra": "lado",
+  "inicio": 57.92,
+  "fim": 58.24,
+  "confianca": 1.0
+ },
+ {
+  "palavra": "se",
+  "inicio": 58.24,
+  "fim": 58.5,
+  "confianca": 0.99
+ },
+ {
+  "palavra": "compensam",
+  "inicio": 58.5,
+  "fim": 59.18,
+  "confianca": 0.93
+ },
+ {
+  "palavra": "e,",
+  "inicio": 59.18,
+  "fim": 59.64,
+  "confianca": 0.7
+ },
+ {
+  "palavra": "no",
+  "inicio": 59.66,
+  "fim": 59.72,
+  "confianca": 1.0
+ },
+ {
+  "palavra": "conjunto,",
+  "inicio": 59.72,
+  "fim": 60.06,
+  "confianca": 1.0
+ },
+ {
+  "palavra": "surge",
+  "inicio": 60.3,
+  "fim": 60.44,
+  "confianca": 0.99
+ },
+ {
+  "palavra": "uma",
+  "inicio": 60.44,
+  "fim": 60.68,
+  "confianca": 0.97
+ },
+ {
+  "palavra": "força",
+  "inicio": 60.68,
+  "fim": 61.02,
+  "confianca": 1.0
+ },
+ {
+  "palavra": "para",
+  "inicio": 61.02,
+  "fim": 61.26,
+  "confianca": 0.99
+ },
+ {
+  "palavra": "cima:",
+  "inicio": 61.26,
+  "fim": 61.66,
+  "confianca": 1.0
+ },
+ {
+  "palavra": "o",
+  "inicio": 62.06,
+  "fim": 62.16,
+  "confianca": 0.98
+ },
+ {
+  "palavra": "empuxo.",
+  "inicio": 62.16,
+  "fim": 62.86,
+  "confianca": 0.84
+ },
+ {
+  "palavra": "Foi",
+  "inicio": 63.14,
+  "fim": 63.42,
+  "confianca": 0.99
+ },
+ {
+  "palavra": "Arquimedes",
+  "inicio": 63.42,
+  "fim": 64.0,
+  "confianca": null
+ },
+ {
+  "palavra": "quem",
+  "inicio": 64.0,
+  "fim": 64.24,
+  "confianca": 0.84
+ },
+ {
+  "palavra": "explicou",
+  "inicio": 64.24,
+  "fim": 64.72,
+  "confianca": 1.0
+ },
+ {
+  "palavra": "o",
+  "inicio": 64.72,
+  "fim": 64.86,
+  "confianca": 0.99
+ },
+ {
+  "palavra": "princípio.",
+  "inicio": 64.86,
+  "fim": 65.4,
+  "confianca": 0.99
+ },
+ {
+  "palavra": "A",
+  "inicio": 65.8,
+  "fim": 65.9,
+  "confianca": 0.97
+ },
+ {
+  "palavra": "intensidade",
+  "inicio": 65.9,
+  "fim": 66.44,
+  "confianca": 0.99
+ },
+ {
+  "palavra": "do",
+  "inicio": 66.44,
+  "fim": 66.6,
+  "confianca": 1.0
+ },
+ {
+  "palavra": "empuxo",
+  "inicio": 66.6,
+  "fim": 67.18,
+  "confianca": 1.0
+ },
+ {
+  "palavra": "é",
+  "inicio": 67.18,
+  "fim": 67.54,
+  "confianca": 0.99
+ },
+ {
+  "palavra": "igual",
+  "inicio": 67.54,
+  "fim": 67.84,
+  "confianca": 1.0
+ },
+ {
+  "palavra": "ao",
+  "inicio": 67.84,
+  "fim": 68.1,
+  "confianca": 0.99
+ },
+ {
+  "palavra": "peso",
+  "inicio": 68.1,
+  "fim": 68.42,
+  "confianca": 1.0
+ },
+ {
+  "palavra": "da",
+  "inicio": 68.42,
+  "fim": 68.64,
+  "confianca": 0.99
+ },
+ {
+  "palavra": "água",
+  "inicio": 68.64,
+  "fim": 69.0,
+  "confianca": 1.0
+ },
+ {
+  "palavra": "que",
+  "inicio": 69.0,
+  "fim": 69.18,
+  "confianca": 0.98
+ },
+ {
+  "palavra": "o",
+  "inicio": 69.18,
+  "fim": 69.28,
+  "confianca": 0.99
+ },
+ {
+  "palavra": "navio",
+  "inicio": 69.28,
+  "fim": 69.62,
+  "confianca": 0.99
+ },
+ {
+  "palavra": "desloca.",
+  "inicio": 69.62,
+  "fim": 70.24,
+  "confianca": 0.99
+ },
+ {
+  "palavra": "Quando",
+  "inicio": 70.7,
+  "fim": 71.02,
+  "confianca": 1.0
+ },
+ {
+  "palavra": "o",
+  "inicio": 71.02,
+  "fim": 71.16,
+  "confianca": 0.99
+ },
+ {
+  "palavra": "empuxo",
+  "inicio": 71.16,
+  "fim": 71.68,
+  "confianca": 0.99
+ },
+ {
+  "palavra": "equilibra",
+  "inicio": 71.68,
+  "fim": 72.18,
+  "confianca": 0.95
+ },
+ {
+  "palavra": "o",
+  "inicio": 72.18,
+  "fim": 72.28,
+  "confianca": 1.0
+ },
+ {
+  "palavra": "peso",
+  "inicio": 72.28,
+  "fim": 72.48,
+  "confianca": 1.0
+ },
+ {
+  "palavra": "total",
+  "inicio": 72.48,
+  "fim": 72.88,
+  "confianca": 1.0
+ },
+ {
+  "palavra": "do",
+  "inicio": 72.88,
+  "fim": 73.14,
+  "confianca": 1.0
+ },
+ {
+  "palavra": "navio,",
+  "inicio": 73.14,
+  "fim": 73.56,
+  "confianca": 1.0
+ },
+ {
+  "palavra": "ele",
+  "inicio": 73.92,
+  "fim": 74.12,
+  "confianca": 0.99
+ },
+ {
+  "palavra": "flutua.",
+  "inicio": 74.12,
+  "fim": 74.72,
+  "confianca": 1.0
+ },
+ {
+  "palavra": "Compare",
+  "inicio": 74.96,
+  "fim": 75.5,
+  "confianca": 0.73
+ },
+ {
+  "palavra": "com",
+  "inicio": 75.5,
+  "fim": 75.74,
+  "confianca": 1.0
+ },
+ {
+  "palavra": "o",
+  "inicio": 75.74,
+  "fim": 75.86,
+  "confianca": 0.98
+ },
+ {
+  "palavra": "bloco.",
+  "inicio": 75.86,
+  "fim": 76.3,
+  "confianca": 1.0
+ },
+ {
+  "palavra": "Mesmo",
+  "inicio": 76.3,
+  "fim": 77.14,
+  "confianca": 0.62
+ },
+ {
+  "palavra": "completamente",
+  "inicio": 77.14,
+  "fim": 77.72,
+  "confianca": 0.96
+ },
+ {
+  "palavra": "submerso,",
+  "inicio": 77.72,
+  "fim": 78.6,
+  "confianca": 0.98
+ },
+ {
+  "palavra": "ele",
+  "inicio": 78.86,
+  "fim": 79.14,
+  "confianca": 0.98
+ },
+ {
+  "palavra": "desloca",
+  "inicio": 79.14,
+  "fim": 79.64,
+  "confianca": 0.98
+ },
+ {
+  "palavra": "pouca",
+  "inicio": 79.64,
+  "fim": 80.1,
+  "confianca": 0.98
+ },
+ {
+  "palavra": "água",
+  "inicio": 80.1,
+  "fim": 80.46,
+  "confianca": 0.99
+ },
+ {
+  "palavra": "para",
+  "inicio": 80.46,
+  "fim": 80.7,
+  "confianca": 0.99
+ },
+ {
+  "palavra": "o",
+  "inicio": 80.7,
+  "fim": 80.84,
+  "confianca": 1.0
+ },
+ {
+  "palavra": "peso",
+  "inicio": 80.84,
+  "fim": 81.06,
+  "confianca": 1.0
+ },
+ {
+  "palavra": "que",
+  "inicio": 81.06,
+  "fim": 81.24,
+  "confianca": 0.99
+ },
+ {
+  "palavra": "tem.",
+  "inicio": 81.24,
+  "fim": 81.5,
+  "confianca": 0.99
+ },
+ {
+  "palavra": "Por",
+  "inicio": 81.88,
+  "fim": 82.08,
+  "confianca": 0.99
+ },
+ {
+  "palavra": "isso,",
+  "inicio": 82.08,
+  "fim": 82.42,
+  "confianca": 1.0
+ },
+ {
+  "palavra": "afunda.",
+  "inicio": 82.84,
+  "fim": 83.42,
+  "confianca": 0.59
+ },
+ {
+  "palavra": "Já",
+  "inicio": 83.94,
+  "fim": 84.18,
+  "confianca": 0.99
+ },
+ {
+  "palavra": "o",
+  "inicio": 84.18,
+  "fim": 84.32,
+  "confianca": 0.98
+ },
+ {
+  "palavra": "casco",
+  "inicio": 84.32,
+  "fim": 84.72,
+  "confianca": 0.98
+ },
+ {
+  "palavra": "ocupa",
+  "inicio": 84.72,
+  "fim": 85.16,
+  "confianca": 0.99
+ },
+ {
+  "palavra": "um",
+  "inicio": 85.16,
+  "fim": 85.34,
+  "confianca": 1.0
+ },
+ {
+  "palavra": "volume",
+  "inicio": 85.34,
+  "fim": 85.62,
+  "confianca": 0.99
+ },
+ {
+  "palavra": "muito",
+  "inicio": 85.62,
+  "fim": 85.98,
+  "confianca": 1.0
+ },
+ {
+  "palavra": "maior",
+  "inicio": 85.98,
+  "fim": 86.32,
+  "confianca": 1.0
+ },
+ {
+  "palavra": "sem",
+  "inicio": 86.6,
+  "fim": 86.88,
+  "confianca": 1.0
+ },
+ {
+  "palavra": "ser",
+  "inicio": 86.88,
+  "fim": 87.12,
+  "confianca": 1.0
+ },
+ {
+  "palavra": "feito",
+  "inicio": 87.12,
+  "fim": 87.52,
+  "confianca": 1.0
+ },
+ {
+  "palavra": "inteiramente",
+  "inicio": 87.52,
+  "fim": 88.72,
+  "confianca": 0.93
+ },
+ {
+  "palavra": "de",
+  "inicio": 88.72,
+  "fim": 89.0,
+  "confianca": 0.99
+ },
+ {
+  "palavra": "aço.",
+  "inicio": 89.0,
+  "fim": 89.32,
+  "confianca": 0.98
+ },
+ {
+  "palavra": "Assim,",
+  "inicio": 89.74,
+  "fim": 90.2,
+  "confianca": 1.0
+ },
+ {
+  "palavra": "consegue",
+  "inicio": 90.6,
+  "fim": 91.12,
+  "confianca": 0.99
+ },
+ {
+  "palavra": "deslocar",
+  "inicio": 91.12,
+  "fim": 91.68,
+  "confianca": 0.95
+ },
+ {
+  "palavra": "água",
+  "inicio": 91.68,
+  "fim": 91.98,
+  "confianca": 0.77
+ },
+ {
+  "palavra": "suficiente",
+  "inicio": 91.98,
+  "fim": 92.54,
+  "confianca": 0.97
+ },
+ {
+  "palavra": "para",
+  "inicio": 92.54,
+  "fim": 93.26,
+  "confianca": 0.95
+ },
+ {
+  "palavra": "sustentar",
+  "inicio": 93.26,
+  "fim": 93.72,
+  "confianca": 0.96
+ },
+ {
+  "palavra": "seu",
+  "inicio": 93.72,
+  "fim": 93.98,
+  "confianca": 0.94
+ },
+ {
+  "palavra": "peso.",
+  "inicio": 93.98,
+  "fim": 94.38,
+  "confianca": 1.0
+ },
+ {
+  "palavra": "Mas",
+  "inicio": 94.68,
+  "fim": 95.0,
+  "confianca": 0.98
+ },
+ {
+  "palavra": "o",
+  "inicio": 95.58,
+  "fim": 95.76,
+  "confianca": 0.99
+ },
+ {
+  "palavra": "navio",
+  "inicio": 95.76,
+  "fim": 96.14,
+  "confianca": 1.0
+ },
+ {
+  "palavra": "ainda",
+  "inicio": 96.14,
+  "fim": 96.38,
+  "confianca": 0.98
+ },
+ {
+  "palavra": "está",
+  "inicio": 96.38,
+  "fim": 96.76,
+  "confianca": 1.0
+ },
+ {
+  "palavra": "vazio.",
+  "inicio": 96.76,
+  "fim": 97.36,
+  "confianca": 1.0
+ },
+ {
+  "palavra": "O",
+  "inicio": 97.68,
+  "fim": 97.84,
+  "confianca": 0.99
+ },
+ {
+  "palavra": "que",
+  "inicio": 97.84,
+  "fim": 97.92,
+  "confianca": 1.0
+ },
+ {
+  "palavra": "acontece",
+  "inicio": 97.92,
+  "fim": 98.38,
+  "confianca": 1.0
+ },
+ {
+  "palavra": "quando",
+  "inicio": 98.38,
+  "fim": 98.66,
+  "confianca": 1.0
+ },
+ {
+  "palavra": "colocamos",
+  "inicio": 98.66,
+  "fim": 99.18,
+  "confianca": 1.0
+ },
+ {
+  "palavra": "contêineres?",
+  "inicio": 99.18,
+  "fim": 100.12,
+  "confianca": 0.82
+ },
+ {
+  "palavra": "Um",
+  "inicio": 100.12,
+  "fim": 100.52,
+  "confianca": 0.36
+ },
+ {
+  "palavra": "guindaste",
+  "inicio": 100.52,
+  "fim": 101.04,
+  "confianca": 0.76
+ },
+ {
+  "palavra": "traz",
+  "inicio": 101.04,
+  "fim": 101.32,
+  "confianca": 0.99
+ },
+ {
+  "palavra": "o",
+  "inicio": 101.32,
+  "fim": 101.5,
+  "confianca": 1.0
+ },
+ {
+  "palavra": "primeiro.",
+  "inicio": 101.5,
+  "fim": 101.82,
+  "confianca": 0.99
+ },
+ {
+  "palavra": "Depois",
+  "inicio": 102.1,
+  "fim": 102.54,
+  "confianca": 1.0
+ },
+ {
+  "palavra": "outro.",
+  "inicio": 102.54,
+  "fim": 103.14,
+  "confianca": 0.92
+ },
+ {
+  "palavra": "E",
+  "inicio": 103.14,
+  "fim": 103.74,
+  "confianca": 0.69
+ },
+ {
+  "palavra": "mais",
+  "inicio": 103.74,
+  "fim": 104.18,
+  "confianca": 0.97
+ },
+ {
+  "palavra": "outro.",
+  "inicio": 104.18,
+  "fim": 104.74,
+  "confianca": 1.0
+ },
+ {
+  "palavra": "Observe",
+  "inicio": 105.1,
+  "fim": 105.64,
+  "confianca": 0.94
+ },
+ {
+  "palavra": "a",
+  "inicio": 105.64,
+  "fim": 105.84,
+  "confianca": 1.0
+ },
+ {
+  "palavra": "linha",
+  "inicio": 105.84,
+  "fim": 106.02,
+  "confianca": 1.0
+ },
+ {
+  "palavra": "d'água:",
+  "inicio": 106.02,
+  "fim": 106.5,
+  "confianca": null
+ },
+ {
+  "palavra": "a",
+  "inicio": 106.82,
+  "fim": 106.98,
+  "confianca": 0.94
+ },
+ {
+  "palavra": "cada",
+  "inicio": 106.98,
+  "fim": 107.18,
+  "confianca": 1.0
+ },
+ {
+  "palavra": "carga,",
+  "inicio": 107.18,
+  "fim": 107.58,
+  "confianca": 1.0
+ },
+ {
+  "palavra": "o",
+  "inicio": 108.02,
+  "fim": 108.14,
+  "confianca": 1.0
+ },
+ {
+  "palavra": "casco",
+  "inicio": 108.14,
+  "fim": 108.46,
+  "confianca": 0.98
+ },
+ {
+  "palavra": "desce",
+  "inicio": 108.46,
+  "fim": 108.88,
+  "confianca": 0.97
+ },
+ {
+  "palavra": "um",
+  "inicio": 108.88,
+  "fim": 109.02,
+  "confianca": 1.0
+ },
+ {
+  "palavra": "pouco.",
+  "inicio": 109.02,
+  "fim": 109.34,
+  "confianca": 1.0
+ },
+ {
+  "palavra": "Mais",
+  "inicio": 109.66,
+  "fim": 109.92,
+  "confianca": 0.45
+ },
+ {
+  "palavra": "casco",
+  "inicio": 109.92,
+  "fim": 110.42,
+  "confianca": 0.99
+ },
+ {
+  "palavra": "fica",
+  "inicio": 110.42,
+  "fim": 110.66,
+  "confianca": 1.0
+ },
+ {
+  "palavra": "submerso,",
+  "inicio": 110.66,
+  "fim": 111.32,
+  "confianca": 0.98
+ },
+ {
+  "palavra": "mais",
+  "inicio": 111.7,
+  "fim": 111.92,
+  "confianca": 0.97
+ },
+ {
+  "palavra": "água",
+  "inicio": 111.92,
+  "fim": 112.26,
+  "confianca": 0.99
+ },
+ {
+  "palavra": "é",
+  "inicio": 112.26,
+  "fim": 112.42,
+  "confianca": 0.99
+ },
+ {
+  "palavra": "deslocada,",
+  "inicio": 112.42,
+  "fim": 113.12,
+  "confianca": 0.99
+ },
+ {
+  "palavra": "e",
+  "inicio": 113.12,
+  "fim": 113.62,
+  "confianca": 0.68
+ },
+ {
+  "palavra": "o",
+  "inicio": 113.62,
+  "fim": 113.68,
+  "confianca": 0.99
+ },
+ {
+  "palavra": "empuxo",
+  "inicio": 113.68,
+  "fim": 114.16,
+  "confianca": 0.82
+ },
+ {
+  "palavra": "aumenta",
+  "inicio": 114.16,
+  "fim": 114.8,
+  "confianca": 1.0
+ },
+ {
+  "palavra": "até",
+  "inicio": 114.8,
+  "fim": 115.16,
+  "confianca": 0.92
+ },
+ {
+  "palavra": "surgir",
+  "inicio": 115.16,
+  "fim": 115.68,
+  "confianca": 1.0
+ },
+ {
+  "palavra": "um",
+  "inicio": 115.68,
+  "fim": 115.88,
+  "confianca": 1.0
+ },
+ {
+  "palavra": "novo",
+  "inicio": 115.88,
+  "fim": 116.2,
+  "confianca": 1.0
+ },
+ {
+  "palavra": "equilíbrio.",
+  "inicio": 116.2,
+  "fim": 116.84,
+  "confianca": 0.99
+ },
+ {
+  "palavra": "Essa",
+  "inicio": 117.22,
+  "fim": 117.5,
+  "confianca": 0.99
+ },
+ {
+  "palavra": "profundidade,",
+  "inicio": 117.5,
+  "fim": 118.46,
+  "confianca": 1.0
+ },
+ {
+  "palavra": "medida",
+  "inicio": 118.88,
+  "fim": 119.3,
+  "confianca": 0.97
+ },
+ {
+  "palavra": "da",
+  "inicio": 119.3,
+  "fim": 119.64,
+  "confianca": null
+ },
+ {
+  "palavra": "quilha",
+  "inicio": 119.64,
+  "fim": 119.98,
+  "confianca": null
+ },
+ {
+  "palavra": "até",
+  "inicio": 119.98,
+  "fim": 120.48,
+  "confianca": 0.86
+ },
+ {
+  "palavra": "a",
+  "inicio": 120.48,
+  "fim": 120.62,
+  "confianca": 0.98
+ },
+ {
+  "palavra": "superfície",
+  "inicio": 120.62,
+  "fim": 121.3,
+  "confianca": 0.99
+ },
+ {
+  "palavra": "da",
+  "inicio": 121.3,
+  "fim": 121.5,
+  "confianca": 0.98
+ },
+ {
+  "palavra": "água,",
+  "inicio": 121.5,
+  "fim": 121.88,
+  "confianca": 1.0
+ },
+ {
+  "palavra": "se",
+  "inicio": 121.88,
+  "fim": 122.4,
+  "confianca": 0.87
+ },
+ {
+  "palavra": "chama",
+  "inicio": 122.4,
+  "fim": 122.7,
+  "confianca": 1.0
+ },
+ {
+  "palavra": "calado.",
+  "inicio": 122.7,
+  "fim": 123.46,
+  "confianca": 0.9
+ },
+ {
+  "palavra": "E",
+  "inicio": 123.82,
+  "fim": 123.94,
+  "confianca": 0.98
+ },
+ {
+  "palavra": "aquelas",
+  "inicio": 123.94,
+  "fim": 124.24,
+  "confianca": 0.99
+ },
+ {
+  "palavra": "marcas",
+  "inicio": 124.24,
+  "fim": 124.68,
+  "confianca": 1.0
+ },
+ {
+  "palavra": "no",
+  "inicio": 124.68,
+  "fim": 124.84,
+  "confianca": 0.97
+ },
+ {
+  "palavra": "costado?",
+  "inicio": 124.84,
+  "fim": 125.38,
+  "confianca": 0.97
+ },
+ {
+  "palavra": "Algumas",
+  "inicio": 125.82,
+  "fim": 126.3,
+  "confianca": 0.99
+ },
+ {
+  "palavra": "indicam",
+  "inicio": 126.3,
+  "fim": 126.88,
+  "confianca": 1.0
+ },
+ {
+  "palavra": "o",
+  "inicio": 126.88,
+  "fim": 127.02,
+  "confianca": 0.97
+ },
+ {
+  "palavra": "calado;",
+  "inicio": 127.02,
+  "fim": 127.54,
+  "confianca": 0.95
+ },
+ {
+  "palavra": "outras,",
+  "inicio": 127.54,
+  "fim": 128.38,
+  "confianca": 0.84
+ },
+ {
+  "palavra": "os",
+  "inicio": 128.82,
+  "fim": 128.92,
+  "confianca": 0.98
+ },
+ {
+  "palavra": "limites",
+  "inicio": 128.92,
+  "fim": 129.26,
+  "confianca": 0.96
+ },
+ {
+  "palavra": "seguros",
+  "inicio": 129.26,
+  "fim": 129.72,
+  "confianca": 1.0
+ },
+ {
+  "palavra": "de",
+  "inicio": 129.72,
+  "fim": 129.9,
+  "confianca": 1.0
+ },
+ {
+  "palavra": "carregamento,",
+  "inicio": 129.9,
+  "fim": 130.56,
+  "confianca": 0.99
+ },
+ {
+  "palavra": "que",
+  "inicio": 130.86,
+  "fim": 131.1,
+  "confianca": 1.0
+ },
+ {
+  "palavra": "variam",
+  "inicio": 131.1,
+  "fim": 131.5,
+  "confianca": 0.98
+ },
+ {
+  "palavra": "conforme",
+  "inicio": 131.5,
+  "fim": 132.1,
+  "confianca": 0.99
+ },
+ {
+  "palavra": "as",
+  "inicio": 132.1,
+  "fim": 132.26,
+  "confianca": 0.9
+ },
+ {
+  "palavra": "condições",
+  "inicio": 132.26,
+  "fim": 132.8,
+  "confianca": 1.0
+ },
+ {
+  "palavra": "de",
+  "inicio": 132.8,
+  "fim": 133.12,
+  "confianca": 1.0
+ },
+ {
+  "palavra": "navegação.",
+  "inicio": 133.12,
+  "fim": 133.78,
+  "confianca": 0.99
+ },
+ {
+  "palavra": "Agora",
+  "inicio": 134.24,
+  "fim": 134.7,
+  "confianca": 0.99
+ },
+ {
+  "palavra": "imagine",
+  "inicio": 135.2,
+  "fim": 135.76,
+  "confianca": 0.98
+ },
+ {
+  "palavra": "uma",
+  "inicio": 135.76,
+  "fim": 136.02,
+  "confianca": 1.0
+ },
+ {
+  "palavra": "avaria.",
+  "inicio": 136.02,
+  "fim": 136.6,
+  "confianca": 0.95
+ },
+ {
+  "palavra": "Um",
+  "inicio": 137.0,
+  "fim": 137.14,
+  "confianca": 0.96
+ },
+ {
+  "palavra": "compartimento",
+  "inicio": 137.14,
+  "fim": 137.8,
+  "confianca": 0.98
+ },
+ {
+  "palavra": "começa",
+  "inicio": 137.8,
+  "fim": 138.2,
+  "confianca": 0.99
+ },
+ {
+  "palavra": "a",
+  "inicio": 138.2,
+  "fim": 138.44,
+  "confianca": 1.0
+ },
+ {
+  "palavra": "receber",
+  "inicio": 138.44,
+  "fim": 138.78,
+  "confianca": 1.0
+ },
+ {
+  "palavra": "água.",
+  "inicio": 138.78,
+  "fim": 139.24,
+  "confianca": 0.99
+ },
+ {
+  "palavra": "A",
+  "inicio": 139.64,
+  "fim": 139.78,
+  "confianca": 1.0
+ },
+ {
+  "palavra": "parte",
+  "inicio": 139.78,
+  "fim": 140.0,
+  "confianca": 1.0
+ },
+ {
+  "palavra": "interna",
+  "inicio": 140.0,
+  "fim": 140.64,
+  "confianca": 1.0
+ },
+ {
+  "palavra": "antes",
+  "inicio": 140.7,
+  "fim": 141.02,
+  "confianca": 0.79
+ },
+ {
+  "palavra": "seca",
+  "inicio": 141.02,
+  "fim": 141.56,
+  "confianca": 0.99
+ },
+ {
+  "palavra": "perde",
+  "inicio": 141.92,
+  "fim": 142.2,
+  "confianca": 0.95
+ },
+ {
+  "palavra": "sua",
+  "inicio": 142.2,
+  "fim": 142.46,
+  "confianca": 0.97
+ },
+ {
+  "palavra": "contribuição",
+  "inicio": 142.46,
+  "fim": 143.16,
+  "confianca": 1.0
+ },
+ {
+  "palavra": "para",
+  "inicio": 143.16,
+  "fim": 143.46,
+  "confianca": 1.0
+ },
+ {
+  "palavra": "a",
+  "inicio": 143.46,
+  "fim": 143.62,
+  "confianca": 0.83
+ },
+ {
+  "palavra": "flutuação.",
+  "inicio": 143.62,
+  "fim": 144.32,
+  "confianca": 0.99
+ },
+ {
+  "palavra": "O",
+  "inicio": 144.86,
+  "fim": 144.94,
+  "confianca": 0.95
+ },
+ {
+  "palavra": "navio",
+  "inicio": 144.94,
+  "fim": 145.28,
+  "confianca": 1.0
+ },
+ {
+  "palavra": "pode",
+  "inicio": 145.28,
+  "fim": 145.52,
+  "confianca": 1.0
+ },
+ {
+  "palavra": "afundar",
+  "inicio": 145.52,
+  "fim": 145.96,
+  "confianca": 0.99
+ },
+ {
+  "palavra": "mais,",
+  "inicio": 145.96,
+  "fim": 146.28,
+  "confianca": 1.0
+ },
+ {
+  "palavra": "inclinar",
+  "inicio": 146.52,
+  "fim": 147.04,
+  "confianca": 0.98
+ },
+ {
+  "palavra": "e,",
+  "inicio": 147.34,
+  "fim": 147.42,
+  "confianca": 1.0
+ },
+ {
+  "palavra": "se",
+  "inicio": 147.76,
+  "fim": 147.94,
+  "confianca": 1.0
+ },
+ {
+  "palavra": "a",
+  "inicio": 147.94,
+  "fim": 148.12,
+  "confianca": 0.97
+ },
+ {
+  "palavra": "inundação",
+  "inicio": 148.12,
+  "fim": 148.72,
+  "confianca": 0.85
+ },
+ {
+  "palavra": "for",
+  "inicio": 148.72,
+  "fim": 149.06,
+  "confianca": 1.0
+ },
+ {
+  "palavra": "grave,",
+  "inicio": 149.06,
+  "fim": 149.42,
+  "confianca": 1.0
+ },
+ {
+  "palavra": "naufragar.",
+  "inicio": 149.9,
+  "fim": 150.56,
+  "confianca": 0.75
+ },
+ {
+  "palavra": "Por",
+  "inicio": 150.96,
+  "fim": 151.12,
+  "confianca": 0.99
+ },
+ {
+  "palavra": "isso,",
+  "inicio": 151.12,
+  "fim": 151.38,
+  "confianca": 1.0
+ },
+ {
+  "palavra": "divisórias",
+  "inicio": 151.72,
+  "fim": 152.22,
+  "confianca": 0.96
+ },
+ {
+  "palavra": "estanques",
+  "inicio": 152.48,
+  "fim": 152.82,
+  "confianca": 0.69
+ },
+ {
+  "palavra": "ajudam",
+  "inicio": 152.82,
+  "fim": 153.44,
+  "confianca": 1.0
+ },
+ {
+  "palavra": "a",
+  "inicio": 153.44,
+  "fim": 153.6,
+  "confianca": 0.99
+ },
+ {
+  "palavra": "limitar",
+  "inicio": 153.6,
+  "fim": 153.98,
+  "confianca": 0.99
+ },
+ {
+  "palavra": "os",
+  "inicio": 153.98,
+  "fim": 154.2,
+  "confianca": 0.99
+ },
+ {
+  "palavra": "danos.",
+  "inicio": 154.2,
+  "fim": 154.6,
+  "confianca": 1.0
+ },
+ {
+  "palavra": "No",
+  "inicio": 154.6,
+  "fim": 155.24,
+  "confianca": 0.81
+ },
+ {
+  "palavra": "fim,",
+  "inicio": 155.24,
+  "fim": 155.48,
+  "confianca": 1.0
+ },
+ {
+  "palavra": "o",
+  "inicio": 155.98,
+  "fim": 156.08,
+  "confianca": 0.99
+ },
+ {
+  "palavra": "segredo",
+  "inicio": 156.08,
+  "fim": 156.56,
+  "confianca": 0.99
+ },
+ {
+  "palavra": "não",
+  "inicio": 156.56,
+  "fim": 156.68,
+  "confianca": 0.99
+ },
+ {
+  "palavra": "está",
+  "inicio": 156.68,
+  "fim": 157.02,
+  "confianca": 1.0
+ },
+ {
+  "palavra": "em",
+  "inicio": 157.02,
+  "fim": 157.22,
+  "confianca": 1.0
+ },
+ {
+  "palavra": "fazer",
+  "inicio": 157.22,
+  "fim": 157.56,
+  "confianca": 1.0
+ },
+ {
+  "palavra": "o",
+  "inicio": 157.56,
+  "fim": 157.82,
+  "confianca": 1.0
+ },
+ {
+  "palavra": "aço",
+  "inicio": 157.82,
+  "fim": 158.08,
+  "confianca": 0.96
+ },
+ {
+  "palavra": "ficar",
+  "inicio": 158.08,
+  "fim": 158.34,
+  "confianca": 1.0
+ },
+ {
+  "palavra": "leve.",
+  "inicio": 158.34,
+  "fim": 158.72,
+  "confianca": 1.0
+ },
+ {
+  "palavra": "Está",
+  "inicio": 159.14,
+  "fim": 159.46,
+  "confianca": 0.98
+ },
+ {
+  "palavra": "em",
+  "inicio": 159.46,
+  "fim": 159.6,
+  "confianca": 0.99
+ },
+ {
+  "palavra": "projetar",
+  "inicio": 159.6,
+  "fim": 160.1,
+  "confianca": 0.99
+ },
+ {
+  "palavra": "um",
+  "inicio": 160.1,
+  "fim": 160.2,
+  "confianca": 0.99
+ },
+ {
+  "palavra": "casco",
+  "inicio": 160.2,
+  "fim": 160.66,
+  "confianca": 0.99
+ },
+ {
+  "palavra": "que",
+  "inicio": 160.66,
+  "fim": 160.82,
+  "confianca": 0.96
+ },
+ {
+  "palavra": "desloque",
+  "inicio": 160.82,
+  "fim": 161.34,
+  "confianca": 0.93
+ },
+ {
+  "palavra": "água",
+  "inicio": 161.34,
+  "fim": 161.66,
+  "confianca": 0.82
+ },
+ {
+  "palavra": "suficiente",
+  "inicio": 161.66,
+  "fim": 162.24,
+  "confianca": 0.98
+ },
+ {
+  "palavra": "para",
+  "inicio": 162.24,
+  "fim": 163.06,
+  "confianca": 0.95
+ },
+ {
+  "palavra": "equilibrar",
+  "inicio": 163.06,
+  "fim": 164.26,
+  "confianca": 0.96
+ },
+ {
+  "palavra": "todo",
+  "inicio": 164.26,
+  "fim": 164.74,
+  "confianca": 0.98
+ },
+ {
+  "palavra": "o",
+  "inicio": 164.74,
+  "fim": 165.02,
+  "confianca": 1.0
+ },
+ {
+  "palavra": "peso",
+  "inicio": 165.02,
+  "fim": 165.4,
+  "confianca": 1.0
+ },
+ {
+  "palavra": "do",
+  "inicio": 165.4,
+  "fim": 165.6,
+  "confianca": 1.0
+ },
+ {
+  "palavra": "navio.",
+  "inicio": 165.6,
+  "fim": 166.12,
+  "confianca": 1.0
+ },
+ {
+  "palavra": "De",
+  "inicio": 166.56,
+  "fim": 166.66,
+  "confianca": 0.95
+ },
+ {
+  "palavra": "Olho",
+  "inicio": 166.66,
+  "fim": 167.04,
+  "confianca": 1.0
+ },
+ {
+  "palavra": "no",
+  "inicio": 167.04,
+  "fim": 167.2,
+  "confianca": 0.97
+ },
+ {
+  "palavra": "Invisível.",
+  "inicio": 167.2,
+  "fim": 167.92,
+  "confianca": 0.92
+ },
+ {
+  "palavra": "O",
+  "inicio": 168.28,
+  "fim": 168.38,
+  "confianca": 0.99
+ },
+ {
+  "palavra": "invisível",
+  "inicio": 168.38,
+  "fim": 169.06,
+  "confianca": 0.99
+ },
+ {
+  "palavra": "ganha",
+  "inicio": 169.06,
+  "fim": 169.4,
+  "confianca": 0.99
+ },
+ {
+  "palavra": "forma.",
+  "inicio": 169.48,
+  "fim": 169.86,
+  "confianca": 0.99
+ }
+]
