@@ -139,6 +139,9 @@ function criarMaterial(m) {
     uFC: { value: [...faixas.map(f => new THREE.Vector3(...f[1])), ...Array(6 - faixas.length).fill(new THREE.Vector3())] },
     uAcima: { value: new THREE.Vector3(...(m.acima || [1, 1, 1])) }, uAbaixoC: { value: new THREE.Vector3(...(m.abaixo || [1, 1, 1])) },
     uLinha: { value: new THREE.Vector3(...(m.linha || [0, 0, 0])) }, uZ0: { value: m.z0 ?? 0 }, uEsp: { value: m.esp ?? 0.2 },
+    uCasca: { value: m.casca ? 1 : 0 }, uBc: { value: m.casca ? m.casca.b : Array(64).fill(0) }, uKc: { value: m.casca ? m.casca.k : 0 },
+    uCalc: { value: m.casca ? m.casca.cal : 0 }, uTopoC: { value: m.casca ? m.casca.topo : 18 }, uEspC: { value: m.casca ? m.casca.esp : 0.38 },
+    uCorC: { value: new THREE.Vector3(...(m.casca ? m.casca.cor : [1, 1, 1])) },
     uSub: { value: SUBMERSOS.test(m.chave || '') && aguaMeta ? 1 : 0 }, uSigma: { value: sigma }, uSinSol: { value: Math.sin(elevSol) },
     uAMin: { value: caixaAgua.min }, uAMax: { value: caixaAgua.max },
   };
@@ -153,6 +156,7 @@ function criarMaterial(m) {
       uniform int uTipo, uNF; uniform vec3 uCorB; uniform float uVar, uEsc, uRugB, uBump, uEscov, uCaus, uEscCaus;
       uniform float uFZ[6]; uniform vec3 uFC[6]; uniform vec3 uAcima, uAbaixoC, uLinha; uniform float uZ0, uEsp;
       uniform float uSub, uSinSol; uniform vec3 uSigma, uAMin, uAMax;
+      uniform float uCasca, uBc[64], uKc, uCalc, uTopoC, uEspC; uniform vec3 uCorC;
       ${RUIDO}
       float alturaRelevo(){
         if(uTipo==0 && uBump>0.0) return fbm(vL*18.0,6,0.5)*uBump*0.06;
@@ -170,7 +174,10 @@ function criarMaterial(m) {
         else if(uTipo==4){ float n=fbm(vL*1.5,6,0.5); c*=mapear(n,0.0,1.0,0.82,1.05); }
         else if(uTipo==5){ vec3 cf=uFC[uNF-1]; for(int i=uNF-2;i>=0;i--){ if(vL.z<uFZ[i]) cf=uFC[i]; }
                            c=cf*mapear(fbm(vL*0.08,6,0.5),0.0,1.0,0.9,1.06); }
-        else if(uTipo==6){ c=(vW.z<uZ0)?uAbaixoC:uAcima; if(abs(vW.z-uZ0)<uEsp) c=uLinha; }
+        else if(uTipo==6){ c=(vW.z<uZ0)?uAbaixoC:uAcima; if(abs(vW.z-uZ0)<uEsp) c=uLinha;
+          if(uCasca>0.5){ float zl=vW.z+uCalc; float f=clamp((zl-uKc)/(uTopoC-uKc),0.0,1.0)*63.0; int i0=int(floor(f)); int i1=min(i0+1,63);
+            float bz=mix(uBc[i0],uBc[i1],fract(f)); float dcas=min(bz-abs(vW.y), zl-uKc);
+            if(dcas<uEspC && zl<uTopoC-0.6) c=uCorC; } }
         diffuseColor.rgb=c; }`)
     .replace('#include <roughnessmap_fragment>', `#include <roughnessmap_fragment>
       if(uTipo==0) roughnessFactor=mapear(fbm(vL*uEsc,5,0.5),0.0,1.0,uRugB*0.8,min(1.0,uRugB*1.2));
@@ -223,7 +230,10 @@ function materialAgua(m) {
         float F=0.02+0.98*pow(1.0-clamp(cosv,0.0,1.0),5.0);
         vec3 R=reflect(-V,N); vec3 refl=corCeu(normalize(vec3(R.xy,abs(R.z))));
         float spec=pow(max(dot(R,uSolDir),0.0),300.0)*12.0*exp(-vZv/300.0);
-        vec3 c=fundo*T*(1.0-F)+refl*F+uSolCor*spec*F;
+        float prof=max(-vW.z,0.0);
+        vec3 inscat=vec3(0.020,0.120,0.150)*(uSolCor.x/4.4)*exp(-prof/38.0);           // luz espalhada na coluna d'água
+        vec3 c=(fundo*T+inscat*(vec3(1.0)-T))*(1.0-F)+refl*F+uSolCor*spec*F;
+        if(N.z<0.5) c=mix(c, vec3(0.003,0.016,0.040), smoothstep(4.0,95.0,prof)*0.88);   // face lateral do corte: mar profundo
         gl_FragColor=vec4(c,1.0);
       }` });
 }
@@ -316,6 +326,30 @@ window.quadro = (i) => {
     renderer.setRenderTarget(rtProf); renderer.clear(); renderer.render(scene, camera); scene.overrideMaterial = null; ceu.visible = vis; }
   composer.render(); gl.readPixels(0, 0, 1, 1, gl.RGBA, gl.UNSIGNED_BYTE, px); return performance.now() - t0;
 };
+const ROT = meta.rotulos || [];
+if (ROT.length) {
+  await document.fonts.load('800 30px Montserrat');
+  posicionar(0);   // a câmera precisa estar no lugar antes de projetar as âncoras
+  const sv = document.createElementNS('http://www.w3.org/2000/svg', 'svg'); sv.setAttribute('width', W); sv.setAttribute('height', H);
+  Object.assign(sv.style, { position: 'fixed', left: 0, top: 0, pointerEvents: 'none' }); document.body.appendChild(sv);
+  const fs = Math.round(40 * ESCALA), pad = Math.round(16 * ESCALA);
+  for (const r of ROT) {
+    const v = new THREE.Vector3(...r.ancora).project(camera); const ax = (v.x + 1) / 2 * W, ay = (1 - v.y) / 2 * H;
+    const bx = ax + r.dx * W, by = ay + r.dy * H;
+    const el = document.createElement('div'); el.textContent = r.texto;
+    Object.assign(el.style, { position: 'fixed', font: `800 ${fs}px Montserrat, sans-serif`, color: '#F6F4EC', background: 'rgba(32,43,87,0.94)',
+      padding: `${pad * 0.55}px ${pad}px`, borderRadius: `${fs}px`, whiteSpace: 'nowrap', borderBottom: `${Math.max(3, Math.round(5 * ESCALA))}px solid #F3B544`,
+      boxShadow: '0 4px 14px rgba(0,0,0,0.35)', letterSpacing: '-0.2px' });
+    document.body.appendChild(el);
+    const w = el.offsetWidth, h = el.offsetHeight;
+    let lx = r.dx >= 0 ? bx : bx - w; lx = Math.min(Math.max(lx, 0.04 * W), 0.96 * W - w);
+    const ly = Math.min(Math.max(by - h / 2, 0.10 * H), 0.74 * H - h);
+    el.style.left = lx + 'px'; el.style.top = ly + 'px';
+    const ex = Math.min(Math.max(ax, lx), lx + w), ey = ly + h / 2;
+    sv.insertAdjacentHTML('beforeend', `<line x1="${ax}" y1="${ay}" x2="${ex}" y2="${ey}" stroke="#F6F4EC" stroke-width="${Math.max(2, 4 * ESCALA)}" stroke-linecap="round"/>` +
+      `<circle cx="${ax}" cy="${ay}" r="${9 * ESCALA}" fill="#F3B544" stroke="#202B57" stroke-width="${3 * ESCALA}"/>`);
+  }
+}
 window.info = { W, H, tris, materiais: meta.materiais.length, ao: AO, aoAmostras: AO_AMOSTRAS, sombra: SOMBRA, smap: SMAP, cache: CACHE, msaa: MSAA };
 window.quadro(0);
 window.pronto = true;

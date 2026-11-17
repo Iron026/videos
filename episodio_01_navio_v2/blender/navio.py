@@ -97,19 +97,34 @@ def malha_casco(nome, mat, x0=POPA, x1=PROA, folga=0.0, topo=PONTAL, n=150, nz=3
     return o
 
 
-def bulbo(nome, mat):
-    import bpy, bmesh
-    from mathutils import Matrix
-    bm = bmesh.new()
-    bmesh.ops.create_uvsphere(bm, u_segments=28, v_segments=16, radius=1.0)
-    for v in bm.verts:
-        x, y, z = v.co
-        sx = 7.0 if x > 0 else 9.0
-        v.co = Vector((x * sx, y * 2.4 * (1 - 0.15 * max(0, x)), z * 3.0))
-    me = bpy.data.meshes.new(nome); bm.to_mesh(me); bm.free()
-    for p in me.polygons: p.use_smooth = True
-    o = lib.ligar(bpy.data.objects.new(nome, me)); o.data.materials.append(mat)
-    o.location = (96.5, 0, 3.6)
+def bulbo(nome, mat, xa=84.0, xn=105.5, W=2.25, Hh=2.9, zc0=3.3, n_sec=40, n_ang=28, expo=2.6):
+    """Bulbo de proa fusiforme (não uma esfera): seção superelíptica mais alta que larga, corpo constante
+    embutido no casco e nariz elíptico projetando ~8 m à frente da roda de proa, levemente erguido."""
+    import bpy
+    vs, fs = [], []
+    for i in range(n_sec + 1):
+        t = i / n_sec; x = xa + (xn - xa) * t
+        f = 1.0 if t < 0.5 else math.sqrt(max(0.0, 1 - ((t - 0.5) / 0.5) ** 2.2))
+        f = max(f, 0.0)
+        w, h = W * f, Hh * (f ** 0.85)
+        zc = zc0 + 0.35 * t ** 2                       # nariz ligeiramente erguido
+        for j in range(n_ang):
+            a = 2 * math.pi * j / n_ang
+            c, s_ = math.cos(a), math.sin(a)
+            yy = w * math.copysign(abs(c) ** (2 / expo), c)
+            zz = h * math.copysign(abs(s_) ** (2 / expo), s_)
+            if zz > 0: zz *= 1.0 + 0.25 * (1 - t)        # topo mais cheio, fundindo-se à roda de proa
+            vs.append((x, yy, zc + zz))
+    for i in range(n_sec):
+        for j in range(n_ang):
+            a0 = i * n_ang + j; a1 = i * n_ang + (j + 1) % n_ang
+            fs.append((a0, a1, a1 + n_ang, a0 + n_ang))
+    fs.append(tuple(range(n_ang))[::-1])
+    o = lib.malha(nome, vs, fs, mat, suave=True, angulo=60)
+    import bmesh
+    bm = bmesh.new(); bm.from_mesh(o.data); bmesh.ops.remove_doubles(bm, verts=bm.verts, dist=0.01)
+    bmesh.ops.recalc_face_normals(bm, faces=bm.faces); bm.to_mesh(o.data); bm.free()
+    for pg in o.data.polygons: pg.use_smooth = True
     return o
 
 

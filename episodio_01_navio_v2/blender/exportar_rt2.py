@@ -27,6 +27,7 @@ def meta_material(m, obj):
             rt[k] = lin_hex(rt[k])
     if t in ('aco', 'concreto', 'areia') and isinstance(rt.get('cor'), list) and max(rt['cor']) > 1: rt['cor'] = lin_hex(rt['cor'])
     if t == 'faixas_z': rt['faixas'] = [[float(z), lin_hex(c)] for z, c in rt['faixas']]
+    if t == 'corte_ld' and isinstance(rt.get('casca'), dict): rt['casca']['cor'] = lin_hex(rt['casca']['cor'])
     if t == 'conteiner': rt['cor'] = [float(c) for c in obj.color[:3]]
     if t == 'generico' and m is not None and m.node_tree:
         p = m.node_tree.nodes.get('Principled BSDF')
@@ -86,7 +87,7 @@ def exportar(quadro, pasta):
                 camera=dict(pos=list(cam.matrix_world.translation), dir=list(fwd), up=list(up), fov=fov_v,
                             largura=s.render.resolution_x, altura=s.render.resolution_y),
                 sol=dict(dir=list(sol.matrix_world.to_3x3() @ Vector((0, 0, -1))), cor=list(sol.data.color), energia=sol.data.energy,
-                         angulo=sol.data.angle), luzes=luzes, ceu=ceu)
+                         angulo=sol.data.angle), luzes=luzes, ceu=ceu, rotulos=list(lib.ROTULOS))
     json.dump(meta, open(os.path.join(pasta, 'cena.json'), 'w'), indent=1)
     tot = sum(m['vertices'] for m in lista) // 3
     tipos = sorted({m['tipo'] for m in lista})

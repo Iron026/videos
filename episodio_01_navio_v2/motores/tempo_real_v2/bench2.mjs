@@ -5,7 +5,7 @@ const require = createRequire(path.join(execSync('npm root -g').toString().trim(
 const { chromium } = require('playwright');
 const [query = 'escala=0.5', n = '4', saida = 'rt2.png'] = process.argv.slice(2);
 const RAIZ = path.resolve('../../..');
-const tipos = { '.html': 'text/html', '.js': 'text/javascript', '.json': 'application/json', '.bin': 'application/octet-stream' };
+const tipos = { '.html': 'text/html', '.js': 'text/javascript', '.json': 'application/json', '.bin': 'application/octet-stream', '.woff2': 'font/woff2' };
 const srv = http.createServer((q, r) => { const f = path.join(RAIZ, decodeURIComponent(q.url.split('?')[0]));
   fs.readFile(f, (e, d) => { if (e) { r.writeHead(404); r.end(); return; } r.writeHead(200, { 'Content-Type': tipos[path.extname(f)] || 'application/octet-stream' }); r.end(d); }); }).listen(0);
 const porta = srv.address().port;
@@ -13,10 +13,10 @@ const b = await chromium.launch({ args: ['--use-gl=angle', '--use-angle=swiftsha
 const esc = parseFloat((new URLSearchParams(query)).get('escala') || '0.5');
 const p = await b.newPage({ viewport: { width: Math.round(1080 * esc), height: Math.round(1920 * esc) } });
 const erros = []; p.on('console', m => { if (m.type() === 'error' || m.type() === 'warning') erros.push(m.text().slice(0, 400)); });
-p.on('pageerror', e => erros.push('PAGEERROR ' + e.message.slice(0, 400)));
+p.on('pageerror', e => erros.push('PAGEERROR ' + (e.stack || e.message).slice(0, 900)));
 const t0 = Date.now();
 await p.goto(`http://127.0.0.1:${porta}/episodio_01_navio_v2/motores/tempo_real_v2/index.html?${query}`);
-try { await p.waitForFunction(() => window.pronto === true, null, { timeout: 900000 }); }
+try { await p.waitForFunction(() => window.pronto === true, null, { timeout: 300000 }); }
 catch (e) { console.log(JSON.stringify({ erro: 'timeout', erros })); process.exit(1); }
 const carga = (Date.now() - t0) / 1000;
 const info = await p.evaluate(() => window.info);

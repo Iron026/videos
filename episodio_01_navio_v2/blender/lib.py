@@ -25,6 +25,7 @@ def srgb(h):
 def nova_cena(amostras=128, luz_rapida=False):
     bpy.ops.wm.read_factory_settings(use_empty=True)
     _MATS.clear()   # materiais da cena anterior deixam de existir
+    ROTULOS.clear()
     s = bpy.context.scene
     s.render.engine = 'CYCLES'
     c = s.cycles
@@ -118,6 +119,7 @@ def luz_area(pos, alvo, tam=10, energia=1000, cor=(1, 1, 1)):
 
 # ---------------------------------------------------------------- materiais
 _MATS = {}
+ROTULOS = []   # rótulos 2D ancorados em pontos 3D (exportados para o motor em tempo real)
 
 def _mat(nome):
     m = bpy.data.materials.new(nome)
@@ -598,7 +600,7 @@ def raios_luz(n, x0, x1, y0, y1, z_topo, comp, larg, inclinacao=(0.35, 0.15), se
 
 
 
-def mat_corte_linha_dagua(nome='corte_ld', acima='#efe9da', abaixo='#cfe6ee', linha='#202b57', z0=0.0, esp=0.18):
+def mat_corte_linha_dagua(nome='corte_ld', acima='#efe9da', abaixo='#cfe6ee', linha='#202b57', z0=0.0, esp=0.18, casca=None):
     """Face de corte: tom quente acima da linha d'água, tom frio abaixo (parte submersa) e linha na flutuação."""
     if nome in _MATS: return _MATS[nome]
     m, nt, p = _mat(nome)
@@ -639,6 +641,7 @@ import json as _json, inspect as _inspect
 
 
 def _jsonavel(v):
+    if isinstance(v, dict): return {k: _jsonavel(x) for k, x in v.items()}
     if isinstance(v, (list, tuple)): return [_jsonavel(x) for x in v]
     if isinstance(v, (int, float, str, bool)) or v is None: return v
     return str(v)
@@ -671,3 +674,19 @@ def ceu_estilizado(*a, **k):
     b = _inspect.signature(_ceu_original).bind(*a, **k); b.apply_defaults()
     bpy.context.scene.world['rt'] = _json.dumps({kk: _jsonavel(v) for kk, v in b.arguments.items()})
     return o
+
+
+
+def rotulo(texto, ancora, dx=0.0, dy=-0.06, alinhar='esq'):
+    """Rótulo na identidade da marca, desenhado pelo motor em tempo real: ponto na âncora 3D,
+    linha-guia e pílula deslocada (dx, dy em fração da largura/altura da tela)."""
+    ROTULOS.append(dict(texto=texto, ancora=[float(v) for v in ancora], dx=dx, dy=dy, alinhar=alinhar))
+
+
+def tracejado(nome, p0, p1, mat, traco=1.4, vao=0.9, r=0.12):
+    """Linha tracejada 3D entre p0 e p1 (cilindros curtos)."""
+    p0, p1 = Vector(p0), Vector(p1); d = p1 - p0; L = d.length; u = d.normalized(); objs = []; t = 0.0
+    while t < L - 1e-3:
+        a = p0 + u * t; b = p0 + u * min(t + traco, L)
+        objs.append(tubo(nome, [tuple(a), tuple(b)], r=r, mat=mat)); t += traco + vao
+    return objs

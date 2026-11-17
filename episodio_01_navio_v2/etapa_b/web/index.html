@@ -61,9 +61,10 @@ code{font-size:.9em;background:var(--superficie);border:1px solid var(--linha);p
     <h1>Como um navio de aço consegue flutuar?</h1>
     <p>Etapas A (auditoria) e B (nova direção visual e teste de voz). Os cinco quadros abaixo saíram do motor que fará o episódio, Blender 5.1 com Cycles, em 1080×1920, sem retoque. À esquerda de cada um está o quadro equivalente da versão rejeitada.</p>
     <div class="estado">
+      <span class="chip ok">Composição final v3c</span>
       <span class="chip ok">Ajustes v3b</span>
       <span class="chip ok">Motor v2 + benchmark</span>
-      <span class="chip">Voz: fila gratuita ocupada</span>
+      <span class="chip alerta">Voz: plano gratuito bloqueado pela ElevenLabs</span>
       <span class="chip ok">Revisão v3: quadros 2, 3 e 4</span>
       <span class="chip ok">Protótipo do mascote</span>
       <span class="chip ok">Benchmark dos motores</span>
@@ -75,8 +76,20 @@ code{font-size:.9em;background:var(--superficie);border:1px solid var(--linha);p
     </div>
   </header>
 
+  <section aria-labelledby="t-c2">
+    <span class="rotulo">Entrega mais recente · revisão final de composição (Three.js v2)</span>
+    <h2 id="t-c2">Quadros 2, 3 e 4 corrigidos</h2>
+    <div class="grade">
+      <figure class="v2"><img src="q2_v3c.jpg" alt="Quadro 2: casco e pórtico em primeiro plano, bulbo alongado, painel suspenso por lingas presas a olhais"><figcaption>Quadro 2 · estaleiro</figcaption></figure>
+      <figure class="v2"><img src="q3_v3c.jpg" alt="Quadro 3: porão vazio, tracejado do nível da água lá fora, casco estanque destacado em amarelo, água profunda"><figcaption>Quadro 3 · interior do casco</figcaption></figure>
+      <figure class="v2"><img src="q4_v3c.jpg" alt="Quadro 4: dez setas de pressão, peso em G e empuxo em B na mesma vertical, água profunda"><figcaption>Quadro 4 · empuxo</figcaption></figure>
+    </div>
+    <p class="nota"><strong>Quadro 2:</strong> câmera mais próxima, pórtico mais baixo (menos céu), bulbo alongado no lugar da esfera, lingas que saem do gancho e terminam em olhais soldados no painel, com o gancho sobre o centro de massa da peça. <strong>Quadro 3:</strong> tracejado e rótulo "Nível da água lá fora"; chapeamento externo destacado como contorno contínuo, com o rótulo "Casco fechado e estanque"; mar profundo, sem leito. <strong>Quadro 4:</strong> 10 setas de pressão (antes 18), ainda nos três regimes; peso aplicado em G e empuxo em B, iguais, opostos e na mesma linha vertical; sem leito.</p>
+    <p class="nota"><strong>Voz:</strong> a tentativa única foi feita com o saldo confirmado (0 de 10.000 usados). A ElevenLabs recusou: desativou o acesso gratuito da conta por "atividade incomum", provavelmente por causa do proxy desta sessão. Nada foi cobrado e não fiz novas tentativas.</p>
+  </section>
+
   <section aria-labelledby="t-c1">
-    <span class="rotulo">Entrega mais recente · ajustes v3b, motor v2, benchmark e voz</span>
+    <span class="rotulo">Entrega anterior · ajustes v3b, motor v2, benchmark e voz</span>
     <h2 id="t-c1">Quadros 3 e 4 corrigidos</h2>
     <div class="par">
       <figure class="v2"><img src="q3_v3b.jpg" alt="Quadro 3 sem contêineres no convés: porão vazio, estrutura e linha d'água"><figcaption>Quadro 3 · sem contêineres no convés</figcaption></figure>
@@ -283,9 +296,8 @@ code{font-size:.9em;background:var(--superficie);border:1px solid var(--linha);p
   <section class="destaque" aria-labelledby="t-decisao">
     <h2 id="t-decisao">O que preciso de você</h2>
     <ol>
-      <li>Avaliar o Quadro 2 v3 e aprovar, ou ajustar, os quadros 3 e 4 v3b.</li>
-      <li>Avaliar a comparação Cycles × tempo real v2. As diferenças restantes (rebatimento colorido e superfície do mar) precisam ser resolvidas antes do animatic?</li>
-      <li>Voz: pedir uma nova tentativa da geração única quando quiser.</li>
+      <li>Aprovar, ou ajustar, os quadros 2, 3 e 4 da revisão final (v3c).</li>
+      <li>Voz: escolher entre gerar a amostra no site, a partir do seu computador e sem proxy; contratar um plano pago (que também dá licença comercial); ou falar com o suporte da ElevenLabs.</li>
     </ol>
     <p>Não iniciei o animatic. Nada foi publicado.</p>
   </section>

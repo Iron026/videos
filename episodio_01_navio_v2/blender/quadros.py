@@ -139,9 +139,11 @@ def quadro2():
     for (x0, x1) in ((-74, -50), (-28, -4), (18, 40)):
         b = navio.meia_boca((x0 + x1) / 2, 12)
         andaime(x0, x1, b + 1.2, 19.5, mand, mplat)
-    # pórtico sobre a proa içando o painel de costado que falta (bombordo, x 54–62, z 7,5–12)
-    xg = 74.0; hg = 60.0
-    zlev = 14.0; ydes = 9.0
+    # pórtico sobre a proa içando o painel de costado que falta (bombordo, x 70–78, z 7,5–18).
+    # Ligação física: olhais soldados na borda superior do painel, lingas do gancho até os olhais,
+    # gancho exatamente na vertical do centro de massa da peça (estática de corpo suspenso).
+    hg = 46.0
+    zlev = 13.0; ydes = 8.0
     pv = bpy.data.objects.new('painel_icado', None); lib.ligar(pv)
     mazul = lib.mat_pintura('primer_azul', '#4f6f8f', rug=0.55, metal=0.15, variacao=0.08)
     pn = navio.painel_costado('painel_icado_m', 70.0, 78.0, 7.5, navio.PONTAL, 1, mazul, folga=0.04)
@@ -150,18 +152,29 @@ def quadro2():
     for xx in (71.5, 74.0, 76.5):
         pts = [(xx, navio.meia_boca(xx, z) - 0.35, z) for z in np.linspace(7.7, 17.6, 9)]
         lib.tubo('reforco', pts, r=0.22, mat=ma).parent = pv
-    pv.location = (0, ydes, Z0 + zlev)  # sem rotação: o pivô fica na origem do navio
-    yc = navio.meia_boca(74, 10) + ydes
-    cenario.guindaste_portico(xg, 88, hg, y_c=0.0, gancho=(xg, yc, Z0 + zlev + navio.PONTAL + 6.0))
+    pv.location = (0, ydes, Z0 + zlev)
+    # centro de massa da chapa (média sobre a superfície) e posição dos olhais (mundo)
+    amostras = [(x, navio.meia_boca(x, z) + 0.03 - 0.07 + ydes, Z0 + zlev + z) for x in np.linspace(70.2, 77.8, 12) for z in np.linspace(7.6, 17.9, 14)]
+    cg = Vector(np.mean(np.array(amostras), axis=0))
+    ztopo = Z0 + zlev + navio.PONTAL - 0.04
+    olhais = [Vector((xx, navio.meia_boca(xx, navio.PONTAL - 0.04) + 0.03 - 0.07 + ydes, ztopo + 0.35)) for xx in (71.2, 76.8)]
+    mol = lib.mat_pintura('olhal', '#f3b544', rug=0.4, metal=0.3)
+    for o_ in olhais:
+        lib.caixa('olhal', (0.7, 0.16, 0.8), tuple(o_ - Vector((0, 0, 0.15))), mol, bisel=0.06)
+        lib.cilindro('manilha', 0.16, 0.36, tuple(o_ + Vector((0, 0, 0.12))), lib.mat_pintura('preto', '#1b1c20', rug=0.6), rot=(math.pi / 2, 0, 0), lados=12)
+    xg, yc = cg.x, cg.y                       # gancho na vertical do centro de massa
+    zg = ztopo + 6.2
+    cenario.guindaste_portico(xg, 88, hg, y_c=0.0, gancho=(xg, yc, zg))
     mcabo = lib.mat_aco('cabo', (60, 60, 64), rug=0.4, escovado=False)
-    topo_linga = (xg, yc, Z0 + zlev + navio.PONTAL + 5.4)
-    for xx in (71.0, 77.0):
-        lib.tubo('linga', [topo_linga, (xx, yc - 0.8, Z0 + zlev + navio.PONTAL + 0.1)], r=0.06, mat=mcabo)
+    ponta_gancho = Vector((xg, yc, zg - 0.78))
+    lib.tubo('anel_gancho', [tuple(ponta_gancho + Vector((0.28 * math.cos(t), 0, 0.28 * math.sin(t)))) for t in np.linspace(0, 2 * math.pi, 17)], r=0.07, mat=mcabo)
+    for o_ in olhais:
+        lib.tubo('linga', [tuple(ponta_gancho), tuple(o_ + Vector((0, 0, 0.2)))], r=0.07, mat=mcabo)
     # equipe e logística no pátio
     for i, (x, y, r) in enumerate([(70, 24, 1.2), (73, 25.5, 3.6), (64, 21, 2.4), (40, 23, 0.4), (88, 30, 2.0), (52, 19, 3.0),
                                    (100, 36, 1.0), (104, 34, 2.8), (28, 26, 1.6), (-10, 24, 0.2)]):
         cenario.operario((x, y, 0), rot=r, colete=['#f08a24', '#e9e6dc', '#f08a24', '#3a7bd0'][i % 4])
-    cenario.empilhadeira((128, 8, 0), rot=2.0)
+    cenario.empilhadeira((112, 30, 0), rot=2.6)
     cenario.pilha_chapas((118, 16, 0), n=9, tam=(9.0, 2.6, 0.18), rot=0.35, semente=7)
     for (x, y, r, c) in ((122, 22, 2.6, '#3a7bd0'), (114, 21, 0.4, '#f08a24'), (131, 13, 3.4, '#e9e6dc')):
         cenario.operario((x, y, 0), rot=r, colete=c)
@@ -190,7 +203,7 @@ def quadro2():
         cenario.arvore((x + (i % 3) * 3, -70 + (i % 2) * 4, 0), altura=7 + (i % 4), semente=i)
     for i, x in enumerate((130, 136, 142)):
         cenario.bandeira((x, 70, 0), cor=['#202b57', '#f3b544', '#f6f4ec'][i], altura=10)
-    lib.camera((155, 30, 16), (78, 8, 22), lente=22, foco=(88, 10, 14), fstop=11)
+    lib.camera((156, 32, 10), (87, 6, 17), lente=24, foco=(96, 4, 10), fstop=11)
     return 'quadro2'
 
 
@@ -205,12 +218,15 @@ def pintar_face_corte(o, x_corte, mat, eixo=0, tol=0.02):
         if abs(c[eixo] - x_corte) < tol and nrm[eixo] > 0.95: pg.material_index = idx
 
 
-def navio_em_corte(XC, calado, col_cortadores=None, carga_porao=True, porao_aberto=False, filtro_conves=None):
+def navio_em_corte(XC, calado, col_cortadores=None, carga_porao=True, porao_aberto=False, filtro_conves=None, esp_linha=0.45, casca=False):
     """Navio pronto cortado no plano x = XC (coordenadas do navio); retorna (raiz, casco_solido_oculto).
     porao_aberto: sem tampa de escotilha na baía cortada (o vão do porão fica à vista, com braçolas e cavernas)."""
     raiz = bpy.data.objects.new('navio', None); lib.ligar(raiz)
     mh = navio.mat_casco()
-    mcorte = lib.mat_corte_linha_dagua(z0=0.0, abaixo='#a9d8e8', esp=0.45)  # coordenada do mundo: linha d'água em z = 0
+    k = navio.quilha(XC)
+    meta_casca = dict(b=[navio.meia_boca(XC, k + (navio.PONTAL - k) * i / 63) for i in range(64)], k=k, cal=calado,
+                      topo=navio.PONTAL, esp=0.38, cor='#f3b544') if casca else None
+    mcorte = lib.mat_corte_linha_dagua(z0=0.0, abaixo='#a9d8e8', esp=esp_linha, casca=meta_casca)  # linha d'água do mundo em z = 0
     mporao = lib.mat_pintura('porao', '#a9aca6', rug=0.6)
     mtanque = lib.mat_pintura('primer_verm', navio.COR['primer_verm'], rug=0.6, metal=0.15)
     casco = navio.malha_casco('casco', mh, navio.POPA, XC, n=110)
@@ -285,38 +301,42 @@ def navio_em_corte(XC, calado, col_cortadores=None, carga_porao=True, porao_aber
 
 
 def quadro3():
-    """Corte (v3): porão vazio e aberto — o casco envolve um grande volume que NÃO é aço maciço; linha d'água marcada."""
+    """Corte (v3c): porão aberto e vazio. O casco é uma casca de aço fina e contínua (destacada) envolvendo um grande
+    volume de ar; o nível da água lá fora (tracejado) passa ACIMA do piso do porão, que continua seco porque o casco
+    real é fechado e estanque. Água profunda: sem leito à vista."""
     lib.nova_cena()
     lib.ceu_estilizado(sol_elev=46, sol_rot=120, sol_forca=4.4, nuvens=0.45, zenite='#3a7bd0', meio='#8cc2ee')
     XC, calado = 3.2, 9.0
-    raiz, solido = navio_em_corte(XC, calado, carga_porao=False, porao_aberto=True,
-                                  filtro_conves=lambda k, j, n: False)   # sem contêineres: o foco é o espaço interno vazio
-    # operário no fundo do porão (escala) e outro no convés lateral
+    raiz, solido = navio_em_corte(XC, calado, carga_porao=False, porao_aberto=True, filtro_conves=lambda k, j, n: False,
+                                  esp_linha=0.0, casca=True)
     for (x, y, z, r) in ((-1.5, 2.0, 2.2, 1.9), (-4.0, -3.5, 2.2, 0.6), (0.5, 14.4, navio.PONTAL + 0.02, 2.4)):
         for o in cenario.operario((x, y, z), rot=r, colete='#f08a24'):
             o.parent = raiz
-    # linha d'água atravessando a seção inteira (o piso do porão vazio fica ~7 m ABAIXO do nível do mar)
-    bmeia = navio.meia_boca(XC, calado)
-    lib.tubo('linha_dagua_corte', [(XC + 0.15, -bmeia - 1.2, 0.0), (XC + 0.15, bmeia + 1.2, 0.0)], r=0.2, mat=lib.mat_emissivo('linha_dagua', '#f3b544', 3.0))
+    # nível da água lá fora: tracejado atravessando a seção (o piso do porão fica ~7 m abaixo dele)
+    b = navio.meia_boca(XC, calado)
+    lib.tracejado('nivel_agua', (XC + 0.25, -b - 2.5, 0.02), (XC + 0.25, b + 2.5, 0.02), lib.mat_emissivo('nivel', '#dff6ff', 2.2), traco=1.3, vao=0.8, r=0.16)
+    lib.rotulo('Nível da água lá fora', (XC + 0.25, b - 4.5, 0.02), dx=-0.02, dy=-0.075)
+    lib.rotulo('Casco fechado e estanque', (XC, -b + 1.2, navio.quilha(XC) - calado + 0.1), dx=-0.03, dy=0.07)
     bpy.context.view_layer.update()
-    magua = lib.mat_agua('agua3', absorcao=(0.22, 0.62, 0.78), densidade=0.03, espalha=0.0, marola=0.4, escala_marola=0.25)
-    agua = lib.bloco_agua('agua', -220, XC, -150, 150, -32, magua, res=2.0, amp=0.3, escala=1.0)
-    lib.booleana(agua, solido, 'DIFFERENCE'); lib.aplicar(agua)
-    mlonge = lib.mat_pintura('mar_longe', '#2c78a0', rug=0.1, variacao=0.06, escala_var=0.02)
-    for (x0, x1, y0, y1) in ((-1500, -220, -1500, 1500), (-220, XC, 150, 1500), (-220, XC, -1500, -150)):
-        lib.bloco_agua('longe', x0, x1, y0, y1, -30, mlonge, res=60, amp=0.0, so_superficie=True)
-    def leito(X, Y): return -30 + 0.8 * np.sin(Y * 0.05) + 0.5 * np.sin(X * 0.08 + 1.0)
-    grade('leito', -220, XC + 0.05, -150, 150, leito, lib.mat_areia('areia3'), res=3.0, fundo=-120)
-    mr = lib.mat_pintura('rocha', '#6d7275', rug=0.85, variacao=0.15)
-    rnd = random.Random(3)
-    for i in range(12):
-        x, y = rnd.uniform(-50, XC - 3), rnd.uniform(-40, 40)
-        lib.rocha('rocha', (x, y, float(leito(np.array(x), np.array(y)))), rnd.uniform(0.8, 2.2), mr, semente=i)
-    lib.raios_luz(10, -50, XC - 4, -40, 40, 0.0, 26.0, 4.0, inclinacao=(0.3, 0.1), semente=2, mat=lib.mat_raio_luz('raio3', forca=0.12))
+    oceano_profundo(XC, solido, absorcao=(0.22, 0.62, 0.78), densidade=0.03)
+    lib.raios_luz(10, -50, XC - 4, -40, 40, 0.0, 30.0, 4.0, inclinacao=(0.3, 0.1), semente=2, mat=lib.mat_raio_luz('raio3', forca=0.12))
     mp = lib.mat_pintura('peixe', '#c9d6dd', rug=0.3, metal=0.5)
     cenario.cardume((XC - 6, 24, -20), 5.0, 20, 0.55, mp, semente=1, direcao=math.radians(100))
-    lib.camera((XC + 58, 4, 28), (XC - 7, 0, -3.0), lente=21, foco=(XC - 4, 0, 0), fstop=16)
+    lib.camera((XC + 58, 4, 26), (XC - 7, 0, -0.5), lente=21, foco=(XC - 4, 0, 0), fstop=16)
     return 'quadro3'
+
+
+def oceano_profundo(XC, solido, absorcao, densidade, x0=-260.0):
+    """Mar em diorama cortado no plano x = XC, profundo (sem leito à vista): o motor em tempo real escurece a água
+    com a profundidade (absorção + espalhamento), como mar aberto."""
+    magua = lib.mat_agua('agua_prof', absorcao=absorcao, densidade=densidade, espalha=0.0, marola=0.4, escala_marola=0.25)
+    agua = lib.bloco_agua('agua', x0, XC, -150, 150, -160, magua, res=2.0, amp=0.3, escala=1.0)
+    lib.booleana(agua, solido, 'DIFFERENCE'); lib.aplicar(agua)
+    mlonge = lib.mat_pintura('mar_longe', '#2c78a0', rug=0.1, variacao=0.06, escala_var=0.02)
+    for (a0, a1, b0, b1) in ((-1500, x0, -1500, 1500), (x0, XC, 150, 1500), (x0, XC, -1500, -150)):
+        lib.bloco_agua('longe', a0, a1, b0, b1, -30, mlonge, res=60, amp=0.0, so_superficie=True)
+    return agua
+
 
 
 # =====================================================================================
@@ -364,16 +384,16 @@ def setas_pressao(x0, calado, mat, escala=0.32, n=17, r=0.32, pular_centro=0.0, 
 
 
 def quadro4():
-    """Empuxo (v4): corte a meia-nau com o navio flutuando. A área submersa da seção (aço + porão vazio)
-    em ciano = volume deslocado por metro de comprimento; setas de pressão no plano do corte (∝ profundidade);
-    empuxo e peso iguais e opostos na mesma vertical (equilíbrio)."""
+    """Empuxo (v4c): corte a meia-nau, navio flutuando em água profunda (sem leito à vista).
+    Ciano = volume deslocado (área submersa da seção). Poucas setas de pressão, mas nos três regimes
+    (costado, bojo, fundo), perpendiculares ao casco e ∝ profundidade. Peso aplicado em G e empuxo aplicado em B,
+    mesmo módulo, sentidos opostos, na mesma vertical (linha de ação tracejada): equilíbrio estático."""
     lib.nova_cena(amostras=128)
     lib.ceu_estilizado(sol_elev=50, sol_rot=120, sol_forca=4.4, nuvens=0.4, zenite='#3a7bd0', meio='#8cc2ee')
     XC, calado = 3.2, 9.0
     raiz, solido = navio_em_corte(XC, calado, carga_porao=False, porao_aberto=False,
-                                  filtro_conves=lambda k, j, n: navio.BAIAS[k] < XC - 6.2 and n < 3)
+                                  filtro_conves=lambda k, j, n: navio.BAIAS[k] < XC - 6.2 and n < 3, esp_linha=0.0)
     bpy.context.view_layer.update()
-    # área submersa da seção (coordenadas do mundo: linha d'água z = 0)
     sec = navio._secao(XC, 80)
     pts = [(y, z - calado) for y, z in sec if z <= calado]
     b = navio.meia_boca(XC, calado)
@@ -381,38 +401,28 @@ def quadro4():
     vs = [(XC + 0.06, y, z) for y, z in poly]
     area = lib.malha('area_deslocada', vs, [tuple(range(len(vs)))], lib.mat_fantasma('volume_deslocado', '#2fc4ff', alfa=0.55, brilho=1.3))
     area.visible_shadow = False
-    # linha d'água na face do corte e no costado
-    mamar = lib.mat_emissivo('linha_dagua', '#f3b544', 3.0)
-    lib.tubo('linha_dagua_corte', [(XC + 0.12, -b - 0.6, 0.0), (XC + 0.12, b + 0.6, 0.0)], r=0.22, mat=mamar)
-    for lado in (1, -1):
-        xs = np.linspace(navio.POPA + 1, XC, 70)
-        lib.tubo('linha_dagua_costado', [(x, lado * (navio.meia_boca(x, calado) + 0.15), 0.02) for x in xs], r=0.2, mat=mamar)
-    # oceano límpido em corte no mesmo plano
-    magua = lib.mat_agua('agua4', absorcao=(0.30, 0.74, 0.84), densidade=0.012, espalha=0.0, marola=0.35, escala_marola=0.3)
-    agua = lib.bloco_agua('agua', -260, XC, -150, 150, -30, magua, res=2.0, amp=0.25)
-    lib.booleana(agua, solido, 'DIFFERENCE'); lib.aplicar(agua)
-    mlonge = lib.mat_pintura('mar_longe', '#2c78a0', rug=0.1, variacao=0.06, escala_var=0.02)
-    for (x0, x1, y0, y1) in ((-1500, -260, -1500, 1500), (-260, XC, 150, 1500), (-260, XC, -1500, -150)):
-        lib.bloco_agua('longe', x0, x1, y0, y1, -30, mlonge, res=60, amp=0.0, so_superficie=True)
-    def leito(X, Y): return -28 + 0.7 * np.sin(Y * 0.06) + 0.5 * np.sin(X * 0.07)
-    grade('leito', -260, XC + 0.05, -150, 150, leito, lib.mat_areia('areia4'), res=3.0, fundo=-120)
-    mr = lib.mat_pintura('rocha', '#6d7275', rug=0.85, variacao=0.15); rnd = random.Random(5)
-    for i in range(12):
-        x, y = rnd.uniform(-60, XC - 3), rnd.uniform(-40, 40)
-        lib.rocha('rocha', (x, y, float(leito(np.array(x), np.array(y)))), rnd.uniform(0.8, 2.0), mr, semente=i)
-    # setas no plano do corte (à frente da face): pressão ∝ profundidade; empuxo = peso
+    oceano_profundo(XC, solido, absorcao=(0.30, 0.74, 0.84), densidade=0.012)
+    # pressão: 2 setas no costado, 1 no bojo e 2 no fundo, por bordo (10 no total)
     mseta = lib.mat_emissivo('seta_pressao', '#eaf7ff', 1.8)
-    setas = setas_pressao(XC + 0.9, calado, mseta, escala=0.32, n=17, r=0.36, pular_centro=3.2, x_secao=XC)
-    comp = 13.0
-    setas.append(lib.seta3d('empuxo', (XC + 0.9, 0, -calado - 0.4 - comp), (0, 0, 1), comp, r=1.0, mat=lib.mat_emissivo('seta_empuxo', '#f3b544', 1.3), cabeca=2.4))
-    topo = navio.PONTAL - calado + 0.9 + 0.4
-    setas.append(lib.seta3d('peso', (XC + 0.9, 0, topo + comp), (0, 0, -1), comp, r=1.0, mat=lib.mat_emissivo('seta_peso', '#3f56b0', 1.8), cabeca=2.4))
-    for o in setas: o.visible_glossy = False; o.visible_shadow = False
-    lib.luz_area((XC + 40, 0, -30), (XC - 10, 0, -5), tam=50, energia=5e4, cor=(0.8, 0.92, 1.0))
+    setas = setas_pressao(XC + 0.9, calado, mseta, escala=0.32, r=0.40, x_secao=XC,
+                          prof_costado=(2.2, 5.6), ang_bojo=(45.0,), fundo_y=(5.0, 10.5))
+    # G e B (coordenadas do mundo; linha d'água em z = 0)
+    KB = 4.72      # centro de carena calculado com a forma real do casco (calado 9 m): V = 44.125 m³, x = 0,4 m
+    KG = 12.5      # centro de gravidade: estimativa didática de navio porta-contêineres carregado (KG ≈ 0,7 × pontal)
+    zB, zG = KB - calado, KG - calado; L = 3.5; xs = XC + 0.9
+    setas.append(lib.seta3d('empuxo', (xs, 0, zB), (0, 0, 1), L, r=1.0, mat=lib.mat_emissivo('seta_empuxo', '#f3b544', 1.4), cabeca=2.2))
+    setas.append(lib.seta3d('peso', (xs, 0, zG), (0, 0, -1), L, r=1.0, mat=lib.mat_emissivo('seta_peso', '#4a63c8', 1.8), cabeca=2.2))
+    lib.cilindro('ponto_B', 0.75, 0.3, (xs, 0, zB), lib.mat_emissivo('ponto_B', '#f3b544', 2.0), rot=(0, math.pi / 2, 0), lados=24)
+    lib.cilindro('ponto_G', 0.75, 0.3, (xs, 0, zG), lib.mat_emissivo('ponto_G', '#6f86e6', 2.0), rot=(0, math.pi / 2, 0), lados=24)
+    linha = lib.tracejado('linha_acao', (xs - 0.05, 0, -calado - 2.0), (xs - 0.05, 0, navio.PONTAL - calado + 4.0), lib.mat_emissivo('linha_acao', '#f6f4ec', 1.4), traco=0.9, vao=0.6, r=0.07)
+    for o in setas + linha: o.visible_glossy = False; o.visible_shadow = False
+    lib.rotulo('Peso (G)', (xs, 0, zG), dx=0.05, dy=-0.05)
+    lib.rotulo('Empuxo (B)', (xs, 0, zB), dx=0.05, dy=0.05)
     mp = lib.mat_pintura('peixe', '#c9d6dd', rug=0.3, metal=0.5)
     cenario.cardume((XC - 10, 26, -18), 4.0, 16, 0.5, mp, semente=4, direcao=math.radians(100))
-    lib.camera((XC + 96, 21, 1.0), (XC - 8, 0, -1.0), lente=24, foco=(XC, 0, -2), fstop=22)
+    lib.camera((XC + 84, 10, 3.0), (XC - 6, 0, 0.0), lente=22, foco=(XC, 0, -2), fstop=22)
     return 'quadro4'
+
 
 
 # =====================================================================================
