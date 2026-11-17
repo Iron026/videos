@@ -14,7 +14,7 @@ FPS = 30; DUR = 171.0; ESC = W / 1080
 SAIDA = sys.argv[2] if len(sys.argv) > 2 else os.path.join(A, f'ep01_{PERFIL}.mp4')
 FONTE = os.path.join(RAIZ, 'fontes')
 F_LEG = ImageFont.truetype(os.path.join(FONTE, 'Montserrat-800.ttf'), int(58 * ESC))
-F_ROT = ImageFont.truetype(os.path.join(FONTE, 'Montserrat-800.ttf'), int(36 * ESC))
+F_ROT = ImageFont.truetype(os.path.join(FONTE, 'Montserrat-800.ttf'), int(47 * ESC))   # rótulos 30% maiores (celular)
 F_TAG = ImageFont.truetype(os.path.join(FONTE, 'Montserrat-700.ttf'), int(26 * ESC))
 AZUL, CREME, AMARELO, ESCURO = (32, 43, 87), (246, 244, 236), (243, 181, 68), (16, 22, 46)
 
@@ -23,6 +23,9 @@ SEGS = [('s01', 0.00, 4.40), ('s02', 4.40, 15.10), ('s03', 15.10, 30.30), ('s04'
         ('s0607', 48.00, 74.85), ('s08a', 74.85, 83.85), ('s08b', 83.85, 94.55), ('s09', 94.55, 117.20), ('s10', 117.20, 123.65),
         ('s11', 123.65, 134.00), ('s12', 134.00, 154.60), ('s13', 154.60, 166.30), ('ass', 166.20, DUR)]
 FUSAO = 0.20
+# avisos honestos de tempo (canto superior direito)
+CHIPS = [(2.05, 3.70, 'Câmera lenta'), (41.6, 48.0, 'Tempo acelerado'), (74.85, 82.1, 'Câmera lenta'),
+         (105.4, 117.2, 'Tempo acelerado'), (137.0, 146.0, 'Tempo acelerado')]
 
 
 def pasta(nome):
@@ -32,12 +35,30 @@ def pasta(nome):
 
 
 _cache = {}
+GRADE = {}
+def nivelar(nome, img):
+    if nome in ('s01', 'ass'): return img
+    if not GRADE:
+        for n_, _, _ in SEGS:
+            if n_ in ('s01', 'ass'): continue
+            d, passo = pasta(n_); fs = sorted(f for f in os.listdir(d) if f.endswith('.jpg'))[::8]
+            st = [np.asarray(Image.open(os.path.join(d, f)).convert('HSV'), dtype=np.float32).reshape(-1, 3).mean(0) for f in fs]
+            GRADE[n_] = np.mean(st, 0)
+        GRADE['_alvo'] = np.median(np.array([v for v in GRADE.values()]), 0)
+        print('nivelamento', {k: [round(float(x)) for x in v[1:]] for k, v in GRADE.items()})
+    alvo = GRADE['_alvo']
+    v = GRADE[nome]
+    gv = min(1.12, max(0.9, (alvo[2] / max(v[2], 1)) ** 0.5)); gs = min(1.15, max(0.88, (alvo[1] / max(v[1], 1)) ** 0.5))
+    from PIL import ImageEnhance
+    return ImageEnhance.Color(ImageEnhance.Brightness(img).enhance(gv)).enhance(gs)
+
+
 def quadro_seg(nome, g0, g):
     d, passo = pasta(nome)
     if d not in _cache: _cache[d] = sorted(int(f[1:5]) for f in os.listdir(d) if f.endswith('.jpg'))
     idx = _cache[d]; f = int(round((g - g0) * FPS)); f = min(max(f, idx[0]), idx[-1])
     f = idx[int(np.searchsorted(idx, f, side='right')) - 1]
-    return Image.open(os.path.join(d, f'q{f:04d}.jpg')).convert('RGB').resize((W, H), Image.BICUBIC)
+    return nivelar(nome, Image.open(os.path.join(d, f'q{f:04d}.jpg')).convert('RGB').resize((W, H), Image.BICUBIC))
 
 
 ROT = {}
@@ -53,14 +74,14 @@ def desenhar_rotulo(img, txt, u, v, a, dx, dy):
     if a <= 0.01: return
     camada = Image.new('RGBA', img.size, (0, 0, 0, 0)); d = ImageDraw.Draw(camada)
     ax, ay = u * W, v * H; bx, by = ax + dx * W, ay + dy * H
-    tw = d.textlength(txt, font=F_ROT); pad = 16 * ESC; h = 36 * ESC + 2 * pad * 0.55
+    tw = d.textlength(txt, font=F_ROT); pad = 20 * ESC; h = 47 * ESC + 2 * pad * 0.55
     w = tw + 2 * pad
     lx = bx if dx >= 0 else bx - w; lx = min(max(lx, 0.04 * W), 0.96 * W - w)
     ly = min(max(by - h / 2, 0.09 * H), 0.60 * H - h)
     ex = min(max(ax, lx), lx + w); ey = ly + h / 2
     al = int(255 * a)
     d.line([(ax, ay), (ex, ey)], fill=CREME + (al,), width=max(2, int(4 * ESC)))
-    r = 9 * ESC; d.ellipse([ax - r, ay - r, ax + r, ay + r], fill=AMARELO + (al,), outline=AZUL + (al,), width=max(1, int(3 * ESC)))
+    r = 11 * ESC; d.ellipse([ax - r, ay - r, ax + r, ay + r], fill=AMARELO + (al,), outline=AZUL + (al,), width=max(1, int(3 * ESC)))
     d.rounded_rectangle([lx, ly, lx + w, ly + h], radius=h / 2, fill=AZUL + (int(240 * a),))
     d.rounded_rectangle([lx + h * 0.3, ly + h - 5 * ESC, lx + w - h * 0.3, ly + h], radius=2, fill=AMARELO + (al,))
     d.text((lx + pad, ly + h / 2), txt, font=F_ROT, fill=CREME + (al,), anchor='lm')
@@ -99,6 +120,11 @@ def compor(g):
     for (a, b, txt) in LEG:
         if a <= g < b:
             d.text((W // 2, int(0.70 * H)), txt, font=F_LEG, fill=(255, 255, 255), stroke_width=max(2, int(7 * ESC)), stroke_fill=ESCURO, anchor='mm')
+    for (a, b, txt) in CHIPS:
+        if a <= g < b:
+            tw = d.textlength(txt, font=F_TAG); x1 = W - int(30 * ESC); x0 = x1 - tw - 36 * ESC; y0 = int(70 * ESC)
+            d.rounded_rectangle((x0, y0, x1, y0 + 46 * ESC), radius=23 * ESC, fill=AMARELO)
+            d.text((x0 + 18 * ESC, y0 + 23 * ESC), txt, font=F_TAG, fill=AZUL, anchor='lm')
     if g < 166.2:
         tag = 'VERSÃO DE REVISÃO · não publicar'; x0, y0 = int(30 * ESC), int(70 * ESC); tw = d.textlength(tag, font=F_TAG)
         d.rounded_rectangle((x0, y0, x0 + tw + 36 * ESC, y0 + 46 * ESC), radius=23 * ESC, fill=AZUL)

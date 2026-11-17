@@ -207,7 +207,7 @@ function materialAgua(m) {
       uNear: { value: 0.5 }, uFar: { value: 8000 }, uSigma: { value: sigma }, uSolDir: { value: dirSol.clone().negate() },
       uSolCor: { value: new THREE.Vector3(...s.cor).multiplyScalar(s.energia) }, uMarola: { value: m.marola ?? 0.3 }, uEscMar: { value: m.escala_marola ?? 0.3 }, uTempo, uNOndas: { value: ONDAS.length },
       uOndas: { value: [0, 1].map(k => ONDAS[k] ? new THREE.Vector3(ONDAS[k].x, ONDAS[k].y, ONDAS[k].t0) : new THREE.Vector3(0, 0, 1e9)) } }, uCeu),
-    vertexShader: `varying vec3 vW; varying vec3 vN; varying float vZv; void main(){ vW=position; vN=normal; vec4 mv=viewMatrix*vec4(position,1.0); vZv=-mv.z; gl_Position=projectionMatrix*mv; }`,
+    vertexShader: `varying vec3 vW; varying vec3 vN; varying float vZv; void main(){ vW=(modelMatrix*vec4(position,1.0)).xyz; vN=normalize(mat3(modelMatrix)*normal); vec4 mv=viewMatrix*vec4(vW,1.0); vZv=-mv.z; gl_Position=projectionMatrix*mv; }`,   // modelMatrix: água animada (dique inundando); identidade na água estática
     fragmentShader: RUIDO + COR_CEU + /* glsl */`
       uniform sampler2D tCor, tProf; uniform vec2 uRes; uniform float uNear, uFar, uMarola, uEscMar; uniform vec3 uSigma, uSolDir, uSolCor;
       uniform float uTempo; uniform int uNOndas; uniform vec3 uOndas[2];

@@ -73,24 +73,25 @@ for i, t0 in enumerate(np.linspace(25.95, 28.4, 9)): por(float(t0), clank(380 + 
 sl = lp(ruido(int(1.8 * SR)), 260) * np.sin(np.linspace(0, np.pi, int(1.8 * SR))); por(33.15, sl, db(-24)); por(33.6, brilho(1.6), db(-30))
 por(37.0, brilho(0.9, 1567.98), db(-33)); por(39.2, brilho(0.9, 1174.66), db(-33))
 a_ = lp(ruido(N), 900) * janela(30.3, 41.6, 0.3, 0.3) * db(-40); L += a_; R += a_
-# 41,55–48,00 · elevador de navios: motor, contato com a água (43,0), assentamento (46,2)
-mo = motor(41.55, 48.0, f=72, g=-31); L += mo; R += mo
-por(43.0, splash(1.2, 1.4), db(-20)); ev['contato_agua'] = 43.0
-m = amb_mar(41.5, 48.2, -34, 900); L += m; R += np.roll(m, 500)
-por(46.2, thud(40, 0.9), db(-24)); ev['flutua'] = 46.2
+# 41,55–48,00 · dique seco: água entrando pela comporta (forte no início), enchimento contínuo; casco deixa os picadeiros (46,10)
+jorro_d = bp(ruido(N), 180, 2600) * (janela(41.6, 44.0, 0.15, 0.6) * db(-22) + janela(43.6, 48.0, 0.4, 0.4) * db(-31)); L += jorro_d; R += jorro_d * 0.9
+m = amb_mar(41.5, 48.2, -36, 900); L += m; R += np.roll(m, 500)
+n = int(0.8 * SR); t = np.arange(n) / SR
+range_ = (lp(ruido(n), 900) * np.exp(-t / 0.25) + 0.6 * np.sin(2 * np.pi * (140 - 60 * t) * t) * env(n, 0.01, 0.3))
+por(46.10, range_, db(-24)); por(46.15, thud(42, 0.8), db(-27)); ev['flutua'] = 46.10
 # 48,00–74,85 · seção submersa: ambiente abafado, setas, empuxo, volume deslocado, peso
 s_ = sub(48.0, 74.9); L += s_; R += s_
 for i, t0 in enumerate(np.linspace(50.9, 53.2, 10)): por(float(t0), tique(1700 + 90 * i), db(-31), pan=0.3 + 0.4 * (i % 2))
-por(58.4, whoosh(0.5), db(-32)); por(61.75, mais(brilho(1.4, 880.0), 0.5 * thud(60, 0.8)), db(-24)); ev['empuxo'] = 61.75
-por(66.6, brilho(1.6, 1046.5), db(-28)); por(67.9, whoosh(0.9), db(-27)); por(71.3, mais(brilho(1.2, 698.46), 0.5 * thud(52, 0.8)), db(-25))
+por(58.6, whoosh(0.5), db(-32)); por(60.3, whoosh(1.1), db(-30)); por(61.45, mais(brilho(1.4, 880.0), 0.5 * thud(60, 0.8)), db(-24)); ev['empuxo'] = 61.45
+por(66.4, brilho(1.6, 1046.5), db(-28)); por(71.2, mais(brilho(1.2, 698.46), 0.5 * thud(52, 0.8)), db(-25))
 # 74,85–83,85 · o bloco em câmera lenta e o leito (82,12)
 s_ = sub(74.85, 83.9, -24); L += s_; R += s_
 lento = lp(ruido(int(7.5 * SR)), 140) * np.linspace(0.4, 1, int(7.5 * SR)); por(74.85, lento, db(-26))
 por(82.12, thud(40, 0.9), db(-12)); ev['bloco_leito'] = 82.12
 # 83,85–94,55 · cubo de aço maciço afunda; volume deslocado do casco; forças
 s_ = sub(83.85, 94.6, -27); L += s_; R += s_
-por(85.0, splash(1.0, 1.6), db(-19)); por(85.3, lp(ruido(int(3.2 * SR)), 180) * np.linspace(1, 0, int(3.2 * SR)), db(-24))
-por(89.9, brilho(1.6, 1046.5), db(-28)); por(90.6, brilho(1.2, 783.99), db(-28))
+por(84.4, tique(1500, 0.1), db(-30)); por(85.0, tique(1900, 0.1), db(-30)); por(85.6, lp(ruido(int(3.2 * SR)), 180) * np.linspace(1, 0, int(3.2 * SR)), db(-22))
+por(84.6, brilho(1.4, 1318.5), db(-31)); por(90.0, brilho(1.6, 1046.5), db(-28))
 # 94,55–117,20 · porto: ambiente, portêineres, três pousos (101,60 · 102,95 · 104,45), lotes do time-lapse
 a_ = lp(ruido(N), 1500) * janela(94.5, 134.1, 0.4, 0.4) * db(-37); L += a_; R += np.roll(a_, 1800)
 m = amb_mar(94.5, 134.1, -36, 600); L += m; R += np.roll(m, 900)
@@ -105,14 +106,14 @@ for tl in (105.45, 106.95, 108.45, 110.15, 111.85, 113.55, 115.05):
 n = int(2.0 * SR); t = np.arange(n) / SR; sweep = np.sin(2 * np.pi * (400 * t + 300 * t * t)) * np.sin(np.pi * t / 2.0) ** 2
 por(118.9, sweep, db(-34)); por(122.55, brilho(1.0, 1318.5), db(-30))
 # 123,65–134,00 · marcas: realces
-por(125.9, brilho(0.8, 1567.98), db(-32)); [por(130.5 + 0.55 * i, tique(1500 + 150 * i, 0.1), db(-29)) for i in range(5)]
+por(125.9, brilho(0.8, 1567.98), db(-32)); por(127.6, whoosh(1.2), db(-27)); [por(130.5 + 0.55 * i, tique(1500 + 150 * i, 0.1), db(-29)) for i in range(5)]
 # 134,00–154,60 · avaria: rasgo (136,6), água entrando, hipótese grave (tensão), divisórias (151,05)
 m = amb_mar(134.0, 154.7, -34); L += m; R += np.roll(m, 600)
 n = int(0.9 * SR); crunch = lp(ruido(n), 1800) * env(n, 0.002, 0.25) + 0.6 * clank(180, 0.9, 0.2)[:n]
 por(136.6, crunch, db(-16)); ev['avaria'] = 136.6
 jorro = bp(ruido(N), 250, 2200) * janela(136.9, 145.8, 0.3, 1.0) * db(-27); L += jorro; R += jorro * 0.8
 n = int(2.8 * SR); t = np.arange(n) / SR; drone = (np.sin(2 * np.pi * 55 * t) + 0.5 * np.sin(2 * np.pi * 58.3 * t)) * np.sin(np.pi * t / 2.8)
-por(148.0, drone, db(-24)); por(151.05, mais(clank(523, 1.6, 0.6) * 0.6, brilho(1.2, 1046.5)), db(-24)); ev['divisorias'] = 151.05
+por(147.9, drone, db(-24)); [por(147.9 + 0.45 * i, tique(700 - 60 * i, 0.12), db(-30)) for i in range(5)]; por(151.05, mais(clank(523, 1.6, 0.6) * 0.6, brilho(1.2, 1046.5)), db(-24)); ev['divisorias'] = 151.05
 # 154,60–166,30 · conclusão; 166,25 assinatura
 m = amb_mar(154.5, 166.6, -35); L += m; R += np.roll(m, 800)
 por(159.6, brilho(2.0, 1046.5), db(-28)); por(161.4, mais(brilho(1.4, 783.99), 0.4 * thud(50, 0.8)), db(-27))

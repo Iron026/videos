@@ -2,9 +2,8 @@
  "eventos": {
   "apito": 5.0,
   "encaixe": 23.6,
-  "contato_agua": 43.0,
-  "flutua": 46.2,
-  "empuxo": 61.75,
+  "flutua": 46.1,
+  "empuxo": 61.45,
   "bloco_leito": 82.12,
   "pousos": [
    101.6,
