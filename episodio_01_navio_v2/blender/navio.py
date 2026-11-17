@@ -402,7 +402,7 @@ def painel_fundo(nome, x0, x1, mat, folga=0.0):
     return o
 
 
-def construcao_em_blocos(semente=4, faltam=None):
+def construcao_em_blocos(semente=4, faltam=None, vao_cinta=None, forcar=None):
     """Casco em construção por blocos: popa chapeada, meia-nau com painéis faltando, proa em cavernas
     com bulbo e pé de proa chapeados. Retorna (objs, lista_de_painéis_faltantes)."""
     import bpy
@@ -433,6 +433,7 @@ def construcao_em_blocos(semente=4, faltam=None):
                 else:
                     p = 0.92 - 0.11 * j - 0.010 * max(0, xa)
                     tem = rnd.random() < p
+                if forcar is not None and (lado, i, j) in forcar: tem = True
                 if faltam is not None and (lado, i, j) in faltam: tem = False
                 if not tem:
                     if lado == 1: faltantes.append((xa, xb, za, zb))
@@ -446,8 +447,10 @@ def construcao_em_blocos(semente=4, faltam=None):
     pts = [(limite_proa(z) - 0.15, 0, z) for z in np.linspace(2.5, PONTAL + 0.6, 18)]
     objs.append(lib.tubo('roda_proa', pts, r=0.42, mat=ma))
     for lado in (1, -1):
-        pts = [(x, lado * (meia_boca(x, PONTAL) - 0.1), PONTAL) for x in np.arange(-34, limite_proa(PONTAL) - 0.3, 1.5)]
-        objs.append(lib.tubo('cinta', pts, r=0.3, mat=ma))
+        xs_c = np.arange(-34, limite_proa(PONTAL) - 0.3, 1.5)
+        trechos = [xs_c] if not (vao_cinta and lado == 1) else [xs_c[xs_c < vao_cinta[0]], xs_c[xs_c > vao_cinta[1]]]
+        for tr in trechos:   # cinta do convés interrompida sobre o vão do bloco ainda não montado
+            if len(tr) > 1: objs.append(lib.tubo('cinta', [(x, lado * (meia_boca(x, PONTAL) - 0.1), PONTAL) for x in tr], r=0.3, mat=ma))
     # convés montado só na popa e em parte da meia-nau
     mc = lib.mat_pintura('conves_primer', '#7d8a86', rug=0.7)
     vs, fs = [], []

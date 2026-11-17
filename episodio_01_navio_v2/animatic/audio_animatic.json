@@ -1,0 +1,10 @@
+{
+ "eventos": {
+  "t_agua": 3.13,
+  "t_fundo": 3.76,
+  "t_encaixe": 14.4,
+  "t_voz": 15.2,
+  "dur_voz": 3.971
+ },
+ "pico_dbfs": -1.5
+}

@@ -1,0 +1,15 @@
+{
+ "original": "/home/user/videos/episodio_01_navio_v2/voz/ElevenLabs_2026-11-17T14_52_42_Will_-_Deep_pvc_s50_sim75_v4.mp3",
+ "duracao_s": 3.971,
+ "transcricao": "de olho no invisível. O invisível ganha a forma.",
+ "diferencas": [
+  [
+   "",
+   "a"
+  ]
+ ],
+ "wer_percent": 12.5,
+ "palavras_por_min": 133.3,
+ "loudness_lufs": -20.0,
+ "pico_dbtp": -2.1
+}

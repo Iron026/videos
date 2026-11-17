@@ -130,7 +130,8 @@ def quadro2():
         if -40 < x < 70:
             for s_ in (-1, 1): lib.caixa('picad_l', (1.2, 1.6, Z0 - 0.3), (x, s_ * 9.0, (Z0 - 0.3) / 2), mbl, bisel=0.05)
     raiz = bpy.data.objects.new('navio', None); lib.ligar(raiz)
-    objs, faltantes = navio.construcao_em_blocos(semente=4, faltam={(1, 13, 2), (1, 13, 3)})
+    objs, faltantes = navio.construcao_em_blocos(semente=4, faltam={(1, 13, 2), (1, 13, 3)}, vao_cinta=(69.5, 78.5),
+                                                    forcar={(1, 12, 2), (1, 12, 3), (1, 14, 2), (1, 14, 3)})   # vizinhos chapeados: o vão fica legível
     for o in objs:
         if o.parent is None: o.parent = raiz
     raiz.location = (0, 0, Z0)

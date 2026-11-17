@@ -1,0 +1,50 @@
+[
+ {
+  "palavra": "De",
+  "inicio": 0.0,
+  "fim": 0.22,
+  "confianca": 0.44
+ },
+ {
+  "palavra": "Olho",
+  "inicio": 0.22,
+  "fim": 0.56,
+  "confianca": 0.95
+ },
+ {
+  "palavra": "no",
+  "inicio": 0.56,
+  "fim": 0.78,
+  "confianca": 0.8
+ },
+ {
+  "palavra": "Invisível.",
+  "inicio": 0.78,
+  "fim": 1.5,
+  "confianca": 0.85
+ },
+ {
+  "palavra": "O",
+  "inicio": 1.9,
+  "fim": 2.06,
+  "confianca": 0.97
+ },
+ {
+  "palavra": "invisível",
+  "inicio": 2.06,
+  "fim": 2.76,
+  "confianca": 0.98
+ },
+ {
+  "palavra": "ganha",
+  "inicio": 2.76,
+  "fim": 3.2,
+  "confianca": 0.99
+ },
+ {
+  "palavra": "forma.",
+  "inicio": 3.24,
+  "fim": 3.6,
+  "confianca": 0.99
+ }
+]

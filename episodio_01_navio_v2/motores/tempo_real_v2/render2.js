@@ -205,10 +205,15 @@ function materialAgua(m) {
   return new THREE.ShaderMaterial({
     uniforms: Object.assign({ tCor: { value: null }, tProf: { value: null }, uRes: { value: new THREE.Vector2(W, H) },
       uNear: { value: 0.5 }, uFar: { value: 8000 }, uSigma: { value: sigma }, uSolDir: { value: dirSol.clone().negate() },
-      uSolCor: { value: new THREE.Vector3(...s.cor).multiplyScalar(s.energia) }, uMarola: { value: m.marola ?? 0.3 }, uEscMar: { value: m.escala_marola ?? 0.3 } }, uCeu),
+      uSolCor: { value: new THREE.Vector3(...s.cor).multiplyScalar(s.energia) }, uMarola: { value: m.marola ?? 0.3 }, uEscMar: { value: m.escala_marola ?? 0.3 }, uTempo, uNOndas: { value: ONDAS.length },
+      uOndas: { value: [0, 1].map(k => ONDAS[k] ? new THREE.Vector3(ONDAS[k].x, ONDAS[k].y, ONDAS[k].t0) : new THREE.Vector3(0, 0, 1e9)) } }, uCeu),
     vertexShader: `varying vec3 vW; varying vec3 vN; varying float vZv; void main(){ vW=position; vN=normal; vec4 mv=viewMatrix*vec4(position,1.0); vZv=-mv.z; gl_Position=projectionMatrix*mv; }`,
     fragmentShader: RUIDO + COR_CEU + /* glsl */`
       uniform sampler2D tCor, tProf; uniform vec2 uRes; uniform float uNear, uFar, uMarola, uEscMar; uniform vec3 uSigma, uSolDir, uSolCor;
+      uniform float uTempo; uniform int uNOndas; uniform vec3 uOndas[2];
+      float ondaImpacto(vec2 p){ float h=0.0; for(int k=0;k<2;k++){ if(k>=uNOndas) break; float dt=uTempo-uOndas[k].z; if(dt<=0.0) continue;
+          float r=length(p-uOndas[k].xy); float frente=1.9*dt;
+          for(int j=0;j<3;j++){ float rr=r-(frente-float(j)*0.9); h+=0.10*exp(-rr*rr/0.18)*cos(rr*7.0)*exp(-dt/1.4)/(1.0+0.35*r); } } return h; }
       varying vec3 vW; varying vec3 vN; varying float vZv;
       float linear(float d){ float z=d*2.0-1.0; return 2.0*uNear*uFar/(uFar+uNear-z*(uFar-uNear)); }
       void main(){
@@ -218,7 +223,9 @@ function materialAgua(m) {
         if(N.z>0.5){ float e=0.25; vec3 p=vW*uEscMar; float h0=fbm(p,3,0.5);
           float hx=fbm(p+vec3(e,0,0),3,0.5); float hy=fbm(p+vec3(0,e,0),3,0.5);
           float fade=exp(-vZv/120.0);                                  // sem relevo fino ao longe (evita serrilhado)
-          N=normalize(N-vec3(hx-h0,hy-h0,0.0)/e*uMarola*0.25*fade); }
+          N=normalize(N-vec3(hx-h0,hy-h0,0.0)/e*uMarola*0.25*fade);
+          if(uNOndas>0){ float o0=ondaImpacto(vW.xy), ox=ondaImpacto(vW.xy+vec2(0.08,0.0)), oy=ondaImpacto(vW.xy+vec2(0.0,0.08));
+            N=normalize(N-vec3(ox-o0,oy-o0,0.0)/0.08); } }
         float cosv=dot(V,vec3(0,0,1))>0.0 ? dot(V,N) : abs(dot(V,N));
         // espessura percorrida dentro da água até o fundo/objeto (convertida de Δz de visão para distância no raio)
         vec3 Rv=normalize(vW-cameraPosition); vec3 fwd=normalize(-vec3(viewMatrix[0][2],viewMatrix[1][2],viewMatrix[2][2]));
@@ -252,6 +259,9 @@ function materialRaio(m) {
 
 // ------------------------------------------------------------------ geometria
 let tris = 0; const caixa = new THREE.Box3(); const matsAgua = [], matsRaio = [];
+const ANIM = meta.animacao; const animados = {};
+function registrarAnim(mesh, m) { if (m.objeto) { mesh.matrixAutoUpdate = false; (animados[m.objeto] ||= []).push(mesh); } }
+const ONDAS = (meta.ondas || []).slice(0, 2); const uTempo = { value: 0 };
 for (const m of meta.materiais.filter(m => m.tipo === 'agua')) {
   const b = new Float32Array(await (await fetch(CENA + m.arquivo)).arrayBuffer());
   for (let i = 0; i < b.length; i += 12) caixaAgua.expandByPoint(new THREE.Vector3(b[i], b[i + 1], b[i + 2]));
@@ -263,11 +273,11 @@ await Promise.all(meta.materiais.map(async (m) => {
   g.setAttribute('position', new THREE.InterleavedBufferAttribute(ib, 3, 0)); g.setAttribute('normal', new THREE.InterleavedBufferAttribute(ib, 3, 3));
   g.setAttribute('aLocal', new THREE.InterleavedBufferAttribute(ib, 3, 6)); g.setAttribute('aGen', new THREE.InterleavedBufferAttribute(ib, 3, 9));
   tris += n / 3;
-  if (m.tipo === 'agua') { const mat = materialAgua(m); matsAgua.push(mat); cenaTransp.add(new THREE.Mesh(g, mat)); return; }
+  if (m.tipo === 'agua') { const mat = materialAgua(m); matsAgua.push(mat); const ma = new THREE.Mesh(g, mat); registrarAnim(ma, m); cenaTransp.add(ma); return; }
   if (m.tipo === 'raio_luz') { const mat = materialRaio(m); matsRaio.push(mat); const r = new THREE.Mesh(g, mat); r.renderOrder = 2; cenaTransp.add(r); return; }
   if (m.tipo === 'fantasma') { const mat = new THREE.MeshBasicMaterial({ color: new THREE.Color(...m.cor).multiplyScalar(m.brilho ?? 1), transparent: true, opacity: m.alfa ?? 0.35, depthWrite: false, side: THREE.DoubleSide }); scene.add(new THREE.Mesh(g, mat)); return; }
-  if (m.tipo === 'bolha') { const mat = new THREE.MeshPhysicalMaterial({ color: 0xffffff, transmission: 0, transparent: true, opacity: 0.35, roughness: 0.05 }); cenaTransp.add(new THREE.Mesh(g, mat)); return; }
-  const mesh = new THREE.Mesh(g, criarMaterial(m));
+  if (m.tipo === 'bolha') { const mat = new THREE.MeshPhysicalMaterial({ color: 0xf2fbff, transmission: 0, transparent: true, opacity: 0.55, roughness: 0.05, emissive: 0x9fd8ee, emissiveIntensity: 0.35 }); const mb = new THREE.Mesh(g, mat); mb.renderOrder = 3; registrarAnim(mb, m); cenaTransp.add(mb); return; }
+  const mesh = new THREE.Mesh(g, criarMaterial(m)); registrarAnim(mesh, m);
   mesh.castShadow = m.tipo !== 'emissivo' && !/^(mar_longe|longe)/.test(m.chave || ''); mesh.receiveShadow = true; scene.add(mesh);
   g.computeBoundingBox(); if (!/^(mar_longe|longe|chao|ceu)/.test(m.chave || '')) caixa.union(g.boundingBox);
 }));
@@ -292,10 +302,19 @@ function ajustarSombra() {
   const m = 8;
   cs.left = b.min.x - m; cs.right = b.max.x + m; cs.top = b.max.y + m; cs.bottom = b.min.y - m; cs.near = 1; cs.far = 1400; cs.updateProjectionMatrix();
 }
-function posicionar(i) {   // mesmo deslocamento por quadro usado no benchmark do Cycles
-  camera.position.copy(base).add(new THREE.Vector3(-0.8 * i, 0.5 * i, 0.1 * i));
-  camera.lookAt(camera.position.clone().add(fwd)); camera.updateMatrixWorld(); camera.updateProjectionMatrix();
-  if (!CACHE || i === 0) { ajustarSombra(); renderer.shadowMap.needsUpdate = true; }
+function posicionar(i) {   // animação: câmera e objetos do quadro i; benchmark: deslocamento fixo por quadro
+  if (ANIM) {
+    const q = ANIM.quadros[Math.min(i, ANIM.quadros.length - 1)];
+    camera.position.set(...q.camera.pos); camera.up.set(...q.camera.up); camera.fov = q.camera.fov;
+    camera.lookAt(camera.position.clone().add(new THREE.Vector3(...q.camera.dir)));
+    for (const [nome, arr] of Object.entries(q.objetos)) for (const ms of (animados[nome] || [])) { ms.matrix.fromArray(arr); ms.matrixWorldNeedsUpdate = true; }
+    uTempo.value = i / ANIM.fps;
+  } else {
+    camera.position.copy(base).add(new THREE.Vector3(-0.8 * i, 0.5 * i, 0.1 * i));
+    camera.lookAt(camera.position.clone().add(fwd));
+  }
+  camera.updateMatrixWorld(); camera.updateProjectionMatrix();
+  if (!CACHE || i === 0 || ANIM) { ajustarSombra(); renderer.shadowMap.needsUpdate = true; }
 }
 
 // ------------------------------------------------------------------ passes
@@ -351,5 +370,6 @@ if (ROT.length) {
   }
 }
 window.info = { W, H, tris, materiais: meta.materiais.length, ao: AO, aoAmostras: AO_AMOSTRAS, sombra: SOMBRA, smap: SMAP, cache: CACHE, msaa: MSAA };
+window.nQuadros = () => (ANIM ? ANIM.quadros.length : 1);
 window.quadro(0);
 window.pronto = true;
