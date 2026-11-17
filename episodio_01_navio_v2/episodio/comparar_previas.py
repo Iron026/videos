@@ -6,11 +6,11 @@ from PIL import Image, ImageDraw, ImageFont
 A = os.path.dirname(os.path.abspath(__file__)); F = os.path.join(A, '..', 'fontes')
 ft = ImageFont.truetype(os.path.join(F, 'Montserrat-800.ttf'), 30); fs = ImageFont.truetype(os.path.join(F, 'Montserrat-700.ttf'), 19)
 AZUL, CREME, AMAR, CINZA = (32, 43, 87), (246, 244, 236), (243, 181, 68), (160, 166, 190)
-PONTOS = [('Abertura: outro navio', 8.0), ('Estaleiro (lado iluminado)', 26.5), ('Ar no porão', 40.6), ('Entrada na água', 43.8),
+PONTOS = [('Outro navio', 8.0), ('Estaleiro', 26.5), ('Ar no porão', 40.6), ('Entrada na água', 43.8),
           ('…e para (flutua)', 47.0), ('Pressão', 55.0), ('Empuxo', 62.5), ('Arquimedes', 72.5), ('Bloco 1,6 m', 79.0),
-          ('Mesma massa: bloco × casco', 86.5), ('Água deslocada', 92.5), ('"E mais outro"', 104.0), ('Linha d\'água', 106.0),
-          ('Marcas de calado', 126.8), ('Linha de carga', 132.0), ('Avaria: água entra', 140.0), ('Calado e trim', 146.6),
-          ('Divisórias estanques', 152.5)]
+          ('Bloco × casco', 86.5), ('Água deslocada', 92.5), ('"E mais outro"', 104.0), ('Linha d\'água', 106.0),
+          ('Marcas de calado', 126.8), ('Linha de carga', 132.0), ('Avaria', 140.0), ('Calado e trim', 146.6),
+          ('Divisórias', 152.5)]
 W, H = 180, 320
 
 

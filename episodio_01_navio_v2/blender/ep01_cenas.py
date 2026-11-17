@@ -266,7 +266,7 @@ def seg04(pasta):
         for (za, zb) in ((2.6, 6.0), (6.45, 9.85), (10.3, 13.7), (14.15, 17.0)):
             surge(quad('d_cel_l', s_ * 15.0 - 0.65, s_ * 15.0 + 0.65, za, zb, am), 37.1, dur=0.3, t1=39.6, dur1=0.5)
     ar_v = lib.caixa('ar_porao', (XC + 8.9, 24.6, navio.PONTAL - 2.6), ((XC - 9.9) / 2 + 0.05, 0, Z0 + 2.3 + (navio.PONTAL - 2.6) / 2),
-                     lib.mat_fantasma('ar_interno', '#e6f6ff', alfa=0.30, brilho=1.25))
+                     lib.mat_fantasma('ar_interno', '#e6f6ff', alfa=0.17, brilho=1.15))
     ar_v.visible_shadow = False; surge(ar_v, 39.0, dur=0.7)
     cam = bpy.context.scene.camera or lib.camera((0, -50, 0), (0, 0, 0))
     rot = Rotulos()
@@ -489,7 +489,7 @@ def seg08b(pasta):
         return -a / 2 - 0.4 - 1.5 * (g - 85.6) ** 2 - 2.0 * (g - 85.6)
     rot.add('Mesma massa do navio vazio', lambda g: Vector((XC, yc, zc(g) + a / 2)), 83.95, 87.8, dx=0.03, dy=-0.09)
     rot.add('Aço maciço', lambda g: Vector((XC, yc, zc(g))), 84.3, 87.8, dx=0.05, dy=0.08)
-    rot.add('Ar', (XC, 0, 4.0 - T + 5.0), 84.8, 89.6, dx=0.06, dy=-0.06)
+    rot.add('Ar', (XC, 4.0, 4.0 - T + 3.0), 84.8, 89.6, dx=0.07, dy=0.09)
     rot.add('Água deslocada', (XC, -8.0, -4.5), 90.2, 94.5, dx=0.06, dy=0.10)
     rot.add('Empuxo = peso', (xs, 0, zB + 3.2), 91.0, 94.5, dx=0.06, dy=0.04)
     cam = bpy.context.scene.camera or lib.camera((0, -50, 0), (0, 0, 0))
@@ -737,7 +737,7 @@ def seg11(pasta):
             alvo = pmundo(x + 3.0 - 0.95 * k * 3.0 + 0.0, zl); alvo.x = lerp(xm, -3.85, k) + 0.2 * k
             pos = pmundo(x, zl) + Vector((0, -4.5 + 0.5 * k, 0.4 - 0.1 * k)); a = alvo; l = 34
         else:              # marca de linha de carga: aproxima e acompanha cada linha que acende
-            k = suave((g - 128.8) / 4.0); alvo = pmundo(-3.65, z_linha(g))
+            k = suave((g - 128.8) / 5.2); alvo = pmundo(-3.65, z_linha(g))
             pos = alvo + Vector((-1.7, -5.0, 0.3)).lerp(Vector((-1.1, -3.6, 0.15)), k); a = alvo; l = 32
         pos.z = max(pos.z, 0.55)                                              # nunca abaixo da superfície (cena sem corte)
         camera_em(cam, pos, a, l)
