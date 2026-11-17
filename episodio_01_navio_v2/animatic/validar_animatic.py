@@ -16,15 +16,19 @@ fz = run(['ffmpeg', '-hide_banner', '-i', V, '-vf', 'freezedetect=n=0.0005:d=1.0
 res['congelamentos'] = re.findall(r'freeze_start: [\d.]+|freeze_duration: [\d.]+', fz)
 eb = run(['ffmpeg', '-hide_banner', '-i', V, '-vn', '-af', 'ebur128=peak=true', '-f', 'null', '-']).stderr; sm = eb[eb.rfind('Summary:'):]
 res['loudness'] = dict(integrado_lufs=float(re.search(r'I:\s+(-?[\d.]+) LUFS', sm).group(1)), pico_real_dbtp=float(re.search(r'Peak:\s+(-?[\d.]+) dBFS', sm).group(1)))
-# sincronia da voz real: palavras da amostra no áudio final (previsto: "De" em 15,20 s; "O invisível" em 17,10 s)
+# voz real: transcrição das palavras no áudio final e posição da amostra (prevista em 15,20 s)
 from faster_whisper import WhisperModel
 raw = subprocess.run(['ffmpeg', '-v', 'error', '-i', V, '-vn', '-ac', '1', '-ar', '16000', '-f', 'f32le', '-'], capture_output=True).stdout
 au = np.frombuffer(raw, dtype=np.float32)
 segs, _ = WhisperModel(os.environ.get('WHISPER_MODELO', '/tmp/claude-0/asr/m'), device='cpu', compute_type='int8').transcribe(au, language='pt', beam_size=5, word_timestamps=True)
 pal = [(w.word.strip(), round(w.start, 2), round(w.end, 2)) for s in segs for w in s.words]
 res['voz'] = dict(transcricao=' '.join(p[0] for p in pal), palavras=pal)
-ini = next((p[1] for p in pal if p[0].lower().startswith('de')), None)
-res['voz']['inicio_detectado_s'] = ini; res['voz']['inicio_previsto_s'] = 15.20
-res['voz']['desvio_ms'] = None if ini is None else round((ini - 15.20) * 1000)
+# início da voz por correlação com a própria amostra (o tempo da 1.ª palavra do Whisper é impreciso: estende-se ao silêncio)
+import soundfile as sf
+from scipy.signal import resample_poly, fftconvolve
+ref, sr = sf.read(os.path.join(A, '..', 'voz', 'amostra_assinatura', 'narracao_48k.wav')); ref = resample_poly(ref, 1, 3)
+seg = au[int(13.0 * 16000):]; cc = fftconvolve(seg, ref[::-1], mode='valid')
+ini = round(13.0 + int(np.argmax(cc)) / 16000, 3)
+res['voz']['inicio_amostra_s'] = ini; res['voz']['inicio_previsto_s'] = 15.20; res['voz']['desvio_ms'] = round((ini - 15.20) * 1000)
 json.dump(res, open(os.path.join(A, 'validacao_animatic.json'), 'w'), ensure_ascii=False, indent=1)
 print(json.dumps(res, ensure_ascii=False, indent=1))

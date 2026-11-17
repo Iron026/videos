@@ -2,7 +2,7 @@
 (só texto, nos planos 1–3), etiqueta de status, áudio (amostra real só na assinatura) → animatic_ep01.mp4
 Uso: python3 animatic/montar_animatic.py
 """
-import os, json, subprocess, shutil
+import os, re, subprocess, shutil
 from PIL import Image, ImageDraw, ImageFont, ImageFilter
 
 A = os.path.dirname(os.path.abspath(__file__)); FPS = 30; DUR = 19.5; W, H = 1080, 1920
@@ -55,11 +55,20 @@ if __name__ == '__main__':
     n = int(round(DUR * FPS))
     for i in range(n):
         compor(i / FPS).save(os.path.join(out, f'f{i:04d}.jpg'), quality=94)
-    # áudio: loudness alvo −14 LUFS / −1,5 dBTP (duas passagens)
-    au = os.path.join(A, 'audio_animatic.wav')
-    m = subprocess.run(['ffmpeg', '-hide_banner', '-i', au, '-af', 'loudnorm=I=-14:TP=-1.5:LRA=11:print_format=json', '-f', 'null', '-'], capture_output=True, text=True).stderr
-    j = json.loads(m[m.rfind('{'):m.rfind('}') + 1])
-    filtro = f"loudnorm=I=-14:TP=-1.5:LRA=11:measured_I={j['input_i']}:measured_TP={j['input_tp']}:measured_LRA={j['input_lra']}:measured_thresh={j['input_thresh']}:offset={j['target_offset']}:linear=true"
+    # áudio: −14 LUFS integrado / −1,5 dBTP. O loudnorm de 2 passagens cai no modo dinâmico aqui (LRA 20 LU: impacto
+    # forte × ambiente baixo) e erra o alvo; então: ganho fixo + limitador, com o ganho ajustado pela medição real.
+    au = os.path.join(A, 'audio_animatic.wav'); tmp = os.path.join(out, 'teste.m4a')
+    def medir(g):
+        subprocess.run(['ffmpeg', '-y', '-v', 'error', '-i', au, '-af', filtro_g(g), '-c:a', 'aac', '-b:a', '192k', '-ar', '48000', tmp], check=True)
+        e = subprocess.run(['ffmpeg', '-hide_banner', '-i', tmp, '-af', 'ebur128=peak=true', '-f', 'null', '-'], capture_output=True, text=True).stderr
+        return float(re.search(r'I:\s+(-?[\d.]+) LUFS', e[e.rfind('Summary:'):]).group(1))
+    def filtro_g(g): return f'volume={g:.2f}dB,alimiter=limit=-2.2dB:attack=3:release=60:level=disabled:asc=1'
+    g = 0.0
+    for _ in range(4):
+        i_med = medir(g)
+        if abs(i_med + 14) < 0.15: break
+        g += -14 - i_med
+    filtro = filtro_g(g); print('ganho', round(g, 2), 'dB →', i_med, 'LUFS')
     saida = os.path.join(A, 'animatic_ep01.mp4')
     subprocess.run(['ffmpeg', '-y', '-v', 'error', '-framerate', str(FPS), '-i', os.path.join(out, 'f%04d.jpg'), '-i', au,
                     '-af', filtro, '-c:v', 'libx264', '-preset', 'slow', '-crf', '17', '-pix_fmt', 'yuv420p', '-profile:v', 'high',

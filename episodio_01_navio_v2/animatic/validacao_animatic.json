@@ -1,0 +1,76 @@
+{
+ "video": {
+  "codec": "h264",
+  "largura": 1080,
+  "altura": 1920,
+  "fps": 30.0,
+  "quadros": 585,
+  "duracao": 19.5
+ },
+ "audio": {
+  "codec": "aac",
+  "taxa": 48000,
+  "canais": 2,
+  "duracao": 19.5
+ },
+ "tamanho_mb": 19.07,
+ "quadros_pretos": [],
+ "congelamentos": [],
+ "loudness": {
+  "integrado_lufs": -14.1,
+  "pico_real_dbtp": -1.8
+ },
+ "voz": {
+  "transcricao": "De olho no invisível, o invisível ganha a forma.",
+  "palavras": [
+   [
+    "De",
+    14.72,
+    15.48
+   ],
+   [
+    "olho",
+    15.48,
+    15.76
+   ],
+   [
+    "no",
+    15.76,
+    15.98
+   ],
+   [
+    "invisível,",
+    15.98,
+    16.72
+   ],
+   [
+    "o",
+    17.1,
+    17.28
+   ],
+   [
+    "invisível",
+    17.28,
+    17.98
+   ],
+   [
+    "ganha",
+    17.98,
+    18.38
+   ],
+   [
+    "a",
+    18.38,
+    18.5
+   ],
+   [
+    "forma.",
+    18.5,
+    18.82
+   ]
+  ],
+  "inicio_amostra_s": 15.203,
+  "inicio_previsto_s": 15.2,
+  "desvio_ms": 3
+ }
+}

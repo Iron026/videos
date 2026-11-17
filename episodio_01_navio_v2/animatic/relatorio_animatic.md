@@ -20,6 +20,7 @@
 - **Queda do bloco:** aço 7.850 kg/m³, empuxo, massa adicional 0,5 e arrasto Cd 1,05 integrados quadro a quadro. Ele desacelera ao entrar na água e chega ao leito 0,63 s depois, sem flutuar.
 - **Içamento do painel:** como no estaleiro real, a chapa desce **por fora** do casco com folga de 2,2 m (a folga mínima calculada com a forma do costado perto da proa é 1,9 m) e só então o carro do pórtico a desliza para o vão.
 - **Balanço da carga:** pêndulo ≈ −a/g, limitado a ±2° pelos cabos-guia. Correção desta rodada: na frenagem, a base da chapa balança em direção ao casco; o giro agora é limitado também à folga que ainda resta. Antes, nos últimos centímetros, a borda inferior atravessava as cavernas (quadros 13,98–14,25 s); verifiquei que não era erro do renderizador (sem MSAA, sem GTAO, mesma posição de vértices no Blender e no Three.js).
+- **Arquivo aprovado preservado:** o afastamento de 12 cm da chapa (para assentar por fora das cavernas) virou parâmetro de `quadro2(off_painel=…)`. O padrão 0 reproduz exatamente o Quadro 2 aprovado; só o animatic usa 0,12.
 - **Cabos:** comprimento recalculado a cada quadro conforme o moitão sobe ou desce.
 
 ## Áudio
@@ -32,7 +33,20 @@
 
 Ver `animatic/validacao_animatic.json` (gerado por `validar_animatic.py`).
 
-{{VALIDACAO}}
+| Verificação | Resultado |
+|---|---|
+| Vídeo | H.264, 1080×1920, 30 fps, 585 quadros, 19,50 s |
+| Áudio | AAC 48 kHz estéreo, 19,50 s |
+| Quadros pretos (blackdetect) | nenhum |
+| Congelamentos ≥ 1 s (freezedetect) | nenhum |
+| Loudness integrado | −14,1 LUFS (alvo −14) |
+| Pico real | −1,8 dBTP (limite −1,5) |
+| Posição da amostra de voz (correlação) | 15,203 s, prevista 15,20 s (+3 ms) |
+| Transcrição da voz no MP4 final (Whisper) | "De olho no invisível, o invisível ganha a forma." |
+
+O "a" em "ganha **a** forma" aparece também na transcrição do MP4 final, o mesmo ponto já marcado na análise da amostra. Antes de aprovar, ouça a frase da assinatura.
+
+Correção de método nesta rodada: o `loudnorm` de duas passagens caía no modo dinâmico (a faixa de loudness do material é de 20 LU, entre o impacto forte e o ambiente baixo) e entregava −11,6 LUFS. Troquei por ganho fixo + limitador, com o ganho ajustado pela medição real (+3,8 dB).
 
 ## Duração
 
@@ -41,7 +55,8 @@ O animatic tem 19,5 s, acima dos 10–15 s previstos inicialmente para este trec
 ## Custo de render
 
 - Plano 1: 169 quadros · plano 2/3: 298 quadros · assinatura: 142 quadros (HTML/SVG).
-- Three.js v2, sem GPU: cerca de 8–12 s por quadro em 1080×1920, ou ≈ 1 h 20 min para os 467 quadros 3D.
+- Three.js v2, sem GPU: 8–12,6 s por quadro em 1080×1920, ou ≈ 1 h 20 min para os 467 quadros 3D. A montagem (legendas, fusões e codificação) leva ~1 min.
+- Os quadros 230–297 do plano 3 foram renderizados de novo após a correção do balanço (68 quadros, 12,6 s/quadro).
 
 ## Limitações conhecidas
 
