@@ -30,6 +30,7 @@ CHIPS = [(2.05, 3.70, 'Câmera lenta'), (41.6, 48.0, 'Tempo acelerado'), (74.85,
          (105.4, 117.2, 'Tempo acelerado'), (137.0, 146.0, 'Tempo acelerado')]
 
 
+REENQUADRADOS = ['s0607', 's08b', 's11', 's13']   # ajustes finais: segmentos reenquadrados em boa parte (s09 mudou só 2,5 s)
 ALIAS = {'s0607_2': ('s0607', 48.00)}   # mesmo segmento renderizado, retomado depois do respiro (base de tempo original)
 
 
@@ -56,6 +57,11 @@ def nivelar(nome, img):
             st = [np.asarray(Image.open(os.path.join(d, f)).convert('HSV'), dtype=np.float32).reshape(-1, 3).mean(0) for f in fs]
             GRADE[n_] = np.mean(st, 0)
         GRADE['_alvo'] = np.median(np.array([v for v in GRADE.values()]), 0)
+        # ajustes finais: segmentos reenquadrados medem a cor nos quadros novos (o alvo continua o mesmo da versão aprovada)
+        for n_ in REENQUADRADOS:
+            d = os.path.join(A, 'quadros_revisao', n_)
+            fs = sorted(f for f in os.listdir(d) if f.endswith('.jpg'))[::8] if os.path.isdir(d) else []
+            if fs: GRADE[n_] = np.mean([np.asarray(Image.open(os.path.join(d, f)).resize((270, 480)).convert('HSV'), dtype=np.float32).reshape(-1, 3).mean(0) for f in fs], 0)
         print('nivelamento', {k: [round(float(x)) for x in v[1:]] for k, v in GRADE.items()})
     alvo = GRADE['_alvo']
     v = GRADE[nome]
