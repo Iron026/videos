@@ -211,31 +211,55 @@ def seg03(pasta):
             surge(o, 25.55 + 1.35 * k / max(1, len(lat) - 1), dur=0.45, d=(0, lado * 2.5, 4.0))
         for k, (o, lado, xa, j) in enumerate(pro):
             surge(o, 27.05 + 1.15 * k / max(1, len(pro) - 1), dur=0.45, d=(0, lado * 2.5, 4.0))
-        # faíscas de solda: na costura do painel recém-encaixado e no fundo (bojo), piscando
-        mf = lib.mat_emissivo('faisca_ep', '#ffcf7a', 30.0)
+        # REFINAMENTO · solda: arco branco-azulado (núcleo + halo) tremulando a 30 Hz, luz do arco refletida nas chapas vizinhas
+        # (brilho aditivo com queda radial, sem luz dinâmica no motor) e faíscas alaranjadas BALÍSTICAS (gravidade), de vida
+        # curta, com trajetórias variadas; o arco abre em cordões (liga, pausa curta, liga de novo).
         Z0 = raiz.location.z
-        focos = [(Vector((74.0, navio.meia_boca(74.0, 7.6) + 0.2, Z0 + 7.6)), 23.75, 25.2),
-                 (Vector((70.2, navio.meia_boca(70.2, 12.0) + 0.2, Z0 + 12.0)), 24.0, 25.4),
-                 (Vector((38.0, navio.meia_boca(38.0, 1.0) + 0.25, Z0 + 1.0)), 24.9, 26.4),
-                 (Vector((22.0, navio.meia_boca(22.0, 1.0) + 0.25, Z0 + 1.0)), 25.1, 26.4)]
-        mhalo = lib.mat_fantasma('halo_solda', '#ffc266', alfa=0.6, brilho=4.0)
-        for (c, ta, tb) in focos:
+        focos = [(Vector((74.0, navio.meia_boca(74.0, 7.6) + 0.2, Z0 + 7.6)), [(23.75, 24.55), (24.68, 25.25)], 34),
+                 (Vector((70.2, navio.meia_boca(70.2, 12.0) + 0.2, Z0 + 12.0)), [(24.0, 24.7), (24.85, 25.4)], 16),
+                 (Vector((38.0, navio.meia_boca(38.0, 1.0) + 0.25, Z0 + 1.0)), [(24.9, 26.4)], 10),
+                 (Vector((22.0, navio.meia_boca(22.0, 1.0) + 0.25, Z0 + 1.0)), [(25.1, 26.4)], 10)]
+        def disco(nome, c, nrm, raio, mat, desloc, nseg=28):
+            vs = [(0.0, 0.0, 0.0)] + [(raio * math.cos(2 * math.pi * q_ / nseg), 0.0, raio * math.sin(2 * math.pi * q_ / nseg)) for q_ in range(nseg)]
+            o = lib.malha(nome, vs, [(0, 1 + q_, 1 + (q_ + 1) % nseg) for q_ in range(nseg)], mat)
+            o.location = c + nrm * desloc; o.visible_shadow = False; return o
+        mf = lib.mat_brilho('faisca_brilho', '#ff7412', forca=2.6, raio=1.05, queda=0.9, tremor=0.15); mnuc = lib.mat_emissivo('arco_nucleo', '#f2f8ff', 60.0)
+        faiscas = []
+        for k_, (c, cordoes, nf) in enumerate(focos):
             nrm = Vector((0, 1 if c.y > 0 else -1, 0))
-            for j in range(int((tb - ta) / 0.12)):                         # halo da solda: tremula (luz forte e irregular)
-                rr = rnd.uniform(1.2, 1.9); t0 = ta + j * 0.12
-                vs_h = [tuple(c + nrm * 0.25)] + [tuple(c + nrm * 0.25 + V(rr * math.cos(2 * math.pi * q_ / 20), 0, rr * math.sin(2 * math.pi * q_ / 20))) for q_ in range(20)]
-                hq = lib.malha('halo', vs_h, [(0, 1 + q_, 1 + (q_ + 1) % 20) for q_ in range(20)], mhalo); hq.visible_shadow = False   # disco
-                surge(hq, t0, dur=0.02, t1=t0 + rnd.uniform(0.06, 0.11), dur1=0.02)
-            for i in range(24):
-                d = Vector((rnd.uniform(-0.6, 1.0), (1 if c.y > 0 else -1) * rnd.uniform(0.2, 1.4), rnd.uniform(-1.6, 0.4)))
-                f = lib.tubo('faisca', [tuple(c), tuple(c + d * 0.9)], r=0.05, mat=mf)
-                t0 = rnd.uniform(ta, tb - 0.2); surge(f, t0, dur=0.02, t1=t0 + rnd.uniform(0.08, 0.25), dur1=0.02)
+            for q_, (ta, tb) in enumerate(cordoes):
+                sem = 3.0 * k_ + q_
+                luz = disco('luz_chapa', c, nrm, 3.4, lib.mat_brilho(f'luz_chapa{k_}{q_}', '#d6e4ff', forca=0.55, raio=3.4, queda=2.4, tremor=0.45, semente=sem), 0.05)
+                halo = disco('arco_halo', c, nrm, 0.95, lib.mat_brilho(f'arco_halo{k_}{q_}', '#a8d2ff', forca=2.4, raio=0.95, queda=1.8, tremor=0.55, semente=sem + 0.5), 0.22)
+                nuc = disco('arco_luz', c, nrm, 0.38, lib.mat_brilho(f'arco_luz{k_}{q_}', '#ffffff', forca=4.5, raio=0.38, queda=1.2, tremor=0.5, semente=sem + 0.25), 0.26)
+                for o_ in (luz, halo, nuc): surge(o_, ta, dur=0.06, t1=tb, dur1=0.12)
+                ponto = lib.cilindro('arco_ponto', 0.07, 0.05, tuple(c + nrm * 0.24), mnuc, rot=(math.pi / 2, 0, 0), lados=12); ponto.visible_shadow = False
+                surge(ponto, ta, dur=0.03, t1=tb, dur1=0.05)
+            for i_ in range(nf):                       # cada faísca renasce várias vezes durante os cordões
+                o = lib.tubo('faisca', [(0.0, 0.0, 0.0), (-1.0, 0.0, 0.0)], r=0.03, mat=mf); o['anim'] = 1; o.visible_shadow = False
+                vidas = []
+                for (ta, tb) in cordoes:
+                    t_ = ta + rnd.uniform(0.0, 0.25)
+                    while t_ < tb - 0.05:
+                        v0 = nrm * rnd.uniform(1.2, 4.8) + Vector((rnd.uniform(-3.2, 3.2), 0, rnd.uniform(-1.2, 3.6)))
+                        vida = rnd.uniform(0.16, 0.55); vidas.append((t_, vida, v0)); t_ += vida + rnd.uniform(0.02, 0.35)
+                faiscas.append((o, c + nrm * 0.26, vidas))
+        GV = Vector((0, 0, -9.81))
+        def anim_faiscas(g):
+            for (o, p0, vidas) in faiscas:
+                viva = next(((t_, v0) for (t_, vd, v0) in vidas if t_ <= g < t_ + vd), None)
+                if viva is None: o.scale = (1e-4, 1e-4, 1e-4); o.location = p0; continue
+                tau = g - viva[0]; vel = viva[1] + GV * tau
+                o.location = p0 + viva[1] * tau + 0.5 * GV * tau * tau
+                o.rotation_euler = vel.to_track_quat('X', 'Z').to_euler()
+                o.scale = (max(0.12, vel.length * 0.045), 1.0, 1.0)            # rastro ~ velocidade × obturador (borrão de movimento)
+        foco_macro = focos[0][0]
         def tguind(g): return float(np.interp(g, [15.10, 20.70, 21.70, 23.60, 31.0], [5.60, 11.50, 12.50, 14.40, 15.0]))
         def painel_z(tc):
             if tc < 11.5: return lerp(13.0, 1.2, suave((tc - 5.6) / 5.9))
             if tc < 12.5: return lerp(1.2, 0.0, suave5((tc - 11.5) / 1.0))
             return 0.0
-        xg = ctx['xg']; foco = focos[0][0]
+        xg = ctx['xg']; foco = foco_macro
         def alvo_3a(g): return V(73.5, 14.5, 16.5 + 3.0 + max(0.0, painel_z(tguind(g)) - 3.0) * 0.30)
         P = [(15.10, [(15.10, (236, 142, 96), (34, 0, 6), 24), (17.20, (198, 104, 66), (52, 2, 10), 24)]),                       # 8 aérea
              (17.20, [(17.20, (xg + 24, 34, 3.5), (xg, 9, 40), 20), (19.00, (xg + 20, 31, 4.5), (xg, 9, 34), 20)]),                # 9 carro e guincho (contra-plongée)
@@ -246,7 +270,7 @@ def seg03(pasta):
              (27.00, [(27.00, (120, 34, 3.0), (88, 0, 12), 22), (28.50, (114, 30, 4.0), (86, 0, 12), 22)]),                         # 14 proa, de baixo
              (28.50, [(28.50, (175, 138, 82), (10, 0, 8), 24), (30.30, (166, 128, 74), (10, 0, 8), 24)])]                           # 15 geral heroico
         def anim(g):
-            posicionar(tguind(g)); camera_planos(cam, P, g)
+            posicionar(tguind(g)); anim_faiscas(g); camera_planos(cam, P, g)
         exportar_seg(pasta, 15.10, 30.30, anim, rot, extra=dict(segmento='03'))
     A.plano23(pasta, exportador=exportador)
 
@@ -422,27 +446,35 @@ def seg0607(pasta):
     XC, T, raiz, solido, KB = cena_secao()
     rot = Rotulos(); xs = XC + 0.9; zB = KB - T
     # mapa de pressão: casca do volume submerso pintada em faixas por profundidade (clara na superfície, escura no fundo)
-    mapa_m = lib.mat_faixas_z('mapa_pressao', [(1.4, '#0b3366'), (2.8, '#174a8c'), (4.2, '#2b67ad'), (5.6, '#4a8cc8'), (6.8, '#79b3e0'), (1e9, '#b9e2f7')], rug=0.5)
+    # REFINAMENTO: evolução contínua (nada some de uma vez). Setas e mapa desbotam por opacidade (materiais fade=True):
+    # pressões no contorno → os pares laterais se empurram e se anulam (deslizam um para o outro e desbotam) → no bojo a seta
+    # oblíqua dá lugar à sua componente vertical (fusão cruzada) → todas as verticais convergem para B e se fundem no empuxo.
+    mapa_m = lib.mat_faixas_z('mapa_pressao', [(1.4, '#0b3366'), (2.8, '#174a8c'), (4.2, '#2b67ad'), (5.6, '#4a8cc8'), (6.8, '#79b3e0'), (1e9, '#b9e2f7')], rug=0.5, fade=True)
     mapa = volume_submerso('mapa_pressao', T, x0=-70.0, x1=XC - 0.08, mat=mapa_m, infla=0.10); mapa.parent = raiz
-    surge(mapa, 50.75, dur=0.3, t1=59.4, dur1=0.3)
-    def seta(nome, ponto, n_out, L, cor, t0, t1):
-        o = lib.seta3d(nome, tuple(Vector(ponto) + n_out * (L + 0.25)), tuple(-n_out), L, r=0.5, mat=lib.mat_emissivo('p_' + nome, cor, 2.0), cabeca=2.3)
-        o.visible_shadow = False; surge(o, t0, dur=0.4, escala=True, t1=t1, dur1=0.5); return o
+    surge(mapa, 50.75, dur=0.5, t1=59.0, dur1=1.3)
+    def seta(nome, ponto, n_out, L, cor, t0, t1, dur1=0.8, pai=None):
+        o = lib.seta3d(nome, tuple(Vector(ponto) + n_out * (L + 0.25)), tuple(-n_out), L, r=0.5, mat=lib.mat_emissivo('p_' + nome, cor, 2.0, fade=True), cabeca=2.3)
+        o.visible_shadow = False
+        if pai is not None: o.parent = pai
+        surge(o, t0, dur=0.45, t1=t1, dur1=dur1); return o
     k = 0.55                                          # comprimento ∝ profundidade (m de seta por m de profundidade)
+    lados = {}
     for s_ in (1, -1):                                # costado: rasa e funda (componentes só horizontais: se anulam em pares)
+        anc = bpy.data.objects.new(f'lat_anc{s_}', None); lib.ligar(anc); anc['anim'] = 1; lados[s_] = anc
         for (prof, cor, t0) in ((2.0, '#cdeefa', 51.0), (5.0, '#7fd3f5', 51.7)):
-            b = navio.meia_boca(XC, T - prof); seta(f'lat{s_}_{prof}', (xs, s_ * (b + 0.1), -prof), Vector((0, s_, 0)), k * prof, cor, t0, 58.3)
+            b = navio.meia_boca(XC, T - prof); seta(f'lat{s_}_{prof}', (xs, s_ * (b + 0.1), -prof), Vector((0, s_, 0)), k * prof, cor, t0, 58.35, 0.85, pai=anc)
     r = navio.RAIO_BOJO; c45 = math.sqrt(0.5)
     yb_ = navio.meia_boca(XC, 6.0) - r + r * c45; zb_ = r - r * c45; prof_b = T - zb_
-    for s_ in (1, -1):                                # bojo a 45°: depois fica só a componente vertical
-        seta(f'bojo{s_}', (xs, s_ * (yb_ + 0.1), zb_ - T - 0.1), Vector((0, s_ * c45, -c45)), k * prof_b, '#4fc0f0', 52.4, 58.7)
+    for s_ in (1, -1):                                # bojo a 45°: dá lugar à componente vertical (fusão cruzada 58,6–59,5)
+        seta(f'bojo{s_}', (xs, s_ * (yb_ + 0.1), zb_ - T - 0.1), Vector((0, s_ * c45, -c45)), k * prof_b, '#4fc0f0', 52.4, 58.6, 0.9)
     verticais = []                                    # componentes verticais (bojo) + fundo: âncoras que convergem para B
-    for (y0, L, t0) in ((yb_ * 1, k * prof_b * c45, 58.75), (-yb_, k * prof_b * c45, 58.75), (3.5, k * T, 52.9), (-3.5, k * T, 52.9), (9.0, k * T, 52.9), (-9.0, k * T, 52.9)):
+    for (y0, L, t0, dur) in ((yb_ * 1, k * prof_b * c45, 58.6, 0.9), (-yb_, k * prof_b * c45, 58.6, 0.9), (3.5, k * T, 52.9, 0.45), (-3.5, k * T, 52.9, 0.45), (9.0, k * T, 52.9, 0.45), (-9.0, k * T, 52.9, 0.45)):
         anc = bpy.data.objects.new('vert_anc', None); lib.ligar(anc); anc['anim'] = 1
-        lib.seta3d('vert', (0, 0, -L - 0.25), (0, 0, 1), L, r=0.5, mat=lib.mat_emissivo('p_vert', '#2fb6ee', 2.0), cabeca=2.3).parent = anc
+        sv = lib.seta3d('vert', (0, 0, -L - 0.25), (0, 0, 1), L, r=0.5, mat=lib.mat_emissivo('p_vert', '#2fb6ee', 2.0, fade=True), cabeca=2.3); sv.parent = anc
+        sv.visible_shadow = False; surge(sv, t0, dur=dur, t1=61.25, dur1=0.75)          # desbotam enquanto o empuxo cresce
         verticais.append((anc, y0, t0, L))
     B, Wn, pB, pG, xs_, zB_, zG = _setas_forcas(XC, T, KB)
-    surge(B, 61.85, dur=0.6, escala=True); surge(pB, 61.75, dur=0.3)
+    surge(B, 61.3, dur=0.75, escala=True); surge(pB, 61.25, dur=0.4)          # cresce no lugar onde as verticais se fundem
     surge(Wn, 71.15, dur=0.6, escala=True); surge(pG, 71.05, dur=0.3)
     # peso da água deslocada: seta ciano para baixo, ao lado do empuxo, mesmo tamanho (65,8–70,8 s)
     pa = lib.seta3d('peso_agua', (xs, 3.4, zB + 4.0), (0, 0, -1), 4.0, r=1.6, mat=lib.mat_emissivo('seta_peso_agua', COR_EMPUXO, 1.8), cabeca=2.0)
@@ -451,7 +483,8 @@ def seg0607(pasta):
     vol = volume_submerso('vol_deslocado', T, x0=-70.0, x1=XC - 0.05, infla=0.12); vol['anim'] = 1; vol.parent = raiz
     _area_deslocada(XC, T, 65.6)
     rot.add('Pressão da água', (xs, -navio.meia_boca(XC, T - 5.0) - 2.0, -5.0), 51.2, 56.4, dx=0.05, dy=0.10)
-    rot.add('Só a parte vertical sobra', (xs, 0, -T - 3.0), 58.8, 61.6, dx=0.05, dy=0.09)
+    rot.add('Laterais se anulam', lambda g: lados[1].matrix_world @ Vector((xs, navio.meia_boca(XC, T - 3.5) + 1.2, -3.5)), 57.2, 59.0, dx=-0.30, dy=-0.12)
+    rot.add('Só a parte vertical sobra', (xs, 0, -T - 3.0), 59.1, 61.6, dx=0.05, dy=0.09)
     rot.add('Empuxo', (xs, 0, zB + 3.2), 62.0, 67.0, dx=0.08, dy=0.02)
     rot.add('Água deslocada', (XC, -8.0, -4.5), 64.6, 67.0, dx=0.06, dy=0.10)
     rot.add('Peso da água deslocada', (xs, 3.4, zB + 1.5), 67.4, 70.8, dx=0.06, dy=0.06)
@@ -462,17 +495,17 @@ def seg0607(pasta):
          (53.70, [(53.70, (XC + 16, -25, -0.5), (XC, -16.5, -1.0), 26), (56.60, (XC + 16, -24, -9.5), (XC, -14, -8.6), 26)]),                  # 27 mais fundo
          # ajustes finais (28–29, 31–32): 3/4 elevado quase frontal — a seção maior, o convés e o navio preenchem o topo do quadro
          (56.60, [(56.60, (XC + 52, -10, 14), (XC - 3, 0, -5), 19), (58.30, (XC + 51, -10, 14), (XC - 3, 0, -5), 19),                         # 28 compensam (setas laterais inteiras)
-                  (59.60, (XC + 50, -11, 14.5), (XC - 3, 0, -5), 20.5)]),
-         (59.60, [(59.60, (XC + 48, -12, 15), (XC - 3, 0, -5), 21), (62.90, (XC + 46, -11, 13), (XC - 3, 0, -4.5), 22.5)]),                   # 29 empuxo
+                  (59.60, (XC + 49, -11, 14.5), (XC - 3, 0, -5), 20.8), (62.90, (XC + 46, -11, 13), (XC - 3, 0, -4.5), 22.5)]),     # 29 empuxo: mesmo movimento, sem corte
          (63.10, [(63.10, (XC + 42, -48, -8), (XC - 40, 0, -4), 24), (65.80, (XC + 38, -44, -7), (XC - 36, 0, -4), 24)]),                       # 30 volume se enche
          (65.80, [(65.80, (XC + 44, -28, 11), (XC - 6, -1, -3), 24), (70.60, (XC + 46, -30, 12), (XC - 6, -1, -3), 24)]),                       # 31 empuxo = peso da água
          (70.60, [(70.60, (XC + 48, -31, 12), (XC - 6, -1, -2.5), 24), (74.85, (XC + 60, -36, 14), (XC - 6, -1, -2), 24)])]                    # 32 equilíbrio
     def anim(g):
-        for (anc, y0, t0, L) in verticais:            # surgem; em 59,8–61,6 convergem para B e se fundem no empuxo
+        for s_, anc in lados.items():                 # os dois lados se empurram (57,3–57,9) e depois deslizam um para o outro
+            emp = math.sin(math.pi * min(max((g - 57.3) / 0.6, 0.0), 1.0)) * 0.45 + suave((g - 58.35) / 0.85) * 1.6
+            anc.location = (0, -s_ * emp, 0)
+        for (anc, y0, t0, L) in verticais:            # convergem para B (59,8–61,6) e se fundem no empuxo
             kc = suave((g - 59.8) / 1.8)
-            e = min(suave((g - t0) / 0.4), 1 - suave((g - 61.55) / 0.35)) if g >= t0 else 0.0
-            base = Vector((xs, y0 * (1 - kc), -T)).lerp(Vector((xs, 0, zB - L * 0.2)), kc)
-            anc.location = base; anc.scale = (max(e, 1e-4),) * 3
+            anc.location = Vector((xs, y0 * (1 - kc), -T)).lerp(Vector((xs, 0, zB - L * 0.2)), kc); anc.scale = (1, 1, 1)
         kv = suave((g - 63.2) / 2.3)
         vol.scale = (1, 1, max(kv, 1e-4)) if g >= 63.2 else (1e-4, 1e-4, 1e-4)
         camera_planos(cam, P, g)
@@ -518,7 +551,23 @@ def seg08a(pasta):
         gh = bpy.data.objects.new('ancAgua', None); lib.ligar(gh); gh['anim'] = 1
         cubo = lib.caixa('agua_desl_bloco', (1.6, 1.6, 1.6), (0, 0, 0), lib.mat_fantasma('desl_bloco', COR_EMPUXO, alfa=0.45, brilho=1.25), bisel=0.05)
         cubo.parent = gh; cubo.visible_shadow = False
-        def ts(g): return float(np.interp(g, [74.85, 82.0, 82.12, 90.0], [3.22, 3.65, 3.80, 3.85]))
+        # REFINAMENTO · retomada do experimento da abertura: o MESMO bloco, no mesmo cais, é empurrado e cai em tempo real;
+        # logo depois do impacto a velocidade da cena desce suavemente até a câmera lenta (sem saltos de posição ou de ritmo).
+        _gg = np.linspace(74.85, 82.0, 4001)
+        _v = np.where(_gg < 75.75, 1.0, np.where(_gg < 76.35, 1.0 - (1.0 - 0.085) * np.array([suave((x - 75.75) / 0.6) for x in _gg]), 0.085))
+        _s = np.concatenate([[0.0], np.cumsum(0.5 * (_v[1:] + _v[:-1]) * np.diff(_gg))]); _s = _s - _s[-1] + 3.65
+        def ts(g):
+            if g <= 82.0: return float(np.interp(g, _gg, _s))
+            return float(np.interp(g, [82.0, 82.12, 90.0], [3.65, 3.80, 3.85]))
+        t_imp = float(np.interp(ctx['t_agua'], _s, _gg))           # instante global do impacto (ondas na superfície)
+        ta_, tf_ = ctx['t_agua'], ctx['t_fundo']
+        def cam_abertura(t, b):                                   # mesma câmera do plano de abertura (animatic r2), em tempo de cena
+            kz = suave((t - 2.45) / (ta_ + 0.10 - 2.45)); ks = suave((t - ta_) / (tf_ + 0.25 - ta_))
+            z = lerp(1.65, 0.12, kz) + lerp(0.0, -1.45, ks); y = lerp(-1.6, -0.5, suave((t - 2.4) / 1.6)); x = lerp(1.15, 1.45, suave((t - 1.0) / 3.0))
+            alvo = Vector((lerp(5.5, 3.6, suave((t - 1.2) / 1.7)), 6.5, lerp(2.7, 0.0, kz)))
+            alvo.z += lerp(0.0, max(b.z, -4.2) + 0.3 - alvo.z, suave((t - ta_ - 0.05) / 0.55))
+            dt = t - ta_; tr = 0.05 * math.exp(-dt / 0.13) * math.sin(dt * 55) if dt > 0 else 0.0
+            return Vector((x, y, z + tr)), alvo, lerp(30, 34, suave((t - 2.5) / 1.4))
         pf, _ = est(3.80); rs = random.Random(31); msed = lib.mat_fantasma('sedimento', '#c9b48a', alfa=0.55, brilho=1.0)
         for i in range(26):                                  # nuvem de sedimento levantada pelo bloco ao tocar o leito
             ang = rs.uniform(0, 2 * math.pi); rr = rs.uniform(0.9, 2.2)
@@ -528,23 +577,27 @@ def seg08a(pasta):
         estado_p = {}
         def anim(g):
             p = posicionar(ts(g)); estado_p['p'] = p
-            vis = 1.0 if g >= 76.2 else 1e-4
+            vis = max(suave((g - 76.3) / 0.45), 1e-4)          # as forças crescem depois que o bloco já está na água
             aw.location = p; ab.location = p; aw.scale = ab.scale = (vis, vis, vis)
             kg = suave((g - 77.6) / 1.0); vg = 1.0 if 77.6 <= g <= 82.0 else 1e-4
             gh.location = p + Vector((-1.7 * kg, 0, 0)); gh.scale = (vg, vg, vg); gh.rotation_euler = ctx['bloco'].rotation_euler
-            if g < 76.3:                                   # 33 geral submerso: o bloco descendo
-                k = suave((g - 74.85) / 1.45); pos = V(0.6, -11.0, -2.0).lerp(V(0.8, -10.0, -2.3), k); alvo = V(3.0, 6.5, -3.0); l = 26
-            elif g < 78.6:                                 # 34 close no bloco: peso longo × empuxo curto
+            if g < 76.4:                                   # 33 retomada: o enquadramento da abertura (cais → linha d'água → mergulho)
+                pos, alvo, l = cam_abertura(ts(g), p)
+            elif g < 78.6:                                 # 34 close no bloco: peso longo × empuxo curto (chega sem corte)
                 pos = p + V(-1.8, -5.6, 0.2); alvo = p + V(0, -0.9, -0.6); l = 30
+                kb = suave((g - 76.4) / 0.7)
+                if kb < 1:
+                    p0, a0, l0 = cam_abertura(ts(g), p); pos = p0.lerp(pos, kb); alvo = a0.lerp(alvo, kb); l = lerp(l0, l, kb)
             elif g < 81.5:                                 # 35 lado a lado: bloco e a água que ele desloca (mesmo tamanho)
                 k = suave((g - 78.6) / 2.9); pos = p + V(-0.6, -7.2, 0.4).lerp(V(-0.9, -6.6, 0.3), k); alvo = p + V(-0.9, 0, 0); l = 28
             else:                                          # 36 do leito, olhando para cima: o bloco chega e levanta sedimento
                 k = suave((g - 81.5) / 2.35); pos = V(pf.x - 3.4, 1.2, -6.3).lerp(V(pf.x - 3.0, 1.6, -6.1), k); alvo = V(pf.x, 6.5, -4.6); l = 24
             camera_em(cam, pos, alvo, l)
+        rot.add('O mesmo bloco do início', lambda g: estado_p.get('p', V(0, 0, 0)) + Vector((0, -0.8, 0.8)), 74.95, 75.95, dx=0.06, dy=-0.10)
         rot.add('Peso', lambda g: estado_p.get('p', V(0, 0, 0)) + Vector((0, -0.9, -2.0)), 76.4, 83.6, dx=0.07, dy=0.04)
         rot.add('Empuxo', lambda g: estado_p.get('p', V(0, 0, 0)) + Vector((0, -0.9, 0.35)), 76.6, 83.6, dx=0.07, dy=-0.05)
         rot.add('Água deslocada', lambda g: estado_p.get("p", V(0, 0, 0)) + Vector((-1.7, 0, 0.8)), 78.3, 82.0, dx=-0.05, dy=-0.07)
-        exportar_seg(pasta, 74.85, 83.85, anim, rot, extra=dict(segmento='08a', ondas=[dict(x=ctx['x_imp'], y=ctx['by'], t0=-50.0)]))
+        exportar_seg(pasta, 74.85, 83.85, anim, rot, extra=dict(segmento='08a', ondas=[dict(x=ctx['x_imp'], y=ctx['by'], t0=t_imp)]))
     A.plano1(pasta, exportador=exportador)
 
 
@@ -578,7 +631,7 @@ def seg08b(pasta):
     D = hidro.RHO * hidro.carena(T)[0]; a = (D / 7.85) ** (1 / 3)
     yc = -(navio.MEIA_BOCA + 5.0 + a / 2); xc = XC - a / 2          # 5 m entre os dois (era 7): par mais compacto no quadro vertical
     cubo = bpy.data.objects.new('cubo_aco', None); lib.ligar(cubo); cubo['anim'] = 1
-    lib.caixa('cubo_aco_m', (a, a, a), (0, 0, 0), lib.mat_pintura('aco_macico', '#7b8087', rug=0.35, metal=0.6, variacao=0.05), bisel=0.12).parent = cubo
+    lib.caixa('cubo_aco_m', (a, a, a), (0, 0, 0), lib.mat_aco('aco_bloco', (158, 161, 166), rug=0.3, escovado=False, macico=True, manchas=0.07, escala_var=0.9), bisel=0.12).parent = cubo
     mw = lib.mat_emissivo('seta_peso', COR_PESO, 2.0); me = lib.mat_emissivo('seta_empuxo_c', '#a6f0ff', 2.6)
     L = 4.0
     wc = lib.seta3d('peso_cubo', (a / 2 + 0.9, 0, 0), (0, 0, -1), L, r=1.6, mat=mw, cabeca=2.0); wc.parent = cubo
@@ -1124,7 +1177,7 @@ def seg13(pasta):
     # 63 retomada do contraste: um bloco maciço de aço cai ao lado (à frente da proa) e afunda; o navio continua flutuando
     a = (hidro.RHO * hidro.carena(navio.CALADO_LEVE)[0] / 7.85) ** (1 / 3)
     cubo = bpy.data.objects.new('cubo_fim', None); lib.ligar(cubo); cubo['anim'] = 1
-    lib.caixa('cubo_fim_m', (a, a, a), (0, 0, 0), lib.mat_pintura('aco_macico', '#7b8087', rug=0.35, metal=0.6, variacao=0.05), bisel=0.12).parent = cubo
+    lib.caixa('cubo_fim_m', (a, a, a), (0, 0, 0), lib.mat_aco('aco_bloco', (158, 161, 166), rug=0.3, escovado=False, macico=True, manchas=0.07, escala_var=0.9), bisel=0.12).parent = cubo
     XB, TS = 126.0, 155.2
     def zc(g):
         if g < TS: return a / 2 + 2.0
@@ -1139,13 +1192,14 @@ def seg13(pasta):
                   (157.6, (172, -58, -2), (116, -6, -14), 24), (158.7, (170, -58, -5), (112, -6, -18), 24)]),
          (158.7, [(158.7, (115, -58, -2), (70, -16, 0), 22), (162.4, (45, -54, -2), (5, -16, 0), 22)]),
          (162.4, [(162.4, (30, -52, -2.5), (3, -17, -1), 24), (164.35, (28, -50, -2), (3, -17, -0.5), 24)]),
-         (164.35, [(164.35, (146, -124, 30), (5, 0, 2), 22), (166.3, (160, -138, 35), (5, 0, 2), 22)])]
+         (164.35, [(164.35, (146, -124, 30), (5, 0, 2), 22), (166.3, (160, -138, 35), (5, 0, 2), 22),               # 66 navio inteiro: o vídeo termina
+                   (168.2, (170, -150, 39), (3, 0, 2), 22), (169.5, (174, -155, 41), (2, 0, 2), 22)])]                    # aqui (sem tela de assinatura)
     def anim(g):
         raiz.location.z = -T + 0.08 * math.sin(2 * math.pi * g / 9.0)
         sc = 1.0 if g <= 158.6 else 1e-4
         cubo.location = (XB, 0, zc(g)); cubo.scale = (sc,) * 3
         camera_planos(cam, P, g)
-    exportar_seg(pasta, 154.60, 166.30, anim, rot, extra=dict(segmento='13', calado=T))
+    exportar_seg(pasta, 154.60, 169.50, anim, rot, extra=dict(segmento='13', calado=T))
 
 
 SEGMENTOS = {'0607b': seg0607b, '12x': seg12x, '12': seg12, '13': seg13, '09': seg09, '10': seg10, '11': seg11, '02': seg02, '03': seg03, '04': seg04, '05': seg05, '0607': seg0607, '08a': seg08a, '08b': seg08b}

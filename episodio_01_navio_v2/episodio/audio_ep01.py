@@ -5,7 +5,7 @@ e audio_ep01.json (eventos). A loudness final (−14 LUFS / −1,5 dBTP) é apli
 import json, os, numpy as np, soundfile as sf
 from scipy.signal import butter, sosfilt
 
-SR = 48000; DUR = 171.0; N = int(DUR * SR); A = os.path.dirname(os.path.abspath(__file__))
+SR = 48000; DUR = 169.5; N = int(DUR * SR); A = os.path.dirname(os.path.abspath(__file__))
 rng = np.random.default_rng(23)
 def bp(x, lo, hi, o=4): return sosfilt(butter(o, [lo, hi], 'bandpass', fs=SR, output='sos'), x)
 def lp(x, f, o=4): return sosfilt(butter(o, f, 'lowpass', fs=SR, output='sos'), x)
@@ -69,8 +69,15 @@ por(4.40, whoosh(), db(-28))
 a_ = lp(ruido(N), 1200) * janela(15.1, 30.4, 0.3, 0.4) * db(-36); L += a_; R += np.roll(a_, 1500)
 mo = motor(15.1, 21.7, g=-32) + motor(21.7, 23.6, g=-29) + motor(17.2, 19.0, f=150, g=-27); L += mo; R += mo
 por(15.10, whoosh(), db(-28)); por(23.60, clank(), db(-13)); ev['encaixe'] = 23.60
-for t0 in np.arange(23.75, 26.4, 0.07):
-    if rng.random() < 0.55: por(float(t0), hp(ruido(int(0.05 * SR)), 2500) * env(int(0.05 * SR), 0.001, 0.02), db(-30), pan=0.6)
+# solda (refinamento): arco elétrico = zumbido de 100/200 Hz modulado + crepitar denso nos cordões; faíscas chiando
+for (ta, tb, g_) in ((23.75, 24.55, -25), (24.68, 25.25, -25), (24.0, 24.7, -31), (24.85, 25.4, -31), (24.9, 26.4, -34), (25.1, 26.4, -35)):
+    n = int((tb - ta) * SR); t = np.arange(n) / SR
+    zum = (np.sign(np.sin(2 * np.pi * 100 * t)) * 0.4 + np.sin(2 * np.pi * 200 * t) * 0.3) * (0.6 + 0.4 * rng.random(n).round(0))
+    crep = hp(ruido(n), 1800) * (rng.random(n) < 0.012).astype(float).cumsum() % 2
+    arco = (bp(zum, 120, 2500) * 0.5 + crep * 0.8) * np.minimum(1, t / 0.03) * np.clip((tb - ta - t) / 0.08, 0, 1)
+    por(ta, arco, db(g_), pan=0.6)
+for t0 in np.arange(23.75, 26.4, 0.05):
+    if rng.random() < 0.45: por(float(t0), hp(ruido(int(0.09 * SR)), 3200) * env(int(0.09 * SR), 0.001, 0.05), db(-31), pan=0.4 + 0.4 * rng.random())
 for i, t0 in enumerate(np.linspace(25.95, 28.4, 9)): por(float(t0), clank(380 + 40 * (i % 3), 0.7, 0.5), db(-27), pan=0.35 + 0.3 * (i % 2))
 # 30,30–41,55 · corte ilustrativo: deslize da proa, brilho na revelação
 sl = lp(ruido(int(1.8 * SR)), 260) * np.sin(np.linspace(0, np.pi, int(1.8 * SR))); por(33.15, sl, db(-24)); por(33.6, brilho(1.6), db(-30))
@@ -87,12 +94,18 @@ s_ = sub(48.0, 74.9); L += s_; R += s_
 n = int(1.2 * SR); mergulho = bp(ruido(n), 200, 2500) * np.sin(np.linspace(0, np.pi, n)) ** 2; por(49.0, mergulho, db(-22))   # câmera mergulha
 n = int(2.5 * SR); t = np.arange(n) / SR; mapa = np.sin(2 * np.pi * 110 * t) * np.sin(np.pi * t / 2.5) ** 2; por(50.75, mapa, db(-30))
 for i, t0 in enumerate(np.linspace(50.9, 53.2, 10)): por(float(t0), tique(1700 + 90 * i), db(-31), pan=0.3 + 0.4 * (i % 2))
-por(58.3, whoosh(0.5), db(-32)); por(58.7, tique(1200, 0.12), db(-30)); por(59.8, whoosh(1.6), db(-29)); por(61.85, mais(brilho(1.4, 880.0), 0.5 * thud(60, 0.8)), db(-24)); ev['empuxo'] = 61.85
+por(57.35, thud(70, 0.35), db(-31), pan=0.2); por(57.35, thud(70, 0.35), db(-31), pan=0.8)          # os dois lados empurram juntos
+por(58.35, whoosh(0.9), db(-31)); por(58.6, tique(1200, 0.12), db(-31)); por(59.8, whoosh(1.6), db(-29)); por(61.6, mais(brilho(1.4, 880.0), 0.5 * thud(60, 0.8)), db(-24)); ev['empuxo'] = 61.6
 n = int(2.3 * SR); t = np.arange(n) / SR; enche = np.sin(2 * np.pi * (330 * t + 60 * t * t)) * np.sin(np.pi * t / 2.3) ** 2; por(63.2, enche, db(-32))
 por(65.6, brilho(1.6, 1046.5), db(-28)); por(67.2, tique(900, 0.15), db(-28)); por(71.15, mais(brilho(1.2, 698.46), 0.5 * thud(52, 0.8)), db(-25))
 # 74,85–83,85 · o bloco em câmera lenta e o leito (82,12)
-s_ = sub(74.85, 83.9, -24); L += s_; R += s_
-lento = lp(ruido(int(7.5 * SR)), 140) * np.linspace(0.4, 1, int(7.5 * SR)); por(74.85, lento, db(-26))
+s_ = sub(76.1, 83.9, -24); L += s_; R += s_
+# retomada (refinamento): o mesmo bloco é arrastado no cais e cai; impacto em 76,13; a câmera lenta começa logo depois
+n = int(0.42 * SR); por(74.88, bp(ruido(n), 300, 2400) * env(n, 0.02, 0.15), db(-24), pan=0.6)        # arrasto aço × concreto
+por(75.3, whoosh(0.8), db(-30)); t_imp = 76.13
+por(t_imp, splash(1.6, 1.3), db(-15), pan=0.55); por(t_imp + 0.05, thud(46, 0.9), db(-22)); ev['retomada_agua'] = t_imp
+lento = lp(ruido(int(6.0 * SR)), 140) * np.linspace(0.4, 1, int(6.0 * SR)); por(76.15, lento, db(-26))
+for k in range(10): por(t_imp + 0.3 + 0.16 * k, bp(ruido(int(0.06 * SR)), 500, 1600) * env(int(0.06 * SR), 0.004, 0.04), db(-33), pan=0.4 + 0.05 * k)   # bolhas
 por(82.12, thud(40, 0.9), db(-12)); ev['bloco_leito'] = 82.12
 por(82.15, lp(ruido(int(1.2 * SR)), 900) * env(int(1.2 * SR), 0.02, 0.4), db(-24))   # sedimento
 # 83,85–94,55 · cubo de aço maciço afunda; volume deslocado do casco; forças
@@ -125,13 +138,11 @@ jorro = bp(ruido(N), 250, 2200) * janela(136.9, 145.8, 0.3, 1.0) * db(-27); L +=
 n = int(2.8 * SR); t = np.arange(n) / SR; drone = (np.sin(2 * np.pi * 55 * t) + 0.5 * np.sin(2 * np.pi * 58.3 * t)) * np.sin(np.pi * t / 2.8)
 por(147.9, drone, db(-24)); [por(147.9 + 0.45 * i, tique(700 - 60 * i, 0.12), db(-30)) for i in range(5)]; por(151.05, mais(clank(523, 1.6, 0.6) * 0.6, brilho(1.2, 1046.5)), db(-24)); ev['divisorias'] = 151.05
 # 154,60–166,30 · conclusão; 166,25 assinatura
-m = amb_mar(154.5, 166.6, -35); L += m; R += np.roll(m, 800)
+m = amb_mar(154.5, DUR + 0.5, -35); L += m; R += np.roll(m, 800)
 t_c = 155.2 + (4.0 / 9.81) ** 0.5; por(t_c, splash(1.4, 1.8), db(-17)); por(t_c + 0.2, lp(ruido(int(2.4 * SR)), 180) * np.linspace(1, 0, int(2.4 * SR)), db(-24))
 por(159.6, brilho(2.0, 1046.5), db(-28)); por(161.4, mais(brilho(1.4, 783.99), 0.4 * thud(50, 0.8)), db(-27))
-por(166.0, whoosh(0.6), db(-29))
-n = int(3.0 * SR); t = np.arange(n) / SR
-sino = sum(a * np.sin(2 * np.pi * fr * t) * np.exp(-t * d) for a, fr, d in ((1, 587.3, 1.6), (0.6, 880.0, 2.0), (0.4, 1174.7, 2.6)))
-por(166.25, sino, db(-29)); ev['assinatura'] = 166.25
+# refinamento: sem tela nem som de assinatura; o vídeo termina no último plano do navio (fim musical natural abaixo)
+ev['fim'] = DUR
 
 # ------------------------------------------------------------------ trilha original (pads + arpejo), em Ré maior
 NOTAS = {'D': 146.83, 'E': 164.81, 'F#': 185.0, 'G': 196.0, 'A': 220.0, 'B': 246.94, 'C': 130.81}
@@ -139,7 +150,7 @@ def acorde(raiz, menor=False):
     f = NOTAS[raiz]; return [f, f * (2 ** ((3 if menor else 4) / 12)), f * 1.5]
 SECOES = [(0.0, 15.1, [('B', 1), ('G', 0), ('D', 0), ('A', 0)]), (15.1, 48.0, [('D', 0), ('A', 0), ('B', 1), ('G', 0)]),
           (48.0, 94.55, [('E', 1), ('C', 0), ('G', 0), ('D', 0)]), (94.55, 134.0, [('D', 0), ('G', 0), ('A', 0), ('B', 1)]),
-          (134.0, 154.6, [('B', 1), ('F#', 1), ('G', 0), ('E', 1)]), (154.6, 171.0, [('G', 0), ('D', 0), ('A', 0), ('D', 0)])]
+          (134.0, 154.6, [('B', 1), ('F#', 1), ('G', 0), ('E', 1)]), (154.6, 166.6, [('G', 0), ('D', 0), ('A', 0)]), (166.6, DUR, [('D', 0)])]   # resolve em Ré no fim
 DUR_AC = 4.0
 for (a, b, prog) in SECOES:
     t0 = a; i = 0
@@ -164,9 +175,16 @@ for (a, b) in ((97.6, 117.0), (154.6, 166.0)):
         i0 = int(t0 * SR); j0 = min(N, i0 + n); MUS[i0:j0, 0] += nota[:j0 - i0] * (0.4 + 0.2 * (k % 2)); MUS[i0:j0, 1] += nota[:j0 - i0] * (0.6 - 0.2 * (k % 2))
         t0 += passo; k += 1
 
+# fim natural: o último acorde (Ré) soa e se apaga com o plano final; efeitos e mar descem juntos
+fim = np.clip((DUR - 0.05 - np.arange(N) / SR) / 2.6, 0, 1) ** 1.6
+MUS *= fim[:, None]; L *= fim; R *= fim
+
 # ------------------------------------------------------------------ voz + ducking (trilha −7 dB e efeitos −4 dB sob a fala)
 voz, sr = sf.read(os.path.join(A, '..', 'voz', 'narracao_ep01', 'trabalho', 'narracao_48k.wav')); assert sr == SR
 v = np.zeros(N); v[:min(N, len(voz))] = voz[:N]
+# CÓPIA DE MONTAGEM: a fala de assinatura ("De Olho no Invisível. O invisível ganha forma.", 166,56–169,86) fica de fora;
+# o MP3 original e o WAV de trabalho não são alterados
+corte = int(166.36 * SR); v[corte:] = 0.0; rampa = int(0.06 * SR); v[corte - rampa:corte] *= np.linspace(1, 0, rampa)
 w = int(0.05 * SR); rms = np.sqrt(np.convolve(v ** 2, np.ones(w) / w, 'same'))
 fala = lp((rms > db(-42)).astype(float), 3.0, o=2); fala = np.clip(fala, 0, 1)
 MUS *= (1 - (1 - db(-7)) * fala)[:, None]; L *= 1 - (1 - db(-4)) * fala; R *= 1 - (1 - db(-4)) * fala

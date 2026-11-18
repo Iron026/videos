@@ -123,17 +123,19 @@ function criarMaterial(m) {
   const Base = coat > 0 ? THREE.MeshPhysicalMaterial : THREE.MeshStandardMaterial;
   const mat = new Base({ color: t === 'faixas_z' || t === 'corte_ld' ? 0xffffff : cor, roughness: m.rug ?? 0.5, metalness: m.metal ?? 0, side: THREE.DoubleSide });
   if (coat > 0) { mat.clearcoat = coat; mat.clearcoatRoughness = 0.15; }
-  if (t === 'aco') { mat.metalness = 1.0; mat.roughness = m.rug ?? 0.32; }
+  if (t === 'aco') { mat.metalness = m.macico ? 0.9 : 1.0; mat.roughness = m.rug ?? 0.32; }
   if (t === 'vidro') { mat.color.setRGB(...[28, 40, 58].map(v => Math.pow(v / 255, 2.2))); mat.roughness = 0.08; mat.metalness = 0.4; }
   if (t === 'concreto') { mat.roughness = 0.88; }
   if (t === 'areia') { mat.roughness = 0.95; }
   if (t === 'conteiner') { mat.roughness = 0.55; }
   if (t === 'emissivo') { mat.emissive = cor.clone(); mat.emissiveIntensity = m.forca ?? 6; }
+  if (m.fade) mat.transparent = true;   // pode desbotar por opacidade ao surgir/sumir (setas, mapa de pressão)
   const faixas = (m.faixas || []).slice(0, 6);
   const U = {
     uTipo: { value: ['pintura', 'aco', 'concreto', 'areia', 'conteiner', 'faixas_z', 'corte_ld', 'emissivo', 'vidro', 'generico'].indexOf(t) },
     uCorB: { value: cor }, uVar: { value: m.variacao ?? 0.06 }, uEsc: { value: m.escala_var ?? m.escala ?? 0.6 },
     uRugB: { value: m.rug ?? 0.5 }, uBump: { value: m.bump ?? 0 }, uEscov: { value: m.escovado ? 1 : 0 },
+    uMacico: { value: m.macico ? 1 : 0 }, uManchas: { value: m.manchas ?? 0 },
     uCaus: { value: m.causticas ?? 0 }, uEscCaus: { value: m.escala_caustica ?? 0.9 },
     uNF: { value: faixas.length }, uFZ: { value: [...faixas.map(f => f[0]), ...Array(6 - faixas.length).fill(1e9)] },
     uFC: { value: [...faixas.map(f => new THREE.Vector3(...f[1])), ...Array(6 - faixas.length).fill(new THREE.Vector3())] },
@@ -153,13 +155,15 @@ function criarMaterial(m) {
       vW = (modelMatrix*vec4(position,1.0)).xyz; vL = aLocal; vNw = normalize(mat3(modelMatrix)*normal);`);
     sh.fragmentShader = sh.fragmentShader.replace('#include <common>', `#include <common>
       varying vec3 vW; varying vec3 vL; varying vec3 vNw;
-      uniform int uTipo, uNF; uniform vec3 uCorB; uniform float uVar, uEsc, uRugB, uBump, uEscov, uCaus, uEscCaus;
+      uniform int uTipo, uNF; uniform vec3 uCorB; uniform float uVar, uEsc, uRugB, uBump, uEscov, uCaus, uEscCaus, uMacico, uManchas;
       uniform float uFZ[6]; uniform vec3 uFC[6]; uniform vec3 uAcima, uAbaixoC, uLinha; uniform float uZ0, uEsp;
       uniform float uSub, uSinSol; uniform vec3 uSigma, uAMin, uAMax;
       uniform float uCasca, uBc[64], uKc, uCalc, uTopoC, uEspC; uniform vec3 uCorC;
       ${RUIDO}
       float alturaRelevo(){
         if(uTipo==0 && uBump>0.0) return fbm(vL*18.0,6,0.5)*uBump*0.06;
+        // aço maciço: grão fino muito sutil, atenuado quando fica menor que o pixel (sem cintilação)
+        if(uTipo==1 && uMacico>0.5){ vec3 q=vL*55.0; float aa=1.0-smoothstep(0.25,0.9,length(fwidth(q))); return fbm(q,2,0.5)*0.0010*aa; }
         if(uTipo==1 && uEscov>0.5) return fbm(vec3(vL.x*12.0, vL.y*720.0, vL.z*720.0),3,0.5)*0.004;
         if(uTipo==2) return fbm(vW*9.0,6,0.5)*0.006;
         if(uTipo==3){ float d=fbm(vL*0.2,3,0.5)*6.0; return (0.5+0.5*sin(vL.x*0.9*6.2832+d))*0.035; }
@@ -169,6 +173,8 @@ function criarMaterial(m) {
     .replace('#include <color_fragment>', `#include <color_fragment>
       { vec3 c = diffuseColor.rgb;
         if(uTipo==0 || uTipo==9){ float n=fbm(vL*uEsc,5,0.5); c*=mapear(n,0.0,1.0,1.0-uVar,1.0+uVar); }
+        else if(uTipo==1 && uMacico>0.5){ float n=fbm(vL*uEsc,3,0.5), n2=fbm(vL*uEsc*3.1+7.0,2,0.5);   // manchas de laminação, largas e suaves
+          c*=mapear(n,0.0,1.0,1.0-uManchas,1.0+uManchas)*mapear(n2,0.0,1.0,0.975,1.025); }
         else if(uTipo==2){ float n=fbm(vW*uEsc,5,0.5); c=mix(uCorB*0.78,uCorB*1.08,mapear(n,0.3,0.75,0.0,1.0)); }
         else if(uTipo==3){ float n=fbm(vL*0.25,6,0.5); c=mix(uCorB*0.7,uCorB,n); }
         else if(uTipo==4){ float n=fbm(vL*1.5,6,0.5); c*=mapear(n,0.0,1.0,0.82,1.05); }
@@ -181,7 +187,8 @@ function criarMaterial(m) {
         diffuseColor.rgb=c; }`)
     .replace('#include <roughnessmap_fragment>', `#include <roughnessmap_fragment>
       if(uTipo==0) roughnessFactor=mapear(fbm(vL*uEsc,5,0.5),0.0,1.0,uRugB*0.8,min(1.0,uRugB*1.2));
-      if(uTipo==1) roughnessFactor=mapear(fbm(vL*2.2,8,0.5),0.0,1.0,uRugB*0.65,uRugB*1.45);`)
+      if(uTipo==1) roughnessFactor = uMacico>0.5 ? mapear(fbm(vL*uEsc*1.3,3,0.5),0.0,1.0,uRugB*0.82,uRugB*1.22)
+                                                : mapear(fbm(vL*2.2,8,0.5),0.0,1.0,uRugB*0.65,uRugB*1.45);`)
     .replace('#include <normal_fragment_maps>', `#include <normal_fragment_maps>
       { float h=alturaRelevo()*exp(-length(vViewPosition)/45.0); if(h!=0.0){ vec3 sx=dFdx(-vViewPosition), sy=dFdy(-vViewPosition); vec3 r1=cross(sy,normal), r2=cross(normal,sx);
         float det=dot(sx,r1)*faceDirection; vec2 dh=vec2(dFdx(h),dFdy(h)); vec3 g=sign(det)*(dh.x*r1+dh.y*r2);
@@ -245,6 +252,22 @@ function materialAgua(m) {
       }` });
 }
 
+// brilho aditivo localizado (arco de solda e luz refletida nas chapas): queda radial a partir da origem do objeto
+// e tremulação irregular por quadro (30 Hz), sem luzes dinâmicas no motor
+function materialBrilho(m) {
+  const mat = new THREE.ShaderMaterial({ transparent: true, depthWrite: false, depthTest: true, blending: THREE.AdditiveBlending, side: THREE.DoubleSide,
+    uniforms: { uCor: { value: new THREE.Vector3(...(m.cor || [1, 0.85, 0.6])) }, uForca: { value: m.forca ?? 1.5 }, uRaio: { value: m.raio ?? 1 },
+      uQueda: { value: m.queda ?? 2 }, uTremor: { value: m.tremor ?? 0.3 }, uSemente: { value: m.semente ?? 0 }, uOp: { value: 1 }, uT: uTempo },
+    vertexShader: `attribute vec3 aLocal; varying vec3 vL; void main(){ vL=aLocal; gl_Position=projectionMatrix*modelViewMatrix*vec4(position,1.0); }`,
+    fragmentShader: `uniform vec3 uCor; uniform float uForca,uRaio,uQueda,uTremor,uSemente,uOp,uT; varying vec3 vL;
+      float h(float n){ return fract(sin(n*12.9898+uSemente*78.233)*43758.5453); }
+      void main(){ float r=clamp(length(vL)/uRaio,0.0,1.0); float a=pow(1.0-r,uQueda);
+        float q=floor(uT*30.0+0.5); float fl=1.0-uTremor+uTremor*(0.6*h(q)+0.4*h(q*0.5+3.1));
+        gl_FragColor=vec4(uCor*a*uForca*fl*uOp,1.0); }` });
+  Object.defineProperty(mat, 'opacity', { get() { return mat.uniforms.uOp.value; }, set(v) { if (mat.uniforms) mat.uniforms.uOp.value = v; }, configurable: true });
+  return mat;
+}
+
 function materialRaio(m) {
   return new THREE.ShaderMaterial({ transparent: true, depthWrite: false, depthTest: false, blending: THREE.AdditiveBlending, side: THREE.DoubleSide,
     uniforms: { tProf: { value: null }, uRes: { value: new THREE.Vector2(W, H) }, uNear: { value: 0.5 }, uFar: { value: 8000 },
@@ -282,6 +305,7 @@ await Promise.all(meta.materiais.map(async (m) => {
   if (m.tipo === 'agua') { const mat = materialAgua(m); matsAgua.push(mat); const ma = new THREE.Mesh(g, mat); registrarAnim(ma, m); cenaTransp.add(ma); return; }
   if (m.tipo === 'raio_luz') { const mat = materialRaio(m); matsRaio.push(mat); const r = new THREE.Mesh(g, mat); r.renderOrder = 2; cenaTransp.add(r); return; }
   if (m.tipo === 'fantasma') { const mat = new THREE.MeshBasicMaterial({ color: new THREE.Color(...m.cor).multiplyScalar(m.brilho ?? 1), transparent: true, opacity: m.alfa ?? 0.35, depthWrite: false, side: THREE.DoubleSide }); const mf = new THREE.Mesh(g, mat); registrarAnim(mf, m); scene.add(mf); return; }
+  if (m.tipo === 'brilho') { const mb = new THREE.Mesh(g, materialBrilho(m)); mb.renderOrder = 5; registrarAnim(mb, m); scene.add(mb); return; }
   if (m.tipo === 'oclusor') { const mo = new THREE.Mesh(g, matProfOcl); registrarAnim(mo, m); cenaOclusor.add(mo); return; }
   if (m.tipo === 'bolha') { const mat = new THREE.MeshPhysicalMaterial({ color: 0xf2fbff, transmission: 0, transparent: true, opacity: 0.55, roughness: 0.05, emissive: 0x9fd8ee, emissiveIntensity: 0.35 }); const mb = new THREE.Mesh(g, mat); mb.renderOrder = 3; registrarAnim(mb, m); cenaTransp.add(mb); return; }
   const mesh = new THREE.Mesh(g, criarMaterial(m)); registrarAnim(mesh, m);

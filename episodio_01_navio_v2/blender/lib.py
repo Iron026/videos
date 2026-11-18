@@ -159,8 +159,9 @@ def mat_pintura(nome, cor, rug=0.45, metal=0.0, variacao=0.06, escala_var=0.6, c
     _MATS[nome] = m; return m
 
 
-def mat_aco(nome='aco', cor=(150, 152, 156), rug=0.32, escovado=True):
-    """Aço nu: metálico, com riscos de escovação e manchas de laminação."""
+def mat_aco(nome='aco', cor=(150, 152, 156), rug=0.32, escovado=True, macico=False, manchas=0.0, escala_var=0.9):
+    """Aço nu: metálico, com riscos de escovação e manchas de laminação. macico=True: aço maciço (bloco) — sem escovação,
+    manchas largas e suaves (±manchas), rugosidade pouco variável e grão fino antisserrilhado no motor em tempo real."""
     if nome in _MATS: return _MATS[nome]
     m, nt, p = _mat(nome)
     p.inputs['Metallic'].default_value = 1.0
@@ -182,7 +183,7 @@ def mat_aco(nome='aco', cor=(150, 152, 156), rug=0.32, escovado=True):
     _MATS[nome] = m; return m
 
 
-def mat_emissivo(nome, cor, forca=6.0):
+def mat_emissivo(nome, cor, forca=6.0, fade=False):
     if nome in _MATS: return _MATS[nome]
     m, nt, p = _mat(nome)
     p.inputs['Base Color'].default_value = srgb(cor); p.inputs['Emission Color'].default_value = srgb(cor)
@@ -287,7 +288,7 @@ def mat_conteiner(nome='conteiner'):
     _MATS[nome] = m; return m
 
 
-def mat_faixas_z(nome, faixas, rug=0.42):
+def mat_faixas_z(nome, faixas, rug=0.42, fade=False):
     """Pintura em faixas por altura (coordenadas do objeto): faixas = [(z_limite, cor), ..., (inf, cor)]."""
     if nome in _MATS: return _MATS[nome]
     m, nt, p = _mat(nome)
@@ -662,7 +663,17 @@ def _rotular(f, tipo):
     return g
 
 
-for _nome, _tipo in [('mat_pintura', 'pintura'), ('mat_aco', 'aco'), ('mat_emissivo', 'emissivo'), ('mat_concreto', 'concreto'),
+def mat_brilho(nome, cor='#ffffff', forca=1.5, raio=1.0, queda=2.0, tremor=0.3, semente=0.0):
+    """Brilho aditivo localizado (motor em tempo real): intensidade cai do centro (origem do objeto) até 'raio' e tremula por
+    quadro. Simula o arco de solda e a luz que ele joga nas chapas próximas, sem luz dinâmica."""
+    if nome in _MATS: return _MATS[nome]
+    m, nt, p = _mat(nome)
+    p.inputs['Base Color'].default_value = srgb(cor); p.inputs['Emission Color'].default_value = srgb(cor)
+    p.inputs['Emission Strength'].default_value = forca; p.inputs['Alpha'].default_value = 0.3
+    _MATS[nome] = m; return m
+
+
+for _nome, _tipo in [('mat_pintura', 'pintura'), ('mat_brilho', 'brilho'), ('mat_aco', 'aco'), ('mat_emissivo', 'emissivo'), ('mat_concreto', 'concreto'),
                      ('mat_areia', 'areia'), ('mat_agua', 'agua'), ('mat_vidro_escuro', 'vidro'), ('mat_conteiner', 'conteiner'),
                      ('mat_faixas_z', 'faixas_z'), ('mat_bolha', 'bolha'), ('mat_raio_luz', 'raio_luz'),
                      ('mat_corte_linha_dagua', 'corte_ld'), ('mat_fantasma', 'fantasma')]:

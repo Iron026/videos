@@ -71,7 +71,7 @@ def quadro1():
         lib.tubo('corrente', [(4.95, y, 2.4), (4.7, y, 1.2)], r=0.04, mat=lib.mat_aco('corr', (70, 70, 72)))
     for o in cenario.cabeco((7.0, 6.0, 2.6), 1.0): pass
     cenario.pilha_chapas((9.5, 13.0, 2.6), n=7, tam=(6.0, 2.2, 0.12), rot=math.radians(80), semente=2)
-    lib.caixa('bloco_resto', (1.6, 1.6, 1.6), (8.8, 4.5, 3.4), lib.mat_aco('aco_bloco', (170, 172, 176), rug=0.2), bisel=0.08, seg=3, rot=(0, 0, 0.3))
+    lib.caixa('bloco_resto', (1.6, 1.6, 1.6), (8.8, 4.5, 3.4), lib.mat_aco('aco_bloco', (158, 161, 166), rug=0.3, escovado=False, macico=True, manchas=0.07, escala_var=0.9), bisel=0.08, seg=3, rot=(0, 0, 0.3))
     # estaleiro ao fundo (fora de foco)
     mg = lib.mat_concreto('chao', (150, 146, 136), escala=0.05)
     lib.caixa('terreno', (900, 700, 2), (0, 470, 1.2), mg)
@@ -80,7 +80,7 @@ def quadro1():
     for i, (x, y, w) in enumerate([(60, 320, 60), (-120, 360, 80), (140, 300, 50)]):
         cenario.galpao((x, y, 2.2), (w, 36, 18), cor=['#c9ccc8', '#b8c4cc', '#d8d2c4'][i])
     # o bloco de aço afundando
-    maco = lib.mat_aco('aco_bloco', (170, 172, 176), rug=0.2)
+    maco = lib.mat_aco('aco_bloco', (158, 161, 166), rug=0.3, escovado=False, macico=True, manchas=0.07, escala_var=0.9)
     lib.raios_luz(9, -9, 4, 2, 30, 0.2, 9.0, 1.4, inclinacao=(0.32, 0.12), semente=5)
     bloco = lib.caixa('bloco', (1.6, 1.6, 1.6), (bx, by, -3.7), maco, bisel=0.08, seg=3, rot=(0.22, 0.35, 0.5))
     lib.bolhas('bolhas', (bx + 0.2, by, -2.9), 0.28, 2.9, 70, lib.mat_bolha(), semente=3, tam=(0.03, 0.11))

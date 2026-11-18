@@ -12,7 +12,7 @@ W, H = {'previa': (540, 960), 'previa30': (540, 960), 'teste': (540, 960), 'revi
 PASSO = 3 if PERFIL == 'previa' else 1
 T_INI = float(sys.argv[3]) if len(sys.argv) > 3 else 0.0      # trecho (previa30: amostras a 30 fps)
 T_FIM = float(sys.argv[4]) if len(sys.argv) > 4 else None
-FPS = 30; DUR = 171.0; ESC = W / 1080
+FPS = 30; DUR = 169.5; ESC = W / 1080   # refinamento: termina no último plano do navio (sem tela de assinatura)
 SAIDA = sys.argv[2] if len(sys.argv) > 2 else os.path.join(A, f'ep01_{PERFIL}.mp4')
 FONTE = os.path.join(RAIZ, 'fontes')
 F_LEG = ImageFont.truetype(os.path.join(FONTE, 'Montserrat-800.ttf'), int(58 * ESC))
@@ -23,10 +23,10 @@ AZUL, CREME, AMARELO, ESCURO = (32, 43, 87), (246, 244, 236), (243, 181, 68), (1
 # (nome, início, fim) no tempo global; 's01' = plano 1 aprovado do animatic r2; 'ass' = assinatura
 SEGS = [('s01', 0.00, 4.40), ('s02', 4.40, 15.10), ('s03', 15.10, 30.30), ('s04', 30.30, 41.55), ('s05', 41.55, 48.00),
         ('s0607', 48.00, 63.10), ('s0607b', 63.10, 65.80), ('s0607_2', 65.80, 74.85), ('s08a', 74.85, 83.85), ('s08b', 83.85, 94.55), ('s09', 94.55, 117.20), ('s10', 117.20, 123.65),
-        ('s11', 123.65, 134.00), ('s12x', 134.00, 137.00), ('s12', 137.00, 154.60), ('s13', 154.60, 166.30), ('ass', 166.20, DUR)]
+        ('s11', 123.65, 134.00), ('s12x', 134.00, 137.00), ('s12', 137.00, 154.60), ('s13', 154.60, DUR)]
 FUSAO = 0.20
 # avisos honestos de tempo (canto superior direito)
-CHIPS = [(2.05, 3.70, 'Câmera lenta'), (41.6, 48.0, 'Tempo acelerado'), (74.85, 82.1, 'Câmera lenta'),
+CHIPS = [(2.05, 3.70, 'Câmera lenta'), (41.6, 48.0, 'Tempo acelerado'), (74.85, 76.15, 'Retomando o experimento'), (76.15, 82.1, 'Câmera lenta'),
          (105.4, 117.2, 'Tempo acelerado'), (137.0, 146.0, 'Tempo acelerado')]
 
 
@@ -36,7 +36,9 @@ ALIAS = {'s0607_2': ('s0607', 48.00)}   # mesmo segmento renderizado, retomado d
 
 def pasta(nome):
     nome = ALIAS.get(nome, (nome,))[0]
-    if nome == 's01': return os.path.join(RAIZ, 'animatic', 'quadros_r2_p1'), 1
+    if nome == 's01':   # abertura: re-renderizada com o novo aço maciço (o original aprovado fica em animatic/quadros_r2_p1)
+        d = os.path.join(A, f'quadros_{"revisao" if PERFIL in ("teste", "previa", "previa30") else PERFIL}', 's01')
+        return (d if os.path.isdir(d) and os.listdir(d) else os.path.join(RAIZ, 'animatic', 'quadros_r2_p1')), 1
     if nome == 'ass': return os.path.join(A, 'assinatura_q'), 1
     if PERFIL == 'previa30' and os.path.isdir(os.path.join(A, 'quadros_previa30', nome)): return os.path.join(A, 'quadros_previa30', nome), 1
     if PERFIL == 'teste': return os.path.join(A, 'quadros_revisao', nome), 1
@@ -125,6 +127,27 @@ def legendas():
 LEG = legendas()
 
 
+FIM_ESCURO = True
+_MASC = Image.open(os.path.join(RAIZ, 'mascote', 'mascote_frente_100.png')).convert('RGBA')
+def assinatura_discreta(img, g, t0=166.45):
+    """Identificação do canal integrada ao último plano do navio (sem cena própria): mascote pequeno em círculo + nome."""
+    if g < t0: return
+    a = min(1.0, (g - t0) / 0.8); a = a * a * (3 - 2 * a)
+    camada = Image.new('RGBA', img.size, (0, 0, 0, 0)); d = ImageDraw.Draw(camada)
+    f = ImageFont.truetype(os.path.join(FONTE, 'Montserrat-800.ttf'), int(36 * ESC)); txt = 'De Olho no Invisível'
+    r = int(34 * ESC); tw = d.textlength(txt, font=f); gap = int(14 * ESC); wtot = 2 * r + gap + tw
+    x0 = (W - wtot) / 2; yc = int(0.865 * H) - int(6 * ESC * (1 - a))
+    d.rounded_rectangle([x0 - 16 * ESC, yc - r - 10 * ESC, x0 + wtot + 22 * ESC, yc + r + 10 * ESC], radius=r + 10 * ESC, fill=AZUL + (int(200 * a),))
+    d.ellipse([x0, yc - r, x0 + 2 * r, yc + r], fill=CREME + (int(255 * a),))
+    m = _MASC.resize((int(2 * r * 1.25), int(2 * r * 1.25)), Image.LANCZOS); mk = Image.new('L', (2 * r, 2 * r), 0); ImageDraw.Draw(mk).ellipse([0, 0, 2 * r - 1, 2 * r - 1], fill=255)
+    m = m.crop(((m.width - 2 * r) // 2, int(m.height * 0.06), (m.width - 2 * r) // 2 + 2 * r, int(m.height * 0.06) + 2 * r))
+    alfa = Image.fromarray((np.asarray(m.split()[3], dtype=np.float32) * (np.asarray(mk, dtype=np.float32) / 255) * a).astype(np.uint8)); m.putalpha(alfa)
+    camada.alpha_composite(m, (int(x0), int(yc - r)))
+    d.text((x0 + 2 * r + gap, yc), txt, font=f, fill=CREME + (int(255 * a),), anchor='lm')
+    d.rounded_rectangle([x0 + 2 * r + gap, yc + 27 * ESC, x0 + 2 * r + gap + tw * 0.42, yc + 32 * ESC], radius=2, fill=AMARELO + (int(255 * a),))
+    img.paste(Image.alpha_composite(img.convert('RGBA'), camada).convert('RGB'))
+
+
 def compor(g):
     ativos = [(n, a, b) for n, a, b in SEGS if a - FUSAO / 2 <= g < b + FUSAO / 2]
     if len(ativos) == 1: n, a, b = ativos[0]; img = quadro_seg(n, a, g); rots = [(n, a, 1.0)]
@@ -143,7 +166,10 @@ def compor(g):
             tw = d.textlength(txt, font=F_TAG); x1 = W - int(30 * ESC); x0 = x1 - tw - 36 * ESC; y0 = int(70 * ESC)
             d.rounded_rectangle((x0, y0, x1, y0 + 46 * ESC), radius=23 * ESC, fill=AMARELO)
             d.text((x0 + 18 * ESC, y0 + 23 * ESC), txt, font=F_TAG, fill=AZUL, anchor='lm')
-    if g < 166.2:
+    assinatura_discreta(img, g)
+    if FIM_ESCURO and g > DUR - 0.5:   # fim natural: o último plano escurece levemente para o azul da marca
+        k = (g - (DUR - 0.5)) / 0.5; img.paste(Image.blend(img, Image.new('RGB', img.size, AZUL), 0.85 * k * k)); d = ImageDraw.Draw(img)
+    if True:
         tag = 'VERSÃO DE REVISÃO · não publicar'; x0, y0 = int(30 * ESC), int(70 * ESC); tw = d.textlength(tag, font=F_TAG)
         d.rounded_rectangle((x0, y0, x0 + tw + 36 * ESC, y0 + 46 * ESC), radius=23 * ESC, fill=AZUL)
         d.text((x0 + 18 * ESC, y0 + 23 * ESC), tag, font=F_TAG, fill=CREME, anchor='lm')
