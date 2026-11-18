@@ -880,8 +880,8 @@ def seg11(pasta):
             pos = alvo + Vector((-1.7, -5.0, 0.3)).lerp(Vector((-1.0, -3.4, 0.15)), k).lerp(Vector((-0.45, -2.95, 0.1)), k2); a = alvo; l = 30
         pos.z = max(pos.z, 0.55)                                              # nunca abaixo da superfície (cena sem corte)
         camera_em(cam, pos, a, l)
-    rot.add('Marcas de calado', lambda g: pmundo(xm, 10.6), 125.9, 127.9, dx=0.07, dy=-0.06)
-    rot.add('Marca de linha de carga', lambda g: pmundo(-4.0, zs['S'] + 0.15), 128.3, 133.9, dx=0.05, dy=-0.10)
+    rot.add('Marcas de calado', lambda g: pmundo(xm, 10.6), 125.9, 127.9, dx=-0.42, dy=0.02)
+    rot.add('Marca de linha de carga', lambda g: pmundo(-4.1, zs['TF'] + 0.1), 128.3, 133.9, dx=0.0, dy=-0.07)
     exportar_seg(pasta, 123.65, 134.00, anim, rot, extra=dict(segmento='11'))
 
 
