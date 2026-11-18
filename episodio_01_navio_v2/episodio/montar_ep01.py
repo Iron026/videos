@@ -50,7 +50,9 @@ def nivelar(nome, img):
     if not GRADE:
         for n_, _, _ in SEGS:
             if n_ in ('s01', 'ass') or n_ in ALIAS: continue
-            d, passo = pasta(n_); fs = sorted(f for f in os.listdir(d) if f.endswith('.jpg'))[::8]
+            d = os.path.join(A, 'quadros_previa', n_)   # estatísticas de cor medidas na prévia (mesmas cenas; vale para todos os perfis)
+            if not os.path.isdir(d): d, passo = pasta(n_)
+            fs = sorted(f for f in os.listdir(d) if f.endswith('.jpg'))[::8]
             st = [np.asarray(Image.open(os.path.join(d, f)).convert('HSV'), dtype=np.float32).reshape(-1, 3).mean(0) for f in fs]
             GRADE[n_] = np.mean(st, 0)
         GRADE['_alvo'] = np.median(np.array([v for v in GRADE.values()]), 0)

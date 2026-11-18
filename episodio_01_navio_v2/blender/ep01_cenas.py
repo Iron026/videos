@@ -217,11 +217,11 @@ def seg03(pasta):
                  (Vector((70.2, navio.meia_boca(70.2, 12.0) + 0.2, Z0 + 12.0)), 24.0, 25.4),
                  (Vector((38.0, navio.meia_boca(38.0, 1.0) + 0.25, Z0 + 1.0)), 24.9, 26.4),
                  (Vector((22.0, navio.meia_boca(22.0, 1.0) + 0.25, Z0 + 1.0)), 25.1, 26.4)]
-        mhalo = lib.mat_fantasma('halo_solda', '#ffb347', alfa=0.55, brilho=3.0)
+        mhalo = lib.mat_fantasma('halo_solda', '#ffc266', alfa=0.6, brilho=4.0)
         for (c, ta, tb) in focos:
             nrm = Vector((0, 1 if c.y > 0 else -1, 0))
             for j in range(int((tb - ta) / 0.12)):                         # halo da solda: tremula (luz forte e irregular)
-                rr = rnd.uniform(0.5, 0.9); t0 = ta + j * 0.12
+                rr = rnd.uniform(1.2, 1.9); t0 = ta + j * 0.12
                 vs_h = [tuple(c + nrm * 0.25)] + [tuple(c + nrm * 0.25 + V(rr * math.cos(2 * math.pi * q_ / 20), 0, rr * math.sin(2 * math.pi * q_ / 20))) for q_ in range(20)]
                 hq = lib.malha('halo', vs_h, [(0, 1 + q_, 1 + (q_ + 1) % 20) for q_ in range(20)], mhalo); hq.visible_shadow = False   # disco
                 surge(hq, t0, dur=0.02, t1=t0 + rnd.uniform(0.06, 0.11), dur1=0.02)
@@ -603,7 +603,7 @@ def seg08b(pasta):
         v0 = G * t_ag; tt = t - t_ag; return -v0 * tt - 0.5 * 7.9 * tt * tt
     rot.add('Mesma massa do navio vazio', lambda g: Vector((XC, yc, base_cubo(g) + a)), 84.0, 86.6, dx=0.03, dy=-0.09)
     rot.add('Aço maciço: 17 m', lambda g: Vector((XC, yc, base_cubo(g) + a / 2)), 84.5, 87.0, dx=0.05, dy=0.08)
-    rot.add('Navio vazio', lambda g: Vector((XC, 8.0, quilha(g) + navio.PONTAL)), 84.0, 86.6, dx=0.04, dy=-0.07)
+    rot.add('Navio vazio', lambda g: Vector((XC, 14.0, quilha(g) + navio.PONTAL - 2.0)), 84.0, 86.6, dx=0.05, dy=0.02)
     rot.add('Ar', lambda g: Vector((XC, 4.0, quilha(g) + 9.0)), 88.7, 89.7, dx=0.07, dy=0.09)
     rot.add('Água deslocada', (XC, -8.0, -4.5), 90.2, 94.5, dx=0.06, dy=0.10)
     rot.add('Empuxo = peso', lambda g: Vector((xs, 0, quilha(g) + zB + 3.2)), 91.0, 94.5, dx=0.06, dy=0.04)
@@ -870,7 +870,7 @@ def seg11(pasta):
             pos = pmundo(x, zl) + Vector((0, -4.5 + 0.5 * k, 0.4 - 0.1 * k)); a = alvo; l = 34
         else:              # marca de linha de carga: aproxima e acompanha cada linha que acende
             k = suave((g - 128.8) / 1.6); k2 = suave((g - 130.3) / 1.0); alvo = pmundo(-3.65, z_linha(g))
-            pos = alvo + Vector((-1.7, -5.0, 0.3)).lerp(Vector((-1.1, -3.6, 0.15)), k).lerp(Vector((-0.5, -1.7, 0.08)), k2); a = alvo; l = lerp(32, 38, k2)
+            pos = alvo + Vector((-1.7, -5.0, 0.3)).lerp(Vector((-1.1, -3.6, 0.15)), k).lerp(Vector((-0.75, -2.4, 0.1)), k2); a = alvo; l = lerp(32, 36, k2)
         pos.z = max(pos.z, 0.55)                                              # nunca abaixo da superfície (cena sem corte)
         camera_em(cam, pos, a, l)
     rot.add('Marcas de calado', lambda g: pmundo(xm, 10.6), 125.9, 127.9, dx=0.07, dy=-0.06)
