@@ -1,0 +1,28 @@
+{
+ "video": {
+  "codec": "h264",
+  "largura": 540,
+  "altura": 960,
+  "fps": 30.0,
+  "duracao": 169.5
+ },
+ "audio": {
+  "codec": "aac",
+  "taxa": 48000,
+  "canais": 2,
+  "duracao": 169.5
+ },
+ "tamanho_mb": 32.4,
+ "abaixo_de_180s": true,
+ "quadros_pretos": [],
+ "congelamentos_1_5s": [],
+ "loudness": {
+  "integrado_lufs": -14.0,
+  "pico_real_dbtp": -2.0
+ },
+ "sincronia_narracao_ms": [
+  3,
+  3,
+  3
+ ]
+}
