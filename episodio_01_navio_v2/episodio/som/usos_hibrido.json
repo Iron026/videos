@@ -6,7 +6,9 @@
   "ini": 3.0,
   "dur": 3.05,
   "tom": 1.0,
-  "uso": "marulho no cais (pedras do porto)"
+  "uso": "marulho no cais (pedras do porto)",
+  "grupo": null,
+  "substituido": false
  },
  {
   "t": 0.0,
@@ -15,7 +17,9 @@
   "ini": 0.0,
   "dur": 3.05,
   "tom": 1.0,
-  "uso": "mar distante"
+  "uso": "mar distante",
+  "grupo": null,
+  "substituido": false
  },
  {
   "t": 0.5,
@@ -24,7 +28,9 @@
   "ini": 0.13,
   "dur": 1.13,
   "tom": 1.0,
-  "uso": "aço pesado arrastando: corpo grave (porta de correr pesada)"
+  "uso": "aço pesado arrastando: corpo grave (porta de correr pesada)",
+  "grupo": null,
+  "substituido": false
  },
  {
   "t": 0.5,
@@ -33,7 +39,9 @@
   "ini": 0.01,
   "dur": 1.24,
   "tom": 0.85,
-  "uso": "aço raspando no concreto: grão metálico"
+  "uso": "aço raspando no concreto: grão metálico",
+  "grupo": null,
+  "substituido": false
  },
  {
   "t": 0.4999999999999999,
@@ -51,7 +59,9 @@
   "ini": 0,
   "dur": 0.48,
   "tom": 1.0,
-  "uso": "baque grave quando o bloco tomba na borda"
+  "uso": "baque grave quando o bloco tomba na borda",
+  "grupo": null,
+  "substituido": false
  },
  {
   "t": 1.4,
@@ -60,7 +70,9 @@
   "ini": 0.08,
   "dur": 1.2,
   "tom": 1.0,
-  "uso": "ar deslocado na queda"
+  "uso": "ar deslocado na queda",
+  "grupo": null,
+  "substituido": false
  },
  {
   "t": 2.65,
@@ -69,7 +81,9 @@
   "ini": 0.01,
   "dur": 2.38,
   "tom": 0.8,
-  "uso": "impacto do bloco na água (camada principal, câmera lenta)"
+  "uso": "impacto do bloco na água (camada principal, câmera lenta)",
+  "grupo": null,
+  "substituido": false
  },
  {
   "t": 2.65,
@@ -78,7 +92,9 @@
   "ini": 0.01,
   "dur": 3.15,
   "tom": 0.72,
-  "uso": "lençol e retorno da água (camada de corpo)"
+  "uso": "lençol e retorno da água (camada de corpo)",
+  "grupo": null,
+  "substituido": false
  },
  {
   "t": 2.65,
@@ -87,7 +103,9 @@
   "ini": 0,
   "dur": 0.64,
   "tom": 0.75,
-  "uso": "peso do aço no impacto (baque grave)"
+  "uso": "peso do aço no impacto (baque grave)",
+  "grupo": null,
+  "substituido": false
  },
  {
   "t": 2.65,
@@ -96,7 +114,8 @@
   "ini": 0,
   "dur": 1.1,
   "tom": 1.0,
-  "uso": "peso do bloco ao entrar na água (câmera lenta)"
+  "uso": "peso do bloco ao entrar na água (câmera lenta)",
+  "grupo": null
  },
  {
   "t": 2.65,
@@ -105,7 +124,9 @@
   "ini": 0.0,
   "dur": 1.7,
   "tom": 1.0,
-  "uso": "bolhas e afundamento (ouvido debaixo d'água)"
+  "uso": "bolhas e afundamento (ouvido debaixo d'água)",
+  "grupo": null,
+  "substituido": false
  },
  {
   "t": 2.9,
@@ -114,7 +135,9 @@
   "ini": 0,
   "dur": 5.85,
   "tom": 1.0,
-  "uso": "bolhas profundas"
+  "uso": "bolhas profundas",
+  "grupo": null,
+  "substituido": false
  },
  {
   "t": 4.01,
@@ -123,7 +146,9 @@
   "ini": 0.14,
   "dur": 0.96,
   "tom": 1.0,
-  "uso": "bloco toca o leito de areia"
+  "uso": "bloco toca o leito de areia",
+  "grupo": null,
+  "substituido": false
  },
  {
   "t": 4.01,
@@ -132,7 +157,9 @@
   "ini": 0,
   "dur": 0.63,
   "tom": 1.0,
-  "uso": "sedimento levantado (abafado)"
+  "uso": "sedimento levantado (abafado)",
+  "grupo": null,
+  "substituido": false
  },
  {
   "t": 4.01,
@@ -141,7 +168,8 @@
   "ini": 0,
   "dur": 0.7,
   "tom": 1.0,
-  "uso": "peso no leito"
+  "uso": "peso no leito",
+  "grupo": null
  },
  {
   "t": 4.3,
@@ -150,7 +178,9 @@
   "ini": 0.14,
   "dur": 1.31,
   "tom": 1.0,
-  "uso": "rajada no corte para o mar aberto"
+  "uso": "rajada no corte para o mar aberto",
+  "grupo": null,
+  "substituido": false
  },
  {
   "t": 4.4,
@@ -159,7 +189,9 @@
   "ini": 10,
   "dur": 10.9,
   "tom": 1.0,
-  "uso": "mar aberto (ondas)"
+  "uso": "mar aberto (ondas)",
+  "grupo": null,
+  "substituido": false
  },
  {
   "t": 4.4,
@@ -168,7 +200,9 @@
   "ini": 0.0,
   "dur": 10.9,
   "tom": 1.0,
-  "uso": "vento sobre o mar"
+  "uso": "vento sobre o mar",
+  "grupo": null,
+  "substituido": false
  },
  {
   "t": 4.4,
@@ -177,7 +211,9 @@
   "ini": 0.0,
   "dur": 10.9,
   "tom": 1.0,
-  "uso": "máquinas do navio, ouvidas de fora (praça de máquinas real, filtrada) [RESERVA Mixkit: WWS IcebreakerKunashipsengine (Commons) não pôde ser baixado]"
+  "uso": "máquinas do navio, ouvidas de fora (praça de máquinas real, filtrada) [RESERVA Mixkit: WWS IcebreakerKunashipsengine (Commons) não pôde ser baixado]",
+  "grupo": null,
+  "substituido": false
  },
  {
   "t": 7.9,
@@ -186,7 +222,9 @@
   "ini": 0,
   "dur": 5.0,
   "tom": 1.0,
-  "uso": "casco/máquinas passando (travelling)"
+  "uso": "casco/máquinas passando (travelling)",
+  "grupo": null,
+  "substituido": false
  },
  {
   "t": 9.0,
@@ -195,7 +233,9 @@
   "ini": 3.0,
   "dur": 4.6,
   "tom": 1.0,
-  "uso": "água empurrada pela proa (onda de proa)"
+  "uso": "água empurrada pela proa (onda de proa)",
+  "grupo": null,
+  "substituido": false
  },
  {
   "t": 10.9,
@@ -204,7 +244,9 @@
   "ini": 6.0,
   "dur": 2.6,
   "tom": 1.0,
-  "uso": "espuma e borrifo da proa"
+  "uso": "espuma e borrifo da proa",
+  "grupo": null,
+  "substituido": false
  },
  {
   "t": 11.2,
@@ -213,7 +255,9 @@
   "ini": 0.06,
   "dur": 1.68,
   "tom": 1.0,
-  "uso": "borrifo da crista na roda de proa"
+  "uso": "borrifo da crista na roda de proa",
+  "grupo": null,
+  "substituido": false
  },
  {
   "t": 13.3,
@@ -222,7 +266,9 @@
   "ini": 12.0,
   "dur": 1.8,
   "tom": 1.0,
-  "uso": "esteira se afastando"
+  "uso": "esteira se afastando",
+  "grupo": null,
+  "substituido": false
  },
  {
   "t": 15.1,
@@ -231,7 +277,9 @@
   "ini": 0.0,
   "dur": 15.85,
   "tom": 1.0,
-  "uso": "ambiente de estaleiro (galpão de construção naval)"
+  "uso": "ambiente de estaleiro (galpão de construção naval)",
+  "grupo": "estaleiro",
+  "substituido": false
  },
  {
   "t": 15.1,
@@ -240,7 +288,9 @@
   "ini": 17.5,
   "dur": 15.85,
   "tom": 1.0,
-  "uso": "guindaste de estaleiro ao fundo (Gotenius, Gotemburgo) [RESERVA Mixkit: WWS Shipyardcrane (Commons) não pôde ser baixado]"
+  "uso": "guindaste de estaleiro ao fundo (Gotenius, Gotemburgo) [RESERVA Mixkit: WWS Shipyardcrane (Commons) não pôde ser baixado]",
+  "grupo": "guindastes",
+  "substituido": false
  },
  {
   "t": 15.1,
@@ -249,7 +299,9 @@
   "ini": 0.0,
   "dur": 15.85,
   "tom": 1.0,
-  "uso": "solda distante em outro ponto do casco (estaleiro real) [RESERVA Mixkit: WWS Weldingonshipinfloatingdrydock (Commons) não pôde ser baixado]"
+  "uso": "solda distante em outro ponto do casco (estaleiro real) [RESERVA Mixkit: WWS Weldingonshipinfloatingdrydock (Commons) não pôde ser baixado]",
+  "grupo": "estaleiro",
+  "substituido": false
  },
  {
   "t": 15.1,
@@ -258,7 +310,9 @@
   "ini": 22.1,
   "dur": 15.2,
   "tom": 1.0,
-  "uso": "motor/translação do pórtico (guindaste de estaleiro real) seguindo a velocidade do carro [RESERVA Mixkit: WWS Shipyardcrane (Commons) não pôde ser baixado]"
+  "uso": "motor/translação do pórtico (guindaste de estaleiro real) seguindo a velocidade do carro [RESERVA Mixkit: WWS Shipyardcrane (Commons) não pôde ser baixado]",
+  "grupo": "guindastes",
+  "substituido": false
  },
  {
   "t": 15.1,
@@ -267,7 +321,9 @@
   "ini": 0.0,
   "dur": 15.2,
   "tom": 1.0,
-  "uso": "carro rolando no trilho (ponte rolante real) [RESERVA Mixkit: WWS Crane (Commons) não pôde ser baixado]"
+  "uso": "carro rolando no trilho (ponte rolante real) [RESERVA Mixkit: WWS Crane (Commons) não pôde ser baixado]",
+  "grupo": "guindastes",
+  "substituido": false
  },
  {
   "t": 15.23,
@@ -276,7 +332,9 @@
   "ini": 1.0,
   "dur": 1.4,
   "tom": 1.0,
-  "uso": "cabos e estrutura rangendo na arrancada/freada"
+  "uso": "cabos e estrutura rangendo na arrancada/freada",
+  "grupo": "guindastes",
+  "substituido": false
  },
  {
   "t": 20.93,
@@ -285,7 +343,9 @@
   "ini": 2.6,
   "dur": 1.4,
   "tom": 1.0,
-  "uso": "cabos e estrutura rangendo na arrancada/freada"
+  "uso": "cabos e estrutura rangendo na arrancada/freada",
+  "grupo": "guindastes",
+  "substituido": false
  },
  {
   "t": 23.2,
@@ -294,7 +354,9 @@
   "ini": 4.2,
   "dur": 1.4,
   "tom": 1.0,
-  "uso": "cabos e estrutura rangendo na arrancada/freada"
+  "uso": "cabos e estrutura rangendo na arrancada/freada",
+  "grupo": "guindastes",
+  "substituido": false
  },
  {
   "t": 23.6,
@@ -303,7 +365,9 @@
   "ini": 0.02,
   "dur": 2.2,
   "tom": 1.0,
-  "uso": "encaixe da chapa: corpo grave de aço pesado"
+  "uso": "encaixe da chapa: corpo grave de aço pesado",
+  "grupo": "estaleiro",
+  "substituido": false
  },
  {
   "t": 23.6,
@@ -312,7 +376,9 @@
   "ini": 0.06,
   "dur": 1.95,
   "tom": 1.0,
-  "uso": "encaixe da chapa: batida metálica no galpão (com eco real)"
+  "uso": "encaixe da chapa: batida metálica no galpão (com eco real)",
+  "grupo": "estaleiro",
+  "substituido": false
  },
  {
   "t": 23.6,
@@ -321,7 +387,9 @@
   "ini": 0.23,
   "dur": 1.76,
   "tom": 1.0,
-  "uso": "contato metálico duro (camada aguda)"
+  "uso": "contato metálico duro (camada aguda)",
+  "grupo": "estaleiro",
+  "substituido": false
  },
  {
   "t": 23.6,
@@ -330,7 +398,8 @@
   "ini": 0,
   "dur": 0.6,
   "tom": 1.0,
-  "uso": "peso da chapa no encaixe"
+  "uso": "peso da chapa no encaixe",
+  "grupo": "estaleiro"
  },
  {
   "t": 23.75,
@@ -339,7 +408,9 @@
   "ini": 0.6,
   "dur": 0.9,
   "tom": 1.0,
-  "uso": "arco elétrico de solda e faíscas (gravação real)"
+  "uso": "arco elétrico de solda e faíscas (gravação real)",
+  "grupo": "estaleiro",
+  "substituido": false
  },
  {
   "t": 24.68,
@@ -348,7 +419,9 @@
   "ini": 3.2,
   "dur": 0.67,
   "tom": 1.0,
-  "uso": "arco elétrico de solda e faíscas (gravação real)"
+  "uso": "arco elétrico de solda e faíscas (gravação real)",
+  "grupo": "estaleiro",
+  "substituido": false
  },
  {
   "t": 24.0,
@@ -357,7 +430,9 @@
   "ini": 5.0,
   "dur": 0.8,
   "tom": 1.0,
-  "uso": "arco elétrico de solda e faíscas (gravação real)"
+  "uso": "arco elétrico de solda e faíscas (gravação real)",
+  "grupo": "estaleiro",
+  "substituido": false
  },
  {
   "t": 24.85,
@@ -366,7 +441,9 @@
   "ini": 1.8,
   "dur": 0.65,
   "tom": 1.0,
-  "uso": "arco elétrico de solda e faíscas (gravação real)"
+  "uso": "arco elétrico de solda e faíscas (gravação real)",
+  "grupo": "estaleiro",
+  "substituido": false
  },
  {
   "t": 24.9,
@@ -375,7 +452,9 @@
   "ini": 0.12,
   "dur": 1.55,
   "tom": 1.0,
-  "uso": "solda ao fundo (bojo)"
+  "uso": "solda ao fundo (bojo)",
+  "grupo": "estaleiro",
+  "substituido": false
  },
  {
   "t": 25.1,
@@ -384,7 +463,9 @@
   "ini": 0.11,
   "dur": 1.99,
   "tom": 1.0,
-  "uso": "solda ao fundo (bojo)"
+  "uso": "solda ao fundo (bojo)",
+  "grupo": "estaleiro",
+  "substituido": false
  },
  {
   "t": 26.0,
@@ -393,7 +474,9 @@
   "ini": 0.79,
   "dur": 1.02,
   "tom": 1.0,
-  "uso": "chapas chegando ao costado e à proa (contatos selecionados)"
+  "uso": "chapas chegando ao costado e à proa (contatos selecionados)",
+  "grupo": "estaleiro",
+  "substituido": false
  },
  {
   "t": 26.38,
@@ -402,7 +485,9 @@
   "ini": 0.17,
   "dur": 1.13,
   "tom": 1.0,
-  "uso": "chapas chegando ao costado e à proa (contatos selecionados)"
+  "uso": "chapas chegando ao costado e à proa (contatos selecionados)",
+  "grupo": "estaleiro",
+  "substituido": false
  },
  {
   "t": 26.8,
@@ -411,7 +496,9 @@
   "ini": 0.06,
   "dur": 1.95,
   "tom": 1.0,
-  "uso": "chapas chegando ao costado e à proa (contatos selecionados)"
+  "uso": "chapas chegando ao costado e à proa (contatos selecionados)",
+  "grupo": "estaleiro",
+  "substituido": false
  },
  {
   "t": 27.22,
@@ -420,7 +507,9 @@
   "ini": 0.79,
   "dur": 1.02,
   "tom": 1.0,
-  "uso": "chapas chegando ao costado e à proa (contatos selecionados)"
+  "uso": "chapas chegando ao costado e à proa (contatos selecionados)",
+  "grupo": "estaleiro",
+  "substituido": false
  },
  {
   "t": 28.65,
@@ -429,7 +518,9 @@
   "ini": 0.02,
   "dur": 1.6,
   "tom": 1.0,
-  "uso": "chapas chegando ao costado e à proa (contatos selecionados)"
+  "uso": "chapas chegando ao costado e à proa (contatos selecionados)",
+  "grupo": "estaleiro",
+  "substituido": false
  },
  {
   "t": 29.75,
@@ -438,7 +529,9 @@
   "ini": 0.4,
   "dur": 1.2,
   "tom": 1.0,
-  "uso": "passagem de tempo do estaleiro (sopro suave)"
+  "uso": "passagem de tempo do estaleiro (sopro suave)",
+  "grupo": "estaleiro",
+  "substituido": false
  },
  {
   "t": 30.0,
@@ -447,7 +540,9 @@
   "ini": 30,
   "dur": 5.6,
   "tom": 1.0,
-  "uso": "estaleiro (navio já pronto)"
+  "uso": "estaleiro (navio já pronto)",
+  "grupo": "estaleiro",
+  "substituido": false
  },
  {
   "t": 30.0,
@@ -456,7 +551,9 @@
   "ini": 60.0,
   "dur": 5.6,
   "tom": 1.0,
-  "uso": "guindaste ao fundo [RESERVA Mixkit: WWS Shipyardcrane (Commons) não pôde ser baixado]"
+  "uso": "guindaste ao fundo [RESERVA Mixkit: WWS Shipyardcrane (Commons) não pôde ser baixado]",
+  "grupo": "guindastes",
+  "substituido": false
  },
  {
   "t": 33.15,
@@ -465,7 +562,9 @@
   "ini": 0.15,
   "dur": 1.39,
   "tom": 0.8,
-  "uso": "proa se separando: aço pesado deslizando"
+  "uso": "proa se separando: aço pesado deslizando",
+  "grupo": "estaleiro",
+  "substituido": false
  },
  {
   "t": 33.25,
@@ -474,7 +573,9 @@
   "ini": 2.0,
   "dur": 1.6,
   "tom": 1.0,
-  "uso": "estrutura rangendo no corte"
+  "uso": "estrutura rangendo no corte",
+  "grupo": "estaleiro",
+  "substituido": false
  },
  {
   "t": 33.15,
@@ -483,7 +584,8 @@
   "ini": 0,
   "dur": 1.6,
   "tom": 1.0,
-  "uso": "massa da proa deslizando"
+  "uso": "massa da proa deslizando",
+  "grupo": "estaleiro"
  },
  {
   "t": 35.0,
@@ -492,7 +594,9 @@
   "ini": 0.0,
   "dur": 7.1,
   "tom": 1.0,
-  "uso": "interior do casco vazio (zumbido industrial distante)"
+  "uso": "interior do casco vazio (zumbido industrial distante)",
+  "grupo": "estaleiro",
+  "substituido": false
  },
  {
   "t": 37.0,
@@ -501,7 +605,8 @@
   "ini": 0,
   "dur": 1.0,
   "tom": 1.0,
-  "uso": "células acendendo (brilho sutil, sem bipe)"
+  "uso": "células acendendo (brilho sutil, sem bipe)",
+  "grupo": "estaleiro"
  },
  {
   "t": 39.2,
@@ -510,7 +615,8 @@
   "ini": 0,
   "dur": 1.0,
   "tom": 1.0,
-  "uso": "células acendendo (brilho sutil, sem bipe)"
+  "uso": "células acendendo (brilho sutil, sem bipe)",
+  "grupo": "estaleiro"
  },
  {
   "t": 39.6,
@@ -519,7 +625,9 @@
   "ini": 5.2,
   "dur": 1.2,
   "tom": 1.0,
-  "uso": "estalo térmico no porão vazio"
+  "uso": "estalo térmico no porão vazio",
+  "grupo": "estaleiro",
+  "substituido": false
  },
  {
   "t": 41.3,
@@ -528,7 +636,9 @@
   "ini": 1.15,
   "dur": 7.15,
   "tom": 1.0,
-  "uso": "dique flutuante sendo ajustado (bombas e água, gravação real) [RESERVA Mixkit: WWS Adjustingadrydock (Commons) não pôde ser baixado]"
+  "uso": "dique flutuante sendo ajustado (bombas e água, gravação real) [RESERVA Mixkit: WWS Adjustingadrydock (Commons) não pôde ser baixado]",
+  "grupo": "dique",
+  "substituido": false
  },
  {
   "t": 41.7,
@@ -537,7 +647,9 @@
   "ini": 0.02,
   "dur": 2.5,
   "tom": 1.0,
-  "uso": "comporta/válvulas abrindo (impacto metálico grave)"
+  "uso": "comporta/válvulas abrindo (impacto metálico grave)",
+  "grupo": "dique",
+  "substituido": false
  },
  {
   "t": 41.7,
@@ -546,7 +658,8 @@
   "ini": 0,
   "dur": 1.0,
   "tom": 1.0,
-  "uso": "peso da comporta"
+  "uso": "peso da comporta",
+  "grupo": "dique"
  },
  {
   "t": 41.7,
@@ -555,7 +668,9 @@
   "ini": 4.0,
   "dur": 2.5,
   "tom": 1.0,
-  "uso": "jatos de água entrando no dique (cascata forte)"
+  "uso": "jatos de água entrando no dique (cascata forte)",
+  "grupo": "dique",
+  "substituido": false
  },
  {
   "t": 42.0,
@@ -564,7 +679,9 @@
   "ini": 32.0,
   "dur": 6.2,
   "tom": 1.0,
-  "uso": "água correndo pelas tubulações de enchimento (estação de bombeamento real) [RESERVA Mixkit: WWS Waterintakepumpingstation (Commons) não pôde ser baixado]"
+  "uso": "água correndo pelas tubulações de enchimento (estação de bombeamento real) [RESERVA Mixkit: WWS Waterintakepumpingstation (Commons) não pôde ser baixado]",
+  "grupo": "dique",
+  "substituido": false
  },
  {
   "t": 43.4,
@@ -573,7 +690,9 @@
   "ini": 10.0,
   "dur": 4.6,
   "tom": 1.0,
-  "uso": "enchimento contínuo, cada vez mais grave"
+  "uso": "enchimento contínuo, cada vez mais grave",
+  "grupo": "dique",
+  "substituido": false
  },
  {
   "t": 42.3,
@@ -582,7 +701,9 @@
   "ini": 20.0,
   "dur": 3.8,
   "tom": 1.0,
-  "uso": "água alcançando o casco e os picadeiros"
+  "uso": "água alcançando o casco e os picadeiros",
+  "grupo": "dique",
+  "substituido": false
  },
  {
   "t": 46.1,
@@ -591,7 +712,9 @@
   "ini": 6.0,
   "dur": 1.4,
   "tom": 1.0,
-  "uso": "estrutura alivia quando o peso deixa os picadeiros"
+  "uso": "estrutura alivia quando o peso deixa os picadeiros",
+  "grupo": "dique",
+  "substituido": false
  },
  {
   "t": 46.1,
@@ -600,7 +723,8 @@
   "ini": 0,
   "dur": 1.4,
   "tom": 1.0,
-  "uso": "casco se desprende dos picadeiros (leve)"
+  "uso": "casco se desprende dos picadeiros (leve)",
+  "grupo": "dique"
  },
  {
   "t": 46.4,
@@ -609,7 +733,9 @@
   "ini": 30.0,
   "dur": 1.8,
   "tom": 1.0,
-  "uso": "casco livre: água ao redor"
+  "uso": "casco livre: água ao redor",
+  "grupo": "dique",
+  "substituido": false
  },
  {
   "t": 48.0,
@@ -618,7 +744,9 @@
   "ini": 0.0,
   "dur": 1.5,
   "tom": 1.0,
-  "uso": "mar (antes do mergulho)"
+  "uso": "mar (antes do mergulho)",
+  "grupo": null,
+  "substituido": false
  },
  {
   "t": 49.0,
@@ -627,7 +755,9 @@
   "ini": 0.06,
   "dur": 2.24,
   "tom": 1.0,
-  "uso": "câmera entra na água"
+  "uso": "câmera entra na água",
+  "grupo": null,
+  "substituido": false
  },
  {
   "t": 49.1,
@@ -636,7 +766,9 @@
   "ini": 0,
   "dur": 5.85,
   "tom": 1.0,
-  "uso": "bolhas do mergulho"
+  "uso": "bolhas do mergulho",
+  "grupo": null,
+  "substituido": false
  },
  {
   "t": 49.3,
@@ -645,7 +777,9 @@
   "ini": 20,
   "dur": 14.0,
   "tom": 1.0,
-  "uso": "mundo subaquático (pressão grave)"
+  "uso": "mundo subaquático (pressão grave)",
+  "grupo": null,
+  "substituido": false
  },
  {
   "t": 49.3,
@@ -654,7 +788,9 @@
   "ini": 0.0,
   "dur": 14.0,
   "tom": 1.0,
-  "uso": "ambiente submarino"
+  "uso": "ambiente submarino",
+  "grupo": null,
+  "substituido": false
  },
  {
   "t": 65.8,
@@ -663,7 +799,9 @@
   "ini": 20,
   "dur": 9.25,
   "tom": 1.0,
-  "uso": "mundo subaquático (pressão grave)"
+  "uso": "mundo subaquático (pressão grave)",
+  "grupo": null,
+  "substituido": false
  },
  {
   "t": 65.8,
@@ -672,7 +810,9 @@
   "ini": 0.0,
   "dur": 9.25,
   "tom": 1.0,
-  "uso": "ambiente submarino"
+  "uso": "ambiente submarino",
+  "grupo": null,
+  "substituido": false
  },
  {
   "t": 63.1,
@@ -681,7 +821,9 @@
   "ini": 0.0,
   "dur": 2.9,
   "tom": 1.0,
-  "uso": "mar (vista do navio inteiro)"
+  "uso": "mar (vista do navio inteiro)",
+  "grupo": null,
+  "substituido": false
  },
  {
   "t": 51.0,
@@ -690,7 +832,9 @@
   "ini": 3.0,
   "dur": 2.5,
   "tom": 1.0,
-  "uso": "casco sob pressão (rangido grave, discreto)"
+  "uso": "casco sob pressão (rangido grave, discreto)",
+  "grupo": null,
+  "substituido": false
  },
  {
   "t": 63.2,
@@ -699,7 +843,9 @@
   "ini": 4.0,
   "dur": 2.4,
   "tom": 1.0,
-  "uso": "água deslocada enchendo o volume"
+  "uso": "água deslocada enchendo o volume",
+  "grupo": null,
+  "substituido": false
  },
  {
   "t": 58.35,
@@ -717,7 +863,9 @@
   "ini": 20,
   "dur": 1.6,
   "tom": 1.0,
-  "uso": "marulho no cais (retomada)"
+  "uso": "marulho no cais (retomada)",
+  "grupo": null,
+  "substituido": false
  },
  {
   "t": 74.85,
@@ -726,7 +874,9 @@
   "ini": 0.25,
   "dur": 0.61,
   "tom": 1.0,
-  "uso": "o mesmo arrasto no cais (outro trecho da gravação)"
+  "uso": "o mesmo arrasto no cais (outro trecho da gravação)",
+  "grupo": null,
+  "substituido": false
  },
  {
   "t": 74.85,
@@ -735,7 +885,9 @@
   "ini": 0.21,
   "dur": 0.84,
   "tom": 0.85,
-  "uso": "aço raspando (grão)"
+  "uso": "aço raspando (grão)",
+  "grupo": null,
+  "substituido": false
  },
  {
   "t": 75.21,
@@ -744,7 +896,9 @@
   "ini": 0,
   "dur": 0.51,
   "tom": 0.95,
-  "uso": "bloco deixa a borda"
+  "uso": "bloco deixa a borda",
+  "grupo": null,
+  "substituido": false
  },
  {
   "t": 75.21,
@@ -753,7 +907,9 @@
   "ini": 0.08,
   "dur": 1.0,
   "tom": 1.0,
-  "uso": "queda"
+  "uso": "queda",
+  "grupo": null,
+  "substituido": false
  },
  {
   "t": 76.13,
@@ -762,7 +918,9 @@
   "ini": 0.06,
   "dur": 2.64,
   "tom": 0.85,
-  "uso": "impacto na água (variação da abertura)"
+  "uso": "impacto na água (variação da abertura)",
+  "grupo": null,
+  "substituido": false
  },
  {
   "t": 76.13,
@@ -771,7 +929,9 @@
   "ini": 0.06,
   "dur": 2.37,
   "tom": 0.78,
-  "uso": "corpo do respingo"
+  "uso": "corpo do respingo",
+  "grupo": null,
+  "substituido": false
  },
  {
   "t": 76.13,
@@ -780,7 +940,9 @@
   "ini": 0,
   "dur": 0.69,
   "tom": 0.7,
-  "uso": "peso do aço"
+  "uso": "peso do aço",
+  "grupo": null,
+  "substituido": false
  },
  {
   "t": 76.13,
@@ -789,7 +951,8 @@
   "ini": 0,
   "dur": 1.0,
   "tom": 1.0,
-  "uso": "peso do bloco (retomada)"
+  "uso": "peso do bloco (retomada)",
+  "grupo": null
  },
  {
   "t": 75.9,
@@ -798,7 +961,9 @@
   "ini": 0.5,
   "dur": 1.94,
   "tom": 0.85,
-  "uso": "transição para a câmera lenta"
+  "uso": "transição para a câmera lenta",
+  "grupo": null,
+  "substituido": false
  },
  {
   "t": 76.2,
@@ -807,7 +972,9 @@
   "ini": 40,
   "dur": 7.85,
   "tom": 1.0,
-  "uso": "mundo subaquático em câmera lenta"
+  "uso": "mundo subaquático em câmera lenta",
+  "grupo": null,
+  "substituido": false
  },
  {
   "t": 76.3,
@@ -816,7 +983,9 @@
   "ini": 2.0,
   "dur": 8.75,
   "tom": 0.8,
-  "uso": "bolhas lentas do bloco (câmera lenta)"
+  "uso": "bolhas lentas do bloco (câmera lenta)",
+  "grupo": null,
+  "substituido": false
  },
  {
   "t": 82.12,
@@ -825,7 +994,9 @@
   "ini": 0.14,
   "dur": 1.07,
   "tom": 0.9,
-  "uso": "bloco toca o leito (tempo volta ao normal)"
+  "uso": "bloco toca o leito (tempo volta ao normal)",
+  "grupo": null,
+  "substituido": false
  },
  {
   "t": 82.12,
@@ -834,7 +1005,9 @@
   "ini": 0,
   "dur": 0.63,
   "tom": 1.0,
-  "uso": "sedimento se espalhando (abafado)"
+  "uso": "sedimento se espalhando (abafado)",
+  "grupo": null,
+  "substituido": false
  },
  {
   "t": 82.12,
@@ -843,7 +1016,8 @@
   "ini": 0,
   "dur": 0.7,
   "tom": 1.0,
-  "uso": "peso no leito"
+  "uso": "peso no leito",
+  "grupo": null
  },
  {
   "t": 83.85,
@@ -852,7 +1026,9 @@
   "ini": 0.0,
   "dur": 11.35,
   "tom": 1.0,
-  "uso": "brisa sobre o mar"
+  "uso": "brisa sobre o mar",
+  "grupo": null,
+  "substituido": false
  },
  {
   "t": 83.85,
@@ -861,7 +1037,9 @@
   "ini": 60,
   "dur": 11.35,
   "tom": 1.0,
-  "uso": "mar"
+  "uso": "mar",
+  "grupo": null,
+  "substituido": false
  },
  {
   "t": 85.6,
@@ -870,7 +1048,9 @@
   "ini": 0.08,
   "dur": 0.8,
   "tom": 1.0,
-  "uso": "queda dos dois objetos"
+  "uso": "queda dos dois objetos",
+  "grupo": null,
+  "substituido": false
  },
  {
   "t": 85.6,
@@ -879,7 +1059,9 @@
   "ini": 0.08,
   "dur": 0.8,
   "tom": 1.0,
-  "uso": "queda dos dois objetos"
+  "uso": "queda dos dois objetos",
+  "grupo": null,
+  "substituido": false
  },
  {
   "t": 86.24,
@@ -888,7 +1070,9 @@
   "ini": 0.01,
   "dur": 1.6,
   "tom": 1.0,
-  "uso": "bloco entra na água (compacto, pesado)"
+  "uso": "bloco entra na água (compacto, pesado)",
+  "grupo": null,
+  "substituido": false
  },
  {
   "t": 86.24,
@@ -897,7 +1081,9 @@
   "ini": 0,
   "dur": 0.6,
   "tom": 0.8,
-  "uso": "peso do bloco"
+  "uso": "peso do bloco",
+  "grupo": null,
+  "substituido": false
  },
  {
   "t": 86.49,
@@ -906,7 +1092,9 @@
   "ini": 6.0,
   "dur": 3.5,
   "tom": 1.0,
-  "uso": "bloco afundando (bolhas, abafado)"
+  "uso": "bloco afundando (bolhas, abafado)",
+  "grupo": null,
+  "substituido": false
  },
  {
   "t": 86.24,
@@ -915,7 +1103,9 @@
   "ini": 0.01,
   "dur": 2.67,
   "tom": 0.85,
-  "uso": "casco entra na água (largo)"
+  "uso": "casco entra na água (largo)",
+  "grupo": null,
+  "substituido": false
  },
  {
   "t": 86.24,
@@ -924,7 +1114,9 @@
   "ini": 0.06,
   "dur": 1.68,
   "tom": 1.0,
-  "uso": "água espirrando ao longo do casco"
+  "uso": "água espirrando ao longo do casco",
+  "grupo": null,
+  "substituido": false
  },
  {
   "t": 86.34,
@@ -933,7 +1125,9 @@
   "ini": 2.0,
   "dur": 2.4,
   "tom": 1.0,
-  "uso": "onda de deslocamento do casco"
+  "uso": "onda de deslocamento do casco",
+  "grupo": null,
+  "substituido": false
  },
  {
   "t": 87.32,
@@ -942,7 +1136,9 @@
   "ini": 10.0,
   "dur": 1.4,
   "tom": 1.0,
-  "uso": "água batendo no casco a cada balanço"
+  "uso": "água batendo no casco a cada balanço",
+  "grupo": null,
+  "substituido": false
  },
  {
   "t": 88.98,
@@ -951,7 +1147,9 @@
   "ini": 13.0,
   "dur": 1.4,
   "tom": 1.0,
-  "uso": "água batendo no casco a cada balanço"
+  "uso": "água batendo no casco a cada balanço",
+  "grupo": null,
+  "substituido": false
  },
  {
   "t": 90.68,
@@ -960,7 +1158,9 @@
   "ini": 16.0,
   "dur": 1.4,
   "tom": 1.0,
-  "uso": "água batendo no casco a cada balanço"
+  "uso": "água batendo no casco a cada balanço",
+  "grupo": null,
+  "substituido": false
  },
  {
   "t": 92.35,
@@ -969,7 +1169,9 @@
   "ini": 19.0,
   "dur": 1.4,
   "tom": 1.0,
-  "uso": "água batendo no casco a cada balanço"
+  "uso": "água batendo no casco a cada balanço",
+  "grupo": null,
+  "substituido": false
  },
  {
   "t": 86.24,
@@ -978,7 +1180,8 @@
   "ini": 0,
   "dur": 0.8,
   "tom": 1.0,
-  "uso": "bloco compacto (peso)"
+  "uso": "bloco compacto (peso)",
+  "grupo": null
  },
  {
   "t": 86.26,
@@ -987,7 +1190,8 @@
   "ini": 0,
   "dur": 1.4,
   "tom": 1.0,
-  "uso": "casco largo (massa de água deslocada)"
+  "uso": "casco largo (massa de água deslocada)",
+  "grupo": null
  },
  {
   "t": 88.6,
@@ -996,7 +1200,9 @@
   "ini": 0.0,
   "dur": 6.15,
   "tom": 1.0,
-  "uso": "vista submersa do experimento"
+  "uso": "vista submersa do experimento",
+  "grupo": null,
+  "substituido": false
  },
  {
   "t": 94.55,
@@ -1005,7 +1211,9 @@
   "ini": 0.0,
   "dur": 39.95,
   "tom": 1.0,
-  "uso": "ambiente de terminal de contêineres (gravação real) [RESERVA Mixkit: WWS ContainerTerminalatthePortofDortmund (Commons) não pôde ser baixado]"
+  "uso": "ambiente de terminal de contêineres (gravação real) [RESERVA Mixkit: WWS ContainerTerminalatthePortofDortmund (Commons) não pôde ser baixado]",
+  "grupo": "porto",
+  "substituido": false
  },
  {
   "t": 94.55,
@@ -1014,7 +1222,9 @@
   "ini": 0.0,
   "dur": 22.85,
   "tom": 1.0,
-  "uso": "empilhadeiras de contêiner ao fundo [RESERVA Mixkit: WWS Containerreachstackers (Commons) não pôde ser baixado]"
+  "uso": "empilhadeiras de contêiner ao fundo [RESERVA Mixkit: WWS Containerreachstackers (Commons) não pôde ser baixado]",
+  "grupo": "porto",
+  "substituido": false
  },
  {
   "t": 94.55,
@@ -1023,7 +1233,9 @@
   "ini": 40,
   "dur": 39.95,
   "tom": 1.0,
-  "uso": "água junto ao cais"
+  "uso": "água junto ao cais",
+  "grupo": "porto",
+  "substituido": false
  },
  {
   "t": 94.55,
@@ -1032,7 +1244,9 @@
   "ini": 22.1,
   "dur": 22.65,
   "tom": 1.0,
-  "uso": "portêiner carregando o navio (guindaste real): carro, guincho e cabos seguem o movimento [RESERVA Mixkit: WWS Containershipgantrycrane (Commons) não pôde ser baixado]"
+  "uso": "portêiner carregando o navio (guindaste real): carro, guincho e cabos seguem o movimento [RESERVA Mixkit: WWS Containershipgantrycrane (Commons) não pôde ser baixado]",
+  "grupo": "guindastes",
+  "substituido": false
  },
  {
   "t": 94.55,
@@ -1041,7 +1255,9 @@
   "ini": 14.3,
   "dur": 22.65,
   "tom": 1.0,
-  "uso": "guindastes vizinhos (guindaste portuário real, mais distante) [RESERVA Mixkit: WWS Mobileharbourcrane (Commons) não pôde ser baixado]"
+  "uso": "guindastes vizinhos (guindaste portuário real, mais distante) [RESERVA Mixkit: WWS Mobileharbourcrane (Commons) não pôde ser baixado]",
+  "grupo": "guindastes",
+  "substituido": false
  },
  {
   "t": 101.6,
@@ -1050,7 +1266,9 @@
   "ini": 0.79,
   "dur": 1.02,
   "tom": 1.0,
-  "uso": "contêiner pousando (batida de caixa metálica)"
+  "uso": "contêiner pousando (batida de caixa metálica)",
+  "grupo": "porto",
+  "substituido": false
  },
  {
   "t": 101.6,
@@ -1059,7 +1277,9 @@
   "ini": 0.02,
   "dur": 1.4,
   "tom": 1.0,
-  "uso": "peso do contêiner no pouso"
+  "uso": "peso do contêiner no pouso",
+  "grupo": "porto",
+  "substituido": false
  },
  {
   "t": 100.7,
@@ -1068,7 +1288,9 @@
   "ini": 0.5,
   "dur": 0.9,
   "tom": 1.0,
-  "uso": "cabos tensionando antes do pouso"
+  "uso": "cabos tensionando antes do pouso",
+  "grupo": "guindastes",
+  "substituido": false
  },
  {
   "t": 102.95,
@@ -1077,7 +1299,9 @@
   "ini": 0.79,
   "dur": 1.02,
   "tom": 1.0,
-  "uso": "contêiner pousando (batida de caixa metálica)"
+  "uso": "contêiner pousando (batida de caixa metálica)",
+  "grupo": "porto",
+  "substituido": false
  },
  {
   "t": 102.95,
@@ -1086,7 +1310,9 @@
   "ini": 0.02,
   "dur": 1.4,
   "tom": 1.0,
-  "uso": "peso do contêiner no pouso"
+  "uso": "peso do contêiner no pouso",
+  "grupo": "porto",
+  "substituido": false
  },
  {
   "t": 102.05,
@@ -1095,7 +1321,9 @@
   "ini": 1.8,
   "dur": 0.9,
   "tom": 1.0,
-  "uso": "cabos tensionando antes do pouso"
+  "uso": "cabos tensionando antes do pouso",
+  "grupo": "guindastes",
+  "substituido": false
  },
  {
   "t": 104.45,
@@ -1104,7 +1332,9 @@
   "ini": 0.79,
   "dur": 1.02,
   "tom": 1.0,
-  "uso": "contêiner pousando (batida de caixa metálica)"
+  "uso": "contêiner pousando (batida de caixa metálica)",
+  "grupo": "porto",
+  "substituido": false
  },
  {
   "t": 104.45,
@@ -1113,7 +1343,9 @@
   "ini": 0.02,
   "dur": 1.4,
   "tom": 1.0,
-  "uso": "peso do contêiner no pouso"
+  "uso": "peso do contêiner no pouso",
+  "grupo": "porto",
+  "substituido": false
  },
  {
   "t": 103.55,
@@ -1122,7 +1354,9 @@
   "ini": 3.1,
   "dur": 0.9,
   "tom": 1.0,
-  "uso": "cabos tensionando antes do pouso"
+  "uso": "cabos tensionando antes do pouso",
+  "grupo": "guindastes",
+  "substituido": false
  },
  {
   "t": 105.45,
@@ -1131,7 +1365,9 @@
   "ini": 100.0,
   "dur": 11.95,
   "tom": 1.0,
-  "uso": "terminal em atividade (tempo acelerado) [RESERVA Mixkit: WWS ContainerTerminalatthePortofDortmund (Commons) não pôde ser baixado]"
+  "uso": "terminal em atividade (tempo acelerado) [RESERVA Mixkit: WWS ContainerTerminalatthePortofDortmund (Commons) não pôde ser baixado]",
+  "grupo": "porto",
+  "substituido": false
  },
  {
   "t": 107.3,
@@ -1140,7 +1376,9 @@
   "ini": 0.06,
   "dur": 1.95,
   "tom": 1.0,
-  "uso": "contato distante de contêiner (só alguns, no tempo acelerado)"
+  "uso": "contato distante de contêiner (só alguns, no tempo acelerado)",
+  "grupo": "porto",
+  "substituido": false
  },
  {
   "t": 110.1,
@@ -1149,7 +1387,9 @@
   "ini": 0.06,
   "dur": 1.95,
   "tom": 1.0,
-  "uso": "contato distante de contêiner (só alguns, no tempo acelerado)"
+  "uso": "contato distante de contêiner (só alguns, no tempo acelerado)",
+  "grupo": "porto",
+  "substituido": false
  },
  {
   "t": 113.4,
@@ -1158,7 +1398,9 @@
   "ini": 0.06,
   "dur": 1.95,
   "tom": 1.0,
-  "uso": "contato distante de contêiner (só alguns, no tempo acelerado)"
+  "uso": "contato distante de contêiner (só alguns, no tempo acelerado)",
+  "grupo": "porto",
+  "substituido": false
  },
  {
   "t": 94.55,
@@ -1167,7 +1409,9 @@
   "ini": 2.6,
   "dur": 22.65,
   "tom": 1.0,
-  "uso": "água batendo no casco enquanto o navio afunda com a carga [RESERVA Mixkit: WWS Smallwaves (Commons) não pôde ser baixado]"
+  "uso": "água batendo no casco enquanto o navio afunda com a carga [RESERVA Mixkit: WWS Smallwaves (Commons) não pôde ser baixado]",
+  "grupo": "porto",
+  "substituido": false
  },
  {
   "t": 117.2,
@@ -1176,7 +1420,9 @@
   "ini": 30,
   "dur": 17.3,
   "tom": 1.0,
-  "uso": "água no casco (calado / marcas) [RESERVA Mixkit: WWS Smallwaves (Commons) não pôde ser baixado]"
+  "uso": "água no casco (calado / marcas) [RESERVA Mixkit: WWS Smallwaves (Commons) não pôde ser baixado]",
+  "grupo": "porto",
+  "substituido": false
  },
  {
   "t": 118.9,
@@ -1185,7 +1431,9 @@
   "ini": 50.0,
   "dur": 2.0,
   "tom": 1.0,
-  "uso": "cota do calado sobe (marulho junto à quilha)"
+  "uso": "cota do calado sobe (marulho junto à quilha)",
+  "grupo": "porto",
+  "substituido": false
  },
  {
   "t": 130.4,
@@ -1194,7 +1442,8 @@
   "ini": 0,
   "dur": 2.6,
   "tom": 1.0,
-  "uso": "marcas de calado acendendo (um único brilho sutil para as 5 linhas)"
+  "uso": "marcas de calado acendendo (um único brilho sutil para as 5 linhas)",
+  "grupo": "porto"
  },
  {
   "t": 134.0,
@@ -1203,7 +1452,9 @@
   "ini": 90,
   "dur": 3.2,
   "tom": 1.0,
-  "uso": "mar (exterior do casco)"
+  "uso": "mar (exterior do casco)",
+  "grupo": "inundacao",
+  "substituido": false
  },
  {
   "t": 134.9,
@@ -1212,7 +1463,9 @@
   "ini": 0.23,
   "dur": 1.76,
   "tom": 1.0,
-  "uso": "ruptura: impacto metálico localizado"
+  "uso": "ruptura: impacto metálico localizado",
+  "grupo": "inundacao",
+  "substituido": false
  },
  {
   "t": 134.9,
@@ -1221,7 +1474,9 @@
   "ini": 0.0,
   "dur": 1.2,
   "tom": 1.0,
-  "uso": "ruptura: aço rasgando/raspando"
+  "uso": "ruptura: aço rasgando/raspando",
+  "grupo": "inundacao",
+  "substituido": false
  },
  {
   "t": 135.0,
@@ -1230,7 +1485,9 @@
   "ini": 1.0,
   "dur": 2.0,
   "tom": 1.0,
-  "uso": "bolhas sugadas pelo rombo"
+  "uso": "bolhas sugadas pelo rombo",
+  "grupo": "inundacao",
+  "substituido": false
  },
  {
   "t": 135.3,
@@ -1239,7 +1496,9 @@
   "ini": 0,
   "dur": 5.85,
   "tom": 1.0,
-  "uso": "bolhas"
+  "uso": "bolhas",
+  "grupo": "inundacao",
+  "substituido": false
  },
  {
   "t": 136.9,
@@ -1248,7 +1507,9 @@
   "ini": 4.0,
   "dur": 9.5,
   "tom": 1.0,
-  "uso": "água sob pressão entrando pelo rombo (cascata forte)"
+  "uso": "água sob pressão entrando pelo rombo (cascata forte)",
+  "grupo": "inundacao",
+  "substituido": false
  },
  {
   "t": 136.9,
@@ -1257,7 +1518,9 @@
   "ini": 2.0,
   "dur": 9.5,
   "tom": 1.0,
-  "uso": "jorro despejando no porão"
+  "uso": "jorro despejando no porão",
+  "grupo": "inundacao",
+  "substituido": false
  },
  {
   "t": 137.2,
@@ -1266,7 +1529,9 @@
   "ini": 5.0,
   "dur": 10.6,
   "tom": 1.0,
-  "uso": "turbulência do porão enchendo"
+  "uso": "turbulência do porão enchendo",
+  "grupo": "inundacao",
+  "substituido": false
  },
  {
   "t": 137.2,
@@ -1275,7 +1540,9 @@
   "ini": 6.0,
   "dur": 10.6,
   "tom": 1.0,
-  "uso": "borbulhar e gorgolejo da água subindo"
+  "uso": "borbulhar e gorgolejo da água subindo",
+  "grupo": "inundacao",
+  "substituido": false
  },
  {
   "t": 137.6,
@@ -1284,7 +1551,9 @@
   "ini": 0.06,
   "dur": 1.68,
   "tom": 1.0,
-  "uso": "água golpeando anteparas e piso"
+  "uso": "água golpeando anteparas e piso",
+  "grupo": "inundacao",
+  "substituido": false
  },
  {
   "t": 138.5,
@@ -1293,7 +1562,9 @@
   "ini": 0.21,
   "dur": 1.88,
   "tom": 1.0,
-  "uso": "água golpeando anteparas e piso"
+  "uso": "água golpeando anteparas e piso",
+  "grupo": "inundacao",
+  "substituido": false
  },
  {
   "t": 139.6,
@@ -1302,7 +1573,9 @@
   "ini": 0.2,
   "dur": 1.28,
   "tom": 1.0,
-  "uso": "água golpeando anteparas e piso"
+  "uso": "água golpeando anteparas e piso",
+  "grupo": "inundacao",
+  "substituido": false
  },
  {
   "t": 140.9,
@@ -1311,7 +1584,9 @@
   "ini": 0.06,
   "dur": 1.68,
   "tom": 1.0,
-  "uso": "água golpeando anteparas e piso"
+  "uso": "água golpeando anteparas e piso",
+  "grupo": "inundacao",
+  "substituido": false
  },
  {
   "t": 142.2,
@@ -1320,7 +1595,9 @@
   "ini": 0.21,
   "dur": 1.88,
   "tom": 1.0,
-  "uso": "água golpeando anteparas e piso"
+  "uso": "água golpeando anteparas e piso",
+  "grupo": "inundacao",
+  "substituido": false
  },
  {
   "t": 139.5,
@@ -1329,7 +1606,9 @@
   "ini": 0.6,
   "dur": 1.6,
   "tom": 1.0,
-  "uso": "casco rangendo sob a carga crescente"
+  "uso": "casco rangendo sob a carga crescente",
+  "grupo": "inundacao",
+  "substituido": false
  },
  {
   "t": 142.3,
@@ -1338,7 +1617,9 @@
   "ini": 2.4,
   "dur": 1.6,
   "tom": 1.0,
-  "uso": "casco rangendo sob a carga crescente"
+  "uso": "casco rangendo sob a carga crescente",
+  "grupo": "inundacao",
+  "substituido": false
  },
  {
   "t": 144.9,
@@ -1347,7 +1628,9 @@
   "ini": 4.2,
   "dur": 1.6,
   "tom": 1.0,
-  "uso": "casco rangendo sob a carga crescente"
+  "uso": "casco rangendo sob a carga crescente",
+  "grupo": "inundacao",
+  "substituido": false
  },
  {
   "t": 146.8,
@@ -1356,7 +1639,9 @@
   "ini": 5.6,
   "dur": 1.6,
   "tom": 1.0,
-  "uso": "casco rangendo sob a carga crescente"
+  "uso": "casco rangendo sob a carga crescente",
+  "grupo": "inundacao",
+  "substituido": false
  },
  {
   "t": 148.4,
@@ -1365,7 +1650,9 @@
   "ini": 1.5,
   "dur": 1.6,
   "tom": 1.0,
-  "uso": "casco rangendo sob a carga crescente"
+  "uso": "casco rangendo sob a carga crescente",
+  "grupo": "inundacao",
+  "substituido": false
  },
  {
   "t": 149.7,
@@ -1374,7 +1661,9 @@
   "ini": 3.3,
   "dur": 1.6,
   "tom": 1.0,
-  "uso": "casco rangendo sob a carga crescente"
+  "uso": "casco rangendo sob a carga crescente",
+  "grupo": "inundacao",
+  "substituido": false
  },
  {
   "t": 137.0,
@@ -1383,7 +1672,9 @@
   "ini": 0.0,
   "dur": 18.0,
   "tom": 1.0,
-  "uso": "tensão grave crescente (alivia após as divisórias)"
+  "uso": "tensão grave crescente (alivia após as divisórias)",
+  "grupo": "inundacao",
+  "substituido": false
  },
  {
   "t": 151.05,
@@ -1392,7 +1683,9 @@
   "ini": 0.02,
   "dur": 2.4,
   "tom": 1.0,
-  "uso": "divisórias estanques: batida firme e calma (aço pesado)"
+  "uso": "divisórias estanques: batida firme e calma (aço pesado)",
+  "grupo": "inundacao",
+  "substituido": false
  },
  {
   "t": 134.95,
@@ -1401,7 +1694,8 @@
   "ini": 0,
   "dur": 0.6,
   "tom": 1.0,
-  "uso": "ruptura (peso)"
+  "uso": "ruptura (peso)",
+  "grupo": "inundacao"
  },
  {
   "t": 151.05,
@@ -1410,7 +1704,8 @@
   "ini": 0,
   "dur": 1.2,
   "tom": 1.0,
-  "uso": "divisórias (peso)"
+  "uso": "divisórias (peso)",
+  "grupo": "inundacao"
  },
  {
   "t": 154.6,
@@ -1419,7 +1714,9 @@
   "ini": 120,
   "dur": 2.1,
   "tom": 1.0,
-  "uso": "mar (bloco de 17 m sobre a água)"
+  "uso": "mar (bloco de 17 m sobre a água)",
+  "grupo": null,
+  "substituido": false
  },
  {
   "t": 154.6,
@@ -1428,7 +1725,9 @@
   "ini": 10,
   "dur": 2.1,
   "tom": 1.0,
-  "uso": "brisa"
+  "uso": "brisa",
+  "grupo": null,
+  "substituido": false
  },
  {
   "t": 155.2,
@@ -1437,7 +1736,9 @@
   "ini": 0.14,
   "dur": 1.31,
   "tom": 1.0,
-  "uso": "queda do bloco de 17 m (ar deslocado)"
+  "uso": "queda do bloco de 17 m (ar deslocado)",
+  "grupo": null,
+  "substituido": false
  },
  {
   "t": 155.84,
@@ -1446,7 +1747,9 @@
   "ini": 0.01,
   "dur": 3.24,
   "tom": 0.7,
-  "uso": "bloco de 17 m entra na água (massa)"
+  "uso": "bloco de 17 m entra na água (massa)",
+  "grupo": null,
+  "substituido": false
  },
  {
   "t": 155.84,
@@ -1455,7 +1758,9 @@
   "ini": 0.01,
   "dur": 2.53,
   "tom": 0.75,
-  "uso": "respingo largo"
+  "uso": "respingo largo",
+  "grupo": null,
+  "substituido": false
  },
  {
   "t": 155.84,
@@ -1464,7 +1769,9 @@
   "ini": 0,
   "dur": 0.74,
   "tom": 0.65,
-  "uso": "peso do aço"
+  "uso": "peso do aço",
+  "grupo": null,
+  "substituido": false
  },
  {
   "t": 155.84,
@@ -1473,7 +1780,9 @@
   "ini": 0.06,
   "dur": 1.68,
   "tom": 1.0,
-  "uso": "água espirrando e caindo de volta"
+  "uso": "água espirrando e caindo de volta",
+  "grupo": null,
+  "substituido": false
  },
  {
   "t": 155.84,
@@ -1482,7 +1791,8 @@
   "ini": 0,
   "dur": 1.6,
   "tom": 1.0,
-  "uso": "escala do bloco de 17 m"
+  "uso": "escala do bloco de 17 m",
+  "grupo": null
  },
  {
   "t": 156.4,
@@ -1491,7 +1801,9 @@
   "ini": 10,
   "dur": 8.15,
   "tom": 1.0,
-  "uso": "debaixo d'água: bloco afundando, casco ao lado"
+  "uso": "debaixo d'água: bloco afundando, casco ao lado",
+  "grupo": null,
+  "substituido": false
  },
  {
   "t": 156.24,
@@ -1500,7 +1812,9 @@
   "ini": 0.5,
   "dur": 4.15,
   "tom": 0.85,
-  "uso": "bolhas da descida do bloco"
+  "uso": "bolhas da descida do bloco",
+  "grupo": null,
+  "substituido": false
  },
  {
   "t": 156.6,
@@ -1509,7 +1823,9 @@
   "ini": 0,
   "dur": 5.85,
   "tom": 1.0,
-  "uso": "bolhas profundas"
+  "uso": "bolhas profundas",
+  "grupo": null,
+  "substituido": false
  },
  {
   "t": 159.6,
@@ -1518,7 +1834,8 @@
   "ini": 0,
   "dur": 1.4,
   "tom": 1.0,
-  "uso": "volume deslocado sob o casco (textura sutil)"
+  "uso": "volume deslocado sob o casco (textura sutil)",
+  "grupo": null
  },
  {
   "t": 161.4,
@@ -1536,7 +1853,9 @@
   "ini": 0.3,
   "dur": 1.0,
   "tom": 1.0,
-  "uso": "saída da água para o plano aéreo final"
+  "uso": "saída da água para o plano aéreo final",
+  "grupo": null,
+  "substituido": false
  },
  {
   "t": 164.35,
@@ -1545,7 +1864,9 @@
   "ini": 30,
   "dur": 3.85,
   "tom": 1.0,
-  "uso": "mar aberto (plano final)"
+  "uso": "mar aberto (plano final)",
+  "grupo": null,
+  "substituido": false
  },
  {
   "t": 164.35,
@@ -1554,7 +1875,9 @@
   "ini": 10,
   "dur": 3.85,
   "tom": 1.0,
-  "uso": "água no casco [RESERVA Mixkit: WWS Smallwaves (Commons) não pôde ser baixado]"
+  "uso": "água no casco [RESERVA Mixkit: WWS Smallwaves (Commons) não pôde ser baixado]",
+  "grupo": null,
+  "substituido": false
  },
  {
   "t": 164.35,
@@ -1563,6 +1886,8 @@
   "ini": 30,
   "dur": 3.85,
   "tom": 1.0,
-  "uso": "vento"
+  "uso": "vento",
+  "grupo": null,
+  "substituido": false
  }
 ]

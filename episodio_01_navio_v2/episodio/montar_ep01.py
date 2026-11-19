@@ -110,7 +110,7 @@ def desenhar_rotulo(img, txt, u, v, a, dx, dy):
 
 
 def legendas():
-    p = json.load(open(os.path.join(RAIZ, 'voz', 'narracao_ep01', 'trabalho', 'palavras.json')))
+    p = json.load(open(os.path.join(os.environ.get('NARRACAO_EP01_DIR', os.path.join(RAIZ, 'voz', 'narracao_ep01', 'trabalho')), 'palavras.json')))   # legendas seguem a narração usada
     blocos, cur = [], []
     for i, w in enumerate(p):
         cur.append(w)
@@ -126,6 +126,7 @@ def legendas():
         blocos[i][2] = re.sub(r'[.,:;]+$', '', blocos[i][2])
     return [b for b in blocos if b[0] < 166.3]
 LEG = legendas()
+SEM_LEGENDAS = os.environ.get('SEM_LEGENDAS') == '1'   # master de imagem: legendas entram depois (episodio/trocar_audio.py)
 
 
 FIM_ESCURO = False   # sem escurecimento final: o vídeo termina no plano do navio
@@ -161,7 +162,7 @@ def compor(g):
     for (n, a, k) in rots:
         for (txt, u, v, al, dx, dy) in rotulos(n, a, g): desenhar_rotulo(img, txt, u, v, al * k, dx, dy)
     d = ImageDraw.Draw(img)
-    for (a, b, txt) in LEG:
+    for (a, b, txt) in ([] if SEM_LEGENDAS else LEG):
         if a <= g < b:
             d.text((W // 2, int(0.70 * H)), txt, font=F_LEG, fill=(255, 255, 255), stroke_width=max(2, int(7 * ESC)), stroke_fill=ESCURO, anchor='mm')
     for (a, b, txt) in CHIPS:
@@ -202,7 +203,7 @@ if __name__ == '__main__':
     t_fim = T_FIM if T_FIM is not None else DUR
     n = int(round((t_fim - T_INI) * FPS))
     ff = subprocess.Popen(['ffmpeg', '-y', '-v', 'error', '-f', 'rawvideo', '-pix_fmt', 'rgb24', '-s', f'{W}x{H}', '-r', str(FPS), '-i', '-',
-                           '-ss', f'{T_INI:.3f}', '-i', au, '-af', af, '-c:v', 'libx264', '-preset', 'medium', '-crf', '20' if PERFIL != 'final' else '17',
+                           '-ss', f'{T_INI:.3f}', '-i', au, '-af', af, '-c:v', 'libx264', '-preset', 'medium', '-crf', os.environ.get('CRF_EP01', '20' if PERFIL != 'final' else '17'),
                            '-pix_fmt', 'yuv420p', '-c:a', 'aac', '-b:a', '192k', '-ar', '48000', '-shortest', '-movflags', '+faststart',
                            '-metadata', 'title=De Olho no Invisível · Ep. 01 · versão de revisão (não publicar)', SAIDA], stdin=subprocess.PIPE)
     for i in range(n):

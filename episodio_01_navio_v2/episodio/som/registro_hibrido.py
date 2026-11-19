@@ -13,7 +13,12 @@ lin, sint = [], []
 for i, us in sorted(por_id.items(), key=lambda kv: (isinstance(kv[0], str), str(kv[0]))):
     onde = sorted({(round(u['t'], 1), u['uso']) for u in us})
     if i == 'sintese': sint = onde; continue
-    if isinstance(i, int):
+    SUB = json.load(open(os.path.join(A, 'substituicoes.json'))) if os.path.exists(os.path.join(A, 'substituicoes.json')) else {}
+    if str(i) in SUB:
+        x = SUB[str(i)]; lin.append(dict(id=i, nome=x.get('titulo', ''), biblioteca=x.get('biblioteca', 'arquivo manual (substituição)'), autor=x.get('autor', ''),
+                                         url_original=x.get('url', ''), url_arquivo='', licenca=x.get('licenca', ''), url_licenca=x.get('licenca_url', ''),
+                                         atribuicao_exigida=bool(x.get('credito')), credito=x.get('credito', ''), arquivo_local='som/' + x['arquivo'], voz_detectada=None, usos=onde))
+    elif isinstance(i, int):
         x = MIX[i]; lin.append(dict(id=i, nome=x['titulo'], biblioteca='Mixkit', autor='Mixkit (Envato); a página não identifica o artista', url_original=x['url_pagina'],
                                     url_arquivo=x['url_arquivo'], licenca='Mixkit Sound Effects Free License', url_licenca='https://mixkit.co/license/#sfxFree',
                                     atribuicao_exigida=False, credito='', arquivo_local=x['arquivo_local'], voz_detectada=bool(x.get('voz_detectada')), usos=onde))

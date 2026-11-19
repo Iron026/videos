@@ -6,6 +6,7 @@ Mixagem: a mesma cadeia de som_ep01.mixar (reverberação por ambiente, master �
 ducking MODERADO (ambiência e efeitos continuam presentes sob a voz).
 Saídas: audio_ep01_hibrido.wav, stems/ep01_*_hibrido.wav, som/mix_hibrido.json, som/usos_hibrido.json."""
 import os, sys, json, numpy as np
+from contextlib import contextmanager
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import som_ep01 as SE
 import amostras as AM
@@ -16,6 +17,7 @@ import som_real as R
 from som_real import por, cama, hp_, lp_
 
 EV = SE.EV
+AM.grupo_atual = lambda: SE.GRUPO[0]
 
 # Gravações do Wikimedia Commons (Work With Sounds). Se o arquivo não pôde ser baixado (o servidor de arquivos limita
 # este IP de nuvem compartilhado), usa a reserva do Mixkit indicada e registra a troca — nada é inventado.
@@ -35,6 +37,19 @@ def C(nome):
 
 
 # ------------------------------------------------------------------------------------------------ utilitários
+@contextmanager
+def G(nome):
+    """Grupo de substituição: tudo o que for colocado dentro dele também vai para stems/grupos/ep01_<stem>_<nome>_hibrido.wav."""
+    ant = SE.GRUPO[0]; SE.GRUPO[0] = nome
+    try: yield
+    finally: SE.GRUPO[0] = ant
+
+
+GRUPOS = {'estaleiro': 'estaleiro (ambiente, encaixe, solda, chapas, corte do casco)', 'guindastes': 'guindastes (pórtico do estaleiro e portêineres: motores, carros, cabos)',
+          'porto': 'porto (ambiente, empilhadeiras, pousos de contêiner, água no casco, marcas)', 'dique': 'dique (comporta, jatos e enchimento)',
+          'inundacao': 'inundação da avaria (ruptura, jato, porão enchendo, rangidos, divisórias)'}
+
+
 def _r(i): return C(i) if isinstance(i, str) and i in RESERVA else i
 
 
@@ -71,14 +86,14 @@ def grave(t, dur=0.9, f0=58, f1=36, dB=-20, pan=0.0, amb='ext', sub=False, nome=
     y = np.sin(2 * np.pi * np.cumsum(fr) / SR) * np.exp(-x / (dur * 0.35)) * np.clip(x / 0.012, 0, 1)
     y = y + 0.35 * lp(ruido(n), 90) * np.exp(-x / (dur * 0.25))
     por(t, y, dB, pan, amb, 0.15, sub=sub)
-    AM.USOS.append(dict(t=round(t, 2), id='sintese', titulo='reforço grave (síntese discreta)', ini=0, dur=dur, tom=1.0, uso=nome or 'peso do impacto'))
+    AM.USOS.append(dict(t=round(t, 2), id='sintese', titulo='reforço grave (síntese discreta)', ini=0, dur=dur, tom=1.0, uso=nome or 'peso do impacto', grupo=SE.GRUPO[0]))
 
 
 def sopro(t, dur, dB=-30, f=(300, 1600), pan=0.0, amb='ext', sub=False, nome=''):
     """Transição/textura sutil sintética (ar filtrado com envelope em seno)."""
     n = int(dur * SR); y = S.bp(ruido(n), *f) * np.sin(np.linspace(0, np.pi, n)) ** 2
     por(t, y, dB, pan, amb, 0.3, sub=sub)
-    AM.USOS.append(dict(t=round(t, 2), id='sintese', titulo='transição sutil (síntese)', ini=0, dur=dur, tom=1.0, uso=nome))
+    AM.USOS.append(dict(t=round(t, 2), id='sintese', titulo='transição sutil (síntese)', ini=0, dur=dur, tom=1.0, uso=nome, grupo=SE.GRUPO[0]))
 
 
 def segue(i, a, b, curva, dB, pan=0.0, amb='ext', envio=0.35, ini=None, fim=None, eq=None, xf=0.6, uso='', expo=0.7):
@@ -125,21 +140,21 @@ def abertura():
 # ================================================================================================ 15–30 · estaleiro
 def estaleiro():
     cama(15.1, 30.75, 3074, -16, amb='ind', envio=0.2, uso='ambiente de estaleiro (galpão de construção naval)')
-    cama(15.1, 30.75, C('Shipyardcrane'), -24, amb='ind', ini=estavel('Shipyardcrane', 15), eq=hp_(50), uso='guindaste de estaleiro ao fundo (Gotenius, Gotemburgo)')
+    with G('guindastes'): cama(15.1, 30.75, C('Shipyardcrane'), -24, amb='ind', ini=estavel('Shipyardcrane', 15), eq=hp_(50), uso='guindaste de estaleiro ao fundo (Gotenius, Gotemburgo)')
     cama(15.1, 30.75, C('Weldingonshipinfloatingdrydock'), -31, amb='ind', ini=estavel('Weldingonshipinfloatingdrydock', 15), uso='solda distante em outro ponto do casco (estaleiro real)')
     m = EV['estaleiro_mov']; tg = np.array(m['t'])
     v = np.clip(np.array(m['carro']['v']) / 3.05, 0, 1); v = np.convolve(v, np.ones(9) / 9, 'same')
     a, b = 15.1, 30.3; n = int((b - a) * SR); vs = np.interp(a + tt(n), tg, v)
     # MOTOR do carro do pórtico (substitui o motor de escada de bombeiro 1619): guindaste de estaleiro real; volume = velocidade real
-    segue('Shipyardcrane', a, b, vs, -11, -0.2, 'ind', 0.4, uso='motor/translação do pórtico (guindaste de estaleiro real) seguindo a velocidade do carro')
+    with G('guindastes'): segue('Shipyardcrane', a, b, vs, -11, -0.2, 'ind', 0.4, uso='motor/translação do pórtico (guindaste de estaleiro real) seguindo a velocidade do carro')
     # rodas/carro rolando no trilho: ponte rolante real (substitui a porta de correr 1534)
-    segue('Crane', a, b, vs, -18, -0.2, 'ind', 0.4, uso='carro rolando no trilho (ponte rolante real)', expo=1.0)
+    with G('guindastes'): segue('Crane', a, b, vs, -18, -0.2, 'ind', 0.4, uso='carro rolando no trilho (ponte rolante real)', expo=1.0)
     vg = np.clip(np.array(m['grupo_carga']['v']) / 3.97, 0, 1); acel = np.abs(np.gradient(np.convolve(vg, np.ones(5) / 5, 'same')))
     picos = [tg[i] for i in range(1, len(acel) - 1) if acel[i] > 0.02 and acel[i] >= acel[i - 1] and acel[i] >= acel[i + 1]]
     ult = -9; k = 0
     for t0 in picos:
         if t0 - ult > 1.2:
-            por(t0, trecho(3076, 1.0 + 1.6 * (k % 4), 1.4, fo=0.4, ref=-3, t=t0, uso='cabos e estrutura rangendo na arrancada/freada'), -16, 0.1, 'ind', 0.5, eq=hp_(60)); ult = t0; k += 1
+            with G('guindastes'): por(t0, trecho(3076, 1.0 + 1.6 * (k % 4), 1.4, fo=0.4, ref=-3, t=t0, uso='cabos e estrutura rangendo na arrancada/freada'), -16, 0.1, 'ind', 0.5, eq=hp_(60)); ult = t0; k += 1
     # ENCAIXE da chapa (23,60 s) (substitui a porta de prisão 201): impacto metálico pesado e grave + batida de fábrica com eco + contato agudo
     por(23.58, trecho(783, ataque(783, -12) - 0.01, 2.2, fo=0.8, ref=-1, t=23.6, uso='encaixe da chapa: corpo grave de aço pesado'), -5, 0.0, 'ind', 0.5)
     por(23.59, trecho(2983, ataque(2983), ref=-1, t=23.6, uso='encaixe da chapa: batida metálica no galpão (com eco real)'), -8, 0.05, 'ind', 0.35)
@@ -168,7 +183,7 @@ def estaleiro():
 # ================================================================================================ 30–41 · navio pronto, corte do casco
 def navio_corte():
     cama(30.0, 35.4, 3074, -22, amb='ind', ini=30, uso='estaleiro (navio já pronto)')
-    cama(30.0, 35.4, C('Shipyardcrane'), -30, amb='ind', ini=estavel('Shipyardcrane', 5, ini=60), uso='guindaste ao fundo')
+    with G('guindastes'): cama(30.0, 35.4, C('Shipyardcrane'), -30, amb='ind', ini=estavel('Shipyardcrane', 5, ini=60), uso='guindaste ao fundo')
     # proa se separando no corte (33,15 s): aço pesado deslizando + rangido; reforço grave discreto
     por(33.15, trecho(1523, ataque(1523, -20), 1.3, fi=0.15, fo=0.5, ref=-3, tom=0.8, t=33.15, uso='proa se separando: aço pesado deslizando'), -13, 0.2, 'ind', 0.5)
     por(33.25, trecho(3076, 2.0, 1.6, fi=0.2, fo=0.6, ref=-3, t=33.25, uso='estrutura rangendo no corte'), -19, 0.15, 'ind', 0.5, eq=hp_(60))
@@ -244,14 +259,14 @@ def porto():
     z = np.array(m['spreader_anc5']['z']); vz = np.abs(np.gradient(z) * 30); vz[vz > 12] = 0
     vs = np.interp(a + tt(n), tg, np.convolve(np.clip(vz / 5.0, 0, 1), np.ones(7) / 7, 'same'))
     mov = np.clip(0.75 * vc + 0.9 * vs, 0, 1)
-    segue('Containershipgantrycrane', a, b, 0.25 + 0.75 * mov, -12, 0.0, 'porto', 0.4, uso='portêiner carregando o navio (guindaste real): carro, guincho e cabos seguem o movimento')
+    with G('guindastes'): segue('Containershipgantrycrane', a, b, 0.25 + 0.75 * mov, -12, 0.0, 'porto', 0.4, uso='portêiner carregando o navio (guindaste real): carro, guincho e cabos seguem o movimento')
     vc2 = np.maximum(np.interp(a + tt(n), tg, vel('carro_anc3', 4.0)), np.interp(a + tt(n), tg, vel('carro_anc7', 4.0)))
-    segue('Mobileharbourcrane', a, b, 0.2 + 0.8 * vc2, -22, 0.4, 'porto', 0.4, uso='guindastes vizinhos (guindaste portuário real, mais distante)')
+    with G('guindastes'): segue('Mobileharbourcrane', a, b, 0.2 + 0.8 * vc2, -22, 0.4, 'porto', 0.4, uso='guindastes vizinhos (guindaste portuário real, mais distante)')
     # pousos dos 3 contêineres do plano próximo, no instante do contato: batida metálica real + grave discreto
     for i, t0 in enumerate(EV['pousos']):
         por(t0 - 0.01, trecho(2754, 0.79, fi=0.003, ref=-1, t=t0, uso='contêiner pousando (batida de caixa metálica)'), -9, (-0.1, -0.3, 0.3)[i], 'porto', 0.45)
         por(t0, trecho(783, ataque(783, -12) - 0.01, 1.4, fo=0.6, ref=-1, t=t0, uso='peso do contêiner no pouso'), -16, (-0.1, -0.3, 0.3)[i], 'porto', 0.4, eq=lp_(1500))
-        por(t0 - 0.9, trecho(3076, 0.5 + 1.3 * i, 0.9, fi=0.1, fo=0.4, ref=-3, t=t0 - 0.9, uso='cabos tensionando antes do pouso'), -24, 0.0, 'porto', 0.4, eq=hp_(120))
+        with G('guindastes'): por(t0 - 0.9, trecho(3076, 0.5 + 1.3 * i, 0.9, fi=0.1, fo=0.4, ref=-3, t=t0 - 0.9, uso='cabos tensionando antes do pouso'), -24, 0.0, 'porto', 0.4, eq=hp_(120))
     # time-lapse (105,45–117,2): NÃO um som por contêiner — o terminal real mais presente + poucos contatos distantes
     cama(105.45, 117.2, C('ContainerTerminalatthePortofDortmund'), -21, amb='porto', ini=estavel('ContainerTerminalatthePortofDortmund', 12, ini=100), uso='terminal em atividade (tempo acelerado)')
     for k, t0 in enumerate((107.3, 110.1, 113.4)):
@@ -313,7 +328,9 @@ def mar_s05():
 
 
 if __name__ == '__main__':
-    for f in (abertura, estaleiro, navio_corte, dique, R.empuxo, retomada, experimento, porto, avaria, conclusao): f()
+    for f, g in ((abertura, None), (estaleiro, 'estaleiro'), (navio_corte, 'estaleiro'), (dique, 'dique'), (R.empuxo, None), (retomada, None),
+                 (experimento, None), (porto, 'porto'), (avaria, 'inundacao'), (conclusao, None)):
+        with G(g): f()
     SE.musica()
     P = dict(efeitos_rel=-3.5, amb_rel=-12.5, duck_alvo=-13.0, duck_piso=-18.0, duck_grave=-3.0, musica_rel=-16.0, duck_amb_max=-9.0)   # ducking moderado (calibração C)
     P.update(json.loads(os.environ.get('MIX_HIBRIDO', '{}'))); suf = os.environ.get('SUFIXO_HIBRIDO', '')

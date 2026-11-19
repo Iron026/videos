@@ -12,7 +12,15 @@ _CM = os.path.join(A, 'fontes_commons.json')
 if os.path.exists(_CM):
     for x in json.load(open(_CM)): FONTES[x['id']] = x
 USOS = []          # (t, id, título, ini, dur, uso)
+grupo_atual = lambda: None   # definido pelo script de mixagem (grupo de substituição ativo)
+# Substituições após a escuta, SEM editar o código: som/substituicoes.json = {"<id original>": {"arquivo": "bib/manual/x.wav",
+# "titulo": ..., "autor": ..., "url": ..., "licenca": ..., "credito": ...}}. O arquivo novo entra nos mesmos instantes e camadas.
+_SP = os.path.join(A, 'substituicoes.json')
+SUBST = {k: v for k, v in json.load(open(_SP)).items() if not k.startswith('_')} if os.path.exists(_SP) else {}
 _C = {}
+
+
+def _titulo(i): return SUBST[str(i)].get('titulo', SUBST[str(i)]['arquivo']) if str(i) in SUBST else FONTES[i]['titulo']
 
 
 def _marca(i, uso):
@@ -23,6 +31,7 @@ def _marca(i, uso):
 def carregar(i):
     if i not in _C:
         f = os.path.join(A, 'bib', 'mixkit', f'{i}.wav') if isinstance(i, int) else os.path.join(A, 'bib', 'commons', f'{i}.ogg')
+        if str(i) in SUBST: f = os.path.join(A, SUBST[str(i)]['arquivo'])
         a, sr = sf.read(f, always_2d=True)
         if a.shape[1] == 1: a = np.repeat(a, 2, 1)
         if sr != SR:
@@ -50,7 +59,7 @@ def trecho(i, ini=0.0, dur=None, fi=0.004, fo=0.08, tom=1.0, norm='pico', ref=-1
     if mono: x = np.repeat(x.mean(1, keepdims=True), 2, 1)
     if norm == 'pico': x *= 10 ** (ref / 20) / (np.abs(x).max() + 1e-12)
     elif norm == 'rms': x *= 10 ** (ref / 20) / (np.sqrt(np.mean(x ** 2)) + 1e-12)
-    if t is not None: USOS.append(dict(t=round(t, 2), id=int(i) if isinstance(i, int) else i, titulo=FONTES[i]['titulo'], ini=round(ini, 2), dur=round(n / SR, 2), tom=tom, uso=_marca(i, uso)))
+    if t is not None: USOS.append(dict(t=round(t, 2), id=int(i) if isinstance(i, int) else i, titulo=_titulo(i), ini=round(ini, 2), dur=round(n / SR, 2), tom=tom, uso=_marca(i, uso), grupo=grupo_atual(), substituido=str(i) in SUBST))
     return x
 
 
@@ -66,5 +75,5 @@ def laco(i, dur, ini=0.0, fim=None, xf=0.6, ref=-20.0, t=None, uso=''):
         if pos + len(seg) < n: seg[-k:] *= rampa[::-1]
         out[pos:pos + m] += seg[:m]; pos += len(seg) - k
     out *= 10 ** (ref / 20) / (np.sqrt(np.mean(out ** 2)) + 1e-12)
-    if t is not None: USOS.append(dict(t=round(t, 2), id=int(i) if isinstance(i, int) else i, titulo=FONTES[i]['titulo'], ini=round(ini, 2), dur=round(dur, 2), tom=1.0, uso=_marca(i, uso)))
+    if t is not None: USOS.append(dict(t=round(t, 2), id=int(i) if isinstance(i, int) else i, titulo=_titulo(i), ini=round(ini, 2), dur=round(dur, 2), tom=1.0, uso=_marca(i, uso), grupo=grupo_atual(), substituido=str(i) in SUBST))
     return out

@@ -7,7 +7,7 @@
     "idioma": "pt-BR"
   },
   "configuracao_aprovada_para_testes": {
-    "stability": 0.50,
+    "stability": 0.5,
     "similarity_boost": 0.75,
     "style": 0,
     "speed": 1.0
@@ -23,7 +23,9 @@
   },
   "licenca": {
     "amostra_atual": "plano gratuito: só para avaliação, não comercial",
-    "narracao_definitiva": "gerar durante um plano pago (licença comercial) e guardar o comprovante do plano"
+    "narracao_definitiva": "gerar durante um plano pago (licença comercial) e guardar o comprovante do plano",
+    "narracao_ep01_atual": "Narração ep 1.mp3: gerada, ao que tudo indica, no plano gratuito (conta conectada em tier free com 2.246 caracteres usados = tamanho do roteiro); sem licença comercial — regenerar durante um plano pago antes de publicar com monetização (ver episodio/validacao_pre_render.md)",
+    "verificado_em": "2026-11-19"
   },
   "pipeline": [
     "1. Gerar no site da ElevenLabs, por parágrafo do roteiro, com a mesma voz, modelo e ajustes",
@@ -31,5 +33,14 @@
     "3. python3 voz/preparar_narracao.py <mp3> \"<texto do parágrafo>\" <pasta>  (normaliza, alinha, gera SRT e verificação)",
     "4. O animatic e o episódio leem palavras.json para legendas e eventos"
   ],
-  "proibido": ["Kokoro", "outras vozes", "gerar pelo conector ElevenLabs nesta infraestrutura (bloqueado)"]
+  "proibido": [
+    "Kokoro",
+    "outras vozes",
+    "gerar pelo conector ElevenLabs nesta infraestrutura (bloqueado)"
+  ],
+  "pipeline_troca": [
+    "python3 voz/comparar_narracao.py <novo.mp3> voz/narracao_nova_encaixada  (relatório de tempos + versão encaixada)",
+    "NARRACAO_EP01_DIR=voz/narracao_nova_encaixada SUFIXO_HIBRIDO=_vozpaga python3 episodio/som/som_hibrido.py",
+    "NARRACAO_EP01_DIR=voz/narracao_nova_encaixada python3 episodio/trocar_audio.py episodio/audio_ep01_hibrido_vozpaga.wav <saida.mp4>"
+  ]
 }

@@ -1,0 +1,3 @@
+{
+ "_como_usar": "Para trocar uma gravação depois da escuta: coloque o arquivo em som/bib/manual/ e adicione aqui uma entrada com o ID original (ver som/mapa_substituicao.md). Ex.: \"2504\": {\"arquivo\": \"bib/manual/guindaste.wav\", \"titulo\": \"...\", \"autor\": \"...\", \"url\": \"...\", \"licenca\": \"CC0\", \"credito\": \"\"}. Depois: python3 som/som_hibrido.py && python3 som/registro_hibrido.py. Nenhum render 3D é refeito."
+}

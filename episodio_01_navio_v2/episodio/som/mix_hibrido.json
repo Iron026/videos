@@ -51,6 +51,96 @@
    -0.3
   ]
  ],
+ "stems_por_grupo": {
+  "dique/ambiencias": {
+   "arquivo": "stems/grupos/ep01_ambiencias_dique_hibrido.wav",
+   "lufs": -30.2,
+   "ativo_s": [
+    41.3,
+    48.82
+   ]
+  },
+  "dique/efeitos": {
+   "arquivo": "stems/grupos/ep01_efeitos_dique_hibrido.wav",
+   "lufs": -24.7,
+   "ativo_s": [
+    41.67,
+    48.74
+   ]
+  },
+  "estaleiro/ambiencias": {
+   "arquivo": "stems/grupos/ep01_ambiencias_estaleiro_hibrido.wav",
+   "lufs": -34.6,
+   "ativo_s": [
+    15.22,
+    42.52
+   ]
+  },
+  "estaleiro/efeitos": {
+   "arquivo": "stems/grupos/ep01_efeitos_estaleiro_hibrido.wav",
+   "lufs": -19.5,
+   "ativo_s": [
+    23.58,
+    41.38
+   ]
+  },
+  "guindastes/ambiencias": {
+   "arquivo": "stems/grupos/ep01_ambiencias_guindastes_hibrido.wav",
+   "lufs": -40.5,
+   "ativo_s": [
+    15.11,
+    35.86
+   ]
+  },
+  "guindastes/efeitos": {
+   "arquivo": "stems/grupos/ep01_efeitos_guindastes_hibrido.wav",
+   "lufs": -33.6,
+   "ativo_s": [
+    15.09,
+    117.77
+   ]
+  },
+  "inundacao/ambiencias": {
+   "arquivo": "stems/grupos/ep01_ambiencias_inundacao_hibrido.wav",
+   "lufs": -39.3,
+   "ativo_s": [
+    134.01,
+    137.24
+   ]
+  },
+  "inundacao/efeitos": {
+   "arquivo": "stems/grupos/ep01_efeitos_inundacao_hibrido.wav",
+   "lufs": -21.7,
+   "ativo_s": [
+    134.93,
+    155.1
+   ]
+  },
+  "porto/ambiencias": {
+   "arquivo": "stems/grupos/ep01_ambiencias_porto_hibrido.wav",
+   "lufs": -31.0,
+   "ativo_s": [
+    94.59,
+    134.71
+   ]
+  },
+  "porto/efeitos": {
+   "arquivo": "stems/grupos/ep01_efeitos_porto_hibrido.wav",
+   "lufs": -28.6,
+   "ativo_s": [
+    94.55,
+    132.88
+   ]
+  },
+  "resto/ambiencias": {
+   "arquivo": "stems/grupos/ep01_ambiencias_resto_hibrido.wav",
+   "lufs": -31.6
+  },
+  "resto/efeitos": {
+   "arquivo": "stems/grupos/ep01_efeitos_resto_hibrido.wav",
+   "lufs": -22.4
+  }
+ },
  "efeitos": [],
  "parametros_mix": {
   "efeitos_rel": -3.5,

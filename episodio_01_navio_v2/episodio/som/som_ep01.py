@@ -16,6 +16,8 @@ EV = json.load(open(os.path.join(A, 'eventos_som.json')))
 STEMS = {k: np.zeros((N, 2)) for k in ('efeitos', 'ambiencias', 'musica')}
 SENDS = {}                     # (stem, ambiente) -> envio mono para a reverberação daquele ambiente
 LISTA = []                     # registro de efeitos por sequência (relatório)
+GRUPO = [None]                 # grupo de substituição ativo (ex.: 'guindastes'); None = sem grupo próprio
+GSTEMS, GSENDS = {}, {}        # (grupo, stem) -> sinal; (grupo, stem, ambiente) -> envio — mesma cadeia de mixagem do stem
 
 
 def soma(*xs):
@@ -39,6 +41,11 @@ def por(t, x, dB=0.0, pan=0.0, amb='ext', envio=0.25, stem='efeitos', sub=False,
     STEMS[stem][a:b, 0] += seg[:, 0] * gl; STEMS[stem][a:b, 1] += seg[:, 1] * gr
     if envio > 0:
         k = (stem, 'sub' if sub else amb); SENDS.setdefault(k, np.zeros(N)); SENDS[k][a:b] += seg.mean(1) * envio
+    if GRUPO[0]:                # cópia exata da contribuição deste som, para o stem do grupo de substituição
+        gk = (GRUPO[0], stem); GSTEMS.setdefault(gk, np.zeros((N, 2), np.float32))
+        GSTEMS[gk][a:b, 0] += seg[:, 0] * gl; GSTEMS[gk][a:b, 1] += seg[:, 1] * gr
+        if envio > 0:
+            k = (GRUPO[0], stem, 'sub' if sub else amb); GSENDS.setdefault(k, np.zeros(N, np.float32)); GSENDS[k][a:b] += seg.mean(1) * envio
     if nome: LISTA.append((round(t, 2), nome))
 
 
@@ -411,7 +418,9 @@ def mixar(saida='audio_ep01.wav', stems_dir='stems', sufixo='', relatorio='mix_e
         ir = S.resposta_impulso(amb)
         for c in range(2): STEMS[stem][:, c] += fftconvolve(s, ir[:, c])[:N]
     # narração (cópia de montagem): sem a fala de assinatura; o MP3 e o WAV de trabalho NÃO são alterados
-    voz, sr = sf.read(os.path.join(EP, '..', 'voz', 'narracao_ep01', 'trabalho', 'narracao_48k.wav')); assert sr == SR
+    # NARRACAO_EP01_DIR: outra narração (ex.: regenerada e encaixada por voz/comparar_narracao.py); padrão = a atual
+    dir_voz = os.environ.get('NARRACAO_EP01_DIR', os.path.join(EP, '..', 'voz', 'narracao_ep01', 'trabalho'))
+    voz, sr = sf.read(os.path.join(dir_voz, 'narracao_48k.wav')); assert sr == SR
     v = np.zeros(N); v[:min(N, len(voz))] = (voz if voz.ndim == 1 else voz.mean(1))[:N]
     corte = int(166.36 * SR); v[corte:] = 0; r_ = n_(0.06); v[corte - r_:corte] *= np.linspace(1, 0, r_)
     VOZ = np.stack([v, v], 1)
@@ -419,7 +428,8 @@ def mixar(saida='audio_ep01.wav', stems_dir='stems', sufixo='', relatorio='mix_e
     for k in STEMS: STEMS[k] = hpz(STEMS[k], 35, 2)
     # níveis relativos (medidos): ambiência ~19 dB abaixo da voz, efeitos ~7 dB abaixo, música ~17 dB abaixo
     Lv = lufs(VOZ); alvo = {'ambiencias': Lv + amb_rel, 'efeitos': Lv + efeitos_rel, 'musica': Lv + musica_rel}   # antes do ducking
-    for k, a_ in alvo.items(): STEMS[k] *= db(a_ - lufs(STEMS[k]))
+    GK = {}
+    for k, a_ in alvo.items(): GK[k] = db(a_ - lufs(STEMS[k])); STEMS[k] *= GK[k]
     # ducking dinâmico multibanda: durante a fala a banda da voz (200 Hz–4 kHz) de efeitos/ambiências fica ≥ 12 dB abaixo
     w = n_(0.03); ativa = np.clip(lpz((np.sqrt(media_movel(v ** 2, w)) > db(-42)).astype(float), 3.0), 0, 1)
     vm = np.sqrt(media_movel(bp(v, 200, 4000) ** 2, w)) + 1e-6
@@ -435,9 +445,9 @@ def mixar(saida='audio_ep01.wav', stems_dir='stems', sufixo='', relatorio='mix_e
     for i, val in enumerate(gd):          # ataque 10 ms, liberação 450 ms (pausas curtas entre palavras não "bombeiam")
         cur = cur * a_at16 + val * (1 - a_at16) if val < cur else cur * a_lb16 + val * (1 - a_lb16); out[i] = cur
     gs = np.repeat(out, 16)[:N]
-    fixo_baixo = 1 - (1 - db(duck_grave)) * ativa
+    fixo_baixo = 1 - (1 - db(duck_grave)) * ativa; GD = {}
     for k, (baixo, meio, alto) in bandas.items():
-        gk = gs if (duck_amb_max is None or k != 'ambiencias') else np.maximum(gs, db(duck_amb_max))
+        gk = gs if (duck_amb_max is None or k != 'ambiencias') else np.maximum(gs, db(duck_amb_max)); GD[k] = gk
         STEMS[k] = baixo * fixo_baixo[:, None] + meio * gk[:, None] + alto * np.sqrt(gk)[:, None]
     rel = dict(ducking_max_db=round(float(20 * np.log10(gs.min())), 1), ducking_medio_na_fala_db=round(float(20 * np.log10(gs[ativa > 0.5].mean())), 1))
     # final natural: tudo que não é voz desce junto entre 166,4 e 168,0 s (a voz já terminou em 166,12 s)
@@ -454,6 +464,28 @@ def mixar(saida='audio_ep01.wav', stems_dir='stems', sufixo='', relatorio='mix_e
     os.makedirs(os.path.join(EP, stems_dir), exist_ok=True)
     for k, x in STEMS.items(): sf.write(os.path.join(EP, stems_dir, f'ep01_{k}{sufixo}.wav'), x * db(g0), SR, subtype='PCM_24')
     sf.write(os.path.join(EP, saida), mix, SR, subtype='PCM_24')
+    # stems por GRUPO de substituição: a mesma cadeia (reverberação, filtro, nível, ducking, fade, master) aplicada só aos
+    # sons daquele grupo. Somados ao 'resto', reconstroem exatamente o stem — dá para trocar um grupo sem refazer o resto.
+    grupos = {}
+    if GSTEMS:
+        gd = os.path.join(EP, stems_dir, 'grupos'); os.makedirs(gd, exist_ok=True)
+        soma_k = {}
+        for (g, k), x in sorted(GSTEMS.items()):
+            y = x.astype(np.float64)
+            for (g2, k2, amb), s_ in GSENDS.items():
+                if (g2, k2) == (g, k):
+                    ir = S.resposta_impulso(amb)
+                    for c in range(2): y[:, c] += fftconvolve(s_.astype(np.float64), ir[:, c])[:N]
+            y = hpz(y, 35, 2) * GK[k]; b_ = lpz(y, 200, 4); a_ = hpz(y, 5000, 4)
+            y = (b_ * fixo_baixo[:, None] + (y - b_ - a_) * GD[k][:, None] + a_ * np.sqrt(GD[k])[:, None]) * fim[:, None] * db(g0)
+            sf.write(os.path.join(gd, f'ep01_{k}_{g}{sufixo}.wav'), y, SR, subtype='PCM_24'); soma_k[k] = soma_k.get(k, 0) + y
+            nz = np.where(np.abs(y).max(1) > db(-70))[0]
+            grupos[f'{g}/{k}'] = dict(arquivo=f'{stems_dir}/grupos/ep01_{k}_{g}{sufixo}.wav', lufs=round(lufs(y), 1) if len(nz) else None,
+                                     ativo_s=[round(nz[0] / SR, 2), round(nz[-1] / SR, 2)] if len(nz) else None)
+        for k, sm in soma_k.items():
+            resto = STEMS[k] * db(g0) - sm
+            sf.write(os.path.join(gd, f'ep01_{k}_resto{sufixo}.wav'), resto, SR, subtype='PCM_24')
+            grupos[f'resto/{k}'] = dict(arquivo=f'{stems_dir}/grupos/ep01_{k}_resto{sufixo}.wav', lufs=round(lufs(resto), 1))
     # verificações: estéreo × mono, alto-falante de celular, inteligibilidade (voz × resto na banda da fala)
     mono = np.stack([mix.mean(1)] * 2, 1)
     def celular(x): return hpz(lpz(x.mean(1), 7000, 4), 350, 4)
@@ -472,7 +504,7 @@ def mixar(saida='audio_ep01.wav', stems_dir='stems', sufixo='', relatorio='mix_e
                                              fala_plena_p5_db=round(float(np.percentile(snr[plena], 5)), 1), fala_plena_pct_acima_10db=round(float((snr[plena] >= 10).mean() * 100), 1)),
                ducking_max_db=rel, stems={k: round(lufs(x * db(g0)), 1) if np.abs(x).max() > 0 else None for k, x in STEMS.items()},
                loudness_curto_max={k: round(float(lufs(x * db(g0), curto=True).max()), 1) for k, x in STEMS.items()},
-               limitador_acima_1_5db=LIM.get('reducoes', []), efeitos=sorted(LISTA))
+               limitador_acima_1_5db=LIM.get('reducoes', []), stems_por_grupo=grupos, efeitos=sorted(LISTA))
     json.dump(res, open(os.path.join(A, relatorio), 'w'), ensure_ascii=False, indent=1)
     print(json.dumps({k: v for k, v in res.items() if k != 'efeitos'}, ensure_ascii=False, indent=1)); print(len(LISTA), 'efeitos registrados')
     return res
