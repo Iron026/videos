@@ -1,0 +1,74 @@
+[
+ {
+  "trecho": "Abertura: arrasto",
+  "versao": "ANTES",
+  "lufs": -16.0,
+  "pico_dbtp": -4.2
+ },
+ {
+  "trecho": "Abertura: arrasto",
+  "versao": "DEPOIS",
+  "lufs": -16.0,
+  "pico_dbtp": -4.2
+ },
+ {
+  "trecho": "Estaleiro: pórtico e encaixe",
+  "versao": "ANTES",
+  "lufs": -16.0,
+  "pico_dbtp": -3.6
+ },
+ {
+  "trecho": "Estaleiro: pórtico e encaixe",
+  "versao": "DEPOIS",
+  "lufs": -16.0,
+  "pico_dbtp": -3.8
+ },
+ {
+  "trecho": "Corte do casco e dique",
+  "versao": "ANTES",
+  "lufs": -16.0,
+  "pico_dbtp": -3.6
+ },
+ {
+  "trecho": "Corte do casco e dique",
+  "versao": "DEPOIS",
+  "lufs": -16.0,
+  "pico_dbtp": -3.6
+ },
+ {
+  "trecho": "Porto e carregamento",
+  "versao": "ANTES",
+  "lufs": -16.0,
+  "pico_dbtp": -3.4
+ },
+ {
+  "trecho": "Porto e carregamento",
+  "versao": "DEPOIS",
+  "lufs": -16.0,
+  "pico_dbtp": -3.4
+ },
+ {
+  "trecho": "Divisórias estanques",
+  "versao": "ANTES",
+  "lufs": -16.0,
+  "pico_dbtp": -3.3
+ },
+ {
+  "trecho": "Divisórias estanques",
+  "versao": "DEPOIS",
+  "lufs": -16.0,
+  "pico_dbtp": -3.8
+ },
+ {
+  "trecho": "Conclusão",
+  "versao": "ANTES",
+  "lufs": -16.0,
+  "pico_dbtp": -4.8
+ },
+ {
+  "trecho": "Conclusão",
+  "versao": "DEPOIS",
+  "lufs": -16.0,
+  "pico_dbtp": -4.7
+ }
+]

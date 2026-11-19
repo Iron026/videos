@@ -179,18 +179,22 @@ def compor(g):
 
 
 def loudness(au):
+    """Ganho + limitador para −14 LUFS e pico verdadeiro ≤ −1,6 dBTP MEDIDOS NO AAC FINAL (a codificação AAC cria picos
+    entre amostras: o teto do limitador desce até o pico verdadeiro do arquivo codificado ficar dentro da meta)."""
     tmp = os.path.join(A, f'_teste_{os.getpid()}.m4a')   # nome único: montagens simultâneas não colidem
-    def filtro(g): return f'volume={g:.2f}dB,alimiter=limit=-2.2dB:attack=3:release=60:level=disabled:asc=1'
-    def medir(g):
-        subprocess.run(['ffmpeg', '-y', '-v', 'error', '-i', au, '-af', filtro(g), '-c:a', 'aac', '-b:a', '192k', tmp], check=True)
+    def filtro(g, lim): return f'volume={g:.2f}dB,alimiter=limit={lim:.2f}dB:attack=3:release=60:level=disabled:asc=1'
+    def medir(g, lim):
+        subprocess.run(['ffmpeg', '-y', '-v', 'error', '-i', au, '-af', filtro(g, lim), '-c:a', 'aac', '-b:a', '192k', tmp], check=True)
         e = subprocess.run(['ffmpeg', '-hide_banner', '-i', tmp, '-af', 'ebur128=peak=true', '-f', 'null', '-'], capture_output=True, text=True).stderr
-        return float(re.search(r'I:\s+(-?[\d.]+) LUFS', e[e.rfind('Summary:'):]).group(1))
-    g = 0.0
-    for _ in range(4):
-        i = medir(g)
-        if abs(i + 14) < 0.15: break
-        g += -14 - i
-    os.remove(tmp); print('ganho', round(g, 2), 'dB →', i, 'LUFS'); return filtro(g)
+        e = e[e.rfind('Summary:'):]
+        return float(re.search(r'I:\s+(-?[\d.]+) LUFS', e).group(1)), float(re.search(r'Peak:\s+(-?[\d.]+) dBFS', e).group(1))
+    g, lim = 0.0, -2.2
+    for _ in range(8):
+        i, tp = medir(g, lim)
+        if abs(i + 14) < 0.15 and tp <= -1.6: break
+        if tp > -1.6: lim -= tp + 1.6 + 0.15
+        if abs(i + 14) >= 0.15: g += -14 - i
+    os.remove(tmp); print('ganho', round(g, 2), 'dB · teto do limitador', round(lim, 2), 'dB →', i, 'LUFS ·', tp, 'dBTP (AAC)'); return filtro(g, lim)
 
 
 if __name__ == '__main__':

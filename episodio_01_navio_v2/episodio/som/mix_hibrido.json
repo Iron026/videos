@@ -1,0 +1,64 @@
+{
+ "duracao_s": 168.0,
+ "lufs_integrado": -14.06,
+ "pico_verdadeiro_dbtp": -1.8,
+ "reducao_max_limitador_db": -3.5,
+ "lufs_mono": -14.1,
+ "correlacao_LR": 0.955,
+ "inteligibilidade_celular": {
+  "janelas_de_fala": 1210,
+  "snr_voz_mediana_db": 20.0,
+  "snr_p5_db": 8.3,
+  "pct_janelas_acima_10db": 91.7,
+  "fala_plena_p5_db": 8.9,
+  "fala_plena_pct_acima_10db": 93.5
+ },
+ "ducking_max_db": {
+  "ducking_max_db": -18.0,
+  "ducking_medio_na_fala_db": -9.8
+ },
+ "stems": {
+  "efeitos": -22.6,
+  "ambiencias": -31.5,
+  "musica": -35.2,
+  "narracao": -14.2
+ },
+ "loudness_curto_max": {
+  "efeitos": -12.6,
+  "ambiencias": -23.8,
+  "musica": -29.9,
+  "narracao": -7.9
+ },
+ "limitador_acima_1_5db": [
+  [
+   2.6,
+   -0.0
+  ],
+  [
+   24.3,
+   -0.2
+  ],
+  [
+   24.4,
+   -1.5
+  ],
+  [
+   152.0,
+   -0.1
+  ],
+  [
+   156.3,
+   -0.3
+  ]
+ ],
+ "efeitos": [],
+ "parametros_mix": {
+  "efeitos_rel": -3.5,
+  "amb_rel": -12.5,
+  "duck_alvo": -13.0,
+  "duck_piso": -18.0,
+  "duck_grave": -3.0,
+  "musica_rel": -16.0,
+  "duck_amb_max": -9.0
+ }
+}

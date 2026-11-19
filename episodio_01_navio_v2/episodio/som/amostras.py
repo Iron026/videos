@@ -15,6 +15,11 @@ USOS = []          # (t, id, título, ini, dur, uso)
 _C = {}
 
 
+def _marca(i, uso):
+    r = getattr(i, 'reserva_de', '')
+    return f'{uso} [RESERVA Mixkit: WWS {r} (Commons) não pôde ser baixado]' if r else uso
+
+
 def carregar(i):
     if i not in _C:
         f = os.path.join(A, 'bib', 'mixkit', f'{i}.wav') if isinstance(i, int) else os.path.join(A, 'bib', 'commons', f'{i}.ogg')
@@ -45,7 +50,7 @@ def trecho(i, ini=0.0, dur=None, fi=0.004, fo=0.08, tom=1.0, norm='pico', ref=-1
     if mono: x = np.repeat(x.mean(1, keepdims=True), 2, 1)
     if norm == 'pico': x *= 10 ** (ref / 20) / (np.abs(x).max() + 1e-12)
     elif norm == 'rms': x *= 10 ** (ref / 20) / (np.sqrt(np.mean(x ** 2)) + 1e-12)
-    if t is not None: USOS.append(dict(t=round(t, 2), id=i, titulo=FONTES[i]['titulo'], ini=round(ini, 2), dur=round(n / SR, 2), tom=tom, uso=uso))
+    if t is not None: USOS.append(dict(t=round(t, 2), id=int(i) if isinstance(i, int) else i, titulo=FONTES[i]['titulo'], ini=round(ini, 2), dur=round(n / SR, 2), tom=tom, uso=_marca(i, uso)))
     return x
 
 
@@ -61,5 +66,5 @@ def laco(i, dur, ini=0.0, fim=None, xf=0.6, ref=-20.0, t=None, uso=''):
         if pos + len(seg) < n: seg[-k:] *= rampa[::-1]
         out[pos:pos + m] += seg[:m]; pos += len(seg) - k
     out *= 10 ** (ref / 20) / (np.sqrt(np.mean(out ** 2)) + 1e-12)
-    if t is not None: USOS.append(dict(t=round(t, 2), id=i, titulo=FONTES[i]['titulo'], ini=round(ini, 2), dur=round(dur, 2), tom=1.0, uso=uso))
+    if t is not None: USOS.append(dict(t=round(t, 2), id=int(i) if isinstance(i, int) else i, titulo=FONTES[i]['titulo'], ini=round(ini, 2), dur=round(dur, 2), tom=1.0, uso=_marca(i, uso)))
     return out

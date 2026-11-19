@@ -942,6 +942,7 @@ def seg11(pasta):
             k = suave((g - 128.8) / 1.6); k2 = suave((g - 130.3) / 1.0)
             zc = zs['S'] + 0.1; alvo = pmundo(-3.74, zc + 0.35 * (z_linha(g) - zc))        # a marca inteira (disco, TF…W) no quadro
             pos = alvo + Vector((-1.7, -5.0, 0.3)).lerp(Vector((-1.0, -3.4, 0.15)), k).lerp(Vector((-0.45, -2.95, 0.1)), k2); a = alvo; l = 30
+            pos += Vector((0.10, 0.20, 0.0)) * min(1.0, max(0.0, (g - 132.3) / 1.7))   # sem quadro parado até o corte: aproximação lenta e contínua
         pos.z = max(pos.z, 0.55)                                              # nunca abaixo da superfície (cena sem corte)
         camera_em(cam, pos, a, l)
     rot.add('Marcas de calado', lambda g: pmundo(xm, 10.6), 125.9, 127.9, dx=-0.42, dy=0.02)

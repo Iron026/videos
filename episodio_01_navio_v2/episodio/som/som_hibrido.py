@@ -25,9 +25,13 @@ RESERVA = {'Shipyardcrane': 2504, 'Crane': 1534, 'Weldingonshipinfloatingdrydock
 TROCAS = {}
 
 
+class _Reserva(int):
+    reserva_de = ''
+
+
 def C(nome):
     if os.path.exists(os.path.join(AM.A, 'bib', 'commons', f'{nome}.ogg')): return nome
-    TROCAS[nome] = RESERVA[nome]; return RESERVA[nome]
+    TROCAS[nome] = RESERVA[nome]; r = _Reserva(RESERVA[nome]); r.reserva_de = nome; return r
 
 
 # ------------------------------------------------------------------------------------------------ utilitários
@@ -155,7 +159,7 @@ def estaleiro():
     # chapas chegando: poucos contatos selecionados
     ch = EV['chapas']; sel = [ch[0], ch[len(ch) // 4], ch[len(ch) // 2], ch[3 * len(ch) // 4], ch[-1]]
     for k, (t0, i) in enumerate(zip(sel, (2754, 3158, 2983, 2754, 783))):
-        x = trecho(i, ataque(i, -12) - 0.01 if i == 783 else ataque(i), 1.6 if i == 783 else None, fo=0.5 if i == 783 else 0.08, ref=-1, t=t0, uso='chapas chegando ao costado e à proa (contatos selecionados)')
+        x = trecho(i, ataque(i, -12) - 0.01 if i == 783 else 0.79 if i == 2754 else ataque(i), 1.6 if i == 783 else None, fo=0.5 if i == 783 else 0.08, ref=-1, t=t0, uso='chapas chegando ao costado e à proa (contatos selecionados)')   # 2754: batida real em 0,79 s
         por(t0, x, -11 - 2 * (k % 2), (-0.4, 0.3, -0.2, 0.4, 0.0)[k], 'ind', 0.55)
     # PASSAGEM DE TEMPO (30,3 s; "Meses depois"): ar suave real + fusão das ambiências
     por(29.75, trecho(1167, 0.4, 1.2, fi=0.4, fo=0.5, ref=-6, t=29.75, uso='passagem de tempo do estaleiro (sopro suave)'), -24, 0.0, eq=lp_(2500))
@@ -245,7 +249,7 @@ def porto():
     segue('Mobileharbourcrane', a, b, 0.2 + 0.8 * vc2, -22, 0.4, 'porto', 0.4, uso='guindastes vizinhos (guindaste portuário real, mais distante)')
     # pousos dos 3 contêineres do plano próximo, no instante do contato: batida metálica real + grave discreto
     for i, t0 in enumerate(EV['pousos']):
-        por(t0 - 0.01, trecho(2754, ataque(2754), ref=-1, t=t0, uso='contêiner pousando (batida de caixa metálica)'), -9, (-0.1, -0.3, 0.3)[i], 'porto', 0.45)
+        por(t0 - 0.01, trecho(2754, 0.79, fi=0.003, ref=-1, t=t0, uso='contêiner pousando (batida de caixa metálica)'), -9, (-0.1, -0.3, 0.3)[i], 'porto', 0.45)
         por(t0, trecho(783, ataque(783, -12) - 0.01, 1.4, fo=0.6, ref=-1, t=t0, uso='peso do contêiner no pouso'), -16, (-0.1, -0.3, 0.3)[i], 'porto', 0.4, eq=lp_(1500))
         por(t0 - 0.9, trecho(3076, 0.5 + 1.3 * i, 0.9, fi=0.1, fo=0.4, ref=-3, t=t0 - 0.9, uso='cabos tensionando antes do pouso'), -24, 0.0, 'porto', 0.4, eq=hp_(120))
     # time-lapse (105,45–117,2): NÃO um som por contêiner — o terminal real mais presente + poucos contatos distantes
