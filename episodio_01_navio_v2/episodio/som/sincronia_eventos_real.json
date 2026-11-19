@@ -1,0 +1,47 @@
+{
+ "bloco tomba na borda": {
+  "evento_s": 1.4,
+  "ataque_medido_s": 1.384,
+  "desvio_ms": -16
+ },
+ "bloco na água": {
+  "evento_s": 2.646,
+  "ataque_medido_s": 2.626,
+  "desvio_ms": -20
+ },
+ "bloco no leito": {
+  "evento_s": 4.007,
+  "ataque_medido_s": 4.024,
+  "desvio_ms": 17
+ },
+ "encaixe da chapa": {
+  "evento_s": 23.6,
+  "ataque_medido_s": 23.579,
+  "desvio_ms": -21
+ },
+ "retomada na água": {
+  "evento_s": 76.13,
+  "ataque_medido_s": 76.109,
+  "desvio_ms": -21
+ },
+ "leito (retomada)": {
+  "evento_s": 82.12,
+  "ataque_medido_s": 82.139,
+  "desvio_ms": 19
+ },
+ "experimento na água": {
+  "evento_s": 86.239,
+  "ataque_medido_s": 86.228,
+  "desvio_ms": -11
+ },
+ "ruptura do casco": {
+  "evento_s": 134.9,
+  "ataque_medido_s": 134.867,
+  "desvio_ms": -33
+ },
+ "divisórias estanques": {
+  "evento_s": 151.05,
+  "ataque_medido_s": 151.171,
+  "desvio_ms": 121
+ }
+}

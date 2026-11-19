@@ -1,0 +1,50 @@
+{
+ "sintetico_0": {
+  "trecho": "Abertura",
+  "lufs": -16.0,
+  "pico_dbtp": -4.4,
+  "ganho_db": -2.3
+ },
+ "real_0": {
+  "trecho": "Abertura",
+  "lufs": -16.0,
+  "pico_dbtp": -4.3,
+  "ganho_db": -2.3
+ },
+ "sintetico_1": {
+  "trecho": "Estaleiro e solda",
+  "lufs": -16.1,
+  "pico_dbtp": -3.6,
+  "ganho_db": -1.7
+ },
+ "real_1": {
+  "trecho": "Estaleiro e solda",
+  "lufs": -16.0,
+  "pico_dbtp": -3.7,
+  "ganho_db": -1.6
+ },
+ "sintetico_2": {
+  "trecho": "Empuxo, retomada e experimento",
+  "lufs": -16.0,
+  "pico_dbtp": -4.0,
+  "ganho_db": -1.9
+ },
+ "real_2": {
+  "trecho": "Empuxo, retomada e experimento",
+  "lufs": -16.1,
+  "pico_dbtp": -4.0,
+  "ganho_db": -2.0
+ },
+ "sintetico_3": {
+  "trecho": "Avaria e inundação",
+  "lufs": -16.0,
+  "pico_dbtp": -3.8,
+  "ganho_db": -1.7
+ },
+ "real_3": {
+  "trecho": "Avaria e inundação",
+  "lufs": -16.1,
+  "pico_dbtp": -3.5,
+  "ganho_db": -1.8
+ }
+}

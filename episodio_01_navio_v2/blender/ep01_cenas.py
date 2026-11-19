@@ -589,7 +589,9 @@ def seg08a(pasta):
                 if kb < 1:
                     p0, a0, l0 = cam_abertura(ts(g), p); pos = p0.lerp(pos, kb); alvo = a0.lerp(alvo, kb); l = lerp(l0, l, kb)
             elif g < 81.5:                                 # 35 lado a lado: bloco e a água que ele desloca (mesmo tamanho)
-                k = suave((g - 78.6) / 2.9); pos = p + V(-0.6, -7.2, 0.4).lerp(V(-0.9, -6.6, 0.3), k); alvo = p + V(-0.9, 0, 0); l = 28
+                k = suave((g - 78.6) / 2.9); pos = p + V(-0.6, -7.4, 0.4).lerp(V(-0.9, -7.4, 0.3), k); alvo = p + V(-0.9, 0, 0); l = 28.5
+                pos.y = min(pos.y, -0.9)   # correção 1:19: a câmera fica SEMPRE ≥ 0,9 m da face de corte da água (y = 0); antes chegava
+                                           # a 0,1 m e o plano próximo da câmera (0,5 m) recortava a face — a água 'sumia' a partir de 79,8 s
             else:                                          # 36 do leito, olhando para cima: o bloco chega e levanta sedimento
                 k = suave((g - 81.5) / 2.35); pos = V(pf.x - 3.4, 1.2, -6.3).lerp(V(pf.x - 3.0, 1.6, -6.1), k); alvo = V(pf.x, 6.5, -4.6); l = 24
             camera_em(cam, pos, alvo, l)

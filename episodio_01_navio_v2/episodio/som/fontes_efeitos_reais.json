@@ -1,0 +1,1615 @@
+[
+ {
+  "id": 1167,
+  "nome": "Swoosh wind passing",
+  "biblioteca": "Mixkit",
+  "autor": "Mixkit (Envato); a página não identifica o artista",
+  "url_original": "https://mixkit.co/free-sound-effects/download/1167/",
+  "url_arquivo": "https://assets.mixkit.co/active_storage/sfx/1167/1167.wav",
+  "licenca": "Mixkit Sound Effects Free License — uso em vídeos do YouTube e projetos comerciais permitido; proibido redistribuir o arquivo isolado e registrá-lo em serviço de gestão de direitos (Content ID)",
+  "url_licenca": "https://mixkit.co/license/#sfxFree",
+  "atribuicao_exigida": false,
+  "arquivo_local": "som/bib/mixkit/1167.wav",
+  "formato": "WAV 44100 Hz, 2 canais, PCM_24",
+  "clipping_amostras": 0,
+  "voz_detectada": false,
+  "usos": [
+   {
+    "t": 75.9,
+    "trecho_s": [
+     0.5,
+     1.94
+    ],
+    "tom": 0.85,
+    "uso": "transição para a câmera lenta"
+   }
+  ]
+ },
+ {
+  "id": 1178,
+  "nome": "Sinking in the sea",
+  "biblioteca": "Mixkit",
+  "autor": "Mixkit (Envato); a página não identifica o artista",
+  "url_original": "https://mixkit.co/free-sound-effects/download/1178/",
+  "url_arquivo": "https://assets.mixkit.co/active_storage/sfx/1178/1178.wav",
+  "licenca": "Mixkit Sound Effects Free License — uso em vídeos do YouTube e projetos comerciais permitido; proibido redistribuir o arquivo isolado e registrá-lo em serviço de gestão de direitos (Content ID)",
+  "url_licenca": "https://mixkit.co/license/#sfxFree",
+  "atribuicao_exigida": false,
+  "arquivo_local": "som/bib/mixkit/1178.wav",
+  "formato": "WAV 44100 Hz, 2 canais, PCM_16",
+  "clipping_amostras": 0,
+  "voz_detectada": false,
+  "usos": [
+   {
+    "t": 2.65,
+    "trecho_s": [
+     0.0,
+     1.7
+    ],
+    "tom": 1.0,
+    "uso": "bolhas e afundamento (ouvido debaixo d'água)"
+   },
+   {
+    "t": 76.3,
+    "trecho_s": [
+     2.0,
+     8.75
+    ],
+    "tom": 0.8,
+    "uso": "bolhas lentas do bloco (câmera lenta)"
+   },
+   {
+    "t": 86.49,
+    "trecho_s": [
+     6.0,
+     3.5
+    ],
+    "tom": 1.0,
+    "uso": "bloco afundando (bolhas, abafado)"
+   }
+  ]
+ },
+ {
+  "id": 1180,
+  "nome": "Jump into the water",
+  "biblioteca": "Mixkit",
+  "autor": "Mixkit (Envato); a página não identifica o artista",
+  "url_original": "https://mixkit.co/free-sound-effects/download/1180/",
+  "url_arquivo": "https://assets.mixkit.co/active_storage/sfx/1180/1180.wav",
+  "licenca": "Mixkit Sound Effects Free License — uso em vídeos do YouTube e projetos comerciais permitido; proibido redistribuir o arquivo isolado e registrá-lo em serviço de gestão de direitos (Content ID)",
+  "url_licenca": "https://mixkit.co/license/#sfxFree",
+  "atribuicao_exigida": false,
+  "arquivo_local": "som/bib/mixkit/1180.wav",
+  "formato": "WAV 44100 Hz, 2 canais, PCM_16",
+  "clipping_amostras": 0,
+  "voz_detectada": false,
+  "usos": [
+   {
+    "t": 2.65,
+    "trecho_s": [
+     0.01,
+     3.15
+    ],
+    "tom": 0.72,
+    "uso": "lençol e retorno da água (camada de corpo)"
+   },
+   {
+    "t": 86.24,
+    "trecho_s": [
+     0.01,
+     2.67
+    ],
+    "tom": 0.85,
+    "uso": "casco entra na água (largo)"
+   }
+  ]
+ },
+ {
+  "id": 1189,
+  "nome": "Sea waves ambience",
+  "biblioteca": "Mixkit",
+  "autor": "Mixkit (Envato); a página não identifica o artista",
+  "url_original": "https://mixkit.co/free-sound-effects/download/1189/",
+  "url_arquivo": "https://assets.mixkit.co/active_storage/sfx/1189/1189.wav",
+  "licenca": "Mixkit Sound Effects Free License — uso em vídeos do YouTube e projetos comerciais permitido; proibido redistribuir o arquivo isolado e registrá-lo em serviço de gestão de direitos (Content ID)",
+  "url_licenca": "https://mixkit.co/license/#sfxFree",
+  "atribuicao_exigida": false,
+  "arquivo_local": "som/bib/mixkit/1189.wav",
+  "formato": "WAV 44100 Hz, 2 canais, PCM_16",
+  "clipping_amostras": 0,
+  "voz_detectada": false,
+  "usos": [
+   {
+    "t": 4.4,
+    "trecho_s": [
+     10,
+     10.9
+    ],
+    "tom": 1.0,
+    "uso": "mar aberto (ondas)"
+   },
+   {
+    "t": 48.0,
+    "trecho_s": [
+     0.0,
+     1.5
+    ],
+    "tom": 1.0,
+    "uso": "mar (antes do mergulho)"
+   },
+   {
+    "t": 63.1,
+    "trecho_s": [
+     0.0,
+     2.9
+    ],
+    "tom": 1.0,
+    "uso": "mar (vista do navio inteiro)"
+   },
+   {
+    "t": 83.85,
+    "trecho_s": [
+     60,
+     11.35
+    ],
+    "tom": 1.0,
+    "uso": "mar"
+   },
+   {
+    "t": 134.0,
+    "trecho_s": [
+     90,
+     3.2
+    ],
+    "tom": 1.0,
+    "uso": "mar (exterior do casco)"
+   }
+  ]
+ },
+ {
+  "id": 1191,
+  "nome": "Distant sea humming ambiance",
+  "biblioteca": "Mixkit",
+  "autor": "Mixkit (Envato); a página não identifica o artista",
+  "url_original": "https://mixkit.co/free-sound-effects/download/1191/",
+  "url_arquivo": "https://assets.mixkit.co/active_storage/sfx/1191/1191.wav",
+  "licenca": "Mixkit Sound Effects Free License — uso em vídeos do YouTube e projetos comerciais permitido; proibido redistribuir o arquivo isolado e registrá-lo em serviço de gestão de direitos (Content ID)",
+  "url_licenca": "https://mixkit.co/license/#sfxFree",
+  "atribuicao_exigida": false,
+  "arquivo_local": "som/bib/mixkit/1191.wav",
+  "formato": "WAV 44100 Hz, 2 canais, PCM_16",
+  "clipping_amostras": 0,
+  "voz_detectada": false,
+  "usos": [
+   {
+    "t": 0.0,
+    "trecho_s": [
+     0.0,
+     3.05
+    ],
+    "tom": 1.0,
+    "uso": "mar distante"
+   }
+  ]
+ },
+ {
+  "id": 1195,
+  "nome": "Close sea waves loop",
+  "biblioteca": "Mixkit",
+  "autor": "Mixkit (Envato); a página não identifica o artista",
+  "url_original": "https://mixkit.co/free-sound-effects/download/1195/",
+  "url_arquivo": "https://assets.mixkit.co/active_storage/sfx/1195/1195.wav",
+  "licenca": "Mixkit Sound Effects Free License — uso em vídeos do YouTube e projetos comerciais permitido; proibido redistribuir o arquivo isolado e registrá-lo em serviço de gestão de direitos (Content ID)",
+  "url_licenca": "https://mixkit.co/license/#sfxFree",
+  "atribuicao_exigida": false,
+  "arquivo_local": "som/bib/mixkit/1195.wav",
+  "formato": "WAV 44100 Hz, 2 canais, PCM_16",
+  "clipping_amostras": 0,
+  "voz_detectada": false,
+  "usos": [
+   {
+    "t": 10.9,
+    "trecho_s": [
+     6.0,
+     2.6
+    ],
+    "tom": 1.0,
+    "uso": "espuma e borrifo da proa"
+   },
+   {
+    "t": 13.3,
+    "trecho_s": [
+     12.0,
+     1.8
+    ],
+    "tom": 1.0,
+    "uso": "esteira se afastando"
+   },
+   {
+    "t": 86.34,
+    "trecho_s": [
+     2.0,
+     2.4
+    ],
+    "tom": 1.0,
+    "uso": "onda de deslocamento do casco"
+   }
+  ]
+ },
+ {
+  "id": 1198,
+  "nome": "Sea water splash",
+  "biblioteca": "Mixkit",
+  "autor": "Mixkit (Envato); a página não identifica o artista",
+  "url_original": "https://mixkit.co/free-sound-effects/download/1198/",
+  "url_arquivo": "https://assets.mixkit.co/active_storage/sfx/1198/1198.wav",
+  "licenca": "Mixkit Sound Effects Free License — uso em vídeos do YouTube e projetos comerciais permitido; proibido redistribuir o arquivo isolado e registrá-lo em serviço de gestão de direitos (Content ID)",
+  "url_licenca": "https://mixkit.co/license/#sfxFree",
+  "atribuicao_exigida": false,
+  "arquivo_local": "som/bib/mixkit/1198.wav",
+  "formato": "WAV 44100 Hz, 2 canais, PCM_16",
+  "clipping_amostras": 0,
+  "voz_detectada": false,
+  "usos": [
+   {
+    "t": 86.24,
+    "trecho_s": [
+     0.06,
+     1.68
+    ],
+    "tom": 1.0,
+    "uso": "água espirrando ao longo do casco"
+   },
+   {
+    "t": 137.6,
+    "trecho_s": [
+     0.06,
+     1.68
+    ],
+    "tom": 1.0,
+    "uso": "água golpeando anteparas e piso"
+   },
+   {
+    "t": 140.9,
+    "trecho_s": [
+     0.06,
+     1.68
+    ],
+    "tom": 1.0,
+    "uso": "água golpeando anteparas e piso"
+   }
+  ]
+ },
+ {
+  "id": 1200,
+  "nome": "Windy sea loop",
+  "biblioteca": "Mixkit",
+  "autor": "Mixkit (Envato); a página não identifica o artista",
+  "url_original": "https://mixkit.co/free-sound-effects/download/1200/",
+  "url_arquivo": "https://assets.mixkit.co/active_storage/sfx/1200/1200.wav",
+  "licenca": "Mixkit Sound Effects Free License — uso em vídeos do YouTube e projetos comerciais permitido; proibido redistribuir o arquivo isolado e registrá-lo em serviço de gestão de direitos (Content ID)",
+  "url_licenca": "https://mixkit.co/license/#sfxFree",
+  "atribuicao_exigida": false,
+  "arquivo_local": "som/bib/mixkit/1200.wav",
+  "formato": "WAV 44100 Hz, 2 canais, PCM_16",
+  "clipping_amostras": 0,
+  "voz_detectada": false,
+  "usos": [
+   {
+    "t": 4.4,
+    "trecho_s": [
+     0.0,
+     10.9
+    ],
+    "tom": 1.0,
+    "uso": "vento sobre o mar"
+   }
+  ]
+ },
+ {
+  "id": 1201,
+  "nome": "Strong wind sea breeze",
+  "biblioteca": "Mixkit",
+  "autor": "Mixkit (Envato); a página não identifica o artista",
+  "url_original": "https://mixkit.co/free-sound-effects/download/1201/",
+  "url_arquivo": "https://assets.mixkit.co/active_storage/sfx/1201/1201.wav",
+  "licenca": "Mixkit Sound Effects Free License — uso em vídeos do YouTube e projetos comerciais permitido; proibido redistribuir o arquivo isolado e registrá-lo em serviço de gestão de direitos (Content ID)",
+  "url_licenca": "https://mixkit.co/license/#sfxFree",
+  "atribuicao_exigida": false,
+  "arquivo_local": "som/bib/mixkit/1201.wav",
+  "formato": "WAV 44100 Hz, 2 canais, PCM_16",
+  "clipping_amostras": 0,
+  "voz_detectada": false,
+  "usos": [
+   {
+    "t": 83.85,
+    "trecho_s": [
+     0.0,
+     11.35
+    ],
+    "tom": 1.0,
+    "uso": "brisa sobre o mar"
+   }
+  ]
+ },
+ {
+  "id": 1205,
+  "nome": "Diving sea ambience",
+  "biblioteca": "Mixkit",
+  "autor": "Mixkit (Envato); a página não identifica o artista",
+  "url_original": "https://mixkit.co/free-sound-effects/download/1205/",
+  "url_arquivo": "https://assets.mixkit.co/active_storage/sfx/1205/1205.wav",
+  "licenca": "Mixkit Sound Effects Free License — uso em vídeos do YouTube e projetos comerciais permitido; proibido redistribuir o arquivo isolado e registrá-lo em serviço de gestão de direitos (Content ID)",
+  "url_licenca": "https://mixkit.co/license/#sfxFree",
+  "atribuicao_exigida": false,
+  "arquivo_local": "som/bib/mixkit/1205.wav",
+  "formato": "WAV 44100 Hz, 2 canais, PCM_24",
+  "clipping_amostras": 0,
+  "voz_detectada": false,
+  "usos": [
+   {
+    "t": 49.3,
+    "trecho_s": [
+     0.0,
+     14.0
+    ],
+    "tom": 1.0,
+    "uso": "ambiente submarino"
+   },
+   {
+    "t": 65.8,
+    "trecho_s": [
+     0.0,
+     9.25
+    ],
+    "tom": 1.0,
+    "uso": "ambiente submarino"
+   }
+  ]
+ },
+ {
+  "id": 1208,
+  "nome": "Small waves harbor rocks",
+  "biblioteca": "Mixkit",
+  "autor": "Mixkit (Envato); a página não identifica o artista",
+  "url_original": "https://mixkit.co/free-sound-effects/download/1208/",
+  "url_arquivo": "https://assets.mixkit.co/active_storage/sfx/1208/1208.wav",
+  "licenca": "Mixkit Sound Effects Free License — uso em vídeos do YouTube e projetos comerciais permitido; proibido redistribuir o arquivo isolado e registrá-lo em serviço de gestão de direitos (Content ID)",
+  "url_licenca": "https://mixkit.co/license/#sfxFree",
+  "atribuicao_exigida": false,
+  "arquivo_local": "som/bib/mixkit/1208.wav",
+  "formato": "WAV 44100 Hz, 2 canais, PCM_24",
+  "clipping_amostras": 0,
+  "voz_detectada": false,
+  "usos": [
+   {
+    "t": 0.0,
+    "trecho_s": [
+     3.0,
+     3.05
+    ],
+    "tom": 1.0,
+    "uso": "marulho no cais (pedras do porto)"
+   },
+   {
+    "t": 74.85,
+    "trecho_s": [
+     20,
+     1.6
+    ],
+    "tom": 1.0,
+    "uso": "marulho no cais (retomada)"
+   },
+   {
+    "t": 87.32,
+    "trecho_s": [
+     10.0,
+     1.4
+    ],
+    "tom": 1.0,
+    "uso": "água batendo no casco a cada balanço"
+   },
+   {
+    "t": 88.98,
+    "trecho_s": [
+     13.0,
+     1.4
+    ],
+    "tom": 1.0,
+    "uso": "água batendo no casco a cada balanço"
+   },
+   {
+    "t": 90.68,
+    "trecho_s": [
+     16.0,
+     1.4
+    ],
+    "tom": 1.0,
+    "uso": "água batendo no casco a cada balanço"
+   },
+   {
+    "t": 92.35,
+    "trecho_s": [
+     19.0,
+     1.4
+    ],
+    "tom": 1.0,
+    "uso": "água batendo no casco a cada balanço"
+   }
+  ]
+ },
+ {
+  "id": 1304,
+  "nome": "Jumping into water",
+  "biblioteca": "Mixkit",
+  "autor": "Mixkit (Envato); a página não identifica o artista",
+  "url_original": "https://mixkit.co/free-sound-effects/download/1304/",
+  "url_arquivo": "https://assets.mixkit.co/active_storage/sfx/1304/1304.wav",
+  "licenca": "Mixkit Sound Effects Free License — uso em vídeos do YouTube e projetos comerciais permitido; proibido redistribuir o arquivo isolado e registrá-lo em serviço de gestão de direitos (Content ID)",
+  "url_licenca": "https://mixkit.co/license/#sfxFree",
+  "atribuicao_exigida": false,
+  "arquivo_local": "som/bib/mixkit/1304.wav",
+  "formato": "WAV 44100 Hz, 2 canais, PCM_24",
+  "clipping_amostras": 0,
+  "voz_detectada": false,
+  "usos": [
+   {
+    "t": 2.65,
+    "trecho_s": [
+     0.01,
+     2.38
+    ],
+    "tom": 0.8,
+    "uso": "impacto do bloco na água (camada principal, câmera lenta)"
+   },
+   {
+    "t": 76.13,
+    "trecho_s": [
+     0.06,
+     2.37
+    ],
+    "tom": 0.78,
+    "uso": "corpo do respingo"
+   },
+   {
+    "t": 86.24,
+    "trecho_s": [
+     0.01,
+     1.6
+    ],
+    "tom": 1.0,
+    "uso": "bloco entra na água (compacto, pesado)"
+   }
+  ]
+ },
+ {
+  "id": 1311,
+  "nome": "Water splash",
+  "biblioteca": "Mixkit",
+  "autor": "Mixkit (Envato); a página não identifica o artista",
+  "url_original": "https://mixkit.co/free-sound-effects/download/1311/",
+  "url_arquivo": "https://assets.mixkit.co/active_storage/sfx/1311/1311.wav",
+  "licenca": "Mixkit Sound Effects Free License — uso em vídeos do YouTube e projetos comerciais permitido; proibido redistribuir o arquivo isolado e registrá-lo em serviço de gestão de direitos (Content ID)",
+  "url_licenca": "https://mixkit.co/license/#sfxFree",
+  "atribuicao_exigida": false,
+  "arquivo_local": "som/bib/mixkit/1311.wav",
+  "formato": "WAV 44100 Hz, 2 canais, PCM_16",
+  "clipping_amostras": 0,
+  "voz_detectada": false,
+  "usos": [
+   {
+    "t": 139.6,
+    "trecho_s": [
+     0.2,
+     1.28
+    ],
+    "tom": 1.0,
+    "uso": "água golpeando anteparas e piso"
+   }
+  ]
+ },
+ {
+  "id": 1312,
+  "nome": "Diving in deep water",
+  "biblioteca": "Mixkit",
+  "autor": "Mixkit (Envato); a página não identifica o artista",
+  "url_original": "https://mixkit.co/free-sound-effects/download/1312/",
+  "url_arquivo": "https://assets.mixkit.co/active_storage/sfx/1312/1312.wav",
+  "licenca": "Mixkit Sound Effects Free License — uso em vídeos do YouTube e projetos comerciais permitido; proibido redistribuir o arquivo isolado e registrá-lo em serviço de gestão de direitos (Content ID)",
+  "url_licenca": "https://mixkit.co/license/#sfxFree",
+  "atribuicao_exigida": false,
+  "arquivo_local": "som/bib/mixkit/1312.wav",
+  "formato": "WAV 44100 Hz, 2 canais, PCM_16",
+  "clipping_amostras": 0,
+  "voz_detectada": false,
+  "usos": [
+   {
+    "t": 49.3,
+    "trecho_s": [
+     20,
+     14.0
+    ],
+    "tom": 1.0,
+    "uso": "mundo subaquático (pressão grave)"
+   },
+   {
+    "t": 65.8,
+    "trecho_s": [
+     20,
+     9.25
+    ],
+    "tom": 1.0,
+    "uso": "mundo subaquático (pressão grave)"
+   },
+   {
+    "t": 76.2,
+    "trecho_s": [
+     40,
+     7.85
+    ],
+    "tom": 1.0,
+    "uso": "mundo subaquático em câmera lenta"
+   }
+  ]
+ },
+ {
+  "id": 1321,
+  "nome": "Deep water bubbles",
+  "biblioteca": "Mixkit",
+  "autor": "Mixkit (Envato); a página não identifica o artista",
+  "url_original": "https://mixkit.co/free-sound-effects/download/1321/",
+  "url_arquivo": "https://assets.mixkit.co/active_storage/sfx/1321/1321.wav",
+  "licenca": "Mixkit Sound Effects Free License — uso em vídeos do YouTube e projetos comerciais permitido; proibido redistribuir o arquivo isolado e registrá-lo em serviço de gestão de direitos (Content ID)",
+  "url_licenca": "https://mixkit.co/license/#sfxFree",
+  "atribuicao_exigida": false,
+  "arquivo_local": "som/bib/mixkit/1321.wav",
+  "formato": "WAV 44100 Hz, 2 canais, PCM_16",
+  "clipping_amostras": 0,
+  "voz_detectada": false,
+  "usos": [
+   {
+    "t": 2.9,
+    "trecho_s": [
+     0,
+     5.85
+    ],
+    "tom": 1.0,
+    "uso": "bolhas profundas"
+   },
+   {
+    "t": 49.1,
+    "trecho_s": [
+     0,
+     5.85
+    ],
+    "tom": 1.0,
+    "uso": "bolhas do mergulho"
+   },
+   {
+    "t": 135.3,
+    "trecho_s": [
+     0,
+     5.85
+    ],
+    "tom": 1.0,
+    "uso": "bolhas"
+   }
+  ]
+ },
+ {
+  "id": 1461,
+  "nome": "Short wind swoosh",
+  "biblioteca": "Mixkit",
+  "autor": "Mixkit (Envato); a página não identifica o artista",
+  "url_original": "https://mixkit.co/free-sound-effects/download/1461/",
+  "url_arquivo": "https://assets.mixkit.co/active_storage/sfx/1461/1461.wav",
+  "licenca": "Mixkit Sound Effects Free License — uso em vídeos do YouTube e projetos comerciais permitido; proibido redistribuir o arquivo isolado e registrá-lo em serviço de gestão de direitos (Content ID)",
+  "url_licenca": "https://mixkit.co/license/#sfxFree",
+  "atribuicao_exigida": false,
+  "arquivo_local": "som/bib/mixkit/1461.wav",
+  "formato": "WAV 44100 Hz, 2 canais, PCM_16",
+  "clipping_amostras": 0,
+  "voz_detectada": false,
+  "usos": [
+   {
+    "t": 1.4,
+    "trecho_s": [
+     0.08,
+     1.2
+    ],
+    "tom": 1.0,
+    "uso": "ar deslocado na queda"
+   },
+   {
+    "t": 75.21,
+    "trecho_s": [
+     0.08,
+     1.0
+    ],
+    "tom": 1.0,
+    "uso": "queda"
+   },
+   {
+    "t": 85.6,
+    "trecho_s": [
+     0.08,
+     0.8
+    ],
+    "tom": 1.0,
+    "uso": "queda dos dois objetos"
+   },
+   {
+    "t": 85.6,
+    "trecho_s": [
+     0.08,
+     0.8
+    ],
+    "tom": 1.0,
+    "uso": "queda dos dois objetos"
+   }
+  ]
+ },
+ {
+  "id": 1471,
+  "nome": "Cinematic wind swoosh",
+  "biblioteca": "Mixkit",
+  "autor": "Mixkit (Envato); a página não identifica o artista",
+  "url_original": "https://mixkit.co/free-sound-effects/download/1471/",
+  "url_arquivo": "https://assets.mixkit.co/active_storage/sfx/1471/1471.wav",
+  "licenca": "Mixkit Sound Effects Free License — uso em vídeos do YouTube e projetos comerciais permitido; proibido redistribuir o arquivo isolado e registrá-lo em serviço de gestão de direitos (Content ID)",
+  "url_licenca": "https://mixkit.co/license/#sfxFree",
+  "atribuicao_exigida": false,
+  "arquivo_local": "som/bib/mixkit/1471.wav",
+  "formato": "WAV 44100 Hz, 2 canais, PCM_24",
+  "clipping_amostras": 0,
+  "voz_detectada": false,
+  "usos": [
+   {
+    "t": 4.3,
+    "trecho_s": [
+     0.14,
+     1.31
+    ],
+    "tom": 1.0,
+    "uso": "rajada no corte para o mar aberto"
+   }
+  ]
+ },
+ {
+  "id": 1534,
+  "nome": "Metallic door sliding",
+  "biblioteca": "Mixkit",
+  "autor": "Mixkit (Envato); a página não identifica o artista",
+  "url_original": "https://mixkit.co/free-sound-effects/download/1534/",
+  "url_arquivo": "https://assets.mixkit.co/active_storage/sfx/1534/1534.wav",
+  "licenca": "Mixkit Sound Effects Free License — uso em vídeos do YouTube e projetos comerciais permitido; proibido redistribuir o arquivo isolado e registrá-lo em serviço de gestão de direitos (Content ID)",
+  "url_licenca": "https://mixkit.co/license/#sfxFree",
+  "atribuicao_exigida": false,
+  "arquivo_local": "som/bib/mixkit/1534.wav",
+  "formato": "WAV 44100 Hz, 2 canais, PCM_16",
+  "clipping_amostras": 0,
+  "voz_detectada": false,
+  "usos": [
+   {
+    "t": 15.17,
+    "trecho_s": [
+     0.1,
+     15.2
+    ],
+    "tom": 1.0,
+    "uso": "rodas do carro rolando no trilho"
+   }
+  ]
+ },
+ {
+  "id": 1619,
+  "nome": "Fire truck ladder extend",
+  "biblioteca": "Mixkit",
+  "autor": "Mixkit (Envato); a página não identifica o artista",
+  "url_original": "https://mixkit.co/free-sound-effects/download/1619/",
+  "url_arquivo": "https://assets.mixkit.co/active_storage/sfx/1619/1619.wav",
+  "licenca": "Mixkit Sound Effects Free License — uso em vídeos do YouTube e projetos comerciais permitido; proibido redistribuir o arquivo isolado e registrá-lo em serviço de gestão de direitos (Content ID)",
+  "url_licenca": "https://mixkit.co/license/#sfxFree",
+  "atribuicao_exigida": false,
+  "arquivo_local": "som/bib/mixkit/1619.wav",
+  "formato": "WAV 44100 Hz, 2 canais, PCM_24",
+  "clipping_amostras": 0,
+  "voz_detectada": false,
+  "usos": [
+   {
+    "t": 15.17,
+    "trecho_s": [
+     0.3,
+     15.2
+    ],
+    "tom": 1.0,
+    "uso": "motor do carro do pórtico (segue a velocidade real)"
+   }
+  ]
+ },
+ {
+  "id": 1877,
+  "nome": "Sink underwater drain",
+  "biblioteca": "Mixkit",
+  "autor": "Mixkit (Envato); a página não identifica o artista",
+  "url_original": "https://mixkit.co/free-sound-effects/download/1877/",
+  "url_arquivo": "https://assets.mixkit.co/active_storage/sfx/1877/1877.wav",
+  "licenca": "Mixkit Sound Effects Free License — uso em vídeos do YouTube e projetos comerciais permitido; proibido redistribuir o arquivo isolado e registrá-lo em serviço de gestão de direitos (Content ID)",
+  "url_licenca": "https://mixkit.co/license/#sfxFree",
+  "atribuicao_exigida": false,
+  "arquivo_local": "som/bib/mixkit/1877.wav",
+  "formato": "WAV 44100 Hz, 2 canais, PCM_24",
+  "clipping_amostras": 0,
+  "voz_detectada": false,
+  "usos": [
+   {
+    "t": 63.2,
+    "trecho_s": [
+     4.0,
+     2.4
+    ],
+    "tom": 1.0,
+    "uso": "água deslocada enchendo o volume"
+   },
+   {
+    "t": 135.0,
+    "trecho_s": [
+     1.0,
+     2.0
+    ],
+    "tom": 1.0,
+    "uso": "bolhas sugadas pelo rombo"
+   },
+   {
+    "t": 137.2,
+    "trecho_s": [
+     6.0,
+     10.6
+    ],
+    "tom": 1.0,
+    "uso": "borbulhar e gorgolejo da água subindo"
+   }
+  ]
+ },
+ {
+  "id": 200,
+  "nome": "Industrial metal sliding door",
+  "biblioteca": "Mixkit",
+  "autor": "Mixkit (Envato); a página não identifica o artista",
+  "url_original": "https://mixkit.co/free-sound-effects/download/200/",
+  "url_arquivo": "https://assets.mixkit.co/active_storage/sfx/200/200.wav",
+  "licenca": "Mixkit Sound Effects Free License — uso em vídeos do YouTube e projetos comerciais permitido; proibido redistribuir o arquivo isolado e registrá-lo em serviço de gestão de direitos (Content ID)",
+  "url_licenca": "https://mixkit.co/license/#sfxFree",
+  "atribuicao_exigida": false,
+  "arquivo_local": "som/bib/mixkit/200.wav",
+  "formato": "WAV 44100 Hz, 2 canais, PCM_16",
+  "clipping_amostras": 0,
+  "voz_detectada": false,
+  "usos": [
+   {
+    "t": 134.9,
+    "trecho_s": [
+     0.0,
+     1.2
+    ],
+    "tom": 1.0,
+    "uso": "ruptura: aço rasgando/raspando"
+   }
+  ]
+ },
+ {
+  "id": 201,
+  "nome": "Prison metal door close",
+  "biblioteca": "Mixkit",
+  "autor": "Mixkit (Envato); a página não identifica o artista",
+  "url_original": "https://mixkit.co/free-sound-effects/download/201/",
+  "url_arquivo": "https://assets.mixkit.co/active_storage/sfx/201/201.wav",
+  "licenca": "Mixkit Sound Effects Free License — uso em vídeos do YouTube e projetos comerciais permitido; proibido redistribuir o arquivo isolado e registrá-lo em serviço de gestão de direitos (Content ID)",
+  "url_licenca": "https://mixkit.co/license/#sfxFree",
+  "atribuicao_exigida": false,
+  "arquivo_local": "som/bib/mixkit/201.wav",
+  "formato": "WAV 44100 Hz, 2 canais, PCM_16",
+  "clipping_amostras": 0,
+  "voz_detectada": false,
+  "usos": [
+   {
+    "t": 23.6,
+    "trecho_s": [
+     0.0,
+     1.8
+    ],
+    "tom": 1.0,
+    "uso": "encaixe da chapa no casco (porta de aço pesada fechando)"
+   },
+   {
+    "t": 28.65,
+    "trecho_s": [
+     0.0,
+     1.8
+    ],
+    "tom": 1.0,
+    "uso": "chapas chegando ao costado e à proa (contatos selecionados)"
+   },
+   {
+    "t": 151.05,
+    "trecho_s": [
+     0.0,
+     1.8
+    ],
+    "tom": 1.0,
+    "uso": "divisórias estanques: batida firme e calma"
+   }
+  ]
+ },
+ {
+  "id": 2461,
+  "nome": "Strong flowing waters noise",
+  "biblioteca": "Mixkit",
+  "autor": "Mixkit (Envato); a página não identifica o artista",
+  "url_original": "https://mixkit.co/free-sound-effects/download/2461/",
+  "url_arquivo": "https://assets.mixkit.co/active_storage/sfx/2461/2461.wav",
+  "licenca": "Mixkit Sound Effects Free License — uso em vídeos do YouTube e projetos comerciais permitido; proibido redistribuir o arquivo isolado e registrá-lo em serviço de gestão de direitos (Content ID)",
+  "url_licenca": "https://mixkit.co/license/#sfxFree",
+  "atribuicao_exigida": false,
+  "arquivo_local": "som/bib/mixkit/2461.wav",
+  "formato": "WAV 44100 Hz, 2 canais, PCM_24",
+  "clipping_amostras": 0,
+  "voz_detectada": false,
+  "usos": [
+   {
+    "t": 9.0,
+    "trecho_s": [
+     3.0,
+     4.6
+    ],
+    "tom": 1.0,
+    "uso": "água empurrada pela proa (onda de proa)"
+   },
+   {
+    "t": 137.2,
+    "trecho_s": [
+     5.0,
+     10.6
+    ],
+    "tom": 1.0,
+    "uso": "turbulência do porão enchendo"
+   }
+  ]
+ },
+ {
+  "id": 2498,
+  "nome": "Body impact falling into the sand",
+  "biblioteca": "Mixkit",
+  "autor": "Mixkit (Envato); a página não identifica o artista",
+  "url_original": "https://mixkit.co/free-sound-effects/download/2498/",
+  "url_arquivo": "https://assets.mixkit.co/active_storage/sfx/2498/2498.wav",
+  "licenca": "Mixkit Sound Effects Free License — uso em vídeos do YouTube e projetos comerciais permitido; proibido redistribuir o arquivo isolado e registrá-lo em serviço de gestão de direitos (Content ID)",
+  "url_licenca": "https://mixkit.co/license/#sfxFree",
+  "atribuicao_exigida": false,
+  "arquivo_local": "som/bib/mixkit/2498.wav",
+  "formato": "WAV 44100 Hz, 2 canais, PCM_24",
+  "clipping_amostras": 0,
+  "voz_detectada": false,
+  "usos": [
+   {
+    "t": 4.01,
+    "trecho_s": [
+     0.14,
+     0.96
+    ],
+    "tom": 1.0,
+    "uso": "bloco toca o leito de areia"
+   },
+   {
+    "t": 82.12,
+    "trecho_s": [
+     0.14,
+     1.07
+    ],
+    "tom": 0.9,
+    "uso": "bloco toca o leito (tempo volta ao normal)"
+   }
+  ]
+ },
+ {
+  "id": 2509,
+  "nome": "Metal industry ambience",
+  "biblioteca": "Mixkit",
+  "autor": "Mixkit (Envato); a página não identifica o artista",
+  "url_original": "https://mixkit.co/free-sound-effects/download/2509/",
+  "url_arquivo": "https://assets.mixkit.co/active_storage/sfx/2509/2509.wav",
+  "licenca": "Mixkit Sound Effects Free License — uso em vídeos do YouTube e projetos comerciais permitido; proibido redistribuir o arquivo isolado e registrá-lo em serviço de gestão de direitos (Content ID)",
+  "url_licenca": "https://mixkit.co/license/#sfxFree",
+  "atribuicao_exigida": false,
+  "arquivo_local": "som/bib/mixkit/2509.wav",
+  "formato": "WAV 44100 Hz, 2 canais, PCM_16",
+  "clipping_amostras": 0,
+  "voz_detectada": false,
+  "usos": [
+   {
+    "t": 137.0,
+    "trecho_s": [
+     0.0,
+     18.0
+    ],
+    "tom": 1.0,
+    "uso": "tensão grave crescente (alivia após as divisórias)"
+   }
+  ]
+ },
+ {
+  "id": 2603,
+  "nome": "Electric welding and sparkles",
+  "biblioteca": "Mixkit",
+  "autor": "Mixkit (Envato); a página não identifica o artista",
+  "url_original": "https://mixkit.co/free-sound-effects/download/2603/",
+  "url_arquivo": "https://assets.mixkit.co/active_storage/sfx/2603/2603.wav",
+  "licenca": "Mixkit Sound Effects Free License — uso em vídeos do YouTube e projetos comerciais permitido; proibido redistribuir o arquivo isolado e registrá-lo em serviço de gestão de direitos (Content ID)",
+  "url_licenca": "https://mixkit.co/license/#sfxFree",
+  "atribuicao_exigida": false,
+  "arquivo_local": "som/bib/mixkit/2603.wav",
+  "formato": "WAV 44100 Hz, 2 canais, PCM_24",
+  "clipping_amostras": 8,
+  "voz_detectada": false,
+  "usos": [
+   {
+    "t": 23.75,
+    "trecho_s": [
+     0.6,
+     0.9
+    ],
+    "tom": 1.0,
+    "uso": "arco elétrico de solda e faíscas (gravação real)"
+   },
+   {
+    "t": 24.0,
+    "trecho_s": [
+     5.0,
+     0.8
+    ],
+    "tom": 1.0,
+    "uso": "arco elétrico de solda e faíscas (gravação real)"
+   },
+   {
+    "t": 24.68,
+    "trecho_s": [
+     3.2,
+     0.67
+    ],
+    "tom": 1.0,
+    "uso": "arco elétrico de solda e faíscas (gravação real)"
+   },
+   {
+    "t": 24.85,
+    "trecho_s": [
+     1.8,
+     0.65
+    ],
+    "tom": 1.0,
+    "uso": "arco elétrico de solda e faíscas (gravação real)"
+   }
+  ]
+ },
+ {
+  "id": 2754,
+  "nome": "Metal tank door closing",
+  "biblioteca": "Mixkit",
+  "autor": "Mixkit (Envato); a página não identifica o artista",
+  "url_original": "https://mixkit.co/free-sound-effects/download/2754/",
+  "url_arquivo": "https://assets.mixkit.co/active_storage/sfx/2754/2754.wav",
+  "licenca": "Mixkit Sound Effects Free License — uso em vídeos do YouTube e projetos comerciais permitido; proibido redistribuir o arquivo isolado e registrá-lo em serviço de gestão de direitos (Content ID)",
+  "url_licenca": "https://mixkit.co/license/#sfxFree",
+  "atribuicao_exigida": false,
+  "arquivo_local": "som/bib/mixkit/2754.wav",
+  "formato": "WAV 44100 Hz, 2 canais, PCM_24",
+  "clipping_amostras": 0,
+  "voz_detectada": false,
+  "usos": [
+   {
+    "t": 26.0,
+    "trecho_s": [
+     0.44,
+     1.37
+    ],
+    "tom": 1.0,
+    "uso": "chapas chegando ao costado e à proa (contatos selecionados)"
+   },
+   {
+    "t": 27.22,
+    "trecho_s": [
+     0.44,
+     1.37
+    ],
+    "tom": 1.0,
+    "uso": "chapas chegando ao costado e à proa (contatos selecionados)"
+   }
+  ]
+ },
+ {
+  "id": 2923,
+  "nome": "Jump in water",
+  "biblioteca": "Mixkit",
+  "autor": "Mixkit (Envato); a página não identifica o artista",
+  "url_original": "https://mixkit.co/free-sound-effects/download/2923/",
+  "url_arquivo": "https://assets.mixkit.co/active_storage/sfx/2923/2923.wav",
+  "licenca": "Mixkit Sound Effects Free License — uso em vídeos do YouTube e projetos comerciais permitido; proibido redistribuir o arquivo isolado e registrá-lo em serviço de gestão de direitos (Content ID)",
+  "url_licenca": "https://mixkit.co/license/#sfxFree",
+  "atribuicao_exigida": false,
+  "arquivo_local": "som/bib/mixkit/2923.wav",
+  "formato": "WAV 44100 Hz, 2 canais, PCM_16",
+  "clipping_amostras": 0,
+  "voz_detectada": false,
+  "usos": [
+   {
+    "t": 49.0,
+    "trecho_s": [
+     0.06,
+     2.24
+    ],
+    "tom": 1.0,
+    "uso": "câmera entra na água"
+   },
+   {
+    "t": 76.13,
+    "trecho_s": [
+     0.06,
+     2.64
+    ],
+    "tom": 0.85,
+    "uso": "impacto na água (variação da abertura)"
+   }
+  ]
+ },
+ {
+  "id": 2927,
+  "nome": "Metal sewer lid opened",
+  "biblioteca": "Mixkit",
+  "autor": "Mixkit (Envato); a página não identifica o artista",
+  "url_original": "https://mixkit.co/free-sound-effects/download/2927/",
+  "url_arquivo": "https://assets.mixkit.co/active_storage/sfx/2927/2927.wav",
+  "licenca": "Mixkit Sound Effects Free License — uso em vídeos do YouTube e projetos comerciais permitido; proibido redistribuir o arquivo isolado e registrá-lo em serviço de gestão de direitos (Content ID)",
+  "url_licenca": "https://mixkit.co/license/#sfxFree",
+  "atribuicao_exigida": false,
+  "arquivo_local": "som/bib/mixkit/2927.wav",
+  "formato": "WAV 44100 Hz, 2 canais, PCM_16",
+  "clipping_amostras": 0,
+  "voz_detectada": false,
+  "usos": [
+   {
+    "t": 0.5,
+    "trecho_s": [
+     0.12,
+     1.15
+    ],
+    "tom": 1.0,
+    "uso": "aço arrastado no concreto (tampa de bueiro de ferro)"
+   },
+   {
+    "t": 74.85,
+    "trecho_s": [
+     0.25,
+     0.61
+    ],
+    "tom": 1.0,
+    "uso": "o mesmo arrasto no cais (outro trecho da gravação)"
+   }
+  ]
+ },
+ {
+  "id": 2980,
+  "nome": "Factory metal hard hit",
+  "biblioteca": "Mixkit",
+  "autor": "Mixkit (Envato); a página não identifica o artista",
+  "url_original": "https://mixkit.co/free-sound-effects/download/2980/",
+  "url_arquivo": "https://assets.mixkit.co/active_storage/sfx/2980/2980.wav",
+  "licenca": "Mixkit Sound Effects Free License — uso em vídeos do YouTube e projetos comerciais permitido; proibido redistribuir o arquivo isolado e registrá-lo em serviço de gestão de direitos (Content ID)",
+  "url_licenca": "https://mixkit.co/license/#sfxFree",
+  "atribuicao_exigida": false,
+  "arquivo_local": "som/bib/mixkit/2980.wav",
+  "formato": "WAV 44100 Hz, 2 canais, PCM_16",
+  "clipping_amostras": 0,
+  "voz_detectada": false,
+  "usos": [
+   {
+    "t": 23.6,
+    "trecho_s": [
+     0.23,
+     1.76
+    ],
+    "tom": 1.0,
+    "uso": "contato metálico duro (camada aguda)"
+   },
+   {
+    "t": 26.8,
+    "trecho_s": [
+     0.23,
+     1.76
+    ],
+    "tom": 1.0,
+    "uso": "chapas chegando ao costado e à proa (contatos selecionados)"
+   },
+   {
+    "t": 134.9,
+    "trecho_s": [
+     0.23,
+     1.76
+    ],
+    "tom": 1.0,
+    "uso": "ruptura: impacto metálico localizado"
+   }
+  ]
+ },
+ {
+  "id": 3029,
+  "nome": "Heavy close waterfall",
+  "biblioteca": "Mixkit",
+  "autor": "Mixkit (Envato); a página não identifica o artista",
+  "url_original": "https://mixkit.co/free-sound-effects/download/3029/",
+  "url_arquivo": "https://assets.mixkit.co/active_storage/sfx/3029/3029.wav",
+  "licenca": "Mixkit Sound Effects Free License — uso em vídeos do YouTube e projetos comerciais permitido; proibido redistribuir o arquivo isolado e registrá-lo em serviço de gestão de direitos (Content ID)",
+  "url_licenca": "https://mixkit.co/license/#sfxFree",
+  "atribuicao_exigida": false,
+  "arquivo_local": "som/bib/mixkit/3029.wav",
+  "formato": "WAV 44100 Hz, 2 canais, PCM_16",
+  "clipping_amostras": 0,
+  "voz_detectada": false,
+  "usos": [
+   {
+    "t": 136.9,
+    "trecho_s": [
+     4.0,
+     9.5
+    ],
+    "tom": 1.0,
+    "uso": "água sob pressão entrando pelo rombo (cascata forte)"
+   }
+  ]
+ },
+ {
+  "id": 3074,
+  "nome": "Inside the old boat shipyard ambience",
+  "biblioteca": "Mixkit",
+  "autor": "Mixkit (Envato); a página não identifica o artista",
+  "url_original": "https://mixkit.co/free-sound-effects/download/3074/",
+  "url_arquivo": "https://assets.mixkit.co/active_storage/sfx/3074/3074.wav",
+  "licenca": "Mixkit Sound Effects Free License — uso em vídeos do YouTube e projetos comerciais permitido; proibido redistribuir o arquivo isolado e registrá-lo em serviço de gestão de direitos (Content ID)",
+  "url_licenca": "https://mixkit.co/license/#sfxFree",
+  "atribuicao_exigida": false,
+  "arquivo_local": "som/bib/mixkit/3074.wav",
+  "formato": "WAV 44100 Hz, 2 canais, PCM_16",
+  "clipping_amostras": 0,
+  "voz_detectada": false,
+  "usos": [
+   {
+    "t": 15.1,
+    "trecho_s": [
+     0.0,
+     15.4
+    ],
+    "tom": 1.0,
+    "uso": "ambiente de estaleiro (galpão de construção naval)"
+   }
+  ]
+ },
+ {
+  "id": 3076,
+  "nome": "Ship hull creak",
+  "biblioteca": "Mixkit",
+  "autor": "Mixkit (Envato); a página não identifica o artista",
+  "url_original": "https://mixkit.co/free-sound-effects/download/3076/",
+  "url_arquivo": "https://assets.mixkit.co/active_storage/sfx/3076/3076.wav",
+  "licenca": "Mixkit Sound Effects Free License — uso em vídeos do YouTube e projetos comerciais permitido; proibido redistribuir o arquivo isolado e registrá-lo em serviço de gestão de direitos (Content ID)",
+  "url_licenca": "https://mixkit.co/license/#sfxFree",
+  "atribuicao_exigida": false,
+  "arquivo_local": "som/bib/mixkit/3076.wav",
+  "formato": "WAV 44100 Hz, 2 canais, PCM_16",
+  "clipping_amostras": 0,
+  "voz_detectada": false,
+  "usos": [
+   {
+    "t": 15.23,
+    "trecho_s": [
+     1.0,
+     1.4
+    ],
+    "tom": 1.0,
+    "uso": "cabos e estrutura rangendo na arrancada/freada"
+   },
+   {
+    "t": 20.93,
+    "trecho_s": [
+     2.6,
+     1.4
+    ],
+    "tom": 1.0,
+    "uso": "cabos e estrutura rangendo na arrancada/freada"
+   },
+   {
+    "t": 23.2,
+    "trecho_s": [
+     4.2,
+     1.4
+    ],
+    "tom": 1.0,
+    "uso": "cabos e estrutura rangendo na arrancada/freada"
+   },
+   {
+    "t": 51.0,
+    "trecho_s": [
+     3.0,
+     2.5
+    ],
+    "tom": 1.0,
+    "uso": "casco sob pressão (rangido grave, discreto)"
+   },
+   {
+    "t": 139.5,
+    "trecho_s": [
+     0.6,
+     1.6
+    ],
+    "tom": 1.0,
+    "uso": "casco rangendo sob a carga crescente"
+   },
+   {
+    "t": 142.3,
+    "trecho_s": [
+     2.4,
+     1.6
+    ],
+    "tom": 1.0,
+    "uso": "casco rangendo sob a carga crescente"
+   },
+   {
+    "t": 144.9,
+    "trecho_s": [
+     4.2,
+     1.6
+    ],
+    "tom": 1.0,
+    "uso": "casco rangendo sob a carga crescente"
+   },
+   {
+    "t": 146.8,
+    "trecho_s": [
+     5.6,
+     1.6
+    ],
+    "tom": 1.0,
+    "uso": "casco rangendo sob a carga crescente"
+   },
+   {
+    "t": 148.4,
+    "trecho_s": [
+     1.5,
+     1.6
+    ],
+    "tom": 1.0,
+    "uso": "casco rangendo sob a carga crescente"
+   },
+   {
+    "t": 149.7,
+    "trecho_s": [
+     3.3,
+     1.6
+    ],
+    "tom": 1.0,
+    "uso": "casco rangendo sob a carga crescente"
+   }
+  ]
+ },
+ {
+  "id": 3077,
+  "nome": "Ship engine loop",
+  "biblioteca": "Mixkit",
+  "autor": "Mixkit (Envato); a página não identifica o artista",
+  "url_original": "https://mixkit.co/free-sound-effects/download/3077/",
+  "url_arquivo": "https://assets.mixkit.co/active_storage/sfx/3077/3077.wav",
+  "licenca": "Mixkit Sound Effects Free License — uso em vídeos do YouTube e projetos comerciais permitido; proibido redistribuir o arquivo isolado e registrá-lo em serviço de gestão de direitos (Content ID)",
+  "url_licenca": "https://mixkit.co/license/#sfxFree",
+  "atribuicao_exigida": false,
+  "arquivo_local": "som/bib/mixkit/3077.wav",
+  "formato": "WAV 44100 Hz, 2 canais, PCM_16",
+  "clipping_amostras": 0,
+  "voz_detectada": false,
+  "usos": [
+   {
+    "t": 4.4,
+    "trecho_s": [
+     0.0,
+     10.9
+    ],
+    "tom": 1.0,
+    "uso": "máquinas do navio (distante)"
+   }
+  ]
+ },
+ {
+  "id": 3078,
+  "nome": "Light ship engine flutter whosh by",
+  "biblioteca": "Mixkit",
+  "autor": "Mixkit (Envato); a página não identifica o artista",
+  "url_original": "https://mixkit.co/free-sound-effects/download/3078/",
+  "url_arquivo": "https://assets.mixkit.co/active_storage/sfx/3078/3078.wav",
+  "licenca": "Mixkit Sound Effects Free License — uso em vídeos do YouTube e projetos comerciais permitido; proibido redistribuir o arquivo isolado e registrá-lo em serviço de gestão de direitos (Content ID)",
+  "url_licenca": "https://mixkit.co/license/#sfxFree",
+  "atribuicao_exigida": false,
+  "arquivo_local": "som/bib/mixkit/3078.wav",
+  "formato": "WAV 44100 Hz, 2 canais, PCM_16",
+  "clipping_amostras": 0,
+  "voz_detectada": false,
+  "usos": [
+   {
+    "t": 7.9,
+    "trecho_s": [
+     0,
+     5.0
+    ],
+    "tom": 1.0,
+    "uso": "casco/máquinas passando (travelling)"
+   }
+  ]
+ },
+ {
+  "id": 3140,
+  "nome": "Long giant water pour into vat",
+  "biblioteca": "Mixkit",
+  "autor": "Mixkit (Envato); a página não identifica o artista",
+  "url_original": "https://mixkit.co/free-sound-effects/download/3140/",
+  "url_arquivo": "https://assets.mixkit.co/active_storage/sfx/3140/3140.wav",
+  "licenca": "Mixkit Sound Effects Free License — uso em vídeos do YouTube e projetos comerciais permitido; proibido redistribuir o arquivo isolado e registrá-lo em serviço de gestão de direitos (Content ID)",
+  "url_licenca": "https://mixkit.co/license/#sfxFree",
+  "atribuicao_exigida": false,
+  "arquivo_local": "som/bib/mixkit/3140.wav",
+  "formato": "WAV 44100 Hz, 2 canais, PCM_16",
+  "clipping_amostras": 0,
+  "voz_detectada": false,
+  "usos": [
+   {
+    "t": 136.9,
+    "trecho_s": [
+     2.0,
+     9.5
+    ],
+    "tom": 1.0,
+    "uso": "jorro despejando no porão"
+   }
+  ]
+ },
+ {
+  "id": 3158,
+  "nome": "Thin metal plate drop",
+  "biblioteca": "Mixkit",
+  "autor": "Mixkit (Envato); a página não identifica o artista",
+  "url_original": "https://mixkit.co/free-sound-effects/download/3158/",
+  "url_arquivo": "https://assets.mixkit.co/active_storage/sfx/3158/3158.wav",
+  "licenca": "Mixkit Sound Effects Free License — uso em vídeos do YouTube e projetos comerciais permitido; proibido redistribuir o arquivo isolado e registrá-lo em serviço de gestão de direitos (Content ID)",
+  "url_licenca": "https://mixkit.co/license/#sfxFree",
+  "atribuicao_exigida": false,
+  "arquivo_local": "som/bib/mixkit/3158.wav",
+  "formato": "WAV 44100 Hz, 2 canais, PCM_16",
+  "clipping_amostras": 0,
+  "voz_detectada": false,
+  "usos": [
+   {
+    "t": 26.38,
+    "trecho_s": [
+     0.17,
+     1.13
+    ],
+    "tom": 1.0,
+    "uso": "chapas chegando ao costado e à proa (contatos selecionados)"
+   }
+  ]
+ },
+ {
+  "id": 3216,
+  "nome": "Water hit",
+  "biblioteca": "Mixkit",
+  "autor": "Mixkit (Envato); a página não identifica o artista",
+  "url_original": "https://mixkit.co/free-sound-effects/download/3216/",
+  "url_arquivo": "https://assets.mixkit.co/active_storage/sfx/3216/3216.wav",
+  "licenca": "Mixkit Sound Effects Free License — uso em vídeos do YouTube e projetos comerciais permitido; proibido redistribuir o arquivo isolado e registrá-lo em serviço de gestão de direitos (Content ID)",
+  "url_licenca": "https://mixkit.co/license/#sfxFree",
+  "atribuicao_exigida": false,
+  "arquivo_local": "som/bib/mixkit/3216.wav",
+  "formato": "WAV 44100 Hz, 2 canais, PCM_16",
+  "clipping_amostras": 0,
+  "voz_detectada": false,
+  "usos": [
+   {
+    "t": 138.5,
+    "trecho_s": [
+     0.21,
+     1.88
+    ],
+    "tom": 1.0,
+    "uso": "água golpeando anteparas e piso"
+   },
+   {
+    "t": 142.2,
+    "trecho_s": [
+     0.21,
+     1.88
+    ],
+    "tom": 1.0,
+    "uso": "água golpeando anteparas e piso"
+   }
+  ]
+ },
+ {
+  "id": 752,
+  "nome": "Falling on metal roof",
+  "biblioteca": "Mixkit",
+  "autor": "Mixkit (Envato); a página não identifica o artista",
+  "url_original": "https://mixkit.co/free-sound-effects/download/752/",
+  "url_arquivo": "https://assets.mixkit.co/active_storage/sfx/752/752.wav",
+  "licenca": "Mixkit Sound Effects Free License — uso em vídeos do YouTube e projetos comerciais permitido; proibido redistribuir o arquivo isolado e registrá-lo em serviço de gestão de direitos (Content ID)",
+  "url_licenca": "https://mixkit.co/license/#sfxFree",
+  "atribuicao_exigida": false,
+  "arquivo_local": "som/bib/mixkit/752.wav",
+  "formato": "WAV 44100 Hz, 2 canais, PCM_16",
+  "clipping_amostras": 0,
+  "voz_detectada": false,
+  "usos": [
+   {
+    "t": 1.4,
+    "trecho_s": [
+     0,
+     0.48
+    ],
+    "tom": 1.0,
+    "uso": "baque grave quando o bloco tomba na borda"
+   },
+   {
+    "t": 2.65,
+    "trecho_s": [
+     0,
+     0.64
+    ],
+    "tom": 0.75,
+    "uso": "peso do aço no impacto (baque grave)"
+   },
+   {
+    "t": 75.21,
+    "trecho_s": [
+     0,
+     0.51
+    ],
+    "tom": 0.95,
+    "uso": "bloco deixa a borda"
+   },
+   {
+    "t": 76.13,
+    "trecho_s": [
+     0,
+     0.69
+    ],
+    "tom": 0.7,
+    "uso": "peso do aço"
+   },
+   {
+    "t": 86.24,
+    "trecho_s": [
+     0,
+     0.6
+    ],
+    "tom": 0.8,
+    "uso": "peso do bloco"
+   }
+  ]
+ },
+ {
+  "id": 753,
+  "nome": "Heavy fall into mud",
+  "biblioteca": "Mixkit",
+  "autor": "Mixkit (Envato); a página não identifica o artista",
+  "url_original": "https://mixkit.co/free-sound-effects/download/753/",
+  "url_arquivo": "https://assets.mixkit.co/active_storage/sfx/753/753.wav",
+  "licenca": "Mixkit Sound Effects Free License — uso em vídeos do YouTube e projetos comerciais permitido; proibido redistribuir o arquivo isolado e registrá-lo em serviço de gestão de direitos (Content ID)",
+  "url_licenca": "https://mixkit.co/license/#sfxFree",
+  "atribuicao_exigida": false,
+  "arquivo_local": "som/bib/mixkit/753.wav",
+  "formato": "WAV 44100 Hz, 2 canais, PCM_16",
+  "clipping_amostras": 0,
+  "voz_detectada": false,
+  "usos": [
+   {
+    "t": 4.01,
+    "trecho_s": [
+     0,
+     0.63
+    ],
+    "tom": 1.0,
+    "uso": "sedimento levantado (abafado)"
+   },
+   {
+    "t": 82.12,
+    "trecho_s": [
+     0,
+     0.63
+    ],
+    "tom": 1.0,
+    "uso": "sedimento se espalhando (abafado)"
+   }
+  ]
+ },
+ {
+  "id": 803,
+  "nome": "Construction place machinery ambience",
+  "biblioteca": "Mixkit",
+  "autor": "Mixkit (Envato); a página não identifica o artista",
+  "url_original": "https://mixkit.co/free-sound-effects/download/803/",
+  "url_arquivo": "https://assets.mixkit.co/active_storage/sfx/803/803.wav",
+  "licenca": "Mixkit Sound Effects Free License — uso em vídeos do YouTube e projetos comerciais permitido; proibido redistribuir o arquivo isolado e registrá-lo em serviço de gestão de direitos (Content ID)",
+  "url_licenca": "https://mixkit.co/license/#sfxFree",
+  "atribuicao_exigida": false,
+  "arquivo_local": "som/bib/mixkit/803.wav",
+  "formato": "WAV 44100 Hz, 2 canais, PCM_16",
+  "clipping_amostras": 0,
+  "voz_detectada": false,
+  "usos": [
+   {
+    "t": 15.1,
+    "trecho_s": [
+     0.0,
+     15.4
+    ],
+    "tom": 1.0,
+    "uso": "máquinas de obra ao fundo"
+   }
+  ]
+ },
+ {
+  "id": 812,
+  "nome": "Construction welder",
+  "biblioteca": "Mixkit",
+  "autor": "Mixkit (Envato); a página não identifica o artista",
+  "url_original": "https://mixkit.co/free-sound-effects/download/812/",
+  "url_arquivo": "https://assets.mixkit.co/active_storage/sfx/812/812.wav",
+  "licenca": "Mixkit Sound Effects Free License — uso em vídeos do YouTube e projetos comerciais permitido; proibido redistribuir o arquivo isolado e registrá-lo em serviço de gestão de direitos (Content ID)",
+  "url_licenca": "https://mixkit.co/license/#sfxFree",
+  "atribuicao_exigida": false,
+  "arquivo_local": "som/bib/mixkit/812.wav",
+  "formato": "WAV 44100 Hz, 2 canais, PCM_24",
+  "clipping_amostras": 0,
+  "voz_detectada": false,
+  "usos": [
+   {
+    "t": 24.9,
+    "trecho_s": [
+     0.12,
+     1.55
+    ],
+    "tom": 1.0,
+    "uso": "solda ao fundo (bojo)"
+   }
+  ]
+ },
+ {
+  "id": 814,
+  "nome": "Construction welding tool",
+  "biblioteca": "Mixkit",
+  "autor": "Mixkit (Envato); a página não identifica o artista",
+  "url_original": "https://mixkit.co/free-sound-effects/download/814/",
+  "url_arquivo": "https://assets.mixkit.co/active_storage/sfx/814/814.wav",
+  "licenca": "Mixkit Sound Effects Free License — uso em vídeos do YouTube e projetos comerciais permitido; proibido redistribuir o arquivo isolado e registrá-lo em serviço de gestão de direitos (Content ID)",
+  "url_licenca": "https://mixkit.co/license/#sfxFree",
+  "atribuicao_exigida": false,
+  "arquivo_local": "som/bib/mixkit/814.wav",
+  "formato": "WAV 44100 Hz, 2 canais, PCM_24",
+  "clipping_amostras": 0,
+  "voz_detectada": false,
+  "usos": [
+   {
+    "t": 25.1,
+    "trecho_s": [
+     0.11,
+     1.99
+    ],
+    "tom": 1.0,
+    "uso": "solda ao fundo (bojo)"
+   }
+  ]
+ }
+]

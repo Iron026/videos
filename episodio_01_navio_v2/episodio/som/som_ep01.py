@@ -389,7 +389,7 @@ def limitador(x, teto_db=-1.8, liberacao=0.08):
 
 
 # =============================================================================================== MONTAGEM
-if __name__ == '__main__':
+def gerar_sintetico():
     for nome, trechos in AMB.items():
         x, amb = gerar_camada(nome); g = envelope_camada(trechos)
         if nome == 'sub': x = lpz(x, 700)
@@ -400,6 +400,9 @@ if __name__ == '__main__':
         k = ('ambiencias', amb); SENDS.setdefault(k, np.zeros(N)); SENDS[k] += y * 0.25
     for f in (abertura, navio_navegando, estaleiro, corte_casco, dique, empuxo, retomada, experimento, porto, avaria, conclusao): f()
     musica()
+
+
+def mixar(saida='audio_ep01.wav', stems_dir='stems', sufixo='', relatorio='mix_ep01.json', efeitos_rel=-2.0, amb_rel=-16.0):
     # reverberação por ambiente (envios → convolução com a resposta ao impulso daquele ambiente)
     for (stem, amb), s in SENDS.items():
         ir = S.resposta_impulso(amb)
@@ -412,7 +415,7 @@ if __name__ == '__main__':
     # graves sob controle: tudo que não é voz perde o subgrave; efeitos e ambiências sem lixo abaixo de 35 Hz
     for k in STEMS: STEMS[k] = hpz(STEMS[k], 35, 2)
     # níveis relativos (medidos): ambiência ~19 dB abaixo da voz, efeitos ~7 dB abaixo, música ~17 dB abaixo
-    Lv = lufs(VOZ); alvo = {'ambiencias': Lv - 16, 'efeitos': Lv - 2, 'musica': Lv - 16}   # antes do ducking
+    Lv = lufs(VOZ); alvo = {'ambiencias': Lv + amb_rel, 'efeitos': Lv + efeitos_rel, 'musica': Lv - 16}   # antes do ducking
     for k, a_ in alvo.items(): STEMS[k] *= db(a_ - lufs(STEMS[k]))
     # ducking dinâmico multibanda: durante a fala a banda da voz (200 Hz–4 kHz) de efeitos/ambiências fica ≥ 12 dB abaixo
     w = n_(0.03); ativa = np.clip(lpz((np.sqrt(media_movel(v ** 2, w)) > db(-42)).astype(float), 3.0), 0, 1)
@@ -444,9 +447,9 @@ if __name__ == '__main__':
         d = -14.0 - lufs(mix)
         if abs(d) < 0.1: break
         mix *= db(d); g0 += d; mix, red = limitador(mix, -1.8)
-    os.makedirs(os.path.join(EP, 'stems'), exist_ok=True)
-    for k, x in STEMS.items(): sf.write(os.path.join(EP, 'stems', f'ep01_{k}.wav'), x * db(g0), SR, subtype='PCM_24')
-    sf.write(os.path.join(EP, 'audio_ep01.wav'), mix, SR, subtype='PCM_24')
+    os.makedirs(os.path.join(EP, stems_dir), exist_ok=True)
+    for k, x in STEMS.items(): sf.write(os.path.join(EP, stems_dir, f'ep01_{k}{sufixo}.wav'), x * db(g0), SR, subtype='PCM_24')
+    sf.write(os.path.join(EP, saida), mix, SR, subtype='PCM_24')
     # verificações: estéreo × mono, alto-falante de celular, inteligibilidade (voz × resto na banda da fala)
     mono = np.stack([mix.mean(1)] * 2, 1)
     def celular(x): return hpz(lpz(x.mean(1), 7000, 4), 350, 4)
@@ -466,5 +469,10 @@ if __name__ == '__main__':
                ducking_max_db=rel, stems={k: round(lufs(x * db(g0)), 1) if np.abs(x).max() > 0 else None for k, x in STEMS.items()},
                loudness_curto_max={k: round(float(lufs(x * db(g0), curto=True).max()), 1) for k, x in STEMS.items()},
                limitador_acima_1_5db=LIM.get('reducoes', []), efeitos=sorted(LISTA))
-    json.dump(res, open(os.path.join(A, 'mix_ep01.json'), 'w'), ensure_ascii=False, indent=1)
+    json.dump(res, open(os.path.join(A, relatorio), 'w'), ensure_ascii=False, indent=1)
     print(json.dumps({k: v for k, v in res.items() if k != 'efeitos'}, ensure_ascii=False, indent=1)); print(len(LISTA), 'efeitos registrados')
+    return res
+
+
+if __name__ == '__main__':
+    gerar_sintetico(); mixar()

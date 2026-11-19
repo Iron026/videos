@@ -191,7 +191,7 @@ def loudness(au):
 
 
 if __name__ == '__main__':
-    au = os.path.join(A, 'audio_ep01.wav'); af = loudness(au)
+    au = os.environ.get('AUDIO_EP01', os.path.join(A, 'audio_ep01.wav')); af = loudness(au)   # AUDIO_EP01: outra mixagem (comparações)
     t_fim = T_FIM if T_FIM is not None else DUR
     n = int(round((t_fim - T_INI) * FPS))
     ff = subprocess.Popen(['ffmpeg', '-y', '-v', 'error', '-f', 'rawvideo', '-pix_fmt', 'rgb24', '-s', f'{W}x{H}', '-r', str(FPS), '-i', '-',
