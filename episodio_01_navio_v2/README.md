@@ -1,7 +1,14 @@
 # Episódio 01 — reformulação (v2)
 
 Pasta nova; a v1 (`../episodio_01_navio/`) foi preservada sem alterações.
-Estado: **Etapas A e B entregues, aguardando aprovação.** Nada da Etapa C (animatic) foi iniciado.
+Estado (19/11/2026): **Ep. 01 em validação final** — revisão de 168 s aprovada visualmente (`episodio/ep01_revisao_polimento.mp4`),
+som híbrido aguardando escuta, render definitivo de 1080 × 1920 **não autorizado** ainda. Validação: `episodio/validacao_final_audio_atual.md`.
+
+> ⚠️ **Licença:** a narração (`voz/narracao_ep01/Narração ep 1.mp3`, ElevenLabs · Will - Deep) foi gerada no **plano gratuito**:
+> uso **não comercial** e atribuição obrigatória ("elevenlabs.io" ou "11.ai" no título). **O episódio não está licenciado para
+> exploração comercial.** Detalhes: `voz/LICENCA_NARRACAO.md`.
+
+Histórico: a tabela abaixo descreve as Etapas A e B (iniciais).
 
 | Caminho | Conteúdo |
 |---|---|

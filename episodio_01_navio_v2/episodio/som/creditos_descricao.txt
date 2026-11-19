@@ -1,2 +1,5 @@
+Narração: voz gerada com ElevenLabs (elevenlabs.io), plano gratuito — uso não comercial.
+ATENÇÃO: o plano gratuito exige "elevenlabs.io" ou "11.ai" no TÍTULO da publicação (ver voz/LICENCA_NARRACAO.md).
+
 Efeitos sonoros:
 - Mixkit (Mixkit Sound Effects Free License).

@@ -39,7 +39,9 @@ for x in lin:
     md.append(f"| {x['id']} | {x['nome']} | {x['biblioteca']} | {x['autor']} | {x['url_original']} | {x['licenca']} | {x['credito'] or 'não'} | `{x['arquivo_local']}` | {onde} |")
 md += ['', '## Complementos sintéticos (originais, sem licença de terceiros)', '', *[f'- {t} s · {u}' for t, u in sint]]
 open(os.path.join(A, 'fontes_efeitos_hibrido.md'), 'w').write('\n'.join(md) + '\n')
-cred = ['Efeitos sonoros:', '- Mixkit (Mixkit Sound Effects Free License).']
+cred = ['Narração: voz gerada com ElevenLabs (elevenlabs.io), plano gratuito — uso não comercial.',
+        'ATENÇÃO: o plano gratuito exige "elevenlabs.io" ou "11.ai" no TÍTULO da publicação (ver voz/LICENCA_NARRACAO.md).', '',
+        'Efeitos sonoros:', '- Mixkit (Mixkit Sound Effects Free License).']
 cred += [f'- {x["credito"]}' for x in lin if x['atribuicao_exigida']]
 open(os.path.join(A, 'creditos_descricao.txt'), 'w').write('\n'.join(cred) + '\n')
 print(len(lin), 'gravações;', nc, 'Commons;', len(sint), 'sínteses')

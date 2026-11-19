@@ -1,5 +1,9 @@
 # Ep. 01 · Validação final antes do render
 
+> **Decisão posterior (19/11/2026):** manter a narração original do plano gratuito; nenhum plano pago, nenhuma regeneração e
+> nenhuma execução de `comparar_narracao.py`. As seções 3 e 4 ficam como registro. O episódio **não está licenciado para
+> exploração comercial** (`voz/LICENCA_NARRACAO.md`). Validação com o áudio atual: `validacao_final_audio_atual.md`.
+
 **O que esta rodada não fez:**
 - **Não alterou** imagem nem som: a montagem aprovada (`ep01_revisao_polimento.mp4`, 168,0 s) e a mixagem híbrida continuam **idênticas byte a byte**.
 - Não iniciou o render de 1080 × 1920.
