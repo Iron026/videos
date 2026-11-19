@@ -24,7 +24,14 @@ from sintese import lpz, hpz, tt, ruido, lp
 import sintese as S
 import movimento as MV
 
+def _cat():   # auditoria por categoria: água (como antes) e buzina
+    i = AM.ULTIMO[0]; AM.ULTIMO[0] = None
+    if i == 'CruiseshipAlbatroshorn': return 'buzina'
+    return 'agua' if (i in H.AGUA or getattr(i, 'reserva_de', '') in H.AGUA) else None
+SE.CAT_FN = _cat
+
 EV = SE.EV; DUR = SE.DUR
+BUZINA = os.environ.get('BUZINA', '0') == '1'; BUZ_DB = [float(v) for v in os.environ.get('BUZINA_DB', '-12,-22').split(',')]
 
 
 # ------------------------------------------------------------------------------------------------ utilitários
@@ -87,6 +94,29 @@ def janela_env(n, env):
     fr, lv = zip(*env); return np.interp(np.linspace(0, 1, n), fr, lv)
 
 
+# ------------------------------------------------------------------------------------------------ buzina do navio
+BUZ = 'CruiseshipAlbatroshorn'      # Wikimedia Commons, CC0: buzina real de navio (três toques ao deixar Bremerhaven)
+
+
+def buzina(t0, sust, dB, persp=None, envio=0.25, extra_lp=None, uso=''):
+    """UM toque de buzina montado só com a gravação real: ATAQUE real do 1º toque (fim da subida de pressão) → sustentação breve
+    (trecho estável) → DISSIPAÇÃO real do último toque (fim do sopro + eco do porto). Fusões de 0,25 s entre as partes.
+    Levemente mais grave (tom 0,9 ≈ −1,8 semitom: ~104 Hz) para a escala de um cargueiro; filtro passa-alta em 80 Hz tira o
+    vento do microfone. Perspectiva pela distância real da câmera ao navio."""
+    tom = 0.9; xf = int(0.25 * SR)
+    A_ = trecho(BUZ, 3.15, 0.6, fi=0.08, fo=0.0, norm=None, tom=tom, t=t0, uso=uso)        # fim da subida de pressão: ~0,5 s
+    S_ = trecho(BUZ, 7.0, sust + 0.5, fi=0.0, fo=0.0, norm=None, tom=tom)
+    R_ = trecho(BUZ, 26.95, 2.04, fi=0.0, fo=0.25, norm=None, tom=tom)
+    def junta(a, b):
+        r = np.linspace(0, 1, xf)[:, None]; return np.concatenate([a[:-xf], a[-xf:] * (1 - r) + b[:xf] * r, b[xf:]])
+    x = hpz(junta(junta(A_, S_), R_), 80, 4)
+    if extra_lp: x = lpz(x, extra_lp, 2)
+    x = x * 10 ** (-20 / 20) / (np.sqrt(np.mean(x ** 2)) + 1e-12)          # nível de referência −20 dB RMS (como as camas)
+    if persp: x = MV.perspectiva(x, t0, *persp)
+    por(t0, x, dB, 0.05, 'ext', envio)
+    return len(x) / SR
+
+
 # ================================================================================================ 0–15 · abertura e navegação
 def abertura():
     e = EV['abertura']
@@ -127,6 +157,7 @@ def abertura():
     por(a, MV.perspectiva(x, a, ts, ds, 60, k=0.8, piso=-20), -19, -0.4, 'ext', 0.08)
     x = trecho(3078, 0, 5.0, ref=-3, t=7.9, uso='casco passando perto da câmera (travelling)')
     por(7.9, MV.perspectiva(x, 7.9, tm, dm, 60, k=0.6, piso=-12), -18, -0.3, eq=lp_(1500))
+    if BUZINA: buzina(5.85, 1.0, BUZ_DB[0], (tm, dm, 150, 0.35, -8, 1.0, 1800), 0.3, uso='buzina do navio ao aparecer (ataque na pausa após "gigante:")')
 
 
 # ================================================================================================ 15–30 · estaleiro
@@ -376,6 +407,8 @@ def conclusao():
     amb(164.35, 168.0, 1189, -18, ini=30, uso='mar aberto (plano final)', pos=0.0)
     amb(164.35, 168.0, C('Smallwaves'), -25, ini=10, uso='água no casco (leve)', pos=0.0)
     amb(164.35, 168.0, 1201, -25, ini=30, uso='vento (espaço)', pos=0.0)
+    # mesma buzina, mais distante e discreta: nasce sob a última palavra ("navio."), soa sobre o acorde final e o fade do encerramento a dissolve até 168 s
+    if BUZINA: buzina(165.6, 0.7, BUZ_DB[1], (*MV.distancia('s13', 'navio'), 150, 0.35, -10, 0.0, 1200), 0.45, extra_lp=2500, uso='buzina distante no plano final (despedida)')
 
 
 if __name__ == '__main__':
@@ -389,5 +422,5 @@ if __name__ == '__main__':
     suf = os.environ.get('SUFIXO_REFINADO', '')
     res = SE.mixar(saida=f'audio_ep01_refinado{suf}.wav', stems_dir='stems', sufixo=f'_refinado{suf}', relatorio=f'mix_refinado{suf}.json', **P)
     res['parametros_mix'] = P; json.dump(res, open(os.path.join(SE.A, f'mix_refinado{suf}.json'), 'w'), ensure_ascii=False, indent=1)
-    json.dump(AM.USOS, open(os.path.join(SE.A, 'usos_refinado.json'), 'w'), ensure_ascii=False, indent=1)
+    json.dump(AM.USOS, open(os.path.join(SE.A, f'usos_refinado{suf}.json'), 'w'), ensure_ascii=False, indent=1)
     print(len(AM.USOS), 'usos registrados; reservas:', H.TROCAS)

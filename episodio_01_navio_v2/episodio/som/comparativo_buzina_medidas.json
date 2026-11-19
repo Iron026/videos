@@ -1,0 +1,30 @@
+[
+ {
+  "trecho": "Abertura",
+  "versao": "SEM BUZINA",
+  "mix_lufs": -13.4,
+  "pico_dbtp": -2.2,
+  "narracao_lufs": -13.31
+ },
+ {
+  "trecho": "Abertura",
+  "versao": "COM BUZINA",
+  "mix_lufs": -13.4,
+  "pico_dbtp": -2.2,
+  "narracao_lufs": -13.31
+ },
+ {
+  "trecho": "Conclusão",
+  "versao": "SEM BUZINA",
+  "mix_lufs": -12.7,
+  "pico_dbtp": -1.8,
+  "narracao_lufs": -12.66
+ },
+ {
+  "trecho": "Conclusão",
+  "versao": "COM BUZINA",
+  "mix_lufs": -12.7,
+  "pico_dbtp": -1.8,
+  "narracao_lufs": -12.66
+ }
+]

@@ -418,5 +418,20 @@
   "descricao": "Welding on ship in a floating drydock at Gotenius shipyard in Gothenburg.  ",
   "duracao_s": 141.1,
   "arquivo_local": "som/bib/commons/Weldingonshipinfloatingdrydock.ogg"
+ },
+ {
+  "id": "CruiseshipAlbatroshorn",
+  "titulo": "Cruise ship Albatros ship horn",
+  "biblioteca": "Wikimedia Commons",
+  "autor": "Tvabutzku1234",
+  "pagina": "https://commons.wikimedia.org/wiki/File:Cruise_ship_Albatros_ship_horn.ogg",
+  "url_arquivo": "https://upload.wikimedia.org/wikipedia/commons/0/07/Cruise_ship_Albatros_ship_horn.ogg",
+  "licenca": "CC0",
+  "licenca_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+  "atribuicao_obrigatoria": false,
+  "credito": "\"Cruise ship Albatros ship horn\" — Tvabutzku1234, CC0 (domínio público), via Wikimedia Commons",
+  "descricao": "The cruise ship Albatros says good-bye to Bremerhaven by using the ship's horn three times (gravação real)",
+  "duracao_s": 29.0,
+  "arquivo_local": "som/bib/commons/CruiseshipAlbatroshorn.ogg"
  }
 ]

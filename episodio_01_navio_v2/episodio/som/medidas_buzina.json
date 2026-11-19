@@ -1,0 +1,22 @@
+{
+ "abertura": {
+  "buzina_pico_momentaneo": -23.8,
+  "narracao_no_pico": -13.4,
+  "musica_no_pico": -37.0,
+  "resto_do_som_no_pico": -35.3,
+  "instante_do_pico_s": 7.5,
+  "buzina_menos_narracao_max_db": 3.0,
+  "duracao_audivel_s": 4.15,
+  "mix_pico_dbtp": -2.2
+ },
+ "conclusao": {
+  "buzina_pico_momentaneo": -32.1,
+  "narracao_no_pico": -104.2,
+  "musica_no_pico": -33.8,
+  "resto_do_som_no_pico": -34.5,
+  "instante_do_pico_s": 166.7,
+  "buzina_menos_narracao_max_db": -8.9,
+  "duracao_audivel_s": 1.87,
+  "mix_pico_dbtp": -13.5
+ }
+}
