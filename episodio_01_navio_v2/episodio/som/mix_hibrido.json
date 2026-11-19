@@ -52,6 +52,22 @@
   ]
  ],
  "stems_por_grupo": {
+  "cat:agua/ambiencias": {
+   "arquivo": "stems/categorias/ep01_ambiencias_agua_hibrido.wav",
+   "lufs": -33.4,
+   "ativo_s": [
+    0.01,
+    167.91
+   ]
+  },
+  "cat:agua/efeitos": {
+   "arquivo": "stems/categorias/ep01_efeitos_agua_hibrido.wav",
+   "lufs": -23.6,
+   "ativo_s": [
+    2.62,
+    160.93
+   ]
+  },
   "dique/ambiencias": {
    "arquivo": "stems/grupos/ep01_ambiencias_dique_hibrido.wav",
    "lufs": -30.2,
@@ -141,6 +157,12 @@
    "lufs": -22.4
   }
  },
+ "ganhos_stem_db": {
+  "ambiencias": 7.4322,
+  "efeitos": 5.0914,
+  "musica": -24.9023
+ },
+ "master_db": -1.073,
  "efeitos": [],
  "parametros_mix": {
   "efeitos_rel": -3.5,

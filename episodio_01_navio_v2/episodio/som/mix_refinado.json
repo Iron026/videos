@@ -1,0 +1,169 @@
+{
+ "duracao_s": 168.0,
+ "lufs_integrado": -14.03,
+ "pico_verdadeiro_dbtp": -1.8,
+ "reducao_max_limitador_db": -2.32,
+ "lufs_mono": -14.04,
+ "correlacao_LR": 0.988,
+ "inteligibilidade_celular": {
+  "janelas_de_fala": 1210,
+  "snr_voz_mediana_db": 22.8,
+  "snr_p5_db": 11.4,
+  "pct_janelas_acima_10db": 96.5,
+  "fala_plena_p5_db": 12.0,
+  "fala_plena_pct_acima_10db": 97.2
+ },
+ "ducking_max_db": {
+  "ducking_max_db": -18.0,
+  "ducking_medio_na_fala_db": -8.6
+ },
+ "stems": {
+  "efeitos": -26.3,
+  "ambiencias": -36.1,
+  "musica": -34.8,
+  "narracao": -14.1
+ },
+ "loudness_curto_max": {
+  "efeitos": -13.7,
+  "ambiencias": -27.3,
+  "musica": -29.8,
+  "narracao": -7.7
+ },
+ "limitador_acima_1_5db": [
+  [
+   2.6,
+   -0.0
+  ],
+  [
+   24.3,
+   -0.1
+  ]
+ ],
+ "stems_por_grupo": {
+  "cat:agua/ambiencias": {
+   "arquivo": "stems/categorias/ep01_ambiencias_agua_refinado.wav",
+   "lufs": -39.7,
+   "ativo_s": [
+    0.02,
+    167.77
+   ]
+  },
+  "cat:agua/efeitos": {
+   "arquivo": "stems/categorias/ep01_efeitos_agua_refinado.wav",
+   "lufs": -27.7,
+   "ativo_s": [
+    2.62,
+    162.28
+   ]
+  },
+  "dique/ambiencias": {
+   "arquivo": "stems/grupos/ep01_ambiencias_dique_refinado.wav",
+   "lufs": -35.9,
+   "ativo_s": [
+    41.15,
+    48.5
+   ]
+  },
+  "dique/efeitos": {
+   "arquivo": "stems/grupos/ep01_efeitos_dique_refinado.wav",
+   "lufs": -31.6,
+   "ativo_s": [
+    41.45,
+    48.71
+   ]
+  },
+  "estaleiro/ambiencias": {
+   "arquivo": "stems/grupos/ep01_ambiencias_estaleiro_refinado.wav",
+   "lufs": -35.9,
+   "ativo_s": [
+    15.02,
+    41.89
+   ]
+  },
+  "estaleiro/efeitos": {
+   "arquivo": "stems/grupos/ep01_efeitos_estaleiro_refinado.wav",
+   "lufs": -21.1,
+   "ativo_s": [
+    23.58,
+    40.71
+   ]
+  },
+  "guindastes/ambiencias": {
+   "arquivo": "stems/grupos/ep01_ambiencias_guindastes_refinado.wav",
+   "lufs": -48.6,
+   "ativo_s": [
+    14.76,
+    35.34
+   ]
+  },
+  "guindastes/efeitos": {
+   "arquivo": "stems/grupos/ep01_efeitos_guindastes_refinado.wav",
+   "lufs": -33.2,
+   "ativo_s": [
+    15.1,
+    109.34
+   ]
+  },
+  "inundacao/ambiencias": {
+   "arquivo": "stems/grupos/ep01_ambiencias_inundacao_refinado.wav",
+   "lufs": -42.5,
+   "ativo_s": [
+    133.63,
+    137.4
+   ]
+  },
+  "inundacao/efeitos": {
+   "arquivo": "stems/grupos/ep01_efeitos_inundacao_refinado.wav",
+   "lufs": -26.4,
+   "ativo_s": [
+    134.94,
+    154.58
+   ]
+  },
+  "porto/ambiencias": {
+   "arquivo": "stems/grupos/ep01_ambiencias_porto_refinado.wav",
+   "lufs": -34.2,
+   "ativo_s": [
+    94.22,
+    134.41
+   ]
+  },
+  "porto/efeitos": {
+   "arquivo": "stems/grupos/ep01_efeitos_porto_refinado.wav",
+   "lufs": -37.0,
+   "ativo_s": [
+    94.55,
+    132.86
+   ]
+  },
+  "resto/ambiencias": {
+   "arquivo": "stems/grupos/ep01_ambiencias_resto_refinado.wav",
+   "lufs": -37.9
+  },
+  "resto/efeitos": {
+   "arquivo": "stems/grupos/ep01_efeitos_resto_refinado.wav",
+   "lufs": -26.1
+  }
+ },
+ "ganhos_stem_db": {
+  "ambiencias": 7.4322,
+  "efeitos": 5.0914,
+  "musica": -24.9023
+ },
+ "master_db": -0.9148,
+ "efeitos": [],
+ "parametros_mix": {
+  "efeitos_rel": -3.5,
+  "amb_rel": -12.5,
+  "duck_alvo": -13.0,
+  "duck_piso": -18.0,
+  "duck_grave": -3.0,
+  "musica_rel": -16.0,
+  "duck_amb_max": -9.0,
+  "ganhos_fixos_db": {
+   "ambiencias": 7.4322,
+   "efeitos": 5.0914,
+   "musica": -24.9023
+  }
+ }
+}

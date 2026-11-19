@@ -1,0 +1,93 @@
+{
+ "ajuste_refinado_db": -0.158,
+ "narracao_lufs": {
+  "hibrido": -14.23,
+  "refinado": -14.23
+ },
+ "trechos": [
+  {
+   "trecho": "1 · Abertura e bloco na água",
+   "versao": "SOM ANTERIOR",
+   "mix_lufs": -13.6,
+   "pico_dbtp": -1.8,
+   "efeitos_e_ambiencias_lufs": -25.0
+  },
+  {
+   "trecho": "1 · Abertura e bloco na água",
+   "versao": "SOM REFINADO",
+   "mix_lufs": -13.6,
+   "pico_dbtp": -2.0,
+   "efeitos_e_ambiencias_lufs": -28.1
+  },
+  {
+   "trecho": "2 · Dique e empuxo",
+   "versao": "SOM ANTERIOR",
+   "mix_lufs": -14.2,
+   "pico_dbtp": -1.8,
+   "efeitos_e_ambiencias_lufs": -26.9
+  },
+  {
+   "trecho": "2 · Dique e empuxo",
+   "versao": "SOM REFINADO",
+   "mix_lufs": -14.3,
+   "pico_dbtp": -2.0,
+   "efeitos_e_ambiencias_lufs": -33.4
+  },
+  {
+   "trecho": "3a · Guindaste e solda (estaleiro)",
+   "versao": "SOM ANTERIOR",
+   "mix_lufs": -14.1,
+   "pico_dbtp": -1.8,
+   "efeitos_e_ambiencias_lufs": -21.3
+  },
+  {
+   "trecho": "3a · Guindaste e solda (estaleiro)",
+   "versao": "SOM REFINADO",
+   "mix_lufs": -14.4,
+   "pico_dbtp": -2.0,
+   "efeitos_e_ambiencias_lufs": -24.6
+  },
+  {
+   "trecho": "3b · Guindastes e carregamento",
+   "versao": "SOM ANTERIOR",
+   "mix_lufs": -14.2,
+   "pico_dbtp": -1.8,
+   "efeitos_e_ambiencias_lufs": -26.4
+  },
+  {
+   "trecho": "3b · Guindastes e carregamento",
+   "versao": "SOM REFINADO",
+   "mix_lufs": -14.3,
+   "pico_dbtp": -2.0,
+   "efeitos_e_ambiencias_lufs": -30.8
+  },
+  {
+   "trecho": "4 · Avaria e inundação",
+   "versao": "SOM ANTERIOR",
+   "mix_lufs": -14.1,
+   "pico_dbtp": -1.8,
+   "efeitos_e_ambiencias_lufs": -21.8
+  },
+  {
+   "trecho": "4 · Avaria e inundação",
+   "versao": "SOM REFINADO",
+   "mix_lufs": -14.4,
+   "pico_dbtp": -2.0,
+   "efeitos_e_ambiencias_lufs": -26.6
+  },
+  {
+   "trecho": "5 · Conclusão",
+   "versao": "SOM ANTERIOR",
+   "mix_lufs": -13.1,
+   "pico_dbtp": -1.8,
+   "efeitos_e_ambiencias_lufs": -24.1
+  },
+  {
+   "trecho": "5 · Conclusão",
+   "versao": "SOM REFINADO",
+   "mix_lufs": -13.2,
+   "pico_dbtp": -2.0,
+   "efeitos_e_ambiencias_lufs": -25.4
+  }
+ ]
+}

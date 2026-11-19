@@ -6,7 +6,8 @@ from collections import defaultdict
 A = os.path.dirname(os.path.abspath(__file__))
 MIX = {x['id']: x for x in json.load(open(os.path.join(A, 'candidatos_mixkit.json')))}
 COM = {x['id']: x for x in json.load(open(os.path.join(A, 'fontes_commons.json')))}
-usos = json.load(open(os.path.join(A, 'usos_hibrido.json')))
+SUF = os.environ.get('SUFIXO_REG', 'hibrido')
+usos = json.load(open(os.path.join(A, f'usos_{SUF}.json')))
 por_id = defaultdict(list)
 for u in usos: por_id[u['id']].append(u)
 lin, sint = [], []
@@ -26,9 +27,9 @@ for i, us in sorted(por_id.items(), key=lambda kv: (isinstance(kv[0], str), str(
         x = COM[i]; lin.append(dict(id=i, nome=x['titulo'], biblioteca='Wikimedia Commons (Work With Sounds)', autor=x['autor'], url_original=x['pagina'],
                                     url_arquivo=x['url_arquivo'].split('?')[0], licenca=x['licenca'], url_licenca=x['licenca_url'], atribuicao_exigida=True,
                                     credito=x['credito'], arquivo_local=x['arquivo_local'], voz_detectada=x.get('voz_detectada'), usos=onde))
-json.dump(dict(gravacoes=lin, sintese=sint), open(os.path.join(A, 'fontes_efeitos_hibrido.json'), 'w'), ensure_ascii=False, indent=1)
+json.dump(dict(gravacoes=lin, sintese=sint), open(os.path.join(A, f'fontes_efeitos_{SUF}.json'), 'w'), ensure_ascii=False, indent=1)
 nm = sum(1 for x in lin if x['biblioteca'] == 'Mixkit'); nc = len(lin) - nm
-md = ['# Som híbrido do Ep. 01 · fontes, licenças e usos', '',
+md = [f"# Som {({'hibrido': 'híbrido'}).get(SUF, SUF)} do Ep. 01 · fontes, licenças e usos", '',
       f'{len(lin)} gravações reais ({nm} Mixkit · {nc} Wikimedia Commons) · {sum(len(x["usos"]) for x in lin)} usos · {len(sint)} complementos sintéticos', '',
       '## Licenças', '',
       '- **Mixkit — Mixkit Sound Effects Free License** (https://mixkit.co/license/#sfxFree): uso em vídeos do YouTube e projetos comerciais e monetizados permitido; atribuição não exigida; proibido redistribuir o arquivo isolado e registrá-lo em Content ID. Os arquivos ficam fora do git (`som/baixar_efeitos.py`).',
@@ -38,7 +39,7 @@ for x in lin:
     onde = '; '.join(f'{u} ({t} s)' for t, u in x['usos'][:6]) + (f' … (+{len(x["usos"]) - 6})' if len(x['usos']) > 6 else '')
     md.append(f"| {x['id']} | {x['nome']} | {x['biblioteca']} | {x['autor']} | {x['url_original']} | {x['licenca']} | {x['credito'] or 'não'} | `{x['arquivo_local']}` | {onde} |")
 md += ['', '## Complementos sintéticos (originais, sem licença de terceiros)', '', *[f'- {t} s · {u}' for t, u in sint]]
-open(os.path.join(A, 'fontes_efeitos_hibrido.md'), 'w').write('\n'.join(md) + '\n')
+open(os.path.join(A, f'fontes_efeitos_{SUF}.md'), 'w').write('\n'.join(md) + '\n')
 cred = ['Narração: voz gerada com ElevenLabs (elevenlabs.io), plano gratuito — uso não comercial.',
         'ATENÇÃO: o plano gratuito exige "elevenlabs.io" ou "11.ai" no TÍTULO da publicação (ver voz/LICENCA_NARRACAO.md).', '',
         'Efeitos sonoros:', '- Mixkit (Mixkit Sound Effects Free License).']

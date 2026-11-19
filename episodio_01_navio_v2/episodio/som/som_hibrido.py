@@ -18,6 +18,13 @@ from som_real import por, cama, hp_, lp_
 
 EV = SE.EV
 AM.grupo_atual = lambda: SE.GRUPO[0]
+# auditoria: cada som real de ÁGUA também vai para stems/categorias/ (mesma cadeia de mixagem); não altera a mixagem
+AGUA = {1189, 1191, 1195, 1196, 1194, 1206, 1208, 1180, 1304, 2923, 1311, 1198, 1320, 3216, 1306, 1312, 1205, 1178, 1321, 1209, 1877, 2461, 3029, 3140,
+        1303, 1819, 1878, 1323, 1317, 2498, 753, 'Smallwaves', 'Waterintakepumpingstation'}
+def _cat():
+    i = AM.ULTIMO[0]; AM.ULTIMO[0] = None
+    return 'agua' if (i in AGUA or getattr(i, 'reserva_de', '') in AGUA) else None
+SE.CAT_FN = _cat
 
 # Gravações do Wikimedia Commons (Work With Sounds). Se o arquivo não pôde ser baixado (o servidor de arquivos limita
 # este IP de nuvem compartilhado), usa a reserva do Mixkit indicada e registra a troca — nada é inventado.

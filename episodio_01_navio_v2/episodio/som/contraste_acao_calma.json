@@ -1,0 +1,93 @@
+[
+ {
+  "trecho": "impacto abertura",
+  "tipo": "ação (pico momentâneo)",
+  "anterior": -17.4,
+  "refinado": -20.1,
+  "dif_db": -2.7
+ },
+ {
+  "trecho": "encaixe da chapa",
+  "tipo": "ação (pico momentâneo)",
+  "anterior": -12.6,
+  "refinado": -14.1,
+  "dif_db": -1.5
+ },
+ {
+  "trecho": "comporta + jatos",
+  "tipo": "ação (pico momentâneo)",
+  "anterior": -17.8,
+  "refinado": -25.7,
+  "dif_db": -7.9
+ },
+ {
+  "trecho": "impacto retomada",
+  "tipo": "ação (pico momentâneo)",
+  "anterior": -18.6,
+  "refinado": -21.6,
+  "dif_db": -3.1
+ },
+ {
+  "trecho": "experimento",
+  "tipo": "ação (pico momentâneo)",
+  "anterior": -16.6,
+  "refinado": -18.2,
+  "dif_db": -1.6
+ },
+ {
+  "trecho": "pouso contêiner 1",
+  "tipo": "ação (pico momentâneo)",
+  "anterior": -19.8,
+  "refinado": -25.2,
+  "dif_db": -5.4
+ },
+ {
+  "trecho": "ruptura",
+  "tipo": "ação (pico momentâneo)",
+  "anterior": -12.8,
+  "refinado": -13.9,
+  "dif_db": -1.1
+ },
+ {
+  "trecho": "jato da avaria",
+  "tipo": "ação (pico momentâneo)",
+  "anterior": -18.9,
+  "refinado": -22.6,
+  "dif_db": -3.8
+ },
+ {
+  "trecho": "impacto conclusão",
+  "tipo": "ação (pico momentâneo)",
+  "anterior": -16.5,
+  "refinado": -17.2,
+  "dif_db": -0.8
+ },
+ {
+  "trecho": "navegação",
+  "tipo": "calmo (média)",
+  "anterior": -25.9,
+  "refinado": -31.4,
+  "dif_db": -5.5
+ },
+ {
+  "trecho": "empuxo subaquático",
+  "tipo": "calmo (média)",
+  "anterior": -31.3,
+  "refinado": -38.8,
+  "dif_db": -7.4
+ },
+ {
+  "trecho": "calado/marcas",
+  "tipo": "calmo (média)",
+  "anterior": -32.8,
+  "refinado": -37.5,
+  "dif_db": -4.7
+ },
+ {
+  "trecho": "plano final",
+  "tipo": "calmo (média)",
+  "anterior": -32.5,
+  "refinado": -37.2,
+  "dif_db": -4.7
+ }
+]

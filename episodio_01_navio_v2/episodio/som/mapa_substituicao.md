@@ -7,7 +7,7 @@ Cada grupo tem stems próprios em `episodio/stems/grupos/` (efeitos e ambiência
 **Como trocar uma gravação depois da escuta (sem editar código e sem refazer animação):**
 1. Coloque o arquivo novo em `episodio/som/bib/manual/`.
 2. Em `episodio/som/substituicoes.json`, adicione o **ID original** (coluna "Gravação") apontando para o arquivo, com título, autor, URL e licença.
-3. Rode `python3 som/som_hibrido.py && python3 som/registro_hibrido.py && python3 som/mapa_substituicao.py`.
+3. Rode `python3 som/som_hibrido.py && SUFIXO_REG=hibrido python3 som/registro_hibrido.py && SUFIXO_REG=hibrido python3 som/mapa_substituicao.py`.
 4. A troca entra nos mesmos instantes, camadas e níveis. Só a montagem 2D é refeita para o vídeo de revisão.
 
 Atenção: um mesmo ID pode ser usado em vários grupos (ex.: 3076, rangido do casco). A troca por ID vale para todos os usos dele.

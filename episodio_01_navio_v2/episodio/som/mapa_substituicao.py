@@ -3,20 +3,21 @@ se é reserva, uso e o stem de grupo onde ele pode ser ouvido isolado. Gera som/
 import os, json
 from collections import defaultdict
 A = os.path.dirname(os.path.abspath(__file__))
-usos = json.load(open(os.path.join(A, 'usos_hibrido.json'))); mix = json.load(open(os.path.join(A, 'mix_hibrido.json')))['stems_por_grupo']
+SUF = os.environ.get('SUFIXO_REG', 'hibrido'); NOME_SUF = {'hibrido': 'híbrido', 'refinado': 'refinado'}
+usos = json.load(open(os.path.join(A, f'usos_{SUF}.json'))); mix = json.load(open(os.path.join(A, f'mix_{SUF}.json')))['stems_por_grupo']
 NOMES = {'estaleiro': 'Estaleiro (ambiente, encaixe, solda, chapas, corte do casco)', 'guindastes': 'Guindastes (pórtico do estaleiro e portêineres)',
          'porto': 'Porto (ambiente, empilhadeiras, pousos de contêiner, água no casco)', 'dique': 'Dique (comporta, jatos, enchimento)',
          'inundacao': 'Inundação da avaria (ruptura, jato, porão enchendo, rangidos, divisórias)'}
 g = defaultdict(list)
 for u in usos: g[u.get('grupo')].append(u)
-md = ['# Mapa de substituição dos efeitos · Ep. 01 (som híbrido)', '',
+md = [f'# Mapa de substituição dos efeitos · Ep. 01 (som {NOME_SUF.get(SUF, SUF)})', '',
       'Cada grupo tem stems próprios em `episodio/stems/grupos/` (efeitos e ambiências), com a **mesma cadeia de mixagem** do episódio',
       '(reverberação, nível, ducking, fade e master). Somados ao `resto`, reconstroem exatamente os stems de efeitos e ambiências',
       '(erro máx. −132 dBFS). Dá para ouvir um grupo isolado, ou o episódio sem ele, e trocar só aquele grupo.', '',
       '**Como trocar uma gravação depois da escuta (sem editar código e sem refazer animação):**',
       '1. Coloque o arquivo novo em `episodio/som/bib/manual/`.',
       '2. Em `episodio/som/substituicoes.json`, adicione o **ID original** (coluna "Gravação") apontando para o arquivo, com título, autor, URL e licença.',
-      '3. Rode `python3 som/som_hibrido.py && python3 som/registro_hibrido.py && python3 som/mapa_substituicao.py`.',
+      f'3. Rode `python3 som/som_{SUF}.py && SUFIXO_REG={SUF} python3 som/registro_hibrido.py && SUFIXO_REG={SUF} python3 som/mapa_substituicao.py`.',
       '4. A troca entra nos mesmos instantes, camadas e níveis. Só a montagem 2D é refeita para o vídeo de revisão.', '',
       'Atenção: um mesmo ID pode ser usado em vários grupos (ex.: 3076, rangido do casco). A troca por ID vale para todos os usos dele.', '']
 for k in ('estaleiro', 'guindastes', 'porto', 'dique', 'inundacao'):
@@ -33,6 +34,6 @@ for k in ('estaleiro', 'guindastes', 'porto', 'dique', 'inundacao'):
     md.append('')
 outros = [u for u in usos if not u.get('grupo')]
 md += ['## Demais efeitos (abertura, empuxo, retomada, experimento, conclusão)', '',
-       f'{len(outros)} usos, no stem `resto`. A lista completa por gravação está em `som/fontes_efeitos_hibrido.md`.', '']
-open(os.path.join(A, 'mapa_substituicao.md'), 'w').write('\n'.join(md) + '\n')
+       f'{len(outros)} usos, no stem `resto`. A lista completa por gravação está em `som/fontes_efeitos_{SUF}.md`.', '']
+open(os.path.join(A, 'mapa_substituicao.md' if SUF == 'hibrido' else f'mapa_substituicao_{SUF}.md'), 'w').write('\n'.join(md) + '\n')
 print({k: len(v) for k, v in g.items()})
