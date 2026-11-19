@@ -593,7 +593,7 @@ def seg08a(pasta):
             else:                                          # 36 do leito, olhando para cima: o bloco chega e levanta sedimento
                 k = suave((g - 81.5) / 2.35); pos = V(pf.x - 3.4, 1.2, -6.3).lerp(V(pf.x - 3.0, 1.6, -6.1), k); alvo = V(pf.x, 6.5, -4.6); l = 24
             camera_em(cam, pos, alvo, l)
-        rot.add('O mesmo bloco do início', lambda g: estado_p.get('p', V(0, 0, 0)) + Vector((0, -0.8, 0.8)), 74.95, 75.95, dx=0.06, dy=-0.10)
+        # (sem rótulo de retomada: o mesmo cais, o mesmo bloco e o mesmo enquadramento da abertura bastam)
         rot.add('Peso', lambda g: estado_p.get('p', V(0, 0, 0)) + Vector((0, -0.9, -2.0)), 76.4, 83.6, dx=0.07, dy=0.04)
         rot.add('Empuxo', lambda g: estado_p.get('p', V(0, 0, 0)) + Vector((0, -0.9, 0.35)), 76.6, 83.6, dx=0.07, dy=-0.05)
         rot.add('Água deslocada', lambda g: estado_p.get("p", V(0, 0, 0)) + Vector((-1.7, 0, 0.8)), 78.3, 82.0, dx=-0.05, dy=-0.07)
@@ -1171,9 +1171,9 @@ def seg13(pasta):
     for o, t0 in ((B, 161.4), (W, 161.4)): o.visible_shadow = False; surge(o, t0, dur=0.7, escala=True, t1=164.3, dur1=0.05)
     cam = bpy.context.scene.camera or lib.camera((0, -50, 0), (0, 0, 0))
     rot = Rotulos()
-    rot.add('Água deslocada', (-30, -navio.MEIA_BOCA, -T * 0.55), 160.2, 164.3, dx=0.05, dy=0.08)
-    rot.add('Empuxo', (0, yb, KB - T + 7.5), 161.8, 164.3, dx=-0.10, dy=0.02)
-    rot.add('Peso', (8, yb, 12.5 - T + 4.0), 161.8, 164.3, dx=0.06, dy=-0.02)
+    rot.add('Água deslocada', (-30, -navio.MEIA_BOCA, -T * 0.55), 160.2, 163.95, dx=0.05, dy=0.08)
+    rot.add('Empuxo', (0, yb, KB - T + 7.5), 161.8, 163.95, dx=-0.10, dy=0.02)
+    rot.add('Peso', (8, yb, 12.5 - T + 4.0), 161.8, 163.95, dx=0.06, dy=-0.02)
     # 63 retomada do contraste: um bloco maciço de aço cai ao lado (à frente da proa) e afunda; o navio continua flutuando
     a = (hidro.RHO * hidro.carena(navio.CALADO_LEVE)[0] / 7.85) ** (1 / 3)
     cubo = bpy.data.objects.new('cubo_fim', None); lib.ligar(cubo); cubo['anim'] = 1
@@ -1192,14 +1192,14 @@ def seg13(pasta):
                   (157.6, (172, -58, -2), (116, -6, -14), 24), (158.7, (170, -58, -5), (112, -6, -18), 24)]),
          (158.7, [(158.7, (115, -58, -2), (70, -16, 0), 22), (162.4, (45, -54, -2), (5, -16, 0), 22)]),
          (162.4, [(162.4, (30, -52, -2.5), (3, -17, -1), 24), (164.35, (28, -50, -2), (3, -17, -0.5), 24)]),
-         (164.35, [(164.35, (146, -124, 30), (5, 0, 2), 22), (166.3, (160, -138, 35), (5, 0, 2), 22),               # 66 navio inteiro: o vídeo termina
-                   (168.2, (170, -150, 39), (3, 0, 2), 22), (169.5, (174, -155, 41), (2, 0, 2), 22)])]                    # aqui (sem tela de assinatura)
+         (164.35, [(164.35, (146, -124, 30), (5, 0, 2), 22), (166.3, (158, -136, 34.5), (4, 0, 2), 22),             # 66 navio inteiro: o movimento conclui
+                   (168.0, (163, -141, 36.5), (3, 0, 2), 22)])]                                                          # e o vídeo termina aqui
     def anim(g):
         raiz.location.z = -T + 0.08 * math.sin(2 * math.pi * g / 9.0)
         sc = 1.0 if g <= 158.6 else 1e-4
         cubo.location = (XB, 0, zc(g)); cubo.scale = (sc,) * 3
         camera_planos(cam, P, g)
-    exportar_seg(pasta, 154.60, 169.50, anim, rot, extra=dict(segmento='13', calado=T))
+    exportar_seg(pasta, 154.60, 168.00, anim, rot, extra=dict(segmento='13', calado=T))
 
 
 SEGMENTOS = {'0607b': seg0607b, '12x': seg12x, '12': seg12, '13': seg13, '09': seg09, '10': seg10, '11': seg11, '02': seg02, '03': seg03, '04': seg04, '05': seg05, '0607': seg0607, '08a': seg08a, '08b': seg08b}

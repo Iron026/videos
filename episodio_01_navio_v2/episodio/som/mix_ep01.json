@@ -1,0 +1,440 @@
+{
+ "duracao_s": 168.0,
+ "lufs_integrado": -14.03,
+ "pico_verdadeiro_dbtp": -1.8,
+ "reducao_max_limitador_db": -2.82,
+ "lufs_mono": -14.06,
+ "correlacao_LR": 0.98,
+ "inteligibilidade_celular": {
+  "janelas_de_fala": 1210,
+  "snr_voz_mediana_db": 22.7,
+  "snr_p5_db": 9.7,
+  "pct_janelas_acima_10db": 94.6,
+  "fala_plena_p5_db": 10.2,
+  "fala_plena_pct_acima_10db": 95.4
+ },
+ "ducking_max_db": {
+  "ducking_max_db": -24.0,
+  "ducking_medio_na_fala_db": -10.3
+ },
+ "stems": {
+  "efeitos": -24.5,
+  "ambiencias": -36.7,
+  "musica": -36.3,
+  "narracao": -14.1
+ },
+ "loudness_curto_max": {
+  "efeitos": -12.0,
+  "ambiencias": -25.8,
+  "musica": -29.8,
+  "narracao": -7.8
+ },
+ "limitador_acima_1_5db": [
+  [
+   2.6,
+   0.0
+  ],
+  [
+   24.4,
+   -0.1
+  ],
+  [
+   24.5,
+   -0.7
+  ],
+  [
+   25.1,
+   -0.0
+  ],
+  [
+   86.2,
+   -0.0
+  ],
+  [
+   86.3,
+   -1.0
+  ],
+  [
+   134.9,
+   -0.6
+  ],
+  [
+   155.8,
+   -0.0
+  ],
+  [
+   155.9,
+   -1.5
+  ]
+ ],
+ "efeitos": [
+  [
+   0.5,
+   "atrito do bloco de aço no concreto do cais"
+  ],
+  [
+   1.38,
+   "bloco tomba na borda: raspão e baque grave"
+  ],
+  [
+   1.4,
+   "queda (ar deslocado, em câmera lenta)"
+  ],
+  [
+   2.65,
+   "impacto pesado na água (câmera lenta): baque, lençol, cavidade, gotas"
+  ],
+  [
+   2.73,
+   "bolhas do bloco afundando (ouvidas debaixo d'água)"
+  ],
+  [
+   2.75,
+   "água deslocada pela descida"
+  ],
+  [
+   4.01,
+   "impacto no leito com sedimento (abafado)"
+  ],
+  [
+   4.4,
+   "rajada de vento no corte para o mar aberto"
+  ],
+  [
+   5.0,
+   "apito grave e distante do navio"
+  ],
+  [
+   8.4,
+   "massa do costado passando (travelling)"
+  ],
+  [
+   9.0,
+   "água empurrada pela proa (onda de proa)"
+  ],
+  [
+   11.0,
+   "espuma e borrifo da proa"
+  ],
+  [
+   13.3,
+   "esteira se formando e se afastando"
+  ],
+  [
+   15.1,
+   "cabos de aço sob tensão"
+  ],
+  [
+   15.1,
+   "guincho baixando a chapa (catraca e tambor)"
+  ],
+  [
+   15.1,
+   "motor do carro do pórtico (acelera e freia com o movimento)"
+  ],
+  [
+   15.23,
+   "rangido dos cabos ao arrancar/frear"
+  ],
+  [
+   18.4,
+   "rangido metálico sutil da estrutura"
+  ],
+  [
+   20.6,
+   "rangido metálico sutil da estrutura"
+  ],
+  [
+   20.93,
+   "rangido dos cabos ao arrancar/frear"
+  ],
+  [
+   22.13,
+   "rangido dos cabos ao arrancar/frear"
+  ],
+  [
+   22.4,
+   "rangido metálico sutil da estrutura"
+  ],
+  [
+   23.2,
+   "rangido dos cabos ao arrancar/frear"
+  ],
+  [
+   23.6,
+   "ENCAIXE da chapa no casco (contato pesado)"
+  ],
+  [
+   23.62,
+   "vibração estrutural após o encaixe"
+  ],
+  [
+   23.75,
+   "184 estalos de faíscas, um no nascimento de cada faísca"
+  ],
+  [
+   23.75,
+   "arco de solda (zumbido elétrico + crepitação) sincronizado com o brilho"
+  ],
+  [
+   24.0,
+   "arco de solda (zumbido elétrico + crepitação) sincronizado com o brilho"
+  ],
+  [
+   24.68,
+   "arco de solda (zumbido elétrico + crepitação) sincronizado com o brilho"
+  ],
+  [
+   24.85,
+   "arco de solda (zumbido elétrico + crepitação) sincronizado com o brilho"
+  ],
+  [
+   24.9,
+   "arco de solda (zumbido elétrico + crepitação) sincronizado com o brilho"
+  ],
+  [
+   25.1,
+   "arco de solda (zumbido elétrico + crepitação) sincronizado com o brilho"
+  ],
+  [
+   26.0,
+   "39 contatos de chapas chegando ao costado e à proa"
+  ],
+  [
+   33.15,
+   "proa se separando: deslizamento pesado de aço"
+  ],
+  [
+   37.0,
+   "células acendendo (brilho sutil, sem bipe)"
+  ],
+  [
+   39.2,
+   "células acendendo (brilho sutil, sem bipe)"
+  ],
+  [
+   39.6,
+   "estalo térmico no porão vazio"
+  ],
+  [
+   41.65,
+   "válvulas/comporta abrindo (baque metálico grave)"
+  ],
+  [
+   41.7,
+   "sopro de pressão antes da água"
+  ],
+  [
+   42.0,
+   "jatos de água entrando no dique (fluxo forte)"
+  ],
+  [
+   42.25,
+   "água alcançando o casco e os picadeiros"
+  ],
+  [
+   43.4,
+   "enchimento contínuo, cada vez mais grave e profundo"
+  ],
+  [
+   46.05,
+   "estrutura alivia quando o peso deixa os picadeiros (discreto)"
+  ],
+  [
+   46.1,
+   "leve desprendimento da quilha"
+  ],
+  [
+   46.4,
+   "casco livre: água ao redor"
+  ],
+  [
+   49.0,
+   "câmera entra na água"
+  ],
+  [
+   49.15,
+   "bolhas da entrada; o mundo fica abafado"
+  ],
+  [
+   50.75,
+   "mapa de pressão: ondulação grave"
+  ],
+  [
+   51.0,
+   "casco sob pressão (um único som para o grupo de setas)"
+  ],
+  [
+   57.35,
+   "os dois lados empurram juntos (pulso grave, um de cada lado)"
+  ],
+  [
+   58.35,
+   "laterais se anulam: sopro que converge ao centro"
+  ],
+  [
+   59.8,
+   "componentes verticais convergem (ar subindo, sutil)"
+  ],
+  [
+   61.3,
+   "empuxo se forma (impulso grave para cima)"
+  ],
+  [
+   63.2,
+   "volume deslocado se enche (água deslocada)"
+  ],
+  [
+   65.6,
+   "área deslocada destacada (brilho sutil)"
+  ],
+  [
+   67.2,
+   "peso da água deslocada (pulso grave)"
+  ],
+  [
+   71.15,
+   "peso do navio = empuxo (equilíbrio)"
+  ],
+  [
+   74.85,
+   "retomada: o mesmo atrito do bloco no cais (variação)"
+  ],
+  [
+   75.19,
+   "bloco deixa a borda (variação)"
+  ],
+  [
+   75.73,
+   "transição suave para a câmera lenta"
+  ],
+  [
+   76.13,
+   "impacto na água coerente com a abertura (outra variação de camadas)"
+  ],
+  [
+   76.25,
+   "bolhas grandes e lentas (câmera lenta)"
+  ],
+  [
+   76.3,
+   "mundo em câmera lenta: deslocamento grave"
+  ],
+  [
+   82.12,
+   "impacto no leito (tempo volta ao normal)"
+  ],
+  [
+   82.17,
+   "sedimento se espalhando (abafado)"
+  ],
+  [
+   86.24,
+   "bloco maciço entra na água (compacto, pesado)"
+  ],
+  [
+   86.25,
+   "casco entra na água (largo: grande massa de água deslocada)"
+  ],
+  [
+   86.29,
+   "onda de deslocamento do casco"
+  ],
+  [
+   86.44,
+   "bolhas do bloco afundando (abafadas)"
+  ],
+  [
+   87.3167,
+   "água batendo no casco a cada inversão da arfagem (5 vezes, cada vez mais fraca)"
+  ],
+  [
+   89.9,
+   "volume deslocado destacado"
+  ],
+  [
+   91.0,
+   "empuxo = peso (pulso grave)"
+  ],
+  [
+   94.55,
+   "água se movendo ao redor do casco conforme o calado aumenta"
+  ],
+  [
+   97.6,
+   "motores, guinchos e cabos dos 3 portêineres seguindo a velocidade real do carro e do spreader"
+  ],
+  [
+   101.6,
+   "pouso de cada contêiner no instante exato do contato (101,60 · 102,95 · 104,45): baque, cantos, trepidação"
+  ],
+  [
+   105.45,
+   "395 contatos de contêineres no time-lapse (cada um no seu instante de pouso)"
+  ],
+  [
+   118.9,
+   "cota do calado sobe (marulho junto à quilha)"
+  ],
+  [
+   130.5,
+   "marcas: toques muito discretos quando cada linha acende"
+  ],
+  [
+   134.9,
+   "ruptura metálica localizada no costado"
+  ],
+  [
+   135.0,
+   "bolhas sugadas pelo rombo"
+  ],
+  [
+   136.9,
+   "água entrando sob pressão pelo rombo (jato que diminui quando é coberto)"
+  ],
+  [
+   137.0,
+   "tensão grave crescente; alivia gradualmente após as divisórias"
+  ],
+  [
+   137.2,
+   "porão enchendo: turbulência grave e bolhas, crescendo"
+  ],
+  [
+   137.4,
+   "9 golpes de água nas estruturas internas (anteparas, piso)"
+  ],
+  [
+   139.5,
+   "6 rangidos do casco sob carga crescente (mais graves e próximos)"
+  ],
+  [
+   151.05,
+   "divisórias estanques: baque firme e calmo (controle)"
+  ],
+  [
+   155.84,
+   "bloco de 17 m entra na água (impacto enorme, camadas)"
+  ],
+  [
+   155.89,
+   "massa de água deslocada"
+  ],
+  [
+   156.24,
+   "bolhas e descida do bloco (abafadas)"
+  ],
+  [
+   159.6,
+   "volume deslocado sob o casco"
+  ],
+  [
+   161.4,
+   "peso = empuxo (pulso grave)"
+  ],
+  [
+   164.35,
+   "plano final: mar natural ao redor do navio"
+  ]
+ ]
+}
