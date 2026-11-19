@@ -247,7 +247,14 @@ function materialAgua(m) {
         float prof=max(-vW.z,0.0);
         vec3 inscat=vec3(0.020,0.120,0.150)*(uSolCor.x/4.4)*exp(-prof/38.0);           // luz espalhada na coluna d'água
         vec3 c=(fundo*T+inscat*(vec3(1.0)-T))*(1.0-F)+refl*F+uSolCor*spec*F;
-        if(N.z<0.5) c=mix(c, vec3(0.003,0.016,0.040), smoothstep(4.0,95.0,prof)*0.88);   // face lateral do corte: mar profundo
+        if(N.z<0.5){                                                       // face lateral do corte: mar profundo, mas não liso
+          float hz=vW.x+vW.y;                                              // coordenada horizontal ao longo da face
+          float turb=fbm(vec3(hz*0.022, prof*0.03, uTempo*0.025),3,0.5);   // turbidez em grande escala (manchas lentas)
+          float r=fbm(vec3(hz*0.07, prof*0.008+uTempo*0.03, 3.7),3,0.5);   // feixes de luz quase verticais vindos da superfície
+          float raios=smoothstep(0.56,0.82,r)*exp(-prof/16.0);
+          c*=0.86+0.28*turb;
+          c+=vec3(0.05,0.15,0.16)*raios*0.8*(uSolCor.x/4.4);
+          c=mix(c, vec3(0.003,0.016,0.040), smoothstep(4.0,95.0,prof)*0.88); }
         gl_FragColor=vec4(c,1.0);
       }` });
 }
@@ -266,6 +273,40 @@ function materialBrilho(m) {
         gl_FragColor=vec4(uCor*a*uForca*fl*uOp,1.0); }` });
   Object.defineProperty(mat, 'opacity', { get() { return mat.uniforms.uOp.value; }, set(v) { if (mat.uniforms) mat.uniforms.uOp.value = v; }, configurable: true });
   return mat;
+}
+
+// espuma de proa/costado/esteira: desenhada DEPOIS da água (teste de profundidade manual contra a cena opaca), com ruído
+// que escorre para trás na velocidade do navio e máscaras procedurais (vL = coordenadas do navio). uForma:
+// 0 = onda de proa (V que abre a partir da roda de proa), 1 = esteira (V de Kelvin + turbulência central), 2 = faixa ao longo
+// do costado, 3 = crista vertical encostada na roda de proa (altura decai para ré)
+function materialEspuma(m) {
+  return new THREE.ShaderMaterial({ transparent: true, depthWrite: false, depthTest: false, side: THREE.DoubleSide,
+    uniforms: { tProf: { value: null }, uRes: { value: new THREE.Vector2(W, H) }, uNear: { value: 0.5 }, uFar: { value: 8000 }, uT: uTempo,
+      uForma: { value: m.forma ?? 0 }, uX0: { value: m.x0 ?? 0 }, uVel: { value: m.vel ?? 6 }, uDecai: { value: m.decai ?? 20 }, uLarg: { value: m.larg ?? 2 },
+      uAbre: { value: m.abre ?? 0.35 }, uZ0: { value: m.z0 ?? 0 }, uAlt: { value: m.alt ?? 1.5 }, uDens: { value: m.dens ?? 0.9 }, uEsc: { value: m.escala ?? 0.5 },
+      uCor: { value: new THREE.Vector3(...(m.cor || [0.92, 0.96, 0.98])) } },
+    vertexShader: `attribute vec3 aLocal; varying vec3 vL; varying float vZv; void main(){ vL=aLocal; vec4 mv=modelViewMatrix*vec4(position,1.0); vZv=-mv.z; gl_Position=projectionMatrix*mv; }`,
+    fragmentShader: RUIDO + `uniform sampler2D tProf; uniform vec2 uRes; uniform float uNear,uFar,uT,uX0,uVel,uDecai,uLarg,uAbre,uZ0,uAlt,uDens,uEsc; uniform int uForma; uniform vec3 uCor;
+      varying vec3 vL; varying float vZv;
+      float linear(float d){ float z=d*2.0-1.0; return 2.0*uNear*uFar/(uFar+uNear-z*(uFar-uNear)); }
+      void main(){
+        if(linear(texture2D(tProf,gl_FragCoord.xy/uRes).x)<vZv-0.05) discard;          // atrás do casco
+        float d = uForma==1 ? (uX0-vL.x) : (uX0-vL.x);                                  // distância para ré (da roda de proa ou do espelho de popa)
+        if(d<-0.5) discard;
+        float ay=abs(vL.y); float m=0.0;
+        vec3 q=vec3((vL.x+uT*uVel)*uEsc, vL.y*uEsc*1.6, vL.z*uEsc*1.6);
+        float n=fbm(q,3,0.5), n2=fbm(q*2.3+7.0,2,0.5);                                  // poucas oitavas: manchas de alguns metros, sem granulado
+        if(uForma==0){ float b=max(0.0,uLarg*(1.0-exp(-(d-2.5)/uAbre)));                  // meia-boca do casco na linha d'água (ajuste)
+          float e=b+1.6+0.44*d;                                                             // borda externa da onda (abre para ré)
+          m=exp(-d/uDecai)*smoothstep(b-0.4,b+0.25,ay)*(1.0-smoothstep(e-1.6,e,ay))*(1.0-0.5*smoothstep(b,e,ay)); }
+        else if(uForma==1){ float c=exp(-d/uDecai)*(1.0-smoothstep(uLarg+0.12*d-2.0,uLarg+0.12*d,ay));
+          float k=abs(ay-0.36*d); float braco=exp(-d/(uDecai*1.6))*(1.0-smoothstep(0.6,2.2+0.02*d,k)); m=max(c,0.7*braco); }
+        else if(uForma==2){ m=exp(-max(ay-uLarg,0.0)/1.3)*smoothstep(0.0,6.0,d)*exp(-max(d-uDecai,0.0)/30.0); }
+        else { float h=uAlt*exp(-d/uDecai)*(0.55+0.7*n2); float z=vL.z-uZ0;                // crista: topo irregular (ruído), sem borda reta
+          m=(1.0-smoothstep(h*0.25,h,z))*smoothstep(-0.6,0.0,z)*exp(-d/(uDecai*1.5))*smoothstep(-0.5,2.0,d)*0.85; }
+        float a=clamp(m*1.4,0.0,1.0)*uDens*smoothstep(0.34-0.3*m,0.58-0.25*m,n*0.75+n2*0.35);
+        if(a<0.01) discard;
+        gl_FragColor=vec4(uCor*(0.95+0.1*n2),clamp(a,0.0,0.97)); }` });
 }
 
 function materialRaio(m) {
@@ -303,6 +344,7 @@ await Promise.all(meta.materiais.map(async (m) => {
   g.setAttribute('aLocal', new THREE.InterleavedBufferAttribute(ib, 3, 6)); g.setAttribute('aGen', new THREE.InterleavedBufferAttribute(ib, 3, 9));
   tris += n / 3;
   if (m.tipo === 'agua') { const mat = materialAgua(m); matsAgua.push(mat); const ma = new THREE.Mesh(g, mat); registrarAnim(ma, m); cenaTransp.add(ma); return; }
+  if (m.tipo === 'espuma') { const mat = materialEspuma(m); matsRaio.push(mat); const e = new THREE.Mesh(g, mat); e.renderOrder = 4; registrarAnim(e, m); cenaTransp.add(e); return; }
   if (m.tipo === 'raio_luz') { const mat = materialRaio(m); matsRaio.push(mat); const r = new THREE.Mesh(g, mat); r.renderOrder = 2; cenaTransp.add(r); return; }
   if (m.tipo === 'fantasma') { const mat = new THREE.MeshBasicMaterial({ color: new THREE.Color(...m.cor).multiplyScalar(m.brilho ?? 1), transparent: true, opacity: m.alfa ?? 0.35, depthWrite: false, side: THREE.DoubleSide }); const mf = new THREE.Mesh(g, mat); registrarAnim(mf, m); scene.add(mf); return; }
   if (m.tipo === 'brilho') { const mb = new THREE.Mesh(g, materialBrilho(m)); mb.renderOrder = 5; registrarAnim(mb, m); scene.add(mb); return; }

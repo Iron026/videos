@@ -663,6 +663,13 @@ def _rotular(f, tipo):
     return g
 
 
+def mat_espuma(nome, forma=0, x0=0.0, vel=6.0, decai=20.0, larg=2.0, abre=0.35, z0=0.0, alt=1.5, dens=0.9, escala=0.5, cor='#eef6fa'):
+    """Espuma procedural (motor em tempo real): forma 0 onda de proa, 1 esteira, 2 faixa do costado, 3 crista na roda de proa."""
+    if nome in _MATS: return _MATS[nome]
+    m, nt, p = _mat(nome); p.inputs['Base Color'].default_value = srgb(cor); p.inputs['Alpha'].default_value = 0.6
+    _MATS[nome] = m; return m
+
+
 def mat_brilho(nome, cor='#ffffff', forca=1.5, raio=1.0, queda=2.0, tremor=0.3, semente=0.0):
     """Brilho aditivo localizado (motor em tempo real): intensidade cai do centro (origem do objeto) até 'raio' e tremula por
     quadro. Simula o arco de solda e a luz que ele joga nas chapas próximas, sem luz dinâmica."""
@@ -673,7 +680,7 @@ def mat_brilho(nome, cor='#ffffff', forca=1.5, raio=1.0, queda=2.0, tremor=0.3, 
     _MATS[nome] = m; return m
 
 
-for _nome, _tipo in [('mat_pintura', 'pintura'), ('mat_brilho', 'brilho'), ('mat_aco', 'aco'), ('mat_emissivo', 'emissivo'), ('mat_concreto', 'concreto'),
+for _nome, _tipo in [('mat_pintura', 'pintura'), ('mat_brilho', 'brilho'), ('mat_espuma', 'espuma'), ('mat_aco', 'aco'), ('mat_emissivo', 'emissivo'), ('mat_concreto', 'concreto'),
                      ('mat_areia', 'areia'), ('mat_agua', 'agua'), ('mat_vidro_escuro', 'vidro'), ('mat_conteiner', 'conteiner'),
                      ('mat_faixas_z', 'faixas_z'), ('mat_bolha', 'bolha'), ('mat_raio_luz', 'raio_luz'),
                      ('mat_corte_linha_dagua', 'corte_ld'), ('mat_fantasma', 'fantasma')]:

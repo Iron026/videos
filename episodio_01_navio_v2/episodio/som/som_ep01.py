@@ -402,7 +402,10 @@ def gerar_sintetico():
     musica()
 
 
-def mixar(saida='audio_ep01.wav', stems_dir='stems', sufixo='', relatorio='mix_ep01.json', efeitos_rel=-2.0, amb_rel=-16.0):
+def mixar(saida='audio_ep01.wav', stems_dir='stems', sufixo='', relatorio='mix_ep01.json', efeitos_rel=-2.0, amb_rel=-16.0,
+          duck_alvo=-13.0, duck_piso=-24.0, duck_grave=-6.0, musica_rel=-16.0, duck_amb_max=None):
+    """duck_alvo: banda da voz do fundo fica este tanto abaixo da fala; duck_piso: redução máxima; duck_grave: redução fixa
+    dos graves durante a fala; duck_amb_max: limite próprio (menor) para as ambiências — o ambiente não some sob a voz."""
     # reverberação por ambiente (envios → convolução com a resposta ao impulso daquele ambiente)
     for (stem, amb), s in SENDS.items():
         ir = S.resposta_impulso(amb)
@@ -415,7 +418,7 @@ def mixar(saida='audio_ep01.wav', stems_dir='stems', sufixo='', relatorio='mix_e
     # graves sob controle: tudo que não é voz perde o subgrave; efeitos e ambiências sem lixo abaixo de 35 Hz
     for k in STEMS: STEMS[k] = hpz(STEMS[k], 35, 2)
     # níveis relativos (medidos): ambiência ~19 dB abaixo da voz, efeitos ~7 dB abaixo, música ~17 dB abaixo
-    Lv = lufs(VOZ); alvo = {'ambiencias': Lv + amb_rel, 'efeitos': Lv + efeitos_rel, 'musica': Lv - 16}   # antes do ducking
+    Lv = lufs(VOZ); alvo = {'ambiencias': Lv + amb_rel, 'efeitos': Lv + efeitos_rel, 'musica': Lv + musica_rel}   # antes do ducking
     for k, a_ in alvo.items(): STEMS[k] *= db(a_ - lufs(STEMS[k]))
     # ducking dinâmico multibanda: durante a fala a banda da voz (200 Hz–4 kHz) de efeitos/ambiências fica ≥ 12 dB abaixo
     w = n_(0.03); ativa = np.clip(lpz((np.sqrt(media_movel(v ** 2, w)) > db(-42)).astype(float), 3.0), 0, 1)
@@ -427,14 +430,15 @@ def mixar(saida='audio_ep01.wav', stems_dir='stems', sufixo='', relatorio='mix_e
         x = STEMS[k]; baixo = lpz(x, 200, 4); alto = hpz(x, 5000, 4); bandas[k] = (baixo, x - baixo - alto, alto)
     meio_tot = sum(b[1] for b in bandas.values())
     sm = np.sqrt(media_movel((meio_tot ** 2).mean(1), w)) + 1e-9
-    g = np.minimum(1.0, vm * db(-13) / sm); g = np.maximum(g, db(-24)); g = 1 - (1 - g) * ativa
+    g = np.minimum(1.0, vm * db(duck_alvo) / sm); g = np.maximum(g, db(duck_piso)); g = 1 - (1 - g) * ativa
     a_at16, a_lb16 = math.exp(-16 / (0.010 * SR)), math.exp(-16 / (0.45 * SR)); gd = g[::16]; out = np.empty_like(gd); cur = 1.0
     for i, val in enumerate(gd):          # ataque 10 ms, liberação 450 ms (pausas curtas entre palavras não "bombeiam")
         cur = cur * a_at16 + val * (1 - a_at16) if val < cur else cur * a_lb16 + val * (1 - a_lb16); out[i] = cur
     gs = np.repeat(out, 16)[:N]
-    fixo_baixo = 1 - (1 - db(-6)) * ativa
+    fixo_baixo = 1 - (1 - db(duck_grave)) * ativa
     for k, (baixo, meio, alto) in bandas.items():
-        STEMS[k] = baixo * fixo_baixo[:, None] + meio * gs[:, None] + alto * np.sqrt(gs)[:, None]
+        gk = gs if (duck_amb_max is None or k != 'ambiencias') else np.maximum(gs, db(duck_amb_max))
+        STEMS[k] = baixo * fixo_baixo[:, None] + meio * gk[:, None] + alto * np.sqrt(gk)[:, None]
     rel = dict(ducking_max_db=round(float(20 * np.log10(gs.min())), 1), ducking_medio_na_fala_db=round(float(20 * np.log10(gs[ativa > 0.5].mean())), 1))
     # final natural: tudo que não é voz desce junto entre 166,4 e 168,0 s (a voz já terminou em 166,12 s)
     fim = np.clip((DUR - 0.03 - tt(N)) / 1.6, 0, 1) ** 1.5

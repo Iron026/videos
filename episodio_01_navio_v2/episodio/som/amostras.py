@@ -7,13 +7,18 @@ from scipy.signal import resample_poly
 SR = 48000
 A = os.path.dirname(os.path.abspath(__file__))
 FONTES = {x['id']: x for x in json.load(open(os.path.join(A, 'candidatos_mixkit.json')))}
+# Wikimedia Commons (Work With Sounds, CC BY 4.0): id = nome do arquivo sem 'WWS ' e sem '.ogg' (ex.: 'Shipyardcrane')
+_CM = os.path.join(A, 'fontes_commons.json')
+if os.path.exists(_CM):
+    for x in json.load(open(_CM)): FONTES[x['id']] = x
 USOS = []          # (t, id, título, ini, dur, uso)
 _C = {}
 
 
 def carregar(i):
     if i not in _C:
-        a, sr = sf.read(os.path.join(A, 'bib', 'mixkit', f'{i}.wav'), always_2d=True)
+        f = os.path.join(A, 'bib', 'mixkit', f'{i}.wav') if isinstance(i, int) else os.path.join(A, 'bib', 'commons', f'{i}.ogg')
+        a, sr = sf.read(f, always_2d=True)
         if a.shape[1] == 1: a = np.repeat(a, 2, 1)
         if sr != SR:
             fr = Fraction(SR, sr).limit_denominator(1000); a = resample_poly(a, fr.numerator, fr.denominator, axis=0)
@@ -46,7 +51,9 @@ def trecho(i, ini=0.0, dur=None, fi=0.004, fo=0.08, tom=1.0, norm='pico', ref=-1
 
 def laco(i, dur, ini=0.0, fim=None, xf=0.6, ref=-20.0, t=None, uso=''):
     """Cama contínua de 'dur' s a partir de um trecho da gravação, emendada com fusões de xf s (sem alterar altura)."""
-    a = carregar(i); s0 = int(ini * SR); s1 = len(a) if fim is None else int(fim * SR); base = a[s0:s1]
+    a = carregar(i); s0 = int(ini * SR); s1 = len(a) if fim is None else min(len(a), int(fim * SR))
+    if s1 - s0 < int(2 * xf * SR) + SR: s0, s1 = 0, len(a)          # trecho pedido além do fim da gravação: usa a gravação inteira
+    base = a[s0:s1]
     n = int(dur * SR); k = int(xf * SR); out = np.zeros((n, 2)); pos = 0; rampa = np.linspace(0, 1, k)[:, None]
     while pos < n:
         seg = base.copy(); m = min(len(seg), n - pos)

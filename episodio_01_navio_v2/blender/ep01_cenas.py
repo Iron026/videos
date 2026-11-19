@@ -139,20 +139,29 @@ def mar_aberto(ext=700, res=4.0, fundo=-70):
 
 
 # =====================================================================================  SEG02 · o gigante (4,40–15,10)
-def espuma(raiz, T, L=104.0):
-    """Onda de proa e esteira (espuma) presas ao navio, na superfície (z = T em coordenadas do navio)."""
-    mf = lib.mat_fantasma('espuma', '#ffffff', alfa=0.85, brilho=1.45); objs = []
-    zt = T + 0.28
-    for s_ in (1, -1):   # onda de proa (V) e faixa de espuma ao longo do costado
-        objs.append(lib.malha('onda_proa', [(L - 1, s_ * 0.5, zt), (L - 1, s_ * 3.6, zt), (L - 36, s_ * 23.0, zt), (L - 30, s_ * 16.5, zt)], [(0, 1, 2, 3)], mf))
-        objs.append(lib.malha('onda_proa_v', [(L - 2, s_ * (navio.meia_boca(L - 2, T) + 0.1), T - 0.3), (L - 20, s_ * (navio.meia_boca(L - 20, T) + 0.1), T - 0.3), (L - 20, s_ * (navio.meia_boca(L - 20, T) + 0.4), T + 1.1), (L - 2, s_ * (navio.meia_boca(L - 2, T) + 0.4), T + 1.6)], [(0, 1, 2, 3)], mf))
-        objs.append(lib.malha('espuma_costado', [(L - 6, s_ * (navio.meia_boca(L - 6, T) + 0.2), zt), (L - 6, s_ * (navio.meia_boca(L - 6, T) + 2.2), zt),
-                                                 (-40, s_ * (navio.MEIA_BOCA + 3.0), zt), (-40, s_ * (navio.MEIA_BOCA + 0.3), zt)], [(0, 1, 2, 3)],
-                              lib.mat_fantasma('espuma_c', '#f4fbff', alfa=0.5, brilho=1.3)))
-        objs.append(lib.malha('esteira', [(-96, s_ * 4.0, zt), (-96, s_ * 9.0, zt), (-260, s_ * 46.0, zt), (-260, s_ * 30.0, zt)], [(0, 1, 2, 3)],
-                              lib.mat_fantasma('esteira', '#e8f4f8', alfa=0.28, brilho=1.1)))
-    objs.append(lib.malha('esteira_c', [(-98, -5.0, zt), (-98, 5.0, zt), (-300, 14.0, zt), (-300, -14.0, zt)], [(0, 1, 2, 3)],
-                          lib.mat_fantasma('esteira2', '#f0f8fb', alfa=0.35, brilho=1.15)))
+def espuma(raiz, T, L=104.0, vel=6.0):
+    """Onda de proa, crista na roda de proa, faixa de espuma ao longo do costado e esteira — espuma PROCEDURAL do motor
+    (material 'espuma': ruído que escorre para ré na velocidade do navio, máscaras pela geometria da proa e pelo ângulo
+    de Kelvin, desenhada sobre a água). Malhas no espaço do navio (superfície em z = T)."""
+    zt = T + 0.06; objs = []
+    def grade(nome, x0, x1, y0, y1, nx, ny, mat):
+        vs = [(x0 + (x1 - x0) * i / nx, y0 + (y1 - y0) * j / ny, zt) for i in range(nx + 1) for j in range(ny + 1)]
+        fs = [(i * (ny + 1) + j, (i + 1) * (ny + 1) + j, (i + 1) * (ny + 1) + j + 1, i * (ny + 1) + j + 1) for i in range(nx) for j in range(ny)]
+        return lib.malha(nome, vs, fs, mat)
+    objs.append(grade('espuma_proa', L - 75, L + 3, -30, 30, 60, 30, lib.mat_espuma('espuma_proa', 0, x0=L - 0.5, vel=vel, decai=26, larg=navio.MEIA_BOCA, abre=19.0, dens=1.0, escala=0.2)))
+    for s_ in (1, -1):
+        objs.append(grade('espuma_costado', -88, 58, s_ * (navio.MEIA_BOCA - 0.4), s_ * (navio.MEIA_BOCA + 6), 70, 8,
+                          lib.mat_espuma('espuma_costado', 2, x0=58, vel=vel, decai=120, larg=navio.MEIA_BOCA, dens=0.8, escala=0.22)))
+        for (nome_, afast, inc, alt_, dec_, xmax) in (('crista_proa', 0.35, 0.25, 2.4, 13, 40), ('borrifo_proa', 2.2, 0.9, 1.3, 16, 46)):
+            xs_ = np.linspace(L - 0.6, L - xmax, 40); zs_ = np.linspace(T - 0.6, T + alt_ + 0.6, 8); vs, fs = [], []
+            for x in xs_:
+                b = navio.meia_boca(x, T) + afast + 0.18 * (L - x) * (afast > 1)      # a lâmina externa abre com a onda
+                for z in zs_: vs.append((x, s_ * (b + inc * max(z - T, 0)), z))
+            nz = len(zs_)
+            for a in range(len(xs_) - 1):
+                for k in range(nz - 1): fs.append((a * nz + k, (a + 1) * nz + k, (a + 1) * nz + k + 1, a * nz + k + 1))
+            objs.append(lib.malha(nome_, vs, fs, lib.mat_espuma(nome_, 3, x0=L - 0.5, vel=vel, decai=dec_, z0=T, alt=alt_, dens=1.0, escala=0.32)))
+    objs.append(grade('esteira', navio.POPA - 260, navio.POPA + 4, -90, 90, 80, 45, lib.mat_espuma('esteira', 1, x0=navio.POPA + 2, vel=vel, decai=70, larg=5.0, dens=0.85, escala=0.12)))
     for o in objs: o.parent = raiz; o.visible_shadow = False
     return objs
 
@@ -1090,23 +1099,28 @@ def seg12(pasta):
             p = M @ Vector((xcm - 6.0, -13.0, lv + 2.0)); a = M @ Vector((xcm + 2.0, bhi - 1.0, lv)); l = 24
         else:
             K = [(141.8, (26, -150, 6), (22, 30, -1), 32), (144.6, (24, -136, 4), (23, 30, -1), 32),       # 59 o porão enche; o navio afunda
-                 (144.61, (4, -300, 5), (4, 40, -1.5), 28), (147.8, (4, -300, 5), (4, 40, -1.5), 28),      # 60 calado e trim (navio inteiro)
-                 (147.81, (8, -270, 9), (6, 40, -1), 28), (150.6, (8, -262, 9), (6, 40, -1), 28),          # 61 hipótese grave
+                 # 60 calado e trim, legível no vertical: perto da PROA a linha d'água antiga (amarela) fica 2,6 m abaixo do
+                 # nível do mar (branca); perto da POPA as duas quase coincidem — o ângulo real (0,71°), sem exagero
+                 (144.61, (88, -62, 0.5), (88, 40, -1.2), 30), (146.2, (86, -58, 0.4), (88, 40, -1.2), 30),          # 60a proa
+                 (146.21, (-70, -50, 0.0), (-70, 40, -2.2), 34), (147.8, (-68, -47, 0.0), (-70, 40, -2.2), 34),      # 60b popa (sem a superestrutura no quadro)
+                 (147.81, (110, -190, 38), (0, 0, -3), 26), (150.6, (104, -180, 35), (0, 0, -3), 26),                # 61 hipótese grave (3/4 elevado)
                  (150.61, (34, -64, 4), (24, 20, 0), 30), (152.6, (32, -60, 4), (24, 20, 0), 30),          # 62a anteparas (close)
                  (152.61, (24, -150, 4), (23, 30, -1), 32), (154.6, (24, -136, 3), (23, 30, -1), 32)]      # 62b geral
-            cortes = [141.8, 144.6, 147.8, 150.6, 152.6]
+            cortes = [141.8, 144.6, 146.2, 147.8, 150.6, 152.6]
             i = max(j for j in range(len(cortes)) if cortes[j] <= g + 1e-6)
             p, a, l = trilha(K[2 * i:2 * i + 2], g)
         camera_em(cam, p, a, l)
     rot = Rotulos()
     rot.add('Corte ilustrativo', lambda g: raiz.matrix_world @ Vector((xcm - 6, 0, 17.0)), 137.1, 139.3, dx=0.05, dy=-0.06)
-    rot.add('Duplo fundo (estanque)', lambda g: raiz.matrix_world @ Vector((xcm - 30, 0, 1.1)), 141.9, 144.4, dx=0.05, dy=0.08)
+    rot.add('Duplo fundo (estanque)', lambda g: raiz.matrix_world @ Vector((xcm - 30, 0, 1.1)), 141.9, 143.3, dx=0.05, dy=0.08)
     rot.add('Tanque lateral (estanque)', lambda g: raiz.matrix_world @ Vector((xcm - 8, navio.meia_boca(xcm - 8, 6.0) - 1.2, 6.0)), 139.7, 143.6, dx=-0.05, dy=0.08)
-    rot.add('Linha d\'água antes', lambda g: raiz.matrix_world @ Vector((-30, -0.35, T0)), 143.4, 145.6, dx=0.04, dy=0.07)
-    rot.add('Nível do mar', (30, -0.6, 0.02), 143.4, 145.6, dx=0.04, dy=-0.07)
+    rot.add('Linha d\'água antes', lambda g: raiz.matrix_world @ Vector((8, -0.35, T0)), 143.4, 144.55, dx=0.04, dy=0.07)
+    rot.add('Nível do mar', (30, -0.6, 0.02), 143.4, 144.55, dx=0.04, dy=-0.07)
+    rot.add('Linha d\'água antes', lambda g: raiz.matrix_world @ Vector((84, -0.35, T0)), 144.75, 145.45, dx=-0.30, dy=0.09)   # plano da proa
+    rot.add('Nível do mar', (84, -0.6, 0.02), 144.75, 145.45, dx=-0.30, dy=-0.09)
     dproa = R['proa'] - T0; dpopa = R['popa'] - T0
-    rot.add(f'Proa: +{dproa:.1f} m'.replace('.', ','), lambda g: raiz.matrix_world @ Vector((96, -0.35, T0)), 145.7, 147.8, dx=-0.08, dy=0.09)
-    rot.add(f'Popa: +{dpopa:.1f} m'.replace('.', ','), lambda g: raiz.matrix_world @ Vector((-92, -0.35, T0)), 145.7, 147.8, dx=0.05, dy=0.09)
+    rot.add(f'Proa: +{dproa:.1f} m'.replace('.', ','), lambda g: raiz.matrix_world @ Vector((88, -0.35, T0)), 145.5, 146.1, dx=0.06, dy=0.10)
+    rot.add(f'Popa: +{dpopa:.1f} m'.replace('.', ','), lambda g: raiz.matrix_world @ Vector((-86, -0.35, T0)), 146.35, 147.75, dx=0.06, dy=0.10)
     rot.add('Hipótese: sem divisórias', (-40, 0, -4), 148.0, 150.6, dx=0.04, dy=0.10)
     rot.add('Divisórias estanques', lambda g: raiz.matrix_world @ Vector((COMP_AVARIA[1], 0, 12.0)), 151.2, 154.6, dx=0.05, dy=-0.07)
     exportar_seg(pasta, 137.00, 154.60, anim, rot, extra=dict(segmento='12', hidrostatica=R, compartimento=COMP_AVARIA))

@@ -25,8 +25,9 @@ SEGS = [('s01', 0.00, 4.40), ('s02', 4.40, 15.10), ('s03', 15.10, 30.30), ('s04'
         ('s0607', 48.00, 63.10), ('s0607b', 63.10, 65.80), ('s0607_2', 65.80, 74.85), ('s08a', 74.85, 83.85), ('s08b', 83.85, 94.55), ('s09', 94.55, 117.20), ('s10', 117.20, 123.65),
         ('s11', 123.65, 134.00), ('s12x', 134.00, 137.00), ('s12', 137.00, 154.60), ('s13', 154.60, DUR)]
 FUSAO = 0.20
+FUSOES = {'s04': 0.90}   # passagem de tempo do estaleiro (casco em andamento → navio pronto): fusão mais longa + aviso
 # avisos honestos de tempo (canto superior direito)
-CHIPS = [(2.05, 3.70, 'Câmera lenta'), (41.6, 48.0, 'Tempo acelerado'), (76.15, 82.1, 'Câmera lenta'),
+CHIPS = [(2.05, 3.70, 'Câmera lenta'), (29.95, 32.0, 'Meses depois'), (41.6, 48.0, 'Tempo acelerado'), (76.15, 82.1, 'Câmera lenta'),
          (105.4, 117.2, 'Tempo acelerado'), (137.0, 146.0, 'Tempo acelerado')]
 
 
@@ -149,11 +150,13 @@ def assinatura_discreta(img, g, t0=166.45):
 
 
 def compor(g):
-    ativos = [(n, a, b) for n, a, b in SEGS if a - FUSAO / 2 <= g < b + FUSAO / 2]
-    if len(ativos) == 1: n, a, b = ativos[0]; img = quadro_seg(n, a, g); rots = [(n, a, 1.0)]
+    fz = lambda i: FUSOES.get(SEGS[i][0], FUSAO)          # fusão na entrada do segmento i
+    fs = lambda i: fz(i + 1) if i + 1 < len(SEGS) else FUSAO  # fusão na saída do segmento i
+    ativos = [(n, a, b, fz(i)) for i, (n, a, b) in enumerate(SEGS) if a - fz(i) / 2 <= g < b + fs(i) / 2]
+    if len(ativos) == 1: n, a, b, _ = ativos[0]; img = quadro_seg(n, a, g); rots = [(n, a, 1.0)]
     else:
-        (n1, a1, b1), (n2, a2, b2) = ativos[0], ativos[1]
-        k = min(1.0, max(0.0, (g - (a2 - FUSAO / 2)) / FUSAO))
+        (n1, a1, b1, _), (n2, a2, b2, f2) = ativos[0], ativos[1]
+        k = min(1.0, max(0.0, (g - (a2 - f2 / 2)) / f2)); k = k * k * (3 - 2 * k)
         img = Image.blend(quadro_seg(n1, a1, g), quadro_seg(n2, a2, g), k); rots = [(n1, a1, 1 - k), (n2, a2, k)]
     for (n, a, k) in rots:
         for (txt, u, v, al, dx, dy) in rotulos(n, a, g): desenhar_rotulo(img, txt, u, v, al * k, dx, dy)
