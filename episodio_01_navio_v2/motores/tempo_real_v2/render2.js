@@ -15,6 +15,7 @@ import { GTAOPass } from 'three/addons/postprocessing/GTAOPass.js';
 import { OutputPass } from 'three/addons/postprocessing/OutputPass.js';
 import { Pass, FullScreenQuad } from 'three/addons/postprocessing/Pass.js';
 import { CopyShader } from 'three/addons/shaders/CopyShader.js';
+import { UnrealBloomPass } from 'three/addons/postprocessing/UnrealBloomPass.js';
 
 const P = new URLSearchParams(location.search);
 const CENA = P.get('cena') || '../cena2_q3/';
@@ -26,6 +27,7 @@ const SMAP = parseInt(P.get('smap') || '4096');
 const CACHE = P.get('cache') === '1';
 const ENV = parseFloat(P.get('env') || '1');
 const MSAA = parseInt(P.get('msaa') || '4');
+const BLOOM = parseFloat(P.get('bloom') || '0');      // brilho suave só nas luzes fortes (solda, reflexo do sol, linhas luminosas)
 const meta = await (await fetch(CENA + 'cena.json')).json();
 const W = Math.round(meta.camera.largura * ESCALA), H = Math.round(meta.camera.altura * ESCALA);
 THREE.Object3D.DEFAULT_UP.set(0, 0, 1);
@@ -407,6 +409,7 @@ function materialRaio(m) {
 // ------------------------------------------------------------------ geometria
 const matProfOcl = new THREE.MeshBasicMaterial({ colorWrite: false, side: THREE.DoubleSide });
 let tris = 0; const caixa = new THREE.Box3(); const matsAgua = [], matsRaio = [];
+const SEM_SOMBRA = new Set(meta.sem_sombra || []);   // interiores fechados (porão): sem sol direto atravessando o corte ilustrativo
 const ANIM = meta.animacao; const animados = {}; const SURG = meta.surgir || {}; const surgem = [];
 const cenaOclusor = new THREE.Scene();   // só profundidade: impede a água de aparecer dentro do casco em cortes
 function registrarAnim(mesh, m) {
@@ -436,7 +439,7 @@ await Promise.all(meta.materiais.map(async (m) => {
   if (m.tipo === 'oclusor') { const mo = new THREE.Mesh(g, matProfOcl); registrarAnim(mo, m); cenaOclusor.add(mo); return; }
   if (m.tipo === 'bolha') { const mat = new THREE.MeshPhysicalMaterial({ color: 0xf2fbff, transmission: 0, transparent: true, opacity: 0.55, roughness: 0.05, emissive: 0x9fd8ee, emissiveIntensity: 0.35 }); const mb = new THREE.Mesh(g, mat); mb.renderOrder = 3; registrarAnim(mb, m); cenaTransp.add(mb); return; }
   const mesh = new THREE.Mesh(g, criarMaterial(m)); registrarAnim(mesh, m);
-  mesh.castShadow = m.tipo !== 'emissivo' && !/^(mar_longe|longe)/.test(m.chave || ''); mesh.receiveShadow = true; scene.add(mesh);
+  mesh.castShadow = m.tipo !== 'emissivo' && !/^(mar_longe|longe)/.test(m.chave || ''); mesh.receiveShadow = !SEM_SOMBRA.has(m.nome); scene.add(mesh);
   g.computeBoundingBox(); if (!/^(mar_longe|longe|chao|ceu)/.test(m.chave || '')) caixa.union(g.boundingBox);
 }));
 
@@ -504,6 +507,7 @@ const composer = new EffectComposer(renderer, rt);
 composer.addPass(new RenderPass(scene, camera));
 if (AO) { const ao = new GTAOPass(scene, camera, W, H); ao.updateGtaoMaterial({ radius: 2.5, distanceExponent: 1.5, thickness: 2.0, scale: 1.0, samples: AO_AMOSTRAS }); ao.blendIntensity = 0.9; composer.addPass(ao); }
 if (cenaTransp.children.length) composer.addPass(new PassoTransp());
+if (BLOOM > 0) composer.addPass(new UnrealBloomPass(new THREE.Vector2(W, H), BLOOM, 0.4, 1.6));
 composer.addPass(new OutputPass());
 if (CACHE) renderer.shadowMap.autoUpdate = false;
 const gl = renderer.getContext(); const px = new Uint8Array(4);

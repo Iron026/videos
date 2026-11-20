@@ -993,9 +993,9 @@ def seg12(pasta):
     T0 = calado_com(398)
     R = hidro.estabilidade_avaria(T0, COMP_AVARIA); T1, th1 = R['T1'], math.radians(R['trim_graus'])
     raiz = bpy.data.objects.new('navio', None); lib.ligar(raiz); raiz['anim'] = 1
-    mh = navio.mat_casco(); mi = lib.mat_pintura('interno', '#9a9d97', rug=0.6, metal=0.15)
+    mh = navio.mat_casco(); mi = lib.mat_pintura('interno', '#767a74', rug=0.6, metal=0.15)          # porão: primer cinza (sem sol direto)
     mcorte = lib.mat_pintura('corte', '#f3b544', rug=0.5); mant = lib.mat_pintura('antepara', navio.COR['primer_verm'], rug=0.6, metal=0.15)
-    mtq = lib.mat_pintura('tanque', '#7f8a8f', rug=0.6, metal=0.15)
+    mtq = lib.mat_pintura('tanque', '#677176', rug=0.6, metal=0.15)
     rec = lambda z: hidro.L_TANQUE if z < hidro.Z_TANQUE else hidro.CASCO
     partes = [meia_casca('casco_meio', mh), meia_casca('casco_int', mi, recuo=rec, z_base=2.2)]
     partes.append(faixa_corte('corte_fundo', mcorte, lambda x: navio.quilha(x), lambda x: navio.quilha(x) + 2.2))
@@ -1023,6 +1023,19 @@ def seg12(pasta):
     for j in range(len(vs) // 2 - 1): fs.append((2 * j, 2 * j + 2, 2 * j + 3, 2 * j + 1))
     partes.append(lib.malha('conves_meio', vs, fs, lib.mat_pintura('conves', navio.COR['conves'], rug=0.7)))
     for x in ANTEPARAS: partes.append(antepara('antepara', x, mant))
+    # ESTRUTURA do porão (corpo paralelo, costado vertical): cavernas a cada 3 m, longarina no costado, reforços na parede do
+    # tanque lateral e longarinas no fundo duplo — o porão deixa de ser uma caixa lisa e lê como interior de navio
+    mest = lib.mat_pintura('estrutura', '#5f645d', rug=0.55, metal=0.2)
+    for x in np.arange(-46.0, 36.5, 3.0):
+        if min(abs(x - a_) for a_ in ANTEPARAS) < 0.6: continue
+        yw = navio.meia_boca(x, 12.0) - hidro.CASCO
+        partes.append(lib.caixa('caverna', (0.22, 0.5, navio.PONTAL - 0.45 - hidro.Z_TANQUE - 0.05), (x, yw - 0.25, (hidro.Z_TANQUE + 0.05 + navio.PONTAL - 0.45) / 2), mest))
+        yt = navio.meia_boca(x, 4.0) - hidro.L_TANQUE
+        partes.append(lib.caixa('reforco_tanque', (0.18, 0.28, hidro.Z_TANQUE - 2.25), (x, yt - 0.14, (2.25 + hidro.Z_TANQUE) / 2), mest))
+    yw = navio.meia_boca(0.0, 11.5) - hidro.CASCO
+    partes.append(lib.caixa('longarina_costado', (82.5, 0.45, 0.22), (-5.0, yw - 0.225, 11.5), mest))
+    for yg in (3.5, 7.0, 10.5):
+        partes.append(lib.caixa('longarina_fundo', (82.5, 0.24, 0.36), (-5.0, yg, 2.2 + 0.18), mest))
     sup = navio.superestrutura() + navio.leme_e_helice()
     bpy.context.view_layer.update()
     for o in sup:
@@ -1151,7 +1164,8 @@ def seg12(pasta):
     rot.add(f'Popa: +{dpopa:.1f} m'.replace('.', ','), lambda g: raiz.matrix_world @ Vector((-86, -0.35, T0)), 146.35, 147.75, dx=0.06, dy=0.10)
     rot.add('Hipótese: sem divisórias', (-40, 0, -4), 148.0, 150.6, dx=0.04, dy=0.10)
     rot.add('Divisórias estanques', lambda g: raiz.matrix_world @ Vector((COMP_AVARIA[1], 0, 12.0)), 151.2, 154.6, dx=0.05, dy=-0.07)
-    exportar_seg(pasta, 137.00, 154.60, anim, rot, extra=dict(segmento='12', hidrostatica=R, compartimento=COMP_AVARIA))
+    exportar_seg(pasta, 137.00, 154.60, anim, rot, extra=dict(segmento='12', hidrostatica=R, compartimento=COMP_AVARIA,
+                                                         sem_sombra=['interno', 'tanque', 'antepara', 'estrutura']))
     print('AVARIA', json.dumps({k: round(v, 3) for k, v in R.items()}))
 
 

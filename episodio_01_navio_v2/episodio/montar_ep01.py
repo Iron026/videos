@@ -48,6 +48,8 @@ def pasta(nome):
 
 _cache = {}
 GRADE = {}
+from grade_ep01 import graduar
+GRADE_ON = os.environ.get('GRADE_EP01', '1') == '1'
 def nivelar(nome, img):
     nome = ALIAS.get(nome, (nome,))[0]
     if nome in ('s01', 'ass'): return img
@@ -79,7 +81,8 @@ def quadro_seg(nome, g0, g):
     g0 = ALIAS.get(nome, (None, g0))[1]
     idx = _cache[d]; f = int(round((g - g0) * FPS)); f = min(max(f, idx[0]), idx[-1])
     f = idx[int(np.searchsorted(idx, f, side='right')) - 1]
-    return nivelar(nome, Image.open(os.path.join(d, f'q{f:04d}.jpg')).convert('RGB').resize((W, H), Image.BICUBIC))
+    img = nivelar(nome, Image.open(os.path.join(d, f'q{f:04d}.jpg')).convert('RGB').resize((W, H), Image.BICUBIC))
+    return graduar(img) if GRADE_ON else img          # correção de cor sutil só na imagem 3D (rótulos e legendas entram depois)
 
 
 ROT = {}

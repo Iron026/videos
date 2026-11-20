@@ -4,12 +4,13 @@ Uso: python3 episodio/render_revisao_integral.py [segmentos...]"""
 import os, sys, json, subprocess, time
 
 A = os.path.dirname(os.path.abspath(__file__)); MOTOR = os.path.join(A, '..', 'motores', 'tempo_real_v2')
-SEGS = sys.argv[1:] or ['02', '03', '04', '05', '0607', '0607b', '08a', '08b', '09', '10', '11', '12x', '12', '13']
-Q = 'escala=0.5&aoamostras=4&msaa=0'
+SEGS = sys.argv[1:] or ['01', '02', '03', '04', '05', '0607', '0607b', '08a', '08b', '09', '10', '11', '12x', '12', '13']
+Q = os.environ.get('Q_REVISAO', 'escala=0.5&aoamostras=4&msaa=0')          # Q_REVISAO: qualidade (ex.: final com bloom)
+SAIDA = os.environ.get('DIR_REVISAO', 'quadros_revisao')
 t0 = time.time(); total = 0
 for s in SEGS:
     n = len(json.load(open(os.path.join(A, 'cenas', f's{s}', 'cena.json')))['animacao']['quadros'])
-    d = os.path.join(A, 'quadros_revisao', f's{s}'); os.makedirs(d, exist_ok=True)
+    d = os.path.join(A, SAIDA, f's{s}'); os.makedirs(d, exist_ok=True)
     tem = {int(f[1:5]) for f in os.listdir(d) if f.endswith('.jpg')}
     faltam = [i for i in range(n) if i not in tem]
     faixas = []
@@ -17,7 +18,7 @@ for s in SEGS:
         if faixas and i == faixas[-1][1] + 1: faixas[-1][1] = i
         else: faixas.append([i, i])
     for a, b in faixas:
-        r = subprocess.run(['node', 'render_anim.mjs', f'cena=../../episodio/cenas/s{s}/&{Q}', f'../../episodio/quadros_revisao/s{s}', '1', str(a), str(b)],
+        r = subprocess.run(['node', 'render_anim.mjs', f'cena=../../episodio/cenas/s{s}/&{Q}', f'../../episodio/{SAIDA}/s{s}', '1', str(a), str(b)],
                            cwd=MOTOR, capture_output=True, text=True)
         print(s, a, b, [l for l in r.stdout.splitlines() if 'FIM' in l or 'rror' in l][-1:], flush=True)
     total += len(faltam)
