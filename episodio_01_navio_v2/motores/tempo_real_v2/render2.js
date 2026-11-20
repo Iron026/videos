@@ -27,6 +27,7 @@ const SMAP = parseInt(P.get('smap') || '4096');
 const CACHE = P.get('cache') === '1';
 const ENV = parseFloat(P.get('env') || '1');
 const MSAA = parseInt(P.get('msaa') || '4');
+const JAN_OFF = parseFloat(P.get('janoff') || '0');   // teste: prioridade de profundidade das janelas (polygon offset); 0 = como aprovado
 const OCL_K = parseFloat(P.get('ocl') || '0.994');   // fator de aproximação do oclusor (1 = comportamento antigo, só diagnóstico)
 const OCULTAR = new Set((P.get('ocultar') || '').split(',').filter(Boolean));   // diagnóstico: não carrega estes materiais (nome ou tipo)
 const BLOOM = parseFloat(P.get('bloom') || '0');      // brilho suave só nas luzes fortes (solda, reflexo do sol, linhas luminosas)
@@ -129,6 +130,7 @@ function criarMaterial(m) {
   if (coat > 0) { mat.clearcoat = coat; mat.clearcoatRoughness = 0.15; }
   if (t === 'aco') { mat.metalness = m.macico ? 0.9 : 1.0; mat.roughness = m.rug ?? 0.32; }
   if (t === 'vidro') { mat.color.setRGB(...[28, 40, 58].map(v => Math.pow(v / 255, 2.2))); mat.roughness = 0.08; mat.metalness = 0.4; }
+  if (t === 'vidro' && JAN_OFF > 0) { mat.polygonOffset = true; mat.polygonOffsetFactor = -JAN_OFF; mat.polygonOffsetUnits = -4 * JAN_OFF; }
   if (t === 'concreto') { mat.roughness = 0.88; }
   if (t === 'areia') { mat.roughness = 0.95; }
   if (t === 'conteiner') { mat.roughness = 0.55; }
