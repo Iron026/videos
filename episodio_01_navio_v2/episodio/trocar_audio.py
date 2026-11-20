@@ -10,14 +10,16 @@ import os, sys, subprocess, numpy as np
 from PIL import Image, ImageDraw
 A = os.path.dirname(os.path.abspath(__file__))
 mix, saida = sys.argv[1], sys.argv[2]; master = sys.argv[3] if len(sys.argv) > 3 else os.path.join(A, 'ep01_master_imagem_sem_legendas.mp4')
-sys.argv = ['montar_ep01.py', 'revisao', saida]; sys.path.insert(0, A)
+_w = int(subprocess.run(['ffprobe', '-v', 'error', '-select_streams', 'v:0', '-show_entries', 'stream=width', '-of', 'csv=p=0', master], capture_output=True, text=True).stdout.strip())
+PERFIL = 'final' if _w == 1080 else 'revisao'                # master 1080 × 1920 → mesmas fontes/escala/qualidade do perfil final
+sys.argv = ['montar_ep01.py', PERFIL, saida]; sys.path.insert(0, A)
 import montar_ep01 as M                                  # mesmas fontes, cores, regras de legenda e controle de loudness
 
 W, H = M.W, M.H; n = int(round(M.DUR * M.FPS)); af = M.loudness(mix)
 dec = subprocess.Popen(['ffmpeg', '-v', 'error', '-i', master, '-f', 'rawvideo', '-pix_fmt', 'rgb24', '-'], stdout=subprocess.PIPE)
 enc = subprocess.Popen(['ffmpeg', '-y', '-v', 'error', '-f', 'rawvideo', '-pix_fmt', 'rgb24', '-s', f'{W}x{H}', '-r', str(M.FPS), '-i', '-', '-i', mix, '-af', af,
-                        '-c:v', 'libx264', '-preset', 'medium', '-crf', '20', '-pix_fmt', 'yuv420p', '-c:a', 'aac', '-b:a', '192k', '-ar', '48000', '-shortest',
-                        '-movflags', '+faststart', '-metadata', 'title=De Olho no Invisível · Ep. 01 · versão de revisão (não publicar)', saida], stdin=subprocess.PIPE)
+                        '-c:v', 'libx264', '-preset', 'medium', '-crf', '17' if PERFIL == 'final' else '20', '-pix_fmt', 'yuv420p', '-c:a', 'aac', '-b:a', '192k', '-ar', '48000', '-shortest',
+                        '-movflags', '+faststart', '-metadata', f'title={M.TITULO}', saida], stdin=subprocess.PIPE)
 for i in range(n):
     raw = dec.stdout.read(W * H * 3)
     if len(raw) < W * H * 3: break

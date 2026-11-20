@@ -129,6 +129,8 @@ def legendas():
         blocos[i][2] = re.sub(r'[.,:;]+$', '', blocos[i][2])
     return [b for b in blocos if b[0] < 166.3]
 LEG = legendas()
+SELO = PERFIL != 'final' or os.environ.get('SELO_REVISAO') == '1'   # selo "VERSÃO DE REVISÃO": nunca no arquivo final
+TITULO = ('De Olho no Invisível · Ep. 01 · Como um navio de aço consegue flutuar?' if PERFIL == 'final' else 'De Olho no Invisível · Ep. 01 · versão de revisão (não publicar)')
 SEM_LEGENDAS = os.environ.get('SEM_LEGENDAS') == '1'   # master de imagem: legendas entram depois (episodio/trocar_audio.py)
 
 
@@ -175,7 +177,7 @@ def compor(g):
             d.text((x0 + 18 * ESC, y0 + 23 * ESC), txt, font=F_TAG, fill=AZUL, anchor='lm')
     if FIM_ESCURO and g > DUR - 0.5:   # fim natural: o último plano escurece levemente para o azul da marca
         k = (g - (DUR - 0.5)) / 0.5; img.paste(Image.blend(img, Image.new('RGB', img.size, AZUL), 0.85 * k * k)); d = ImageDraw.Draw(img)
-    if True:
+    if SELO:   # selo só nas versões internas de revisão; o arquivo final (perfil 'final') sai sem ele
         tag = 'VERSÃO DE REVISÃO · não publicar'; x0, y0 = int(30 * ESC), int(70 * ESC); tw = d.textlength(tag, font=F_TAG)
         d.rounded_rectangle((x0, y0, x0 + tw + 36 * ESC, y0 + 46 * ESC), radius=23 * ESC, fill=AZUL)
         d.text((x0 + 18 * ESC, y0 + 23 * ESC), tag, font=F_TAG, fill=CREME, anchor='lm')
@@ -208,7 +210,7 @@ if __name__ == '__main__':
     ff = subprocess.Popen(['ffmpeg', '-y', '-v', 'error', '-f', 'rawvideo', '-pix_fmt', 'rgb24', '-s', f'{W}x{H}', '-r', str(FPS), '-i', '-',
                            '-ss', f'{T_INI:.3f}', '-i', au, '-af', af, '-c:v', 'libx264', '-preset', 'medium', '-crf', os.environ.get('CRF_EP01', '20' if PERFIL != 'final' else '17'),
                            '-pix_fmt', 'yuv420p', '-c:a', 'aac', '-b:a', '192k', '-ar', '48000', '-shortest', '-movflags', '+faststart',
-                           '-metadata', 'title=De Olho no Invisível · Ep. 01 · versão de revisão (não publicar)', SAIDA], stdin=subprocess.PIPE)
+                           '-metadata', f'title={TITULO}', SAIDA], stdin=subprocess.PIPE)
     for i in range(n):
         ff.stdin.write(compor(T_INI + i / FPS).tobytes())
         if i % 300 == 0: print('quadro', i, '/', n, flush=True)

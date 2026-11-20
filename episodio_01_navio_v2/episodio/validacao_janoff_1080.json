@@ -1,0 +1,20 @@
+{
+ "quadros": 55,
+ "area_janelas_px": 142658,
+ "cintilacao_nas_janelas": {
+  "sem_correcao": 41.25,
+  "com_janoff1": 9.69,
+  "max_sem": 87.88,
+  "max_com": 81.0
+ },
+ "pontos_isolados_nas_janelas_media": {
+  "sem": 8263,
+  "com": 2103
+ },
+ "fora_das_janelas": {
+  "dif_media_max": 0.128,
+  "px_dif_maior_20_max": 29,
+  "cintilacao_sem": 3.456,
+  "cintilacao_com": 3.456
+ }
+}
