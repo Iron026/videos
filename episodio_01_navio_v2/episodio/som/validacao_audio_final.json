@@ -6,8 +6,8 @@
   "resolucao": "540,960"
  },
  "2_imagem": {
-  "psnr_medio_db": "49.473237",
-  "psnr_min_db": "30.771579",
+  "psnr_medio_db": "53.770720",
+  "psnr_min_db": "40.569243",
   "quadros_pretos": 0,
   "trechos_parados": 0,
   "erros_de_decodificacao": 0

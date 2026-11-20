@@ -1,0 +1,1227 @@
+{
+"resumo": {
+"quadros": 171,
+"trecho_s": [
+85.517,
+91.183
+],
+"pontos_media": {
+"antes": 2787,
+"depois": 2764
+},
+"quadros_com_menos_pontos": 81,
+"quadros_com_mais_pontos": [],
+"cintilacao_media": {
+"antes": 5.143,
+"depois": 5.171
+},
+"cintilacao_local_max": {
+"antes": 166.82,
+"depois": 166.73
+},
+"cintilacao_local_p95": {
+"antes": 122.52,
+"depois": 122.81
+},
+"piscadas_locais_novas": []
+},
+"quadros": [
+{
+"q": 50,
+"t": 85.517,
+"pontos_antes": 2676,
+"pontos_depois": 2676,
+"px_alterados": 0
+},
+{
+"q": 51,
+"t": 85.55,
+"pontos_antes": 2565,
+"pontos_depois": 2565,
+"px_alterados": 0
+},
+{
+"q": 52,
+"t": 85.583,
+"pontos_antes": 2851,
+"pontos_depois": 2851,
+"px_alterados": 0
+},
+{
+"q": 53,
+"t": 85.617,
+"pontos_antes": 2723,
+"pontos_depois": 2723,
+"px_alterados": 0
+},
+{
+"q": 54,
+"t": 85.65,
+"pontos_antes": 2691,
+"pontos_depois": 2691,
+"px_alterados": 0
+},
+{
+"q": 55,
+"t": 85.683,
+"pontos_antes": 2734,
+"pontos_depois": 2734,
+"px_alterados": 0
+},
+{
+"q": 56,
+"t": 85.717,
+"pontos_antes": 2717,
+"pontos_depois": 2717,
+"px_alterados": 0
+},
+{
+"q": 57,
+"t": 85.75,
+"pontos_antes": 2945,
+"pontos_depois": 2945,
+"px_alterados": 0
+},
+{
+"q": 58,
+"t": 85.783,
+"pontos_antes": 2855,
+"pontos_depois": 2855,
+"px_alterados": 0
+},
+{
+"q": 59,
+"t": 85.817,
+"pontos_antes": 2769,
+"pontos_depois": 2769,
+"px_alterados": 0
+},
+{
+"q": 60,
+"t": 85.85,
+"pontos_antes": 2763,
+"pontos_depois": 2763,
+"px_alterados": 0
+},
+{
+"q": 61,
+"t": 85.883,
+"pontos_antes": 2713,
+"pontos_depois": 2713,
+"px_alterados": 0
+},
+{
+"q": 62,
+"t": 85.917,
+"pontos_antes": 2822,
+"pontos_depois": 2822,
+"px_alterados": 0
+},
+{
+"q": 63,
+"t": 85.95,
+"pontos_antes": 3000,
+"pontos_depois": 3000,
+"px_alterados": 0
+},
+{
+"q": 64,
+"t": 85.983,
+"pontos_antes": 3102,
+"pontos_depois": 3102,
+"px_alterados": 0
+},
+{
+"q": 65,
+"t": 86.017,
+"pontos_antes": 3417,
+"pontos_depois": 3417,
+"px_alterados": 0
+},
+{
+"q": 66,
+"t": 86.05,
+"pontos_antes": 3163,
+"pontos_depois": 3119,
+"px_alterados": 196
+},
+{
+"q": 67,
+"t": 86.083,
+"pontos_antes": 4192,
+"pontos_depois": 4154,
+"px_alterados": 238
+},
+{
+"q": 68,
+"t": 86.117,
+"pontos_antes": 3907,
+"pontos_depois": 3925,
+"px_alterados": 200
+},
+{
+"q": 69,
+"t": 86.15,
+"pontos_antes": 3402,
+"pontos_depois": 3339,
+"px_alterados": 233
+},
+{
+"q": 70,
+"t": 86.183,
+"pontos_antes": 3263,
+"pontos_depois": 3212,
+"px_alterados": 262
+},
+{
+"q": 71,
+"t": 86.217,
+"pontos_antes": 3302,
+"pontos_depois": 3242,
+"px_alterados": 246
+},
+{
+"q": 72,
+"t": 86.25,
+"pontos_antes": 3412,
+"pontos_depois": 3364,
+"px_alterados": 255
+},
+{
+"q": 73,
+"t": 86.283,
+"pontos_antes": 3508,
+"pontos_depois": 3478,
+"px_alterados": 227
+},
+{
+"q": 74,
+"t": 86.317,
+"pontos_antes": 3262,
+"pontos_depois": 3203,
+"px_alterados": 216
+},
+{
+"q": 75,
+"t": 86.35,
+"pontos_antes": 3559,
+"pontos_depois": 3543,
+"px_alterados": 235
+},
+{
+"q": 76,
+"t": 86.383,
+"pontos_antes": 3645,
+"pontos_depois": 3628,
+"px_alterados": 241
+},
+{
+"q": 77,
+"t": 86.417,
+"pontos_antes": 3959,
+"pontos_depois": 3898,
+"px_alterados": 253
+},
+{
+"q": 78,
+"t": 86.45,
+"pontos_antes": 4004,
+"pontos_depois": 3952,
+"px_alterados": 273
+},
+{
+"q": 79,
+"t": 86.483,
+"pontos_antes": 3530,
+"pontos_depois": 3454,
+"px_alterados": 264
+},
+{
+"q": 80,
+"t": 86.517,
+"pontos_antes": 3299,
+"pontos_depois": 3189,
+"px_alterados": 279
+},
+{
+"q": 81,
+"t": 86.55,
+"pontos_antes": 2878,
+"pontos_depois": 2791,
+"px_alterados": 307
+},
+{
+"q": 82,
+"t": 86.583,
+"pontos_antes": 3127,
+"pontos_depois": 3028,
+"px_alterados": 320
+},
+{
+"q": 83,
+"t": 86.617,
+"pontos_antes": 3348,
+"pontos_depois": 3272,
+"px_alterados": 341
+},
+{
+"q": 84,
+"t": 86.65,
+"pontos_antes": 3746,
+"pontos_depois": 3683,
+"px_alterados": 342
+},
+{
+"q": 85,
+"t": 86.683,
+"pontos_antes": 3599,
+"pontos_depois": 3478,
+"px_alterados": 365
+},
+{
+"q": 86,
+"t": 86.717,
+"pontos_antes": 3529,
+"pontos_depois": 3412,
+"px_alterados": 359
+},
+{
+"q": 87,
+"t": 86.75,
+"pontos_antes": 3437,
+"pontos_depois": 3288,
+"px_alterados": 381
+},
+{
+"q": 88,
+"t": 86.783,
+"pontos_antes": 3825,
+"pontos_depois": 3750,
+"px_alterados": 373
+},
+{
+"q": 89,
+"t": 86.817,
+"pontos_antes": 3716,
+"pontos_depois": 3687,
+"px_alterados": 378
+},
+{
+"q": 90,
+"t": 86.85,
+"pontos_antes": 3931,
+"pontos_depois": 3847,
+"px_alterados": 377
+},
+{
+"q": 91,
+"t": 86.883,
+"pontos_antes": 3836,
+"pontos_depois": 3746,
+"px_alterados": 396
+},
+{
+"q": 92,
+"t": 86.917,
+"pontos_antes": 4092,
+"pontos_depois": 4034,
+"px_alterados": 419
+},
+{
+"q": 93,
+"t": 86.95,
+"pontos_antes": 3824,
+"pontos_depois": 3751,
+"px_alterados": 441
+},
+{
+"q": 94,
+"t": 86.983,
+"pontos_antes": 4071,
+"pontos_depois": 3987,
+"px_alterados": 471
+},
+{
+"q": 95,
+"t": 87.017,
+"pontos_antes": 4185,
+"pontos_depois": 4106,
+"px_alterados": 495
+},
+{
+"q": 96,
+"t": 87.05,
+"pontos_antes": 3954,
+"pontos_depois": 3904,
+"px_alterados": 525
+},
+{
+"q": 97,
+"t": 87.083,
+"pontos_antes": 4390,
+"pontos_depois": 4276,
+"px_alterados": 577
+},
+{
+"q": 98,
+"t": 87.117,
+"pontos_antes": 4321,
+"pontos_depois": 4217,
+"px_alterados": 591
+},
+{
+"q": 99,
+"t": 87.15,
+"pontos_antes": 4288,
+"pontos_depois": 4197,
+"px_alterados": 633
+},
+{
+"q": 100,
+"t": 87.183,
+"pontos_antes": 3736,
+"pontos_depois": 3678,
+"px_alterados": 671
+},
+{
+"q": 101,
+"t": 87.217,
+"pontos_antes": 3714,
+"pontos_depois": 3650,
+"px_alterados": 700
+},
+{
+"q": 102,
+"t": 87.25,
+"pontos_antes": 3907,
+"pontos_depois": 3838,
+"px_alterados": 730
+},
+{
+"q": 103,
+"t": 87.283,
+"pontos_antes": 4258,
+"pontos_depois": 4222,
+"px_alterados": 733
+},
+{
+"q": 104,
+"t": 87.317,
+"pontos_antes": 4686,
+"pontos_depois": 4615,
+"px_alterados": 764
+},
+{
+"q": 105,
+"t": 87.35,
+"pontos_antes": 4789,
+"pontos_depois": 4737,
+"px_alterados": 804
+},
+{
+"q": 106,
+"t": 87.383,
+"pontos_antes": 4476,
+"pontos_depois": 4388,
+"px_alterados": 793
+},
+{
+"q": 107,
+"t": 87.417,
+"pontos_antes": 4447,
+"pontos_depois": 4377,
+"px_alterados": 850
+},
+{
+"q": 108,
+"t": 87.45,
+"pontos_antes": 4383,
+"pontos_depois": 4323,
+"px_alterados": 878
+},
+{
+"q": 109,
+"t": 87.483,
+"pontos_antes": 4115,
+"pontos_depois": 4015,
+"px_alterados": 899
+},
+{
+"q": 110,
+"t": 87.517,
+"pontos_antes": 4267,
+"pontos_depois": 4180,
+"px_alterados": 938
+},
+{
+"q": 111,
+"t": 87.55,
+"pontos_antes": 4584,
+"pontos_depois": 4488,
+"px_alterados": 982
+},
+{
+"q": 112,
+"t": 87.583,
+"pontos_antes": 5028,
+"pontos_depois": 4894,
+"px_alterados": 1060
+},
+{
+"q": 113,
+"t": 87.617,
+"pontos_antes": 5365,
+"pontos_depois": 5299,
+"px_alterados": 1069
+},
+{
+"q": 114,
+"t": 87.65,
+"pontos_antes": 5431,
+"pontos_depois": 5354,
+"px_alterados": 1080
+},
+{
+"q": 115,
+"t": 87.683,
+"pontos_antes": 5254,
+"pontos_depois": 5144,
+"px_alterados": 1078
+},
+{
+"q": 116,
+"t": 87.717,
+"pontos_antes": 5669,
+"pontos_depois": 5568,
+"px_alterados": 1122
+},
+{
+"q": 117,
+"t": 87.75,
+"pontos_antes": 5495,
+"pontos_depois": 5456,
+"px_alterados": 1094
+},
+{
+"q": 118,
+"t": 87.783,
+"pontos_antes": 5350,
+"pontos_depois": 5222,
+"px_alterados": 1105
+},
+{
+"q": 119,
+"t": 87.817,
+"pontos_antes": 5144,
+"pontos_depois": 5081,
+"px_alterados": 1145
+},
+{
+"q": 120,
+"t": 87.85,
+"pontos_antes": 5299,
+"pontos_depois": 5191,
+"px_alterados": 1149
+},
+{
+"q": 121,
+"t": 87.883,
+"pontos_antes": 5199,
+"pontos_depois": 5118,
+"px_alterados": 1111
+},
+{
+"q": 122,
+"t": 87.917,
+"pontos_antes": 4928,
+"pontos_depois": 4832,
+"px_alterados": 1133
+},
+{
+"q": 123,
+"t": 87.95,
+"pontos_antes": 5389,
+"pontos_depois": 5355,
+"px_alterados": 1144
+},
+{
+"q": 124,
+"t": 87.983,
+"pontos_antes": 5629,
+"pontos_depois": 5542,
+"px_alterados": 1094
+},
+{
+"q": 125,
+"t": 88.017,
+"pontos_antes": 5596,
+"pontos_depois": 5513,
+"px_alterados": 1045
+},
+{
+"q": 126,
+"t": 88.05,
+"pontos_antes": 5641,
+"pontos_depois": 5560,
+"px_alterados": 994
+},
+{
+"q": 127,
+"t": 88.083,
+"pontos_antes": 5453,
+"pontos_depois": 5332,
+"px_alterados": 865
+},
+{
+"q": 128,
+"t": 88.117,
+"pontos_antes": 5544,
+"pontos_depois": 5460,
+"px_alterados": 749
+},
+{
+"q": 129,
+"t": 88.15,
+"pontos_antes": 5641,
+"pontos_depois": 5531,
+"px_alterados": 663
+},
+{
+"q": 130,
+"t": 88.183,
+"pontos_antes": 5617,
+"pontos_depois": 5512,
+"px_alterados": 590
+},
+{
+"q": 131,
+"t": 88.217,
+"pontos_antes": 5621,
+"pontos_depois": 5538,
+"px_alterados": 530
+},
+{
+"q": 132,
+"t": 88.25,
+"pontos_antes": 5382,
+"pontos_depois": 5233,
+"px_alterados": 490
+},
+{
+"q": 133,
+"t": 88.283,
+"pontos_antes": 5479,
+"pontos_depois": 5370,
+"px_alterados": 484
+},
+{
+"q": 134,
+"t": 88.317,
+"pontos_antes": 5619,
+"pontos_depois": 5510,
+"px_alterados": 481
+},
+{
+"q": 135,
+"t": 88.35,
+"pontos_antes": 5600,
+"pontos_depois": 5534,
+"px_alterados": 479
+},
+{
+"q": 136,
+"t": 88.383,
+"pontos_antes": 5751,
+"pontos_depois": 5675,
+"px_alterados": 490
+},
+{
+"q": 137,
+"t": 88.417,
+"pontos_antes": 5434,
+"pontos_depois": 5346,
+"px_alterados": 435
+},
+{
+"q": 138,
+"t": 88.45,
+"pontos_antes": 5394,
+"pontos_depois": 5289,
+"px_alterados": 463
+},
+{
+"q": 139,
+"t": 88.483,
+"pontos_antes": 5420,
+"pontos_depois": 5316,
+"px_alterados": 464
+},
+{
+"q": 140,
+"t": 88.517,
+"pontos_antes": 5603,
+"pontos_depois": 5497,
+"px_alterados": 535
+},
+{
+"q": 141,
+"t": 88.55,
+"pontos_antes": 5349,
+"pontos_depois": 5293,
+"px_alterados": 520
+},
+{
+"q": 142,
+"t": 88.583,
+"pontos_antes": 5277,
+"pontos_depois": 5243,
+"px_alterados": 514
+},
+{
+"q": 143,
+"t": 88.617,
+"pontos_antes": 1014,
+"pontos_depois": 1071,
+"px_alterados": 2071
+},
+{
+"q": 144,
+"t": 88.65,
+"pontos_antes": 1077,
+"pontos_depois": 1134,
+"px_alterados": 2098
+},
+{
+"q": 145,
+"t": 88.683,
+"pontos_antes": 1023,
+"pontos_depois": 1122,
+"px_alterados": 2082
+},
+{
+"q": 146,
+"t": 88.717,
+"pontos_antes": 1007,
+"pontos_depois": 1062,
+"px_alterados": 2110
+},
+{
+"q": 147,
+"t": 88.75,
+"pontos_antes": 1015,
+"pontos_depois": 1062,
+"px_alterados": 2104
+},
+{
+"q": 148,
+"t": 88.783,
+"pontos_antes": 1043,
+"pontos_depois": 1100,
+"px_alterados": 2142
+},
+{
+"q": 149,
+"t": 88.817,
+"pontos_antes": 1060,
+"pontos_depois": 1129,
+"px_alterados": 2155
+},
+{
+"q": 150,
+"t": 88.85,
+"pontos_antes": 1069,
+"pontos_depois": 1147,
+"px_alterados": 2137
+},
+{
+"q": 151,
+"t": 88.883,
+"pontos_antes": 1028,
+"pontos_depois": 1118,
+"px_alterados": 2162
+},
+{
+"q": 152,
+"t": 88.917,
+"pontos_antes": 1048,
+"pontos_depois": 1108,
+"px_alterados": 2181
+},
+{
+"q": 153,
+"t": 88.95,
+"pontos_antes": 1039,
+"pontos_depois": 1101,
+"px_alterados": 2160
+},
+{
+"q": 154,
+"t": 88.983,
+"pontos_antes": 1071,
+"pontos_depois": 1114,
+"px_alterados": 2121
+},
+{
+"q": 155,
+"t": 89.017,
+"pontos_antes": 1100,
+"pontos_depois": 1132,
+"px_alterados": 2112
+},
+{
+"q": 156,
+"t": 89.05,
+"pontos_antes": 1113,
+"pontos_depois": 1137,
+"px_alterados": 2154
+},
+{
+"q": 157,
+"t": 89.083,
+"pontos_antes": 1109,
+"pontos_depois": 1100,
+"px_alterados": 2132
+},
+{
+"q": 158,
+"t": 89.117,
+"pontos_antes": 1090,
+"pontos_depois": 1097,
+"px_alterados": 2165
+},
+{
+"q": 159,
+"t": 89.15,
+"pontos_antes": 1086,
+"pontos_depois": 1094,
+"px_alterados": 2150
+},
+{
+"q": 160,
+"t": 89.183,
+"pontos_antes": 1099,
+"pontos_depois": 1107,
+"px_alterados": 2152
+},
+{
+"q": 161,
+"t": 89.217,
+"pontos_antes": 1098,
+"pontos_depois": 1129,
+"px_alterados": 2115
+},
+{
+"q": 162,
+"t": 89.25,
+"pontos_antes": 1109,
+"pontos_depois": 1117,
+"px_alterados": 2115
+},
+{
+"q": 163,
+"t": 89.283,
+"pontos_antes": 1060,
+"pontos_depois": 1113,
+"px_alterados": 2133
+},
+{
+"q": 164,
+"t": 89.317,
+"pontos_antes": 1109,
+"pontos_depois": 1128,
+"px_alterados": 2130
+},
+{
+"q": 165,
+"t": 89.35,
+"pontos_antes": 1105,
+"pontos_depois": 1094,
+"px_alterados": 2124
+},
+{
+"q": 166,
+"t": 89.383,
+"pontos_antes": 1062,
+"pontos_depois": 1140,
+"px_alterados": 2130
+},
+{
+"q": 167,
+"t": 89.417,
+"pontos_antes": 1074,
+"pontos_depois": 1084,
+"px_alterados": 2137
+},
+{
+"q": 168,
+"t": 89.45,
+"pontos_antes": 1021,
+"pontos_depois": 1052,
+"px_alterados": 2108
+},
+{
+"q": 169,
+"t": 89.483,
+"pontos_antes": 1074,
+"pontos_depois": 1098,
+"px_alterados": 2125
+},
+{
+"q": 170,
+"t": 89.517,
+"pontos_antes": 1017,
+"pontos_depois": 1070,
+"px_alterados": 2132
+},
+{
+"q": 171,
+"t": 89.55,
+"pontos_antes": 1026,
+"pontos_depois": 1076,
+"px_alterados": 2104
+},
+{
+"q": 172,
+"t": 89.583,
+"pontos_antes": 1036,
+"pontos_depois": 1074,
+"px_alterados": 2092
+},
+{
+"q": 173,
+"t": 89.617,
+"pontos_antes": 1084,
+"pontos_depois": 1124,
+"px_alterados": 2081
+},
+{
+"q": 174,
+"t": 89.65,
+"pontos_antes": 1039,
+"pontos_depois": 1114,
+"px_alterados": 2047
+},
+{
+"q": 175,
+"t": 89.683,
+"pontos_antes": 990,
+"pontos_depois": 1077,
+"px_alterados": 2033
+},
+{
+"q": 176,
+"t": 89.717,
+"pontos_antes": 1190,
+"pontos_depois": 1163,
+"px_alterados": 1653
+},
+{
+"q": 177,
+"t": 89.75,
+"pontos_antes": 1238,
+"pontos_depois": 1248,
+"px_alterados": 1626
+},
+{
+"q": 178,
+"t": 89.783,
+"pontos_antes": 1444,
+"pontos_depois": 1449,
+"px_alterados": 1629
+},
+{
+"q": 179,
+"t": 89.817,
+"pontos_antes": 1547,
+"pontos_depois": 1564,
+"px_alterados": 1643
+},
+{
+"q": 180,
+"t": 89.85,
+"pontos_antes": 1527,
+"pontos_depois": 1543,
+"px_alterados": 1576
+},
+{
+"q": 181,
+"t": 89.883,
+"pontos_antes": 1441,
+"pontos_depois": 1504,
+"px_alterados": 1585
+},
+{
+"q": 182,
+"t": 89.917,
+"pontos_antes": 1110,
+"pontos_depois": 1146,
+"px_alterados": 1439
+},
+{
+"q": 183,
+"t": 89.95,
+"pontos_antes": 951,
+"pontos_depois": 1001,
+"px_alterados": 1387
+},
+{
+"q": 184,
+"t": 89.983,
+"pontos_antes": 850,
+"pontos_depois": 864,
+"px_alterados": 1313
+},
+{
+"q": 185,
+"t": 90.017,
+"pontos_antes": 841,
+"pontos_depois": 906,
+"px_alterados": 1205
+},
+{
+"q": 186,
+"t": 90.05,
+"pontos_antes": 930,
+"pontos_depois": 920,
+"px_alterados": 1113
+},
+{
+"q": 187,
+"t": 90.083,
+"pontos_antes": 963,
+"pontos_depois": 977,
+"px_alterados": 964
+},
+{
+"q": 188,
+"t": 90.117,
+"pontos_antes": 963,
+"pontos_depois": 990,
+"px_alterados": 778
+},
+{
+"q": 189,
+"t": 90.15,
+"pontos_antes": 957,
+"pontos_depois": 969,
+"px_alterados": 480
+},
+{
+"q": 190,
+"t": 90.183,
+"pontos_antes": 1021,
+"pontos_depois": 994,
+"px_alterados": 360
+},
+{
+"q": 191,
+"t": 90.217,
+"pontos_antes": 979,
+"pontos_depois": 1001,
+"px_alterados": 305
+},
+{
+"q": 192,
+"t": 90.25,
+"pontos_antes": 980,
+"pontos_depois": 997,
+"px_alterados": 251
+},
+{
+"q": 193,
+"t": 90.283,
+"pontos_antes": 974,
+"pontos_depois": 1010,
+"px_alterados": 224
+},
+{
+"q": 194,
+"t": 90.317,
+"pontos_antes": 949,
+"pontos_depois": 975,
+"px_alterados": 209
+},
+{
+"q": 195,
+"t": 90.35,
+"pontos_antes": 1029,
+"pontos_depois": 1040,
+"px_alterados": 215
+},
+{
+"q": 196,
+"t": 90.383,
+"pontos_antes": 1073,
+"pontos_depois": 1097,
+"px_alterados": 208
+},
+{
+"q": 197,
+"t": 90.417,
+"pontos_antes": 1067,
+"pontos_depois": 1098,
+"px_alterados": 227
+},
+{
+"q": 198,
+"t": 90.45,
+"pontos_antes": 1108,
+"pontos_depois": 1164,
+"px_alterados": 223
+},
+{
+"q": 199,
+"t": 90.483,
+"pontos_antes": 1139,
+"pontos_depois": 1163,
+"px_alterados": 226
+},
+{
+"q": 200,
+"t": 90.517,
+"pontos_antes": 1136,
+"pontos_depois": 1171,
+"px_alterados": 242
+},
+{
+"q": 201,
+"t": 90.55,
+"pontos_antes": 1147,
+"pontos_depois": 1152,
+"px_alterados": 243
+},
+{
+"q": 202,
+"t": 90.583,
+"pontos_antes": 1156,
+"pontos_depois": 1197,
+"px_alterados": 241
+},
+{
+"q": 203,
+"t": 90.617,
+"pontos_antes": 1160,
+"pontos_depois": 1160,
+"px_alterados": 0
+},
+{
+"q": 204,
+"t": 90.65,
+"pontos_antes": 1124,
+"pontos_depois": 1124,
+"px_alterados": 0
+},
+{
+"q": 205,
+"t": 90.683,
+"pontos_antes": 1256,
+"pontos_depois": 1256,
+"px_alterados": 0
+},
+{
+"q": 206,
+"t": 90.717,
+"pontos_antes": 1216,
+"pontos_depois": 1216,
+"px_alterados": 0
+},
+{
+"q": 207,
+"t": 90.75,
+"pontos_antes": 1199,
+"pontos_depois": 1199,
+"px_alterados": 0
+},
+{
+"q": 208,
+"t": 90.783,
+"pontos_antes": 1161,
+"pontos_depois": 1161,
+"px_alterados": 0
+},
+{
+"q": 209,
+"t": 90.817,
+"pontos_antes": 1180,
+"pontos_depois": 1180,
+"px_alterados": 0
+},
+{
+"q": 210,
+"t": 90.85,
+"pontos_antes": 1241,
+"pontos_depois": 1241,
+"px_alterados": 0
+},
+{
+"q": 211,
+"t": 90.883,
+"pontos_antes": 1182,
+"pontos_depois": 1182,
+"px_alterados": 0
+},
+{
+"q": 212,
+"t": 90.917,
+"pontos_antes": 1124,
+"pontos_depois": 1124,
+"px_alterados": 0
+},
+{
+"q": 213,
+"t": 90.95,
+"pontos_antes": 1091,
+"pontos_depois": 1091,
+"px_alterados": 0
+},
+{
+"q": 214,
+"t": 90.983,
+"pontos_antes": 1036,
+"pontos_depois": 1036,
+"px_alterados": 0
+},
+{
+"q": 215,
+"t": 91.017,
+"pontos_antes": 1126,
+"pontos_depois": 1126,
+"px_alterados": 0
+},
+{
+"q": 216,
+"t": 91.05,
+"pontos_antes": 1174,
+"pontos_depois": 1174,
+"px_alterados": 0
+},
+{
+"q": 217,
+"t": 91.083,
+"pontos_antes": 1182,
+"pontos_depois": 1182,
+"px_alterados": 0
+},
+{
+"q": 218,
+"t": 91.117,
+"pontos_antes": 1274,
+"pontos_depois": 1274,
+"px_alterados": 0
+},
+{
+"q": 219,
+"t": 91.15,
+"pontos_antes": 1229,
+"pontos_depois": 1229,
+"px_alterados": 0
+},
+{
+"q": 220,
+"t": 91.183,
+"pontos_antes": 1241,
+"pontos_depois": 1241,
+"px_alterados": 0
+}
+]
+}
