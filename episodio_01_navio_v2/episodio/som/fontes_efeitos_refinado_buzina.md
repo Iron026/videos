@@ -5,7 +5,6 @@
 ## Licenças
 
 - **Mixkit — Mixkit Sound Effects Free License** (https://mixkit.co/license/#sfxFree): uso em vídeos do YouTube e projetos comerciais e monetizados permitido; atribuição não exigida; proibido redistribuir o arquivo isolado e registrá-lo em Content ID. Os arquivos ficam fora do git (`som/baixar_efeitos.py`).
-- **Wikimedia Commons / Work With Sounds — CC BY 4.0** (https://creativecommons.org/licenses/by/4.0): uso comercial e monetizado permitido, inclusive com edição; **atribuição obrigatória** (texto pronto em `som/creditos_descricao.txt`, para a descrição do vídeo). Nenhum arquivo CC BY-NC, CC BY-SA, de procedência duvidosa ou extraído de vídeo foi usado.
 - **Wikimedia Commons — CC0 (domínio público)**: buzina de navio real ("Cruise ship Albatros ship horn", Tvabutzku1234); uso comercial permitido, atribuição não exigida (registrada mesmo assim).
 
 ## Gravações
@@ -61,7 +60,7 @@
 | 812 | Construction welder | Mixkit | Mixkit (Envato); a página não identifica o artista | https://mixkit.co/free-sound-effects/download/812/ | Mixkit Sound Effects Free License | não | `som/bib/mixkit/812.wav` | arco de solda e faíscas (só no cordão, com o brilho) (24.9 s) |
 | 814 | Construction welding tool | Mixkit | Mixkit (Envato); a página não identifica o artista | https://mixkit.co/free-sound-effects/download/814/ | Mixkit Sound Effects Free License | não | `som/bib/mixkit/814.wav` | arco de solda e faíscas (só no cordão, com o brilho) (25.1 s) |
 | 819 | Urban construction site ambiance | Mixkit | Mixkit (Envato); a página não identifica o artista | https://mixkit.co/free-sound-effects/download/819/ | Mixkit Sound Effects Free License | não | `som/bib/mixkit/819.wav` | ambiente de porto (fundo) [RESERVA Mixkit: WWS ContainerTerminalatthePortofDortmund (Commons) não pôde ser baixado] (94.5 s); porto em atividade (tempo acelerado) [RESERVA Mixkit: WWS ContainerTerminalatthePortofDortmund (Commons) não pôde ser baixado] (105.5 s) |
-| CruiseshipAlbatroshorn | Cruise ship Albatros ship horn | Wikimedia Commons | Tvabutzku1234 | https://commons.wikimedia.org/wiki/File:Cruise_ship_Albatros_ship_horn.ogg | CC0 | "Cruise ship Albatros ship horn" — Tvabutzku1234, CC0 (domínio público), via Wikimedia Commons | `som/bib/commons/CruiseshipAlbatroshorn.ogg` | buzina do navio ao aparecer (ataque na pausa após "gigante:") (5.8 s); buzina distante no plano final (despedida) (165.6 s) |
+| CruiseshipAlbatroshorn | Cruise ship Albatros ship horn | Wikimedia Commons | Tvabutzku1234 | https://commons.wikimedia.org/wiki/File:Cruise_ship_Albatros_ship_horn.ogg | CC0 | "Cruise ship Albatros ship horn" — Tvabutzku1234, CC0 (domínio público), via Wikimedia Commons | `som/bib/commons/CruiseshipAlbatroshorn.ogg` | buzina do navio ao aparecer (ataque na pausa após "gigante:") (5.8 s); buzina distante no plano final (despedida, após "navio.") (166.2 s) |
 
 ## Complementos sintéticos (originais, sem licença de terceiros)
 

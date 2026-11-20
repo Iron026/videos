@@ -6,7 +6,7 @@ bz = sf.read(f'{E}/categorias/ep01_efeitos_buzina_{suf}.wav')[0]; vz = sf.read(f
 fx = sf.read(f'{E}/ep01_efeitos_{suf}.wav')[0] + sf.read(f'{E}/ep01_ambiencias_{suf}.wav')[0]
 mix = sf.read(f'{A}/../audio_ep01_{suf}.wav')[0]
 res = {}
-for nome, a, b in (('abertura', 5.6, 10.0), ('conclusao', 165.8, 168.0)):
+for nome, a, b in (('abertura', 5.6, 10.0), ('conclusao', 166.0, 168.0)):
     s = slice(int(a * SR), int(b * SR)); m = lambda x: lufs(x[s], curto=True)
     mb, mv, mm, mf = m(bz), m(vz), m(mu), m(fx - bz)
     k = int(np.argmax(mb)); ativo = mb > mb.max() - 20

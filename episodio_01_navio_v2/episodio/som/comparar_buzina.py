@@ -1,14 +1,16 @@
-"""Comparativo curto SEM × COM buzina (versão refinada), mesma imagem e narração no mesmo nível.
+"""Comparativo curto A (refinado, sem buzina) × B (o mesmo + buzina): mesma imagem, mesma narração, mesmo ganho de master
+(nenhuma normalização por versão: o único elemento diferente é a buzina).
 Uso: python3 som/comparar_buzina.py <video_revisao.mp4> <saida.mp4>"""
 import os, sys, json, subprocess, numpy as np, soundfile as sf
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from som_ep01 import lufs, pico_verdadeiro, db
 A = os.path.dirname(os.path.abspath(__file__)); EP = os.path.join(A, '..'); SR = 48000
-TRECHOS = [(3.4, 11.4, 'Abertura'), (160.0, 168.0, 'Conclusão')]
-VERS = [('SEM BUZINA', 'refinado'), ('COM BUZINA', 'refinado_buzina')]
+TRECHOS = [(3.4, 11.4, 'Abertura'), (161.0, 168.0, 'Conclusão')]
+VERS = [('A · SEM BUZINA', 'refinado'), ('B · COM BUZINA', 'refinado_buzina')]
 video, saida = sys.argv[1], sys.argv[2]; tmp = os.path.join(A, '_cmp_buz'); os.makedirs(tmp, exist_ok=True)
 m0 = json.load(open(os.path.join(A, 'mix_refinado.json')))['master_db']
-aj = {v: m0 - json.load(open(os.path.join(A, f'mix_{v}.json')))['master_db'] for _, v in VERS}   # narração no mesmo nível
+aj = {v: m0 - json.load(open(os.path.join(A, f'mix_{v}.json')))['master_db'] for _, v in VERS}
+assert all(abs(g) < 0.01 for g in aj.values()), aj   # B herda o master de A (MASTER_DE): nenhum ajuste por versão, só a buzina muda
 partes, med = [], []
 for j, (a, b, tit) in enumerate(TRECHOS):
     for nome, v in VERS:

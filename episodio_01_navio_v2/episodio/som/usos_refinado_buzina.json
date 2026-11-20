@@ -227,7 +227,11 @@
   "tom": 0.9,
   "uso": "buzina do navio ao aparecer (ataque na pausa após \"gigante:\")",
   "grupo": null,
-  "substituido": false
+  "substituido": false,
+  "recuo_sob_fala": {
+   "inicio_s": 6.34,
+   "db": -8
+  }
  },
  {
   "t": 15.1,
@@ -1637,13 +1641,13 @@
   "substituido": false
  },
  {
-  "t": 165.6,
+  "t": 166.25,
   "id": "CruiseshipAlbatroshorn",
   "titulo": "Cruise ship Albatros ship horn",
   "ini": 3.15,
   "dur": 0.74,
   "tom": 0.9,
-  "uso": "buzina distante no plano final (despedida)",
+  "uso": "buzina distante no plano final (despedida, após \"navio.\")",
   "grupo": null,
   "substituido": false
  }

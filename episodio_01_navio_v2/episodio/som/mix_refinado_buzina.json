@@ -8,17 +8,17 @@
  "inteligibilidade_celular": {
   "janelas_de_fala": 1210,
   "snr_voz_mediana_db": 22.8,
-  "snr_p5_db": 11.0,
+  "snr_p5_db": 11.3,
   "pct_janelas_acima_10db": 96.4,
-  "fala_plena_p5_db": 11.8,
-  "fala_plena_pct_acima_10db": 97.1
+  "fala_plena_p5_db": 11.9,
+  "fala_plena_pct_acima_10db": 97.2
  },
  "ducking_max_db": {
   "ducking_max_db": -18.0,
   "ducking_medio_na_fala_db": -8.7
  },
  "stems": {
-  "efeitos": -26.2,
+  "efeitos": -26.3,
   "ambiencias": -36.1,
   "musica": -34.8,
   "narracao": -14.1
@@ -50,7 +50,7 @@
   },
   "cat:agua/efeitos": {
    "arquivo": "stems/categorias/ep01_efeitos_agua_refinado_buzina.wav",
-   "lufs": -27.6,
+   "lufs": -27.7,
    "ativo_s": [
     2.62,
     162.28
@@ -58,10 +58,10 @@
   },
   "cat:buzina/efeitos": {
    "arquivo": "stems/categorias/ep01_efeitos_buzina_refinado_buzina.wav",
-   "lufs": -28.3,
+   "lufs": -31.9,
    "ativo_s": [
     5.85,
-    167.75
+    167.93
    ]
   },
   "dique/ambiencias": {
@@ -150,7 +150,7 @@
   },
   "resto/efeitos": {
    "arquivo": "stems/grupos/ep01_efeitos_resto_refinado_buzina.wav",
-   "lufs": -25.9
+   "lufs": -26.1
   }
  },
  "ganhos_stem_db": {
@@ -158,7 +158,7 @@
   "efeitos": 5.0914,
   "musica": -24.9023
  },
- "master_db": -0.9146,
+ "master_db": -0.9148,
  "efeitos": [],
  "parametros_mix": {
   "efeitos_rel": -3.5,
@@ -172,6 +172,7 @@
    "ambiencias": 7.4322,
    "efeitos": 5.0914,
    "musica": -24.9023
-  }
+  },
+  "master_fixo_db": -0.9148
  }
 }

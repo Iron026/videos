@@ -1,0 +1,90 @@
+[
+ {
+  "secao": "abertura e navegação",
+  "ini": 0,
+  "fim": 15.1,
+  "agua_lufs": -29.3,
+  "agua_max_curto": -22.9,
+  "fundo_lufs": -27.6,
+  "narracao_lufs": -13.5,
+  "agua_menos_narracao_db": -15.7,
+  "agua_pct_energia_do_fundo": 54
+ },
+ {
+  "secao": "estaleiro e corte",
+  "ini": 15.1,
+  "fim": 41.55,
+  "agua_lufs": -60.0,
+  "agua_max_curto": -60.0,
+  "fundo_lufs": -25.6,
+  "narracao_lufs": -14.1,
+  "agua_menos_narracao_db": -45.9,
+  "agua_pct_energia_do_fundo": 0
+ },
+ {
+  "secao": "dique",
+  "ini": 41.55,
+  "fim": 49.0,
+  "agua_lufs": -34.2,
+  "agua_max_curto": -30.8,
+  "fundo_lufs": -31.4,
+  "narracao_lufs": -14.1,
+  "agua_menos_narracao_db": -20.2,
+  "agua_pct_energia_do_fundo": 37
+ },
+ {
+  "secao": "empuxo subaquático",
+  "ini": 49.0,
+  "fim": 75.0,
+  "agua_lufs": -37.9,
+  "agua_max_curto": -35.7,
+  "fundo_lufs": -36.5,
+  "narracao_lufs": -14.2,
+  "agua_menos_narracao_db": -23.7,
+  "agua_pct_energia_do_fundo": 66
+ },
+ {
+  "secao": "retomada e experimento",
+  "ini": 75.0,
+  "fim": 95.0,
+  "agua_lufs": -27.3,
+  "agua_max_curto": -20.5,
+  "fundo_lufs": -26.9,
+  "narracao_lufs": -14.1,
+  "agua_menos_narracao_db": -13.1,
+  "agua_pct_energia_do_fundo": 75
+ },
+ {
+  "secao": "carregamento e calado",
+  "ini": 95.0,
+  "fim": 134.0,
+  "agua_lufs": -40.9,
+  "agua_max_curto": -35.1,
+  "fundo_lufs": -32.2,
+  "narracao_lufs": -14.1,
+  "agua_menos_narracao_db": -26.8,
+  "agua_pct_energia_do_fundo": 8
+ },
+ {
+  "secao": "avaria e inundação",
+  "ini": 134.0,
+  "fim": 155.0,
+  "agua_lufs": -28.6,
+  "agua_max_curto": -25.9,
+  "fundo_lufs": -26.5,
+  "narracao_lufs": -14.5,
+  "agua_menos_narracao_db": -14.1,
+  "agua_pct_energia_do_fundo": 49
+ },
+ {
+  "secao": "conclusão",
+  "ini": 155.0,
+  "fim": 168.0,
+  "agua_lufs": -24.5,
+  "agua_max_curto": -22.0,
+  "fundo_lufs": -25.3,
+  "narracao_lufs": -13.1,
+  "agua_menos_narracao_db": -11.5,
+  "agua_pct_energia_do_fundo": 75
+ }
+]

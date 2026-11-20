@@ -412,7 +412,7 @@ def gerar_sintetico():
 
 
 def mixar(saida='audio_ep01.wav', stems_dir='stems', sufixo='', relatorio='mix_ep01.json', efeitos_rel=-2.0, amb_rel=-16.0,
-          duck_alvo=-13.0, duck_piso=-24.0, duck_grave=-6.0, musica_rel=-16.0, duck_amb_max=None, ganhos_fixos_db=None):
+          duck_alvo=-13.0, duck_piso=-24.0, duck_grave=-6.0, musica_rel=-16.0, duck_amb_max=None, ganhos_fixos_db=None, master_fixo_db=None):
     """duck_alvo: banda da voz do fundo fica este tanto abaixo da fala; duck_piso: redução máxima; duck_grave: redução fixa
     dos graves durante a fala; duck_amb_max: limite próprio (menor) para as ambiências — o ambiente não some sob a voz."""
     # reverberação por ambiente (envios → convolução com a resposta ao impulso daquele ambiente)
@@ -457,12 +457,15 @@ def mixar(saida='audio_ep01.wav', stems_dir='stems', sufixo='', relatorio='mix_e
     for k in STEMS: STEMS[k] *= fim[:, None]
     STEMS['narracao'] = VOZ
     mix = sum(STEMS.values())
-    g0 = -14.0 - lufs(mix); mix *= db(g0)
-    mix, red = limitador(mix, -1.8)
-    for _ in range(2):
-        d = -14.0 - lufs(mix)
-        if abs(d) < 0.1: break
-        mix *= db(d); g0 += d; mix, red = limitador(mix, -1.8)
+    if master_fixo_db is not None:   # ganho de master herdado de outra versão (comparativos A/B: só o elemento novo muda)
+        g0 = float(master_fixo_db); mix *= db(g0); mix, red = limitador(mix, -1.8)
+    else:
+        g0 = -14.0 - lufs(mix); mix *= db(g0)
+        mix, red = limitador(mix, -1.8)
+        for _ in range(2):
+            d = -14.0 - lufs(mix)
+            if abs(d) < 0.1: break
+            mix *= db(d); g0 += d; mix, red = limitador(mix, -1.8)
     os.makedirs(os.path.join(EP, stems_dir), exist_ok=True)
     for k, x in STEMS.items(): sf.write(os.path.join(EP, stems_dir, f'ep01_{k}{sufixo}.wav'), x * db(g0), SR, subtype='PCM_24')
     sf.write(os.path.join(EP, saida), mix, SR, subtype='PCM_24')
