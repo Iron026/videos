@@ -409,7 +409,8 @@ def seg05(pasta):
     rot.add('Corte ilustrativo', (50, -27, 2.0), 44.7, 46.9, dx=0.04, dy=-0.06)
     rot.add('Picadeiros', (50, 0, Z_PISO + 1.0), 44.8, 46.3, dx=0.06, dy=0.07)
     rot.add('Começa a flutuar', lambda g: Vector((50, -14, quilha_z(g) + 1.0)), 46.15, 46.95, dx=0.05, dy=-0.07)
-    rot.add('Calado: 8 m', lambda g: Vector((xm, yb, quilha_z(g) + T_EQ)), 47.05, 48.0, dx=-0.10, dy=-0.06)
+    # sem rótulo 'Calado: 8 m' aqui: a narração só apresenta o calado na sequência de carregamento (~117 s); neste plano as marcas
+    # do costado servem apenas de referência visual de que a linha d'água parou ("e para. Por quê?")
     exportar_seg(pasta, 41.55, 48.00, anim, rot, extra=dict(segmento='05', nivel_flutua=Z_QUILHA0 + T_EQ, calado=T_EQ))
 
 

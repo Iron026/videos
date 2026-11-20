@@ -6,8 +6,8 @@
   "resolucao": "540,960"
  },
  "2_imagem": {
-  "psnr_medio_db": "43.570434",
-  "psnr_min_db": "39.441720",
+  "psnr_medio_db": "49.473237",
+  "psnr_min_db": "30.771579",
   "quadros_pretos": 0,
   "trechos_parados": 0,
   "erros_de_decodificacao": 0
@@ -39,20 +39,20 @@
    "inicio_audivel_s": 5.85,
    "ataque_pleno_s": 5.89,
    "pico_s": 6.32,
-   "fim_audivel_s": 9.75
+   "fim_audivel_s": 9.74
   },
   "buzina_conclusao": {
-   "inicio_audivel_s": 166.25,
-   "ataque_pleno_s": 166.31,
-   "pico_s": 167.13,
-   "fim_audivel_s": 167.9
+   "inicio_audivel_s": 166.16,
+   "ataque_pleno_s": 166.17,
+   "pico_s": 166.52,
+   "fim_audivel_s": 167.89
   },
   "fim_da_ultima_palavra_s": 166.12
  },
  "5_clipping": {
   "wav_pico_amostra_dbfs": -1.81,
   "wav_amostras_acima_0_999": 0,
-  "aac_pico_amostra_dbfs": -2.06,
+  "aac_pico_amostra_dbfs": -2.07,
   "aac_amostras_acima_0_999": 0
  },
  "6_loudness": {
@@ -65,7 +65,7 @@
  },
  "8_clareza_voz": {
   "blocos_com_fala": 1210,
-  "voz_10db_acima_pct": 96.4,
+  "voz_10db_acima_pct": 96.6,
   "snr_mediana_db": 22.8,
   "pior_bloco_db": 1.4
  },
@@ -117,12 +117,12 @@
     "salto_db": -7.2
    },
    {
-    "t_s": 166.3,
+    "t_s": 166.2,
     "salto_db": 13.7
    },
    {
-    "t_s": 167.6,
-    "salto_db": -9.2
+    "t_s": 167.5,
+    "salto_db": -7.9
    }
   ]
  },
@@ -131,22 +131,22 @@
   "mono_lufs": -14.04,
   "perda_db": 0.01,
   "correlacao_LR": 0.988,
-  "voz_10db_mono_pct": 96.4
+  "voz_10db_mono_pct": 96.6
  },
  "12_final": {
   "rms_dbfs_por_trecho": {
-   "166.50–166.75 s": -34.0,
-   "167.00–167.25 s": -29.4,
-   "167.50–167.75 s": -39.2,
-   "167.75–168.00 s": -56.2
+   "166.50–166.75 s": -31.2,
+   "167.00–167.25 s": -32.4,
+   "167.50–167.75 s": -46.4,
+   "167.75–168.00 s": -61.4
   },
-  "ultimos_20ms_dbfs": -139.3
+  "ultimos_20ms_dbfs": -139.1
  },
  "AB_diferenca": {
   "master_A_db": -0.9148,
   "master_B_db": -0.9148,
-  "residuo_fora_das_buzinas_e_do_ajuste_17s_max_dbfs": -116.8,
-  "residuo_nas_janelas_alteradas_max_dbfs": -29.5,
+  "residuo_fora_das_janelas_ajustadas_max_dbfs": -111.5,
+  "residuo_nas_janelas_alteradas_max_dbfs": -29.3,
   "narracao_dif_max_dbfs": -124.5
  }
 }

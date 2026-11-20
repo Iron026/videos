@@ -27,6 +27,8 @@ const SMAP = parseInt(P.get('smap') || '4096');
 const CACHE = P.get('cache') === '1';
 const ENV = parseFloat(P.get('env') || '1');
 const MSAA = parseInt(P.get('msaa') || '4');
+const OCL_K = parseFloat(P.get('ocl') || '0.994');   // fator de aproximação do oclusor (1 = comportamento antigo, só diagnóstico)
+const OCULTAR = new Set((P.get('ocultar') || '').split(',').filter(Boolean));   // diagnóstico: não carrega estes materiais (nome ou tipo)
 const BLOOM = parseFloat(P.get('bloom') || '0');      // brilho suave só nas luzes fortes (solda, reflexo do sol, linhas luminosas)
 const meta = await (await fetch(CENA + 'cena.json')).json();
 const W = Math.round(meta.camera.largura * ESCALA), H = Math.round(meta.camera.altura * ESCALA);
@@ -35,7 +37,7 @@ THREE.Object3D.DEFAULT_UP.set(0, 0, 1);
 const renderer = new THREE.WebGLRenderer({ antialias: false, preserveDrawingBuffer: true });
 renderer.setSize(W, H); renderer.setPixelRatio(1);
 renderer.toneMapping = THREE.NeutralToneMapping; renderer.toneMappingExposure = 1.0;
-renderer.shadowMap.enabled = true;
+renderer.shadowMap.enabled = SOMBRA !== 'nao';   // 'nao': diagnóstico sem sombras
 renderer.shadowMap.type = SOMBRA === 'vsm' ? THREE.VSMShadowMap : THREE.PCFSoftShadowMap;
 document.body.appendChild(renderer.domElement);
 
@@ -407,7 +409,13 @@ function materialRaio(m) {
 }
 
 // ------------------------------------------------------------------ geometria
-const matProfOcl = new THREE.MeshBasicMaterial({ colorWrite: false, side: THREE.DoubleSide });
+// Oclusor (só profundidade) do corte ilustrativo: fica no MESMO plano da face lateral do mar cortado. Coplanar + textura de
+// profundidade de precisão limitada = decisão pixel a pixel instável no teste 'zc < vZv − 0,05' da água → pontos em grade do mar
+// sobre o interior do navio. Correção: o oclusor é desenhado 0,6 % mais perto da câmera (o vértice é aproximado ao longo do próprio
+// raio de visão: a posição na tela não muda, só a profundidade), com folga que cresce com a distância como a precisão.
+const matProfOcl = new THREE.ShaderMaterial({ colorWrite: false, side: THREE.DoubleSide,
+  vertexShader: `void main(){ vec4 mv=modelViewMatrix*vec4(position,1.0); mv.xyz*=${OCL_K.toFixed(4)}; gl_Position=projectionMatrix*mv; }`,
+  fragmentShader: `void main(){ gl_FragColor=vec4(0.0); }` });
 let tris = 0; const caixa = new THREE.Box3(); const matsAgua = [], matsRaio = [];
 const SEM_SOMBRA = new Set(meta.sem_sombra || []);   // interiores fechados (porão): sem sol direto atravessando o corte ilustrativo
 const ANIM = meta.animacao; const animados = {}; const SURG = meta.surgir || {}; const surgem = [];
@@ -429,6 +437,7 @@ await Promise.all(meta.materiais.map(async (m) => {
   g.setAttribute('position', new THREE.InterleavedBufferAttribute(ib, 3, 0)); g.setAttribute('normal', new THREE.InterleavedBufferAttribute(ib, 3, 3));
   g.setAttribute('aLocal', new THREE.InterleavedBufferAttribute(ib, 3, 6)); g.setAttribute('aGen', new THREE.InterleavedBufferAttribute(ib, 3, 9));
   tris += n / 3;
+  if (OCULTAR.has(m.nome) || OCULTAR.has(m.tipo)) return;
   if (m.tipo === 'agua') { const mat = materialAgua(m); matsAgua.push(mat); const ma = new THREE.Mesh(g, mat); registrarAnim(ma, m); cenaTransp.add(ma); return; }
   if (m.tipo === 'espuma') { const mat = materialEspuma(m); matsRaio.push(mat); const e = new THREE.Mesh(g, mat); e.renderOrder = 4; registrarAnim(e, m); cenaTransp.add(e); return; }
   if (m.tipo === 'raio_luz') { const mat = materialRaio(m); matsRaio.push(mat); const r = new THREE.Mesh(g, mat); r.renderOrder = 2; cenaTransp.add(r); return; }

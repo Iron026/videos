@@ -251,6 +251,14 @@
    "voz_detectada": false,
    "usos": [
     [
+     30.3,
+     "ar livre: vento discreto (navio pronto, sem obra)"
+    ],
+    [
+     35.0,
+     "interior do casco vazio: ar parado (vento abafado, sem máquinas)"
+    ],
+    [
      83.8,
      "brisa sobre o mar"
     ],
@@ -691,14 +699,6 @@
      "motor de translação do pórtico: segue velocidade e aceleração do carro; para quando o carro para [RESERVA Mixkit: WWS Shipyardcrane (Commons) não pôde ser baixado]"
     ],
     [
-     30.3,
-     "guindastes distantes [RESERVA Mixkit: WWS Shipyardcrane (Commons) não pôde ser baixado]"
-    ],
-    [
-     35.0,
-     "interior do casco vazio (zumbido distante)"
-    ],
-    [
      94.5,
      "portêiner: motores do carro e do guincho seguem o movimento (param quando ele para) [RESERVA Mixkit: WWS Containershipgantrycrane (Commons) não pôde ser baixado]"
     ]
@@ -965,10 +965,6 @@
     [
      15.1,
      "ambiente de estaleiro (galpão de construção naval)"
-    ],
-    [
-     30.3,
-     "estaleiro (navio pronto)"
     ]
    ]
   },
@@ -1344,7 +1340,7 @@
     ],
     [
      166.2,
-     "buzina distante no plano final (despedida, após \"navio.\")"
+     "buzina distante no plano final (resposta logo após \"navio.\")"
     ]
    ]
   }
@@ -1383,8 +1379,24 @@
    "casco largo: massa de água deslocada"
   ],
   [
-   130.4,
-   "marcas acendendo (um único brilho sutil)"
+   130.5,
+   "linha de carga S acendendo"
+  ],
+  [
+   131.1,
+   "linha de carga T acendendo"
+  ],
+  [
+   131.6,
+   "linha de carga W acendendo"
+  ],
+  [
+   132.2,
+   "linha de carga F acendendo"
+  ],
+  [
+   132.7,
+   "linha de carga TF acendendo"
   ],
   [
    134.9,

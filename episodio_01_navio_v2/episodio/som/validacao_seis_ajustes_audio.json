@@ -1,0 +1,518 @@
+{
+ "1_buzina_inicial": {
+  "pausa_6_05_6_28_db": {
+   "antes": -34.07,
+   "depois": -32.08
+  },
+  "sob_fala_7_0_9_5_db": {
+   "antes": -40.93,
+   "depois": -40.93
+  },
+  "momentaneo_max_lufs": {
+   "antes": -31.4,
+   "depois": -29.6
+  },
+  "margem_voz_um_navio": {
+   "antes": [
+    [
+     6.5,
+     7.3
+    ],
+    [
+     6.6,
+     20.3
+    ],
+    [
+     6.7,
+     16.7
+    ],
+    [
+     6.9,
+     16.6
+    ],
+    [
+     7.1,
+     26.3
+    ]
+   ],
+   "depois": [
+    [
+     6.5,
+     7.3
+    ],
+    [
+     6.6,
+     20.3
+    ],
+    [
+     6.7,
+     16.7
+    ],
+    [
+     6.9,
+     16.6
+    ],
+    [
+     7.1,
+     26.3
+    ]
+   ]
+  },
+  "envoltoria_dbfs_6_0_6_7": {
+   "antes": [
+    -39.8,
+    -37.0,
+    -36.7,
+    -31.8,
+    -34.3,
+    -31.7,
+    -29.2,
+    -35.8,
+    -37.1,
+    -35.9,
+    -38.3,
+    -37.4,
+    -36.0,
+    -36.0,
+    -35.3
+   ],
+   "depois": [
+    -37.8,
+    -35.1,
+    -34.7,
+    -29.8,
+    -32.3,
+    -29.7,
+    -27.3,
+    -34.4,
+    -36.7,
+    -35.9,
+    -38.3,
+    -37.4,
+    -36.0,
+    -36.0,
+    -35.3
+   ]
+  }
+ },
+ "2_transicao_0_30": {
+  "ambiencias_rms_dbfs_29_33": {
+   "antes": [
+    -40.0,
+    -39.4,
+    -36.3,
+    -38.0,
+    -42.4,
+    -52.5,
+    -47.1,
+    -46.7,
+    -50.1,
+    -46.5,
+    -48.3,
+    -38.8,
+    -39.2,
+    -37.9,
+    -44.2,
+    -39.2
+   ],
+   "depois": [
+    -40.0,
+    -39.4,
+    -36.3,
+    -38.0,
+    -42.4,
+    -47.2,
+    -45.5,
+    -45.5,
+    -45.3,
+    -44.5,
+    -46.9,
+    -44.8,
+    -45.6,
+    -46.3,
+    -47.0,
+    -45.7
+   ]
+  },
+  "ambiencias_media_31_35_db": {
+   "antes": -40.9,
+   "depois": -43.5
+  },
+  "ambiencias_media_35_41_db": {
+   "antes": -46.4,
+   "depois": -56.4
+  },
+  "maior_salto_100ms_29_42_db": {
+   "antes": 13.100000000000001,
+   "depois": 5.0
+  },
+  "sons_ativos_apos_30_75": [
+   {
+    "t": 30.3,
+    "uso": "ar livre: vento discreto (navio pronto, sem obra)"
+   },
+   {
+    "t": 33.15,
+    "uso": "proa se separando: aço pesado deslizando"
+   },
+   {
+    "t": 33.25,
+    "uso": "estrutura rangendo no corte"
+   },
+   {
+    "t": 35.0,
+    "uso": "interior do casco vazio: ar parado (vento abafado, sem máquinas)"
+   },
+   {
+    "t": 37.0,
+    "uso": "células acendendo (brilho sutil)"
+   },
+   {
+    "t": 39.2,
+    "uso": "células acendendo (brilho sutil)"
+   },
+   {
+    "t": 39.6,
+    "uso": "estalo térmico no porão vazio"
+   },
+   {
+    "t": 41.45,
+    "uso": "mecanismo da válvula (destrava)"
+   }
+  ],
+  "margem_voz_30_41_pct_10db": {
+   "antes": 98.8,
+   "depois": 100.0
+  }
+ },
+ "4_linhas": {
+  "brilhos": [
+   {
+    "quadro_s": 130.517,
+    "inicio_audio_s": 130.518,
+    "desvio_ms": 0.5,
+    "pico_dbfs": -43.6,
+    "energia_abaixo_500hz_pct": 0.0,
+    "narracao_no_instante_lufs_mom": -16.8,
+    "brilho_lufs_mom": -36.3
+   },
+   {
+    "quadro_s": 131.05,
+    "inicio_audio_s": 131.051,
+    "desvio_ms": 1.4,
+    "pico_dbfs": -46.5,
+    "energia_abaixo_500hz_pct": 0.0,
+    "narracao_no_instante_lufs_mom": -10.3,
+    "brilho_lufs_mom": -35.5
+   },
+   {
+    "quadro_s": 131.617,
+    "inicio_audio_s": 131.618,
+    "desvio_ms": 0.6,
+    "pico_dbfs": -48.6,
+    "energia_abaixo_500hz_pct": 0.0,
+    "narracao_no_instante_lufs_mom": -11.4,
+    "brilho_lufs_mom": -36.3
+   },
+   {
+    "quadro_s": 132.15,
+    "inicio_audio_s": 132.151,
+    "desvio_ms": 1.3,
+    "pico_dbfs": -46.2,
+    "energia_abaixo_500hz_pct": 0.0,
+    "narracao_no_instante_lufs_mom": -13.6,
+    "brilho_lufs_mom": -39.5
+   },
+   {
+    "quadro_s": 132.717,
+    "inicio_audio_s": 132.718,
+    "desvio_ms": 0.8,
+    "pico_dbfs": -47.3,
+    "energia_abaixo_500hz_pct": 0.0,
+    "narracao_no_instante_lufs_mom": -10.7,
+    "brilho_lufs_mom": -38.0
+   }
+  ],
+  "margem_voz_130_134": {
+   "antes": [
+    [
+     130.4,
+     20.7
+    ],
+    [
+     131.0,
+     15.0
+    ],
+    [
+     131.1,
+     29.3
+    ],
+    [
+     131.2,
+     23.9
+    ],
+    [
+     131.3,
+     15.7
+    ],
+    [
+     131.4,
+     26.0
+    ],
+    [
+     131.5,
+     12.8
+    ],
+    [
+     131.6,
+     26.4
+    ],
+    [
+     131.8,
+     34.3
+    ],
+    [
+     131.9,
+     32.1
+    ],
+    [
+     132.0,
+     19.0
+    ],
+    [
+     132.1,
+     22.2
+    ],
+    [
+     132.3,
+     26.4
+    ],
+    [
+     132.4,
+     20.2
+    ],
+    [
+     132.5,
+     19.0
+    ],
+    [
+     132.6,
+     19.5
+    ],
+    [
+     132.7,
+     35.4
+    ],
+    [
+     132.8,
+     35.8
+    ],
+    [
+     132.9,
+     24.3
+    ],
+    [
+     133.1,
+     26.4
+    ],
+    [
+     133.2,
+     27.1
+    ],
+    [
+     133.3,
+     29.6
+    ],
+    [
+     133.4,
+     33.4
+    ],
+    [
+     133.5,
+     19.1
+    ],
+    [
+     133.6,
+     31.8
+    ],
+    [
+     133.7,
+     29.3
+    ]
+   ],
+   "depois": [
+    [
+     130.4,
+     20.7
+    ],
+    [
+     131.0,
+     13.9
+    ],
+    [
+     131.1,
+     27.0
+    ],
+    [
+     131.2,
+     21.9
+    ],
+    [
+     131.3,
+     14.2
+    ],
+    [
+     131.4,
+     24.8
+    ],
+    [
+     131.5,
+     14.7
+    ],
+    [
+     131.6,
+     23.3
+    ],
+    [
+     131.8,
+     31.9
+    ],
+    [
+     131.9,
+     29.2
+    ],
+    [
+     132.0,
+     17.9
+    ],
+    [
+     132.1,
+     21.3
+    ],
+    [
+     132.3,
+     24.1
+    ],
+    [
+     132.4,
+     16.1
+    ],
+    [
+     132.5,
+     15.9
+    ],
+    [
+     132.6,
+     19.5
+    ],
+    [
+     132.7,
+     30.9
+    ],
+    [
+     132.8,
+     30.1
+    ],
+    [
+     132.9,
+     19.4
+    ],
+    [
+     133.1,
+     25.1
+    ],
+    [
+     133.2,
+     27.2
+    ],
+    [
+     133.3,
+     29.6
+    ],
+    [
+     133.4,
+     33.4
+    ],
+    [
+     133.5,
+     19.1
+    ],
+    [
+     133.6,
+     31.8
+    ],
+    [
+     133.7,
+     29.3
+    ]
+   ]
+  }
+ },
+ "6_buzina_final": {
+  "fim_de_navio_s": 166.12,
+  "inicio_audivel_s": {
+   "antes": 166.26,
+   "depois": 166.155
+  },
+  "chega_a_6db_do_pico_s": {
+   "antes": 166.89,
+   "depois": 166.2
+  },
+  "separacao_ms": {
+   "antes": 140,
+   "depois": 35
+  },
+  "pico_momentaneo_lufs": {
+   "antes": -27.6,
+   "depois": -31.1,
+   "abertura_depois": -29.6
+  },
+  "voz_ate_fim_de_navio_igual": true,
+  "sobreposicao_com_voz_db": -147.9,
+  "envoltoria_dbfs_166_168": [
+   -148.4,
+   -48.1,
+   -34.4,
+   -33.8,
+   -32.9,
+   -32.8,
+   -34.3,
+   -37.2,
+   -36.6,
+   -33.6,
+   -33.4,
+   -33.6,
+   -34.0,
+   -35.1,
+   -39.1,
+   -47.1,
+   -51.8,
+   -57.2,
+   -65.8,
+   -82.8
+  ],
+  "mix_ultimos_20ms_dbfs": -240.0
+ },
+ "trechos_alterados_s": [
+  [
+   5.8,
+   7.0
+  ],
+  [
+   29.8,
+   42.9
+  ],
+  [
+   130.4,
+   133.6
+  ],
+  [
+   166.1,
+   167.9
+  ]
+ ],
+ "lufs": {
+  "antes": -14.03,
+  "depois": -14.03
+ }
+}

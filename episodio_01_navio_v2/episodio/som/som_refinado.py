@@ -99,6 +99,22 @@ def sint_sopro(t, dur, dB, f=(300, 1600), sub=False, ambiente='ext', nome=''):
     AM.USOS.append(dict(t=round(t, 2), id='sintese', titulo='textura gráfica sutil (síntese)', ini=0, dur=dur, tom=1.0, uso=nome, grupo=SE.GRUPO[0]))
 
 
+# linhas de carga S → T → W → F → TF: primeiro quadro com brilho visível, medido nos quadros renderizados (som/validacao_seis_ajustes.json), frequência, nível, pan.
+# Pequenas variações naturais (afinação, nível, posição); levemente ascendente como as linhas, que acendem de baixo para cima.
+LINHAS_BRILHO = [(130.517, 2380, -33.0, -0.06), (131.050, 2290, -34.0, -0.02), (131.617, 2520, -33.5, 0.03), (132.150, 2450, -34.5, 0.05), (132.717, 2660, -33.5, 0.08)]   # quadros medidos
+
+
+def brilho_linha(t, f0, dB, pan=0.0, nome=''):
+    """Brilho delicado de uma linha luminosa (síntese original, NÃO bipe): sopro curto de ar filtrado (2,5–7 kHz) + um
+    "tilintar" vítreo inarmônico (parciais 1 / 2,32 / 3,9) com ataque suave de 8 ms e decaimento rápido (~0,1 s). Sem graves."""
+    n = int(0.42 * SR); x = tt(n); ataque = np.clip(x / 0.008, 0, 1)
+    sopro = S.bp(np.random.default_rng(int(t * 1000)).standard_normal(n), 2500, 7000)   # gerador próprio: não altera o resto do episódio * np.clip(x / 0.015, 0, 1) * np.exp(-x / 0.07) * 0.6
+    vidro = sum(a * np.sin(2 * np.pi * f0 * r * x + fase) * np.exp(-x / tau) for r, a, tau, fase in ((1.0, 1.0, 0.11, 0.0), (2.32, 0.35, 0.07, 1.1), (3.9, 0.15, 0.045, 2.3)))
+    y = lpz(hpz((sopro + vidro * 0.5) * ataque, 900, 2), 9000, 2)
+    AM.ULTIMO[0] = None; por(t, y, dB, pan, 'ext', 0.15)
+    AM.USOS.append(dict(t=round(t, 2), id='sintese', titulo='brilho de linha luminosa (síntese original, discreta)', ini=0, dur=0.42, tom=1.0, uso=nome, grupo=SE.GRUPO[0]))
+
+
 def janela_env(n, env):
     """Envelope (lista de (fração, nível)) aplicado a n amostras."""
     fr, lv = zip(*env); return np.interp(np.linspace(0, 1, n), fr, lv)
@@ -108,13 +124,13 @@ def janela_env(n, env):
 BUZ = 'CruiseshipAlbatroshorn'      # Wikimedia Commons, CC0: buzina real de navio (três toques ao deixar Bremerhaven)
 
 
-def buzina(t0, sust, dB, persp=None, envio=0.25, extra_lp=None, uso='', rel=2.04, compensa_fim=False, sob_fala_db=None):
+def buzina(t0, sust, dB, persp=None, envio=0.25, extra_lp=None, uso='', rel=2.04, compensa_fim=False, sob_fala_db=None, ataque_ini=3.15, ataque_fi=0.08):
     """UM toque de buzina montado só com a gravação real: ATAQUE real do 1º toque (fim da subida de pressão) → sustentação breve
     (trecho estável) → DISSIPAÇÃO real do último toque (fim do sopro + eco do porto). Fusões de 0,25 s entre as partes.
     Levemente mais grave (tom 0,9 ≈ −1,8 semitom: ~104 Hz) para a escala de um cargueiro; filtro passa-alta em 80 Hz tira o
     vento do microfone. Perspectiva pela distância real da câmera ao navio."""
     tom = 0.9; xf = int(0.25 * SR)
-    A_ = trecho(BUZ, 3.15, 0.6, fi=0.08, fo=0.0, norm=None, tom=tom, t=t0, uso=uso)        # fim da subida de pressão: ~0,5 s
+    A_ = trecho(BUZ, ataque_ini, 0.6, fi=ataque_fi, fo=0.0, norm=None, tom=tom, t=t0, uso=uso)   # 3,15: subida de pressão (lenta); 5,52: toque real (~55 ms)
     S_ = trecho(BUZ, 7.0, sust + 0.5, fi=0.0, fo=0.0, norm=None, tom=tom)
     R_ = trecho(BUZ, 26.95, rel, fi=0.0, fo=0.25 if rel >= 2.0 else 0.5, norm=None, tom=tom)   # rel < 2: corte real + eco curto
     def junta(a, b):
@@ -177,7 +193,7 @@ def abertura():
     por(a, MV.perspectiva(x, a, ts, ds, 60, k=0.8, piso=-20), -19, -0.4, 'ext', 0.08)
     x = trecho(3078, 0, 5.0, ref=-3, t=7.9, uso='casco passando perto da câmera (travelling)')
     por(7.9, MV.perspectiva(x, 7.9, tm, dm, 60, k=0.6, piso=-12), -18, -0.3, eq=lp_(1500))
-    if BUZINA: buzina(5.85, 0.8, BUZ_DB[0], (tm, dm, 150, 0.35, -8, 1.0, 1800), 0.3, sob_fala_db=-12, uso='buzina do navio ao aparecer (ataque na pausa após "gigante:")')
+    if BUZINA: buzina(5.85, 0.8, BUZ_DB[0], (tm, dm, 150, 0.35, -8, 1.0, 1800), 0.3, sob_fala_db=-14, uso='buzina do navio ao aparecer (ataque na pausa após "gigante:")')
 
 
 # ================================================================================================ 15–30 · estaleiro
@@ -228,11 +244,12 @@ def estaleiro():
 
 # ================================================================================================ 30–41 · navio pronto, corte do casco
 def navio_corte():
-    amb(30.3, 35.0, 3074, -23, ambiente='ind', ini=30, uso='estaleiro (navio pronto)')
-    with G('guindastes'): amb(30.3, 35.0, C('Shipyardcrane'), -33, ambiente='ind', ini=estavel(C('Shipyardcrane'), 5, ini=40), eq=hp_(80), uso='guindastes distantes')
+    # "Meses depois": o casco pronto sobre os picadeiros, ao ar livre, sem guindastes nem obra. O galpão e os guindastes do
+    # estaleiro terminam na fusão de imagem (29,85–30,75 s, fade já existente em estaleiro()); entra só o ar livre (vento discreto)
+    amb(30.3, 35.0, 1201, -25, ini=12, uso='ar livre: vento discreto (navio pronto, sem obra)')
     por(33.15, trecho(1523, ataque(1523, -20), 1.3, fi=0.15, fo=0.5, ref=-3, tom=0.8, t=33.15, uso='proa se separando: aço pesado deslizando'), -15, 0.2, 'ind', 0.2)
     por(33.25, trecho(3076, 2.0, 1.4, fi=0.2, fo=0.6, ref=-3, t=33.25, uso='estrutura rangendo no corte'), -22, 0.15, 'ind', 0.2, eq=hp_(80))
-    amb(35.0, 41.55, 2504, -30, ambiente='int', envio=0.2, eq=lp_(1800), uso='interior do casco vazio (zumbido distante)')
+    amb(35.0, 41.55, 1201, -29, ambiente='int', envio=0.25, eq=lp_(700), ini=40, uso='interior do casco vazio: ar parado (vento abafado, sem máquinas)')
     sint_sopro(37.0, 1.0, -39, (2500, 7000), nome='células acendendo (brilho sutil)')
     sint_sopro(39.2, 1.0, -40, (2500, 7000), nome='células acendendo (brilho sutil)')
     por(39.6, trecho(3076, 5.2, 1.0, fi=0.05, fo=0.4, ref=-3, t=39.6, uso='estalo térmico no porão vazio'), -30, -0.2, 'int', 0.25, eq=hp_(120))
@@ -371,7 +388,8 @@ def porto():
     por(a, x * (0.15 + 0.85 * p_amostra(tc, g2, a, n))[:, None], -21, 0.2, 'porto', 0.1)
     amb(117.2, 134.0, C('Smallwaves'), -26, ambiente='porto', ini=30, uso='água no casco (calado e marcas, leve)')
     por(118.9, trecho(1208, 50.0, 2.0, fi=0.3, fo=0.8, norm='rms', ref=-20, t=118.9, uso='cota do calado sobe (marulho junto à quilha)'), -26, 0.1)
-    sint_sopro(130.4, 2.6, -39, (1800, 6000), nome='marcas acendendo (um único brilho sutil)')
+    ruido(int(2.6 * SR))   # o sopro único que existia aqui consumia estes sorteios: mantém idêntica a síntese do resto do episódio
+    for k, (t_, f_, d_, p_) in enumerate(LINHAS_BRILHO): brilho_linha(t_, f_, d_, p_, nome=f'linha de carga {"STWF"[k] if k < 4 else "TF"} acendendo')
 
 
 # ================================================================================================ 134–155 · avaria e inundação
@@ -430,8 +448,9 @@ def conclusao():
     amb(164.35, 168.0, 1201, -25, ini=30, uso='vento (espaço)', pos=0.0)
     # mesma buzina, mais distante e discreta: entra DEPOIS da última palavra ("navio." termina em 166,12 s), toque curto
     # que se dissipa sozinho (corte real + eco) antes de 168 s, junto com a resolução da trilha
-    if BUZINA: buzina(166.25, 0.25, BUZ_DB[1], (*MV.distancia('s13', 'navio'), 150, 0.35, -10, 0.0, 1200), 0.45, extra_lp=2500, rel=1.15, compensa_fim=True,
-                      uso='buzina distante no plano final (despedida, após "navio.")')
+    # ataque REAL da gravação (5,52 s; o toque sobe ~15 dB em ~55 ms): começo audível ~50 ms e nível pleno ~80 ms depois de "navio." (166,12 s)
+    if BUZINA: buzina(166.167, 0.25, BUZ_DB[1], (*MV.distancia('s13', 'navio'), 150, 0.35, -10, 0.0, 1200), 0.45, extra_lp=2500, rel=1.15, compensa_fim=True,
+                      ataque_ini=5.52, ataque_fi=0.015, uso='buzina distante no plano final (resposta logo após "navio.")')
 
 
 if __name__ == '__main__':

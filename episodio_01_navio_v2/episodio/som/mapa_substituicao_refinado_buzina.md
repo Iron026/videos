@@ -15,7 +15,7 @@ Atenção: um mesmo ID pode ser usado em vários grupos (ex.: 3076, rangido do c
 ## Estaleiro (ambiente, encaixe, solda, chapas, corte do casco)
 
 - Stem: `stems/grupos/ep01_efeitos_estaleiro_refinado_buzina.wav` · ativo de 23.58 a 40.71 s
-- Stem: `stems/grupos/ep01_ambiencias_estaleiro_refinado_buzina.wav` · ativo de 15.02 a 41.89 s
+- Stem: `stems/grupos/ep01_ambiencias_estaleiro_refinado_buzina.wav` · ativo de 15.02 a 41.81 s
 
 | Instante (s) | Duração (s) | Gravação (ID · nome) | Reserva? | Uso |
 |---|---|---|---|---|
@@ -36,10 +36,10 @@ Atenção: um mesmo ID pode ser usado em vários grupos (ex.: 3076, rangido do c
 | 27.22 | 0.90 | 2754 · Metal tank door closing | não | chapa encostando no casco (contato) |
 | 28.65 | 0.90 | 3158 · Thin metal plate drop | não | chapa encostando no casco (contato) |
 | 29.75 | 1.20 | 1167 · Swoosh wind passing | não | passagem de tempo "Meses depois" (sopro suave, único) |
-| 30.30 | 5.90 | 3074 · Inside the old boat shipyard ambience | não | estaleiro (navio pronto) |
+| 30.30 | 5.90 | 1201 · Strong wind sea breeze | não | ar livre: vento discreto (navio pronto, sem obra) |
 | 33.15 | 1.39 | 1523 · Heavy sliding door | não | proa se separando: aço pesado deslizando |
 | 33.25 | 1.40 | 3076 · Ship hull creak | não | estrutura rangendo no corte |
-| 35.00 | 7.75 | 2504 · Industrial machine hum | não | interior do casco vazio (zumbido distante) |
+| 35.00 | 7.75 | 1201 · Strong wind sea breeze | não | interior do casco vazio: ar parado (vento abafado, sem máquinas) |
 | 37.00 | 1.00 | sintese · textura gráfica sutil (síntese) | síntese | células acendendo (brilho sutil) |
 | 39.20 | 1.00 | sintese · textura gráfica sutil (síntese) | síntese | células acendendo (brilho sutil) |
 | 39.60 | 1.00 | 3076 · Ship hull creak | não | estalo térmico no porão vazio |
@@ -47,7 +47,7 @@ Atenção: um mesmo ID pode ser usado em vários grupos (ex.: 3076, rangido do c
 ## Guindastes (pórtico do estaleiro e portêineres)
 
 - Stem: `stems/grupos/ep01_efeitos_guindastes_refinado_buzina.wav` · ativo de 15.1 a 109.34 s
-- Stem: `stems/grupos/ep01_ambiencias_guindastes_refinado_buzina.wav` · ativo de 14.76 a 35.34 s
+- Stem: `stems/grupos/ep01_ambiencias_guindastes_refinado_buzina.wav` · ativo de 14.76 a 30.63 s
 
 | Instante (s) | Duração (s) | Gravação (ID · nome) | Reserva? | Uso |
 |---|---|---|---|---|
@@ -57,7 +57,6 @@ Atenção: um mesmo ID pode ser usado em vários grupos (ex.: 3076, rangido do c
 | 15.10 | 17.42 | 2139 · Industrial hum loop | não | guincho de içamento: segue a carga subindo/descendo |
 | 15.27 | 1.20 | 3076 · Ship hull creak | não | cabos rangendo na arrancada/frenagem da carga |
 | 20.93 | 1.20 | 3076 · Ship hull creak | não | cabos rangendo na arrancada/frenagem da carga |
-| 30.30 | 5.90 | 2504 · Industrial machine hum | sim — no lugar de WWS Shipyardcrane | guindastes distantes |
 | 94.55 | 25.01 | 2504 · Industrial machine hum | sim — no lugar de WWS Containershipgantrycrane | portêiner: motores do carro e do guincho seguem o movimento (param quando ele para) |
 | 94.55 | 24.56 | 802 · Construction machine motor passing | sim — no lugar de WWS Mobileharbourcrane | portêineres vizinhos (mais distantes, só em movimento) |
 | 97.55 | 0.80 | 3076 · Ship hull creak | não | cabos tensionando (arrancada/frenagem do spreader) |
@@ -65,7 +64,7 @@ Atenção: um mesmo ID pode ser usado em vários grupos (ex.: 3076, rangido do c
 
 ## Porto (ambiente, empilhadeiras, pousos de contêiner, água no casco)
 
-- Stem: `stems/grupos/ep01_efeitos_porto_refinado_buzina.wav` · ativo de 94.55 a 132.86 s
+- Stem: `stems/grupos/ep01_efeitos_porto_refinado_buzina.wav` · ativo de 94.55 a 133.27 s
 - Stem: `stems/grupos/ep01_ambiencias_porto_refinado_buzina.wav` · ativo de 94.22 a 134.41 s
 
 | Instante (s) | Duração (s) | Gravação (ID · nome) | Reserva? | Uso |
@@ -86,7 +85,11 @@ Atenção: um mesmo ID pode ser usado em vários grupos (ex.: 3076, rangido do c
 | 113.40 | 0.90 | 2983 · Factory hit with echo | não | contato distante de contêiner |
 | 117.20 | 18.00 | 1195 · Close sea waves loop | sim — no lugar de WWS Smallwaves | água no casco (calado e marcas, leve) |
 | 118.90 | 2.00 | 1208 · Small waves harbor rocks | não | cota do calado sobe (marulho junto à quilha) |
-| 130.40 | 2.60 | sintese · textura gráfica sutil (síntese) | síntese | marcas acendendo (um único brilho sutil) |
+| 130.52 | 0.42 | sintese · brilho de linha luminosa (síntese original, discreta) | síntese | linha de carga S acendendo |
+| 131.05 | 0.42 | sintese · brilho de linha luminosa (síntese original, discreta) | síntese | linha de carga T acendendo |
+| 131.62 | 0.42 | sintese · brilho de linha luminosa (síntese original, discreta) | síntese | linha de carga W acendendo |
+| 132.15 | 0.42 | sintese · brilho de linha luminosa (síntese original, discreta) | síntese | linha de carga F acendendo |
+| 132.72 | 0.42 | sintese · brilho de linha luminosa (síntese original, discreta) | síntese | linha de carga TF acendendo |
 
 ## Dique (comporta, jatos, enchimento)
 

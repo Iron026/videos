@@ -231,7 +231,7 @@
   "recuo_sob_fala": {
    "inicio_s": 6.28,
    "completo_s": 6.43,
-   "db": -12
+   "db": -14
   }
  },
  {
@@ -488,24 +488,13 @@
  },
  {
   "t": 30.3,
-  "id": 3074,
-  "titulo": "Inside the old boat shipyard ambience",
-  "ini": 30,
+  "id": 1201,
+  "titulo": "Strong wind sea breeze",
+  "ini": 12,
   "dur": 5.9,
   "tom": 1.0,
-  "uso": "estaleiro (navio pronto)",
+  "uso": "ar livre: vento discreto (navio pronto, sem obra)",
   "grupo": "estaleiro",
-  "substituido": false
- },
- {
-  "t": 30.3,
-  "id": 2504,
-  "titulo": "Industrial machine hum",
-  "ini": 40.0,
-  "dur": 5.9,
-  "tom": 1.0,
-  "uso": "guindastes distantes [RESERVA Mixkit: WWS Shipyardcrane (Commons) não pôde ser baixado]",
-  "grupo": "guindastes",
   "substituido": false
  },
  {
@@ -532,12 +521,12 @@
  },
  {
   "t": 35.0,
-  "id": 2504,
-  "titulo": "Industrial machine hum",
-  "ini": 22.8,
+  "id": 1201,
+  "titulo": "Strong wind sea breeze",
+  "ini": 40,
   "dur": 7.75,
   "tom": 1.0,
-  "uso": "interior do casco vazio (zumbido distante)",
+  "uso": "interior do casco vazio: ar parado (vento abafado, sem máquinas)",
   "grupo": "estaleiro",
   "substituido": false
  },
@@ -1306,13 +1295,53 @@
   "substituido": false
  },
  {
-  "t": 130.4,
+  "t": 130.52,
   "id": "sintese",
-  "titulo": "textura gráfica sutil (síntese)",
+  "titulo": "brilho de linha luminosa (síntese original, discreta)",
   "ini": 0,
-  "dur": 2.6,
+  "dur": 0.42,
   "tom": 1.0,
-  "uso": "marcas acendendo (um único brilho sutil)",
+  "uso": "linha de carga S acendendo",
+  "grupo": "porto"
+ },
+ {
+  "t": 131.05,
+  "id": "sintese",
+  "titulo": "brilho de linha luminosa (síntese original, discreta)",
+  "ini": 0,
+  "dur": 0.42,
+  "tom": 1.0,
+  "uso": "linha de carga T acendendo",
+  "grupo": "porto"
+ },
+ {
+  "t": 131.62,
+  "id": "sintese",
+  "titulo": "brilho de linha luminosa (síntese original, discreta)",
+  "ini": 0,
+  "dur": 0.42,
+  "tom": 1.0,
+  "uso": "linha de carga W acendendo",
+  "grupo": "porto"
+ },
+ {
+  "t": 132.15,
+  "id": "sintese",
+  "titulo": "brilho de linha luminosa (síntese original, discreta)",
+  "ini": 0,
+  "dur": 0.42,
+  "tom": 1.0,
+  "uso": "linha de carga F acendendo",
+  "grupo": "porto"
+ },
+ {
+  "t": 132.72,
+  "id": "sintese",
+  "titulo": "brilho de linha luminosa (síntese original, discreta)",
+  "ini": 0,
+  "dur": 0.42,
+  "tom": 1.0,
+  "uso": "linha de carga TF acendendo",
   "grupo": "porto"
  },
  {
@@ -1642,13 +1671,13 @@
   "substituido": false
  },
  {
-  "t": 166.25,
+  "t": 166.17,
   "id": "CruiseshipAlbatroshorn",
   "titulo": "Cruise ship Albatros ship horn",
-  "ini": 3.15,
+  "ini": 5.52,
   "dur": 0.74,
   "tom": 0.9,
-  "uso": "buzina distante no plano final (despedida, após \"navio.\")",
+  "uso": "buzina distante no plano final (resposta logo após \"navio.\")",
   "grupo": null,
   "substituido": false
  }

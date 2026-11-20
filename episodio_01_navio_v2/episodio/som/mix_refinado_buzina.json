@@ -7,19 +7,19 @@
  "correlacao_LR": 0.988,
  "inteligibilidade_celular": {
   "janelas_de_fala": 1210,
-  "snr_voz_mediana_db": 22.8,
+  "snr_voz_mediana_db": 22.9,
   "snr_p5_db": 11.4,
-  "pct_janelas_acima_10db": 96.4,
+  "pct_janelas_acima_10db": 96.6,
   "fala_plena_p5_db": 12.0,
-  "fala_plena_pct_acima_10db": 97.2
+  "fala_plena_pct_acima_10db": 97.3
  },
  "ducking_max_db": {
   "ducking_max_db": -18.0,
-  "ducking_medio_na_fala_db": -8.7
+  "ducking_medio_na_fala_db": -8.6
  },
  "stems": {
-  "efeitos": -26.4,
-  "ambiencias": -36.1,
+  "efeitos": -26.5,
+  "ambiencias": -36.0,
   "musica": -34.8,
   "narracao": -14.1
  },
@@ -58,10 +58,10 @@
   },
   "cat:buzina/efeitos": {
    "arquivo": "stems/categorias/ep01_efeitos_buzina_refinado_buzina.wav",
-   "lufs": -33.5,
+   "lufs": -33.7,
    "ativo_s": [
     5.85,
-    167.93
+    167.91
    ]
   },
   "dique/ambiencias": {
@@ -82,15 +82,15 @@
   },
   "estaleiro/ambiencias": {
    "arquivo": "stems/grupos/ep01_ambiencias_estaleiro_refinado_buzina.wav",
-   "lufs": -36.3,
+   "lufs": -35.1,
    "ativo_s": [
     15.02,
-    41.89
+    41.81
    ]
   },
   "estaleiro/efeitos": {
    "arquivo": "stems/grupos/ep01_efeitos_estaleiro_refinado_buzina.wav",
-   "lufs": -21.1,
+   "lufs": -21.2,
    "ativo_s": [
     23.58,
     40.71
@@ -98,10 +98,10 @@
   },
   "guindastes/ambiencias": {
    "arquivo": "stems/grupos/ep01_ambiencias_guindastes_refinado_buzina.wav",
-   "lufs": -48.6,
+   "lufs": -48.1,
    "ativo_s": [
     14.76,
-    35.34
+    30.63
    ]
   },
   "guindastes/efeitos": {
@@ -138,10 +138,10 @@
   },
   "porto/efeitos": {
    "arquivo": "stems/grupos/ep01_efeitos_porto_refinado_buzina.wav",
-   "lufs": -37.0,
+   "lufs": -36.8,
    "ativo_s": [
     94.55,
-    132.86
+    133.27
    ]
   },
   "resto/ambiencias": {
@@ -150,7 +150,7 @@
   },
   "resto/efeitos": {
    "arquivo": "stems/grupos/ep01_efeitos_resto_refinado_buzina.wav",
-   "lufs": -26.2
+   "lufs": -26.3
   }
  },
  "ganhos_stem_db": {
