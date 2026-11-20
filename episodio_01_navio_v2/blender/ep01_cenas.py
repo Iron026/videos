@@ -1052,17 +1052,41 @@ def seg12(pasta):
     ca, cb = COMP_AVARIA; xcm = 0.5 * (ca + cb)
     # água no porão: parte baixa (entre os tanques laterais) e parte alta (até o costado simples); superfície
     # sempre horizontal no mundo (contra-rotação do trim); sobe até o nível do mar lá fora
-    malag = lib.mat_fantasma('alagado', '#2a8fd6', alfa=0.62, brilho=1.15)
     blo = navio.meia_boca(xcm, 4.0) - hidro.L_TANQUE; bhi = navio.meia_boca(xcm, 8.0) - hidro.CASCO
+    z_rombo = 7.4; ybr = navio.meia_boca(xcm + 4, z_rombo) - hidro.CASCO - 0.02; V_JATO = 6.0     # jato: ~√(2g·Δh) com Δh ≈ 1,8 m
+    NIVEL = (T0, T1, th1, xcm); JATO_T = (136.9, 143.5, 146.2)
+    # água do alagamento: água do mar com profundidade, superfície ondulada, espuma e bolhas onde o jato bate (motor)
+    malag = lib.mat_alagado('alagado_v2', g0=0.0, imp=(4.0, ybr - 4.0), raso=(0.03, 0.30, 0.42), fundo=(0.008, 0.10, 0.19), nivel=NIVEL, jato=JATO_T, rombo=(4.0, ybr - 0.2, z_rombo, V_JATO))
     ag_lo = bpy.data.objects.new('agua_lo', None); lib.ligar(ag_lo); ag_lo['anim'] = 1; ag_lo.parent = raiz
     ag_hi = bpy.data.objects.new('agua_hi', None); lib.ligar(ag_hi); ag_hi['anim'] = 1; ag_hi.parent = raiz
-    lib.caixa('agua_lo_m', (cb - ca - 0.8, blo - 0.1, 1.0), (0, (blo + 0.1) / 2, 0.5), malag).parent = ag_lo
+    malag_lo = lib.mat_alagado('alagado_v2_lo', g0=0.0, imp=(4.0, ybr - 4.0), raso=(0.03, 0.30, 0.42), fundo=(0.008, 0.10, 0.19), nivel=NIVEL, jato=JATO_T,
+                               rombo=(4.0, ybr - 0.2, z_rombo, V_JATO), zmax=hidro.Z_TANQUE)          # cheia: sem superfície própria (evita faces sobrepostas)
+    lib.caixa('agua_lo_m', (cb - ca - 0.8, blo - 0.1, 1.0), (0, (blo + 0.1) / 2, 0.5), malag_lo).parent = ag_lo
     lib.caixa('agua_hi_m', (cb - ca - 0.8, bhi - 0.1, 1.0), (0, (bhi + 0.1) / 2, 0.5), malag).parent = ag_hi
-    z_rombo = 7.4; ybr = navio.meia_boca(xcm + 4, z_rombo) - hidro.CASCO - 0.02
     rasgo = lib.caixa('rasgo', (3.0, 0.3, 1.0), (xcm + 4.0, ybr, z_rombo), lib.mat_pintura('rasgo', '#0b0d12', rug=0.9)); rasgo.parent = raiz
-    jato = lib.malha('jato', [(xcm + 2.7, ybr - 0.2, z_rombo + 0.3), (xcm + 5.3, ybr - 0.2, z_rombo + 0.3), (xcm + 4.9, ybr - 5.5, 2.4), (xcm + 3.1, ybr - 5.5, 2.4)],
-                     [(0, 1, 2, 3)], lib.mat_fantasma('jato', '#dff6ff', alfa=0.6, brilho=1.4)); jato.parent = raiz
+    # JATO: tubo achatado ao longo da trajetória balística (sai do rombo a V_JATO e cai sob a gravidade), mais largo e mais
+    # espesso à medida que se abre; o shader o corta na superfície da água, que sobe
+    vs, fs, NS = [], [], 16; tq = math.sqrt(2 * (z_rombo - 2.25) / 9.81); seg_ = 30
+    for k in range(seg_ + 1):
+        t = tq * k / seg_; c = Vector((xcm + 4.0, ybr - 0.2 - V_JATO * t, z_rombo - 4.905 * t * t))
+        tan = Vector((0, -V_JATO, -9.81 * t)).normalized(); nn = Vector((1, 0, 0)).cross(tan).normalized()
+        wx, wz = 1.25 + 0.22 * t / tq * 2, 0.42 + 0.30 * t / tq * 2
+        for j in range(NS):
+            f = 2 * math.pi * j / NS; p_ = c + Vector((1, 0, 0)) * (wx * math.cos(f)) + nn * (wz * math.sin(f)); vs.append(tuple(p_))
+    for k in range(seg_):
+        for j in range(NS): fs.append((k * NS + j, k * NS + (j + 1) % NS, (k + 1) * NS + (j + 1) % NS, (k + 1) * NS + j))
+    jato = lib.malha('jato', vs, fs, lib.mat_jato('jato_v2', g0=0.0, modo=0, nivel=NIVEL, jato=JATO_T, rombo=(xcm + 4.0, ybr - 0.2, z_rombo, V_JATO)), suave=True); jato.parent = raiz
     surge(rasgo, 136.0, dur=0.2); surge(jato, 136.9, dur=0.3, t1=145.6, dur1=0.8)
+    # RESPINGO: espuma agitada onde o jato toca a água (âncora que acompanha o nível e o ponto de impacto)
+    resp = bpy.data.objects.new('respingo', None); lib.ligar(resp); resp['anim'] = 1; resp.parent = raiz
+    vs, fs = [], []; NA, NB = 14, 6
+    for b_ in range(NB + 1):
+        el = (math.pi / 2) * b_ / NB
+        for a_ in range(NA): az = 2 * math.pi * a_ / NA; vs.append((2.0 * math.cos(el) * math.cos(az), 1.4 * math.cos(el) * math.sin(az), 1.1 * math.sin(el)))
+    for b_ in range(NB):
+        for a_ in range(NA): fs.append((b_ * NA + a_, b_ * NA + (a_ + 1) % NA, (b_ + 1) * NA + (a_ + 1) % NA, (b_ + 1) * NA + a_))
+    lib.malha('respingo_m', vs, fs, lib.mat_jato('respingo_v2', g0=0.0, modo=1, nivel=NIVEL, jato=JATO_T, rombo=(xcm + 4.0, ybr - 0.2, z_rombo, V_JATO)), suave=True).parent = resp
+    def intens_jato(g): return suave((g - JATO_T[0]) / 0.3) * (1 - suave((g - JATO_T[1]) / (JATO_T[2] - JATO_T[1])))
     # hipótese grave: SEM divisórias a água avançaria porão a porão (vermelho), depois volta ao caso real
     mred = lib.mat_fantasma('hipotese', '#e2483a', alfa=0.45, brilho=1.1)
     vizinhos = sorted([(a_, b_) for (a_, b_) in zip(ANTEPARAS, ANTEPARAS[1:]) if (a_, b_) != COMP_AVARIA], key=lambda c: abs(0.5 * (c[0] + c[1]) - xcm))
@@ -1093,6 +1117,9 @@ def seg12(pasta):
         for anc, z0, z1 in ((ag_lo, 2.2, hidro.Z_TANQUE), (ag_hi, hidro.Z_TANQUE, navio.PONTAL)):
             h = max(0.0, min(lv, z1) - z0)
             anc.location = (xcm, 0, z0); anc.rotation_euler = (0, -th, 0); anc.scale = (1, 1, h) if h > 0.01 else (1e-4, 1e-4, 1e-4)
+        J = intens_jato(g); tq_ = math.sqrt(max(2 * (z_rombo - lv), 0.0) / 9.81)
+        resp.location = (xcm + 4.0, ybr - 0.2 - V_JATO * tq_, lv); resp.rotation_euler = (0, -th, 0)
+        resp.scale = (1, 1, 1) if (J > 0.02 and lv < z_rombo - 0.2) else (1e-4, 1e-4, 1e-4)
         M = raiz.matrix_world
         if g < 139.4:            # 57 dentro do porão: jato pelo rombo, água espalhando no piso
             p = M @ Vector((xcm - 3.0, -15.0, 7.5)); a = M @ Vector((xcm + 4.0, ybr - 1.0, 5.2)); l = 24

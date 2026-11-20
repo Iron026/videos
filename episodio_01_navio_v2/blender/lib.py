@@ -680,10 +680,27 @@ def mat_brilho(nome, cor='#ffffff', forca=1.5, raio=1.0, queda=2.0, tremor=0.3, 
     _MATS[nome] = m; return m
 
 
+def mat_alagado(nome, g0=0.0, imp=(0.0, 0.0), raso=(0.10, 0.42, 0.52), fundo=(0.02, 0.14, 0.24), nivel=(9.0, 10.0, 0.0, 0.0), jato=(1e9, 1e9, 1e9), rombo=(0.0, 0.0, 7.4, 6.3), zmax=1e9):
+    """Água do alagamento (motor em tempo real): água do mar com profundidade (escura no fundo), superfície ondulada que
+    reflete o céu, espuma e bolhas onde o jato bate, linha d'água legível. nivel = (T0, T1, θ1, xcm) da avaria; jato =
+    (início, começa a perder força, fim); rombo = (x local, y da abertura, z da abertura, velocidade do jato)."""
+    if nome in _MATS: return _MATS[nome]
+    m, nt, p = _mat(nome); p.inputs['Base Color'].default_value = srgb('#1f6f86'); p.inputs['Alpha'].default_value = 0.75
+    _MATS[nome] = m; return m
+
+
+def mat_jato(nome, g0=0.0, modo=0, nivel=(9.0, 10.0, 0.0, 0.0), jato=(1e9, 1e9, 1e9), rombo=(0.0, 0.0, 7.4, 6.3)):
+    """Jato de água pelo rombo (modo 0: fluxo aerado com estrias que correm no sentido da queda e termina na superfície
+    da água que sobe) e respingo onde ele bate (modo 1)."""
+    if nome in _MATS: return _MATS[nome]
+    m, nt, p = _mat(nome); p.inputs['Base Color'].default_value = srgb('#dff6ff'); p.inputs['Alpha'].default_value = 0.6
+    _MATS[nome] = m; return m
+
+
 for _nome, _tipo in [('mat_pintura', 'pintura'), ('mat_brilho', 'brilho'), ('mat_espuma', 'espuma'), ('mat_aco', 'aco'), ('mat_emissivo', 'emissivo'), ('mat_concreto', 'concreto'),
                      ('mat_areia', 'areia'), ('mat_agua', 'agua'), ('mat_vidro_escuro', 'vidro'), ('mat_conteiner', 'conteiner'),
                      ('mat_faixas_z', 'faixas_z'), ('mat_bolha', 'bolha'), ('mat_raio_luz', 'raio_luz'),
-                     ('mat_corte_linha_dagua', 'corte_ld'), ('mat_fantasma', 'fantasma')]:
+                     ('mat_corte_linha_dagua', 'corte_ld'), ('mat_fantasma', 'fantasma'), ('mat_alagado', 'alagado'), ('mat_jato', 'jato')]:
     globals()[_nome] = _rotular(globals()[_nome], _tipo)
 
 _ceu_original = ceu_estilizado

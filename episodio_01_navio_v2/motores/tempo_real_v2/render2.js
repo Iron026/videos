@@ -309,6 +309,89 @@ function materialEspuma(m) {
         gl_FragColor=vec4(uCor*(0.95+0.1*n2),clamp(a,0.0,0.97)); }` });
 }
 
+
+// ------------------------------------------------------------------ água do alagamento (avaria) e jato pelo rombo
+// Nível da água no porão (coordenadas do navio), igual ao da cena: lv(g) = 2,2 + (T(g) + xcm·tg θ(g) − 2,2)·suave((g−137)/7,6)
+const NIVEL_GLSL = `
+  float suave(float t){ t=clamp(t,0.0,1.0); return t*t*(3.0-2.0*t); }
+  float nivelPorao(float g, vec4 P){ float f=suave((g-137.2)/8.6); float T=P.x+(P.y-P.x)*f; float th=P.z*f;
+    float nl=T+P.w*tan(th); return g<137.0 ? 2.2 : 2.2+(nl-2.2)*suave((g-137.0)/7.6); }
+  float intensJato(float g, vec3 J){ return smoothstep(J.x, J.x+0.3, g)*(1.0-smoothstep(J.y, J.z, g)); }`;
+function materialAlagado(m) {
+  const mat = new THREE.ShaderMaterial({ transparent: true, depthWrite: false, side: THREE.DoubleSide,
+    uniforms: { uT: uTempo, uG0: { value: m.g0 ?? 0 }, uOp: { value: 1 }, uImp: { value: new THREE.Vector2(...(m.imp || [0, 0])) },
+      uRaso: { value: new THREE.Vector3(...(m.raso || [0.10, 0.42, 0.52])) }, uFundo: { value: new THREE.Vector3(...(m.fundo || [0.02, 0.14, 0.24])) },
+      uSol: { value: dirSol.clone().negate().normalize() }, uLv: { value: new THREE.Vector4(...(m.nivel || [9, 10, 0, 0])) },
+      uJato: { value: new THREE.Vector3(...(m.jato || [1e9, 1e9, 1e9])) }, uRombo: { value: new THREE.Vector4(...(m.rombo || [0, 0, 7.4, 6.3])) }, uZmax: { value: m.zmax ?? 1e9 } },
+    vertexShader: `attribute vec3 aGen; varying vec3 vP; varying vec3 vW; varying vec3 vNw; varying vec3 vG; varying float vH;
+      void main(){ vP=position; vG=aGen; vec4 w=modelMatrix*vec4(position,1.0); vW=w.xyz; vNw=normalize(mat3(modelMatrix)*normal);
+        vH=length(modelMatrix[2].xyz); gl_Position=projectionMatrix*viewMatrix*w; }`,
+    fragmentShader: RUIDO + NIVEL_GLSL + `uniform float uT,uG0,uOp,uZmax; uniform vec2 uImp; uniform vec3 uRaso,uFundo,uSol,uJato; uniform vec4 uLv,uRombo;
+      varying vec3 vP; varying vec3 vW; varying vec3 vNw; varying vec3 vG; varying float vH;
+      void main(){
+        float g=uT+uG0; float J=intensJato(g,uJato); float L=nivelPorao(g,uLv);
+        bool cheia=L>uZmax-0.03;                                            // caixa de baixo cheia: a superfície é a da caixa de cima
+        if(vNw.z<-0.6 || (cheia && vNw.z>0.6)) discard;                     // fundo (nunca visto) e topo interno não são desenhados
+        if(vNw.y>0.6) discard;                                              // face junto ao costado: coincide com o chapeamento (sem cintilação)
+        float tq=sqrt(max(2.0*(uRombo.z-L),0.0)/9.81); vec2 imp=vec2(uImp.x, uRombo.y-uRombo.w*tq);   // onde o jato toca a superfície
+        float prof=max(0.0,(1.0-vP.z)*vH); vec3 V=normalize(cameraPosition-vW); float d=length(vP.xy-imp);
+        float agit=0.25+0.75*J;
+        float n=fbm(vec3(vP.x*0.45, vP.y*0.45, g*0.9),3,0.5), n2=fbm(vec3(vP.x*1.3+g*0.4, vP.y*1.3, g*1.7),2,0.5);
+        float n3=fbm(vec3(vP.x*2.4+g*0.3, vP.y*2.4, g*2.2),3,0.5), n4=fbm(vec3(vP.x*0.9, vP.y*3.2-g*0.8, g*0.7),3,0.5);   // espuma fina, em estrias
+        float esp=J*exp(-d/1.7)*smoothstep(0.42,0.80,n3*0.7+n*0.3+0.15) + J*0.35*exp(-d/5.0)*smoothstep(0.58,0.86,n4);
+        vec3 c; float a;
+        if(vNw.z>0.6){                                                     // SUPERFÍCIE: ondulação, reflexo do céu, brilho, espuma
+          float fr=pow(1.0-max(V.z,0.0),3.0);
+          vec3 base=mix(uRaso*1.5, uRaso*0.9, 0.5+0.5*n*agit);
+          c=mix(base, vec3(0.42,0.58,0.66), 0.10+0.32*fr);
+          vec3 Ns=normalize(vec3(n2*0.25*agit, n*0.25*agit, 1.0));
+          c+=vec3(1.0,0.98,0.92)*pow(max(dot(reflect(-uSol,Ns),V),0.0),60.0)*0.35;
+          float borda=1.0-smoothstep(0.0,0.02,min(min(vG.x,1.0-vG.x),min(vG.y,1.0-vG.y)));
+          esp+=borda*0.25*agit; a=0.9;
+        } else {                                                           // CORPO: profundidade, turbidez, bolhas, linha d'água
+          float k=1.0-exp(-prof/4.0); c=mix(uRaso, uFundo, k);
+          float turb=fbm(vec3(vP.x*0.2, prof*0.25-g*0.10, vP.y*0.2+3.0),3,0.5); c*=0.84+0.32*turb;
+          float col=exp(-abs(vP.x-imp.x)/1.6)*exp(-abs(vP.y-imp.y)/4.0);
+          float bol=smoothstep(0.66,0.90,fbm(vec3(vP.x*2.6+vP.y*1.3, prof*2.2+g*2.0, 5.0),3,0.5));   // bolhas finas subindo junto ao jato
+          c+=vec3(0.45,0.66,0.72)*bol*col*J*0.5;
+          float linha=cheia ? 0.0 : 1.0-smoothstep(0.0,0.10+0.006*distance(cameraPosition,vW),prof); c=mix(c, vec3(0.62,0.88,0.94), linha*0.8);   // nível legível também de longe
+          a=mix(0.80,0.96,k);
+        }
+        c=mix(c, vec3(0.93,0.97,1.0), clamp(esp,0.0,1.0)); a=max(a, clamp(esp,0.0,1.0)*0.95);
+        gl_FragColor=vec4(c, a*uOp); }` });
+  Object.defineProperty(mat, 'opacity', { get() { return mat.uniforms.uOp.value; }, set(v) { if (mat.uniforms) mat.uniforms.uOp.value = v; }, configurable: true });
+  return mat;
+}
+function materialJato(m) {
+  const mat = new THREE.ShaderMaterial({ transparent: true, depthWrite: false, side: THREE.DoubleSide,
+    uniforms: { uT: uTempo, uG0: { value: m.g0 ?? 0 }, uOp: { value: 1 }, uModo: { value: m.modo ?? 0 }, uLv: { value: new THREE.Vector4(...(m.nivel || [9, 10, 0, 0])) },
+      uJato: { value: new THREE.Vector3(...(m.jato || [1e9, 1e9, 1e9])) }, uRombo: { value: new THREE.Vector4(...(m.rombo || [0, 0, 7.4, 6.3])) } },
+    vertexShader: `varying vec3 vP; varying vec3 vW; varying vec3 vNw; void main(){ vP=position; vec4 w=modelMatrix*vec4(position,1.0); vW=w.xyz;
+      vNw=normalize(mat3(modelMatrix)*normal); gl_Position=projectionMatrix*viewMatrix*w; }`,
+    fragmentShader: RUIDO + NIVEL_GLSL + `uniform float uT,uG0,uOp; uniform int uModo; uniform vec3 uJato; uniform vec4 uLv,uRombo;
+      varying vec3 vP; varying vec3 vW; varying vec3 vNw;
+      void main(){
+        float g=uT+uG0; float J=intensJato(g,uJato); vec3 V=normalize(cameraPosition-vW); float face=abs(dot(normalize(vNw),V));
+        if(uModo==0){                                                      // JATO: estrias correndo no sentido do fluxo, aerado
+          float L=nivelPorao(g,uLv); if(vP.z<L-0.03) discard;              // termina na superfície da água (que sobe)
+          float s=max(uRombo.y-vP.y,0.0);                                   // distância percorrida desde o rombo
+          float n=fbm(vec3(vP.x*1.8, s*0.45-g*4.5, vP.z*0.3),3,0.5), n2=fbm(vec3(vP.x*3.2, s*1.6-g*8.0, 1.7),2,0.5);   // estrias longas no sentido do fluxo
+          float aer=smoothstep(0.3,4.5,s);
+          vec3 c=mix(vec3(0.16,0.40,0.47), vec3(0.93,0.97,1.0), clamp(0.12+0.62*aer+0.35*n2,0.0,1.0))*(0.86+0.28*n);
+          float a=(0.28+0.55*smoothstep(0.30,0.72,n+0.35*n2))*(0.30+0.70*sqrt(face))*smoothstep(L-0.03,L+0.30,vP.z)*(0.35+0.65*J)
+                  *smoothstep(0.0,0.9,s);                                                                  // nasce transparente na boca do rombo
+          gl_FragColor=vec4(c, a*uOp);
+        } else {                                                           // RESPINGO: espuma branca agitada onde o jato bate
+          float n=fbm(vec3(vP.x*2.6, vP.y*2.6, vP.z*2.2-g*4.5),3,0.5), n2=fbm(vec3(vP.x*5.0+g, vP.y*5.0, vP.z*4.0-g*7.0),2,0.5);
+          float alt=clamp(vP.z/1.1,0.0,1.0);                                                               // densa na base, rala no topo
+          float a=J*smoothstep(0.50+0.25*alt,0.85,n*0.7+n2*0.45)*(0.35+0.65*face)*(1.0-0.7*alt)*0.85;
+          if(a<0.02) discard;
+          gl_FragColor=vec4(vec3(0.93,0.97,1.0)*(0.9+0.15*n), clamp(a,0.0,0.92)*uOp);
+        } }` });
+  Object.defineProperty(mat, 'opacity', { get() { return mat.uniforms.uOp.value; }, set(v) { if (mat.uniforms) mat.uniforms.uOp.value = v; }, configurable: true });
+  return mat;
+}
+
 function materialRaio(m) {
   return new THREE.ShaderMaterial({ transparent: true, depthWrite: false, depthTest: false, blending: THREE.AdditiveBlending, side: THREE.DoubleSide,
     uniforms: { tProf: { value: null }, uRes: { value: new THREE.Vector2(W, H) }, uNear: { value: 0.5 }, uFar: { value: 8000 },
@@ -346,6 +429,8 @@ await Promise.all(meta.materiais.map(async (m) => {
   if (m.tipo === 'agua') { const mat = materialAgua(m); matsAgua.push(mat); const ma = new THREE.Mesh(g, mat); registrarAnim(ma, m); cenaTransp.add(ma); return; }
   if (m.tipo === 'espuma') { const mat = materialEspuma(m); matsRaio.push(mat); const e = new THREE.Mesh(g, mat); e.renderOrder = 4; registrarAnim(e, m); cenaTransp.add(e); return; }
   if (m.tipo === 'raio_luz') { const mat = materialRaio(m); matsRaio.push(mat); const r = new THREE.Mesh(g, mat); r.renderOrder = 2; cenaTransp.add(r); return; }
+  if (m.tipo === 'alagado') { const ma = new THREE.Mesh(g, materialAlagado(m)); ma.renderOrder = 6; registrarAnim(ma, m); scene.add(ma); return; }
+  if (m.tipo === 'jato') { const mj = new THREE.Mesh(g, materialJato(m)); mj.renderOrder = 7; registrarAnim(mj, m); scene.add(mj); return; }
   if (m.tipo === 'fantasma') { const mat = new THREE.MeshBasicMaterial({ color: new THREE.Color(...m.cor).multiplyScalar(m.brilho ?? 1), transparent: true, opacity: m.alfa ?? 0.35, depthWrite: false, side: THREE.DoubleSide }); const mf = new THREE.Mesh(g, mat); registrarAnim(mf, m); scene.add(mf); return; }
   if (m.tipo === 'brilho') { const mb = new THREE.Mesh(g, materialBrilho(m)); mb.renderOrder = 5; registrarAnim(mb, m); scene.add(mb); return; }
   if (m.tipo === 'oclusor') { const mo = new THREE.Mesh(g, matProfOcl); registrarAnim(mo, m); cenaOclusor.add(mo); return; }
