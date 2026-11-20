@@ -45,6 +45,15 @@ def amb(t0, t1, i, dB, ini=None, sub=False, eq=None, envio=0.12, ambiente='ext',
     por(a, x, dB, 0.0, ambiente, envio, 'ambiencias', sub, eq)
 
 
+def automacao(a, n, pontos):
+    """Ganho por amostra para recuos pontuais [(t1, t2, dB, rampa)] em tempo absoluto: rampas cossenoidais, sem cortes."""
+    tl = a + tt(n); g = np.ones(n)
+    for (t1, t2, gdb, rp) in pontos:
+        up = np.clip((tl - (t1 - rp)) / rp, 0, 1); dn = np.clip(((t2 + rp) - tl) / rp, 0, 1)
+        g *= 1 - (1 - 10 ** (gdb / 20)) * (0.5 - 0.5 * np.cos(np.pi * up)) * (0.5 - 0.5 * np.cos(np.pi * dn))
+    return g
+
+
 def controle(t, y, a, b, fs=1000):
     """Curva de movimento (t, y) na taxa de controle (1 kHz) entre a e b."""
     tc = np.arange(a, b, 1 / fs); return tc, np.interp(tc, t, y)
@@ -60,7 +69,7 @@ def seguir(y, ataque_s=0.08, solta_s=0.35, fs=1000):
 def p_amostra(tc, y, a, n): return np.interp(a + tt(n), tc, y)
 
 
-def motor(i, a, b, t, v, dB, pan=0.0, ambiente='ind', envio=0.2, r0=0.95, r1=1.05, carga=0.6, persp=None, eq=None, uso='', ini=None):
+def motor(i, a, b, t, v, dB, pan=0.0, ambiente='ind', envio=0.2, r0=0.95, r1=1.05, carga=0.6, persp=None, eq=None, uso='', ini=None, automacao=None):
     """Motor/guincho que RESPONDE à animação: volume = velocidade^0,7 × (1 + carga na aceleração), rotação levemente
     maior com a velocidade (r0→r1) e silêncio quando o equipamento está parado. v: velocidade normalizada (0–1) em t."""
     i = H._r(i); tc, vc = controle(t, np.clip(v, 0, 1), a, b); vs = seguir(vc)
@@ -72,6 +81,7 @@ def motor(i, a, b, t, v, dB, pan=0.0, ambiente='ind', envio=0.2, r0=0.95, r1=1.0
     g = p_amostra(tc, vs ** 0.7 * (1 + carga * ac), a, n)
     y *= g[:, None]
     if persp: y = MV.perspectiva(y, a, *persp)
+    if automacao: y = y * globals()['automacao'](a, n, automacao)[:, None]   # recuo pontual: o mecanismo continua soando, só mais baixo
     por(a, y, dB, pan, ambiente, envio, eq=eq)
 
 
@@ -113,14 +123,13 @@ def buzina(t0, sust, dB, persp=None, envio=0.25, extra_lp=None, uso='', rel=2.04
     if extra_lp: x = lpz(x, extra_lp, 2)
     x = x * 10 ** (-20 / 20) / (np.sqrt(np.mean(x ** 2)) + 1e-12)          # nível de referência −20 dB RMS (como as camas)
     if persp: x = MV.perspectiva(x, t0, *persp)
-    if sob_fala_db is not None:   # soa pleno na pausa da narração; quando a fala volta, recua (rampa de 0,25 s que termina ~0,1 s após a 1ª sílaba) e fica baixo — sem bombear
-        v = SE.sf.read(os.path.join(SE.EP, '..', 'voz', 'narracao_ep01', 'trabalho', 'narracao_48k.wav'))[0]; v = v if v.ndim == 1 else v.mean(1)
-        seg = v[int((t0 + 0.3) * SR):int((t0 + len(x) / SR) * SR)]; w = int(0.03 * SR)
-        rms = np.sqrt(np.convolve(seg ** 2, np.ones(w) / w, 'same')); fala = np.where(rms > 10 ** (-42 / 20))[0]
-        if len(fala):
-            tv = 0.3 + fala[0] / SR - 0.15; r = np.clip((tt(len(x)) - tv) / 0.25, 0, 1); x = x * (1 - (1 - 10 ** (sob_fala_db / 20)) * r)[:, None]
-            for u in AM.USOS[::-1]:
-                if u.get('uso') == uso: u['recuo_sob_fala'] = dict(inicio_s=round(t0 + tv, 2), db=sob_fala_db); break
+    if sob_fala_db is not None:   # soa pleno na pausa da narração e já está baixo quando a fala volta (rampa cossenoidal de 0,15 s
+        # que TERMINA 30 ms antes da 1ª sílaba após a pausa); depois fica baixo até se dissipar — sem bombear, timbre intacto
+        pal = json.load(open(os.path.join(SE.EP, '..', 'voz', 'narracao_ep01', 'trabalho', 'palavras.json')))
+        tf = min(p['inicio'] for p in pal if p['inicio'] > t0 + 0.3) - 0.03 - t0; rp = 0.15
+        r = 0.5 - 0.5 * np.cos(np.pi * np.clip((tt(len(x)) - (tf - rp)) / rp, 0, 1)); x = x * (1 - (1 - 10 ** (sob_fala_db / 20)) * r)[:, None]
+        for u in AM.USOS[::-1]:
+            if u.get('uso') == uso: u['recuo_sob_fala'] = dict(inicio_s=round(t0 + tf - rp, 2), completo_s=round(t0 + tf, 2), db=sob_fala_db); break
     if compensa_fim:   # o fade geral do encerramento (166,37→168 s) já atua sobre tudo; a buzina final termina pelo próprio
         fim = np.clip((SE.DUR - 0.03 - (t0 + tt(len(x)))) / 1.6, 0, 1) ** 1.5      # decaimento real, então desfaz-se o fade
         x = x * np.minimum(1 / np.maximum(fim, 1e-3), 10.0)[:, None]                # (limite +20 dB) só no trecho dela
@@ -168,12 +177,13 @@ def abertura():
     por(a, MV.perspectiva(x, a, ts, ds, 60, k=0.8, piso=-20), -19, -0.4, 'ext', 0.08)
     x = trecho(3078, 0, 5.0, ref=-3, t=7.9, uso='casco passando perto da câmera (travelling)')
     por(7.9, MV.perspectiva(x, 7.9, tm, dm, 60, k=0.6, piso=-12), -18, -0.3, eq=lp_(1500))
-    if BUZINA: buzina(5.85, 0.8, BUZ_DB[0], (tm, dm, 150, 0.35, -8, 1.0, 1800), 0.3, sob_fala_db=-8, uso='buzina do navio ao aparecer (ataque na pausa após "gigante:")')
+    if BUZINA: buzina(5.85, 0.8, BUZ_DB[0], (tm, dm, 150, 0.35, -8, 1.0, 1800), 0.3, sob_fala_db=-12, uso='buzina do navio ao aparecer (ataque na pausa após "gigante:")')
 
 
 # ================================================================================================ 15–30 · estaleiro
 def estaleiro():
-    amb(15.1, 30.3, 3074, -17, ambiente='ind', envio=0.15, uso='ambiente de estaleiro (galpão de construção naval)')
+    # a gravação do galpão tem uma batida metálica própria em ~17,0 s, sob "navio," (16,74–17,14 s): recuo suave de 8 dB só ali (o galpão continua)
+    amb(15.1, 30.3, 3074, -17, ambiente='ind', envio=0.15, uso='ambiente de estaleiro (galpão de construção naval)', curva=lambda a, n: automacao(a, n, [(16.86, 17.16, -8.0, 0.12)]))
     with G('guindastes'): amb(15.1, 30.3, C('Shipyardcrane'), -30, ambiente='ind', ini=estavel(C('Shipyardcrane'), 15, ini=20), eq=hp_(80), uso='guindastes distantes (fundo)')
     persp = (*MV.distancia('s03', 'carro'), 40, 0.6, -14)
     tv, vc = MV.velocidade('s03', 'carro'); tg, vg = MV.velocidade('s03', 'grupo_carga')

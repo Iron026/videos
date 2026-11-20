@@ -5,10 +5,10 @@
   "fim": 15.1,
   "agua_lufs": -29.3,
   "agua_max_curto": -22.9,
-  "fundo_lufs": -27.6,
+  "fundo_lufs": -27.8,
   "narracao_lufs": -13.5,
-  "agua_menos_narracao_db": -15.7,
-  "agua_pct_energia_do_fundo": 54
+  "agua_menos_narracao_db": -15.8,
+  "agua_pct_energia_do_fundo": 57
  },
  {
   "secao": "estaleiro e corte",

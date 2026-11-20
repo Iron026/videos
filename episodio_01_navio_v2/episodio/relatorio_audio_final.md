@@ -1,11 +1,49 @@
 # Ep. 01 · Finalização do sound design (som refinado + buzinas)
 
+## Ajustes pontuais (última rodada)
+
+Só o áudio foi remontado, pelo master de imagem existente. Nenhum 3D foi renderizado.
+
+### 1. Buzina de abertura, recuo antes de "um navio" (6,46 s)
+
+- O recuo agora **termina 30 ms antes** de "um", que começa em 6,46 s (o tempo vem de `palavras.json`). Ele usa uma rampa cossenoidal de 0,15 s, entre 6,28 e 6,43 s.
+- O nível sob a fala passou de −8 para **−12 dB**, porque −8 dB ainda cobria a sílaba fraca "um".
+- **Na pausa (6,05–6,25 s) a buzina é idêntica** à versão aprovada (diferença 0,0 dB).
+- O timbre não mudou: mesma gravação, mesmos filtros e mesma perspectiva.
+- Margem da voz no celular simulado, bloco de "um":
+  - **5,1 → 7,3 dB**;
+  - o teto possível é 9,0 dB, que é o valor desse bloco sem buzina nenhuma;
+  - as sílabas seguintes subiram de 14–20 para 16–20 dB.
+
+### 2. "navio," no estaleiro (≈17 s)
+
+- **Correção do diagnóstico anterior:** atribuí o mascaramento ao guincho de içamento, mas a medição por camada mostra outra coisa.
+  - Na banda da fala, o guincho, o motor do pórtico, as rodas e os cabos somam só −69 dB, contra a voz a −33 dB.
+  - Quem cobria a palavra era uma **batida metálica que já existe na gravação da ambiência do galpão** (Mixkit 3074) em ~17,0 s.
+- A automação suave foi aplicada nessa ambiência: −8 dB entre 16,86 e 17,16 s, com rampas cossenoidais de 0,12 s.
+  - A batida desce até o nível do próprio galpão ao redor.
+  - O galpão não para e não abre buraco.
+- A automação no guincho chegou a ser aplicada, mas foi **retirada**: não tinha efeito mensurável, e um ajuste sem função não fica na mixagem.
+- Os motores, o guincho, as rodas e os cabos seguem exatamente como aprovados.
+- Margem da voz em "navio,":
+  - blocos de 17,0 e 17,1 s: **−3,4 → 4,6 dB** e **−0,6 → 7,1 dB**;
+  - o pior bloco do episódio passou de −3,4 para **+1,4 dB**.
+
+### O que não mudou
+
+- **Trechos alterados** (diferença > −100 dBFS contra a mixagem aprovada): 6,2–10,1 s e 16,7–19,8 s, este último incluindo a cauda de reverberação do galpão. Nada mais mudou.
+- Buzina da conclusão, água, efeitos interativos, trilha, narração, legendas e imagem: **iguais**.
+- Loudness −14,03 LUFS, mesmo ganho de master.
+
+
 ## Entregas
 
 | Entrega | Arquivo |
 |---|---|
 | **Revisão completa com o áudio final** (168 s, 540 × 960, 30 fps) | `episodio/ep01_revisao_audio_final.mp4` |
 | **Comparativo das buzinas A × B** (30 s) | `episodio/ep01_comparativo_buzinas.mp4` |
+| **Ajustes pontuais, antes × depois** (16 s: buzina em ~6,46 s; "navio," em ~17 s) | `episodio/ep01_ajustes_pontuais_audio.mp4` |
+| Validação dos ajustes pontuais | `som/validacao_ajustes_pontuais.json` |
 | Mixagem final | `episodio/audio_ep01_refinado_buzina.wav` (48 kHz/24 bits, fora do git) |
 | Mixagem A, sem buzina | `episodio/audio_ep01_refinado.wav` (fora do git) |
 | 4 stems | `episodio/stems/ep01_{narracao,efeitos,ambiencias,musica}_refinado_buzina.wav` |
@@ -46,7 +84,7 @@
 | Fonte | gravação real CC0 de buzina de navio (abaixo), um toque montado só com ela: ataque real, sustentação breve e dissipação real com eco |
 | Tom e filtro | 0,9× (~104 Hz, timbre grave de cargueiro); passa-alta em 80 Hz tira o vento do microfone |
 | Momento | <ul><li>O ataque começa sob o fim de "gigante:" (a subida de pressão é baixa).</li><li>O som chega ao **nível pleno na pausa entre "gigante:" e "um navio"** (6,04–6,46 s), quando o navio aparece.</li></ul> |
-| **Novo nesta rodada** | <ul><li>Quando a fala volta, a buzina **recua 8 dB** numa rampa de 0,25 s e segue baixa até se dissipar.</li><li>Não há bombeamento.</li><li>Antes, ela tirava margem de várias sílabas no celular simulado.</li></ul> |
+| **Novo nesta rodada** | <ul><li>Quando a fala volta, a buzina **recua 12 dB** (rampa que termina antes de "um"; ver Ajustes pontuais) e segue baixa até se dissipar.</li><li>Não há bombeamento.</li><li>Antes, ela tirava margem de várias sílabas no celular simulado.</li></ul> |
 | Duração e perspectiva | audível de 5,85 a ~9,8 s; volume e agudos seguem a distância real da câmera ao navio |
 
 ### Buzina de conclusão (166,25 s)
@@ -62,9 +100,9 @@
 - A mixagem B usa o **mesmo ganho de master** da A (−0,915 dB), em vez de renormalizar.
 - Novo parâmetro `master_fixo_db` em `som_ep01.mixar()`, ativado por `MASTER_DE=mix_refinado.json`.
 - **Diferença B − A:**
-  - fora das janelas das buzinas, no máximo −130 dBFS (arredondamento numérico);
+  - fora das janelas das buzinas e do ajuste de 17 s, no máximo −117 dBFS (arredondamento numérico);
   - na narração, no máximo −124 dBFS;
-  - nas janelas das buzinas, até −27,7 dBFS (é a buzina).
+  - dentro dessas janelas, até −29,5 dBFS (é a buzina).
 - O comparativo não ajusta nenhum nível por versão.
 - Nos trechos do comparativo, o loudness do mix é igual em A e B: −13,4 LUFS na abertura e −12,8 na conclusão. A buzina não muda o volume do resto.
 
@@ -94,7 +132,7 @@ Os números brutos estão em `som/validacao_audio_final.json`.
 | 5 | Clipping | <ul><li>WAV: pico de amostra −1,81 dBFS.</li><li>AAC: −1,99 dBFS.</li><li>0 amostras ≥ 0,999 nos dois.</li></ul> |
 | 6 | Loudness (AAC final) | **−14,1 LUFS** integrado · LRA 2,3 LU |
 | 7 | Pico verdadeiro (AAC final) | **−2,0 dBTP** (meta ≤ −1,5) |
-| 8 | Clareza da voz (celular simulado: mono, 350 Hz–7 kHz) | <ul><li>Voz ≥ 10 dB acima do resto em 96,4 % dos 1.210 blocos de 100 ms com fala; mediana 22,8 dB.</li><li>Sem buzina: 96,5 %.</li><li>No trecho da buzina de abertura, a mediana é 18,2 dB (19,3 sem buzina).</li></ul> |
+| 8 | Clareza da voz (celular simulado: mono, 350 Hz–7 kHz) | <ul><li>Voz ≥ 10 dB acima do resto em 96,4 % dos 1.210 blocos de 100 ms com fala; mediana 22,8 dB.</li><li>Pior bloco: **+1,4 dB** (antes do ajuste em 17 s: −3,4).</li></ul> |
 | 9 | Água | idêntica à versão refinada aprovada em todas as 8 seções (ex.: estaleiro sem água; carregamento −26,8 dB abaixo da voz) · `som/auditoria_agua_refinado_buzina.json` |
 | 10 | Entradas e saídas | <ul><li>Buzinas: subida de ~14 dB em 100 ms no ataque real, queda gradual no fim.</li><li>Música: maior variação 7,5 dB em 100 ms.</li><li>Ambiências: os maiores saltos (14–18 dB em 100 ms, em 15,4 / 21,5 / 25,3 / 27,3 s) são **arrancadas de ações** do estaleiro, como cabos e guincho com a carga, e não trocas de cama; as camas usam fusões.</li></ul> |
 | 11 | Mono | perda de 0,01 dB (−14,03 → −14,04 LUFS) · correlação L/R 0,988 · a buzina é mono na origem |
@@ -102,19 +140,11 @@ Os números brutos estão em `som/validacao_audio_final.json`.
 
 ### Pontos para a sua escuta
 
-- **"um navio" (6,46 s), logo após a pausa:**
-  - Neste bloco de 100 ms a buzina ainda está terminando o recuo.
-  - No celular simulado, a voz fica 5,1 dB acima do resto; sem buzina, 9,0 dB.
-  - É uma sílaba fraca. Se soar coberta, a solução é baixar a buzina 2–3 dB (`BUZINA_DB=-7,-19`).
-- **"navio," (≈17,0 s), no estaleiro:**
-  - É o pior bloco do episódio (−3,4 dB no celular simulado).
-  - Já existia na versão refinada sem buzina.
-  - A causa é o guincho de içamento acelerando com a carga, sincronizado à imagem.
-  - Não mexi, para não alterar o refinamento aprovado; é um ajuste pontual se incomodar.
+- **"um navio" (6,46 s) e "navio," (≈17 s):** corrigidos (ver Ajustes pontuais). Vale ouvir `ep01_ajustes_pontuais_audio.mp4`, que mostra antes e depois.
 - **Altura das buzinas:**
-  - Abertura com pico momentâneo −28 LUFS, contra a voz em ~−13.
-  - Conclusão com pico −27,6 LUFS, no fim, já sem voz e com a trilha a −40.
-  - Se quiser mais ou menos presença: `BUZINA_DB` (abertura, conclusão).
+  - Abertura no nível pleno só na pausa, −12 dB sob a fala.
+  - Conclusão no fim, já sem voz.
+  - Para mais ou menos presença: `BUZINA_DB` (abertura, conclusão).
 
 ## 4. Como refazer
 

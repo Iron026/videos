@@ -39,7 +39,7 @@
    "inicio_audivel_s": 5.85,
    "ataque_pleno_s": 5.89,
    "pico_s": 6.32,
-   "fim_audivel_s": 9.8
+   "fim_audivel_s": 9.75
   },
   "buzina_conclusao": {
    "inicio_audivel_s": 166.25,
@@ -52,7 +52,7 @@
  "5_clipping": {
   "wav_pico_amostra_dbfs": -1.81,
   "wav_amostras_acima_0_999": 0,
-  "aac_pico_amostra_dbfs": -1.99,
+  "aac_pico_amostra_dbfs": -2.06,
   "aac_amostras_acima_0_999": 0
  },
  "6_loudness": {
@@ -67,7 +67,7 @@
   "blocos_com_fala": 1210,
   "voz_10db_acima_pct": 96.4,
   "snr_mediana_db": 22.8,
-  "pior_bloco_db": -3.4
+  "pior_bloco_db": 1.4
  },
  "9_agua": "ver som/auditoria_agua_refinado_buzina.json",
  "10_entradas_saidas": {
@@ -114,7 +114,7 @@
    },
    {
     "t_s": 7.9,
-    "salto_db": -6.6
+    "salto_db": -7.2
    },
    {
     "t_s": 166.3,
@@ -145,8 +145,8 @@
  "AB_diferenca": {
   "master_A_db": -0.9148,
   "master_B_db": -0.9148,
-  "residuo_fora_das_buzinas_max_dbfs": -130.3,
-  "residuo_nas_buzinas_max_dbfs": -27.7,
+  "residuo_fora_das_buzinas_e_do_ajuste_17s_max_dbfs": -116.8,
+  "residuo_nas_janelas_alteradas_max_dbfs": -29.5,
   "narracao_dif_max_dbfs": -124.5
  }
 }

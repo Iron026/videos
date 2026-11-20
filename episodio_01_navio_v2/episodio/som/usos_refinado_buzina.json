@@ -229,8 +229,9 @@
   "grupo": null,
   "substituido": false,
   "recuo_sob_fala": {
-   "inicio_s": 6.34,
-   "db": -8
+   "inicio_s": 6.28,
+   "completo_s": 6.43,
+   "db": -12
   }
  },
  {

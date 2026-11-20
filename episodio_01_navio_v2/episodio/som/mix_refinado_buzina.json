@@ -8,9 +8,9 @@
  "inteligibilidade_celular": {
   "janelas_de_fala": 1210,
   "snr_voz_mediana_db": 22.8,
-  "snr_p5_db": 11.3,
+  "snr_p5_db": 11.4,
   "pct_janelas_acima_10db": 96.4,
-  "fala_plena_p5_db": 11.9,
+  "fala_plena_p5_db": 12.0,
   "fala_plena_pct_acima_10db": 97.2
  },
  "ducking_max_db": {
@@ -18,14 +18,14 @@
   "ducking_medio_na_fala_db": -8.7
  },
  "stems": {
-  "efeitos": -26.3,
+  "efeitos": -26.4,
   "ambiencias": -36.1,
   "musica": -34.8,
   "narracao": -14.1
  },
  "loudness_curto_max": {
   "efeitos": -13.7,
-  "ambiencias": -27.3,
+  "ambiencias": -27.2,
   "musica": -29.8,
   "narracao": -7.7
  },
@@ -58,7 +58,7 @@
   },
   "cat:buzina/efeitos": {
    "arquivo": "stems/categorias/ep01_efeitos_buzina_refinado_buzina.wav",
-   "lufs": -31.9,
+   "lufs": -33.5,
    "ativo_s": [
     5.85,
     167.93
@@ -82,7 +82,7 @@
   },
   "estaleiro/ambiencias": {
    "arquivo": "stems/grupos/ep01_ambiencias_estaleiro_refinado_buzina.wav",
-   "lufs": -35.9,
+   "lufs": -36.3,
    "ativo_s": [
     15.02,
     41.89
@@ -150,7 +150,7 @@
   },
   "resto/efeitos": {
    "arquivo": "stems/grupos/ep01_efeitos_resto_refinado_buzina.wav",
-   "lufs": -26.1
+   "lufs": -26.2
   }
  },
  "ganhos_stem_db": {

@@ -87,10 +87,11 @@ R['12_final'] = dict(rms_dbfs_por_trecho=fim, ultimos_20ms_dbfs=round(float(20 *
 # A × B: a diferença entre as duas mixagens deve ser SÓ a buzina (mesmo ganho de master)
 dif = mixw - mixa; dw = int(0.1 * SR)
 ed = np.array([np.sqrt(np.mean(dif[i:i + dw] ** 2)) for i in range(0, len(dif) - dw, dw)]); fora = np.ones(len(ed), bool)
-for a, b in ((5.6, 11.0), (166.0, 168.0)): fora[int(a * 10):int(b * 10)] = False
+# fora: diferenças só podem estar nas buzinas e no recuo pontual do galpão sob "navio," (16,74–17,14 s; reverberação até ~19,9 s)
+for a, b in ((5.6, 11.0), (16.5, 20.0), (166.0, 168.0)): fora[int(a * 10):int(b * 10)] = False
 R['AB_diferenca'] = dict(master_A_db=json.load(open(f'{A}/mix_{SS}.json'))['master_db'], master_B_db=json.load(open(f'{A}/mix_{SC}.json'))['master_db'],
-                         residuo_fora_das_buzinas_max_dbfs=round(float(20 * np.log10(ed[fora].max() + 1e-12)), 1),
-                         residuo_nas_buzinas_max_dbfs=round(float(20 * np.log10(ed[~fora].max() + 1e-12)), 1),
+                         residuo_fora_das_buzinas_e_do_ajuste_17s_max_dbfs=round(float(20 * np.log10(ed[fora].max() + 1e-12)), 1),
+                         residuo_nas_janelas_alteradas_max_dbfs=round(float(20 * np.log10(ed[~fora].max() + 1e-12)), 1),
                          narracao_dif_max_dbfs=round(float(20 * np.log10(np.abs(sf.read(f'{E}/ep01_narracao_{SS}.wav')[0] - voz).max() + 1e-20)), 1))
 json.dump(R, open(os.path.join(A, 'validacao_audio_final.json'), 'w'), ensure_ascii=False, indent=1)
 print(json.dumps(R, ensure_ascii=False, indent=1))
