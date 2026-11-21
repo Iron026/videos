@@ -1,0 +1,122 @@
+{
+ "s01": {
+  "final_quadros_piscantes": 115,
+  "final_pior": 207,
+  "final_pior_quadro": 59,
+  "aprovado_quadros_piscantes": 115,
+  "aprovado_pior": 209,
+  "quadros": 143
+ },
+ "s02": {
+  "final_quadros_piscantes": 95,
+  "final_pior": 69,
+  "final_pior_quadro": 197,
+  "aprovado_quadros_piscantes": 89,
+  "aprovado_pior": 69,
+  "quadros": 320
+ },
+ "s03": {
+  "final_quadros_piscantes": 116,
+  "final_pior": 41,
+  "final_pior_quadro": 287,
+  "aprovado_quadros_piscantes": 97,
+  "aprovado_pior": 41,
+  "quadros": 455
+ },
+ "s04": {
+  "final_quadros_piscantes": 44,
+  "final_pior": 144,
+  "final_pior_quadro": 299,
+  "aprovado_quadros_piscantes": 44,
+  "aprovado_pior": 146,
+  "quadros": 336
+ },
+ "s05": {
+  "final_quadros_piscantes": 18,
+  "final_pior": 298,
+  "final_pior_quadro": 90,
+  "aprovado_quadros_piscantes": 3,
+  "aprovado_pior": 298,
+  "quadros": 193
+ },
+ "s0607": {
+  "final_quadros_piscantes": 61,
+  "final_pior": 15,
+  "final_pior_quadro": 39,
+  "aprovado_quadros_piscantes": 66,
+  "aprovado_pior": 17,
+  "quadros": 804
+ },
+ "s0607b": {
+  "final_quadros_piscantes": 0,
+  "final_pior": 0,
+  "final_pior_quadro": 80,
+  "aprovado_quadros_piscantes": 0,
+  "aprovado_pior": 0,
+  "quadros": 80
+ },
+ "s08a": {
+  "final_quadros_piscantes": 84,
+  "final_pior": 246,
+  "final_pior_quadro": 29,
+  "aprovado_quadros_piscantes": 99,
+  "aprovado_pior": 256,
+  "quadros": 269
+ },
+ "s08b": {
+  "final_quadros_piscantes": 66,
+  "final_pior": 30,
+  "final_pior_quadro": 115,
+  "aprovado_quadros_piscantes": 69,
+  "aprovado_pior": 35,
+  "quadros": 320
+ },
+ "s09": {
+  "final_quadros_piscantes": 329,
+  "final_pior": 330,
+  "final_pior_quadro": 158,
+  "aprovado_quadros_piscantes": 326,
+  "aprovado_pior": 327,
+  "quadros": 679
+ },
+ "s10": {
+  "final_quadros_piscantes": 45,
+  "final_pior": 21,
+  "final_pior_quadro": 104,
+  "aprovado_quadros_piscantes": 46,
+  "aprovado_pior": 19,
+  "quadros": 193
+ },
+ "s11": {
+  "final_quadros_piscantes": 165,
+  "final_pior": 404,
+  "final_pior_quadro": 27,
+  "aprovado_quadros_piscantes": 163,
+  "aprovado_pior": 405,
+  "quadros": 309
+ },
+ "s12x": {
+  "final_quadros_piscantes": 32,
+  "final_pior": 475,
+  "final_pior_quadro": 24,
+  "aprovado_quadros_piscantes": 32,
+  "aprovado_pior": 470,
+  "quadros": 89
+ },
+ "s12": {
+  "final_quadros_piscantes": 32,
+  "final_pior": 57,
+  "final_pior_quadro": 112,
+  "aprovado_quadros_piscantes": 80,
+  "aprovado_pior": 56,
+  "quadros": 527
+ },
+ "s13": {
+  "final_quadros_piscantes": 155,
+  "final_pior": 173,
+  "final_pior_quadro": 292,
+  "aprovado_quadros_piscantes": 166,
+  "aprovado_pior": 176,
+  "quadros": 401
+ }
+}
