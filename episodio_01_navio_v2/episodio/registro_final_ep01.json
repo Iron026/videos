@@ -1,0 +1,442 @@
+{
+ "gerado": "2026-11-21 09:20:33",
+ "arquivo_final": {
+  "caminho": "episodio/ep01_definitivo_1080x1920.mp4",
+  "sha256": "5640980a5627f9bec4bc8c9125645501aa94b53681e1fad5d628e3394e8e2491",
+  "programs": [],
+  "streams": [
+   {
+    "codec_name": "h264",
+    "width": 1080,
+    "height": 1920,
+    "r_frame_rate": "30/1"
+   },
+   {
+    "codec_name": "aac",
+    "sample_rate": "48000",
+    "channels": 2,
+    "r_frame_rate": "0/0"
+   }
+  ],
+  "format": {
+   "duration": "168.000000",
+   "size": "141807360",
+   "bit_rate": "6752731",
+   "tags": {
+    "title": "De Olho no Invisível · Ep. 01 · Como um navio de aço consegue flutuar?"
+   }
+  }
+ },
+ "master_sem_legendas": {
+  "caminho": "episodio/ep01_master_imagem_sem_legendas_1080.mp4",
+  "sha256": "a5d0dd2e14bf3918512184201919f4fce3029a398fec7c332eb1fd4c62eae188",
+  "programs": [],
+  "streams": [
+   {
+    "codec_name": "h264",
+    "width": 1080,
+    "height": 1920,
+    "r_frame_rate": "30/1"
+   },
+   {
+    "codec_name": "aac",
+    "sample_rate": "48000",
+    "channels": 2,
+    "r_frame_rate": "0/0"
+   }
+  ],
+  "format": {
+   "duration": "168.000000",
+   "size": "196607499",
+   "bit_rate": "9362261",
+   "tags": {
+    "title": "De Olho no Invisível · Ep. 01 · Como um navio de aço consegue flutuar?"
+   }
+  }
+ },
+ "render": {
+  "config_id": "9c03e3e543938e4c",
+  "config": {
+   "consulta": "escala=1&aoamostras=16&msaa=4&bloom=0.22&janoff=1",
+   "resolucao": "1080x1920",
+   "fps": 30,
+   "render2_js": "b1c2ec54b39634ff9da64618e237edc1182b0d2e346a00cd1fc4f12740ff8d93",
+   "render_anim_mjs": "a6ce24b252be1133a0c253b96e27b81aec224484cbac4b931845789a1fa2754b",
+   "three": "r170",
+   "oclusor_agua": 0.994,
+   "nota": "correção de cor, rótulos, avisos e legendas: na montagem (montar_ep01.py final)",
+   "por_segmento": {
+    "08a": "&fantoff=1"
+   }
+  },
+  "segmentos": {
+   "01": {
+    "quadros": 145,
+    "esperados": 145,
+    "cena": "40d93e1451246ded",
+    "configs": [
+     "9c03e3e543938e4c"
+    ],
+    "ssim_grosso_min": 0.9934,
+    "rerenders": 0
+   },
+   "02": {
+    "quadros": 322,
+    "esperados": 322,
+    "cena": "2cd6c152f1afdba4",
+    "configs": [
+     "9c03e3e543938e4c"
+    ],
+    "ssim_grosso_min": 0.9835,
+    "rerenders": 0
+   },
+   "03": {
+    "quadros": 457,
+    "esperados": 457,
+    "cena": "16f9f969021eb75a",
+    "configs": [
+     "9c03e3e543938e4c"
+    ],
+    "ssim_grosso_min": 0.9936,
+    "rerenders": 0
+   },
+   "04": {
+    "quadros": 338,
+    "esperados": 338,
+    "cena": "5e5a11836f21fda4",
+    "configs": [
+     "9c03e3e543938e4c"
+    ],
+    "ssim_grosso_min": 0.9941,
+    "rerenders": 0
+   },
+   "05": {
+    "quadros": 195,
+    "esperados": 195,
+    "cena": "9b6313ff237cde8e",
+    "configs": [
+     "9c03e3e543938e4c"
+    ],
+    "ssim_grosso_min": 0.9886,
+    "rerenders": 0
+   },
+   "0607": {
+    "quadros": 806,
+    "esperados": 806,
+    "cena": "0464dc117f42058e",
+    "configs": [
+     "9c03e3e543938e4c"
+    ],
+    "ssim_grosso_min": 0.9961,
+    "rerenders": 0
+   },
+   "0607b": {
+    "quadros": 82,
+    "esperados": 82,
+    "cena": "f89341ab7af1d86f",
+    "configs": [
+     "9c03e3e543938e4c"
+    ],
+    "ssim_grosso_min": 0.9979,
+    "rerenders": 0
+   },
+   "08a": {
+    "quadros": 271,
+    "esperados": 271,
+    "cena": "5cdfe09d05fe2b73",
+    "configs": [
+     "def6e201ffdfcdce"
+    ],
+    "ssim_grosso_min": 0.9671,
+    "rerenders": 0
+   },
+   "08b": {
+    "quadros": 322,
+    "esperados": 322,
+    "cena": "ac9790fcd1bd2250",
+    "configs": [
+     "9c03e3e543938e4c"
+    ],
+    "ssim_grosso_min": 0.9961,
+    "rerenders": 0
+   },
+   "09": {
+    "quadros": 681,
+    "esperados": 681,
+    "cena": "568f43d545801bc4",
+    "configs": [
+     "9c03e3e543938e4c"
+    ],
+    "ssim_grosso_min": 0.9861,
+    "rerenders": 0
+   },
+   "10": {
+    "quadros": 195,
+    "esperados": 195,
+    "cena": "0e6f334e68909cf6",
+    "configs": [
+     "9c03e3e543938e4c"
+    ],
+    "ssim_grosso_min": 0.9868,
+    "rerenders": 0
+   },
+   "11": {
+    "quadros": 311,
+    "esperados": 311,
+    "cena": "a332752f8bb73832",
+    "configs": [
+     "9c03e3e543938e4c"
+    ],
+    "ssim_grosso_min": 0.9937,
+    "rerenders": 0
+   },
+   "12x": {
+    "quadros": 91,
+    "esperados": 91,
+    "cena": "d0f046b9be2c97c2",
+    "configs": [
+     "9c03e3e543938e4c"
+    ],
+    "ssim_grosso_min": 0.9948,
+    "rerenders": 0
+   },
+   "12": {
+    "quadros": 529,
+    "esperados": 529,
+    "cena": "8acbc117b7121cf2",
+    "configs": [
+     "9c03e3e543938e4c"
+    ],
+    "ssim_grosso_min": 0.9472,
+    "rerenders": 0
+   },
+   "13": {
+    "quadros": 403,
+    "esperados": 403,
+    "cena": "6132c26f580e514c",
+    "configs": [
+     "9c03e3e543938e4c"
+    ],
+    "ssim_grosso_min": 0.9813,
+    "rerenders": 0
+   }
+  },
+  "total_quadros": 5148,
+  "migracoes": [
+   {
+    "data": "2026-11-21 01:56:44",
+    "de": "43e2336f586731ea",
+    "para": "9c03e3e543938e4c",
+    "motivo": "render2.js: parâmetro fantoff (desligado por padrão) acrescentado; sem efeito fora do s08a",
+    "segmentos": {
+     "01": {
+      "amostras": [
+       {
+        "quadro": 0,
+        "dif_media": 0.188,
+        "px_dif_maior_20": 14
+       },
+       {
+        "quadro": 72,
+        "dif_media": 0.166,
+        "px_dif_maior_20": 41
+       },
+       {
+        "quadro": 144,
+        "dif_media": 0.237,
+        "px_dif_maior_20": 16
+       }
+      ],
+      "equivalente": true,
+      "quadros": 145
+     },
+     "02": {
+      "amostras": [
+       {
+        "quadro": 0,
+        "dif_media": 0.162,
+        "px_dif_maior_20": 248
+       },
+       {
+        "quadro": 161,
+        "dif_media": 0.285,
+        "px_dif_maior_20": 441
+       },
+       {
+        "quadro": 321,
+        "dif_media": 0.159,
+        "px_dif_maior_20": 517
+       }
+      ],
+      "equivalente": true,
+      "quadros": 322
+     },
+     "03": {
+      "amostras": [
+       {
+        "quadro": 0,
+        "dif_media": 0.421,
+        "px_dif_maior_20": 285
+       },
+       {
+        "quadro": 228,
+        "dif_media": 0.343,
+        "px_dif_maior_20": 126
+       },
+       {
+        "quadro": 456,
+        "dif_media": 0.578,
+        "px_dif_maior_20": 740
+       }
+      ],
+      "equivalente": true,
+      "quadros": 457,
+      "linha_de_base_mesmo_codigo": {
+       "quadro": 456,
+       "novo_x_novo": {
+        "dif_media": 0.57,
+        "px_dif_maior_20": 677
+       },
+       "novo_x_registrado": {
+        "dif_media": 0.577,
+        "px_dif_maior_20": 704
+       }
+      },
+      "nota": "variação intrínseca do s03 entre renderizações idênticas (0,57) = diferença novo × registrado (0,577): equivalente"
+     },
+     "04": {
+      "amostras": [
+       {
+        "quadro": 0,
+        "dif_media": 0.088,
+        "px_dif_maior_20": 148
+       },
+       {
+        "quadro": 169,
+        "dif_media": 0.279,
+        "px_dif_maior_20": 270
+       },
+       {
+        "quadro": 337,
+        "dif_media": 0.319,
+        "px_dif_maior_20": 1254
+       }
+      ],
+      "equivalente": true,
+      "quadros": 338
+     },
+     "05": {
+      "amostras": [
+       {
+        "quadro": 0,
+        "dif_media": 0.232,
+        "px_dif_maior_20": 228
+       },
+       {
+        "quadro": 97,
+        "dif_media": 0.004,
+        "px_dif_maior_20": 0
+       },
+       {
+        "quadro": 194,
+        "dif_media": 0.041,
+        "px_dif_maior_20": 14
+       }
+      ],
+      "equivalente": true,
+      "quadros": 195
+     },
+     "0607": {
+      "amostras": [
+       {
+        "quadro": 0,
+        "dif_media": 0.173,
+        "px_dif_maior_20": 355
+       },
+       {
+        "quadro": 403,
+        "dif_media": 0.249,
+        "px_dif_maior_20": 495
+       },
+       {
+        "quadro": 805,
+        "dif_media": 0.221,
+        "px_dif_maior_20": 243
+       }
+      ],
+      "equivalente": true,
+      "quadros": 806
+     },
+     "0607b": {
+      "amostras": [
+       {
+        "quadro": 0,
+        "dif_media": 0.101,
+        "px_dif_maior_20": 335
+       },
+       {
+        "quadro": 41,
+        "dif_media": 0.09,
+        "px_dif_maior_20": 102
+       },
+       {
+        "quadro": 81,
+        "dif_media": 0.082,
+        "px_dif_maior_20": 118
+       }
+      ],
+      "equivalente": true,
+      "quadros": 82
+     }
+    }
+   }
+  ]
+ },
+ "fontes": {
+  "audio_mix_aprovado": {
+   "caminho": "episodio/audio_ep01_refinado_buzina.wav",
+   "sha256": "5bb652cbeb21ea5826ec5812a1db43bf52bd80b739dccc5975d390c96d9f3a08"
+  },
+  "narracao_original_mp3": {
+   "caminho": "voz/narracao_ep01/Narração ep 1.mp3",
+   "sha256": "79e1e8f21f30c4d00a5ec4fd4e6443b734e41ac249cdd5b170a99c7224949ba0"
+  },
+  "narracao_trabalho_wav": {
+   "caminho": "voz/narracao_ep01/trabalho/narracao_48k.wav",
+   "sha256": "26f5f7f93aabccdb3040c076a1edf9b863e4b0d10b7cecc40f518d5fff23b5e2"
+  },
+  "palavras_legendas": {
+   "caminho": "voz/narracao_ep01/trabalho/palavras.json",
+   "sha256": "1269dbdc5646a4474c6e6b987230e111c6123b7b40f01756cae572f530cd7d02"
+  },
+  "render2_js": {
+   "caminho": "motores/tempo_real_v2/render2.js",
+   "sha256": "b1c2ec54b39634ff9da64618e237edc1182b0d2e346a00cd1fc4f12740ff8d93"
+  },
+  "render_anim_mjs": {
+   "caminho": "motores/tempo_real_v2/render_anim.mjs",
+   "sha256": "a6ce24b252be1133a0c253b96e27b81aec224484cbac4b931845789a1fa2754b"
+  },
+  "render_final_py": {
+   "caminho": "episodio/render_final.py",
+   "sha256": "5be062bc156332eee4dcc7f42474d5fa43e9f591026310a8051f17e3a0b86150"
+  },
+  "montar_ep01_py": {
+   "caminho": "episodio/montar_ep01.py",
+   "sha256": "7b9c31ad1f6af1d018a66db1f3b57d22b7c98e1f28d9f2a348911110e76882dc"
+  },
+  "grade_ep01_py": {
+   "caminho": "episodio/grade_ep01.py",
+   "sha256": "aa821bc3fd0c49a1ee22578b68119e5cf79fbec508e15ff9a119a70b680bfc62"
+  },
+  "trocar_audio_py": {
+   "caminho": "episodio/trocar_audio.py",
+   "sha256": "a795e62e850bbb34393504e76186adc2c6dcab95654cb1ef3d1fbbcb027d7986"
+  },
+  "som_refinado_py": {
+   "caminho": "episodio/som/som_refinado.py",
+   "sha256": "4858b6d03bd9bdc74b6d71f9df26b5cb217ce8051b920aee9a6e1f263b1ffd6f"
+  }
+ },
+ "licenca_narracao": "ElevenLabs, plano gratuito: sem licença para exploração comercial (voz/LICENCA_NARRACAO.md)"
+}

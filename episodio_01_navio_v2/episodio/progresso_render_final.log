@@ -1,0 +1,192 @@
+2026-11-20 20:03:32 INÍCIO · config 43e2336f586731ea · escala=1&aoamostras=16&msaa=4&bloom=0.22&janoff=1 · segmentos 01,02,03,04,05,0607,0607b,08a,08b,09,10,11,12x,12,13
+2026-11-20 20:03:33 SEG s01: 145 quadros · 0 reaproveitados · 145 a renderizar
+2026-11-20 20:10:00   s01 0-59 ok · 6.45 s/quadro · SSIM mín. 0.967 · total novo 60 · 0.11 h
+2026-11-20 20:17:02   s01 60-119 ok · 7.04 s/quadro · SSIM mín. 0.963 · total novo 120 · 0.22 h
+2026-11-20 20:20:53   s01 120-144 ok · 9.21 s/quadro · SSIM mín. 0.967 · total novo 145 · 0.29 h
+2026-11-20 20:20:53 SEG s01 CONCLUÍDO (145/145)
+2026-11-20 20:20:53 SEG s02: 322 quadros · 0 reaproveitados · 322 a renderizar
+2026-11-20 20:28:39   s02 0-59 ok · 7.76 s/quadro · SSIM mín. 0.975 · total novo 205 · 0.42 h
+2026-11-20 20:42:28   s02 60-119 ok · 13.82 s/quadro · SSIM mín. 0.931 · total novo 265 · 0.65 h
+2026-11-20 20:56:10   s02 q129: diverge da revisão aprovada (SSIM 0.881) → re-render isolado
+2026-11-20 20:56:36 PARADA: s02 q129 continua com defeito (diverge da revisão aprovada (SSIM 0.881)): investigar antes de continuar
+--- retomada após parada em s02 q129 (falso positivo: textura fina) ---
+2026-11-20 20:57:59 INÍCIO · config 43e2336f586731ea · escala=1&aoamostras=16&msaa=4&bloom=0.22&janoff=1 · segmentos 01,02,03,04,05,0607,0607b,08a,08b,09,10,11,12x,12,13
+2026-11-20 20:58:08 SEG s01: 145 quadros · 145 reaproveitados · 0 a renderizar
+2026-11-20 20:58:08 SEG s01 CONCLUÍDO (145/145)
+2026-11-20 20:58:18 SEG s02: 322 quadros · 157 reaproveitados · 165 a renderizar
+2026-11-20 21:01:51   s02 129-143 ok · 14.15 s/quadro · SSIM grosso mín. 0.990 · total novo 15 · 0.06 h
+2026-11-20 21:02:58   s02 150-153 ok · 16.93 s/quadro · SSIM grosso mín. 0.991 · total novo 19 · 0.08 h
+2026-11-20 21:03:51   s02 156-158 ok · 17.66 s/quadro · SSIM grosso mín. 0.990 · total novo 22 · 0.10 h
+2026-11-20 21:04:18   s02 163-163 ok · 26.63 s/quadro · SSIM grosso mín. 0.992 · total novo 23 · 0.11 h
+2026-11-20 21:12:59   s02 180-239 ok · 8.69 s/quadro · SSIM grosso mín. 0.988 · total novo 83 · 0.25 h
+2026-11-20 21:20:35   s02 240-299 ok · 7.60 s/quadro · SSIM grosso mín. 0.996 · total novo 143 · 0.38 h
+2026-11-20 21:23:52   s02 300-321 ok · 8.92 s/quadro · SSIM grosso mín. 0.996 · total novo 165 · 0.43 h
+2026-11-20 21:23:52 SEG s02 CONCLUÍDO (322/322)
+2026-11-20 21:23:55 SEG s03: 457 quadros · 0 reaproveitados · 457 a renderizar
+2026-11-20 21:31:13   s03 0-59 ok · 7.30 s/quadro · SSIM grosso mín. 0.996 · total novo 225 · 0.55 h
+2026-11-20 21:35:54   s03 60-119 ok · 4.68 s/quadro · SSIM grosso mín. 0.996 · total novo 285 · 0.63 h
+2026-11-20 21:44:08   s03 120-179 ok · 8.25 s/quadro · SSIM grosso mín. 0.996 · total novo 345 · 0.77 h
+2026-11-20 21:54:20   s03 180-239 ok · 10.19 s/quadro · SSIM grosso mín. 0.996 · total novo 405 · 0.94 h
+2026-11-20 22:05:22   s03 240-299 ok · 11.04 s/quadro · SSIM grosso mín. 0.996 · total novo 465 · 1.12 h
+2026-11-20 22:13:41   s03 300-359 ok · 8.32 s/quadro · SSIM grosso mín. 0.994 · total novo 525 · 1.26 h
+2026-11-20 22:21:11   s03 360-419 ok · 7.50 s/quadro · SSIM grosso mín. 0.994 · total novo 585 · 1.39 h
+2026-11-20 22:26:00   s03 420-456 ok · 7.80 s/quadro · SSIM grosso mín. 0.996 · total novo 622 · 1.47 h
+2026-11-20 22:26:00 SEG s03 CONCLUÍDO (457/457)
+2026-11-20 22:26:01 SEG s04: 338 quadros · 0 reaproveitados · 338 a renderizar
+2026-11-20 22:31:24   s04 0-59 ok · 5.39 s/quadro · SSIM grosso mín. 0.997 · total novo 682 · 1.56 h
+2026-11-20 22:36:18   s04 60-119 ok · 4.90 s/quadro · SSIM grosso mín. 0.995 · total novo 742 · 1.64 h
+2026-11-20 22:42:11   s04 120-179 ok · 5.88 s/quadro · SSIM grosso mín. 0.994 · total novo 802 · 1.74 h
+2026-11-20 22:48:33   s04 180-239 ok · 6.37 s/quadro · SSIM grosso mín. 0.994 · total novo 862 · 1.84 h
+2026-11-20 22:55:39   s04 240-299 ok · 7.09 s/quadro · SSIM grosso mín. 0.997 · total novo 922 · 1.96 h
+2026-11-20 23:00:17   s04 300-337 ok · 7.33 s/quadro · SSIM grosso mín. 0.996 · total novo 960 · 2.04 h
+2026-11-20 23:00:17 SEG s04 CONCLUÍDO (338/338)
+2026-11-20 23:00:20 SEG s05: 195 quadros · 0 reaproveitados · 195 a renderizar
+2026-11-20 23:09:21   s05 0-59 ok · 9.02 s/quadro · SSIM grosso mín. 0.997 · total novo 1020 · 2.19 h
+2026-11-20 23:17:39   s05 60-119 ok · 8.29 s/quadro · SSIM grosso mín. 0.989 · total novo 1080 · 2.33 h
+2026-11-20 23:25:58   s05 120-179 ok · 8.33 s/quadro · SSIM grosso mín. 0.996 · total novo 1140 · 2.47 h
+2026-11-20 23:28:40   s05 180-194 ok · 10.77 s/quadro · SSIM grosso mín. 0.998 · total novo 1155 · 2.51 h
+2026-11-20 23:28:40 SEG s05 CONCLUÍDO (195/195)
+2026-11-20 23:28:40 SEG s0607: 806 quadros · 0 reaproveitados · 806 a renderizar
+2026-11-20 23:36:30   s0607 0-59 ok · 7.83 s/quadro · SSIM grosso mín. 0.997 · total novo 1215 · 2.64 h
+2026-11-20 23:43:49   s0607 60-119 ok · 7.31 s/quadro · SSIM grosso mín. 0.998 · total novo 1275 · 2.76 h
+2026-11-20 23:51:55   s0607 120-179 ok · 8.10 s/quadro · SSIM grosso mín. 0.997 · total novo 1335 · 2.90 h
+2026-11-21 00:03:07   s0607 180-239 ok · 11.20 s/quadro · SSIM grosso mín. 0.997 · total novo 1395 · 3.09 h
+2026-11-21 00:11:16   s0607 240-299 ok · 8.16 s/quadro · SSIM grosso mín. 0.997 · total novo 1455 · 3.22 h
+2026-11-21 00:18:48   s0607 300-359 ok · 7.52 s/quadro · SSIM grosso mín. 0.997 · total novo 1515 · 3.35 h
+2026-11-21 00:26:04   s0607 360-419 ok · 7.27 s/quadro · SSIM grosso mín. 0.996 · total novo 1575 · 3.47 h
+2026-11-21 00:32:58   s0607 420-479 ok · 6.90 s/quadro · SSIM grosso mín. 0.996 · total novo 1635 · 3.58 h
+2026-11-21 00:39:58   s0607 480-539 ok · 7.00 s/quadro · SSIM grosso mín. 0.997 · total novo 1695 · 3.70 h
+2026-11-21 00:46:53   s0607 540-599 ok · 6.92 s/quadro · SSIM grosso mín. 0.997 · total novo 1755 · 3.82 h
+2026-11-21 00:53:49   s0607 600-659 ok · 6.93 s/quadro · SSIM grosso mín. 0.997 · total novo 1815 · 3.93 h
+2026-11-21 01:00:29   s0607 660-719 ok · 6.67 s/quadro · SSIM grosso mín. 0.997 · total novo 1875 · 4.04 h
+2026-11-21 01:06:56   s0607 720-779 ok · 6.45 s/quadro · SSIM grosso mín. 0.997 · total novo 1935 · 4.15 h
+2026-11-21 01:09:47   s0607 780-805 ok · 6.60 s/quadro · SSIM grosso mín. 0.997 · total novo 1961 · 4.20 h
+2026-11-21 01:09:47 SEG s0607 CONCLUÍDO (806/806)
+2026-11-21 01:09:50 SEG s0607b: 82 quadros · 0 reaproveitados · 82 a renderizar
+2026-11-21 01:15:27   s0607b 0-59 ok · 5.63 s/quadro · SSIM grosso mín. 0.998 · total novo 2021 · 4.29 h
+2026-11-21 01:17:41   s0607b 60-81 ok · 6.07 s/quadro · SSIM grosso mín. 0.998 · total novo 2043 · 4.33 h
+2026-11-21 01:17:41 SEG s0607b CONCLUÍDO (82/82)
+2026-11-21 01:17:44 SEG s08a: 271 quadros · 0 reaproveitados · 271 a renderizar
+2026-11-21 01:23:25   s08a 0-59 ok · 5.69 s/quadro · SSIM grosso mín. 0.994 · total novo 2103 · 4.42 h
+2026-11-21 01:30:26   s08a 60-119 ok · 7.02 s/quadro · SSIM grosso mín. 0.963 · total novo 2163 · 4.54 h
+2026-11-21 01:38:05   s08a 120-179 ok · 7.65 s/quadro · SSIM grosso mín. 0.996 · total novo 2223 · 4.67 h
+2026-11-21 01:45:19   s08a 180-239 ok · 7.22 s/quadro · SSIM grosso mín. 0.995 · total novo 2283 · 4.79 h
+2026-11-21 01:48:56   s08a 240-270 ok · 7.01 s/quadro · SSIM grosso mín. 0.995 · total novo 2314 · 4.85 h
+2026-11-21 01:48:56 SEG s08a CONCLUÍDO (271/271)
+2026-11-21 01:48:58 SEG s08b: 322 quadros · 0 reaproveitados · 322 a renderizar
+--- 2026-11-21 01:49:56 INTERROMPIDO manualmente: z-fighting do cubo ciano × bloco em s08a (já existente) — investigação ---
+--- 2026-11-21 02:03:53 retomada: s08a com fantoff=1 (cubo ciano × bloco); demais segmentos migrados com evidência (migrar_manifesto.py) ---
+2026-11-21 02:03:53 INÍCIO · config 9c03e3e543938e4c · escala=1&aoamostras=16&msaa=4&bloom=0.22&janoff=1 · segmentos 01,02,03,04,05,0607,0607b,08a,08b,09,10,11,12x,12,13
+2026-11-21 02:04:02 SEG s01: 145 quadros · 145 reaproveitados · 0 a renderizar
+2026-11-21 02:04:02 SEG s01 CONCLUÍDO (145/145)
+2026-11-21 02:04:22 SEG s02: 322 quadros · 322 reaproveitados · 0 a renderizar
+2026-11-21 02:04:22 SEG s02 CONCLUÍDO (322/322)
+2026-11-21 02:04:49 SEG s03: 457 quadros · 457 reaproveitados · 0 a renderizar
+2026-11-21 02:04:49 SEG s03 CONCLUÍDO (457/457)
+2026-11-21 02:05:08 SEG s04: 338 quadros · 338 reaproveitados · 0 a renderizar
+2026-11-21 02:05:08 SEG s04 CONCLUÍDO (338/338)
+2026-11-21 02:05:20 SEG s05: 195 quadros · 195 reaproveitados · 0 a renderizar
+2026-11-21 02:05:20 SEG s05 CONCLUÍDO (195/195)
+2026-11-21 02:06:07 SEG s0607: 806 quadros · 806 reaproveitados · 0 a renderizar
+2026-11-21 02:06:07 SEG s0607 CONCLUÍDO (806/806)
+2026-11-21 02:06:12 SEG s0607b: 82 quadros · 82 reaproveitados · 0 a renderizar
+2026-11-21 02:06:12 SEG s0607b CONCLUÍDO (82/82)
+2026-11-21 02:06:12 SEG s08a: 271 quadros · 0 reaproveitados · 271 a renderizar
+2026-11-21 02:11:58   s08a 0-59 ok · 5.77 s/quadro · SSIM grosso mín. 0.994 · total novo 60 · 0.13 h
+2026-11-21 02:19:02   s08a 60-119 ok · 7.06 s/quadro · SSIM grosso mín. 0.967 · total novo 120 · 0.25 h
+2026-11-21 02:26:42   s08a 120-179 ok · 7.67 s/quadro · SSIM grosso mín. 0.996 · total novo 180 · 0.38 h
+2026-11-21 02:33:52   s08a 180-239 ok · 7.17 s/quadro · SSIM grosso mín. 0.995 · total novo 240 · 0.50 h
+2026-11-21 02:37:35   s08a 240-270 ok · 7.20 s/quadro · SSIM grosso mín. 0.995 · total novo 271 · 0.56 h
+2026-11-21 02:37:35 SEG s08a CONCLUÍDO (271/271)
+2026-11-21 02:37:36 SEG s08b: 322 quadros · 0 reaproveitados · 322 a renderizar
+2026-11-21 02:44:09   s08b 0-59 ok · 6.56 s/quadro · SSIM grosso mín. 0.997 · total novo 331 · 0.67 h
+2026-11-21 02:50:55   s08b 60-119 ok · 6.76 s/quadro · SSIM grosso mín. 0.997 · total novo 391 · 0.78 h
+2026-11-21 02:57:39   s08b 120-179 ok · 6.73 s/quadro · SSIM grosso mín. 0.996 · total novo 451 · 0.90 h
+2026-11-21 03:04:59   s08b 180-239 ok · 7.34 s/quadro · SSIM grosso mín. 0.997 · total novo 511 · 1.02 h
+2026-11-21 03:12:22   s08b 240-299 ok · 7.39 s/quadro · SSIM grosso mín. 0.997 · total novo 571 · 1.14 h
+2026-11-21 03:15:04   s08b 300-321 ok · 7.35 s/quadro · SSIM grosso mín. 0.997 · total novo 593 · 1.19 h
+2026-11-21 03:15:04 SEG s08b CONCLUÍDO (322/322)
+2026-11-21 03:15:08 SEG s09: 681 quadros · 0 reaproveitados · 681 a renderizar
+2026-11-21 03:22:59   s09 0-59 ok · 7.85 s/quadro · SSIM grosso mín. 0.997 · total novo 653 · 1.32 h
+2026-11-21 03:30:45   s09 60-119 ok · 7.76 s/quadro · SSIM grosso mín. 0.997 · total novo 713 · 1.45 h
+2026-11-21 03:37:33   s09 120-179 ok · 6.80 s/quadro · SSIM grosso mín. 0.986 · total novo 773 · 1.56 h
+2026-11-21 03:47:47   s09 180-239 ok · 10.24 s/quadro · SSIM grosso mín. 0.991 · total novo 833 · 1.73 h
+2026-11-21 03:58:28   s09 240-299 ok · 10.68 s/quadro · SSIM grosso mín. 0.990 · total novo 893 · 1.91 h
+2026-11-21 04:07:30   s09 300-359 ok · 9.03 s/quadro · SSIM grosso mín. 0.992 · total novo 953 · 2.06 h
+2026-11-21 04:15:06   s09 360-419 ok · 7.60 s/quadro · SSIM grosso mín. 0.997 · total novo 1013 · 2.19 h
+2026-11-21 04:24:16   s09 420-479 ok · 9.17 s/quadro · SSIM grosso mín. 0.994 · total novo 1073 · 2.34 h
+2026-11-21 04:34:37   s09 480-539 ok · 10.36 s/quadro · SSIM grosso mín. 0.991 · total novo 1133 · 2.51 h
+2026-11-21 04:44:09   s09 540-599 ok · 9.53 s/quadro · SSIM grosso mín. 0.995 · total novo 1193 · 2.67 h
+2026-11-21 04:54:46   s09 600-659 ok · 10.61 s/quadro · SSIM grosso mín. 0.996 · total novo 1253 · 2.85 h
+2026-11-21 04:58:56   s09 660-680 ok · 11.90 s/quadro · SSIM grosso mín. 0.996 · total novo 1274 · 2.92 h
+2026-11-21 04:58:56 SEG s09 CONCLUÍDO (681/681)
+2026-11-21 04:58:58 SEG s10: 195 quadros · 0 reaproveitados · 195 a renderizar
+2026-11-21 05:10:52   s10 0-59 ok · 11.89 s/quadro · SSIM grosso mín. 0.994 · total novo 1334 · 3.12 h
+2026-11-21 05:22:55   s10 60-119 ok · 12.05 s/quadro · SSIM grosso mín. 0.992 · total novo 1394 · 3.32 h
+2026-11-21 05:35:46   s10 120-179 ok · 12.85 s/quadro · SSIM grosso mín. 0.987 · total novo 1454 · 3.53 h
+2026-11-21 05:39:12   s10 180-194 ok · 13.76 s/quadro · SSIM grosso mín. 0.988 · total novo 1469 · 3.59 h
+2026-11-21 05:39:12 SEG s10 CONCLUÍDO (195/195)
+2026-11-21 05:39:16 SEG s11: 311 quadros · 0 reaproveitados · 311 a renderizar
+2026-11-21 05:48:23   s11 0-59 ok · 9.12 s/quadro · SSIM grosso mín. 0.994 · total novo 1529 · 3.74 h
+2026-11-21 05:57:08   s11 60-119 ok · 8.75 s/quadro · SSIM grosso mín. 0.999 · total novo 1589 · 3.89 h
+2026-11-21 06:06:23   s11 120-179 ok · 9.26 s/quadro · SSIM grosso mín. 0.999 · total novo 1649 · 4.04 h
+2026-11-21 06:15:53   s11 180-239 ok · 9.50 s/quadro · SSIM grosso mín. 0.996 · total novo 1709 · 4.20 h
+2026-11-21 06:25:04   s11 240-299 ok · 9.17 s/quadro · SSIM grosso mín. 0.995 · total novo 1769 · 4.35 h
+2026-11-21 06:26:58   s11 300-310 ok · 10.38 s/quadro · SSIM grosso mín. 0.995 · total novo 1780 · 4.38 h
+2026-11-21 06:26:58 SEG s11 CONCLUÍDO (311/311)
+2026-11-21 06:27:02 SEG s12x: 91 quadros · 0 reaproveitados · 91 a renderizar
+2026-11-21 06:35:56   s12x 0-59 ok · 8.90 s/quadro · SSIM grosso mín. 0.995 · total novo 1840 · 4.53 h
+2026-11-21 06:39:37   s12x 60-90 ok · 7.15 s/quadro · SSIM grosso mín. 0.999 · total novo 1871 · 4.60 h
+2026-11-21 06:39:37 SEG s12x CONCLUÍDO (91/91)
+2026-11-21 06:39:37 SEG s12: 529 quadros · 0 reaproveitados · 529 a renderizar
+2026-11-21 06:45:26   s12 q0: diverge da revisão aprovada (escala grossa: SSIM 0.947, dif. 2.0) → re-render isolado
+2026-11-21 06:45:45 PARADA: s12 q0 continua com defeito (diverge da revisão aprovada (escala grossa: SSIM 0.947, dif. 2.0)): investigar antes de continuar
+--- 2026-11-21 06:46:08 retomada: s12 q0 = falso positivo (moiré dos contêineres na revisão 540, SSIM grosso 0,947, dif. 2,0); limite 0,95 → 0,93 ---
+2026-11-21 06:46:09 INÍCIO · config 9c03e3e543938e4c · escala=1&aoamostras=16&msaa=4&bloom=0.22&janoff=1 · segmentos 01,02,03,04,05,0607,0607b,08a,08b,09,10,11,12x,12,13
+2026-11-21 06:46:18 SEG s01: 145 quadros · 145 reaproveitados · 0 a renderizar
+2026-11-21 06:46:18 SEG s01 CONCLUÍDO (145/145)
+2026-11-21 06:46:39 SEG s02: 322 quadros · 322 reaproveitados · 0 a renderizar
+2026-11-21 06:46:39 SEG s02 CONCLUÍDO (322/322)
+2026-11-21 06:47:08 SEG s03: 457 quadros · 457 reaproveitados · 0 a renderizar
+2026-11-21 06:47:08 SEG s03 CONCLUÍDO (457/457)
+2026-11-21 06:47:28 SEG s04: 338 quadros · 338 reaproveitados · 0 a renderizar
+2026-11-21 06:47:28 SEG s04 CONCLUÍDO (338/338)
+2026-11-21 06:47:40 SEG s05: 195 quadros · 195 reaproveitados · 0 a renderizar
+2026-11-21 06:47:40 SEG s05 CONCLUÍDO (195/195)
+2026-11-21 06:48:27 SEG s0607: 806 quadros · 806 reaproveitados · 0 a renderizar
+2026-11-21 06:48:27 SEG s0607 CONCLUÍDO (806/806)
+2026-11-21 06:48:32 SEG s0607b: 82 quadros · 82 reaproveitados · 0 a renderizar
+2026-11-21 06:48:32 SEG s0607b CONCLUÍDO (82/82)
+2026-11-21 06:48:50 SEG s08a: 271 quadros · 271 reaproveitados · 0 a renderizar
+2026-11-21 06:48:50 SEG s08a CONCLUÍDO (271/271)
+2026-11-21 06:49:09 SEG s08b: 322 quadros · 322 reaproveitados · 0 a renderizar
+2026-11-21 06:49:09 SEG s08b CONCLUÍDO (322/322)
+2026-11-21 06:49:51 SEG s09: 681 quadros · 681 reaproveitados · 0 a renderizar
+2026-11-21 06:49:51 SEG s09 CONCLUÍDO (681/681)
+2026-11-21 06:50:03 SEG s10: 195 quadros · 195 reaproveitados · 0 a renderizar
+2026-11-21 06:50:03 SEG s10 CONCLUÍDO (195/195)
+2026-11-21 06:50:22 SEG s11: 311 quadros · 311 reaproveitados · 0 a renderizar
+2026-11-21 06:50:22 SEG s11 CONCLUÍDO (311/311)
+2026-11-21 06:50:27 SEG s12x: 91 quadros · 91 reaproveitados · 0 a renderizar
+2026-11-21 06:50:27 SEG s12x CONCLUÍDO (91/91)
+2026-11-21 06:50:31 SEG s12: 529 quadros · 59 reaproveitados · 470 a renderizar
+2026-11-21 06:50:50   s12 0-0 ok · 19.33 s/quadro · SSIM grosso mín. 0.947 · total novo 1 · 0.08 h
+2026-11-21 06:56:42   s12 60-119 ok · 5.87 s/quadro · SSIM grosso mín. 0.995 · total novo 61 · 0.18 h
+2026-11-21 07:02:06   s12 120-179 ok · 5.39 s/quadro · SSIM grosso mín. 0.995 · total novo 121 · 0.27 h
+2026-11-21 07:06:41   s12 180-239 ok · 4.58 s/quadro · SSIM grosso mín. 0.995 · total novo 181 · 0.34 h
+2026-11-21 07:11:18   s12 240-299 ok · 4.62 s/quadro · SSIM grosso mín. 0.967 · total novo 241 · 0.42 h
+2026-11-21 07:16:47   s12 300-359 ok · 5.49 s/quadro · SSIM grosso mín. 0.968 · total novo 301 · 0.51 h
+2026-11-21 07:22:14   s12 360-419 ok · 5.43 s/quadro · SSIM grosso mín. 0.992 · total novo 361 · 0.60 h
+2026-11-21 07:28:11   s12 420-479 ok · 5.97 s/quadro · SSIM grosso mín. 0.987 · total novo 421 · 0.70 h
+2026-11-21 07:32:08   s12 480-528 ok · 4.82 s/quadro · SSIM grosso mín. 0.995 · total novo 470 · 0.77 h
+2026-11-21 07:32:08 SEG s12 CONCLUÍDO (529/529)
+2026-11-21 07:32:08 SEG s13: 403 quadros · 0 reaproveitados · 403 a renderizar
+2026-11-21 07:37:42   s13 0-59 ok · 5.57 s/quadro · SSIM grosso mín. 0.981 · total novo 530 · 0.86 h
+2026-11-21 07:43:36   s13 60-119 ok · 5.91 s/quadro · SSIM grosso mín. 0.998 · total novo 590 · 0.96 h
+2026-11-21 07:52:35   s13 120-179 ok · 8.97 s/quadro · SSIM grosso mín. 0.998 · total novo 650 · 1.11 h
+2026-11-21 08:02:44   s13 180-239 ok · 10.15 s/quadro · SSIM grosso mín. 0.993 · total novo 710 · 1.28 h
+2026-11-21 08:14:04   s13 240-299 ok · 11.35 s/quadro · SSIM grosso mín. 0.992 · total novo 770 · 1.47 h
+2026-11-21 08:22:05   s13 300-359 ok · 8.01 s/quadro · SSIM grosso mín. 0.985 · total novo 830 · 1.60 h
+2026-11-21 08:27:35   s13 360-402 ok · 7.68 s/quadro · SSIM grosso mín. 0.996 · total novo 873 · 1.69 h
+2026-11-21 08:27:35 SEG s13 CONCLUÍDO (403/403)
+2026-11-21 08:27:35 FIM_RENDER_FINAL · 5148 quadros registrados · 1.69 h
