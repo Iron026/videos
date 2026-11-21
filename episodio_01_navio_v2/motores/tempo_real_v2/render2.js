@@ -27,6 +27,7 @@ const SMAP = parseInt(P.get('smap') || '4096');
 const CACHE = P.get('cache') === '1';
 const ENV = parseFloat(P.get('env') || '1');
 const MSAA = parseInt(P.get('msaa') || '4');
+const FANT_OFF = parseFloat(P.get('fantoff') || '0');   // prioridade de profundidade dos volumes fantasmas (coincidentes com sólidos); 0 = desligado
 const JAN_OFF = parseFloat(P.get('janoff') || '0');   // teste: prioridade de profundidade das janelas (polygon offset); 0 = como aprovado
 const OCL_K = parseFloat(P.get('ocl') || '0.994');   // fator de aproximação do oclusor (1 = comportamento antigo, só diagnóstico)
 const OCULTAR = new Set((P.get('ocultar') || '').split(',').filter(Boolean));   // diagnóstico: não carrega estes materiais (nome ou tipo)
@@ -445,7 +446,7 @@ await Promise.all(meta.materiais.map(async (m) => {
   if (m.tipo === 'raio_luz') { const mat = materialRaio(m); matsRaio.push(mat); const r = new THREE.Mesh(g, mat); r.renderOrder = 2; cenaTransp.add(r); return; }
   if (m.tipo === 'alagado') { const ma = new THREE.Mesh(g, materialAlagado(m)); ma.renderOrder = 6; registrarAnim(ma, m); scene.add(ma); return; }
   if (m.tipo === 'jato') { const mj = new THREE.Mesh(g, materialJato(m)); mj.renderOrder = 7; registrarAnim(mj, m); scene.add(mj); return; }
-  if (m.tipo === 'fantasma') { const mat = new THREE.MeshBasicMaterial({ color: new THREE.Color(...m.cor).multiplyScalar(m.brilho ?? 1), transparent: true, opacity: m.alfa ?? 0.35, depthWrite: false, side: THREE.DoubleSide }); const mf = new THREE.Mesh(g, mat); registrarAnim(mf, m); scene.add(mf); return; }
+  if (m.tipo === 'fantasma') { const mat = new THREE.MeshBasicMaterial({ color: new THREE.Color(...m.cor).multiplyScalar(m.brilho ?? 1), transparent: true, opacity: m.alfa ?? 0.35, depthWrite: false, side: THREE.DoubleSide }); if (FANT_OFF > 0) { mat.polygonOffset = true; mat.polygonOffsetFactor = -FANT_OFF; mat.polygonOffsetUnits = -4 * FANT_OFF; } const mf = new THREE.Mesh(g, mat); registrarAnim(mf, m); scene.add(mf); return; }
   if (m.tipo === 'brilho') { const mb = new THREE.Mesh(g, materialBrilho(m)); mb.renderOrder = 5; registrarAnim(mb, m); scene.add(mb); return; }
   if (m.tipo === 'oclusor') { const mo = new THREE.Mesh(g, matProfOcl); registrarAnim(mo, m); cenaOclusor.add(mo); return; }
   if (m.tipo === 'bolha') { const mat = new THREE.MeshPhysicalMaterial({ color: 0xf2fbff, transmission: 0, transparent: true, opacity: 0.55, roughness: 0.05, emissive: 0x9fd8ee, emissiveIntensity: 0.35 }); const mb = new THREE.Mesh(g, mat); mb.renderOrder = 3; registrarAnim(mb, m); cenaTransp.add(mb); return; }

@@ -21,12 +21,17 @@ A = os.path.dirname(os.path.abspath(__file__)); MOTOR = os.path.join(A, '..', 'm
 SAIDA = os.path.join(A, 'quadros_final'); DESC = os.path.join(A, 'quadros_final_descartados'); MAN = os.path.join(SAIDA, '_manifesto.json'); LOG = os.path.join(SAIDA, '_progresso.log')
 SEGS = sys.argv[1:] or ['01', '02', '03', '04', '05', '0607', '0607b', '08a', '08b', '09', '10', '11', '12x', '12', '13']
 Q = 'escala=1&aoamostras=16&msaa=4&bloom=0.22&janoff=1'
+# correções locais por segmento (defeito concreto investigado): s08a = cubo ciano da água deslocada coincide com o bloco → z-fighting
+SEG_EXTRA = {'08a': '&fantoff=1'}
 BLOCO = 60
 SSIM_GROSSO_MIN, DIF_GROSSA_MAX = 0.95, 6.0   # calibrado: quadros corretos ≥ 0,968 / ≤ 4,1; quadro 10 posições fora 0,902 / 4,7
 sha = lambda p: hashlib.sha256(open(p, 'rb').read()).hexdigest()
 CONFIG = dict(consulta=Q, resolucao='1080x1920', fps=30, render2_js=sha(os.path.join(MOTOR, 'render2.js')), render_anim_mjs=sha(os.path.join(MOTOR, 'render_anim.mjs')), three='r170',
               oclusor_agua=0.994, nota='correção de cor, rótulos, avisos e legendas: na montagem (montar_ep01.py final)')
 CID = hashlib.sha256(json.dumps(CONFIG, sort_keys=True).encode()).hexdigest()[:16]
+def cid(seg):   # identificador por segmento (inclui a correção local, se houver)
+    e = SEG_EXTRA.get(seg, ''); return CID if not e else hashlib.sha256((CID + e).encode()).hexdigest()[:16]
+CONFIG['por_segmento'] = SEG_EXTRA
 def log(msg):
     linha = time.strftime('%Y-%m-%d %H:%M:%S ') + msg; print(linha, flush=True); open(LOG, 'a').write(linha + '\n')
 def hash_cena(seg):
@@ -50,7 +55,7 @@ def verificar(seg, q):
     if im.size != (1080, 1920): return False, dict(erro=f'tamanho {im.size}')
     g = np.asarray(im.convert('L').resize((540, 960), Image.LANCZOS)).astype(np.float32)
     if g.mean() < 3: return False, dict(erro='quadro preto')
-    info = dict(sha256=sha(p), bytes=os.path.getsize(p), config=CID)
+    info = dict(sha256=sha(p), bytes=os.path.getsize(p), config=cid(seg))
     r = os.path.join(A, 'quadros_revisao', f's{seg}', f'q{q:04d}.jpg')
     if os.path.exists(r):
         rv = Image.open(r).convert('L'); s = ssim(g, np.asarray(rv).astype(np.float32)); info['ssim_revisao'] = round(s, 4)   # detalhe fino (informativo)
@@ -62,15 +67,16 @@ def verificar(seg, q):
         if sg < SSIM_GROSSO_MIN or dg > DIF_GROSSA_MAX: return False, dict(info, erro=f'diverge da revisão aprovada (escala grossa: SSIM {sg:.3f}, dif. {dg:.1f})')
     return True, info
 def render(seg, a, b):
-    r = subprocess.run(['node', 'render_anim.mjs', f'cena=../../episodio/cenas/s{seg}/&{Q}', f'../../episodio/quadros_final/s{seg}', '1', str(a), str(b)],
+    r = subprocess.run(['node', 'render_anim.mjs', f'cena=../../episodio/cenas/s{seg}/&{Q}{SEG_EXTRA.get(seg, "")}', f'../../episodio/quadros_final/s{seg}', '1', str(a), str(b)],
                        cwd=MOTOR, capture_output=True, text=True)
     fim = [l for l in r.stdout.splitlines() if 'FIM' in l or 'ERRO' in l]
     return r.returncode == 0 and any('FIM' in l and 'ERROS' not in l for l in fim), (fim[-1] if fim else r.stderr[-300:])
 
 os.makedirs(SAIDA, exist_ok=True)
 man = json.load(open(MAN)) if os.path.exists(MAN) else dict(config=CONFIG, config_id=CID, segmentos={})
-if man.get('config_id') != CID:
-    log(f'configuração mudou ({man.get("config_id")} → {CID}): nenhum quadro antigo é reaproveitado'); man = dict(config=CONFIG, config_id=CID, segmentos={})
+if man.get('config_id') != CID:   # cada quadro só é aceito se o registro tiver o identificador do SEU segmento (abaixo)
+    log(f'configuração-base mudou ({man.get("config_id")} → {CID}): só valem registros migrados com evidência (migrar_manifesto.py)')
+    man['config'], man['config_id'] = CONFIG, CID
 salvar(man)
 log(f'INÍCIO · config {CID} · {Q} · segmentos {",".join(SEGS)}')
 t_ini = time.time(); feitos = 0
@@ -84,7 +90,7 @@ for seg in SEGS:
     for f in sorted(os.listdir(d)):
         if not f.endswith('.jpg'): continue
         q = int(f[1:5]); reg = ms['quadros'].get(str(q)); p = os.path.join(d, f)
-        if reg and reg.get('config') == CID and reg.get('sha256') == sha(p) and verificar(seg, q)[0]: validos.add(q)
+        if reg and reg.get('config') == cid(seg) and reg.get('sha256') == sha(p) and verificar(seg, q)[0]: validos.add(q)
         else:
             os.makedirs(os.path.join(DESC, f's{seg}'), exist_ok=True); shutil.move(p, os.path.join(DESC, f's{seg}', f)); ms['quadros'].pop(str(q), None)
     faltam = [q for q in range(n) if q not in validos]
