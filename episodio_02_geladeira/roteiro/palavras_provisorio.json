@@ -1,0 +1,2311 @@
+{
+"PROVISORIO": true,
+"nota": "tempos estimados; substituir pelo alinhamento da narração aprovada",
+"escala": 0.9816,
+"palavras": [
+{
+"palavra": "Você",
+"inicio": 0.0,
+"fim": 0.332,
+"paragrafo": 0
+},
+{
+"palavra": "já",
+"inicio": 0.332,
+"fim": 0.558,
+"paragrafo": 0
+},
+{
+"palavra": "reparou",
+"inicio": 0.558,
+"fim": 1.048,
+"paragrafo": 0
+},
+{
+"palavra": "que",
+"inicio": 1.048,
+"fim": 1.327,
+"paragrafo": 0
+},
+{
+"palavra": "a",
+"inicio": 1.327,
+"fim": 1.501,
+"paragrafo": 0
+},
+{
+"palavra": "geladeira",
+"inicio": 1.501,
+"fim": 2.095,
+"paragrafo": 0
+},
+{
+"palavra": "é",
+"inicio": 2.095,
+"fim": 2.269,
+"paragrafo": 0
+},
+{
+"palavra": "fria",
+"inicio": 2.269,
+"fim": 2.601,
+"paragrafo": 0
+},
+{
+"palavra": "por",
+"inicio": 2.601,
+"fim": 2.88,
+"paragrafo": 0
+},
+{
+"palavra": "dentro,",
+"inicio": 2.88,
+"fim": 3.317,
+"paragrafo": 0
+},
+{
+"palavra": "mas",
+"inicio": 3.65,
+"fim": 3.929,
+"paragrafo": 0
+},
+{
+"palavra": "pode",
+"inicio": 3.929,
+"fim": 4.261,
+"paragrafo": 0
+},
+{
+"palavra": "ficar",
+"inicio": 4.261,
+"fim": 4.645,
+"paragrafo": 0
+},
+{
+"palavra": "quente",
+"inicio": 4.645,
+"fim": 5.082,
+"paragrafo": 0
+},
+{
+"palavra": "por",
+"inicio": 5.082,
+"fim": 5.361,
+"paragrafo": 0
+},
+{
+"palavra": "fora?",
+"inicio": 5.361,
+"fim": 5.693,
+"paragrafo": 0
+},
+{
+"palavra": "Parece",
+"inicio": 6.262,
+"fim": 6.699,
+"paragrafo": 1
+},
+{
+"palavra": "estranho:",
+"inicio": 6.699,
+"fim": 7.241,
+"paragrafo": 1
+},
+{
+"palavra": "como",
+"inicio": 7.644,
+"fim": 7.976,
+"paragrafo": 1
+},
+{
+"palavra": "a",
+"inicio": 7.976,
+"fim": 8.149,
+"paragrafo": 1
+},
+{
+"palavra": "mesma",
+"inicio": 8.149,
+"fim": 8.534,
+"paragrafo": 1
+},
+{
+"palavra": "máquina",
+"inicio": 8.534,
+"fim": 9.023,
+"paragrafo": 1
+},
+{
+"palavra": "consegue",
+"inicio": 9.023,
+"fim": 9.565,
+"paragrafo": 1
+},
+{
+"palavra": "fazer",
+"inicio": 9.565,
+"fim": 9.95,
+"paragrafo": 1
+},
+{
+"palavra": "as",
+"inicio": 9.95,
+"fim": 10.176,
+"paragrafo": 1
+},
+{
+"palavra": "duas",
+"inicio": 10.176,
+"fim": 10.508,
+"paragrafo": 1
+},
+{
+"palavra": "coisas",
+"inicio": 10.508,
+"fim": 10.945,
+"paragrafo": 1
+},
+{
+"palavra": "ao",
+"inicio": 10.945,
+"fim": 11.171,
+"paragrafo": 1
+},
+{
+"palavra": "mesmo",
+"inicio": 11.171,
+"fim": 11.555,
+"paragrafo": 1
+},
+{
+"palavra": "tempo?",
+"inicio": 11.555,
+"fim": 11.94,
+"paragrafo": 1
+},
+{
+"palavra": "A",
+"inicio": 12.509,
+"fim": 12.683,
+"paragrafo": 2
+},
+{
+"palavra": "resposta",
+"inicio": 12.683,
+"fim": 13.225,
+"paragrafo": 2
+},
+{
+"palavra": "é",
+"inicio": 13.225,
+"fim": 13.399,
+"paragrafo": 2
+},
+{
+"palavra": "surpreendente.",
+"inicio": 13.399,
+"fim": 14.204,
+"paragrafo": 2
+},
+{
+"palavra": "A",
+"inicio": 14.567,
+"fim": 14.741,
+"paragrafo": 2
+},
+{
+"palavra": "geladeira",
+"inicio": 14.741,
+"fim": 15.336,
+"paragrafo": 2
+},
+{
+"palavra": "não",
+"inicio": 15.336,
+"fim": 15.615,
+"paragrafo": 2
+},
+{
+"palavra": "fabrica",
+"inicio": 15.615,
+"fim": 16.104,
+"paragrafo": 2
+},
+{
+"palavra": "frio.",
+"inicio": 16.104,
+"fim": 16.436,
+"paragrafo": 2
+},
+{
+"palavra": "Ela",
+"inicio": 16.799,
+"fim": 17.078,
+"paragrafo": 2
+},
+{
+"palavra": "transporta",
+"inicio": 17.078,
+"fim": 17.725,
+"paragrafo": 2
+},
+{
+"palavra": "calor.",
+"inicio": 17.725,
+"fim": 18.11,
+"paragrafo": 2
+},
+{
+"palavra": "Imagine",
+"inicio": 18.62,
+"fim": 19.11,
+"paragrafo": 3
+},
+{
+"palavra": "uma",
+"inicio": 19.11,
+"fim": 19.389,
+"paragrafo": 3
+},
+{
+"palavra": "garrafa",
+"inicio": 19.389,
+"fim": 19.878,
+"paragrafo": 3
+},
+{
+"palavra": "de",
+"inicio": 19.878,
+"fim": 20.105,
+"paragrafo": 3
+},
+{
+"palavra": "água",
+"inicio": 20.105,
+"fim": 20.436,
+"paragrafo": 3
+},
+{
+"palavra": "em",
+"inicio": 20.436,
+"fim": 20.663,
+"paragrafo": 3
+},
+{
+"palavra": "temperatura",
+"inicio": 20.663,
+"fim": 21.363,
+"paragrafo": 3
+},
+{
+"palavra": "ambiente.",
+"inicio": 21.363,
+"fim": 21.905,
+"paragrafo": 3
+},
+{
+"palavra": "Quando",
+"inicio": 22.268,
+"fim": 22.705,
+"paragrafo": 3
+},
+{
+"palavra": "você",
+"inicio": 22.705,
+"fim": 23.037,
+"paragrafo": 3
+},
+{
+"palavra": "a",
+"inicio": 23.037,
+"fim": 23.21,
+"paragrafo": 3
+},
+{
+"palavra": "coloca",
+"inicio": 23.21,
+"fim": 23.647,
+"paragrafo": 3
+},
+{
+"palavra": "na",
+"inicio": 23.647,
+"fim": 23.874,
+"paragrafo": 3
+},
+{
+"palavra": "geladeira,",
+"inicio": 23.874,
+"fim": 24.468,
+"paragrafo": 3
+},
+{
+"palavra": "ela",
+"inicio": 24.802,
+"fim": 25.081,
+"paragrafo": 3
+},
+{
+"palavra": "começa",
+"inicio": 25.081,
+"fim": 25.518,
+"paragrafo": 3
+},
+{
+"palavra": "a",
+"inicio": 25.518,
+"fim": 25.692,
+"paragrafo": 3
+},
+{
+"palavra": "perder",
+"inicio": 25.692,
+"fim": 26.129,
+"paragrafo": 3
+},
+{
+"palavra": "energia",
+"inicio": 26.129,
+"fim": 26.618,
+"paragrafo": 3
+},
+{
+"palavra": "térmica.",
+"inicio": 26.618,
+"fim": 27.108,
+"paragrafo": 3
+},
+{
+"palavra": "Mas",
+"inicio": 27.618,
+"fim": 27.897,
+"paragrafo": 4
+},
+{
+"palavra": "esse",
+"inicio": 27.897,
+"fim": 28.229,
+"paragrafo": 4
+},
+{
+"palavra": "calor",
+"inicio": 28.229,
+"fim": 28.613,
+"paragrafo": 4
+},
+{
+"palavra": "não",
+"inicio": 28.613,
+"fim": 28.892,
+"paragrafo": 4
+},
+{
+"palavra": "desaparece.",
+"inicio": 28.892,
+"fim": 29.54,
+"paragrafo": 4
+},
+{
+"palavra": "Ele",
+"inicio": 29.903,
+"fim": 30.182,
+"paragrafo": 4
+},
+{
+"palavra": "precisa",
+"inicio": 30.182,
+"fim": 30.671,
+"paragrafo": 4
+},
+{
+"palavra": "ir",
+"inicio": 30.671,
+"fim": 30.898,
+"paragrafo": 4
+},
+{
+"palavra": "para",
+"inicio": 30.898,
+"fim": 31.23,
+"paragrafo": 4
+},
+{
+"palavra": "algum",
+"inicio": 31.23,
+"fim": 31.614,
+"paragrafo": 4
+},
+{
+"palavra": "lugar.",
+"inicio": 31.614,
+"fim": 31.998,
+"paragrafo": 4
+},
+{
+"palavra": "Para",
+"inicio": 32.509,
+"fim": 32.84,
+"paragrafo": 5
+},
+{
+"palavra": "descobrir",
+"inicio": 32.84,
+"fim": 33.435,
+"paragrafo": 5
+},
+{
+"palavra": "para",
+"inicio": 33.435,
+"fim": 33.767,
+"paragrafo": 5
+},
+{
+"palavra": "onde,",
+"inicio": 33.767,
+"fim": 34.098,
+"paragrafo": 5
+},
+{
+"palavra": "vamos",
+"inicio": 34.432,
+"fim": 34.816,
+"paragrafo": 5
+},
+{
+"palavra": "abrir",
+"inicio": 34.816,
+"fim": 35.201,
+"paragrafo": 5
+},
+{
+"palavra": "a",
+"inicio": 35.201,
+"fim": 35.374,
+"paragrafo": 5
+},
+{
+"palavra": "geladeira",
+"inicio": 35.374,
+"fim": 35.969,
+"paragrafo": 5
+},
+{
+"palavra": "de",
+"inicio": 35.969,
+"fim": 36.196,
+"paragrafo": 5
+},
+{
+"palavra": "um",
+"inicio": 36.196,
+"fim": 36.422,
+"paragrafo": 5
+},
+{
+"palavra": "jeito",
+"inicio": 36.422,
+"fim": 36.806,
+"paragrafo": 5
+},
+{
+"palavra": "que",
+"inicio": 36.806,
+"fim": 37.085,
+"paragrafo": 5
+},
+{
+"palavra": "você",
+"inicio": 37.085,
+"fim": 37.417,
+"paragrafo": 5
+},
+{
+"palavra": "nunca",
+"inicio": 37.417,
+"fim": 37.801,
+"paragrafo": 5
+},
+{
+"palavra": "viu.",
+"inicio": 37.801,
+"fim": 38.08,
+"paragrafo": 5
+},
+{
+"palavra": "Escondido",
+"inicio": 38.591,
+"fim": 39.186,
+"paragrafo": 6
+},
+{
+"palavra": "atrás",
+"inicio": 39.186,
+"fim": 39.57,
+"paragrafo": 6
+},
+{
+"palavra": "das",
+"inicio": 39.57,
+"fim": 39.849,
+"paragrafo": 6
+},
+{
+"palavra": "paredes,",
+"inicio": 39.849,
+"fim": 40.338,
+"paragrafo": 6
+},
+{
+"palavra": "existe",
+"inicio": 40.672,
+"fim": 41.109,
+"paragrafo": 6
+},
+{
+"palavra": "um",
+"inicio": 41.109,
+"fim": 41.335,
+"paragrafo": 6
+},
+{
+"palavra": "circuito",
+"inicio": 41.335,
+"fim": 41.878,
+"paragrafo": 6
+},
+{
+"palavra": "fechado",
+"inicio": 41.878,
+"fim": 42.367,
+"paragrafo": 6
+},
+{
+"palavra": "de",
+"inicio": 42.367,
+"fim": 42.594,
+"paragrafo": 6
+},
+{
+"palavra": "tubos.",
+"inicio": 42.594,
+"fim": 42.978,
+"paragrafo": 6
+},
+{
+"palavra": "Dentro",
+"inicio": 43.341,
+"fim": 43.778,
+"paragrafo": 6
+},
+{
+"palavra": "dele",
+"inicio": 43.778,
+"fim": 44.11,
+"paragrafo": 6
+},
+{
+"palavra": "circula",
+"inicio": 44.11,
+"fim": 44.599,
+"paragrafo": 6
+},
+{
+"palavra": "uma",
+"inicio": 44.599,
+"fim": 44.878,
+"paragrafo": 6
+},
+{
+"palavra": "substância",
+"inicio": 44.878,
+"fim": 45.525,
+"paragrafo": 6
+},
+{
+"palavra": "especial:",
+"inicio": 45.525,
+"fim": 46.068,
+"paragrafo": 6
+},
+{
+"palavra": "o",
+"inicio": 46.47,
+"fim": 46.644,
+"paragrafo": 6
+},
+{
+"palavra": "fluido",
+"inicio": 46.644,
+"fim": 47.081,
+"paragrafo": 6
+},
+{
+"palavra": "refrigerante.",
+"inicio": 47.081,
+"fim": 47.833,
+"paragrafo": 6
+},
+{
+"palavra": "Durante",
+"inicio": 48.344,
+"fim": 48.833,
+"paragrafo": 7
+},
+{
+"palavra": "o",
+"inicio": 48.833,
+"fim": 49.007,
+"paragrafo": 7
+},
+{
+"palavra": "percurso,",
+"inicio": 49.007,
+"fim": 49.549,
+"paragrafo": 7
+},
+{
+"palavra": "ele",
+"inicio": 49.883,
+"fim": 50.162,
+"paragrafo": 7
+},
+{
+"palavra": "muda",
+"inicio": 50.162,
+"fim": 50.494,
+"paragrafo": 7
+},
+{
+"palavra": "de",
+"inicio": 50.494,
+"fim": 50.72,
+"paragrafo": 7
+},
+{
+"palavra": "pressão,",
+"inicio": 50.72,
+"fim": 51.21,
+"paragrafo": 7
+},
+{
+"palavra": "de",
+"inicio": 51.543,
+"fim": 51.77,
+"paragrafo": 7
+},
+{
+"palavra": "temperatura",
+"inicio": 51.77,
+"fim": 52.47,
+"paragrafo": 7
+},
+{
+"palavra": "e",
+"inicio": 52.47,
+"fim": 52.644,
+"paragrafo": 7
+},
+{
+"palavra": "até",
+"inicio": 52.644,
+"fim": 52.923,
+"paragrafo": 7
+},
+{
+"palavra": "de",
+"inicio": 52.923,
+"fim": 53.149,
+"paragrafo": 7
+},
+{
+"palavra": "estado",
+"inicio": 53.149,
+"fim": 53.586,
+"paragrafo": 7
+},
+{
+"palavra": "físico.",
+"inicio": 53.586,
+"fim": 54.023,
+"paragrafo": 7
+},
+{
+"palavra": "Vamos",
+"inicio": 54.533,
+"fim": 54.918,
+"paragrafo": 8
+},
+{
+"palavra": "começar",
+"inicio": 54.918,
+"fim": 55.407,
+"paragrafo": 8
+},
+{
+"palavra": "pelo",
+"inicio": 55.407,
+"fim": 55.739,
+"paragrafo": 8
+},
+{
+"palavra": "evaporador,",
+"inicio": 55.739,
+"fim": 56.386,
+"paragrafo": 8
+},
+{
+"palavra": "a",
+"inicio": 56.72,
+"fim": 56.894,
+"paragrafo": 8
+},
+{
+"palavra": "parte",
+"inicio": 56.894,
+"fim": 57.278,
+"paragrafo": 8
+},
+{
+"palavra": "que",
+"inicio": 57.278,
+"fim": 57.557,
+"paragrafo": 8
+},
+{
+"palavra": "absorve",
+"inicio": 57.557,
+"fim": 58.046,
+"paragrafo": 8
+},
+{
+"palavra": "calor",
+"inicio": 58.046,
+"fim": 58.431,
+"paragrafo": 8
+},
+{
+"palavra": "do",
+"inicio": 58.431,
+"fim": 58.657,
+"paragrafo": 8
+},
+{
+"palavra": "interior.",
+"inicio": 58.657,
+"fim": 59.199,
+"paragrafo": 8
+},
+{
+"palavra": "Ali,",
+"inicio": 59.71,
+"fim": 59.989,
+"paragrafo": 9
+},
+{
+"palavra": "o",
+"inicio": 60.323,
+"fim": 60.496,
+"paragrafo": 9
+},
+{
+"palavra": "fluido",
+"inicio": 60.496,
+"fim": 60.933,
+"paragrafo": 9
+},
+{
+"palavra": "chega",
+"inicio": 60.933,
+"fim": 61.318,
+"paragrafo": 9
+},
+{
+"palavra": "frio",
+"inicio": 61.318,
+"fim": 61.649,
+"paragrafo": 9
+},
+{
+"palavra": "e",
+"inicio": 61.649,
+"fim": 61.823,
+"paragrafo": 9
+},
+{
+"palavra": "sob",
+"inicio": 61.823,
+"fim": 62.102,
+"paragrafo": 9
+},
+{
+"palavra": "baixa",
+"inicio": 62.102,
+"fim": 62.486,
+"paragrafo": 9
+},
+{
+"palavra": "pressão,",
+"inicio": 62.486,
+"fim": 62.976,
+"paragrafo": 9
+},
+{
+"palavra": "numa",
+"inicio": 63.31,
+"fim": 63.641,
+"paragrafo": 9
+},
+{
+"palavra": "mistura",
+"inicio": 63.641,
+"fim": 64.131,
+"paragrafo": 9
+},
+{
+"palavra": "de",
+"inicio": 64.131,
+"fim": 64.357,
+"paragrafo": 9
+},
+{
+"palavra": "líquido",
+"inicio": 64.357,
+"fim": 64.847,
+"paragrafo": 9
+},
+{
+"palavra": "e",
+"inicio": 64.847,
+"fim": 65.021,
+"paragrafo": 9
+},
+{
+"palavra": "vapor.",
+"inicio": 65.021,
+"fim": 65.405,
+"paragrafo": 9
+},
+{
+"palavra": "Como",
+"inicio": 65.915,
+"fim": 66.247,
+"paragrafo": 10
+},
+{
+"palavra": "está",
+"inicio": 66.247,
+"fim": 66.579,
+"paragrafo": 10
+},
+{
+"palavra": "mais",
+"inicio": 66.579,
+"fim": 66.91,
+"paragrafo": 10
+},
+{
+"palavra": "frio",
+"inicio": 66.91,
+"fim": 67.242,
+"paragrafo": 10
+},
+{
+"palavra": "que",
+"inicio": 67.242,
+"fim": 67.521,
+"paragrafo": 10
+},
+{
+"palavra": "o",
+"inicio": 67.521,
+"fim": 67.695,
+"paragrafo": 10
+},
+{
+"palavra": "ar",
+"inicio": 67.695,
+"fim": 67.921,
+"paragrafo": 10
+},
+{
+"palavra": "e",
+"inicio": 67.921,
+"fim": 68.095,
+"paragrafo": 10
+},
+{
+"palavra": "os",
+"inicio": 68.095,
+"fim": 68.322,
+"paragrafo": 10
+},
+{
+"palavra": "alimentos,",
+"inicio": 68.322,
+"fim": 68.916,
+"paragrafo": 10
+},
+{
+"palavra": "recebe",
+"inicio": 69.25,
+"fim": 69.687,
+"paragrafo": 10
+},
+{
+"palavra": "calor",
+"inicio": 69.687,
+"fim": 70.071,
+"paragrafo": 10
+},
+{
+"palavra": "através",
+"inicio": 70.071,
+"fim": 70.561,
+"paragrafo": 10
+},
+{
+"palavra": "das",
+"inicio": 70.561,
+"fim": 70.84,
+"paragrafo": 10
+},
+{
+"palavra": "paredes",
+"inicio": 70.84,
+"fim": 71.329,
+"paragrafo": 10
+},
+{
+"palavra": "dos",
+"inicio": 71.329,
+"fim": 71.608,
+"paragrafo": 10
+},
+{
+"palavra": "tubos.",
+"inicio": 71.608,
+"fim": 71.993,
+"paragrafo": 10
+},
+{
+"palavra": "Ao",
+"inicio": 72.356,
+"fim": 72.582,
+"paragrafo": 10
+},
+{
+"palavra": "absorver",
+"inicio": 72.582,
+"fim": 73.124,
+"paragrafo": 10
+},
+{
+"palavra": "essa",
+"inicio": 73.124,
+"fim": 73.456,
+"paragrafo": 10
+},
+{
+"palavra": "energia,",
+"inicio": 73.456,
+"fim": 73.946,
+"paragrafo": 10
+},
+{
+"palavra": "a",
+"inicio": 74.279,
+"fim": 74.453,
+"paragrafo": 10
+},
+{
+"palavra": "parte",
+"inicio": 74.453,
+"fim": 74.837,
+"paragrafo": 10
+},
+{
+"palavra": "líquida",
+"inicio": 74.837,
+"fim": 75.327,
+"paragrafo": 10
+},
+{
+"palavra": "evapora.",
+"inicio": 75.327,
+"fim": 75.816,
+"paragrafo": 10
+},
+{
+"palavra": "O",
+"inicio": 76.327,
+"fim": 76.501,
+"paragrafo": 11
+},
+{
+"palavra": "calor",
+"inicio": 76.501,
+"fim": 76.885,
+"paragrafo": 11
+},
+{
+"palavra": "saiu",
+"inicio": 76.885,
+"fim": 77.217,
+"paragrafo": 11
+},
+{
+"palavra": "dos",
+"inicio": 77.217,
+"fim": 77.496,
+"paragrafo": 11
+},
+{
+"palavra": "alimentos",
+"inicio": 77.496,
+"fim": 78.09,
+"paragrafo": 11
+},
+{
+"palavra": "e",
+"inicio": 78.09,
+"fim": 78.264,
+"paragrafo": 11
+},
+{
+"palavra": "entrou",
+"inicio": 78.264,
+"fim": 78.701,
+"paragrafo": 11
+},
+{
+"palavra": "no",
+"inicio": 78.701,
+"fim": 78.928,
+"paragrafo": 11
+},
+{
+"palavra": "refrigerante.",
+"inicio": 78.928,
+"fim": 79.68,
+"paragrafo": 11
+},
+{
+"palavra": "Mas",
+"inicio": 80.191,
+"fim": 80.47,
+"paragrafo": 12
+},
+{
+"palavra": "como",
+"inicio": 80.47,
+"fim": 80.801,
+"paragrafo": 12
+},
+{
+"palavra": "mandar",
+"inicio": 80.801,
+"fim": 81.238,
+"paragrafo": 12
+},
+{
+"palavra": "esse",
+"inicio": 81.238,
+"fim": 81.57,
+"paragrafo": 12
+},
+{
+"palavra": "calor",
+"inicio": 81.57,
+"fim": 81.954,
+"paragrafo": 12
+},
+{
+"palavra": "para",
+"inicio": 81.954,
+"fim": 82.286,
+"paragrafo": 12
+},
+{
+"palavra": "fora?",
+"inicio": 82.286,
+"fim": 82.617,
+"paragrafo": 12
+},
+{
+"palavra": "É",
+"inicio": 83.187,
+"fim": 83.361,
+"paragrafo": 13
+},
+{
+"palavra": "aqui",
+"inicio": 83.361,
+"fim": 83.692,
+"paragrafo": 13
+},
+{
+"palavra": "que",
+"inicio": 83.692,
+"fim": 83.971,
+"paragrafo": 13
+},
+{
+"palavra": "entra",
+"inicio": 83.971,
+"fim": 84.356,
+"paragrafo": 13
+},
+{
+"palavra": "o",
+"inicio": 84.356,
+"fim": 84.529,
+"paragrafo": 13
+},
+{
+"palavra": "compressor,",
+"inicio": 84.529,
+"fim": 85.177,
+"paragrafo": 13
+},
+{
+"palavra": "movido",
+"inicio": 85.511,
+"fim": 85.947,
+"paragrafo": 13
+},
+{
+"palavra": "por",
+"inicio": 85.947,
+"fim": 86.226,
+"paragrafo": 13
+},
+{
+"palavra": "eletricidade.",
+"inicio": 86.226,
+"fim": 86.979,
+"paragrafo": 13
+},
+{
+"palavra": "Ele",
+"inicio": 87.489,
+"fim": 87.769,
+"paragrafo": 14
+},
+{
+"palavra": "suga",
+"inicio": 87.769,
+"fim": 88.1,
+"paragrafo": 14
+},
+{
+"palavra": "o",
+"inicio": 88.1,
+"fim": 88.274,
+"paragrafo": 14
+},
+{
+"palavra": "vapor",
+"inicio": 88.274,
+"fim": 88.658,
+"paragrafo": 14
+},
+{
+"palavra": "e",
+"inicio": 88.658,
+"fim": 88.832,
+"paragrafo": 14
+},
+{
+"palavra": "o",
+"inicio": 88.832,
+"fim": 89.006,
+"paragrafo": 14
+},
+{
+"palavra": "comprime,",
+"inicio": 89.006,
+"fim": 89.548,
+"paragrafo": 14
+},
+{
+"palavra": "elevando",
+"inicio": 89.882,
+"fim": 90.424,
+"paragrafo": 14
+},
+{
+"palavra": "sua",
+"inicio": 90.424,
+"fim": 90.703,
+"paragrafo": 14
+},
+{
+"palavra": "pressão",
+"inicio": 90.703,
+"fim": 91.193,
+"paragrafo": 14
+},
+{
+"palavra": "e",
+"inicio": 91.193,
+"fim": 91.366,
+"paragrafo": 14
+},
+{
+"palavra": "sua",
+"inicio": 91.366,
+"fim": 91.645,
+"paragrafo": 14
+},
+{
+"palavra": "temperatura.",
+"inicio": 91.645,
+"fim": 92.345,
+"paragrafo": 14
+},
+{
+"palavra": "Agora,",
+"inicio": 92.856,
+"fim": 93.24,
+"paragrafo": 15
+},
+{
+"palavra": "o",
+"inicio": 93.574,
+"fim": 93.748,
+"paragrafo": 15
+},
+{
+"palavra": "refrigerante",
+"inicio": 93.748,
+"fim": 94.5,
+"paragrafo": 15
+},
+{
+"palavra": "está",
+"inicio": 94.5,
+"fim": 94.832,
+"paragrafo": 15
+},
+{
+"palavra": "mais",
+"inicio": 94.832,
+"fim": 95.164,
+"paragrafo": 15
+},
+{
+"palavra": "quente",
+"inicio": 95.164,
+"fim": 95.6,
+"paragrafo": 15
+},
+{
+"palavra": "que",
+"inicio": 95.6,
+"fim": 95.879,
+"paragrafo": 15
+},
+{
+"palavra": "o",
+"inicio": 95.879,
+"fim": 96.053,
+"paragrafo": 15
+},
+{
+"palavra": "ar",
+"inicio": 96.053,
+"fim": 96.28,
+"paragrafo": 15
+},
+{
+"palavra": "da",
+"inicio": 96.28,
+"fim": 96.506,
+"paragrafo": 15
+},
+{
+"palavra": "cozinha.",
+"inicio": 96.506,
+"fim": 96.996,
+"paragrafo": 15
+},
+{
+"palavra": "Por",
+"inicio": 97.506,
+"fim": 97.785,
+"paragrafo": 16
+},
+{
+"palavra": "isso,",
+"inicio": 97.785,
+"fim": 98.117,
+"paragrafo": 16
+},
+{
+"palavra": "ao",
+"inicio": 98.451,
+"fim": 98.677,
+"paragrafo": 16
+},
+{
+"palavra": "atravessar",
+"inicio": 98.677,
+"fim": 99.324,
+"paragrafo": 16
+},
+{
+"palavra": "o",
+"inicio": 99.324,
+"fim": 99.498,
+"paragrafo": 16
+},
+{
+"palavra": "condensador,",
+"inicio": 99.498,
+"fim": 100.198,
+"paragrafo": 16
+},
+{
+"palavra": "ele",
+"inicio": 100.532,
+"fim": 100.811,
+"paragrafo": 16
+},
+{
+"palavra": "consegue",
+"inicio": 100.811,
+"fim": 101.353,
+"paragrafo": 16
+},
+{
+"palavra": "liberar",
+"inicio": 101.353,
+"fim": 101.843,
+"paragrafo": 16
+},
+{
+"palavra": "calor",
+"inicio": 101.843,
+"fim": 102.227,
+"paragrafo": 16
+},
+{
+"palavra": "para",
+"inicio": 102.227,
+"fim": 102.559,
+"paragrafo": 16
+},
+{
+"palavra": "o",
+"inicio": 102.559,
+"fim": 102.732,
+"paragrafo": 16
+},
+{
+"palavra": "ambiente.",
+"inicio": 102.732,
+"fim": 103.274,
+"paragrafo": 16
+},
+{
+"palavra": "Enquanto",
+"inicio": 103.785,
+"fim": 104.327,
+"paragrafo": 17
+},
+{
+"palavra": "perde",
+"inicio": 104.327,
+"fim": 104.711,
+"paragrafo": 17
+},
+{
+"palavra": "energia,",
+"inicio": 104.711,
+"fim": 105.201,
+"paragrafo": 17
+},
+{
+"palavra": "o",
+"inicio": 105.535,
+"fim": 105.708,
+"paragrafo": 17
+},
+{
+"palavra": "vapor",
+"inicio": 105.708,
+"fim": 106.093,
+"paragrafo": 17
+},
+{
+"palavra": "se",
+"inicio": 106.093,
+"fim": 106.319,
+"paragrafo": 17
+},
+{
+"palavra": "transforma",
+"inicio": 106.319,
+"fim": 106.966,
+"paragrafo": 17
+},
+{
+"palavra": "novamente",
+"inicio": 106.966,
+"fim": 107.561,
+"paragrafo": 17
+},
+{
+"palavra": "em",
+"inicio": 107.561,
+"fim": 107.788,
+"paragrafo": 17
+},
+{
+"palavra": "líquido.",
+"inicio": 107.788,
+"fim": 108.277,
+"paragrafo": 17
+},
+{
+"palavra": "Só",
+"inicio": 108.788,
+"fim": 109.014,
+"paragrafo": 18
+},
+{
+"palavra": "falta",
+"inicio": 109.014,
+"fim": 109.398,
+"paragrafo": 18
+},
+{
+"palavra": "uma",
+"inicio": 109.398,
+"fim": 109.677,
+"paragrafo": 18
+},
+{
+"palavra": "etapa.",
+"inicio": 109.677,
+"fim": 110.062,
+"paragrafo": 18
+},
+{
+"palavra": "Esse",
+"inicio": 110.572,
+"fim": 110.904,
+"paragrafo": 19
+},
+{
+"palavra": "líquido",
+"inicio": 110.904,
+"fim": 111.393,
+"paragrafo": 19
+},
+{
+"palavra": "passa",
+"inicio": 111.393,
+"fim": 111.777,
+"paragrafo": 19
+},
+{
+"palavra": "por",
+"inicio": 111.777,
+"fim": 112.057,
+"paragrafo": 19
+},
+{
+"palavra": "um",
+"inicio": 112.057,
+"fim": 112.283,
+"paragrafo": 19
+},
+{
+"palavra": "tubo",
+"inicio": 112.283,
+"fim": 112.615,
+"paragrafo": 19
+},
+{
+"palavra": "muito",
+"inicio": 112.615,
+"fim": 112.999,
+"paragrafo": 19
+},
+{
+"palavra": "estreito,",
+"inicio": 112.999,
+"fim": 113.541,
+"paragrafo": 19
+},
+{
+"palavra": "chamado",
+"inicio": 113.875,
+"fim": 114.364,
+"paragrafo": 19
+},
+{
+"palavra": "capilar.",
+"inicio": 114.364,
+"fim": 114.854,
+"paragrafo": 19
+},
+{
+"palavra": "A",
+"inicio": 115.364,
+"fim": 115.538,
+"paragrafo": 20
+},
+{
+"palavra": "pressão",
+"inicio": 115.538,
+"fim": 116.028,
+"paragrafo": 20
+},
+{
+"palavra": "cai",
+"inicio": 116.028,
+"fim": 116.307,
+"paragrafo": 20
+},
+{
+"palavra": "bruscamente,",
+"inicio": 116.307,
+"fim": 117.007,
+"paragrafo": 20
+},
+{
+"palavra": "e",
+"inicio": 117.34,
+"fim": 117.514,
+"paragrafo": 20
+},
+{
+"palavra": "parte",
+"inicio": 117.514,
+"fim": 117.898,
+"paragrafo": 20
+},
+{
+"palavra": "do",
+"inicio": 117.898,
+"fim": 118.125,
+"paragrafo": 20
+},
+{
+"palavra": "líquido",
+"inicio": 118.125,
+"fim": 118.614,
+"paragrafo": 20
+},
+{
+"palavra": "evapora,",
+"inicio": 118.614,
+"fim": 119.104,
+"paragrafo": 20
+},
+{
+"palavra": "resfriando",
+"inicio": 119.438,
+"fim": 120.085,
+"paragrafo": 20
+},
+{
+"palavra": "a",
+"inicio": 120.085,
+"fim": 120.259,
+"paragrafo": 20
+},
+{
+"palavra": "mistura.",
+"inicio": 120.259,
+"fim": 120.748,
+"paragrafo": 20
+},
+{
+"palavra": "Assim,",
+"inicio": 121.259,
+"fim": 121.643,
+"paragrafo": 21
+},
+{
+"palavra": "ela",
+"inicio": 121.977,
+"fim": 122.256,
+"paragrafo": 21
+},
+{
+"palavra": "volta",
+"inicio": 122.256,
+"fim": 122.64,
+"paragrafo": 21
+},
+{
+"palavra": "ao",
+"inicio": 122.64,
+"fim": 122.867,
+"paragrafo": 21
+},
+{
+"palavra": "evaporador,",
+"inicio": 122.867,
+"fim": 123.514,
+"paragrafo": 21
+},
+{
+"palavra": "pronta",
+"inicio": 123.848,
+"fim": 124.284,
+"paragrafo": 21
+},
+{
+"palavra": "para",
+"inicio": 124.284,
+"fim": 124.616,
+"paragrafo": 21
+},
+{
+"palavra": "absorver",
+"inicio": 124.616,
+"fim": 125.158,
+"paragrafo": 21
+},
+{
+"palavra": "mais",
+"inicio": 125.158,
+"fim": 125.49,
+"paragrafo": 21
+},
+{
+"palavra": "calor.",
+"inicio": 125.49,
+"fim": 125.874,
+"paragrafo": 21
+},
+{
+"palavra": "E",
+"inicio": 126.385,
+"fim": 126.558,
+"paragrafo": 22
+},
+{
+"palavra": "tudo",
+"inicio": 126.558,
+"fim": 126.89,
+"paragrafo": 22
+},
+{
+"palavra": "recomeça,",
+"inicio": 126.89,
+"fim": 127.432,
+"paragrafo": 22
+},
+{
+"palavra": "sempre",
+"inicio": 127.766,
+"fim": 128.203,
+"paragrafo": 22
+},
+{
+"palavra": "que",
+"inicio": 128.203,
+"fim": 128.482,
+"paragrafo": 22
+},
+{
+"palavra": "o",
+"inicio": 128.482,
+"fim": 128.656,
+"paragrafo": 22
+},
+{
+"palavra": "sistema",
+"inicio": 128.656,
+"fim": 129.145,
+"paragrafo": 22
+},
+{
+"palavra": "precisa",
+"inicio": 129.145,
+"fim": 129.635,
+"paragrafo": 22
+},
+{
+"palavra": "resfriar.",
+"inicio": 129.635,
+"fim": 130.177,
+"paragrafo": 22
+},
+{
+"palavra": "Agora",
+"inicio": 130.687,
+"fim": 131.072,
+"paragrafo": 23
+},
+{
+"palavra": "pense",
+"inicio": 131.072,
+"fim": 131.456,
+"paragrafo": 23
+},
+{
+"palavra": "no",
+"inicio": 131.456,
+"fim": 131.682,
+"paragrafo": 23
+},
+{
+"palavra": "que",
+"inicio": 131.682,
+"fim": 131.961,
+"paragrafo": 23
+},
+{
+"palavra": "acontece",
+"inicio": 131.961,
+"fim": 132.504,
+"paragrafo": 23
+},
+{
+"palavra": "quando",
+"inicio": 132.504,
+"fim": 132.94,
+"paragrafo": 23
+},
+{
+"palavra": "você",
+"inicio": 132.94,
+"fim": 133.272,
+"paragrafo": 23
+},
+{
+"palavra": "deixa",
+"inicio": 133.272,
+"fim": 133.656,
+"paragrafo": 23
+},
+{
+"palavra": "a",
+"inicio": 133.656,
+"fim": 133.83,
+"paragrafo": 23
+},
+{
+"palavra": "porta",
+"inicio": 133.83,
+"fim": 134.214,
+"paragrafo": 23
+},
+{
+"palavra": "aberta.",
+"inicio": 134.214,
+"fim": 134.651,
+"paragrafo": 23
+},
+{
+"palavra": "O",
+"inicio": 135.162,
+"fim": 135.336,
+"paragrafo": 24
+},
+{
+"palavra": "calor",
+"inicio": 135.336,
+"fim": 135.72,
+"paragrafo": 24
+},
+{
+"palavra": "do",
+"inicio": 135.72,
+"fim": 135.946,
+"paragrafo": 24
+},
+{
+"palavra": "ambiente",
+"inicio": 135.946,
+"fim": 136.488,
+"paragrafo": 24
+},
+{
+"palavra": "entra",
+"inicio": 136.488,
+"fim": 136.873,
+"paragrafo": 24
+},
+{
+"palavra": "continuamente,",
+"inicio": 136.873,
+"fim": 137.678,
+"paragrafo": 24
+},
+{
+"palavra": "e",
+"inicio": 138.012,
+"fim": 138.185,
+"paragrafo": 24
+},
+{
+"palavra": "o",
+"inicio": 138.185,
+"fim": 138.359,
+"paragrafo": 24
+},
+{
+"palavra": "compressor",
+"inicio": 138.359,
+"fim": 139.007,
+"paragrafo": 24
+},
+{
+"palavra": "precisa",
+"inicio": 139.007,
+"fim": 139.496,
+"paragrafo": 24
+},
+{
+"palavra": "trabalhar",
+"inicio": 139.496,
+"fim": 140.091,
+"paragrafo": 24
+},
+{
+"palavra": "mais.",
+"inicio": 140.091,
+"fim": 140.423,
+"paragrafo": 24
+},
+{
+"palavra": "Se",
+"inicio": 140.933,
+"fim": 141.159,
+"paragrafo": 25
+},
+{
+"palavra": "a",
+"inicio": 141.159,
+"fim": 141.333,
+"paragrafo": 25
+},
+{
+"palavra": "porta",
+"inicio": 141.333,
+"fim": 141.718,
+"paragrafo": 25
+},
+{
+"palavra": "ficar",
+"inicio": 141.718,
+"fim": 142.102,
+"paragrafo": 25
+},
+{
+"palavra": "aberta",
+"inicio": 142.102,
+"fim": 142.539,
+"paragrafo": 25
+},
+{
+"palavra": "na",
+"inicio": 142.539,
+"fim": 142.765,
+"paragrafo": 25
+},
+{
+"palavra": "mesma",
+"inicio": 142.765,
+"fim": 143.149,
+"paragrafo": 25
+},
+{
+"palavra": "cozinha,",
+"inicio": 143.149,
+"fim": 143.639,
+"paragrafo": 25
+},
+{
+"palavra": "a",
+"inicio": 143.973,
+"fim": 144.147,
+"paragrafo": 25
+},
+{
+"palavra": "geladeira",
+"inicio": 144.147,
+"fim": 144.741,
+"paragrafo": 25
+},
+{
+"palavra": "não",
+"inicio": 144.741,
+"fim": 145.02,
+"paragrafo": 25
+},
+{
+"palavra": "consegue",
+"inicio": 145.02,
+"fim": 145.562,
+"paragrafo": 25
+},
+{
+"palavra": "resfriar",
+"inicio": 145.562,
+"fim": 146.105,
+"paragrafo": 25
+},
+{
+"palavra": "o",
+"inicio": 146.105,
+"fim": 146.278,
+"paragrafo": 25
+},
+{
+"palavra": "cômodo.",
+"inicio": 146.278,
+"fim": 146.715,
+"paragrafo": 25
+},
+{
+"palavra": "No",
+"inicio": 147.226,
+"fim": 147.452,
+"paragrafo": 26
+},
+{
+"palavra": "balanço",
+"inicio": 147.452,
+"fim": 147.942,
+"paragrafo": 26
+},
+{
+"palavra": "total,",
+"inicio": 147.942,
+"fim": 148.326,
+"paragrafo": 26
+},
+{
+"palavra": "ela",
+"inicio": 148.66,
+"fim": 148.939,
+"paragrafo": 26
+},
+{
+"palavra": "libera",
+"inicio": 148.939,
+"fim": 149.376,
+"paragrafo": 26
+},
+{
+"palavra": "o",
+"inicio": 149.376,
+"fim": 149.549,
+"paragrafo": 26
+},
+{
+"palavra": "calor",
+"inicio": 149.549,
+"fim": 149.934,
+"paragrafo": 26
+},
+{
+"palavra": "que",
+"inicio": 149.934,
+"fim": 150.213,
+"paragrafo": 26
+},
+{
+"palavra": "retirou,",
+"inicio": 150.213,
+"fim": 150.702,
+"paragrafo": 26
+},
+{
+"palavra": "mais",
+"inicio": 151.036,
+"fim": 151.368,
+"paragrafo": 26
+},
+{
+"palavra": "a",
+"inicio": 151.368,
+"fim": 151.542,
+"paragrafo": 26
+},
+{
+"palavra": "energia",
+"inicio": 151.542,
+"fim": 152.031,
+"paragrafo": 26
+},
+{
+"palavra": "usada",
+"inicio": 152.031,
+"fim": 152.415,
+"paragrafo": 26
+},
+{
+"palavra": "para",
+"inicio": 152.415,
+"fim": 152.747,
+"paragrafo": 26
+},
+{
+"palavra": "funcionar.",
+"inicio": 152.747,
+"fim": 153.342,
+"paragrafo": 26
+},
+{
+"palavra": "Então,",
+"inicio": 153.852,
+"fim": 154.236,
+"paragrafo": 27
+},
+{
+"palavra": "por",
+"inicio": 154.57,
+"fim": 154.849,
+"paragrafo": 27
+},
+{
+"palavra": "que",
+"inicio": 154.849,
+"fim": 155.128,
+"paragrafo": 27
+},
+{
+"palavra": "ela",
+"inicio": 155.128,
+"fim": 155.407,
+"paragrafo": 27
+},
+{
+"palavra": "é",
+"inicio": 155.407,
+"fim": 155.581,
+"paragrafo": 27
+},
+{
+"palavra": "fria",
+"inicio": 155.581,
+"fim": 155.913,
+"paragrafo": 27
+},
+{
+"palavra": "por",
+"inicio": 155.913,
+"fim": 156.192,
+"paragrafo": 27
+},
+{
+"palavra": "dentro",
+"inicio": 156.192,
+"fim": 156.629,
+"paragrafo": 27
+},
+{
+"palavra": "e",
+"inicio": 156.629,
+"fim": 156.803,
+"paragrafo": 27
+},
+{
+"palavra": "quente",
+"inicio": 156.803,
+"fim": 157.24,
+"paragrafo": 27
+},
+{
+"palavra": "por",
+"inicio": 157.24,
+"fim": 157.519,
+"paragrafo": 27
+},
+{
+"palavra": "fora?",
+"inicio": 157.519,
+"fim": 157.85,
+"paragrafo": 27
+},
+{
+"palavra": "Porque",
+"inicio": 158.42,
+"fim": 158.856,
+"paragrafo": 28
+},
+{
+"palavra": "o",
+"inicio": 158.856,
+"fim": 159.03,
+"paragrafo": 28
+},
+{
+"palavra": "frio",
+"inicio": 159.03,
+"fim": 159.362,
+"paragrafo": 28
+},
+{
+"palavra": "não",
+"inicio": 159.362,
+"fim": 159.641,
+"paragrafo": 28
+},
+{
+"palavra": "está",
+"inicio": 159.641,
+"fim": 159.973,
+"paragrafo": 28
+},
+{
+"palavra": "sendo",
+"inicio": 159.973,
+"fim": 160.357,
+"paragrafo": 28
+},
+{
+"palavra": "produzido.",
+"inicio": 160.357,
+"fim": 160.952,
+"paragrafo": 28
+},
+{
+"palavra": "O",
+"inicio": 161.462,
+"fim": 161.636,
+"paragrafo": 29
+},
+{
+"palavra": "calor",
+"inicio": 161.636,
+"fim": 162.02,
+"paragrafo": 29
+},
+{
+"palavra": "está",
+"inicio": 162.02,
+"fim": 162.352,
+"paragrafo": 29
+},
+{
+"palavra": "sendo",
+"inicio": 162.352,
+"fim": 162.736,
+"paragrafo": 29
+},
+{
+"palavra": "retirado",
+"inicio": 162.736,
+"fim": 163.278,
+"paragrafo": 29
+},
+{
+"palavra": "de",
+"inicio": 163.278,
+"fim": 163.505,
+"paragrafo": 29
+},
+{
+"palavra": "um",
+"inicio": 163.505,
+"fim": 163.731,
+"paragrafo": 29
+},
+{
+"palavra": "lugar",
+"inicio": 163.731,
+"fim": 164.115,
+"paragrafo": 29
+},
+{
+"palavra": "e",
+"inicio": 164.115,
+"fim": 164.289,
+"paragrafo": 29
+},
+{
+"palavra": "levado",
+"inicio": 164.289,
+"fim": 164.726,
+"paragrafo": 29
+},
+{
+"palavra": "para",
+"inicio": 164.726,
+"fim": 165.058,
+"paragrafo": 29
+},
+{
+"palavra": "outro.",
+"inicio": 165.058,
+"fim": 165.442,
+"paragrafo": 29
+},
+{
+"palavra": "A",
+"inicio": 165.953,
+"fim": 166.126,
+"paragrafo": 30
+},
+{
+"palavra": "geladeira",
+"inicio": 166.126,
+"fim": 166.721,
+"paragrafo": 30
+},
+{
+"palavra": "não",
+"inicio": 166.721,
+"fim": 167.0,
+"paragrafo": 30
+},
+{
+"palavra": "cria",
+"inicio": 167.0,
+"fim": 167.332,
+"paragrafo": 30
+},
+{
+"palavra": "frio.",
+"inicio": 167.332,
+"fim": 167.664,
+"paragrafo": 30
+},
+{
+"palavra": "Ela",
+"inicio": 168.027,
+"fim": 168.306,
+"paragrafo": 30
+},
+{
+"palavra": "dá",
+"inicio": 168.306,
+"fim": 168.532,
+"paragrafo": 30
+},
+{
+"palavra": "um",
+"inicio": 168.532,
+"fim": 168.759,
+"paragrafo": 30
+},
+{
+"palavra": "destino",
+"inicio": 168.759,
+"fim": 169.248,
+"paragrafo": 30
+},
+{
+"palavra": "ao",
+"inicio": 169.248,
+"fim": 169.475,
+"paragrafo": 30
+},
+{
+"palavra": "calor.",
+"inicio": 169.475,
+"fim": 169.859,
+"paragrafo": 30
+}
+]
+}

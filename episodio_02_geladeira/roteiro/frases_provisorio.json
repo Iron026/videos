@@ -1,0 +1,192 @@
+[
+ {
+  "inicio": 0.0,
+  "fim": 5.693,
+  "texto": "Você já reparou que a geladeira é fria por dentro, mas pode ficar quente por fora?"
+ },
+ {
+  "inicio": 6.262,
+  "fim": 11.94,
+  "texto": "Parece estranho: como a mesma máquina consegue fazer as duas coisas ao mesmo tempo?"
+ },
+ {
+  "inicio": 12.509,
+  "fim": 14.204,
+  "texto": "A resposta é surpreendente."
+ },
+ {
+  "inicio": 14.567,
+  "fim": 16.436,
+  "texto": "A geladeira não fabrica frio."
+ },
+ {
+  "inicio": 16.799,
+  "fim": 18.11,
+  "texto": "Ela transporta calor."
+ },
+ {
+  "inicio": 18.62,
+  "fim": 21.905,
+  "texto": "Imagine uma garrafa de água em temperatura ambiente."
+ },
+ {
+  "inicio": 22.268,
+  "fim": 27.108,
+  "texto": "Quando você a coloca na geladeira, ela começa a perder energia térmica."
+ },
+ {
+  "inicio": 27.618,
+  "fim": 29.54,
+  "texto": "Mas esse calor não desaparece."
+ },
+ {
+  "inicio": 29.903,
+  "fim": 31.998,
+  "texto": "Ele precisa ir para algum lugar."
+ },
+ {
+  "inicio": 32.509,
+  "fim": 38.08,
+  "texto": "Para descobrir para onde, vamos abrir a geladeira de um jeito que você nunca viu."
+ },
+ {
+  "inicio": 38.591,
+  "fim": 42.978,
+  "texto": "Escondido atrás das paredes, existe um circuito fechado de tubos."
+ },
+ {
+  "inicio": 43.341,
+  "fim": 47.833,
+  "texto": "Dentro dele circula uma substância especial: o fluido refrigerante."
+ },
+ {
+  "inicio": 48.344,
+  "fim": 54.023,
+  "texto": "Durante o percurso, ele muda de pressão, de temperatura e até de estado físico."
+ },
+ {
+  "inicio": 54.533,
+  "fim": 59.199,
+  "texto": "Vamos começar pelo evaporador, a parte que absorve calor do interior."
+ },
+ {
+  "inicio": 59.71,
+  "fim": 65.405,
+  "texto": "Ali, o fluido chega frio e sob baixa pressão, numa mistura de líquido e vapor."
+ },
+ {
+  "inicio": 65.915,
+  "fim": 71.993,
+  "texto": "Como está mais frio que o ar e os alimentos, recebe calor através das paredes dos tubos."
+ },
+ {
+  "inicio": 72.356,
+  "fim": 75.816,
+  "texto": "Ao absorver essa energia, a parte líquida evapora."
+ },
+ {
+  "inicio": 76.327,
+  "fim": 79.68,
+  "texto": "O calor saiu dos alimentos e entrou no refrigerante."
+ },
+ {
+  "inicio": 80.191,
+  "fim": 82.617,
+  "texto": "Mas como mandar esse calor para fora?"
+ },
+ {
+  "inicio": 83.187,
+  "fim": 86.979,
+  "texto": "É aqui que entra o compressor, movido por eletricidade."
+ },
+ {
+  "inicio": 87.489,
+  "fim": 92.345,
+  "texto": "Ele suga o vapor e o comprime, elevando sua pressão e sua temperatura."
+ },
+ {
+  "inicio": 92.856,
+  "fim": 96.996,
+  "texto": "Agora, o refrigerante está mais quente que o ar da cozinha."
+ },
+ {
+  "inicio": 97.506,
+  "fim": 103.274,
+  "texto": "Por isso, ao atravessar o condensador, ele consegue liberar calor para o ambiente."
+ },
+ {
+  "inicio": 103.785,
+  "fim": 108.277,
+  "texto": "Enquanto perde energia, o vapor se transforma novamente em líquido."
+ },
+ {
+  "inicio": 108.788,
+  "fim": 110.062,
+  "texto": "Só falta uma etapa."
+ },
+ {
+  "inicio": 110.572,
+  "fim": 114.854,
+  "texto": "Esse líquido passa por um tubo muito estreito, chamado capilar."
+ },
+ {
+  "inicio": 115.364,
+  "fim": 120.748,
+  "texto": "A pressão cai bruscamente, e parte do líquido evapora, resfriando a mistura."
+ },
+ {
+  "inicio": 121.259,
+  "fim": 125.874,
+  "texto": "Assim, ela volta ao evaporador, pronta para absorver mais calor."
+ },
+ {
+  "inicio": 126.385,
+  "fim": 130.177,
+  "texto": "E tudo recomeça, sempre que o sistema precisa resfriar."
+ },
+ {
+  "inicio": 130.687,
+  "fim": 134.651,
+  "texto": "Agora pense no que acontece quando você deixa a porta aberta."
+ },
+ {
+  "inicio": 135.162,
+  "fim": 140.423,
+  "texto": "O calor do ambiente entra continuamente, e o compressor precisa trabalhar mais."
+ },
+ {
+  "inicio": 140.933,
+  "fim": 146.715,
+  "texto": "Se a porta ficar aberta na mesma cozinha, a geladeira não consegue resfriar o cômodo."
+ },
+ {
+  "inicio": 147.226,
+  "fim": 153.342,
+  "texto": "No balanço total, ela libera o calor que retirou, mais a energia usada para funcionar."
+ },
+ {
+  "inicio": 153.852,
+  "fim": 157.85,
+  "texto": "Então, por que ela é fria por dentro e quente por fora?"
+ },
+ {
+  "inicio": 158.42,
+  "fim": 160.952,
+  "texto": "Porque o frio não está sendo produzido."
+ },
+ {
+  "inicio": 161.462,
+  "fim": 165.442,
+  "texto": "O calor está sendo retirado de um lugar e levado para outro."
+ },
+ {
+  "inicio": 165.953,
+  "fim": 167.664,
+  "texto": "A geladeira não cria frio."
+ },
+ {
+  "inicio": 168.027,
+  "fim": 169.859,
+  "texto": "Ela dá um destino ao calor."
+ }
+]

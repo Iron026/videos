@@ -1,0 +1,15 @@
+{
+ "passaram": [
+  "1 sentido de circulação: evaporador → succao → compressor → descarga → condensador → linha_liquido → capilar → evaporador",
+  "6 continuidade do circuito: saltos: nenhum",
+  "3 sucção só com vapor: fase=vapor, T=-10.0 °C, Tsat=-20.0 °C, superaq.=10.0 K",
+  "2 mudanças de fase coerentes: evap 0.33→1.00; cond vapor→liquido; capilar x 0→0.33",
+  "4 condensação com rejeição de calor: h 666.6→288.7 kJ/kg; T mín. no condensador 37.0 °C > cozinha 25.0 °C",
+  "5 expansão sem ganho de energia: variação de h = 0.0e+00 kJ/kg; P 5.31→0.72 bar; líquido +16 mK (Joule–Thomson); vaporização começa em s=0.5319 do capilar; T 33.0→-20.0 °C",
+  "7 calor do quente para o frio: violações: nenhuma",
+  "balanço Q̇_rej = Q̇_abs + Ẇ: 132.67 W = 82.38 + 50.29 W (resíduo +0.000 W)",
+  "COP < Carnot: COP 1.988 < Carnot 4.22",
+  "lados de pressão: baixa 0.725 bar (abaixo da atmosférica) · alta 5.312 bar"
+ ],
+ "falharam": []
+}

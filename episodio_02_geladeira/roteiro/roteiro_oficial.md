@@ -1,0 +1,67 @@
+# Ep. 02 · Como a geladeira esfria sem produzir frio? — ROTEIRO OFICIAL (aprovado)
+
+> Texto aprovado pelo usuário em 21/11/2026. **Não alterar** palavras, ordem ou significado sem autorização.
+> As tags entre colchetes são instruções para a geração de voz: **não são narradas nem legendadas**.
+> Versão sem tags (para alinhamento e legendas): `roteiro_texto.txt`. SHA-256 dos dois arquivos: `roteiro.sha256`.
+
+[curiously] Você já reparou que a geladeira é fria por dentro, mas pode ficar quente por fora?
+
+Parece estranho: como a mesma máquina consegue fazer as duas coisas ao mesmo tempo?
+
+[confidently] A resposta é surpreendente. A geladeira não fabrica frio. Ela transporta calor.
+
+Imagine uma garrafa de água em temperatura ambiente. Quando você a coloca na geladeira, ela começa a perder energia térmica.
+
+[thoughtfully] Mas esse calor não desaparece. Ele precisa ir para algum lugar.
+
+Para descobrir para onde, vamos abrir a geladeira de um jeito que você nunca viu.
+
+Escondido atrás das paredes, existe um circuito fechado de tubos. Dentro dele circula uma substância especial: o fluido refrigerante.
+
+Durante o percurso, ele muda de pressão, de temperatura e até de estado físico.
+
+Vamos começar pelo evaporador, a parte que absorve calor do interior.
+
+Ali, o fluido chega frio e sob baixa pressão, numa mistura de líquido e vapor.
+
+Como está mais frio que o ar e os alimentos, recebe calor através das paredes dos tubos. Ao absorver essa energia, a parte líquida evapora.
+
+O calor saiu dos alimentos e entrou no refrigerante.
+
+Mas como mandar esse calor para fora?
+
+É aqui que entra o compressor, movido por eletricidade.
+
+Ele suga o vapor e o comprime, elevando sua pressão e sua temperatura.
+
+Agora, o refrigerante está mais quente que o ar da cozinha.
+
+Por isso, ao atravessar o condensador, ele consegue liberar calor para o ambiente.
+
+Enquanto perde energia, o vapor se transforma novamente em líquido.
+
+Só falta uma etapa.
+
+Esse líquido passa por um tubo muito estreito, chamado capilar.
+
+A pressão cai bruscamente, e parte do líquido evapora, resfriando a mistura.
+
+Assim, ela volta ao evaporador, pronta para absorver mais calor.
+
+E tudo recomeça, sempre que o sistema precisa resfriar.
+
+[curiously] Agora pense no que acontece quando você deixa a porta aberta.
+
+O calor do ambiente entra continuamente, e o compressor precisa trabalhar mais.
+
+Se a porta ficar aberta na mesma cozinha, a geladeira não consegue resfriar o cômodo.
+
+No balanço total, ela libera o calor que retirou, mais a energia usada para funcionar.
+
+Então, por que ela é fria por dentro e quente por fora?
+
+Porque o frio não está sendo produzido.
+
+O calor está sendo retirado de um lugar e levado para outro.
+
+[conclusively] A geladeira não cria frio. Ela dá um destino ao calor.
