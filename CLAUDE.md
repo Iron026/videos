@@ -181,3 +181,21 @@ Arquivos-chave (em `episodio_01_navio_v2/`): `episodio/decupagem_ep01_v3.md` (de
    absoluto no episódio todo.
 10. Render com checkpoints → montagem e validação → master sem legendas → preservar fontes,
     parâmetros, versões e licenças → preparar publicação (sem publicar sem pedido).
+
+## Lições novas do Ep. 02 (rodada 1)
+
+- **Decupagem como dados ancorados em palavras** (`decupagem/planos.py`): trocar a narração recalcula cortes, câmeras e
+  legendas. Prioridade dos tempos: narração aprovada > narração recebida (alinhada por pausas, não verificada) > estimativa.
+- **Testes de geometria antes do render** (continuidade, folgas, invasões) acham colisões que só apareceriam no fim.
+- Modelos científicos que se encontram (ciclo × cilindro do compressor) precisam **fechar entre si**; quando não fecham,
+  procurar a física que falta (aquecimento do vapor na carcaça), não ajustar números.
+- Teste que falha pode ser critério errado (Joule–Thomson de líquidos): investigar antes de mudar dados ou teste.
+- Motor: o GTAO inclui malhas transparentes (feixes) → halos; desenhar transparentes no passo próprio, com profundidade
+  que respeita os planos de corte e ignora vidro.
+- **Câmera dentro de geometria** com corte = quadro tomado pela tampa colorida. Conferir posições de câmera contra as
+  paredes (inclusive espuma e teto).
+- **Visão térmica** precisa ser reconhecível de imediato: ambiente em cinza-ardósia escuro, só frio e quente se destacam.
+- Folha de contato (3 quadros por plano, 270×480) antes do animatic: barata e pega a maioria dos erros de câmera.
+- Renderizador por software: ~10 s de inicialização por plano; agrupar renders e evitar reinicializações à toa.
+- Download de modelos (Hugging Face) depende de rede liberada **e** de permissão da sessão; sem isso, alinhar por pausas
+  e declarar que as palavras não foram verificadas.
