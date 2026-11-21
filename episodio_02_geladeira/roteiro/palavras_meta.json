@@ -1,0 +1,7 @@
+{
+ "narracao": "voz/ElevenLabs_2026-11-21T21_13_42_Will_-_Deep_pvc_s60_sim75_v4.mp3",
+ "sha256": "fdedd87772aee9d4dac5d0193db3b9e1ef97c4b699c8ce01b0c8de7ae05726ee",
+ "aprovada_pelo_usuario": "2026-11-21 (mensagem: \"essa é a narração aprovada\", com o texto idêntico ao roteiro oficial)",
+ "metodo_tempos": "alinhamento por pausas (voz/alinhar_por_pausas.py): fins de frase confiáveis (37/37 casados); palavras aproximadas dentro das frases",
+ "verificacao_palavra_a_palavra": "PENDENTE: modelo Whisper local não autorizado nesta sessão"
+}

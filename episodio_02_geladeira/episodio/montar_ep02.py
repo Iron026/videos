@@ -143,7 +143,7 @@ def compor(g):
             d.rounded_rectangle((x0, y, x1, y + 46 * ESC), radius=23 * ESC, fill=AMARELO); d.text((x0 + 18 * ESC, y + 23 * ESC), txt, font=F_TAG, fill=AZUL, anchor='lm')
             y += int(56 * ESC)
     if PERFIL != 'final':
-        tag = ('ANIMATIC · narração não verificada · não publicar' if 'RECEBIDA' in R['origem'] else 'ANIMATIC · tempos provisórios · não publicar' if PROVISORIO else 'VERSÃO DE REVISÃO · não publicar')
+        tag = ('ANIMATIC · tempos provisórios · não publicar' if PROVISORIO else 'ANIMATIC · não publicar' if PERFIL == 'animatic' else 'VERSÃO DE REVISÃO · não publicar')
         x0, y0 = int(30 * ESC), int(H - 80 * ESC); tw = d.textlength(tag, font=F_TAG)
         d.rounded_rectangle((x0, y0, x0 + tw + 36 * ESC, y0 + 46 * ESC), radius=23 * ESC, fill=AZUL); d.text((x0 + 18 * ESC, y0 + 23 * ESC), tag, font=F_TAG, fill=CREME, anchor='lm')
         pid = next((p['id'] for p in PLANOS if p['t0'] <= g < p['t1']), PLANOS[-1]['id'])
@@ -156,7 +156,7 @@ if __name__ == '__main__':
     n = int(round(DUR * FPS))
     entrada_audio = ['-i', au] if au else ['-f', 'lavfi', '-i', 'anullsrc=r=48000:cl=stereo']
     filtro_audio = ['-af', 'loudnorm=I=-16:TP=-1.5:LRA=11,aresample=48000'] if au else []   # animatic: só a voz, nivelada para escuta
-    titulo = 'De Olho no Invisível · Ep. 02 · ' + ('animatic (tempos provisórios, não publicar)' if PROVISORIO else 'versão de revisão (não publicar)')
+    titulo = 'De Olho no Invisível · Ep. 02 · ' + ('animatic (não publicar)' if PERFIL == 'animatic' else 'versão de revisão (não publicar)' if PERFIL != 'final' else 'Como a geladeira esfria sem produzir frio?')
     ff = subprocess.Popen(['ffmpeg', '-y', '-v', 'error', '-f', 'rawvideo', '-pix_fmt', 'rgb24', '-s', f'{W}x{H}', '-r', str(FPS), '-i', '-', *entrada_audio,
                            '-c:v', 'libx264', '-preset', 'medium', '-crf', '17' if PERFIL == 'final' else '21', '-pix_fmt', 'yuv420p',
                            *filtro_audio, '-c:a', 'aac', '-b:a', '192k', '-ar', '48000', '-t', f'{DUR:.3f}', '-movflags', '+faststart', '-metadata', f'title={titulo}', SAIDA], stdin=subprocess.PIPE)
