@@ -80,15 +80,42 @@ alterado. Render em 1080 × 1920 **não iniciado**.
 | D2 e início de H1 todos amarelos | Câmera dentro da espuma do teto | Câmeras reposicionadas |
 | C4, E4, F2 e G3 com a vista bloqueada ou o objeto perdido | — | Câmeras reposicionadas |
 
-## 4. Narração recebida
-Ver `voz/validacao_narracao.md`.
+## 4. Narração aprovada
+Ver `voz/validacao_narracao.md` e `roteiro/palavras_meta.json`.
 
-- Arquivo preservado com SHA-256. Duração de 149,9 s, com voz ~10 % mais rápida que no Ep. 01.
-- **Estrutura confere** com o roteiro: os 37 fins de frase caem em pausas, em ordem.
-- **Palavras não verificadas.** O animatic usa estes tempos com o selo "narração não verificada".
+- Aprovada pelo usuário; texto colado conferido **idêntico** ao roteiro oficial (389 palavras). MP3 original preservado
+  (somente leitura, SHA-256 registrado). Duração da fala 149,9 s; episódio **151,2 s** (fala + 1,6 s de respiro).
+- **Estrutura confere:** 37/37 fins de frase caem em pausas, em ordem (resíduo médio 0,43 s).
+- **Palavras ainda não verificadas** uma a uma (sem Whisper). Os cortes usam o início das frases, que é o dado confiável;
+  as legendas palavra a palavra podem estar algumas centenas de ms deslocadas dentro da frase.
+- Duração abaixo da meta de 2:40–2:55 do prompt: a meta dizia "respeitando a duração efetiva da narração aprovada";
+  não estiquei nada.
+
+## 4b. Animatic (Fase 4)
+- Arquivo: `episodio/ep02_animatic.mp4` · 540 × 960 (render 270 × 480 ampliado), 30 qps, 151,23 s, 24,7 MB,
+  SHA-256 `50a12881ae4593775a8bea7311c46d9d3eb52cbc2c8cc3aab3d45b116d911d4c`.
+- 41 planos renderizados (39 + metades das telas divididas A4b e J1b), um processo por vez, 22:10 → 23:21.
+  **Verificação de quadros: 0 ruins** (tamanho mínimo e não-preto). Montagem: 4.537 quadros, 5 min.
+- Áudio: só a narração aprovada (sem efeitos). −16,4 LUFS integrados (normalização de prévia; a meta −14 LUFS e o
+  pico verdadeiro ≤ −1,5 dBTP medidos no AAC ficam para a mixagem).
+- Selo "ANIMATIC · não publicar" em todos os quadros. Folha de contato do meio de cada plano:
+  `relatorios/contato_animatic_v1.jpg`.
+
+### Defeitos que eu mesmo encontrei no animatic (ainda NÃO corrigidos)
+| Plano | Instante | O que se vê | Causa provável | Correção proposta |
+|---|---|---|---|---|
+| A3 | 3,5–5,0 s | Quase o plano todo é uma parede cinza; a serpentina só aparece no fim | A órbita da câmera passa rente à lateral do gabinete | Órbita mais aberta, serpentina visível desde o início |
+| B2 e J2 | 12,5–14,5 s · 139–141,5 s | Planos brancos/cinza sem leitura: não dá para ver o congelador "sem névoa" | Câmera perto demais da caixa do congelador, olhando a face inferior | Plano médio com o congelador e a prateleira no quadro |
+| B7 | 26–28,5 s | Tudo azul; os feixes estão lá, mas o evaporador não é reconhecível | Enquadramento fechado demais na visão térmica | Abrir para mostrar a caixa do congelador recebendo os feixes |
+| D4 (e início de D5) | 64–69 s | Macro do canal ocupa pouco do quadro; a evaporação (bolhas → vapor) não se lê | Câmera longe para um "macro"; tubo fino | Aproximar e alinhar o canal na diagonal do quadro |
+| G3 | 102–106 s | Um pote vermelho da prateleira tapa metade do quadro no meio do plano | Objeto do interior entre a câmera e o capilar | Ocultar o objeto nesse plano ou mover a câmera |
+| H1 | 106–108 s | Início escuro e sem referência | Começo dentro do vão do congelador | Começar já fora, no evaporador |
+
+Planos revisados nesta rodada e que **resolveram** o problema anterior: A4/J1 (tela dividida), B3, C1, C3, C4, D2, E4, F2.
+(Medido pela folha de contato; a aprovação visual é sua.)
 
 ## 5. O que esta rodada NÃO tem (de propósito)
-- **Som:** entra depois da narração aprovada.
+- **Som:** só narração. Efeitos entram depois que você aprovar a estrutura (`som/plano_som.md`).
 - **Polimento de luz e material:** a imagem ainda é "limpa e diagramática". O polimento vem depois que estrutura e câmeras
   forem aprovadas, para não render duas vezes.
 - **Prévia em 540 e render final.**
