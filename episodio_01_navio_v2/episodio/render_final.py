@@ -10,7 +10,7 @@ Regras:
 • Um quadro só é reaproveitado se o manifesto o registrar com a MESMA configuração (consulta + hash do render2.js e do
   render_anim.mjs) e a MESMA cena (hash dos arquivos da cena), e o arquivo tiver o mesmo SHA-256 e decodificar inteiro.
 • Cada quadro novo é verificado: decodificação completa, 1080 × 1920, não preto, e semelhança com o quadro da revisão aprovada
-  no mesmo índice em ESCALA GROSSA (270 × 480; SSIM ≥ 0,95 e diferença média ≤ 6). O SSIM fino (540 × 960) fica só registrado. Falha → re-render isolado; persistindo → PARA (código 3) para investigação.
+  no mesmo índice em ESCALA GROSSA (270 × 480; SSIM ≥ 0,93 e diferença média ≤ 6). O SSIM fino (540 × 960) fica só registrado. Falha → re-render isolado; persistindo → PARA (código 3) para investigação.
 • Quadros que estavam em quadros_final/ sem registro compatível são movidos para quadros_final_descartados/ (nada é apagado).
 Uso: python3 episodio/render_final.py [segmentos...]      (log: quadros_final/_progresso.log)"""
 import os, sys, json, time, shutil, hashlib, subprocess
@@ -24,7 +24,7 @@ Q = 'escala=1&aoamostras=16&msaa=4&bloom=0.22&janoff=1'
 # correções locais por segmento (defeito concreto investigado): s08a = cubo ciano da água deslocada coincide com o bloco → z-fighting
 SEG_EXTRA = {'08a': '&fantoff=1'}
 BLOCO = 60
-SSIM_GROSSO_MIN, DIF_GROSSA_MAX = 0.95, 6.0   # calibrado: quadros corretos ≥ 0,968 / ≤ 4,1; quadro 10 posições fora 0,902 / 4,7
+SSIM_GROSSO_MIN, DIF_GROSSA_MAX = 0.93, 6.0   # calibrado: corretos ≥ 0,947 (moiré dos contêineres no 540) / ≤ 4,1; quadro 10 posições fora 0,902 / 4,7; plano errado 0,53
 sha = lambda p: hashlib.sha256(open(p, 'rb').read()).hexdigest()
 CONFIG = dict(consulta=Q, resolucao='1080x1920', fps=30, render2_js=sha(os.path.join(MOTOR, 'render2.js')), render_anim_mjs=sha(os.path.join(MOTOR, 'render_anim.mjs')), three='r170',
               oclusor_agua=0.994, nota='correção de cor, rótulos, avisos e legendas: na montagem (montar_ep01.py final)')
