@@ -10,6 +10,7 @@ import lib, exportar as exportar_rt2
 FPS = 30
 AQUI = os.path.dirname(os.path.abspath(__file__))
 PALAVRAS = os.path.join(AQUI, '..', 'roteiro', 'palavras.json')   # narração aprovada; sem ela, os tempos provisórios
+if not os.path.exists(PALAVRAS): PALAVRAS = os.path.join(AQUI, '..', 'roteiro', 'palavras_pausas.json')
 if not os.path.exists(PALAVRAS): PALAVRAS = os.path.join(AQUI, '..', 'roteiro', 'palavras_provisorio.json')
 
 

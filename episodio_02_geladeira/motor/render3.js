@@ -54,14 +54,17 @@ if (meta.fluido) { const n = meta.fluido.n, d = new Float32Array(n * 4);
   tLUT = new THREE.DataTexture(hf, n, 1, THREE.RGBAFormat, THREE.HalfFloatType); tLUT.minFilter = tLUT.magFilter = THREE.LinearFilter;
   tLUT.wrapS = THREE.RepeatWrapping; tLUT.needsUpdate = true; }
 const planoCorte = new THREE.Plane(new THREE.Vector3(...((meta.corte && meta.corte.n) || [1, 0, 0])), 99);
-// paleta de temperatura (sRGB → linear no shader): azul = mais frio que a cozinha, cinza-claro = igual, laranja/vermelho = mais quente
+const planoCorte2 = new THREE.Plane(new THREE.Vector3(...((meta.corte2 && meta.corte2.n) || [0, 1, 0])), 99);
+// paleta de temperatura (sRGB → linear no shader): azul = mais frio que a cozinha, CINZA-ARDÓSIA = igual (±4 K), laranja/vermelho = mais quente.
+// O ambiente escuro e neutro faz a visão térmica ser reconhecível à primeira vista: só o frio e o quente se destacam.
 const PALETA = /* glsl */`
 vec3 paletaT(float T, float amb){ float d=T-amb; vec3 c;
   if(d<=-45.0) c=vec3(0.106,0.212,0.682);
   else if(d<-30.0) c=mix(vec3(0.106,0.212,0.682),vec3(0.165,0.400,0.878),(d+45.0)/15.0);
   else if(d<-15.0) c=mix(vec3(0.165,0.400,0.878),vec3(0.420,0.660,0.950),(d+30.0)/15.0);
-  else if(d<0.0)  c=mix(vec3(0.420,0.660,0.950),vec3(0.880,0.880,0.865),(d+15.0)/15.0);
-  else if(d<12.0) c=mix(vec3(0.880,0.880,0.865),vec3(0.965,0.700,0.400),d/12.0);
+  else if(d<-4.0) c=mix(vec3(0.420,0.660,0.950),vec3(0.420,0.500,0.620),(d+15.0)/11.0);
+  else if(d<4.0)  c=mix(vec3(0.420,0.500,0.620),vec3(0.400,0.410,0.440),smoothstep(-4.0,0.0,d));
+  else if(d<12.0) c=mix(vec3(0.400,0.410,0.440),vec3(0.965,0.700,0.400),(d-4.0)/8.0);
   else if(d<28.0) c=mix(vec3(0.965,0.700,0.400),vec3(0.930,0.470,0.200),(d-12.0)/16.0);
   else if(d<50.0) c=mix(vec3(0.930,0.470,0.200),vec3(0.820,0.180,0.150),(d-28.0)/22.0);
   else c=vec3(0.820,0.180,0.150);
@@ -170,12 +173,12 @@ function criarMaterial(m) {
   if (t === 'emissivo') { mat.emissive = cor.clone(); mat.emissiveIntensity = m.forca ?? 6; }
   if (m.fade) mat.transparent = true;   // pode desbotar por opacidade ao surgir/sumir (setas, mapa de pressão)
   if ((m.alfa ?? 1) < 1) { mat.transparent = true; mat.opacity = m.alfa; mat.depthWrite = false; }
-  if (m.corte) mat.clippingPlanes = [planoCorte];
+  if (m.corte) mat.clippingPlanes = [m.corte === 2 ? planoCorte2 : planoCorte];
   const faixas = (m.faixas || []).slice(0, 6);
   const U = {
     uTipo: { value: ['pintura', 'aco', 'concreto', 'areia', 'conteiner', 'faixas_z', 'corte_ld', 'emissivo', 'vidro', 'generico', 'circuito', 'trabalho'].indexOf(t) },
     uTempMat: { value: m.temp ?? (meta.fluido ? meta.fluido.T_ambiente : 25) }, tLUT: { value: tLUT }, uCap: { value: new THREE.Vector3(...(m.cap || [0.91, 0.77, 0.42].map(v => Math.pow(v, 2.2)))) },
-    uOnda: { value: m.onda ?? 10 }, uVelT: { value: m.vel ?? 1.2 },
+    uOnda: { value: m.onda ?? 10 }, uVelT: { value: m.vel ?? 1.2 }, uGas: { value: m.gas ? 1 : 0 },
     uCorB: { value: cor }, uVar: { value: m.variacao ?? 0.06 }, uEsc: { value: m.escala_var ?? m.escala ?? 0.6 },
     uRugB: { value: m.rug ?? 0.5 }, uBump: { value: m.bump ?? 0 }, uEscov: { value: m.escovado ? 1 : 0 },
     uMacico: { value: m.macico ? 1 : 0 }, uManchas: { value: m.manchas ?? 0 },
@@ -201,7 +204,7 @@ function criarMaterial(m) {
     sh.fragmentShader = sh.fragmentShader.replace('#include <common>', `#include <common>
       varying vec3 vW; varying vec3 vL; varying vec3 vNw; varying vec3 vGn;
       uniform float uTermico, uVarre, uRevela, uPulso, uFluxo, uTrab, uTrabVel, uResY, uAmb, uTempMat, uTempo, uFase, uOnda, uVelT;
-      uniform sampler2D tLUT; uniform vec3 uCap;
+      uniform sampler2D tLUT; uniform vec3 uCap; uniform float uGas;
       ${PALETA}
       uniform int uTipo, uNF; uniform vec3 uCorB; uniform float uVar, uEsc, uRugB, uBump, uEscov, uCaus, uEscCaus, uMacico, uManchas;
       uniform float uFZ[6]; uniform vec3 uFC[6]; uniform vec3 uAcima, uAbaixoC, uLinha; uniform float uZ0, uEsp;
@@ -211,16 +214,23 @@ function criarMaterial(m) {
       // fluido no circuito: s = vGn.x (posição global), u = vGn.z (coordenada de fluxo), ângulo = vGn.y
       vec4 lut(float s){ return texture2D(tLUT, vec2(s,0.5)); }
       vec3 fluido(out float brilho){ vec4 L=lut(vGn.x); float T=L.r, x=L.g; vec3 col=paletaT(T,uAmb);
-        float ph=vGn.z-uTempo*uFluxo; float f=fract(ph); float aa=clamp(1.0-fwidth(ph)*1.6,0.0,1.0);   // sem detalhe abaixo do pixel
-        float liq = x<0.002 ? 1.0 : 0.0, vap = x>0.998 ? 1.0 : 0.0, mis = 1.0-liq-vap;
-        float pl = 0.82+0.18*smoothstep(0.35,0.5,f)*(1.0-smoothstep(0.85,1.0,f));                   // líquido: contínuo, ondulação leve
-        float pv = 0.16+0.84*smoothstep(0.70,0.78,f)*(1.0-smoothstep(0.90,0.97,f));                // vapor: traços curtos e ralos
-        float cel = fbm(vec3(ph*2.2, vGn.y*6.0, 1.3),2,0.5);                                       // bolhas na mistura (densidade ∝ título)
-        float bol = smoothstep(0.62-0.22*x, 0.70-0.22*x, cel);
-        float pm = mix(0.70, 0.30, x)+0.7*bol;
-        float p = liq*pl + vap*pv + mis*pm; float pmed = liq*0.88 + vap*0.30 + mis*(mix(0.70,0.30,x)+0.25*x);
-        p = mix(pmed, p, aa*uFase);
-        brilho = p; vec3 c = mix(col, mix(col, vec3(1.0), 0.55), mis*bol*aa*uFase);
+        float liq=1.0-smoothstep(0.0,0.004,x), vap=smoothstep(0.996,1.0,x), mis=clamp(1.0-liq-vap,0.0,1.0);
+        // escala GROSSA (planos gerais): traços que andam no sentido do fluxo; somem para a média abaixo do pixel
+        float ph=vGn.z-uTempo*uFluxo; float f=fract(ph); float aaG=clamp(1.0-fwidth(ph)*1.6,0.0,1.0);
+        float pl=0.82+0.18*smoothstep(0.35,0.5,f)*(1.0-smoothstep(0.85,1.0,f));
+        float pv=0.16+0.84*smoothstep(0.70,0.78,f)*(1.0-smoothstep(0.90,0.97,f));
+        float pm=mix(0.75,0.30,x)+0.35*smoothstep(0.60,0.70,f)*(1.0-smoothstep(0.80,0.90,f));
+        float med=liq*0.88+vap*0.30+mis*(mix(0.75,0.30,x)+0.09);
+        float pG=mix(med, liq*pl+vap*pv+mis*pm, aaG);
+        // escala FINA (planos macro, 24×): líquido embaixo do tubo (estratificado), bolhas na mistura, vapor ralo em estrias
+        float ph2=ph*24.0; float aaF=clamp(1.0-fwidth(ph2)*1.2,0.0,1.0);
+        float lf=liq+mis*0.75*pow(1.0-x,0.8);                       // fração líquida VISUAL (exagerada: em volume, o vapor domina)
+        float nz=normalize(vNw).z; float noLiq=1.0-smoothstep(1.0-2.0*lf-0.06,1.0-2.0*lf+0.06,nz);
+        float cel=fbm(vec3(ph2*0.9, vGn.y*12.0, 2.1),2,0.5); float bol=mis*noLiq*smoothstep(0.66-0.20*x,0.72-0.20*x,cel);
+        float est=fbm(vec3(ph2*0.35, vGn.y*9.0, uTempo*0.4),2,0.5);
+        float pF=noLiq*(0.80+0.14*sin(ph2*6.2832*0.5))*(1.0-0.75*bol) + (1.0-noLiq)*(0.10+0.40*smoothstep(0.52,0.80,est)*(vap+mis));
+        float p=mix(pG, pF, aaF*uFase);
+        brilho=p; vec3 c=mix(col, mix(col, vec3(1.0), 0.45), bol*aaF*uFase);
         if(uPulso>=0.0){ float d=abs(fract(vGn.x-uPulso+0.5)-0.5); brilho += 2.2*exp(-d*d/0.00018); c=mix(c, vec3(1.0,0.96,0.85), clamp(2.0*exp(-d*d/0.00018),0.0,1.0)); }
         return c; }
       float alturaRelevo(){
@@ -259,6 +269,7 @@ function criarMaterial(m) {
         normal=normalize(abs(det)*normal-g); } }`)
     .replace('#include <emissivemap_fragment>', `#include <emissivemap_fragment>
       if(uTipo==10 && uRevela>0.0){ float b; vec3 fc=fluido(b); totalEmissiveRadiance += fc*b*1.15*uRevela; }
+      if(uGas>0.5){ totalEmissiveRadiance += paletaT(uTempMat,uAmb)*0.85; }
       if(uTipo==11 && uTrab>0.0){ float ph=vGn.x*uOnda-uTempo*uVelT*uTrabVel; float aa=clamp(1.0-fwidth(ph)*1.6,0.0,1.0);
         float pu=mix(0.35, smoothstep(0.55,0.75,fract(ph))*(1.0-smoothstep(0.85,1.0,fract(ph))), aa);
         totalEmissiveRadiance += pow(vec3(0.604,0.420,1.0),vec3(2.2))*(0.25+1.8*pu)*uTrab; }
@@ -469,13 +480,18 @@ function materialJato(m) {
 // Visível só entre p0 e p1 (fração do percurso), animados por curvas; borda suave pela incidência (sem contorno duro).
 function materialCalor(m) {
   const U = { uCor: { value: new THREE.Vector3(...(m.cor || [1.0, 0.54, 0.07])) }, uOnda: { value: m.onda ?? 6 }, uVel: { value: m.vel ?? 0.6 },
-    uForca: { value: m.forca ?? 1 }, uP0: { value: 0 }, uP1: { value: 1 }, uT: uTempo, uOp: { value: 1 } };
+    uForca: { value: m.forca ?? 1 }, uP0: { value: 0 }, uP1: { value: 1 }, uT: uTempo, uOp: { value: 1 },
+    tProf: { value: null }, uRes: { value: new THREE.Vector2(W, H) }, uNear: { value: meta.perto ?? 0.5 }, uFar: { value: meta.longe ?? 8000 }, uSobre: { value: m.sobre ? 1 : 0 } };
   if (m.curvas) matsCurvas.push({ U, curvas: m.curvas });
-  return new THREE.ShaderMaterial({ transparent: true, depthWrite: false, side: THREE.DoubleSide, uniforms: U,
-    vertexShader: `attribute vec3 aGen; varying vec3 vG; varying vec3 vN; varying vec3 vV;
-      void main(){ vG=aGen; vec4 w=modelMatrix*vec4(position,1.0); vN=normalize(mat3(modelMatrix)*normal); vV=normalize(cameraPosition-w.xyz); gl_Position=projectionMatrix*viewMatrix*w; }`,
-    fragmentShader: `uniform vec3 uCor; uniform float uOnda,uVel,uForca,uP0,uP1,uT,uOp; varying vec3 vG; varying vec3 vN; varying vec3 vV;
+  return new THREE.ShaderMaterial({ transparent: true, depthWrite: false, depthTest: false, side: THREE.DoubleSide, uniforms: U,
+    vertexShader: `attribute vec3 aGen; varying vec3 vG; varying vec3 vN; varying vec3 vV; varying float vZv;
+      void main(){ vG=aGen; vec4 w=modelMatrix*vec4(position,1.0); vN=normalize(mat3(modelMatrix)*normal); vV=normalize(cameraPosition-w.xyz);
+        vec4 mv=viewMatrix*w; vZv=-mv.z; gl_Position=projectionMatrix*mv; }`,
+    fragmentShader: `uniform vec3 uCor; uniform float uOnda,uVel,uForca,uP0,uP1,uT,uOp,uNear,uFar,uSobre; uniform sampler2D tProf; uniform vec2 uRes;
+      varying vec3 vG; varying vec3 vN; varying vec3 vV; varying float vZv;
+      float linear(float d){ float z=d*2.0-1.0; return 2.0*uNear*uFar/(uFar+uNear-z*(uFar-uNear)); }
       void main(){ float s=vG.x; if(s<uP0 || s>uP1 || uForca<=0.001) discard;
+        if(uSobre<0.5 && linear(texture2D(tProf,gl_FragCoord.xy/uRes).x) < vZv-0.004) discard;   // atrás de um objeto opaco
         float bord=smoothstep(0.0,0.06,s-uP0)*smoothstep(0.0,0.04,uP1-s);
         float fac=abs(dot(normalize(vN),normalize(vV))); float trans=pow(fac,0.9);
         float ph=s*uOnda-uT*uVel-(1.0-fac)*0.45; float aa=clamp(1.0-fwidth(ph)*1.6,0.0,1.0);
@@ -528,7 +544,7 @@ await Promise.all(meta.materiais.map(async (m) => {
   if (OCULTAR.has(m.nome) || OCULTAR.has(m.tipo)) return;
   if (m.tipo === 'agua') { const mat = materialAgua(m); matsAgua.push(mat); const ma = new THREE.Mesh(g, mat); registrarAnim(ma, m); cenaTransp.add(ma); return; }
   if (m.tipo === 'espuma') { const mat = materialEspuma(m); matsRaio.push(mat); const e = new THREE.Mesh(g, mat); e.renderOrder = 4; registrarAnim(e, m); cenaTransp.add(e); return; }
-  if (m.tipo === 'calor') { const mc = new THREE.Mesh(g, materialCalor(m)); mc.renderOrder = 8; registrarAnim(mc, m); scene.add(mc); return; }
+  if (m.tipo === 'calor') { const mat = materialCalor(m); matsRaio.push(mat); const mc = new THREE.Mesh(g, mat); mc.renderOrder = 8; registrarAnim(mc, m); cenaTransp.add(mc); return; }
   if (m.tipo === 'raio_luz') { const mat = materialRaio(m); matsRaio.push(mat); const r = new THREE.Mesh(g, mat); r.renderOrder = 2; cenaTransp.add(r); return; }
   if (m.tipo === 'alagado') { const ma = new THREE.Mesh(g, materialAlagado(m)); ma.renderOrder = 6; registrarAnim(ma, m); scene.add(ma); return; }
   if (m.tipo === 'jato') { const mj = new THREE.Mesh(g, materialJato(m)); mj.renderOrder = 7; registrarAnim(mj, m); scene.add(mj); return; }
@@ -570,6 +586,7 @@ function posicionar(i) {   // animação: câmera e objetos do quadro i; benchma
     uTempo.value = q.t ?? i / ANIM.fps;   // tempo de cena exportado (câmera lenta) ou tempo do quadro
     for (const [k, arr] of Object.entries(CURVAS)) { if (UG[k]) UG[k].value = curva(arr, uTempo.value); }
     if (CURVAS.corte) planoCorte.constant = curva(CURVAS.corte, uTempo.value);
+    if (CURVAS.corte2) planoCorte2.constant = curva(CURVAS.corte2, uTempo.value);
     for (const mc of matsCurvas) for (const [k, arr] of Object.entries(mc.curvas)) {
       const nome = { temp: 'uTempMat', p0: 'uP0', p1: 'uP1', forca: 'uForca' }[k] || k; if (mc.U[nome]) mc.U[nome].value = curva(arr, uTempo.value); }
     const t = uTempo.value, ease = (x) => { x = Math.min(Math.max(x, 0), 1); return x * x * (3 - 2 * x); };
@@ -593,7 +610,10 @@ function posicionar(i) {   // animação: câmera e objetos do quadro i; benchma
 
 // ------------------------------------------------------------------ passes
 const rtProf = new THREE.WebGLRenderTarget(W, H, { depthTexture: new THREE.DepthTexture(W, H, THREE.UnsignedIntType) });
-const matProf = new THREE.MeshBasicMaterial({ colorWrite: false });
+const matProf = new THREE.MeshBasicMaterial({ colorWrite: false, side: THREE.DoubleSide });
+const matProfK = new THREE.MeshBasicMaterial({ colorWrite: false, side: THREE.DoubleSide, clippingPlanes: [planoCorte] });
+const matProfK2 = new THREE.MeshBasicMaterial({ colorWrite: false, side: THREE.DoubleSide, clippingPlanes: [planoCorte2] });
+const matNada = new THREE.MeshBasicMaterial({ colorWrite: false, depthWrite: false });   // vidro e garrafa não escondem feixes
 class PassoTransp extends Pass {
   constructor() { super(); this.copia = new FullScreenQuad(new THREE.ShaderMaterial(CopyShader)); this.needsSwap = true; }
   render(r, escrita, leitura) {
@@ -616,8 +636,12 @@ const gl = renderer.getContext(); const px = new Uint8Array(4);
 
 window.quadro = (i) => {
   posicionar(i); const t0 = performance.now();
-  if (cenaTransp.children.length) { scene.overrideMaterial = matProf; const vis = ceu.visible; ceu.visible = false;
-    renderer.setRenderTarget(rtProf); renderer.clear(); renderer.render(scene, camera); scene.overrideMaterial = null; ceu.visible = vis;
+  if (cenaTransp.children.length) { const vis = ceu.visible; ceu.visible = false;
+    // Ep. 02: profundidade com o MESMO corte de cada objeto (paredes cortadas não podem esconder os feixes)
+    const troca = []; scene.traverse(o => { if (o.isMesh && o !== ceu) { troca.push([o, o.material]);
+      const cp = o.material.clippingPlanes;
+      o.material = o.material.transparent ? matNada : (!cp || !cp.length ? matProf : (cp[0] === planoCorte ? matProfK : matProfK2)); } });
+    renderer.setRenderTarget(rtProf); renderer.clear(); renderer.render(scene, camera); for (const [o, m] of troca) o.material = m; ceu.visible = vis;
     if (cenaOclusor.children.length) { const ac = renderer.autoClear; renderer.autoClear = false; renderer.render(cenaOclusor, camera); renderer.autoClear = ac; } }
   composer.render(); gl.readPixels(0, 0, 1, 1, gl.RGBA, gl.UNSIGNED_BYTE, px); return performance.now() - t0;
 };

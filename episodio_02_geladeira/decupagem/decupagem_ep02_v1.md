@@ -1,4 +1,4 @@
-# Ep. 02 · Decupagem cinematográfica v1
+# Ep. 02 · Decupagem cinematográfica v1 (39 planos)
 
 > **Tempos PROVISÓRIOS.** Ainda não existe narração aprovada. Cada plano começa numa **palavra** do roteiro
 > (`planos.py`); os tempos vêm de `roteiro/palavras_provisorio.json`, calibrado na voz real do Ep. 01. Quando o áudio

@@ -1,0 +1,11 @@
+{
+  "_nota": "Configuração ÚNICA de render do Ep. 02 (lição do Ep. 01: scripts antigos guardavam parâmetros desatualizados). Todos os scripts leem daqui.",
+  "fps": 30,
+  "perfis": {
+    "animatic": {"escala": 0.25, "passo": 2, "consulta": "aoamostras=8&msaa=4"},
+    "revisao":  {"escala": 0.5,  "passo": 1, "consulta": "aoamostras=16&msaa=4&bloom=0.18"},
+    "final":    {"escala": 1.0,  "passo": 1, "consulta": "aoamostras=16&msaa=4&bloom=0.18"}
+  },
+  "por_plano": {},
+  "verificacao": {"bytes_min": 4000, "media_min": 3}
+}

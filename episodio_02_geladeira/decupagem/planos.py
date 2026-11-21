@@ -54,6 +54,8 @@ PLANOS = [
 def carregar_palavras():
     real = os.path.join(R, 'palavras.json')
     if os.path.exists(real): return json.load(open(real)), 'narração aprovada (palavras.json)'
+    pz = os.path.join(R, 'palavras_pausas.json')
+    if os.path.exists(pz): return json.load(open(pz))['palavras'], 'NARRAÇÃO RECEBIDA, alinhada por pausas (palavras não verificadas; não aprovada)'
     d = json.load(open(os.path.join(R, 'palavras_provisorio.json'))); return d['palavras'], 'PROVISÓRIO (palavras_provisorio.json)'
 
 
