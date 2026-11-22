@@ -232,9 +232,9 @@ function criarMaterial(m) {
         float sup=mis*exp(-pow((nz-thr)/0.06,2.0));                  // superfície livre (só na mistura)
         float cel=fbm(vec3(ph2*1.6, vGn.y*22.0, 2.1),2,0.5); float bol=mis*emLiq*smoothstep(0.64-0.10*x,0.70-0.10*x,cel);
         float est=fbm(vec3(ph2*0.35, vGn.y*9.0, uTempo*0.4),2,0.5);
-        float pF=emLiq*0.85*(1.0-0.45*bol) + (1.0-emLiq)*(0.07+0.28*smoothstep(0.55,0.80,est)*(vap+mis)) + 0.55*sup;
+        float pF=emLiq*0.85*(1.0-0.45*bol) + (1.0-emLiq)*(0.20+0.25*smoothstep(0.55,0.80,est)*(vap+mis)) + 0.55*sup;
         float p=mix(pG, pF, aaF*uFase);
-        vec3 cF=mix(col*0.16, col, emLiq); cF=mix(cF, vec3(1.0), clamp(0.75*bol+0.45*sup,0.0,1.0));   // vapor escuro e ralo; líquido cheio
+        vec3 cF=mix(col*0.55, col, emLiq); cF=mix(cF, vec3(1.0), clamp(0.75*bol+0.45*sup,0.0,1.0));   // vapor escuro e ralo; líquido cheio
         brilho=p; vec3 c=mix(col, cF, aaF*uFase);
         if(uPulso>=0.0){ float d=abs(fract(vGn.x-uPulso+0.5)-0.5); brilho += 2.2*exp(-d*d/0.00018); c=mix(c, vec3(1.0,0.96,0.85), clamp(2.0*exp(-d*d/0.00018),0.0,1.0)); }
         return c; }

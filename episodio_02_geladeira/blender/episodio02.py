@@ -171,6 +171,7 @@ def plano(pid):
         zp = 1.425 - 5 * 0.072   # 6º passe do condensador (escoa para −x): condensando, líquido embaixo e vapor em cima
         cam_k = K((0, (0.16, 0.44, zp + 0.035), (0.10, COND_Y, zp), 40), (1, (-0.06, 0.44, zp + 0.035), (-0.12, COND_Y, zp), 40))
         revela = 1.0; rot.add('fluido refrigerante', lambda g: Vector((0.0, COND_Y, zp)), F('C3', 0.25), T1('C3'))
+        bpy.data.objects['pote'].hide_render = True   # v2: defeito da v1 — o pote tapava metade do quadro no início do plano
     elif pid == 'C4':
         cam_k = K((0, (1.65, -1.05, 1.50), (0.0, 0.10, 0.76), 30), (0.75, (1.75, 0.10, 1.55), (0.0, 0.15, 0.76), 30), (1, (1.25, 0.30, 1.35), (0.0, 0.22, 0.70), 32))
         revela = 1.0
@@ -343,5 +344,5 @@ def plano(pid):
 
 
 if __name__ == '__main__':
-    ids = sys.argv[1:] or list(PL)
+    ids = sys.argv[1:] or [x for k in PL for x in ([k, k + 'b'] if k in ('A4', 'J1') else [k])]   # v2: inclui as metades da tela dividida
     for pid in ids: plano(pid)
