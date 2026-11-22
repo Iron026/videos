@@ -225,3 +225,23 @@ Arquivos-chave (em `episodio_01_navio_v2/`): `episodio/decupagem_ep01_v3.md` (de
 - **Pré-visualização também altera dados da montagem** (rótulos/manômetros 2D vêm da cena exportada): reexportar com o
   código final todo plano que foi pré-visualizado com câmera experimental, e provar com diff do vídeo montado.
 - Revelação ancorada no ataque da palavra: corte sem antecipação (`ANTECIPA`) e sem fusão (`FUSOES` = 0) só naquele plano.
+
+## Lições novas do Ep. 02 (rodadas 4–5)
+
+- **Avisos ("Visão térmica", "Corte ilustrativo") calculados das curvas gravadas na cena**, com a mesma interpolação do
+  motor — nunca por plano inteiro. Aviso só aparece com o modo ativo.
+- **Iluminação de cozinha** (ambiente capturado da própria cena por CubeCamera + sombras das luzes de área) dá realismo,
+  mas escurece metais e interiores em corte: dois modos de luz por plano (cozinha × técnico), escolhidos por diagnóstico
+  ligando/desligando cada recurso. Acne de sombra = bias/normalBias, não geometria.
+- Polimento global obriga a renderizar tudo de novo, mas a **estrutura** (planos_resolvidos: ids, t0, t1) precisa sair
+  idêntica — medir e mostrar.
+- **Verificar a didática pelo EXPORTADO** (manômetros2d, rótulos2d, câmera por quadro) contra o modelo e as palavras, não
+  pelo código (`ciencia/verificar_g3.py`). Achou: marcador fora do quadro, lupa adiantada em relação ao marcador, rótulos
+  presos à câmera em vez do fenômeno.
+- Rótulo de **estado físico** ("começa a evaporar", "mistura fria") fica preso ao PONTO do modelo onde aquilo acontece;
+  a lupa só mostra os rótulos que estão dentro do círculo.
+- O verificador também erra: projeção ortográfica numa câmera oblíqua deu falso positivo. Usar a perspectiva real e
+  conferir antes de "corrigir" a cena.
+- **Som:** Freesound CC0 (licença conferida na página de cada som, prévia HQ) quando Mixkit/Commons limitam (429).
+  A narração tem ~20 dB entre pico e loudness: compressão suave (2,5:1) só na CÓPIA de mixagem reduz o trabalho do
+  limitador; o MP3 não muda. A/B com a narração no mesmo nível = mixagem "só voz" com o MESMO master fixo.

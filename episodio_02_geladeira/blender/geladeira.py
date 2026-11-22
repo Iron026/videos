@@ -127,22 +127,27 @@ def tabela_fluido(n=512):
 # ------------------------------------------------------------------ materiais da cena
 def materiais():
     return dict(
-        branco=M.pintura('gab_branco', '#ecebe6', rug=0.30, coat=0.35, temp=26.0),
-        forro=M.pintura('forro', '#f4f4f1', rug=0.22, coat=0.2, temp=5.0),
+        branco=M.pintura('gab_branco', '#ecebe6', rug=0.22, coat=0.6, temp=26.0),          # polimento: esmalte
+        forro=M.pintura('forro', '#f4f4f1', rug=0.28, coat=0.12, temp=5.0),
         espuma=M.pintura('espuma', '#e8c46a', rug=0.85, variacao=0.10, escala_var=40.0, temp=15.0),
         vedacao=M.pintura('vedacao', '#3a3d42', rug=0.7, temp=18.0),
         porta_int=M.pintura('porta_int', '#f2f2ee', rug=0.25, coat=0.2, temp=6.0),
         vidro=M.pintura('prateleira_vidro', '#cfe3e6', rug=0.05, coat=0.8, alfa=0.35, temp=4.0),
         plastico_cinza=M.pintura('plast_cinza', '#c9cbcc', rug=0.4, temp=4.0),
         aluminio=M.pintura('evap_aluminio', '#c3c7cc', rug=0.35, metal=1.0, temp=-18.0),
-        compressor=M.pintura('compressor', '#151617', rug=0.45, coat=0.25, temp=55.0),
+        compressor=M.pintura('compressor', '#1c2023', rug=0.38, coat=0.5, temp=55.0),      # aço pintado
         arame=M.pintura('arame', '#18191b', rug=0.5, temp=38.0),
         latao=M.pintura('filtro', '#9a7a3e', rug=0.35, metal=1.0, temp=34.0),
         cabo=M.pintura('cabo', '#202124', rug=0.6, temp=25.0),
-        chao=M.pintura('piso', '#d9d2c6', rug=0.35, variacao=0.05, escala_var=1.2, temp=25.0),
+        chao=M.pintura('piso', '#c4bcb0', rug=0.6, variacao=0.03, escala_var=1.2, temp=25.0),             # rejunte (fica 5 mm abaixo das placas)
+        porcelanato=M.pintura('porcelanato', '#ddd6ca', rug=0.26, coat=0.25, variacao=0.04, escala_var=0.7, temp=25.0),
+        teto=M.pintura('teto', '#f2efe8', rug=0.95, variacao=0.02, temp=25.0),
+        mesa=M.pintura('mesa', '#a4774f', rug=0.45, coat=0.3, variacao=0.06, escala_var=2.5, temp=25.0),
+        quadro=M.pintura('quadro_tela', '#5d7f8f', rug=0.7, variacao=0.18, escala_var=1.0, temp=25.0),
+        luz_teto=lib.mat_emissivo('luminaria', (1.0, 0.95, 0.86), forca=4.0),
         parede=M.pintura('parede', '#e9e2d4', rug=0.9, variacao=0.03, escala_var=1.5, temp=25.0),
         bancada=M.pintura('bancada', '#4a4c50', rug=0.25, coat=0.4, variacao=0.06, escala_var=6.0, temp=25.0),
-        armario=M.pintura('armario', '#6f8a86', rug=0.45, variacao=0.03, temp=25.0),
+        armario=M.pintura('armario', '#6f8a86', rug=0.40, coat=0.15, variacao=0.03, temp=25.0),
         madeira=M.pintura('madeira', '#b98a5c', rug=0.55, variacao=0.08, escala_var=3.0, temp=25.0),
         rodape=M.pintura('rodape', '#cfc6b6', rug=0.6, temp=25.0),
         janela=M.pintura('caixilho', '#f3f1ea', rug=0.4, temp=25.0),
@@ -296,7 +301,28 @@ def cabo_forca(mt):
 # ------------------------------------------------------------------ cozinha
 def cozinha(mt, parede_traseira=True):
     W = lambda nome, x0, x1, y0, y1, z0, z1, m: lib.caixa(nome, (x1 - x0, y1 - y0, z1 - z0), ((x0 + x1) / 2, (y0 + y1) / 2, (z0 + z1) / 2), m)
-    W('piso', -2.6, 1.8, -4.0, PAREDE_Y + 0.1, -0.02, 0.0, mt['chao'])
+    W('piso', -2.6, 2.7, -4.0, PAREDE_Y + 0.1, -0.02, 0.0, mt['chao'])
+    # polimento: porcelanato 60 × 60 cm (rejunte 5 mm, baixo contraste: não cintila em baixa resolução)
+    xs = [-2.6 + 0.6 * i for i in range(10)]; ys = [-4.0 + 0.6 * j for j in range(8)]
+    for i, x in enumerate(xs):
+        for j, y in enumerate(ys):
+            x1, y1 = min(x + 0.6, 2.7), min(y + 0.6, PAREDE_Y + 0.1)
+            if x1 - x > 0.01 and y1 - y > 0.01: W(f'placa_{i}_{j}', x + 0.0025, x1 - 0.0025, y + 0.0025, y1 - 0.0025, 0.0, 0.005, mt['porcelanato'])
+    W('teto', -2.7, 2.8, -4.1, PAREDE_Y + 0.1, 2.70, 2.75, mt['teto'])
+    lib.cilindro('luminaria', 0.17, 0.02, (-0.4, -1.6, 2.69), mt['luz_teto'], lados=32)        # a luz principal passa a ter fonte visível
+    W('parede_frente_a', -2.7, -1.05, -4.1, -4.0, 0.0, 2.7, mt['parede'])                   # parede frontal com vão de porta
+    W('parede_frente_b', -0.15, 2.8, -4.1, -4.0, 0.0, 2.7, mt['parede'])
+    W('parede_frente_c', -1.05, -0.15, -4.1, -4.0, 2.10, 2.7, mt['parede'])
+    W('parede_dir', 2.7, 2.8, -4.1, PAREDE_Y + 0.1, 0.0, 2.7, mt['parede'])
+    # mesa com duas cadeiras junto à parede da janela (fundo do contraplano de A4; fora de quadro nos demais planos)
+    W('mesa_tampo', -2.45, -1.65, -2.75, -1.95, 0.72, 0.75, mt['mesa'])
+    for (x, y) in ((-2.40, -2.70), (-1.70, -2.70), (-2.40, -2.00), (-1.70, -2.00)): W(f'mesa_pe{x}{y}', x - 0.02, x + 0.02, y - 0.02, y + 0.02, 0.0, 0.72, mt['mesa'])
+    for k, y in enumerate((-2.92, -1.78)):
+        W(f'cadeira_ass{k}', -2.25, -1.85, y - 0.18, y + 0.18, 0.44, 0.47, mt['mesa'])
+        W(f'cadeira_enc{k}', -2.25, -1.85, (y - 0.18) if k == 0 else (y + 0.15), (y - 0.15) if k == 0 else (y + 0.18), 0.47, 0.90, mt['mesa'])
+        for (x, yy) in ((-2.22, y - 0.15), (-1.88, y - 0.15), (-2.22, y + 0.15), (-1.88, y + 0.15)): W(f'cadeira_pe{k}{x}{yy}', x - 0.015, x + 0.015, yy - 0.015, yy + 0.015, 0.0, 0.44, mt['mesa'])
+    W('quadro_moldura', -2.60, -2.585, -3.25, -2.45, 1.25, 1.85, mt['madeira'])
+    W('quadro_tela', -2.585, -2.578, -3.21, -2.49, 1.29, 1.81, mt['quadro'])
     if parede_traseira:
         W('parede_fundo', -2.6, 1.8, PAREDE_Y, PAREDE_Y + 0.1, 0.0, 2.7, mt['parede'])
     else:   # corte ilustrativo: falta só o trecho atrás da geladeira

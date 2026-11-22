@@ -17,10 +17,10 @@ import bpy
 from mathutils import Vector, Matrix
 import lib, mats02 as M
 
-ALT_TORNOZELO = 0.09
+ALT_TORNOZELO = 0.095                               # polimento: pés sobre o porcelanato (5 mm)
 COXA, CANELA = 0.385, 0.38
 BRACO, ANTEBRACO = 0.27, 0.25
-QUADRIL_Z = ALT_TORNOZELO + COXA + CANELA          # 0,855
+QUADRIL_Z = ALT_TORNOZELO + COXA + CANELA + 0.02   # polimento: o quadril real fica 3 cm abaixo do pivô — joelhos só levemente flexionados
 OMBRO_LOCAL = (0.168, 0.0, 0.455)                  # no espaço do tronco
 QUADRIL_LOCAL = (0.09, 0.0, -0.03)
 PESCOCO_LOCAL = (0.0, 0.0, 0.535)
@@ -67,6 +67,20 @@ def _girar_x(vf, graus, centro):
     return out, vf[1]
 
 
+def _mover(vf, d):
+    return [(x + d[0], y + d[1], z + d[2]) for (x, y, z) in vf[0]], vf[1]
+
+
+def _mao(sx):
+    """Mão (polimento): palma, quatro dedos levemente curvados para a frente e polegar — no lugar da luva única."""
+    partes = [_superelipsoide((0, 0.002, -0.036), (0.036, 0.019, 0.04), 2.3, 16, 10)]
+    for k, (dx, L) in enumerate(((-0.024, 0.040), (-0.008, 0.046), (0.008, 0.044), (0.024, 0.036))):
+        dedo = _girar_x(_capsula(L, 0.0088, 0.0078, 10, 4), 14, (0, 0, 0))
+        partes.append(_mover(dedo, (sx * dx, 0.004, -0.068)))
+    partes.append(_mover(_girar_x(_capsula(0.034, 0.0105, 0.009, 10, 4), 35, (0, 0, 0)), (sx * -0.034, 0.014, -0.022)))
+    return _juntar(*partes)
+
+
 def _capsula(L, r0, r1, n=18, anel=8):
     """Cápsula da origem (raio r0) até z = −L (raio r1), com calotas hemisféricas."""
     v, f = [], []
@@ -101,8 +115,9 @@ def materiais():
     return dict(
         pele=M.pintura('pers_pele', '#c58a66', rug=0.55, temp=33.0),
         cabelo=M.pintura('pers_cabelo', '#33261f', rug=0.7, temp=31.0),
-        sueter=M.pintura('pers_sueter', '#8c8781', rug=0.85, variacao=0.06, escala_var=9.0, temp=30.0),
-        calca=M.pintura('pers_calca', '#3a3e45', rug=0.75, temp=30.0),
+        sueter=M.pintura('pers_sueter', '#8c8781', rug=0.93, variacao=0.03, escala_var=14.0, temp=30.0),    # polimento: malha fosca
+        punho=M.pintura('pers_punho', '#7a756f', rug=0.95, variacao=0.05, escala_var=20.0, temp=30.0),      # punhos, barra e gola canelados
+        calca=M.pintura('pers_calca', '#3a3e45', rug=0.8, variacao=0.04, escala_var=8.0, temp=30.0),
         tenis=M.pintura('pers_tenis', '#e6e2da', rug=0.5, temp=27.0),
         sola=M.pintura('pers_sola', '#9a948c', rug=0.6, temp=27.0),
         olho=M.pintura('pers_olho', '#f4f1ea', rug=0.25, coat=0.6, temp=33.0),
@@ -113,8 +128,9 @@ def materiais():
 def montar():
     m = materiais(); P = {}
     P['pelve'] = _obj('pers_pelve', _superelipsoide((0, 0, -0.02), (0.165, 0.105, 0.095), 2.6), m['calca'])
-    P['tronco'] = _obj('pers_tronco', _juntar(_tronco_torneado(),
-                                              _superelipsoide((0, 0.0, 0.53), (0.066, 0.062, 0.028), 2.0)), m['sueter'])   # gola
+    P['tronco'] = _obj('pers_tronco', _tronco_torneado(), m['sueter'])
+    P['barra'] = _obj('pers_barra', _juntar(_superelipsoide((0, 0, 0.035), (0.157, 0.104, 0.04), 2.6, 28, 8),          # barra canelada
+                                            _superelipsoide((0, 0.0, 0.53), (0.068, 0.064, 0.03), 2.0)), m['punho'])   # gola
     P['cabeca'] = _obj('pers_cabeca', _juntar(_capsula(0.0, 0.045, 0.045),                                             # pescoço
                                               _superelipsoide((0, 0, 0.13), (0.112, 0.118, 0.128), 2.0, 32, 18),
                                               _superelipsoide((0.112, -0.005, 0.12), (0.016, 0.03, 0.036), 2.0, 12, 8),  # orelhas
@@ -130,10 +146,9 @@ def montar():
         P[f'palp_{lado}'] = _obj(f'pers_palp_{lado}', _superelipsoide((0, 0.001, 0), (0.0215, 0.0145, 0.0255), 2.0, 16, 8, th0=0.0), m['pele'])  # pálpebra
         P[f'sobr_{lado}'] = _obj(f'pers_sobr_{lado}', _superelipsoide((0, 0, 0), (0.024, 0.006, 0.0065), 2.0, 12, 6), m['cabelo'])
         P[f'braco_{lado}'] = _obj(f'pers_braco_{lado}', _capsula(BRACO, 0.05, 0.043), m['sueter'])
-        P[f'antebraco_{lado}'] = _obj(f'pers_antebraco_{lado}', _juntar(_capsula(ANTEBRACO - 0.03, 0.043, 0.036),
-                                                                      _superelipsoide((0, 0, -ANTEBRACO + 0.035), (0.04, 0.04, 0.02), 2.0, 14, 6)), m['sueter'])  # punho
-        P[f'mao_{lado}'] = _obj(f'pers_mao_{lado}', _juntar(_superelipsoide((0, 0, -0.05), (0.038, 0.022, 0.055), 2.2, 16, 10),
-                                                          _superelipsoide((sx * -0.03, 0.012, -0.035), (0.012, 0.012, 0.028), 2.0, 10, 6)), m['pele'])  # polegar
+        P[f'antebraco_{lado}'] = _obj(f'pers_antebraco_{lado}', _capsula(ANTEBRACO - 0.04, 0.043, 0.037), m['sueter'])
+        P[f'punho_{lado}'] = _obj(f'pers_punho_{lado}', _superelipsoide((0, 0, -ANTEBRACO + 0.03), (0.041, 0.041, 0.03), 2.4, 16, 8), m['punho'])
+        P[f'mao_{lado}'] = _obj(f'pers_mao_{lado}', _mao(sx), m['pele'])
         P[f'coxa_{lado}'] = _obj(f'pers_coxa_{lado}', _capsula(COXA, 0.082, 0.064), m['calca'])
         P[f'canela_{lado}'] = _obj(f'pers_canela_{lado}', _capsula(CANELA, 0.062, 0.05), m['calca'])
         P[f'pe_{lado}'] = _obj(f'pers_pe_{lado}', _juntar(_superelipsoide((0, 0.055, -0.04), (0.055, 0.125, 0.048), 2.6),
@@ -174,7 +189,9 @@ def posar(P, e):
     bob = e['bob'] + (0.012 * abs(math.sin(2 * math.pi * fase[0])) * fase[1] if fase else 0.0)
     pelve = W @ Matrix.Translation((0, 0, QUADRIL_Z + bob)) @ _rot('Z', e['giro'] * 0.3)
     tronco = W @ Matrix.Translation((0, 0, QUADRIL_Z + bob + 0.02)) @ _rot('Z', e['giro']) @ _rot('X', e['incl'])
-    P['pelve'].matrix_world = pelve; P['tronco'].matrix_world = tronco
+    if e.get('t') is not None and not fase:   # vida em repouso: respiração lenta e leve oscilação do tronco
+        tt = e['t']; tronco = tronco @ _rot('X', 0.5 * math.sin(2 * math.pi * 0.24 * tt + 1.0)) @ Matrix.Diagonal((1.0, 1.0 + 0.006 * math.sin(2 * math.pi * 0.24 * tt), 1.0, 1.0))
+    P['pelve'].matrix_world = pelve; P['tronco'].matrix_world = tronco; P['barra'].matrix_world = tronco
     cy, cp, cr = e['cab']
     cab = tronco @ Matrix.Translation(PESCOCO_LOCAL) @ _rot('Z', cy) @ _rot('X', cp) @ _rot('Y', cr)
     P['cabeca'].matrix_world = cab; P['cabelo'].matrix_world = cab; P['boca'].matrix_world = cab
@@ -209,6 +226,7 @@ def posar(P, e):
             R2 = R @ Matrix.Rotation(math.radians(-cot), 3, 'X'); T = E + R2 @ Vector((0, 0, -ANTEBRACO))
         P[f'braco_{lado}'].matrix_world = _segmento(S, (E - S).normalized(), frente_w)
         P[f'antebraco_{lado}'].matrix_world = _segmento(E, (T - E).normalized(), frente_w)
+        P[f'punho_{lado}'].matrix_world = P[f'antebraco_{lado}'].matrix_world
         mao_dir = (T - E).normalized() if b[0] == 'fk' else ((T - E).normalized() * 0.7 + Vector(b[3] if len(b) > 3 else (0, 0, -1)) * 0.3).normalized()
         P[f'mao_{lado}'].matrix_world = _segmento(T, mao_dir, frente_w)
     # pernas: parado (leve flexão) ou caminhada simples
@@ -219,11 +237,17 @@ def posar(P, e):
             quad = 22 * s * amp; joelho = (8 + 30 * max(0.0, math.sin(2 * math.pi * (fase[0] + ph) + 1.2))) * amp + 3
         else:
             quad, joelho = 2.0, 4.0
+        fr = (W.to_3x3() @ Vector((0, 1, 0)))
+        if e.get('pes'):   # polimento: pé PLANTADO no chão (alvo do tornozelo) e joelho por cinemática inversa
+            alvo, yaw_pe, incl_pe = e['pes'][lado]
+            K, A = _ik(H, Vector(alvo), COXA, CANELA, fr * 1.0 + Vector((0, 0, -0.2)))
+            P[f'coxa_{lado}'].matrix_world = _segmento(H, (K - H).normalized(), fr)
+            P[f'canela_{lado}'].matrix_world = _segmento(K, (A - K).normalized(), fr)
+            P[f'pe_{lado}'].matrix_world = Matrix.Translation(A) @ _rot('Z', yaw_pe) @ _rot('X', incl_pe)
+            continue
         R = W.to_3x3() @ Matrix.Rotation(math.radians(e['giro'] * 0.3), 3, 'Z') @ Matrix.Rotation(math.radians(quad), 3, 'X')
         K = H + R @ Vector((0, 0, -COXA))
         R2 = R @ Matrix.Rotation(math.radians(-joelho), 3, 'X'); A = K + R2 @ Vector((0, 0, -CANELA))
-        if not fase: A.z = ALT_TORNOZELO + bob * 0.0 + min(0.0, A.z - ALT_TORNOZELO) * 0
-        fr = (W.to_3x3() @ Vector((0, 1, 0)))
         P[f'coxa_{lado}'].matrix_world = _segmento(H, (K - H).normalized(), fr)
         P[f'canela_{lado}'].matrix_world = _segmento(K, (A - K).normalized(), fr)
         pe = W.copy(); pe.translation = A

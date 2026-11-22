@@ -37,3 +37,8 @@ episodio_02_geladeira/motor/node_modules/
 episodio_02_geladeira/episodio/ep02_animatic_v1.mp4
 episodio_02_geladeira/episodio/ep02_animatic_v2.mp4
 episodio_02_geladeira/episodio/ep02_animatic_v3.mp4
+episodio_02_geladeira/som/bib/
+episodio_02_geladeira/episodio/ep02_animatic_v4.mp4
+episodio_02_geladeira/som/*.wav
+episodio_02_geladeira/som/stems/*.wav
+episodio_02_geladeira/som/ab/_*

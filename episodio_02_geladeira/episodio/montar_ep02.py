@@ -28,7 +28,7 @@ def faixa(a, b, txt): return (PL_T[a][0], PL_T[b][1], txt)
 PL_T = {p['id']: (p['t0'], p['t1']) for p in PLANOS}
 CHIPS = [faixa('A3', 'A3', 'Corte ilustrativo'),
          faixa('B5', 'B7', 'Tempo acelerado'), faixa('C2', 'H2', 'Corte ilustrativo'), faixa('D4', 'D4', 'Fluxo desacelerado'),
-         faixa('F2', 'F2', 'Fluxo desacelerado'), faixa('D4', 'D4', 'Canal ampliado (esquema)'), faixa('F2', 'F2', 'Canal ampliado (esquema)'), faixa('G3', 'G3', 'Fluxo desacelerado'), faixa('E3', 'E3', 'Câmera lenta'),
+         faixa('F2', 'F2', 'Fluxo desacelerado'), faixa('D4', 'D4', 'Canal ampliado (esquema)'), faixa('F2', 'F2', 'Canal ampliado (esquema)'), faixa('G3', 'G3', 'Fluxo desacelerado'), faixa('G3', 'G3', 'Lupa: canal ampliado (esquema)'), faixa('E3', 'E3', 'Câmera lenta'),
          faixa('I3', 'I4', 'Corte ilustrativo'), faixa('J3', 'J3', 'Corte ilustrativo')]
 # v4: avisos que dependem do MODO ativo (visão térmica; parede em corte só na metade traseira da tela dividida) são
 # calculados das curvas gravadas em cada cena (mesma interpolação smoothstep do motor), não por plano inteiro
@@ -146,6 +146,33 @@ def legendas():
 LEG = legendas()
 
 
+# polimento: LUPA — ampliação didática localizada (plano renderizado à parte, composto num círculo) ligada por uma linha
+# ao marcador do plano principal (manômetro que percorre o capilar real no mesmo ponto)
+INSET = {'G3': dict(plano='G3z', cx=0.50, cy=0.255, r=0.31, ancora='capilar')}
+def lupa(img, pid, g, k):
+    c = INSET[pid]; z = c['plano']
+    if not os.path.isdir(pasta(z)): return
+    t0, t1 = PL_T[pid]; a = k * min(1.0, max(0.0, (g - t0) / 0.35), max(0.0, (t1 + 0.1 - g) / 0.3))
+    if a <= 0.01: return
+    sub = quadro_simples(z, g); top = (H - W) // 2; quad = sub.crop((0, top, W, top + W))
+    D = int(2 * c['r'] * W); cx, cy = int(c['cx'] * W), int(c['cy'] * H); quad = quad.resize((D, D), Image.LANCZOS)
+    m4 = Image.new('L', (4 * D, 4 * D), 0); ImageDraw.Draw(m4).ellipse((0, 0, 4 * D - 1, 4 * D - 1), fill=int(255 * a)); mask = m4.resize((D, D), Image.LANCZOS)
+    # linha de ligação: do marcador (manômetro no capilar real) até a borda do círculo
+    anc = next(((u, v) for (nome, u, v, aa, val) in dados(pid, 'manometros2d.json', g) if nome == c['ancora']), None)
+    cam = Image.new('RGBA', img.size, (0, 0, 0, 0)); d = ImageDraw.Draw(cam); al = int(230 * a)
+    if anc:
+        ax, ay = anc[0] * W, anc[1] * H; vx, vy = ax - cx, ay - cy; n = max(1e-6, (vx * vx + vy * vy) ** 0.5)
+        if n > D / 2 + 8: ex, ey = cx + vx / n * D / 2, cy + vy / n * D / 2; d.line((ex, ey, ax, ay), fill=(16, 22, 46, al), width=max(3, int(7 * ESC))); d.line((ex, ey, ax, ay), fill=(246, 244, 236, al), width=max(1, int(3 * ESC)))
+    img.paste(Image.alpha_composite(img.convert('RGBA'), cam).convert('RGB'))
+    img.paste(quad, (cx - D // 2, cy - D // 2), mask)
+    anel = Image.new('RGBA', img.size, (0, 0, 0, 0)); ImageDraw.Draw(anel).ellipse((cx - D // 2, cy - D // 2, cx + D // 2, cy + D // 2), outline=(246, 244, 236, int(255 * a)), width=max(2, int(6 * ESC)))
+    img.paste(Image.alpha_composite(img.convert('RGBA'), anel).convert('RGB'))
+    # rótulos do canal, levados para dentro do círculo
+    for (txt, u, v, aa, dx, dy) in dados(z, 'rotulos2d.json', g):
+        X = cx + (u * W - W / 2) / W * D; Y = cy + (v * H - (top + W / 2)) / W * D
+        if (X - cx) ** 2 + (Y - cy) ** 2 < (D / 2) ** 2: rotulo(img, txt, X / W, Y / H, aa * a, 0.03, -0.035)
+
+
 def compor(g):
     fz = lambda i: FUSOES.get(PLANOS[i]['id'], FUSAO); fs = lambda i: fz(i + 1) if i + 1 < len(PLANOS) else FUSAO
     ativos = [(p['id'], fz(i)) for i, p in enumerate(PLANOS) if p['t0'] - fz(i) / 2 <= g < p['t1'] + fs(i) / 2]
@@ -158,6 +185,7 @@ def compor(g):
         for (txt, u, v, a, dx, dy) in dados(pid, 'rotulos2d.json', g): rotulo(img, txt, u, v, a * k, dx, dy)
         ms = dados(pid, 'manometros2d.json', g)
         for j, (nome, u, v, a, val) in enumerate(ms): manometro(img, nome, u, v, a * k, val, (-1 if j % 2 == 0 else 1) if len(ms) > 1 else 0)
+        if pid in INSET: lupa(img, pid, g, k)
     d = ImageDraw.Draw(img)
     for (a, b, txt) in LEG:
         if a <= g < b: d.text((W // 2, int(0.74 * H)), txt, font=F_LEG, fill=(255, 255, 255), stroke_width=max(2, int(7 * ESC)), stroke_fill=ESCURO, anchor='mm')
@@ -180,7 +208,8 @@ if __name__ == '__main__':
     au = os.environ.get('AUDIO_EP02')
     n = int(round(DUR * FPS))
     entrada_audio = ['-i', au] if au else ['-f', 'lavfi', '-i', 'anullsrc=r=48000:cl=stereo']
-    filtro_audio = ['-af', 'loudnorm=I=-16:TP=-1.5:LRA=11,aresample=48000'] if au else []   # animatic: só a voz, nivelada para escuta
+    # MIXAGEM_EP02=1: o áudio já é a mixagem masterizada (−14 LUFS, pico verdadeiro medido) — entra SEM renormalizar
+    filtro_audio = [] if os.environ.get('MIXAGEM_EP02') else (['-af', 'loudnorm=I=-16:TP=-1.5:LRA=11,aresample=48000'] if au else [])   # animatic: só a voz, nivelada
     titulo = 'De Olho no Invisível · Ep. 02 · ' + ('animatic (não publicar)' if PERFIL == 'animatic' else 'versão de revisão (não publicar)' if PERFIL != 'final' else 'Como a geladeira esfria sem produzir frio?')
     ff = subprocess.Popen(['ffmpeg', '-y', '-v', 'error', '-f', 'rawvideo', '-pix_fmt', 'rgb24', '-s', f'{W}x{H}', '-r', str(FPS), '-i', '-', *entrada_audio,
                            '-c:v', 'libx264', '-preset', 'medium', '-crf', '17' if PERFIL == 'final' else '21', '-pix_fmt', 'yuv420p',

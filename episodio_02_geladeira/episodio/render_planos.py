@@ -7,7 +7,7 @@ from PIL import Image
 A = os.path.dirname(os.path.abspath(__file__)); RAIZ = os.path.join(A, '..'); MOTOR = os.path.join(RAIZ, 'motor')
 CFG = json.load(open(os.path.join(RAIZ, 'config', 'producao.json'))); PERFIL = sys.argv[1]; P = CFG['perfis'][PERFIL]
 sys.path.insert(0, os.path.join(RAIZ, 'decupagem')); import planos as PL
-IDS = sys.argv[2:] or [x for p in PL.resolvidos()['planos'] for x in ([p['id']] + ([p['id'] + 'b'] if p['id'] in ('A4', 'J1') else []))]
+IDS = sys.argv[2:] or [x for p in PL.resolvidos()['planos'] for x in ([p['id']] + ([p['id'] + 'b'] if p['id'] in ('A4', 'J1') else ['G3z'] if p['id'] == 'G3' else []))]
 OUT = os.path.join(A, f'quadros_{PERFIL}'); os.makedirs(OUT, exist_ok=True); LOG = os.path.join(OUT, '_progresso.log')
 sha = lambda p: hashlib.sha256(open(p, 'rb').read()).hexdigest()
 MOT = sha(os.path.join(MOTOR, 'render3.js'))[:16] + sha(os.path.join(MOTOR, 'render_anim.mjs'))[:8]

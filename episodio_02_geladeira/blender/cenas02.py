@@ -36,7 +36,9 @@ def nova(lente=30):
 
 
 def meta_comum(curvas, extra=None):
-    m = dict(fluido=G.tabela_fluido(), curvas=curvas, env=0.35, perto=0.01, longe=60)
+    m = dict(fluido=G.tabela_fluido(), curvas=curvas, env=0.35, perto=0.01, longe=60,
+             # polimento: reflexos da própria cozinha, sombras das luzes internas, oclusão na escala da cozinha
+             env_pos=[-0.35, -1.55, 1.35], env_cena=1.0, sombra_areas=True, ao_raio=0.35, ao_espessura=0.5)
     if extra: m.update(extra)
     return m
 

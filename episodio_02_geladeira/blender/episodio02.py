@@ -26,6 +26,18 @@ def feixe(nome, pts, r=0.012, curvas=None, sobre=False, onda=7.0, vel=0.7, cor='
     return M.varrer('feixe_' + nome, M.reamostrar(M.suavizar(pts, 0.08, 6), 0.02), r, m, 0.0, 1.0, lados=10)
 
 
+def s_capilar(g):
+    """Polimento (G3): posição ao longo do capilar (0 = entrada, 1 = saída) mostrada pela lupa e pelo marcador, ancorada
+    nas palavras: o trecho líquido em "A pressão cai bruscamente", o início da evaporação (s = 0,53 no modelo) em
+    "parte do líquido evapora" e a saída fria em "resfriando a mistura"."""
+    t0 = T0('G3') - 0.5; W_ = lambda w: E.T(w, apos=t0)
+    return E_trilha([(W_('pressão') - 0.15, 0.0), (W_('parte') - 0.2, 0.50), (W_('evapora') + 0.1, 0.60),
+                     (W_('resfriando') - 0.1, 0.80), (W_('mistura') + 0.15, 1.0)], g)
+
+
+def E_trilha(ch, g): return PE.trilha(ch, g)
+
+
 def calor_traseira(pid, t0, t1):
     """Calor rejeitado: feixes que sobem da serpentina traseira para o ar da cozinha (mesma linguagem de F1/J4)."""
     for i, x in enumerate([-0.18, 0.0, 0.18]):
@@ -43,7 +55,7 @@ def canal_esticado(pid, trecho, p0, p1, r, fundo_y):
         f = s_ * n - 0.5; i = int(math.floor(f)); w = f - i
         u0 = U[i % n] + (V if i >= n else 0) - (V if i < 0 else 0); u1 = U[(i + 1) % n] + (V if i + 1 >= n else 0) - (V if i + 1 < 0 else 0)
         return (u0 * (1 - w) + u1 * w) * k
-    base = dict(evaporador='aluminio', condensador='preto')[trecho]
+    base = dict(evaporador='aluminio', condensador='preto', capilar='cobre')[trecho]
     m = M.circuito(f'circ_canal_{pid}', base)
     pts = [tuple(a + (b - a) * (i / 120)) for i in range(121)]
     M.varrer(f'tubo_canal_{pid}', pts, r, m, tr['s0'], tr['s1'], lados=32, fluxo=fl, tampa=True)
@@ -198,6 +210,9 @@ def plano(pid):
         curvas['corte'] = [[F('C2', 0.08), 0.34], [F('C2', 0.40), 0.0]]
         revela = [[F('C2', 0.10), 0], [F('C2', 0.35), 1]]
         curvas['uPulso'] = [[F('C2', 0.20), s_c], [F('C2', 0.96), s_c + 1.0]]
+        # polimento: hierarquia — enquanto o corte abre, o entorno recua (−27 % de luz); circuito e componentes não
+        curvas['uFoco'] = [[F('C2', 0.10), 0.0], [F('C2', 0.40), 0.6]]
+        for k in ('compressor', 'aluminio', 'arame', 'latao'): M.ajustar(obj['mt'][k], destaque=True)
     elif pid == 'C3':
         zp = 1.425 - 5 * 0.072   # 6º passe do condensador (escoa para −x): condensando, líquido embaixo e vapor em cima
         cam_k = K((0, (0.16, 0.44, zp + 0.035), (0.10, COND_Y, zp), 40), (1, (-0.06, 0.44, zp + 0.035), (-0.12, COND_Y, zp), 40))
@@ -284,25 +299,51 @@ def plano(pid):
         cam_k = K((0, (0.36, 0.58, 0.26), (0.205, 0.255, 0.22), 50), (1, (0.33, 0.55, 0.25), (0.205, 0.255, 0.22), 50))
         revela = 1.0; rot.add('Capilar', lambda g: Vector((0.235, 0.255, 0.24)), F('G2', 0.3), T1('G2'))
     elif pid == 'G3':
-        z = lambda g: 0.40 + 0.92 * B.suave((g - T0('G3')) / (T1('G3') - T0('G3')))
-        # v4: de lado, com a linha de sucção (mais grossa) ao lado do capilar e o corte da parede isolante ao fundo
-        # v4: entre a parede traseira e o condensador (sem arames na frente), mais afastada e com lente mais aberta: o capilar
-        # no centro, a linha de sucção (mais grossa) ao lado e as camadas da parede em corte como contexto
-        cam_k = [(T0('G3'), lambda g: Vector((0.245, 0.336, z(g) + 0.03)), lambda g: Vector((0.135, 0.280, z(g) + 0.012)), 30),
-                 (T1('G3'), lambda g: Vector((0.245, 0.336, z(g) + 0.03)), lambda g: Vector((0.135, 0.280, z(g) + 0.012)), 30)]
+        # polimento: CONTEXTO — o capilar real inteiro (enrolado junto ao compressor e subindo pela parede até o
+        # evaporador), visto pelo lado em corte. O manômetro é um MARCADOR que percorre o capilar real no mesmo ponto s(g)
+        # mostrado pela lupa (plano G3z, composto na montagem). Pressão = perfil do modelo naquele s.
+        # o capilar inteiro (z 0,2–1,42) ocupa a metade de BAIXO do quadro; a lupa fica sobre a área acima da geladeira
+        # rodada 5 (verificação): com a câmera a 1,8 m o trecho ENROLADO junto ao compressor (z 0,17–0,27 m, onde o marcador
+        # está durante "A pressão cai bruscamente") ficava abaixo da borda do quadro (v = 1,19). Mesma direção de olhar, 1,6×
+        # mais longe: capilar inteiro entre v = 0,44 e 0,93, abaixo da lupa (que cobre v 0,08–0,43).
+        cam_k = K((0, (2.38, -1.57, 1.26), (0.13, 0.28, 1.26), 26), (1, (2.33, -1.52, 1.26), (0.13, 0.28, 1.26), 26))
         revela = 1.0
         cap = next(t for t in MOD['circuito'] if t['id'] == 'capilar')['perfil']
-        tr = {t['id']: t for t in obj['tracado']}['capilar']
-        def p_cap(g):   # pressão no ponto do capilar à altura da câmera (s local pelo comprimento do traçado)
-            zz = z(g) + 0.03; pts = tr['pts']; L = 0; tot = M.comprimento(pts); best = None
-            for i in range(len(pts) - 1):
-                a, b = Vector(pts[i]), Vector(pts[i + 1])
-                if abs(a.x - 0.125) < 1e-3 and abs(b.x - 0.125) < 1e-3 and min(a.z, b.z) <= zz <= max(a.z, b.z): best = L + abs(zz - a.z)
-                L += (b - a).length
-            sl = (best if best is not None else tot) / tot; k = min(int(sl * (len(cap) - 1)), len(cap) - 1)
-            return p_rel(cap[k]['P_bar'] * 1.0)
-        man.add('capilar', lambda g: Vector((0.125, 0.283, z(g) + 0.03)), F('G3', 0.05), T1('G3'), p_cap)
-        bpy.data.objects['pote'].hide_render = True   # v2: tapava metade do quadro (fora do assunto do plano)
+        tr = {t['id']: t for t in obj['tracado']}['capilar']; pts = [Vector(q) for q in tr['pts']]
+        Ls = [0.0]
+        for a_, b_ in zip(pts, pts[1:]): Ls.append(Ls[-1] + (b_ - a_).length)
+        def ponto(sl):
+            alvo = sl * Ls[-1]
+            for k in range(len(pts) - 1):
+                if Ls[k + 1] >= alvo: return pts[k].lerp(pts[k + 1], (alvo - Ls[k]) / max(Ls[k + 1] - Ls[k], 1e-9))
+            return pts[-1]
+        def P_s(sl):
+            f = sl * (len(cap) - 1); k = min(int(f), len(cap) - 2); a_ = f - k
+            return cap[k]['P_bar'] * (1 - a_) + cap[k + 1]['P_bar'] * a_
+        man.add('capilar', lambda g: ponto(s_capilar(g)), F('G3', 0.03), T1('G3'), lambda g: p_rel(P_s(s_capilar(g))))
+        bpy.data.objects['pote'].hide_render = True
+    elif pid == 'G3z':
+        # polimento: LUPA (ampliação didática localizada, corte ilustrativo): o capilar esticado e ampliado; o fluido vem da
+        # MESMA tabela do modelo, ponto a ponto (líquido a 33 °C → primeiro vapor em s = 0,53 → mistura a −20 °C, x = 0,33).
+        # A câmera percorre o canal no mesmo s(g) do marcador do plano principal. Sem feixes de calor: o capilar não troca
+        # calor no modelo (expansão sem troca de energia).
+        Y, Z = -1.30, 1.25; r_c = 0.020; X0, X1 = -0.30, 0.30
+        canal_esticado(pid, 'capilar', (X0, Y, Z), (X1, Y, Z), r_c, -1.02)
+        # rodada 5 (verificação ciencia/verificar_g3.py): o centro da lupa É o ponto do marcador (antes mirava 0,083 em s à
+        # frente, e "líquido" chegou a apontar fluido com 1,5 % de vapor). Trava em s = 0,885 (perspectiva oblíqua: a borda direita chega a ~1,0),
+        # então a parte abaixo de 0 °C entra na lupa sem passar da ponta do tubo.
+        xt = lambda g: X0 + (X1 - X0) * min(s_capilar(g), 0.885)
+        cam_k = [(T0('G3'), lambda g: Vector((xt(g) - 0.16, Y - 0.17, Z + 0.006)), lambda g: Vector((xt(g), Y, Z)), 35),
+                 (T1('G3'), lambda g: Vector((xt(g) - 0.16, Y - 0.17, Z + 0.006)), lambda g: Vector((xt(g), Y, Z)), 35)]
+        sx = lambda sl: X0 + (X1 - X0) * sl
+        cap_ = next(t for t in MOD['circuito'] if t['id'] == 'capilar')['perfil']
+        s_flash = next(q['s'] for q in cap_ if q['x'] > 0)                     # primeiro vapor no modelo (0,532)
+        # cada rótulo preso ao PONTO FÍSICO que descreve (a lupa só desenha os que estão dentro do círculo)
+        liq = lambda g: Vector((sx(min(s_capilar(g), s_flash - 0.04)), Y, Z + r_c))
+        rot.add('líquido', liq, E.T('pressão', apos=T0('G3') - 0.5) - 0.1, E.T('parte', apos=T0('G3') - 0.5) - 0.3)
+        rot.add('começa a evaporar', Vector((sx(s_flash), Y, Z + r_c)), E.T('parte', apos=T0('G3') - 0.5) - 0.1, E.T('resfriando', apos=T0('G3') - 0.5) - 0.3)
+        rot.add('mistura fria', Vector((sx(0.96), Y, Z + r_c)), E.T('resfriando', apos=T0('G3') - 0.5), T1('G3'))
+        revela = 1.0
     elif pid == 'H1':
         cam_k = K((0, (0.40, -0.50, 1.42), (0.0, 0.02, 1.29), 35), (0.35, (0.70, -0.75, 1.45), (0.0, 0.05, 1.18), 33), (1, (1.70, -0.90, 1.60), (0.0, 0.10, 0.78), 30))
         revela = 1.0; curvas['uTrab'] = [[0, 1]]
@@ -373,6 +414,12 @@ def plano(pid):
         B.camera_planos(cam, planos_cam, g); bpy.context.view_layer.update(); man.registrar(g)
         return g
     meta = C.meta_comum(curvas, dict(corte=dict(n=[-1, 0, 0]), plano=pid, seq=seq, g0p=p['t0'], g1p=p['t1']))
+    # polimento: planos TÉCNICOS (corte ilustrativo, canais ampliados) mantêm a iluminação de leitura da V4 (céu como
+    # ambiente, luzes internas sem sombra) — reflexos da cozinha escureciam metais e as sombras apagavam o interior cortado
+    if (corte_gab and pid != 'C1') or pid in ('F2', 'G3z'):   # C1 é a cozinha por fora (nada cortado)
+        for k in ('env_pos', 'env_cena', 'sombra_areas'): meta.pop(k, None)
+        meta['modo_luz'] = 'tecnico'
+    else: meta['modo_luz'] = 'cozinha'
     meta.update(extra)
     pasta = os.path.join(SAIDA, pid); os.makedirs(pasta, exist_ok=True)
     B.exportar_seg(pasta, g0, g1, anim, rot=rot, extra=meta)
@@ -381,5 +428,5 @@ def plano(pid):
 
 
 if __name__ == '__main__':
-    ids = sys.argv[1:] or [x for k in PL for x in ([k, k + 'b'] if k in ('A4', 'J1') else [k])]   # v2: inclui as metades da tela dividida
+    ids = sys.argv[1:] or [x for k in PL for x in ([k, k + 'b'] if k in ('A4', 'J1') else [k, 'G3z'] if k == 'G3' else [k])]   # metades da tela dividida e a lupa de G3
     for pid in ids: plano(pid)

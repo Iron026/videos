@@ -1,0 +1,1080 @@
+{
+ "716371": {
+  "dur": 6.91,
+  "pico_db": -14.3,
+  "piso_db": -180.0,
+  "estabilidade_db": 6.65,
+  "transientes_s": [
+   6.02
+  ],
+  "centroide_hz": 403,
+  "fracao_grave": 0.08,
+  "indice_fala": 0.251,
+  "titulo": "Refrigerator Door",
+  "papeis": [
+   "porta"
+  ]
+ },
+ "682744": {
+  "dur": 2.63,
+  "pico_db": -23.9,
+  "piso_db": -50.6,
+  "estabilidade_db": 4.91,
+  "transientes_s": [],
+  "centroide_hz": 558,
+  "fracao_grave": 0.347,
+  "indice_fala": 0.34,
+  "titulo": "Refrigerator door open; short.WAV",
+  "papeis": [
+   "porta"
+  ]
+ },
+ "369175": {
+  "dur": 6.09,
+  "pico_db": -23.3,
+  "piso_db": -72.8,
+  "estabilidade_db": 7.45,
+  "transientes_s": [
+   4.04
+  ],
+  "centroide_hz": 262,
+  "fracao_grave": 0.849,
+  "indice_fala": 0.299,
+  "titulo": "Refrigerator_door_open_close.wav",
+  "papeis": [
+   "porta"
+  ]
+ },
+ "154460": {
+  "dur": 7.05,
+  "pico_db": -25.9,
+  "piso_db": -60.2,
+  "estabilidade_db": 5.4,
+  "transientes_s": [
+   1.66,
+   2.06
+  ],
+  "centroide_hz": 261,
+  "fracao_grave": 0.615,
+  "indice_fala": 0.317,
+  "titulo": "Fridge Door open:close_1-2.aif",
+  "papeis": [
+   "porta"
+  ]
+ },
+ "556983": {
+  "dur": 13.91,
+  "pico_db": -10.3,
+  "piso_db": -62.5,
+  "estabilidade_db": 6.79,
+  "transientes_s": [
+   0.6,
+   3.72,
+   6.14,
+   6.46,
+   8.88,
+   9.18,
+   9.28,
+   13.2,
+   13.36
+  ],
+  "centroide_hz": 1411,
+  "fracao_grave": 0.254,
+  "indice_fala": 0.325,
+  "titulo": "Fridge door open close.wav",
+  "papeis": [
+   "porta"
+  ]
+ },
+ "237400": {
+  "dur": 15.06,
+  "pico_db": -23.5,
+  "piso_db": -77.0,
+  "estabilidade_db": 7.73,
+  "transientes_s": [
+   4.36
+  ],
+  "centroide_hz": 157,
+  "fracao_grave": 0.696,
+  "indice_fala": 0.323,
+  "titulo": "Fridge Door Open Close ",
+  "papeis": [
+   "porta"
+  ]
+ },
+ "489749": {
+  "dur": 7.97,
+  "pico_db": -12.5,
+  "piso_db": -59.3,
+  "estabilidade_db": 7.59,
+  "transientes_s": [
+   5.8
+  ],
+  "centroide_hz": 584,
+  "fracao_grave": 0.778,
+  "indice_fala": 0.275,
+  "titulo": "fridge_door_close 01.wav",
+  "papeis": [
+   "porta"
+  ]
+ },
+ "818086": {
+  "dur": 179.9,
+  "pico_db": -14.1,
+  "piso_db": -22.5,
+  "estabilidade_db": 1.32,
+  "transientes_s": [],
+  "centroide_hz": 397,
+  "fracao_grave": 0.016,
+  "indice_fala": 0.236,
+  "titulo": "MACHAppl_Brazil-Machines, Appliances, Refrigerator, fridge, loud hum, light frequency, interior, Apartment, Rio de Janeiro, Zoom H6, contact mic_BF_mono",
+  "papeis": [
+   "zumbido"
+  ]
+ },
+ "651210": {
+  "dur": 31.18,
+  "pico_db": -30.1,
+  "piso_db": -38.3,
+  "estabilidade_db": 1.71,
+  "transientes_s": [],
+  "centroide_hz": 185,
+  "fracao_grave": 0.235,
+  "indice_fala": 0.28,
+  "titulo": "Refrigerator humming",
+  "papeis": [
+   "zumbido"
+  ]
+ },
+ "485953": {
+  "dur": 28.16,
+  "pico_db": -33.3,
+  "piso_db": -53.0,
+  "estabilidade_db": 2.33,
+  "transientes_s": [
+   0.34,
+   0.74,
+   2.98
+  ],
+  "centroide_hz": 279,
+  "fracao_grave": 0.431,
+  "indice_fala": 0.274,
+  "titulo": "Refrigerator Hum",
+  "papeis": [
+   "zumbido"
+  ]
+ },
+ "431209": {
+  "dur": 50.08,
+  "pico_db": -15.0,
+  "piso_db": -67.6,
+  "estabilidade_db": 6.0,
+  "transientes_s": [
+   2.9,
+   8.02,
+   11.7,
+   11.88,
+   18.38,
+   24.1,
+   28.2,
+   31.86,
+   36.58
+  ],
+  "centroide_hz": 3923,
+  "fracao_grave": 0.046,
+  "indice_fala": 0.335,
+  "titulo": "sounds kitchen refrigerator fridge open close rummaging jars plastic hum of motor kicks on at end - homemade.wav",
+  "papeis": [
+   "zumbido"
+  ]
+ },
+ "455776": {
+  "dur": 90.68,
+  "pico_db": -25.2,
+  "piso_db": -30.8,
+  "estabilidade_db": 1.44,
+  "transientes_s": [],
+  "centroide_hz": 125,
+  "fracao_grave": 0.836,
+  "indice_fala": 0.271,
+  "titulo": "fridge compressor soft rumbly bubbly close.flac",
+  "papeis": [
+   "zumbido"
+  ]
+ },
+ "637570": {
+  "dur": 40.74,
+  "pico_db": -40.6,
+  "piso_db": -52.1,
+  "estabilidade_db": 1.51,
+  "transientes_s": [],
+  "centroide_hz": 760,
+  "fracao_grave": 0.17,
+  "indice_fala": 0.278,
+  "titulo": "fridge refrigerator compressor light hum not active with nice airy kitchen tone +small perspective shifts.flac",
+  "papeis": [
+   "zumbido"
+  ]
+ },
+ "577647": {
+  "dur": 256.19,
+  "pico_db": -27.6,
+  "piso_db": -47.1,
+  "estabilidade_db": 3.39,
+  "transientes_s": [],
+  "centroide_hz": 149,
+  "fracao_grave": 0.886,
+  "indice_fala": 0.256,
+  "titulo": "Fridge cooling",
+  "papeis": [
+   "zumbido"
+  ]
+ },
+ "569391": {
+  "dur": 28.3,
+  "pico_db": -39.1,
+  "piso_db": -51.9,
+  "estabilidade_db": 1.84,
+  "transientes_s": [],
+  "centroide_hz": 241,
+  "fracao_grave": 0.252,
+  "indice_fala": 0.289,
+  "titulo": "Fridge007.wav",
+  "papeis": [
+   "zumbido"
+  ]
+ },
+ "761932": {
+  "dur": 12.73,
+  "pico_db": -36.8,
+  "piso_db": -41.2,
+  "estabilidade_db": 1.03,
+  "transientes_s": [],
+  "centroide_hz": 178,
+  "fracao_grave": 0.239,
+  "indice_fala": 0.143,
+  "titulo": "Large Frigidaire fridge humming - long - 2",
+  "papeis": [
+   "zumbido"
+  ]
+ },
+ "334144": {
+  "dur": 99.33,
+  "pico_db": -14.4,
+  "piso_db": -27.4,
+  "estabilidade_db": 1.79,
+  "transientes_s": [],
+  "centroide_hz": 420,
+  "fracao_grave": 0.6,
+  "indice_fala": 0.233,
+  "titulo": "Refrigerator from inside.wav",
+  "papeis": [
+   "gorgolejo"
+  ]
+ },
+ "803197": {
+  "dur": 16.42,
+  "pico_db": -42.4,
+  "piso_db": -60.7,
+  "estabilidade_db": 5.19,
+  "transientes_s": [
+   6.16,
+   8.34,
+   8.98,
+   13.36,
+   14.48,
+   14.88
+  ],
+  "centroide_hz": 1044,
+  "fracao_grave": 0.186,
+  "indice_fala": 0.276,
+  "titulo": "Rattling Fridge Noise",
+  "papeis": [
+   "gorgolejo"
+  ]
+ },
+ "635547": {
+  "dur": 20.73,
+  "pico_db": -20.3,
+  "piso_db": -45.6,
+  "estabilidade_db": 1.74,
+  "transientes_s": [
+   3.96
+  ],
+  "centroide_hz": 789,
+  "fracao_grave": 0.003,
+  "indice_fala": 0.28,
+  "titulo": "fridge freezer standing internal gurgle noise.flac",
+  "papeis": [
+   "gorgolejo"
+  ]
+ },
+ "506573": {
+  "dur": 32.6,
+  "pico_db": -27.3,
+  "piso_db": -58.7,
+  "estabilidade_db": 4.78,
+  "transientes_s": [
+   11.18,
+   11.34,
+   11.52,
+   11.9,
+   19.3,
+   21.84,
+   26.02,
+   28.34,
+   31.04,
+   31.28,
+   32.42
+  ],
+  "centroide_hz": 76,
+  "fracao_grave": 0.952,
+  "indice_fala": 0.309,
+  "titulo": "fridge gurgle.wav",
+  "papeis": [
+   "gorgolejo"
+  ]
+ },
+ "819965": {
+  "dur": 67.48,
+  "pico_db": -35.2,
+  "piso_db": -64.5,
+  "estabilidade_db": 6.77,
+  "transientes_s": [
+   0.1,
+   0.18,
+   0.3,
+   0.58,
+   0.8,
+   0.96,
+   1.42,
+   1.64,
+   1.7,
+   1.9,
+   2.02,
+   2.12
+  ],
+  "centroide_hz": 5717,
+  "fracao_grave": 0.001,
+  "indice_fala": 0.256,
+  "titulo": "pets water fountain thirst",
+  "papeis": [
+   "gorgolejo"
+  ]
+ },
+ "635558": {
+  "dur": 1098.64,
+  "pico_db": -23.4,
+  "piso_db": -180.0,
+  "estabilidade_db": 4.4,
+  "transientes_s": [
+   12.66,
+   195.04,
+   434.2,
+   605.82,
+   842.24,
+   943.54
+  ],
+  "centroide_hz": 1328,
+  "fracao_grave": 0.194,
+  "indice_fala": 0.35,
+  "titulo": "fridge refrigerator compressor starts and stops natural click on long hums1 bubbly.flac",
+  "papeis": [
+   "gorgolejo"
+  ]
+ },
+ "124288": {
+  "dur": 56.26,
+  "pico_db": -11.8,
+  "piso_db": -59.4,
+  "estabilidade_db": 99.0,
+  "transientes_s": [
+   4.16
+  ],
+  "centroide_hz": 3342,
+  "fracao_grave": 0.01,
+  "indice_fala": 0.262,
+  "titulo": "fizzing-soda.aif",
+  "papeis": [
+   "chiado"
+  ]
+ },
+ "635536": {
+  "dur": 26.19,
+  "pico_db": -16.9,
+  "piso_db": -38.1,
+  "estabilidade_db": 4.17,
+  "transientes_s": [
+   1.04,
+   3.98,
+   13.62,
+   14.08
+  ],
+  "centroide_hz": 159,
+  "fracao_grave": 0.795,
+  "indice_fala": 0.309,
+  "titulo": "freezer in old fridge interior ambience bubbly cold hiss.flac",
+  "papeis": [
+   "chiado"
+  ]
+ },
+ "411885": {
+  "dur": 2.98,
+  "pico_db": -17.2,
+  "piso_db": -180.0,
+  "estabilidade_db": 4.12,
+  "transientes_s": [
+   0.5
+  ],
+  "centroide_hz": 2120,
+  "fracao_grave": 0.008,
+  "indice_fala": 0.329,
+  "titulo": "Fridge Door.mp3",
+  "papeis": [
+   "chiado"
+  ]
+ },
+ "635559": {
+  "dur": 2264.01,
+  "pico_db": -11.1,
+  "piso_db": -35.2,
+  "estabilidade_db": 4.25,
+  "transientes_s": [
+   348.02,
+   550.52,
+   1131.68,
+   1266.74,
+   1403.84,
+   1538.84,
+   1690.74,
+   1834.18,
+   1982.92
+  ],
+  "centroide_hz": 612,
+  "fracao_grave": 0.377,
+  "indice_fala": 0.234,
+  "titulo": "fridge refrigerator compressor starts and stops natural click on long hums5 different awesome close tones LONG ONLY FOR OBSESSED PEOPLE.flac",
+  "papeis": [
+   "partida"
+  ]
+ },
+ "216664": {
+  "dur": 175.42,
+  "pico_db": -13.8,
+  "piso_db": -36.3,
+  "estabilidade_db": 5.62,
+  "transientes_s": [
+   161.42
+  ],
+  "centroide_hz": 1641,
+  "fracao_grave": 0.621,
+  "indice_fala": 0.286,
+  "titulo": "Broken Fridge Slowly Going Insane.wav",
+  "papeis": [
+   "partida"
+  ]
+ },
+ "784615": {
+  "dur": 119.74,
+  "pico_db": -22.3,
+  "piso_db": -35.2,
+  "estabilidade_db": 1.71,
+  "transientes_s": [],
+  "centroide_hz": 161,
+  "fracao_grave": 0.677,
+  "indice_fala": 0.271,
+  "titulo": "Refrigerator compressor",
+  "papeis": [
+   "partida"
+  ]
+ },
+ "451172": {
+  "dur": 92.18,
+  "pico_db": -22.8,
+  "piso_db": -30.6,
+  "estabilidade_db": 0.97,
+  "transientes_s": [],
+  "centroide_hz": 590,
+  "fracao_grave": 0.392,
+  "indice_fala": 0.272,
+  "titulo": "room tone commercial kitchen empty but noisy fridge compressors, dishwasher2.flac",
+  "papeis": [
+   "cozinha"
+  ]
+ },
+ "450922": {
+  "dur": 97.71,
+  "pico_db": -27.5,
+  "piso_db": -36.8,
+  "estabilidade_db": 1.46,
+  "transientes_s": [],
+  "centroide_hz": 491,
+  "fracao_grave": 0.5,
+  "indice_fala": 0.305,
+  "titulo": "room tone fridge apartment kitchen1 closer",
+  "papeis": [
+   "cozinha"
+  ]
+ },
+ "455826": {
+  "dur": 63.79,
+  "pico_db": -36.7,
+  "piso_db": -44.5,
+  "estabilidade_db": 1.63,
+  "transientes_s": [],
+  "centroide_hz": 215,
+  "fracao_grave": 0.227,
+  "indice_fala": 0.337,
+  "titulo": "room tone medium or small kitchen fridge light drips.flac",
+  "papeis": [
+   "cozinha"
+  ]
+ },
+ "451104": {
+  "dur": 45.75,
+  "pico_db": -33.1,
+  "piso_db": -52.9,
+  "estabilidade_db": 5.02,
+  "transientes_s": [
+   1.7,
+   1.94,
+   2.04,
+   6.82,
+   7.4,
+   8.54,
+   8.82,
+   9.08,
+   9.92,
+   10.76,
+   14.48,
+   14.6
+  ],
+  "centroide_hz": 22,
+  "fracao_grave": 0.992,
+  "indice_fala": 0.282,
+  "titulo": "room tone small room quiet +distant kitchen activity plates pans wiping Casablanca, Morocco MS.wav",
+  "papeis": [
+   "cozinha"
+  ]
+ },
+ "402658": {
+  "dur": 106.54,
+  "pico_db": -29.1,
+  "piso_db": -38.1,
+  "estabilidade_db": 1.86,
+  "transientes_s": [],
+  "centroide_hz": 400,
+  "fracao_grave": 0.586,
+  "indice_fala": 0.262,
+  "titulo": "Ambient Kitchen loop.wav",
+  "papeis": [
+   "cozinha"
+  ]
+ },
+ "398843": {
+  "dur": 207.1,
+  "pico_db": -38.4,
+  "piso_db": -54.4,
+  "estabilidade_db": 2.52,
+  "transientes_s": [],
+  "centroide_hz": 1159,
+  "fracao_grave": 0.156,
+  "indice_fala": 0.282,
+  "titulo": "170720_SmallAppartment_Kitchen_F.wav",
+  "papeis": [
+   "cozinha"
+  ]
+ },
+ "761024": {
+  "dur": 27.49,
+  "pico_db": -38.6,
+  "piso_db": -62.3,
+  "estabilidade_db": 3.25,
+  "transientes_s": [
+   4.72
+  ],
+  "centroide_hz": 139,
+  "fracao_grave": 0.67,
+  "indice_fala": 0.247,
+  "titulo": "Very Quiet Indoor Roomtone",
+  "papeis": [
+   "cozinha"
+  ]
+ },
+ "817484": {
+  "dur": 288.02,
+  "pico_db": -34.1,
+  "piso_db": -51.6,
+  "estabilidade_db": 3.68,
+  "transientes_s": [
+   0.24,
+   1.56,
+   12.36,
+   16.4,
+   17.36,
+   18.56,
+   23.4,
+   26.76,
+   30.86,
+   33.0,
+   35.58,
+   36.02
+  ],
+  "centroide_hz": 60,
+  "fracao_grave": 0.967,
+  "indice_fala": 0.274,
+  "titulo": "AMBMisc Condensing unit turns on, back entrance of the school cafeteria on a windy day, Halmstad, Sweden",
+  "papeis": [
+   "cozinha"
+  ]
+ },
+ "859767": {
+  "dur": 14.21,
+  "pico_db": -18.8,
+  "piso_db": -49.4,
+  "estabilidade_db": 6.04,
+  "transientes_s": [
+   1.82,
+   1.94,
+   2.1,
+   2.46,
+   2.64,
+   4.46,
+   4.94,
+   7.02,
+   7.68,
+   8.36,
+   11.2,
+   11.26
+  ],
+  "centroide_hz": 1288,
+  "fracao_grave": 0.177,
+  "indice_fala": 0.255,
+  "titulo": "Coffee Routine – Italian Moka Pouring – Into Cup Close-Up",
+  "papeis": [
+   "cozinha"
+  ]
+ },
+ "329533": {
+  "dur": 17.31,
+  "pico_db": -24.9,
+  "piso_db": -42.1,
+  "estabilidade_db": 4.68,
+  "transientes_s": [
+   0.0,
+   1.04,
+   2.14,
+   2.56,
+   3.38,
+   3.88,
+   6.12,
+   8.24,
+   9.24,
+   10.06,
+   10.26,
+   14.14
+  ],
+  "centroide_hz": 24,
+  "fracao_grave": 0.997,
+  "indice_fala": 0.248,
+  "titulo": "Room Tone In An Apartment Living Room 2",
+  "papeis": [
+   "cozinha"
+  ]
+ },
+ "329568": {
+  "dur": 46.07,
+  "pico_db": -30.5,
+  "piso_db": -39.5,
+  "estabilidade_db": 2.27,
+  "transientes_s": [],
+  "centroide_hz": 218,
+  "fracao_grave": 0.562,
+  "indice_fala": 0.243,
+  "titulo": "Room Tone Apartment Small Bachelor",
+  "papeis": [
+   "cozinha"
+  ]
+ },
+ "426767": {
+  "dur": 20.11,
+  "pico_db": -34.8,
+  "piso_db": -48.2,
+  "estabilidade_db": 2.4,
+  "transientes_s": [],
+  "centroide_hz": 150,
+  "fracao_grave": 0.596,
+  "indice_fala": 0.277,
+  "titulo": "Apartment Room Tone.wav",
+  "papeis": [
+   "cozinha"
+  ]
+ },
+ "117631": {
+  "dur": 6.42,
+  "pico_db": -17.4,
+  "piso_db": -45.8,
+  "estabilidade_db": 6.3,
+  "transientes_s": [
+   0.78,
+   1.42,
+   3.2,
+   4.72,
+   5.64
+  ],
+  "centroide_hz": 149,
+  "fracao_grave": 0.784,
+  "indice_fala": 0.195,
+  "titulo": "footstops - stone tile floor.wav",
+  "papeis": [
+   "passos"
+  ]
+ },
+ "138052": {
+  "dur": 7.94,
+  "pico_db": -1.8,
+  "piso_db": -32.9,
+  "estabilidade_db": 7.18,
+  "transientes_s": [
+   1.36,
+   1.84,
+   2.4,
+   3.0,
+   3.14,
+   3.62,
+   4.38,
+   4.52,
+   5.84,
+   6.4,
+   6.5
+  ],
+  "centroide_hz": 139,
+  "fracao_grave": 0.803,
+  "indice_fala": 0.281,
+  "titulo": "walking_footsteps_tennis _shoes_tile_floor_2.wav",
+  "papeis": [
+   "passos"
+  ]
+ },
+ "138056": {
+  "dur": 6.01,
+  "pico_db": -1.0,
+  "piso_db": -41.5,
+  "estabilidade_db": 7.05,
+  "transientes_s": [
+   1.5,
+   1.84,
+   1.86,
+   2.22,
+   2.72,
+   4.38,
+   4.74
+  ],
+  "centroide_hz": 615,
+  "fracao_grave": 0.606,
+  "indice_fala": 0.339,
+  "titulo": "walking_footsteps_flat shoes_tile floor_1.wav",
+  "papeis": [
+   "passos"
+  ]
+ },
+ "138070": {
+  "dur": 20.92,
+  "pico_db": -1.7,
+  "piso_db": -40.7,
+  "estabilidade_db": 8.1,
+  "transientes_s": [
+   1.1,
+   1.58,
+   1.6,
+   2.12,
+   2.54,
+   2.64,
+   3.02,
+   3.12,
+   3.52,
+   3.6,
+   3.98,
+   4.1
+  ],
+  "centroide_hz": 160,
+  "fracao_grave": 0.812,
+  "indice_fala": 0.284,
+  "titulo": "walking_footsteps_tennis_shoes_tile_floor_10.wav",
+  "papeis": [
+   "passos"
+  ]
+ },
+ "138069": {
+  "dur": 4.57,
+  "pico_db": -2.2,
+  "piso_db": -40.0,
+  "estabilidade_db": 7.93,
+  "transientes_s": [
+   0.34,
+   1.14,
+   1.84,
+   1.98,
+   2.6,
+   2.74,
+   3.36,
+   3.72
+  ],
+  "centroide_hz": 105,
+  "fracao_grave": 0.889,
+  "indice_fala": 0.29,
+  "titulo": "walking_footsteps_tennis_shoes_tile_floor_9.wav",
+  "papeis": [
+   "passos"
+  ]
+ },
+ "565530": {
+  "dur": 23.73,
+  "pico_db": -25.4,
+  "piso_db": -69.0,
+  "estabilidade_db": 6.07,
+  "transientes_s": [
+   0.82,
+   1.4,
+   2.02,
+   2.68,
+   6.32,
+   6.92,
+   7.5,
+   8.1,
+   9.24,
+   10.5,
+   10.94,
+   11.1
+  ],
+  "centroide_hz": 510,
+  "fracao_grave": 0.269,
+  "indice_fala": 0.303,
+  "titulo": "Kitchen Footsteps.WAV",
+  "papeis": [
+   "passos"
+  ]
+ },
+ "776168": {
+  "dur": 24.49,
+  "pico_db": -30.6,
+  "piso_db": -64.6,
+  "estabilidade_db": 7.02,
+  "transientes_s": [
+   0.02,
+   4.54,
+   5.7,
+   7.92,
+   8.7,
+   9.74,
+   11.04,
+   14.68,
+   15.46,
+   16.74,
+   19.18,
+   21.04
+  ],
+  "centroide_hz": 463,
+  "fracao_grave": 0.474,
+  "indice_fala": 0.314,
+  "titulo": "SFX-Walking in Kitchen, Footsteps",
+  "papeis": [
+   "passos"
+  ]
+ },
+ "696744": {
+  "dur": 15.51,
+  "pico_db": -34.7,
+  "piso_db": -58.6,
+  "estabilidade_db": 3.92,
+  "transientes_s": [
+   8.58,
+   13.64,
+   14.86,
+   15.38
+  ],
+  "centroide_hz": 3144,
+  "fracao_grave": 0.13,
+  "indice_fala": 0.375,
+  "titulo": "Foot step",
+  "papeis": [
+   "passos"
+  ]
+ },
+ "384403": {
+  "dur": 6.9,
+  "pico_db": -20.2,
+  "piso_db": -43.1,
+  "estabilidade_db": 4.01,
+  "transientes_s": [
+   0.76,
+   1.28,
+   4.16,
+   4.3,
+   5.6
+  ],
+  "centroide_hz": 2211,
+  "fracao_grave": 0.222,
+  "indice_fala": 0.356,
+  "titulo": "Dog paws on a kitchen floor.mp3",
+  "papeis": [
+   "passos"
+  ]
+ },
+ "218294": {
+  "dur": 33.53,
+  "pico_db": -11.8,
+  "piso_db": -83.6,
+  "estabilidade_db": 7.73,
+  "transientes_s": [
+   1.26,
+   2.0,
+   2.08,
+   2.72,
+   2.82,
+   3.46,
+   4.1,
+   4.8,
+   5.44,
+   5.56,
+   6.74,
+   8.06
+  ],
+  "centroide_hz": 471,
+  "fracao_grave": 0.002,
+  "indice_fala": 0.273,
+  "titulo": "01-15 Footsteps, Tile, Female Heels, Slow Pace.wav",
+  "papeis": [
+   "passos"
+  ]
+ },
+ "366111": {
+  "dur": 3.82,
+  "pico_db": -31.0,
+  "piso_db": -74.6,
+  "estabilidade_db": 8.18,
+  "transientes_s": [
+   0.1,
+   0.72,
+   1.34,
+   2.6,
+   2.72,
+   3.26
+  ],
+  "centroide_hz": 184,
+  "fracao_grave": 0.266,
+  "indice_fala": 0.192,
+  "titulo": "Indoor Footsteps.wav",
+  "papeis": [
+   "passos"
+  ]
+ },
+ "459964": {
+  "dur": 19.84,
+  "pico_db": -28.8,
+  "piso_db": -98.4,
+  "estabilidade_db": 7.12,
+  "transientes_s": [
+   0.3,
+   0.94,
+   1.2,
+   3.28,
+   3.64,
+   5.08,
+   5.64,
+   5.94,
+   7.52,
+   7.86,
+   8.38,
+   8.72
+  ],
+  "centroide_hz": 757,
+  "fracao_grave": 0.13,
+  "indice_fala": 0.319,
+  "titulo": "Footsteps on concrete",
+  "papeis": [
+   "passos"
+  ]
+ },
+ "415301": {
+  "dur": 10.09,
+  "pico_db": -13.2,
+  "piso_db": -60.2,
+  "estabilidade_db": 7.2,
+  "transientes_s": [
+   0.66,
+   2.02,
+   2.68,
+   3.18,
+   3.96,
+   5.1,
+   5.52,
+   5.96,
+   6.8,
+   6.86,
+   7.44,
+   8.32
+  ],
+  "centroide_hz": 365,
+  "fracao_grave": 0.007,
+  "indice_fala": 0.282,
+  "titulo": "Indoor Footsteps.mp3",
+  "papeis": [
+   "passos"
+  ]
+ },
+ "642956": {
+  "dur": 55.68,
+  "pico_db": -35.5,
+  "piso_db": -78.3,
+  "estabilidade_db": 5.87,
+  "transientes_s": [
+   11.68,
+   14.02,
+   15.76,
+   18.18,
+   19.42,
+   26.72,
+   33.68,
+   34.86,
+   35.36,
+   38.48,
+   46.34,
+   48.9
+  ],
+  "centroide_hz": 3947,
+  "fracao_grave": 0.185,
+  "indice_fala": 0.312,
+  "titulo": "Indoor footsteps foley.wav",
+  "papeis": [
+   "passos"
+  ]
+ },
+ "804598": {
+  "dur": 75.0,
+  "pico_db": -20.5,
+  "piso_db": -72.0,
+  "estabilidade_db": 5.99,
+  "transientes_s": [
+   0.36,
+   1.46,
+   1.62,
+   1.88,
+   1.92,
+   2.0,
+   2.16,
+   2.24,
+   3.76,
+   4.96,
+   8.6,
+   9.34
+  ],
+  "centroide_hz": 575,
+  "fracao_grave": 0.285,
+  "indice_fala": 0.287,
+  "titulo": "footsteps Logellou1",
+  "papeis": [
+   "passos"
+  ]
+ }
+}

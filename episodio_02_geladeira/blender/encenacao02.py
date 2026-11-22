@@ -13,9 +13,10 @@ def _palavras():
         p = json.load(open(os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', 'roteiro', 'palavras.json')))
         for i, w in enumerate(p): W.setdefault(w['palavra'].strip('.,:;?!').lower(), []).append(w['inicio'])
     return W
-def T(palavra, n=0):
-    """Instante de início da n-ésima ocorrência de uma palavra (verificada)."""
-    return _palavras()[palavra.lower()][n]
+def T(palavra, n=0, apos=None):
+    """Instante de início da n-ésima ocorrência de uma palavra (verificada); com apos, a primeira depois desse instante."""
+    oc = _palavras()[palavra.lower()]
+    return next(t for t in oc if t >= apos) if apos is not None else oc[n]
 
 
 def porta_ang(t_inicio, dur=1.1):
@@ -52,6 +53,34 @@ def _caminhada(g, t0, t1, A, Bp, passo=0.62):
     return tuple(P), (d / passo, max(0.0, amp))
 
 
+def passada(g, t0, t1, A, Bp, yaw0, yaw1, fracs=(0.45, 0.90, 1.0), largura=0.10):
+    """Polimento: caminhada com pés PLANTADOS. Passos alternados (direito, esquerdo, direito…) pousam em frações do
+    trajeto; o pé no ar sobe (6 cm) e rola do calcanhar para a ponta; o quadril sobe no apoio simples.
+    Devolve (pos, yaw, bob, pes, balanço dos braços) ou None fora do trecho."""
+    A, Bp = Vector((A[0], A[1], 0)), Vector((Bp[0], Bp[1], 0)); d = Bp - A
+    yaw = PE.trilha([(t0, yaw0), (t1, yaw1)], g)
+    lat = lambda yw: Vector((math.cos(math.radians(yw)), math.sin(math.radians(yw)), 0))        # +X local (lado direito)
+    n = len(fracs); Ts = (t1 - t0) / n
+    pos_pe = {'d': A + lat(yaw0) * largura, 'e': A - lat(yaw0) * largura}; yaw_pe = {'d': yaw0, 'e': yaw0}
+    incl = {'d': 0.0, 'e': 0.0}; bob = 0.0; bal = 0.0
+    for k, f in enumerate(fracs):
+        lado = 'd' if k % 2 == 0 else 'e'; sg = 1 if lado == 'd' else -1
+        ta, tb = t0 + k * Ts, t0 + (k + 1) * Ts; yw = PE.trilha([(t0, yaw0), (t1, yaw1)], tb)
+        destino = A + d * f + lat(yw) * largura * sg
+        if g >= tb: pos_pe[lado] = destino; yaw_pe[lado] = yw; continue
+        if g > ta:
+            u = (g - ta) / Ts; e_ = u * u * (3 - 2 * u)
+            pos_pe[lado] = pos_pe[lado].lerp(destino, e_) + Vector((0, 0, 0.06 * math.sin(math.pi * u)))
+            yaw_pe[lado] = yaw_pe[lado] + (yw - yaw_pe[lado]) * e_
+            incl[lado] = -16 * math.sin(math.pi * min(1, u * 1.6)) * (1 - u) + 10 * math.sin(math.pi * u) * u
+            bob = 0.012 * math.sin(math.pi * u) - 0.006; bal = sg * math.sin(math.pi * u)
+        break
+    pos = A + d * B.suave((g - t0) / (t1 - t0))
+    pes = {l: ((pos_pe[l].x, pos_pe[l].y, ALT + pos_pe[l].z), yaw_pe[l], incl[l]) for l in ('d', 'e')}
+    return (pos.x, pos.y), yaw, bob, pes, bal
+
+
+ALT = PE.ALT_TORNOZELO
 PA = (-0.60, -0.86); YA = -47.0          # diante do puxador
 PB = (-0.84, -1.20); YB = -38.0          # um passo atrás, olhando a geladeira inteira
 INTERIOR = (0.0, -0.05, 1.00); TOPO_TRAS = (0.0, 0.38, 1.80); BATENTE_E = (-0.31, -0.37, 1.22)
@@ -74,7 +103,7 @@ def est_abertura(g):
     t_pens = T('ao')          # "ao mesmo tempo?"
     pos, fase = _caminhada(g, 3.05, 4.20, PA, PB)
     yaw = PE.trilha([(3.05, YA), (4.20, YB)], g)
-    e = dict(pos=pos, yaw=yaw, passo=(-fase[0], fase[1]) if fase else None)      # recua de costas: fase negativa
+    e = dict(pos=pos, yaw=yaw, passo=(-fase[0], fase[1]) if fase else None, t=g)      # recua de costas: fase negativa (fora de quadro)
     # mão direita: puxa a porta; no fim de A4, ao queixo
     md = _mao_puxando(None, g, -0.25, 0.20, ang, pos, yaw)
     if g > 3.0: md = repouso('d', pos, yaw, 0.06 * math.sin(2 * math.pi * fase[0]) * fase[1] if fase else 0.0)
@@ -111,11 +140,10 @@ def est_porta_aberta(g):
     t_puxa = T('deixa') - 0.13                 # a porta começa a abrir em "deixa a porta aberta"
     ang = porta_ang(t_puxa)
     t_recua = t_puxa + 0.95
-    if g < t_recua: pos, fase = _caminhada(g, 115.55, 116.95, PI, PA); fase_s = fase
-    else: pos, fase = _caminhada(g, t_recua, t_recua + 0.95, PA, PC); fase_s = (-fase[0], fase[1]) if fase else None
-    yaw = PE.trilha([(115.55, -52.0), (116.95, YA), (t_recua, YA), (t_recua + 0.95, YC)], g)
-    e = dict(pos=pos, yaw=yaw, passo=fase_s)
-    bal = lambda sgn: sgn * 0.06 * math.sin(2 * math.pi * fase[0]) * fase[1] if fase else 0.0
+    if g < t_recua: pos, yaw, bob_, pes, bl = passada(g, 115.55, 116.95, PI, PA, -52.0, YA)
+    else: pos, yaw, bob_, pes, bl = passada(g, t_recua, t_recua + 0.95, PA, PC, YA, YC, fracs=(0.5, 1.0), largura=0.10)
+    e = dict(pos=pos, yaw=yaw, bob=bob_, pes=pes, t=g)
+    bal = lambda sgn: -sgn * 0.07 * bl
     md = _mao_puxando(None, g, t_puxa - 0.45, t_puxa, ang, pos, yaw)
     if g < 117.0 or g > t_puxa + 1.0: md = repouso('d', pos, yaw, bal(1))
     e['braco_d'] = ('ik', md, tuple(corpo(pos, yaw, (0.7, -0.4, -1.0))), (0, 0, -1))

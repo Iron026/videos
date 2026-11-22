@@ -41,7 +41,7 @@ const W = Math.round(meta.camera.largura * ESCALA), H = Math.round(meta.camera.a
 // ---- Ep. 02: uniformes globais animados por curvas [[t, v], ...] (tempo global do episódio)
 const UG = { uTermico: { value: 0 }, uVarre: { value: 1 }, uRevela: { value: 0 }, uPulso: { value: -1 }, uFluxo: { value: 1.0 },
   uTrab: { value: 0 }, uTrabVel: { value: 1 }, uResY: { value: H }, uAmb: { value: meta.fluido ? meta.fluido.T_ambiente : 25 },
-  uFase: { value: 1 }, uCorteD: { value: 99 } };
+  uFase: { value: 1 }, uCorteD: { value: 99 }, uFoco: { value: 0 } };   // uFoco (Ep. 02 polimento): hierarquia na revelação
 const CURVAS = meta.curvas || {};
 function curva(k, t) { if (!k || !k.length) return null; if (t <= k[0][0]) return k[0][1];
   for (let i = 0; i < k.length - 1; i++) if (t <= k[i + 1][0]) { const u = (t - k[i][0]) / Math.max(k[i + 1][0] - k[i][0], 1e-6), e = u * u * (3 - 2 * u); return k[i][1] + (k[i + 1][1] - k[i][1]) * e; }
@@ -148,7 +148,9 @@ rebate.position.set(0.3 * dirSol.x, 0.3 * dirSol.y, -1).multiplyScalar(100);   /
 scene.add(rebate);
 for (const l of meta.luzes) {
   if (l.tipo === 'POINT') { const p = new THREE.PointLight(new THREE.Color(...l.cor), l.energia / (4 * Math.PI * Math.PI), 0, 2); p.position.set(...l.pos); scene.add(p); }
-  if (l.tipo === 'AREA') { const p = new THREE.SpotLight(new THREE.Color(...l.cor), l.energia / (4 * Math.PI), 0, Math.PI / 2.2, 1, 2); p.position.set(...l.pos); p.target.position.set(...l.alvo); scene.add(p, p.target); }
+  if (l.tipo === 'AREA') { const p = new THREE.SpotLight(new THREE.Color(...l.cor), l.energia / (4 * Math.PI), 0, Math.PI / 2.2, 1, 2); p.position.set(...l.pos); p.target.position.set(...l.alvo);
+    if (meta.sombra_areas) { p.castShadow = true; p.shadow.mapSize.set(1024, 1024); p.shadow.bias = -0.0015; p.shadow.normalBias = 0.06; p.shadow.radius = 3; p.shadow.camera.near = 0.2; p.shadow.camera.far = 12; }   // Ep. 02 (polimento): contato dos objetos com o chão e a bancada
+    scene.add(p, p.target); }
 }
 
 // ------------------------------------------------------------------ materiais
@@ -193,7 +195,7 @@ function criarMaterial(m) {
     uSub: { value: SUBMERSOS.test(m.chave || '') && aguaMeta ? 1 : 0 }, uSigma: { value: sigma }, uSinSol: { value: Math.sin(elevSol) },
     uAMin: { value: caixaAgua.min }, uAMax: { value: caixaAgua.max },
   };
-  Object.assign(U, UG, { uTempo });
+  Object.assign(U, UG, { uTempo }); U.uDestaque = { value: (m.destaque || m.tipo === 'circuito' || m.tipo === 'trabalho') ? 1 : 0 };
   if (m.curvas) matsCurvas.push({ U, curvas: m.curvas });
   mat.onBeforeCompile = (sh) => {
     Object.assign(sh.uniforms, U);
@@ -204,7 +206,7 @@ function criarMaterial(m) {
     sh.fragmentShader = sh.fragmentShader.replace('#include <common>', `#include <common>
       varying vec3 vW; varying vec3 vL; varying vec3 vNw; varying vec3 vGn;
       uniform float uTermico, uVarre, uRevela, uPulso, uFluxo, uTrab, uTrabVel, uResY, uAmb, uTempMat, uTempo, uFase, uOnda, uVelT;
-      uniform sampler2D tLUT; uniform vec3 uCap; uniform float uGas;
+      uniform sampler2D tLUT; uniform vec3 uCap; uniform float uGas; uniform float uFoco, uDestaque;
       ${PALETA}
       uniform int uTipo, uNF; uniform vec3 uCorB; uniform float uVar, uEsc, uRugB, uBump, uEscov, uCaus, uEscCaus, uMacico, uManchas;
       uniform float uFZ[6]; uniform vec3 uFC[6]; uniform vec3 uAcima, uAbaixoC, uLinha; uniform float uZ0, uEsp;
@@ -285,6 +287,7 @@ function criarMaterial(m) {
       if(uSub>0.5 && vW.z<0.0 && all(greaterThan(vW.xy,uAMin.xy+0.3)) && all(lessThan(vW.xy,uAMax.xy-0.3))){
         float k=mix(1.0,0.35,clamp(-vW.z/12.0,0.0,1.0)); reflectedLight.indirectDiffuse*=k; reflectedLight.indirectSpecular*=k; }`)
     .replace('#include <opaque_fragment>', `
+      if(uFoco>0.0) outgoingLight *= 1.0 - 0.45*uFoco*(1.0-uDestaque);   // o entorno recua; circuito e componentes não
       if(uTermico>0.0){ float yy=1.0-gl_FragCoord.y/uResY; float f=uTermico*(1.0-smoothstep(uVarre-0.003,uVarre+0.003,yy));
         if(f>0.0){ float Tl = uTipo==10 ? lut(vGn.x).r : uTempMat; vec3 tc=paletaT(Tl,uAmb);
           float sh=0.60+0.40*abs(dot(normalize(vNw),normalize(cameraPosition-vW)));
@@ -629,18 +632,30 @@ class PassoTransp extends Pass {
     const ac = r.autoClear; r.autoClear = false; r.clearDepth(); r.render(cenaTransp, camera); r.autoClear = ac;
   }
 }
+function capturarAmbiente() {
+  if (!meta.env_pos) return;
+  const salva = { t: UG.uTermico.value, r: UG.uRevela.value, p: UG.uPulso.value };
+  UG.uTermico.value = 0; UG.uRevela.value = 0; UG.uPulso.value = -1;
+  const crt = new THREE.WebGLCubeRenderTarget(256, { type: THREE.HalfFloatType }); const cc = new THREE.CubeCamera(0.05, 60, crt);
+  cc.position.set(...meta.env_pos); scene.add(cc); const envAntigo = scene.environment; scene.environment = null;
+  cc.update(renderer, scene); scene.remove(cc);
+  const pmc = new THREE.PMREMGenerator(renderer); const t = pmc.fromCubemap(crt.texture).texture;
+  scene.environment = t; scene.environmentIntensity = meta.env_cena ?? scene.environmentIntensity;   // reflexos = a própria cozinha
+  Object.assign(UG.uTermico, { value: salva.t }); UG.uRevela.value = salva.r; UG.uPulso.value = salva.p;
+}
 const rt = new THREE.WebGLRenderTarget(W, H, { samples: MSAA, type: THREE.HalfFloatType });
 const composer = new EffectComposer(renderer, rt);
 composer.addPass(new RenderPass(scene, camera));
-if (AO) { const ao = new GTAOPass(scene, camera, W, H); ao.updateGtaoMaterial({ radius: 2.5, distanceExponent: 1.5, thickness: 2.0, scale: 1.0, samples: AO_AMOSTRAS }); ao.blendIntensity = 0.9; composer.addPass(ao); }
+if (AO) { const ao = new GTAOPass(scene, camera, W, H); ao.updateGtaoMaterial({ radius: meta.ao_raio ?? 2.5, distanceExponent: 1.5, thickness: meta.ao_espessura ?? 2.0, scale: 1.0, samples: AO_AMOSTRAS }); ao.blendIntensity = 0.9; composer.addPass(ao); }
 if (cenaTransp.children.length) composer.addPass(new PassoTransp());
 if (BLOOM > 0) composer.addPass(new UnrealBloomPass(new THREE.Vector2(W, H), BLOOM, 0.4, 1.6));
 composer.addPass(new OutputPass());
 if (CACHE) renderer.shadowMap.autoUpdate = false;
 const gl = renderer.getContext(); const px = new Uint8Array(4);
 
+let envFeito = false;
 window.quadro = (i) => {
-  posicionar(i); const t0 = performance.now();
+  posicionar(i); if (!envFeito) { capturarAmbiente(); envFeito = true; } const t0 = performance.now();
   if (cenaTransp.children.length) { const vis = ceu.visible; ceu.visible = false;
     // Ep. 02: profundidade com o MESMO corte de cada objeto (paredes cortadas não podem esconder os feixes)
     const troca = []; scene.traverse(o => { if (o.isMesh && o !== ceu) { troca.push([o, o.material]);
