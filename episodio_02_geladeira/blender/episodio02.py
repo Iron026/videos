@@ -173,12 +173,12 @@ def plano(pid):
                    (0.10, 0.20, 0.20), (-0.10, 0.20, 0.20), (-0.28, 0.345, 0.30), (-0.20, 0.345, 0.80), (0.0, 0.40, 1.20), (0.0, 0.42, 1.65)]
             revela = 1.0
         feixe(pid, pts, 0.018, cresce(F(pid, 0.05), F(pid, 0.85)), sobre=True)
-        rot.add('calor', lambda g: Vector((0.0, 0.40, 1.25)), F(pid, 0.55), T1(pid), linha=False) if pid == 'B3' else None
+        rot.add('calor', lambda g: Vector((0.0, 0.40, 1.25)), E.T('calor', apos=T0(pid) - 0.5), T1(pid), linha=False) if pid == 'B3' else None
     elif pid == 'B4':
         # v2: a garrafa (temperatura ambiente) recortada contra o interior frio da geladeira aberta, ao fundo
         cam_k = K((0, (-0.40, -1.62, 1.14), (-0.36, -0.12, 1.00), 34), (1, (-0.40, -1.50, 1.13), (-0.36, -0.12, 1.00), 34))
         porta = lambda g: 100
-        rot.add('temperatura ambiente', lambda g: Vector((-0.50, -0.11, 1.12)), F('B4', 0.50), T1('B4'), dx=-0.06, linha=False)
+        rot.add('temperatura ambiente', lambda g: Vector((-0.50, -0.11, 1.12)), E.T('temperatura', apos=T0('B4') - 0.5), T1('B4'), dx=-0.06, linha=False)
         termico = [[F('B4', 0.25), 0], [F('B4', 0.45), 1]]
     elif pid in ('B5', 'B6', 'B7'):
         alvo0 = {'B5': (-0.12, -0.10, 0.66), 'B6': (-0.10, -0.08, 0.86), 'B7': (-0.06, -0.04, 1.08)}[pid]
@@ -234,7 +234,7 @@ def plano(pid):
         man.add('alta', (-0.284, 0.345, 0.70), F('C4', 0.18), T1('C4'), 1.0)
     elif pid == 'D1':
         cam_k = K((0, (0.48, -0.60, 1.48), (0.0, 0.0, 1.29), 35), (1, (0.36, -0.42, 1.36), (0.0, 0.0, 1.29), 35))
-        revela = 1.0; rot.add('Evaporador', lambda g: Vector((0.219, -0.10, 1.30)), F('D1', 0.2), T1('D1'), linha=False)
+        revela = 1.0; rot.add('Evaporador', lambda g: Vector((0.219, -0.10, 1.30)), E.T('evaporador', apos=T0('D1') - 0.5), T1('D1'), linha=False)
     elif pid == 'D2':
         cam_k = K((0, (0.10, 0.11, 1.440), (-0.15, 0.215, 1.412), 45), (1, (0.02, 0.11, 1.436), (-0.17, 0.205, 1.408), 45))
         revela = 1.0; man.add('baixa', (-0.15, 0.235, 1.43), F('D2', 0.3), T1('D2'), 0.0)
