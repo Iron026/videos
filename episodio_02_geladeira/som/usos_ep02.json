@@ -1,0 +1,130 @@
+[
+ {
+  "id": "329568",
+  "titulo": "Room Tone Apartment Small Bachelor",
+  "ini": 0.0,
+  "dur": 46.018,
+  "tom": 1.0,
+  "uso": "ambiência da cozinha (tom do cômodo)"
+ },
+ {
+  "id": "455776",
+  "titulo": "fridge compressor soft rumbly bubbly close.flac",
+  "ini": 0.0,
+  "dur": 90.626,
+  "tom": 1.0,
+  "uso": "zumbido do compressor (ligado)"
+ },
+ {
+  "id": "455776",
+  "titulo": "fridge compressor soft rumbly bubbly close.flac",
+  "ini": 0.0,
+  "dur": 120.902,
+  "tom": 0.75,
+  "uso": "zumbido em câmera lenta (E3)"
+ },
+ {
+  "id": "682744",
+  "titulo": "Refrigerator door open; short.WAV",
+  "ini": 0.0,
+  "dur": 2.6,
+  "tom": 1.0,
+  "uso": "porta abrindo (A1) — vedação descola no início do giro"
+ },
+ {
+  "id": "682744",
+  "titulo": "Refrigerator door open; short.WAV",
+  "ini": 0.0,
+  "dur": 2.6,
+  "tom": 1.0,
+  "uso": "porta abrindo (I1) — vedação descola no início do giro"
+ },
+ {
+  "id": "489749",
+  "titulo": "fridge_door_close 01.wav",
+  "ini": 5.2,
+  "dur": 1.4,
+  "tom": 1.0,
+  "uso": "porta fechando (C1) — batida no instante em que o ângulo chega a zero"
+ },
+ {
+  "id": "138052",
+  "titulo": "walking_footsteps_tennis _shoes_tile_floor_2.wav",
+  "ini": 1.165,
+  "dur": 0.32,
+  "tom": 1.0,
+  "uso": "passo — entrada (I1)"
+ },
+ {
+  "id": "138052",
+  "titulo": "walking_footsteps_tennis _shoes_tile_floor_2.wav",
+  "ini": 1.685,
+  "dur": 0.32,
+  "tom": 1.0,
+  "uso": "passo — entrada (I1)"
+ },
+ {
+  "id": "138052",
+  "titulo": "walking_footsteps_tennis _shoes_tile_floor_2.wav",
+  "ini": 2.295,
+  "dur": 0.32,
+  "tom": 1.0,
+  "uso": "passo — entrada (I1)"
+ },
+ {
+  "id": "138052",
+  "titulo": "walking_footsteps_tennis _shoes_tile_floor_2.wav",
+  "ini": 2.85,
+  "dur": 0.32,
+  "tom": 1.0,
+  "uso": "passo — recuo (I1)"
+ },
+ {
+  "id": "138052",
+  "titulo": "walking_footsteps_tennis _shoes_tile_floor_2.wav",
+  "ini": 3.61,
+  "dur": 0.32,
+  "tom": 1.0,
+  "uso": "passo — recuo (I1)"
+ },
+ {
+  "id": "138052",
+  "titulo": "walking_footsteps_tennis _shoes_tile_floor_2.wav",
+  "ini": 4.37,
+  "dur": 0.32,
+  "tom": 1.0,
+  "uso": "passo — recuo fora de quadro (A3)"
+ },
+ {
+  "id": "138052",
+  "titulo": "walking_footsteps_tennis _shoes_tile_floor_2.wav",
+  "ini": 4.835,
+  "dur": 0.32,
+  "tom": 1.0,
+  "uso": "passo — recuo fora de quadro (A3)"
+ },
+ {
+  "id": "138052",
+  "titulo": "walking_footsteps_tennis _shoes_tile_floor_2.wav",
+  "ini": 5.27,
+  "dur": 0.32,
+  "tom": 1.0,
+  "uso": "passo — recuo fora de quadro (A3)"
+ },
+ {
+  "id": "635547",
+  "titulo": "fridge freezer standing internal gurgle noise.flac",
+  "ini": 0.0,
+  "dur": 20.679,
+  "tom": 1.0,
+  "uso": "gorgolejo do fluido evaporando (planos do evaporador)"
+ },
+ {
+  "id": "sintese",
+  "titulo": "chiado sintetizado (ruído filtrado)",
+  "ini": 0,
+  "dur": 5.63,
+  "tom": 1.0,
+  "uso": "chiado da expansão no capilar (G3) — SÍNTESE"
+ }
+]

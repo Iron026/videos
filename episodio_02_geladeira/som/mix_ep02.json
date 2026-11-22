@@ -1,0 +1,22 @@
+{
+ "compressao_voz_max_db": -4.7,
+ "compressao_voz_limiar_dbfs": -16.4,
+ "compressao_voz_razao": 2.0,
+ "compressao_voz_media_na_fala_db": -0.4,
+ "master_db": 5.45,
+ "ganhos_stems_db": {
+  "efeitos": 0.15,
+  "mecanismo": -10.85,
+  "ambiencias": -21.13
+ },
+ "ducking_max_db": -18.0,
+ "limitador_max_db": -3.86,
+ "lufs_wav": -14.08,
+ "tp_wav": -1.8,
+ "limitador_atuacao": {
+  "limitador_max_db": -3.86,
+  "tempo_com_reducao_maior_1db_pct": 0.52,
+  "maior_2db_pct": 0.08,
+  "maior_3db_pct": 0.013
+ }
+}

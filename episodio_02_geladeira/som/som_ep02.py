@@ -206,13 +206,16 @@ def mixar(master_fixo_db=None, ganhos_fixos_db=None, sufixo=''):
     voz = np.frombuffer(subprocess.run(['ffmpeg', '-v', 'error', '-i', MP3, '-ac', '1', '-ar', str(SR), '-f', 's16le', '-'],
                                        capture_output=True, check=True).stdout, np.int16).astype(np.float64) / 32768
     v = np.zeros(N); v[:min(N, len(voz))] = voz[:N]
-    # compressão SUAVE da cópia de mixagem da voz (2,5:1 acima de −26 dBFS, ataque 5 ms, liberação 120 ms): a narração
-    # original tem 20 dB entre pico e loudness; sem isto o limitador final cortaria até 4,6 dB nos picos. O MP3 não muda.
+    # compressão SUAVE da cópia de mixagem da voz: a narração tem 20 dB entre pico e loudness (−21,7 LUFS, −1,7 dBTP) e a
+    # meta é 12,5 dB (−14 LUFS, −1,5 dBTP), então ~7,5 dB de pico precisam sair. Limiar = percentil 90 do nível (5 ms) da
+    # PRÓPRIA fala, razão 2:1: só os 10 % mais fortes são tocados; o resto do trabalho fica com o limitador. (Versão anterior,
+    # −26 dBFS 2,5:1, comprimia > 75 % da fala até −11 dB: descartada.) O MP3 não muda.
     w5 = n_(0.005); nv = np.sqrt(np.convolve(v ** 2, np.ones(w5) / w5, 'same')) + 1e-9; ndb = 20 * np.log10(nv)
-    gr = np.minimum(0.0, -(ndb + 26.0) * (1 - 1 / 2.5)); gr = np.where(ndb > -26.0, gr, 0.0)
+    LIM_V = float(np.percentile(ndb[ndb > -45], 90)); RAZ = 2.0
+    gr = np.minimum(0.0, -(ndb - LIM_V) * (1 - 1 / RAZ)); gr = np.where(ndb > LIM_V, gr, 0.0)
     a_at, a_lb = math.exp(-1 / (0.005 * SR / 16)), math.exp(-1 / (0.12 * SR / 16)); gd = gr[::16]; sm_ = np.empty_like(gd); cur = 0.0
     for i, val in enumerate(gd): cur = cur * a_at + val * (1 - a_at) if val < cur else cur * a_lb + val * (1 - a_lb); sm_[i] = cur
-    v = v * db(np.repeat(sm_, 16)[:N]); COMP_VOZ = float(sm_.min())
+    gcv = np.repeat(sm_, 16)[:N]; v = v * db(gcv); COMP_VOZ = float(sm_.min()); COMP_MED = float(gcv[ndb > -45].mean())
     VOZ = np.stack([v, v], 1)
     ir = S.resposta_impulso('cozinha')
     for k in STEMS:
@@ -239,7 +242,7 @@ def mixar(master_fixo_db=None, ganhos_fixos_db=None, sufixo=''):
     for k in STEMS: sf.write(os.path.join(A, 'stems', f'ep02_{k}{sufixo}.wav'), (STEMS[k] * db(mg)).astype(np.float32), SR, subtype='PCM_24')
     sf.write(os.path.join(A, 'stems', f'ep02_voz{sufixo}.wav'), (VOZ * db(mg)).astype(np.float32), SR, subtype='PCM_24')
     sf.write(os.path.join(A, f'audio_ep02{sufixo}.wav'), mix.astype(np.float32), SR, subtype='PCM_24')
-    return dict(compressao_voz_max_db=round(COMP_VOZ, 1), master_db=round(mg, 2), ganhos_stems_db={k: round(v_, 2) for k, v_ in GK.items()}, ducking_max_db=round(float(20 * np.log10(gs.min())), 1),
+    return dict(compressao_voz_max_db=round(COMP_VOZ, 1), compressao_voz_limiar_dbfs=round(LIM_V, 1), compressao_voz_razao=RAZ, compressao_voz_media_na_fala_db=round(COMP_MED, 2), master_db=round(mg, 2), ganhos_stems_db={k: round(v_, 2) for k, v_ in GK.items()}, ducking_max_db=round(float(20 * np.log10(gs.min())), 1),
                 limitador_max_db=round(red, 2), lufs_wav=round(lufs(mix), 2), tp_wav=round(pico_verdadeiro(mix), 2))
 
 

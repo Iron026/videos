@@ -181,12 +181,18 @@ def gabinete(mt, cortar_parede=False):
     return objs
 
 
+FOLGA_PORTA = 0.0   # m (0 = geometria da V4)
+
+
 def porta(mt):
     """Porta com vedação, prateleiras internas e puxador. Articulação em x = +GX, y = GY0 (abre para a direita)."""
     piv = bpy.data.objects.new('porta_pivo', None); lib.ligar(piv); piv.location = (GX, GY0, 0.0); piv['anim'] = 1
     def P(nome, tam, pos, m):
         o = lib.caixa(nome, tam, (pos[0] - GX, pos[1] - GY0, pos[2]), m); o.parent = piv; return o
-    P('porta_painel', (2 * GX, 0.055, GZ - 0.02), (0, GY0 - 0.0285, (GZ - 0.02) / 2 + 0.03), mt['branco'])
+    # rodada 5: a face de trás do painel (y = GY0 − 0,001) coincide com a face da frente da vedação → z-fighting visível pelo
+    # corte (G3, J3). FOLGA_PORTA recua o painel em 0,5 mm; ligada só onde aprovado (episodio02.CORRECAO_PORTA)
+    f_ = FOLGA_PORTA
+    P('porta_painel', (2 * GX, 0.055 - f_, GZ - 0.02), (0, GY0 - 0.0285 - f_ / 2, (GZ - 0.02) / 2 + 0.03), mt['branco'])
     P('porta_vedacao', (2 * GX - 0.03, 0.012, GZ - 0.10), (0, GY0 - 0.0005 + 0.0055, (GZ - 0.10) / 2 + 0.07), mt['vedacao'])
     P('porta_contraporta', (2 * GX - 0.09, 0.03, GZ - 0.22), (0, GY0 + 0.015 + 0.012, (GZ - 0.22) / 2 + 0.13), mt['porta_int'])
     for z in (0.32, 0.70, 1.08):
