@@ -40,6 +40,7 @@ const BLOOM = parseFloat(P.get('bloom') || '0');      // brilho suave só nas lu
 const meta = await (await fetch(CENA + 'cena.json')).json();
 const AO_CORTE = AO_CORTE_P === '1' || (AO_CORTE_P !== '0' && meta.ao_corte === true);
 const AO_TAMPA = AO_CORTE && (P.get('aotampa') === '1' || (P.get('aotampa') !== '0' && meta.ao_tampa === true));   // rodada 7: AO não escurece as tampas de corte
+const AO_RASANTE = P.get('aorasante') === '1' || (P.get('aorasante') !== '0' && meta.ao_rasante === true);   // rodada 7: AO atenuado em superfícies rasantes
 const AO_PLANA = P.get('aoplana') === '1' || (P.get('aoplana') !== '0' && meta.ao_plana === true);   // rodada 7: G-buffer com tampas PLANAS no plano de corte
 const AO_SEM = new Set(P.get('aosem') !== null ? P.get('aosem').split(',').filter(Boolean) : (meta.ao_excluir || []));   // objetos fora do AO
 const W = Math.round(meta.camera.largura * ESCALA), H = Math.round(meta.camera.altura * ESCALA);
@@ -658,6 +659,8 @@ function blendComMascara(ao, tex) {   // rodada 7: o AO não escurece as tampas;
   ao.blendMaterial.fragmentShader = ao.blendMaterial.fragmentShader.replace('uniform sampler2D tDiffuse;', 'uniform sampler2D tDiffuse;\nuniform sampler2D tMascara;\nuniform vec2 uPx;')
     .replace('gl_FragColor = vec4(mix(vec3(1.), texel.rgb, intensity), texel.a);',
       'float mk = 0.0; for (int i = -2; i <= 2; i++) for (int j = -2; j <= 2; j++) mk += texture2D(tMascara, vUv + vec2(float(i), float(j)) * uPx).a; mk /= 25.0;\n' +
+      // superfícies vistas de RASPÃO (|n·v| < ~0,2): o AO de tela é instável ali (poucos pixels por área) → atenuado
+      (AO_RASANTE ? 'vec3 nv_ = normalize(texture2D(tMascara, vUv).rgb * 2.0 - 1.0); mk *= smoothstep(0.08, 0.22, abs(nv_.z));\n' : '') +
       'gl_FragColor = vec4(mix(vec3(1.), texel.rgb, intensity * mk), texel.a);');
   ao.blendMaterial.needsUpdate = true;
 }

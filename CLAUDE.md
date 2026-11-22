@@ -258,3 +258,18 @@ Arquivos-chave (em `episodio_01_navio_v2/`): `episodio/decupagem_ep01_v3.md` (de
   (mb-tree/lookahead), não da imagem: provar com data dos quadros-fonte + posição dos quadros-chave.
 - Trilha de áudio deve terminar no último QUADRO (n/30), não na duração da decupagem; fade de 50 ms evita clique.
 - Peça trocada só num gesto (mão fechada): mesma dimensão da peça original, para não mudar contato nem trajetória.
+
+## Lições novas do Ep. 02 (rodada 7)
+
+- **Camadas 2D legíveis exigem posicionamento com regras**, não só fonte maior: candidatos em volta da âncora + posições
+  fixas, validade = sem cortes/sobreposições/linhas sobre texto, escolha no plano INTEIRO por programação dinâmica
+  (mínimo de trocas) e fusão curta nas trocas. Testar TODOS os quadros com um registro das caixas desenhadas.
+- **AO coerente com o corte:** normais/profundidade com os mesmos planos de corte; as "tampas" (faces internas vistas
+  pelo corte) marcadas numa máscara SUAVIZADA para o AO não escurecê-las (máscara binária pisca na fronteira).
+- **Correção certa pode revelar defeito antigo:** o AO correto escureceu uma face cinza e expôs z-fighting que já existia
+  (amarelo × cinza de brilho parecido, invisível ao limiar 30). Medir com limiar sensível antes de culpar a correção.
+- Peças que encostam face a face (topo/base × laterais, porta × vedação) brigam pelo corte: folga de 0,5 mm.
+- Hipótese descartada também se registra (atenuação rasante do AO: sem efeito).
+- **Estroboscopia de grades:** medir pela geometria (deslocamento por quadro ÷ passo na tela; ≥ 0,5 = ambíguo). Desacelerar
+  raramente basta com cortes e duração fixos; obturador real (média em luz linear de sub-quadros, 180°) reduz sem mudar
+  câmera, pulso nem enquadramento — o sub-quadro central deve coincidir com o quadro aprovado.

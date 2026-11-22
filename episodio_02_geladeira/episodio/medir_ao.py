@@ -9,7 +9,7 @@ import os, sys, json
 import numpy as np
 from PIL import Image, ImageFilter
 from scipy.ndimage import binary_dilation
-base = sys.argv[1]; VARS = ['atual', 'corte', 'tampa', 'plana']; res = {}
+base = sys.argv[1]; VARS = [v for v in ['atual', 'corte', 'tampa', 'plana', 'tampa_s', 'plana_m'] if os.path.isdir(os.path.join(base, v))]; res = {}
 def L(f): return np.asarray(Image.open(f).convert('L'), np.float32)
 def hf(f): im = Image.open(f).convert('L'); return np.abs(np.asarray(im, np.float32) - np.asarray(im.filter(ImageFilter.GaussianBlur(1.2)), np.float32))
 def mascara_tampa(f):
@@ -23,10 +23,11 @@ def piscantes(fs):
         n += int((alt[:h, :w].reshape(h // 16, 16, w // 16, 16).mean((1, 3)) >= 0.25).sum())
     return n
 for p in sorted(os.listdir(os.path.join(base, 'atual'))):
-    fs = {v: sorted(os.path.join(base, v, p, f) for f in os.listdir(os.path.join(base, v, p)) if f.endswith('.jpg')) for v in VARS}
+    VV = [v for v in VARS if os.path.isdir(os.path.join(base, v, p))]
+    fs = {v: sorted(os.path.join(base, v, p, f) for f in os.listdir(os.path.join(base, v, p)) if f.endswith('.jpg')) for v in VV}
     mt = [mascara_tampa(f) for f in fs['atual']]; mb = [binary_dilation(m, iterations=8) & ~m for m in mt]; mr = [~(binary_dilation(m, iterations=8)) for m in mt]
     R = res[p] = {}
-    for v in VARS:
+    for v in VV:
         g = {'tampas': [], 'faixa': [], 'resto': []}; s = {'tampas': [], 'faixa': [], 'resto': []}
         for k, f in enumerate(fs[v]):
             H_ = hf(f); im = L(f); im0 = L(fs['atual'][k])
@@ -38,4 +39,4 @@ for p in sorted(os.listdir(os.path.join(base, 'atual'))):
 json.dump(res, open(os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', 'relatorios', 'comparativo_ao.json'), 'w'), ensure_ascii=False, indent=1)
 for p, R in res.items():
     print(p, 'tampas', R['area_tampas_pct'], '%')
-    for v in VARS: print('  ', v.ljust(6), 'granulado', R[v]['granulado'], '| sombra', R[v]['sombreamento'], '| piscantes', R[v]['blocos_piscantes_12q'])
+    for v in [x for x in VARS if x in R]: print('  ', v.ljust(8), 'granulado', R[v]['granulado'], '| sombra', R[v]['sombreamento'], '| piscantes', R[v]['blocos_piscantes_12q'])

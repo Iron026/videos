@@ -1,0 +1,21 @@
+{
+ "janela": "36,0–37,8 s; métricas em q72–q122 (36,07–37,74 s)",
+ "quadros_de_risco": 40,
+ "medidas": {
+  "atual (aprovado)": {
+   "pixels_vai_e_volta": 1926607,
+   "pior_quadro_blocos": 425,
+   "variacao_quadro_a_quadro_nos_quadros_de_risco": 20.61
+  },
+  "obturador 180°": {
+   "pixels_vai_e_volta": 1115154,
+   "pior_quadro_blocos": 254,
+   "variacao_quadro_a_quadro_nos_quadros_de_risco": 16.35
+  },
+  "obturador 270°": {
+   "pixels_vai_e_volta": 844000,
+   "pior_quadro_blocos": 153,
+   "variacao_quadro_a_quadro_nos_quadros_de_risco": 15.25
+  }
+ }
+}

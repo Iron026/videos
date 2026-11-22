@@ -13,6 +13,7 @@ AQUI = os.path.dirname(os.path.abspath(__file__)); RAIZ = os.path.join(AQUI, '..
 SAIDA = os.path.join(RAIZ, 'episodio', 'cenas')
 PL = C.PLANOS
 CORRECAO_PORTA = {'G3', 'J3'}   # folga porta × vedação (z-fighting): G3 (rodada 5, regressão da câmera nova); J3 (rodada 6, defeito antigo, autorizado)
+CORRECAO_GAB = set(os.environ.get('CORRECAO_GAB', '').split(',')) - {''}   # rodada 7: folga topo/base × laterais (teste; vazio = aprovado)
 MARGEM = 0.25    # quadros extras antes/depois de cada plano (fusões na montagem)
 MOD = json.load(open(os.path.join(RAIZ, 'ciencia', 'ciclo_modelo.json')))
 BASE = lambda p: p[:2]
@@ -97,6 +98,7 @@ def plano(pid):
     parede = pid in ('A1', 'A2', 'A4', 'J1', 'C1', 'B1', 'B2', 'B3', 'B4', 'B5', 'B6', 'B7', 'I1', 'I2', 'I3', 'I4', 'J2', 'J4')   # v2: I3/I4 com a parede (cômodo fechado)
     s, cam = C.nova(); C.luzes_cozinha(); C.lampada_interna()
     G.FOLGA_PORTA = 0.0005 if pid in CORRECAO_PORTA else 0.0
+    G.FOLGA_GAB = 0.0005 if pid in CORRECAO_GAB else 0.0
     obj = G.montar(parede_traseira=parede)
     mec = CM.montar(); tab = CM.ciclo()
     # garrafa extra sobre a bancada (B4: "Imagine uma garrafa...")

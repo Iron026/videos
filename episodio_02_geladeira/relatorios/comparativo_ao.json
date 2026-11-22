@@ -56,6 +56,34 @@
    "blocos_piscantes_12q": 174,
    "quadros": 12
   },
+  "tampa_s": {
+   "granulado": {
+    "tampas": 3.07,
+    "faixa": 21.0,
+    "resto": 6.39
+   },
+   "sombreamento": {
+    "tampas": -2.52,
+    "faixa": -12.7,
+    "resto": -9.87
+   },
+   "blocos_piscantes_12q": 144,
+   "quadros": 12
+  },
+  "plana_m": {
+   "granulado": {
+    "tampas": 2.94,
+    "faixa": 20.42,
+    "resto": 6.27
+   },
+   "sombreamento": {
+    "tampas": -1.73,
+    "faixa": -15.03,
+    "resto": -10.97
+   },
+   "blocos_piscantes_12q": 165,
+   "quadros": 12
+  },
   "area_tampas_pct": 10.5
  },
  "D4": {
@@ -174,6 +202,34 @@
    "blocos_piscantes_12q": 0,
    "quadros": 12
   },
+  "tampa_s": {
+   "granulado": {
+    "tampas": 3.68,
+    "faixa": 17.46,
+    "resto": 2.03
+   },
+   "sombreamento": {
+    "tampas": -2.16,
+    "faixa": -13.24,
+    "resto": -2.98
+   },
+   "blocos_piscantes_12q": 0,
+   "quadros": 12
+  },
+  "plana_m": {
+   "granulado": {
+    "tampas": 3.27,
+    "faixa": 16.54,
+    "resto": 2.01
+   },
+   "sombreamento": {
+    "tampas": -0.5,
+    "faixa": -13.31,
+    "resto": -3.22
+   },
+   "blocos_piscantes_12q": 0,
+   "quadros": 12
+  },
   "area_tampas_pct": 6.3
  },
  "J3": {
@@ -231,6 +287,34 @@
     "resto": -10.16
    },
    "blocos_piscantes_12q": 13,
+   "quadros": 12
+  },
+  "tampa_s": {
+   "granulado": {
+    "tampas": 2.82,
+    "faixa": 16.31,
+    "resto": 4.59
+   },
+   "sombreamento": {
+    "tampas": -1.29,
+    "faixa": -11.0,
+    "resto": -8.91
+   },
+   "blocos_piscantes_12q": 1,
+   "quadros": 12
+  },
+  "plana_m": {
+   "granulado": {
+    "tampas": 2.6,
+    "faixa": 15.75,
+    "resto": 4.57
+   },
+   "sombreamento": {
+    "tampas": -0.55,
+    "faixa": -11.85,
+    "resto": -9.97
+   },
+   "blocos_piscantes_12q": 6,
    "quadros": 12
   },
   "area_tampas_pct": 19.9

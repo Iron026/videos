@@ -162,11 +162,14 @@ def gabinete(mt, cortar_parede=False):
     # paredes externas: material branco (casca); a espuma fica como camada interna 3 mm afastada (sem faces coplanares)
     objs['lado_e'] = W('gab_lado_e', -GX, -IX, GY0, GY1, 0.0, GZ, mt['branco'])
     objs['lado_d'] = W('gab_lado_d', IX, GX, GY0, GY1, 0.0, GZ, mt['branco'])
-    objs['topo'] = W('gab_topo', -IX, IX, GY0, GY1, IZ1, GZ, mt['branco'])
-    objs['fundo'] = W('gab_fundo_tras', -IX, IX, IY1, GY1, NICHO_Z1, IZ1, mt['branco'])
-    objs['base'] = W('gab_base', -IX, IX, GY0, NICHO_Y0, 0.035, IZ0, mt['branco'])
-    objs['degrau'] = W('gab_degrau', -IX, IX, NICHO_Y0, IY1 + 0.0, NICHO_Z1 - 0.004, NICHO_Z1 + 0.032, mt['branco'])
-    objs['degrau_frente'] = W('gab_degrau_f', -IX, IX, NICHO_Y0 - 0.004, NICHO_Y0 + 0.030, IZ0 - 0.01, NICHO_Z1 + 0.032, mt['branco'])
+    # rodada 7: as peças horizontais encostam face a face nas laterais (x = ±IX) — pelo corte, a tampa de uma e a face da
+    # outra coincidem (z-fighting no topo do J3). FOLGA_GAB recua as pontas em 0,5 mm; ligada só onde aprovado.
+    e = FOLGA_GAB
+    objs['topo'] = W('gab_topo', -IX + e, IX - e, GY0, GY1, IZ1, GZ, mt['branco'])
+    objs['fundo'] = W('gab_fundo_tras', -IX + e, IX - e, IY1, GY1, NICHO_Z1, IZ1, mt['branco'])
+    objs['base'] = W('gab_base', -IX + e, IX - e, GY0, NICHO_Y0, 0.035, IZ0, mt['branco'])
+    objs['degrau'] = W('gab_degrau', -IX + e, IX - e, NICHO_Y0, IY1 + 0.0, NICHO_Z1 - 0.004, NICHO_Z1 + 0.032, mt['branco'])
+    objs['degrau_frente'] = W('gab_degrau_f', -IX + e, IX - e, NICHO_Y0 - 0.004, NICHO_Y0 + 0.030, IZ0 - 0.01, NICHO_Z1 + 0.032, mt['branco'])
     # forro interno (plástico branco), 2 mm para dentro das paredes
     f = 0.002
     for nome, a in [('forro_e', (-IX, -IX + f, IY0, IY1, IZ0, IZ1)), ('forro_d', (IX - f, IX, IY0, IY1, IZ0, IZ1)),
@@ -182,6 +185,7 @@ def gabinete(mt, cortar_parede=False):
 
 
 FOLGA_PORTA = 0.0   # m (0 = geometria da V4)
+FOLGA_GAB = 0.0     # m (0 = geometria aprovada) — rodada 7
 
 
 def porta(mt):
