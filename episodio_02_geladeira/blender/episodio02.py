@@ -12,7 +12,9 @@ COND_Y = G.COND_Y
 AQUI = os.path.dirname(os.path.abspath(__file__)); RAIZ = os.path.join(AQUI, '..')
 SAIDA = os.path.join(RAIZ, 'episodio', 'cenas')
 PL = C.PLANOS
-CORRECAO_PORTA = {'G3', 'J3'}   # folga porta × vedação (z-fighting): G3 (rodada 5, regressão da câmera nova); J3 (rodada 6, defeito antigo, autorizado)
+CORRECAO_PORTA = {'G3', 'J3', 'C4', 'H1', 'H2'}   # folga porta × vedação (z-fighting): G3 (rodada 5, regressão da câmera nova); J3 (rodada 6, defeito antigo, autorizado);
+# C4, H1, H2 (rodada 8: o mesmo defeito antigo, achado pelo detector sensível e confirmado na V6; a junção só fica à vista pelo corte
+# nesses 5 planos — verificação geométrica em relatorios/porta_vedacao_r8.json). Reverter: tirar os três ids do conjunto.
 CORRECAO_GAB = set(os.environ.get('CORRECAO_GAB', '').split(',')) - {''}   # rodada 7: folga topo/base × laterais (teste; vazio = aprovado)
 MARGEM = 0.25    # quadros extras antes/depois de cada plano (fusões na montagem)
 MOD = json.load(open(os.path.join(RAIZ, 'ciencia', 'ciclo_modelo.json')))

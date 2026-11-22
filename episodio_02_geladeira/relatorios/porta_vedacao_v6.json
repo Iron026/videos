@@ -1,0 +1,127 @@
+{
+ "C2": {
+  "quadros": 139,
+  "quadros_com_faixa_a_vista": 0,
+  "largura_max_px_540": 0.0
+ },
+ "C2_obt": {
+  "quadros": 695,
+  "quadros_com_faixa_a_vista": 0,
+  "largura_max_px_540": 0.0
+ },
+ "C3": {
+  "quadros": 163,
+  "quadros_com_faixa_a_vista": 0,
+  "largura_max_px_540": 0.0
+ },
+ "C4": {
+  "quadros": 185,
+  "quadros_com_faixa_a_vista": 94,
+  "largura_max_px_540": 38.8,
+  "trios_avaliados": 46,
+  "pixels_alternando_total": 115475,
+  "pixels_alternando_max_quadro": 17988,
+  "trios_com_mais_de_50_px": 31,
+  "fonte": "ep02_animatic.mp4"
+ },
+ "D1": {
+  "quadros": 152,
+  "quadros_com_faixa_a_vista": 0,
+  "largura_max_px_540": 0.0
+ },
+ "D2": {
+  "quadros": 181,
+  "quadros_com_faixa_a_vista": 0,
+  "largura_max_px_540": 0.0
+ },
+ "D3": {
+  "quadros": 182,
+  "quadros_com_faixa_a_vista": 0,
+  "largura_max_px_540": 0.0
+ },
+ "D4": {
+  "quadros": 129,
+  "quadros_com_faixa_a_vista": 0,
+  "largura_max_px_540": 0.0
+ },
+ "D5": {
+  "quadros": 124,
+  "quadros_com_faixa_a_vista": 0,
+  "largura_max_px_540": 0.0
+ },
+ "E1": {
+  "quadros": 99,
+  "quadros_com_faixa_a_vista": 0,
+  "largura_max_px_540": 0.0
+ },
+ "E2": {
+  "quadros": 135,
+  "quadros_com_faixa_a_vista": 0,
+  "largura_max_px_540": 0.0
+ },
+ "E3": {
+  "quadros": 160,
+  "quadros_com_faixa_a_vista": 0,
+  "largura_max_px_540": 0.0
+ },
+ "E4": {
+  "quadros": 128,
+  "quadros_com_faixa_a_vista": 0,
+  "largura_max_px_540": 0.0
+ },
+ "G1": {
+  "quadros": 68,
+  "quadros_com_faixa_a_vista": 0,
+  "largura_max_px_540": 0.0
+ },
+ "G2": {
+  "quadros": 139,
+  "quadros_com_faixa_a_vista": 0,
+  "largura_max_px_540": 0.0
+ },
+ "G3": {
+  "quadros": 173,
+  "quadros_com_faixa_a_vista": 173,
+  "largura_max_px_540": 21.8,
+  "trios_avaliados": 77,
+  "pixels_alternando_total": 15,
+  "pixels_alternando_max_quadro": 8,
+  "trios_com_mais_de_50_px": 0,
+  "fonte": "ep02_animatic.mp4"
+ },
+ "G3z": {
+  "quadros": 173,
+  "quadros_com_faixa_a_vista": 0,
+  "largura_max_px_540": 0.0
+ },
+ "H1": {
+  "quadros": 150,
+  "quadros_com_faixa_a_vista": 61,
+  "largura_max_px_540": 45.6,
+  "trios_avaliados": 21,
+  "pixels_alternando_total": 28405,
+  "pixels_alternando_max_quadro": 7603,
+  "trios_com_mais_de_50_px": 8,
+  "fonte": "ep02_animatic.mp4"
+ },
+ "H2": {
+  "quadros": 131,
+  "quadros_com_faixa_a_vista": 131,
+  "largura_max_px_540": 38.4,
+  "trios_avaliados": 57,
+  "pixels_alternando_total": 134131,
+  "pixels_alternando_max_quadro": 13544,
+  "trios_com_mais_de_50_px": 39,
+  "fonte": "ep02_animatic.mp4"
+ },
+ "J3": {
+  "quadros": 132,
+  "quadros_com_faixa_a_vista": 132,
+  "largura_max_px_540": 36.2,
+  "trios_avaliados": 57,
+  "pixels_alternando_total": 3480,
+  "pixels_alternando_max_quadro": 244,
+  "trios_com_mais_de_50_px": 24,
+  "fonte": "ep02_animatic.mp4"
+ }
+}
