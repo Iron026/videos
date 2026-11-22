@@ -44,15 +44,15 @@ mp1, mp2 = os.path.join(A, 'ep02_animatic_v1.mp4'), os.path.join(A, 'ep02_animat
 mostrar = [p for p in V2 if p in ALTERADOS or (V1[p]['t0'], V1[p]['t1']) != (V2[p]['t0'], V2[p]['t1'])]
 folhas = []
 for k in range(0, len(mostrar), 4):
-    grupo = mostrar[k:k + 4]; W = 4 * 216 + 3 * 4; H = len(grupo) * (2 * 384 + 34 + 10)
+    grupo = mostrar[k:k + 4]; W = 4 * 216 + 3 * 4; H = len(grupo) * (384 + 34 + 10)
     fo = Image.new('RGB', (2 * W + 24, H), (18, 20, 26)); d = ImageDraw.Draw(fo); y = 0
     for pid in grupo:
-        d.text((6, y + 6), f"{pid} · v1 {V1[pid]['t0']:.2f}–{V1[pid]['t1']:.2f} s → v2 {V2[pid]['t0']:.2f}–{V2[pid]['t1']:.2f} s · {V2[pid]['narrado'][:70]}", font=fonte, fill=(246, 244, 236))
+        d.text((6, y + 6), f"{pid} · v1 {V1[pid]['t0']:.2f}–{V1[pid]['t1']:.2f} s  >  v2 {V2[pid]['t0']:.2f}–{V2[pid]['t1']:.2f} s · {V2[pid]['narrado'][:70]}", font=fonte, fill=(246, 244, 236))
         for lin, (mp, P, nome) in enumerate(((mp1, V1, 'ANTES (v1)'), (mp2, V2, 'DEPOIS (v2)'))):
             for j, f in enumerate((0.10, 0.37, 0.63, 0.90)):
                 im = quadro(mp, P[pid]['t0'] + f * (P[pid]['t1'] - P[pid]['t0'])); fo.paste(im, (lin * (W + 24) + j * 220, y + 34))
             d.text((lin * (W + 24) + 6, y + 34 + 6), nome, font=fonte, fill=(255, 214, 90), stroke_width=2, stroke_fill=(0, 0, 0))
-        y += 2 * 384 + 34 + 10
+        y += 384 + 34 + 10
     # layout: antes à esquerda, depois à direita (uma linha por plano)
     fo = fo.crop((0, 0, 2 * W + 24, y)); nome = os.path.join(REL, f'antes_depois_v2_{k // 4 + 1}.jpg'); fo.save(nome, quality=82); folhas.append(nome)
 print(json.dumps(dict(mesmos_tempos=[{k: v for k, v in r.items() if k in ('plano', 'bytes_identicos', 'quadros', 'dif_media', 'dif_max', 'pct_pixels_acima_8_pior', 'alterado_de_proposito', 'motivo')} for r in res['mesmos_tempos']],

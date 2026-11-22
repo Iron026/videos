@@ -16,7 +16,8 @@
   "H1": "começa fora, no evaporador (v1: começava escuro, no vão do congelador)",
   "H2": "rótulos dos 4 componentes afastados (v1: \"Compressor\" e \"Capilar\" sobrepostos)",
   "I3": "3/4 alto com a parede da cozinha; laço fechado: calor entra pela porta, sai pela traseira e volta ao mesmo cômodo",
-  "I4": "mesmo enquadramento de I3; balanço com larguras proporcionais (retirado + elétrica = liberado)"
+  "I4": "mesmo enquadramento de I3; balanço com larguras proporcionais (retirado + elétrica = liberado)",
+  "C3": "pote vermelho oculto (defeito da v1: tapava metade do quadro no início do plano)"
  },
  "mudancas_globais": {
   "shader_fluido": "correção de defeito da v1: líquido embaixo do tubo com limiar 2·lf − 1 (a v1 usava 1 − 2·lf, invertendo líquido e vapor nos planos macro); vapor mais escuro. Só atua onde a escala fina aparece.",

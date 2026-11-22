@@ -199,3 +199,18 @@ Arquivos-chave (em `episodio_01_navio_v2/`): `episodio/decupagem_ep01_v3.md` (de
 - Renderizador por software: ~10 s de inicialização por plano; agrupar renders e evitar reinicializações à toa.
 - Download de modelos (Hugging Face) depende de rede liberada **e** de permissão da sessão; sem isso, alinhar por pausas
   e declarar que as palavras não foram verificadas.
+
+## Lições novas do Ep. 02 (rodada 2)
+
+- **Whisper oficial local** (openai/whisper-large-v3 → CTranslate2, offline) verifica a narração palavra a palavra. Ele
+  alucina em pausas (palavras de duração zero): retranscrever o trecho sem contexto antes de concluir.
+- O Whisper põe o início das palavras pós-pausa ~0,3 s **dentro do silêncio**. Tempo final = identidade pelo Whisper +
+  ataque acústico medido (`voz/refinar_tempos.py`). O alinhamento só por pausas pode casar a pausa errada (erros de 1,5–2,6 s).
+- **Mudança de fase ao longo de metros não aparece num quadro:** usar um canal esticado e ampliado (corte ilustrativo)
+  alimentado pela MESMA tabela do modelo, com aviso "Canal ampliado (esquema)".
+- Verificar a matemática dos shaders didáticos nos extremos (lf = 0 e 1): o limiar do líquido estava invertido.
+- Corrigir a física não pode apagar a linguagem de cor: o vapor deve manter o matiz da temperatura.
+- O renderizador por software **não é determinístico nem rodando sozinho** (média até 2,4, picos de 81). Provar
+  "não mudou" com a variação natural medida, não com hash.
+- Laços de exportação "padrão" podem esquecer peças (metades de tela dividida). Conferir o hash de toda cena exportada.
+- Objetos do cenário na linha de visão (pote) são o defeito mais comum de macro: conferir os quadros de início dos planos.
