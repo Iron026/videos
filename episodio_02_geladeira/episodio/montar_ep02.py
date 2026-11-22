@@ -24,6 +24,11 @@ AZUL, CREME, AMARELO, ESCURO = (32, 43, 87), (246, 244, 236), (243, 181, 68), (1
 FUSAO = 0.20
 FUSOES = {'B1': 0.30, 'C1': 0.30, 'C2': 0.0, 'D1': 0.30, 'E1': 0.30, 'F1': 0.30, 'I1': 0.30, 'J1': 0.30, 'J4': 0.40}   # fusão na ENTRADA do plano   # v3: C2 em corte SECO no ataque de "Escondido"
 # avisos honestos (canto superior direito), por plano
+CAIXAS = [] if os.environ.get('CAIXAS_EP02') == '1' else None   # rodada 7: registro das caixas desenhadas (testes de sobreposição)
+def _cx(tipo, nome, caixa):
+    if CAIXAS is not None: CAIXAS.append((tipo, nome, [float(c) for c in caixa]))
+
+
 def faixa(a, b, txt): return (PL_T[a][0], PL_T[b][1], txt)
 PL_T = {p['id']: (p['t0'], p['t1']) for p in PLANOS}
 CHIPS = [faixa('A3', 'A3', 'Corte ilustrativo'),
@@ -97,49 +102,203 @@ def dados(pid, arq, g):
     return q[f] if 0 <= f < len(q) else []
 
 
+def caixa_rotulo(txt, u, v, dx, dy):
+    ax, ay = u * W, v * H; bx, by = ax + dx * W, ay + dy * H
+    tw = F_ROT.getlength(txt); pad = 20 * ESC; h = 44 * ESC + 2 * pad * 0.55; w = tw + 2 * pad
+    lx = bx if dx >= 0 else bx - w; lx = min(max(lx, 0.04 * W), 0.96 * W - w); ly = min(max(by - h / 2, 0.09 * H), 0.62 * H - h)
+    return lx, ly, w, h
+
+
 def rotulo(img, txt, u, v, a, dx, dy):
     if a <= 0.01: return
     cam = Image.new('RGBA', img.size, (0, 0, 0, 0)); d = ImageDraw.Draw(cam)
-    ax, ay = u * W, v * H; bx, by = ax + dx * W, ay + dy * H
-    tw = d.textlength(txt, font=F_ROT); pad = 20 * ESC; h = 44 * ESC + 2 * pad * 0.55; w = tw + 2 * pad
-    lx = bx if dx >= 0 else bx - w; lx = min(max(lx, 0.04 * W), 0.96 * W - w); ly = min(max(by - h / 2, 0.09 * H), 0.62 * H - h)
+    ax, ay = u * W, v * H; pad = 20 * ESC
+    lx, ly, w, h = caixa_rotulo(txt, u, v, dx, dy)
     ex = min(max(ax, lx), lx + w); ey = ly + h / 2; al = int(255 * a)
     d.line([(ax, ay), (ex, ey)], fill=CREME + (al,), width=max(2, int(4 * ESC)))
     r = 11 * ESC; d.ellipse([ax - r, ay - r, ax + r, ay + r], fill=AMARELO + (al,), outline=AZUL + (al,), width=max(1, int(3 * ESC)))
-    d.rounded_rectangle([lx, ly, lx + w, ly + h], radius=h / 2, fill=AZUL + (int(240 * a),))
+    d.rounded_rectangle([lx, ly, lx + w, ly + h], radius=h / 2, fill=AZUL + (int(240 * a),)); _cx('rotulo', txt, (lx, ly, lx + w, ly + h)); _cx('ligacao_rotulo', txt, (ax, ay, ex, ey))
     d.rounded_rectangle([lx + h * 0.3, ly + h - 5 * ESC, lx + w - h * 0.3, ly + h], radius=2, fill=AMARELO + (al,))
     d.text((lx + pad, ly + h / 2), txt, font=F_ROT, fill=CREME + (al,), anchor='lm')
     img.paste(Image.alpha_composite(img.convert('RGBA'), cam).convert('RGB'))
 
 
-MAN_LEG = os.environ.get('MANOMETRO_LEGIVEL') == '1'   # rodada 6, PROPOSTA (desligada): mostrador maior, textos de 30 px fora do anel
+MAN_LEG = os.environ.get('MANOMETRO_LEGIVEL', '1') == '1'   # rodada 7: PADRÃO (aprovado): mostrador 25 % maior, textos de 30 px fora do anel; '0' = versão anterior
 F_MAN2 = ImageFont.truetype(os.path.join(FONTE, 'Montserrat-800.ttf'), int(30 * ESC))
+G_ATUAL = [0.0]
 def centro_manometro(u, v, lado):
     R_ = (80 if MAN_LEG else 64) * ESC; cx = min(max(u * W + lado * 150 * ESC, R_ + 12 * ESC), W - R_ - 12 * ESC); cy = min(max(v * H - 110 * ESC, R_ + 120 * ESC), 0.62 * H)
     return R_, cx, cy
 
 
-def manometro(img, nome, u, v, a, val, lado):
+# ---- rodada 7: POSICIONAMENTO dos manômetros legíveis (MAN_LEG). Candidatos em volta da âncora; o primeiro sem colisão com
+# bordas, lupa, faixa da legenda, avisos, rótulos e o outro mostrador; histerese (fica no lugar enquanto couber) e
+# escolha no plano inteiro com o mínimo de trocas; troca inevitável vira fusão curta. Pares (baixa/alta) lado a lado, na ordem horizontal das âncoras.
+def _textos_man(cx, cy, R_):
+    """Posições (centro) dos textos do mostrador legível: 'pressão' no topo; 'baixa'/'alta' nas LATERAIS do anel, na altura
+    das pontas da escala (220° e −40°) — a parte de baixo fica livre para a linha de ligação."""
+    yb = cy + 0.62 * R_; m = 8 * ESC
+    return {'pressão': (cx, cy - R_ - 28 * ESC), 'baixa': (cx - R_ - m - F_MAN2.getlength('baixa') / 2, yb), 'alta': (cx + R_ + m + F_MAN2.getlength('alta') / 2, yb)}
+def _caixas_textos_man(cx, cy, R_):
+    out = {}
+    for t, (x, y) in _textos_man(cx, cy, R_).items():
+        w = F_MAN2.getlength(t) / 2 + 5 * ESC; out[t] = (x - w, y - 20 * ESC, x + w, y + 20 * ESC)
+    return out
+def _extensao_man(cx, cy, R_):
+    cs = list(_caixas_textos_man(cx, cy, R_).values()) + [(cx - R_, cy - R_, cx + R_, cy + R_)]
+    return (min(c[0] for c in cs), min(c[1] for c in cs), max(c[2] for c in cs), max(c[3] for c in cs))
+def _ponto_ligacao(cx, cy, R_, ax, ay):
+    vx, vy = ax - cx, ay - cy; nv = max(1e-6, math.hypot(vx, vy)); return (cx + vx / nv * R_, cy + vy / nv * R_)
+def _seg_cruza(p, q, c):
+    for k in range(1, 40):
+        t = k / 40; x, y = p[0] + (q[0] - p[0]) * t, p[1] + (q[1] - p[1]) * t
+        if c[0] < x < c[2] and c[1] < y < c[3]: return True
+    return False
+def _obstaculos(pid, g):
+    ob = [(0, 0.74 * H - 50 * ESC, W, 0.74 * H + 50 * ESC)]                                    # faixa da legenda
+    nchips = len(chips_dinamicos(g) + [t for (a, b, t) in CHIPS if a <= g < b])
+    if nchips: ob.append((W - 640 * ESC, 0, W, 70 * ESC + nchips * 56 * ESC))                   # avisos (canto superior direito)
+    if PERFIL != 'final': ob.append((0, H - 95 * ESC, W, H))                                      # selo da prévia
+    for (txt, u, v, a, dx, dy) in dados(pid, 'rotulos2d.json', g):
+        if a > 0.05: lx, ly, w, h = caixa_rotulo(txt, u, v, dx, dy); ob.append((lx, ly, lx + w, ly + h))
+    circ = []
+    if pid in INSET:
+        c = INSET[pid]; t0, t1 = PL_T[pid]
+        if t0 - 0.05 <= g <= t1 + 0.4: circ.append((c['cx'] * W, c['cy'] * H, c['r'] * W + 10 * ESC))
+    return ob, circ
+def _colide(ext, ob, circ):
+    m = 12 * ESC
+    if ext[0] < m or ext[1] < m or ext[2] > W - m or ext[3] > H - m: return True
+    for o in ob:
+        if not (ext[2] <= o[0] or o[2] <= ext[0] or ext[3] <= o[1] or o[3] <= ext[1]): return True
+    for (cx, cy, r) in circ:
+        nx, ny = min(max(cx, ext[0]), ext[2]), min(max(cy, ext[1]), ext[3])
+        if (nx - cx) ** 2 + (ny - cy) ** 2 < r * r: return True
+    return False
+_LAYOUT = {}
+TROCA_Q = 9          # quadros da fusão quando o mostrador precisa mudar de lugar (0,3 s)
+def layout_manometros(pid):
+    """Para o plano inteiro: em cada quadro, os candidatos VÁLIDOS; escolha por programação dinâmica que minimiza o número de
+    trocas (custo de troca alto, leve preferência pela ordem dos candidatos). Posição = âncora + deslocamento do candidato
+    (segue a âncora suavemente). Troca inevitável → fusão de TROCA_Q quadros (some num lugar, aparece no outro)."""
+    if pid in _LAYOUT: return _LAYOUT[pid]
+    dados(pid, 'manometros2d.json', 0.0); dd = _dados[(pid, 'manometros2d.json')]; g0 = dd['g0']; Q = dd['quadros']
+    R_ = 80 * ESC; FIX = [(fx * W, fy * H) for fy in (0.16, 0.26, 0.36, 0.46, 0.56, 0.64) for fx in (0.22, 0.5, 0.78)]
+    NC = 10 + len(FIX); um = {}
+    for q in Q:
+        for m in q: um.setdefault(m[0], []).append(m[1])
+    ORD = {n: sum(v) / len(v) for n, v in um.items()}       # ordem horizontal FIXA no plano (média das âncoras)
+    ext0 = _extensao_man(0, 0, R_); larg = ext0[2] - ext0[0] + 24 * ESC
+    def pos(ms, k):
+        anc = [(m[1] * W, m[2] * H) for m in ms]; n = len(ms)
+        mx = sum(a[0] for a in anc) / n; top, bot = min(a[1] for a in anc), max(a[1] for a in anc)
+        dy_up = -(R_ + 130 * ESC); dy_dn = R_ + 150 * ESC; lado = larg * 0.5 + R_ * 0.3
+        base = ([(mx, top + dy_up), (mx + lado, top + dy_up), (mx - lado, top + dy_up), (mx, top + dy_up * 1.6),
+                 (mx + larg, (top + bot) / 2), (mx - larg, (top + bot) / 2), (mx, bot + dy_dn), (mx + lado, bot + dy_dn),
+                 (mx - lado, bot + dy_dn), (mx, bot + dy_dn * 1.5)] + FIX)[k]     # 10 relativos à âncora + posições FIXAS na tela
+        x0 = base[0] - larg * (n - 1) / 2; x0 = min(max(x0, -ext0[0] + 12 * ESC), W - 12 * ESC - ext0[2] - larg * (n - 1))
+        return [(x0 + j * larg, base[1]) for j in range(n)], anc
+    quadros = []
+    for i, q in enumerate(Q):
+        ms = sorted(q, key=lambda m: ORD[m[0]])
+        if not ms: quadros.append(None); continue
+        ob, circ = _obstaculos(pid, i / FPS + g0)
+        lupa = (INSET[pid], [m for m in ms if m[0] == INSET[pid]['ancora']]) if pid in INSET else None
+        val = []
+        for k in range(NC):
+            c, anc = pos(ms, k); val.append(valido(c, ob, circ, anc, lupa and lupa[1] and (lupa[0], [cc for m, cc in zip(ms, c) if m[0] == lupa[0]['ancora']][0])))
+        quadros.append((ms, val))
+    # programação dinâmica sobre os quadros com manômetro
+    idx = [i for i, x in enumerate(quadros) if x]; esc = {}
+    if idx:
+        INF = 1e9; custo = [[0.0] * NC]; trilha = []
+        for j, i in enumerate(idx):
+            val = quadros[i][1]; loc = [(0.0 if val[k] else 1000.0) + 0.01 * k for k in range(NC)]
+            if j == 0: custo = [loc]; continue
+            ant = custo[-1]; novo, tr = [], []
+            for k in range(NC):
+                best = min(range(NC), key=lambda kk: ant[kk] + (0 if kk == k else 30.0)); novo.append(ant[best] + (0 if best == k else 30.0) + loc[k]); tr.append(best)
+            custo.append(novo); trilha.append(tr)
+        k = min(range(NC), key=lambda kk: custo[-1][kk]); seq = [k]
+        for tr in reversed(trilha): k = tr[k]; seq.append(k)
+        seq.reverse(); esc = {i: k for i, k in zip(idx, seq)}
+    out = []
+    for i, x in enumerate(quadros):
+        if not x: out.append({}); continue
+        ms, _ = x; k = esc[i]; c, _a = pos(ms, k); ent = {m[0]: [(cc[0], cc[1], 1.0)] for m, cc in zip(ms, c)}
+        # fusão: se houver troca nos próximos/últimos TROCA_Q/2 quadros, mistura as duas posições
+        for j in range(1, TROCA_Q // 2 + 1):
+            for viz, lado in ((i + j, 1), (i - j, -1)):
+                if viz in esc and esc[viz] != k and all(esc.get(i + lado * t, k) == k for t in range(1, j)):
+                    w = 0.5 - 0.5 * j / (TROCA_Q // 2 + 1)                 # 0,5 na troca → 0 longe dela
+                    c2, _b = pos(ms, esc[viz])
+                    for m, cc, cc2 in zip(ms, c, c2): ent[m[0]] = [(cc[0], cc[1], 1.0 - w), (cc2[0], cc2[1], w)]
+        out.append(ent)
+    _LAYOUT[pid] = (g0, out); return _LAYOUT[pid]
+def valido(centros, ob, circ, anc, lupa=None):
+    """Candidato válido: nenhum mostrador/texto colide com bordas/legenda/avisos/rótulos/lupa nem entre si; nenhuma linha de
+    ligação cruza um texto (de qualquer mostrador do grupo)."""
+    R_ = 80 * ESC; exts = [_extensao_man(cx, cy, R_) for (cx, cy) in centros]
+    if any(_colide(e, ob, circ) for e in exts): return False
+    for a in range(len(exts)):
+        for b in range(a + 1, len(exts)):
+            e1, e2 = exts[a], exts[b]
+            if not (e1[2] + 10 * ESC <= e2[0] or e2[2] + 10 * ESC <= e1[0] or e1[3] <= e2[1] or e2[3] <= e1[1]): return False
+    textos = [c for (cx, cy) in centros for c in _caixas_textos_man(cx, cy, R_).values()]
+    for (cx, cy), (ax, ay) in zip(centros, anc):
+        p = _ponto_ligacao(cx, cy, R_, ax, ay)
+        if any(_seg_cruza((ax, ay), p, c) for c in textos): return False
+        for (cx2, cy2) in centros:   # a ligação não atravessa o OUTRO mostrador
+            if (cx2, cy2) != (cx, cy) and _seg_cruza((ax, ay), p, (cx2 - R_, cy2 - R_, cx2 + R_, cy2 + R_)): return False
+    if lupa:   # a linha da lupa (borda do círculo → topo do mostrador) não cruza textos nem mostradores
+        c, (mx, my) = lupa; lx, ly, lr = c['cx'] * W, c['cy'] * H, c['r'] * W
+        fim = (mx, my - R_ - 50 * ESC); vx, vy = fim[0] - lx, fim[1] - ly; nv = max(1e-6, math.hypot(vx, vy))
+        if nv <= lr + 8 * ESC: return False
+        ini = (lx + vx / nv * lr, ly + vy / nv * lr)
+        if any(_seg_cruza(ini, fim, t) for t in textos): return False
+        if any(_seg_cruza(ini, fim, (cx - R_, cy - R_, cx + R_, cy + R_)) for (cx, cy) in centros): return False
+    return True
+def posicoes_manometro(pid, nome, g):
+    g0, L = layout_manometros(pid); f = int(round((g - g0) * FPS))
+    return L[f].get(nome, []) if 0 <= f < len(L) else []
+def posicao_manometro(pid, nome, g):
+    ps = posicoes_manometro(pid, nome, g); return max(ps, key=lambda p: p[2])[:2] if ps else None
+
+
+def manometro(img, nome, u, v, a, val, lado, pid=None, pp=None):
     """Mostrador neutro (creme/azul da marca): ponteiro de 'baixa' a 'alta' pressão. Sem números (comparação relativa)."""
     if a <= 0.01: return
+    if MAN_LEG and pid and pp is None:   # rodada 7: posições resolvidas (uma, ou duas durante a fusão de uma troca)
+        for (px, py, w) in posicoes_manometro(pid, nome, G_ATUAL[0]): manometro(img, nome, u, v, a * w, val, lado, pid, (px, py))
+        return
     cam = Image.new('RGBA', img.size, (0, 0, 0, 0)); d = ImageDraw.Draw(cam); al = int(255 * a)
     R_, cx, cy = centro_manometro(u, v, lado)
-    d.line([(u * W, v * H), (cx, cy + R_)], fill=CREME + (al,), width=max(2, int(3 * ESC)))
+    if pp:   # rodada 7: posição resolvida; a ligação sai da âncora e chega ao anel no ponto voltado para ela
+        cx, cy = pp; fim = _ponto_ligacao(cx, cy, R_, u * W, v * H)
+        d.line([(u * W, v * H), fim], fill=CREME + (al,), width=max(2, int(3 * ESC)))
+    else: d.line([(u * W, v * H), (cx, cy + R_)], fill=CREME + (al,), width=max(2, int(3 * ESC)))
     d.ellipse([cx - R_, cy - R_, cx + R_, cy + R_], fill=CREME + (al,), outline=AZUL + (al,), width=max(2, int(5 * ESC)))
+    _cx('mostrador', nome, (cx - R_, cy - R_, cx + R_, cy + R_)); _cx('ligacao_man', nome, (u * W, v * H) + (fim if pp else (cx, cy + R_)))
     a0, a1 = math.radians(220), math.radians(-40)
     for k in range(11):
         t = a0 + (a1 - a0) * k / 10; r1, r2 = R_ * 0.78, R_ * (0.62 if k % 5 == 0 else 0.70)
         d.line([(cx + r1 * math.cos(t), cy - r1 * math.sin(t)), (cx + r2 * math.cos(t), cy - r2 * math.sin(t))], fill=AZUL + (al,), width=max(1, int(3 * ESC)))
-    if MAN_LEG:   # fora do anel, junto às pontas da escala, com contorno (legível sobre qualquer fundo)
-        for txt, sx in (('baixa', -1), ('alta', 1)):
-            d.text((cx + sx * R_ * 0.78, cy + R_ + 22 * ESC), txt, font=F_MAN2, fill=CREME + (al,), anchor='mm', stroke_width=max(2, int(5 * ESC)), stroke_fill=ESCURO + (al,))
+    if MAN_LEG:   # fora do anel, nas laterais à altura das pontas da escala, com contorno (legível sobre qualquer fundo)
+        for txt, pt in _textos_man(cx, cy, R_).items():
+            if txt == 'pressão': continue
+            d.text(pt, txt, font=F_MAN2, fill=CREME + (al,), anchor='mm', stroke_width=max(2, int(5 * ESC)), stroke_fill=ESCURO + (al,))
+            _cx('texto_man', nome + ':' + txt, d.textbbox(pt, txt, font=F_MAN2, anchor='mm', stroke_width=max(2, int(5 * ESC))))
     else:
         d.text((cx - R_ * 0.55, cy + R_ * 0.45), 'baixa', font=F_MAN, fill=AZUL + (al,), anchor='mm')
         d.text((cx + R_ * 0.55, cy + R_ * 0.45), 'alta', font=F_MAN, fill=AZUL + (al,), anchor='mm')
+        _cx('texto_man_interno', nome + ':baixa', d.textbbox((cx - R_ * 0.55, cy + R_ * 0.45), 'baixa', font=F_MAN, anchor='mm'))
+        _cx('texto_man_interno', nome + ':alta', d.textbbox((cx + R_ * 0.55, cy + R_ * 0.45), 'alta', font=F_MAN, anchor='mm'))
     t = a0 + (a1 - a0) * (0.1 + 0.8 * max(0.0, min(1.0, val)))
     d.line([(cx, cy), (cx + R_ * 0.72 * math.cos(t), cy - R_ * 0.72 * math.sin(t))], fill=(200, 60, 40, al), width=max(2, int(5 * ESC)))
     rr = 7 * ESC; d.ellipse([cx - rr, cy - rr, cx + rr, cy + rr], fill=AZUL + (al,))
-    d.text((cx, cy - R_ - (22 if MAN_LEG else 16) * ESC), 'pressão', font=F_MAN2 if MAN_LEG else F_MAN, fill=CREME + (al,), anchor='mm', stroke_width=max(1, int((5 if MAN_LEG else 3) * ESC)), stroke_fill=ESCURO + (al,))
+    d.text((cx, cy - R_ - (28 if MAN_LEG else 16) * ESC), 'pressão', font=F_MAN2 if MAN_LEG else F_MAN, fill=CREME + (al,), anchor='mm', stroke_width=max(1, int((5 if MAN_LEG else 3) * ESC)), stroke_fill=ESCURO + (al,))
+    _cx('texto_man', nome + ':pressão', d.textbbox((cx, cy - R_ - (28 if MAN_LEG else 16) * ESC), 'pressão', font=F_MAN2 if MAN_LEG else F_MAN, anchor='mm', stroke_width=max(1, int((5 if MAN_LEG else 3) * ESC))))
+    t_ = a0 + (a1 - a0) * (0.1 + 0.8 * max(0.0, min(1.0, val))); _cx('ponteiro', nome, (val, math.degrees(t_), 0, 0))
     img.paste(Image.alpha_composite(img.convert('RGBA'), cam).convert('RGB'))
 
 
@@ -174,11 +333,14 @@ def lupa(img, pid, g, k):
     if anc:
         # rodada 6: a linha termina no TOPO do manômetro (acima de "pressão"), que tem a própria ligação até o capilar; antes ela
         # descia até a âncora e atravessava o mostrador (cortava "pressão" — visto no teste em 1080)
-        R_m, mx, my = centro_manometro(anc[0], anc[1], 0); ax, ay = mx, my - R_m - (44 if MAN_LEG else 34) * ESC
+        R_m, mx, my = centro_manometro(anc[0], anc[1], 0)
+        pp = posicao_manometro(pid, c['ancora'], g) if MAN_LEG else None
+        if pp: mx, my = pp
+        ax, ay = mx, my - R_m - (50 if MAN_LEG else 34) * ESC
         vx, vy = ax - cx, ay - cy; n = max(1e-6, (vx * vx + vy * vy) ** 0.5)
-        if n > D / 2 + 8: ex, ey = cx + vx / n * D / 2, cy + vy / n * D / 2; d.line((ex, ey, ax, ay), fill=(16, 22, 46, al), width=max(3, int(7 * ESC))); d.line((ex, ey, ax, ay), fill=(246, 244, 236, al), width=max(1, int(3 * ESC)))
+        if n > D / 2 + 8: ex, ey = cx + vx / n * D / 2, cy + vy / n * D / 2; _cx('ligacao_lupa', pid, (ex, ey, ax, ay)); d.line((ex, ey, ax, ay), fill=(16, 22, 46, al), width=max(3, int(7 * ESC))); d.line((ex, ey, ax, ay), fill=(246, 244, 236, al), width=max(1, int(3 * ESC)))
     img.paste(Image.alpha_composite(img.convert('RGBA'), cam).convert('RGB'))
-    img.paste(quad, (cx - D // 2, cy - D // 2), mask)
+    img.paste(quad, (cx - D // 2, cy - D // 2), mask); _cx('lupa', pid, (cx - D // 2, cy - D // 2, cx + D // 2, cy + D // 2))
     anel = Image.new('RGBA', img.size, (0, 0, 0, 0)); ImageDraw.Draw(anel).ellipse((cx - D // 2, cy - D // 2, cx + D // 2, cy + D // 2), outline=(246, 244, 236, int(255 * a)), width=max(2, int(6 * ESC)))
     img.paste(Image.alpha_composite(img.convert('RGBA'), anel).convert('RGB'))
     # rótulos do canal, levados para dentro do círculo
@@ -198,16 +360,17 @@ def compor(g):
     for (pid, k) in camadas:
         for (txt, u, v, a, dx, dy) in dados(pid, 'rotulos2d.json', g): rotulo(img, txt, u, v, a * k, dx, dy)
         ms = dados(pid, 'manometros2d.json', g)
-        for j, (nome, u, v, a, val) in enumerate(ms): manometro(img, nome, u, v, a * k, val, (-1 if j % 2 == 0 else 1) if len(ms) > 1 else 0)
+        G_ATUAL[0] = g
+        for j, (nome, u, v, a, val) in enumerate(ms): manometro(img, nome, u, v, a * k, val, (-1 if j % 2 == 0 else 1) if len(ms) > 1 else 0, pid)
         if pid in INSET: lupa(img, pid, g, k)
     d = ImageDraw.Draw(img)
     for (a, b, txt) in LEG:
-        if a <= g < b: d.text((W // 2, int(0.74 * H)), txt, font=F_LEG, fill=(255, 255, 255), stroke_width=max(2, int(7 * ESC)), stroke_fill=ESCURO, anchor='mm')
+        if a <= g < b: d.text((W // 2, int(0.74 * H)), txt, font=F_LEG, fill=(255, 255, 255), stroke_width=max(2, int(7 * ESC)), stroke_fill=ESCURO, anchor='mm'); _cx('legenda', txt, d.textbbox((W // 2, int(0.74 * H)), txt, font=F_LEG, anchor='mm', stroke_width=max(2, int(7 * ESC))))
     y = int(70 * ESC)
     for txt in chips_dinamicos(g) + [txt for (a, b, txt) in CHIPS if a <= g < b]:
         if True:
             tw = d.textlength(txt, font=F_TAG); x1 = W - int(30 * ESC); x0 = x1 - tw - 36 * ESC
-            d.rounded_rectangle((x0, y, x1, y + 46 * ESC), radius=23 * ESC, fill=AMARELO); d.text((x0 + 18 * ESC, y + 23 * ESC), txt, font=F_TAG, fill=AZUL, anchor='lm')
+            d.rounded_rectangle((x0, y, x1, y + 46 * ESC), radius=23 * ESC, fill=AMARELO); _cx('aviso', txt, (x0, y, x1, y + 46 * ESC)); d.text((x0 + 18 * ESC, y + 23 * ESC), txt, font=F_TAG, fill=AZUL, anchor='lm')
             y += int(56 * ESC)
     if PERFIL != 'final':
         tag = ('ANIMATIC · tempos provisórios · não publicar' if PROVISORIO else 'ANIMATIC · não publicar' if PERFIL == 'animatic' else 'VERSÃO DE REVISÃO · não publicar')

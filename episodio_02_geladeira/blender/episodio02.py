@@ -423,12 +423,13 @@ def plano(pid):
         meta['modo_luz'] = 'tecnico'
     else: meta['modo_luz'] = 'cozinha'
     meta.update(extra)
-    pasta = os.path.join(SAIDA, pid); os.makedirs(pasta, exist_ok=True)
+    pasta = os.path.join(SAIDA, pid + os.environ.get('SUFIXO_PASTA', '')); os.makedirs(pasta, exist_ok=True)   # rodada 7: variantes de teste em pasta própria
     B.exportar_seg(pasta, g0, g1, anim, rot=rot, extra=meta)
     n = int(round((g1 - g0) * B.FPS)) + 1
     json.dump(dict(g0=g0, fps=B.FPS, quadros=man.quadros[:n]), open(os.path.join(pasta, 'manometros2d.json'), 'w'), ensure_ascii=False)
 
 
 if __name__ == '__main__':
+    if os.environ.get('SUBQUADROS'): B.FPS = 30 * int(os.environ['SUBQUADROS'])   # rodada 7: exportação com sub-quadros (desfoque de movimento)
     ids = sys.argv[1:] or [x for k in PL for x in ([k, k + 'b'] if k in ('A4', 'J1') else [k, 'G3z'] if k == 'G3' else [k])]   # metades da tela dividida e a lupa de G3
     for pid in ids: plano(pid)

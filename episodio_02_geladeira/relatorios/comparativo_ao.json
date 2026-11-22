@@ -1,0 +1,238 @@
+{
+ "C4": {
+  "atual": {
+   "granulado": {
+    "tampas": 2.75,
+    "faixa": 19.49,
+    "resto": 5.93
+   },
+   "sombreamento": {
+    "tampas": 0.0,
+    "faixa": 0.0,
+    "resto": 0.0
+   },
+   "blocos_piscantes_12q": 165,
+   "quadros": 12
+  },
+  "corte": {
+   "granulado": {
+    "tampas": 5.38,
+    "faixa": 21.21,
+    "resto": 6.42
+   },
+   "sombreamento": {
+    "tampas": -29.17,
+    "faixa": -15.5,
+    "resto": -10.79
+   },
+   "blocos_piscantes_12q": 130,
+   "quadros": 12
+  },
+  "tampa": {
+   "granulado": {
+    "tampas": 3.18,
+    "faixa": 21.24,
+    "resto": 6.44
+   },
+   "sombreamento": {
+    "tampas": -1.53,
+    "faixa": -14.07,
+    "resto": -9.91
+   },
+   "blocos_piscantes_12q": 158,
+   "quadros": 12
+  },
+  "plana": {
+   "granulado": {
+    "tampas": 3.59,
+    "faixa": 20.69,
+    "resto": 6.3
+   },
+   "sombreamento": {
+    "tampas": -6.31,
+    "faixa": -17.39,
+    "resto": -11.17
+   },
+   "blocos_piscantes_12q": 174,
+   "quadros": 12
+  },
+  "area_tampas_pct": 10.5
+ },
+ "D4": {
+  "atual": {
+   "granulado": {
+    "tampas": 2.58,
+    "faixa": 5.79,
+    "resto": 0.67
+   },
+   "sombreamento": {
+    "tampas": 0.0,
+    "faixa": 0.0,
+    "resto": 0.0
+   },
+   "blocos_piscantes_12q": 767,
+   "quadros": 12
+  },
+  "corte": {
+   "granulado": {
+    "tampas": 2.58,
+    "faixa": 5.79,
+    "resto": 0.67
+   },
+   "sombreamento": {
+    "tampas": -0.0,
+    "faixa": -0.0,
+    "resto": -0.0
+   },
+   "blocos_piscantes_12q": 768,
+   "quadros": 12
+  },
+  "tampa": {
+   "granulado": {
+    "tampas": 2.58,
+    "faixa": 5.79,
+    "resto": 0.67
+   },
+   "sombreamento": {
+    "tampas": 0.0,
+    "faixa": -0.0,
+    "resto": 0.0
+   },
+   "blocos_piscantes_12q": 768,
+   "quadros": 12
+  },
+  "plana": {
+   "granulado": {
+    "tampas": 2.58,
+    "faixa": 5.79,
+    "resto": 0.67
+   },
+   "sombreamento": {
+    "tampas": -0.0,
+    "faixa": -0.0,
+    "resto": -0.0
+   },
+   "blocos_piscantes_12q": 766,
+   "quadros": 12
+  },
+  "area_tampas_pct": 5.3
+ },
+ "G3": {
+  "atual": {
+   "granulado": {
+    "tampas": 3.18,
+    "faixa": 15.28,
+    "resto": 1.84
+   },
+   "sombreamento": {
+    "tampas": 0.0,
+    "faixa": 0.0,
+    "resto": 0.0
+   },
+   "blocos_piscantes_12q": 0,
+   "quadros": 12
+  },
+  "corte": {
+   "granulado": {
+    "tampas": 7.61,
+    "faixa": 17.93,
+    "resto": 2.04
+   },
+   "sombreamento": {
+    "tampas": -32.53,
+    "faixa": -15.95,
+    "resto": -3.27
+   },
+   "blocos_piscantes_12q": 0,
+   "quadros": 12
+  },
+  "tampa": {
+   "granulado": {
+    "tampas": 3.59,
+    "faixa": 17.84,
+    "resto": 2.05
+   },
+   "sombreamento": {
+    "tampas": -0.38,
+    "faixa": -14.94,
+    "resto": -2.99
+   },
+   "blocos_piscantes_12q": 0,
+   "quadros": 12
+  },
+  "plana": {
+   "granulado": {
+    "tampas": 3.72,
+    "faixa": 16.92,
+    "resto": 2.02
+   },
+   "sombreamento": {
+    "tampas": -2.51,
+    "faixa": -15.31,
+    "resto": -3.31
+   },
+   "blocos_piscantes_12q": 0,
+   "quadros": 12
+  },
+  "area_tampas_pct": 6.3
+ },
+ "J3": {
+  "atual": {
+   "granulado": {
+    "tampas": 2.56,
+    "faixa": 14.95,
+    "resto": 4.24
+   },
+   "sombreamento": {
+    "tampas": 0.0,
+    "faixa": 0.0,
+    "resto": 0.0
+   },
+   "blocos_piscantes_12q": 0,
+   "quadros": 12
+  },
+  "corte": {
+   "granulado": {
+    "tampas": 4.39,
+    "faixa": 16.58,
+    "resto": 4.63
+   },
+   "sombreamento": {
+    "tampas": -20.46,
+    "faixa": -13.11,
+    "resto": -9.81
+   },
+   "blocos_piscantes_12q": 0,
+   "quadros": 12
+  },
+  "tampa": {
+   "granulado": {
+    "tampas": 2.62,
+    "faixa": 16.37,
+    "resto": 4.66
+   },
+   "sombreamento": {
+    "tampas": -0.5,
+    "faixa": -12.1,
+    "resto": -8.94
+   },
+   "blocos_piscantes_12q": 12,
+   "quadros": 12
+  },
+  "plana": {
+   "granulado": {
+    "tampas": 2.82,
+    "faixa": 15.89,
+    "resto": 4.61
+   },
+   "sombreamento": {
+    "tampas": -2.16,
+    "faixa": -13.45,
+    "resto": -10.16
+   },
+   "blocos_piscantes_12q": 13,
+   "quadros": 12
+  },
+  "area_tampas_pct": 19.9
+ }
+}

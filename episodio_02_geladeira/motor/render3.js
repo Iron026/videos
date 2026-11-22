@@ -39,6 +39,8 @@ const OCULTAR = new Set((P.get('ocultar') || '').split(',').filter(Boolean));   
 const BLOOM = parseFloat(P.get('bloom') || '0');      // brilho suave só nas luzes fortes (solda, reflexo do sol, linhas luminosas)
 const meta = await (await fetch(CENA + 'cena.json')).json();
 const AO_CORTE = AO_CORTE_P === '1' || (AO_CORTE_P !== '0' && meta.ao_corte === true);
+const AO_TAMPA = AO_CORTE && (P.get('aotampa') === '1' || (P.get('aotampa') !== '0' && meta.ao_tampa === true));   // rodada 7: AO não escurece as tampas de corte
+const AO_PLANA = P.get('aoplana') === '1' || (P.get('aoplana') !== '0' && meta.ao_plana === true);   // rodada 7: G-buffer com tampas PLANAS no plano de corte
 const AO_SEM = new Set(P.get('aosem') !== null ? P.get('aosem').split(',').filter(Boolean) : (meta.ao_excluir || []));   // objetos fora do AO
 const W = Math.round(meta.camera.largura * ESCALA), H = Math.round(meta.camera.altura * ESCALA);
 // ---- Ep. 02: uniformes globais animados por curvas [[t, v], ...] (tempo global do episódio)
@@ -650,13 +652,72 @@ function capturarAmbiente() {
 const rt = new THREE.WebGLRenderTarget(W, H, { samples: MSAA, type: THREE.HalfFloatType });
 const composer = new EffectComposer(renderer, rt);
 composer.addPass(new RenderPass(scene, camera));
-if (AO) { const ao = new GTAOPass(scene, camera, W, H); ao.updateGtaoMaterial({ radius: meta.ao_raio ?? 2.5, distanceExponent: 1.5, thickness: meta.ao_espessura ?? 2.0, scale: 1.0, samples: AO_AMOSTRAS }); ao.blendIntensity = 0.9;
+let gbufPlano = null;
+function blendComMascara(ao, tex) {   // rodada 7: o AO não escurece as tampas; máscara SUAVIZADA (média 5×5) para não piscar na fronteira
+  ao.blendMaterial.uniforms.tMascara = { value: tex }; ao.blendMaterial.uniforms.uPx = { value: new THREE.Vector2(1 / W, 1 / H) };
+  ao.blendMaterial.fragmentShader = ao.blendMaterial.fragmentShader.replace('uniform sampler2D tDiffuse;', 'uniform sampler2D tDiffuse;\nuniform sampler2D tMascara;\nuniform vec2 uPx;')
+    .replace('gl_FragColor = vec4(mix(vec3(1.), texel.rgb, intensity), texel.a);',
+      'float mk = 0.0; for (int i = -2; i <= 2; i++) for (int j = -2; j <= 2; j++) mk += texture2D(tMascara, vUv + vec2(float(i), float(j)) * uPx).a; mk /= 25.0;\n' +
+      'gl_FragColor = vec4(mix(vec3(1.), texel.rgb, intensity * mk), texel.a);');
+  ao.blendMaterial.needsUpdate = true;
+}
+if (AO) { const ao = new GTAOPass(scene, camera, W, H);
+  if (AO_PLANA) {   // rodada 7: o AO recebe a geometria que a IMAGEM mostra — tampas de corte como faces planas no plano de corte
+    const rtN = new THREE.WebGLRenderTarget(W, H, { minFilter: THREE.NearestFilter, magFilter: THREE.NearestFilter, type: THREE.HalfFloatType,
+      depthTexture: new THREE.DepthTexture(W, H, THREE.FloatType) });
+    const rtG = new THREE.WebGLRenderTarget(W, H, { minFilter: THREE.NearestFilter, magFilter: THREE.NearestFilter, type: THREE.FloatType });
+    const nBase = new THREE.MeshNormalMaterial({ blending: THREE.NoBlending });
+    const mk = (pl) => { const m = new THREE.MeshNormalMaterial({ clippingPlanes: [pl], side: THREE.DoubleSide, blending: THREE.NoBlending });
+      m.onBeforeCompile = (sh) => { sh.fragmentShader = sh.fragmentShader.replace(/}\s*$/, '  gl_FragColor.a = gl_FrontFacing ? 1.0 : 0.0;\n}'); };
+      m.customProgramCacheKey = () => 'nPlana' + (pl === planoCorte ? 1 : 2); return m; };
+    const nP1 = mk(planoCorte), nP2 = mk(planoCorte2);
+    const matG = new THREE.ShaderMaterial({ uniforms: { tN: { value: rtN.texture }, tD: { value: rtN.depthTexture }, pInv: { value: new THREE.Matrix4() },
+        pM: { value: new THREE.Matrix4() }, pl1: { value: new THREE.Vector4() }, pl2: { value: new THREE.Vector4() } },
+      vertexShader: 'varying vec2 vUv; void main(){ vUv = uv; gl_Position = vec4(position.xy, 0.0, 1.0); }',
+      fragmentShader: `varying vec2 vUv; uniform sampler2D tN, tD; uniform mat4 pInv, pM; uniform vec4 pl1, pl2;
+        void main(){
+          vec4 n = texture2D(tN, vUv); float z = texture2D(tD, vUv).x; vec3 nrm = n.rgb; float dz = z;
+          if (n.a < 0.5 && z < 1.0) {
+            vec4 vp = pInv * vec4(vUv * 2.0 - 1.0, z * 2.0 - 1.0, 1.0); vec3 pv = vp.xyz / vp.w; float tT = length(pv); vec3 dir = pv / tT;
+            float best = -1.0; vec3 bn = vec3(0.0);
+            for (int k = 0; k < 2; k++) { vec4 pl = k == 0 ? pl1 : pl2; float den = dot(pl.xyz, dir);
+              if (abs(pl.w) < 50.0 && abs(den) > 1e-5) { float t = -pl.w / den; if (t > 0.0 && t <= tT * 1.0005 && t > best) { best = t; bn = pl.xyz; } } }
+            if (best > 0.0) { vec3 p = dir * best; vec4 c = pM * vec4(p, 1.0); dz = c.z / c.w * 0.5 + 0.5;
+              vec3 nn = normalize(bn); if (dot(nn, -p) < 0.0) nn = -nn; nrm = nn * 0.5 + 0.5; }
+          }
+          gl_FragColor = vec4(nrm, dz);
+        }`, depthTest: false, depthWrite: false });
+    const quadG = new FullScreenQuad(matG);
+    gbufPlano = () => {
+      const troca = []; scene.traverse(o => { if (o.isMesh && o.material) { troca.push([o, o.material, o.visible]); const cp = o.material.clippingPlanes;
+        o.material = cp && cp.length ? (cp[0] === planoCorte ? nP1 : nP2) : nBase; } else if ((o.isPoints || o.isLine || o.isSprite) && o.visible) { troca.push([o, null, true]); o.visible = false; } });
+      const cAnt = new THREE.Color(); renderer.getClearColor(cAnt); const aAnt = renderer.getClearAlpha();
+      renderer.setRenderTarget(rtN); renderer.setClearColor(0x7777ff, 1.0); renderer.clear(); renderer.render(scene, camera);
+      for (const [o, m, v] of troca) { if (m) o.material = m; else o.visible = v; }
+      camera.updateMatrixWorld(); const vm = camera.matrixWorldInverse;
+      const pv = (pl) => { const q = pl.clone().applyMatrix4(vm); return new THREE.Vector4(q.normal.x, q.normal.y, q.normal.z, q.constant); };
+      matG.uniforms.pInv.value.copy(camera.projectionMatrixInverse); matG.uniforms.pM.value.copy(camera.projectionMatrix);
+      matG.uniforms.pl1.value.copy(Math.abs(planoCorte.constant) < 50 ? pv(planoCorte) : new THREE.Vector4(0, 0, 0, 99));
+      matG.uniforms.pl2.value.copy(Math.abs(planoCorte2.constant) < 50 ? pv(planoCorte2) : new THREE.Vector4(0, 0, 0, 99));
+      renderer.setRenderTarget(rtG); quadG.render(renderer); renderer.setRenderTarget(null); renderer.setClearColor(cAnt, aAnt);
+    };
+    ao.setGBuffer(rtG.texture, rtG.texture);
+    if (P.get('aomasc') === '1' || (P.get('aomasc') !== '0' && meta.ao_masc === true)) blendComMascara(ao, rtN.texture);   // plana + tampas sem AO
+  } ao.updateGtaoMaterial({ radius: meta.ao_raio ?? 2.5, distanceExponent: 1.5, thickness: meta.ao_espessura ?? 2.0, scale: 1.0, samples: AO_AMOSTRAS }); ao.blendIntensity = 0.9;
   if (AO_CORTE) {   // Ep. 02 rodada 6: o GTAO desenha normais/profundidade com UM material de substituição SEM planos de corte → o AO
     // "via" a metade cortada fora (linha vertical fina no G3 = vinco porta × lateral removidas). Opção: cada peça cortada usa
     // um material de normais com o MESMO corte (dupla face, como na cor); as demais, o material original do GTAO (sem mudança).
     const LADO_AOC = P.get('aocorte_lado') === 'frente' ? THREE.FrontSide : THREE.DoubleSide;   // diagnóstico: tampas fora do AO
     const nK = new THREE.MeshNormalMaterial({ clippingPlanes: [planoCorte], side: LADO_AOC, blending: THREE.NoBlending });
     const nK2 = new THREE.MeshNormalMaterial({ clippingPlanes: [planoCorte2], side: LADO_AOC, blending: THREE.NoBlending });
+    if (AO_TAMPA) {   // rodada 7: as faces internas vistas pelo corte (as "tampas" amarelas) marcam alfa 0 no buffer de normais
+      for (const nm of [nK, nK2]) {
+        nm.onBeforeCompile = (sh) => { sh.fragmentShader = sh.fragmentShader.replace(/}\s*$/, '  gl_FragColor.a = gl_FrontFacing ? 1.0 : 0.0;\n}'); };
+        nm.customProgramCacheKey = () => 'nK_tampa';
+      }
+      // blend do GTAO: onde a máscara é 0 (tampa), o AO não escurece — a tampa é a face plana de um sólido cortado, não a fenda
+      blendComMascara(ao, ao.normalRenderTarget.texture);
+    }
     const orig = ao.renderOverride.bind(ao);
     ao.renderOverride = (r, om, alvo, cc, ca) => {
       if (om !== ao.normalMaterial) return orig(r, om, alvo, cc, ca);
@@ -693,6 +754,7 @@ window.quadro = (i) => {
       o.material = o.material.transparent ? matNada : (!cp || !cp.length ? matProf : (cp[0] === planoCorte ? matProfK : matProfK2)); } });
     renderer.setRenderTarget(rtProf); renderer.clear(); renderer.render(scene, camera); for (const [o, m] of troca) o.material = m; ceu.visible = vis;
     if (cenaOclusor.children.length) { const ac = renderer.autoClear; renderer.autoClear = false; renderer.render(cenaOclusor, camera); renderer.autoClear = ac; } }
+  if (gbufPlano) gbufPlano();
   composer.render(); gl.readPixels(0, 0, 1, 1, gl.RGBA, gl.UNSIGNED_BYTE, px); return performance.now() - t0;
 };
 const ROT = meta.rotulos || [];

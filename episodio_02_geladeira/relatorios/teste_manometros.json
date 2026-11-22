@@ -1,0 +1,102 @@
+{
+ "atual": {
+  "quadros": 613,
+  "problemas": {
+   "texto encosta ou sai do anel": [
+    "C4 44.10s: baixa:baixa",
+    "C4 44.10s: baixa:alta",
+    "C4 44.10s: alta:baixa",
+    "C4 44.10s: alta:alta",
+    "C4 44.13s: baixa:baixa",
+    "C4 44.13s: baixa:alta",
+    "… +1684"
+   ],
+   "linha sobre texto": [
+    "C4 44.10s: ligacao_man alta × baixa:pressão",
+    "C4 44.13s: ligacao_man alta × baixa:pressão",
+    "C4 44.17s: ligacao_man alta × baixa:pressão",
+    "C4 44.20s: ligacao_man alta × baixa:pressão",
+    "C4 44.23s: ligacao_man alta × baixa:pressão",
+    "C4 44.27s: ligacao_man alta × baixa:pressão",
+    "… +34"
+   ],
+   "texto do manômetro × lupa": [
+    "G3 106.17s: capilar:pressão",
+    "G3 106.20s: capilar:pressão",
+    "G3 106.23s: capilar:pressão",
+    "G3 106.27s: capilar:pressão",
+    "G3 106.30s: capilar:pressão",
+    "G3 106.33s: capilar:pressão",
+    "… +84"
+   ],
+   "mostrador × lupa": [
+    "G3 106.23s: capilar",
+    "G3 106.27s: capilar",
+    "G3 106.30s: capilar",
+    "G3 106.33s: capilar",
+    "G3 106.37s: capilar",
+    "G3 106.40s: capilar",
+    "… +26"
+   ]
+  },
+  "alturas_texto_px": [
+   16,
+   17,
+   27
+  ],
+  "resumo": {
+   "texto encosta ou sai do anel": 1690,
+   "linha sobre texto": 40,
+   "texto do manômetro × lupa": 90,
+   "mostrador × lupa": 32
+  }
+ },
+ "proposta": {
+  "quadros": 613,
+  "problemas": {
+   "linha sobre texto": [
+    "G3 106.13s: ligacao_man capilar × capilar:alta",
+    "G3 106.17s: ligacao_man capilar × capilar:alta"
+   ]
+  },
+  "alturas_texto_px": [
+   33,
+   35,
+   41
+  ],
+  "resumo": {
+   "linha sobre texto": 2
+  }
+ },
+ "ponteiros_identicos": {
+  "comparados": 845,
+  "iguais": 845
+ },
+ "estabilidade_1080": {
+  "C4": {
+   "desloc_max_px_por_quadro": 5.3,
+   "desloc_p95_px": 4.9,
+   "trocas_com_fusao": 0
+  },
+  "D2": {
+   "desloc_max_px_por_quadro": 4.2,
+   "desloc_p95_px": 3.8,
+   "trocas_com_fusao": 0
+  },
+  "E3": {
+   "desloc_max_px_por_quadro": 1.5,
+   "desloc_p95_px": 1.5,
+   "trocas_com_fusao": 0
+  },
+  "G3": {
+   "desloc_max_px_por_quadro": 22.8,
+   "desloc_p95_px": 14.3,
+   "trocas_com_fusao": 1
+  },
+  "H2": {
+   "desloc_max_px_por_quadro": 0.4,
+   "desloc_p95_px": 0.3,
+   "trocas_com_fusao": 0
+  }
+ }
+}
