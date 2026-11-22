@@ -28,7 +28,7 @@ def faixa(a, b, txt): return (PL_T[a][0], PL_T[b][1], txt)
 PL_T = {p['id']: (p['t0'], p['t1']) for p in PLANOS}
 CHIPS = [faixa('A2', 'A4', 'Visão térmica (ilustrativa)'), faixa('A3', 'A4', 'Corte ilustrativo'), faixa('B4', 'B7', 'Visão térmica (ilustrativa)'),
          faixa('B5', 'B7', 'Tempo acelerado'), faixa('C1', 'H2', 'Corte ilustrativo'), faixa('D4', 'D4', 'Fluxo desacelerado'),
-         faixa('F2', 'F2', 'Fluxo desacelerado'), faixa('G3', 'G3', 'Fluxo desacelerado'), faixa('E3', 'E3', 'Câmera lenta'),
+         faixa('F2', 'F2', 'Fluxo desacelerado'), faixa('D4', 'D4', 'Canal ampliado (esquema)'), faixa('F2', 'F2', 'Canal ampliado (esquema)'), faixa('G3', 'G3', 'Fluxo desacelerado'), faixa('E3', 'E3', 'Câmera lenta'),
          faixa('I3', 'I4', 'Corte ilustrativo'), faixa('J1', 'J1', 'Visão térmica (ilustrativa)'), faixa('J3', 'J3', 'Corte ilustrativo')]
 
 

@@ -225,12 +225,17 @@ function criarMaterial(m) {
         // escala FINA (planos macro, 24×): líquido embaixo do tubo (estratificado), bolhas na mistura, vapor ralo em estrias
         float ph2=ph*24.0; float aaF=clamp(1.0-fwidth(ph2)*1.2,0.0,1.0);
         float lf=liq+mis*0.75*pow(1.0-x,0.8);                       // fração líquida VISUAL (exagerada: em volume, o vapor domina)
-        float nz=normalize(vNw).z; float noLiq=1.0-smoothstep(1.0-2.0*lf-0.06,1.0-2.0*lf+0.06,nz);
-        float cel=fbm(vec3(ph2*0.9, vGn.y*12.0, 2.1),2,0.5); float bol=mis*noLiq*smoothstep(0.66-0.20*x,0.72-0.20*x,cel);
+        // v2 (correção de defeito da v1): o líquido ocupa a parte de BAIXO do tubo, nz < 2·lf − 1 (lf = 1 → tubo cheio;
+        // lf = 0 → nenhum líquido). A v1 usava 1 − 2·lf, invertendo líquido e vapor fora da faixa de ~50 %.
+        float nz=normalize(vNw).z; float thr=2.0*lf-1.0; float bw=0.05+fwidth(nz);
+        float emLiq=1.0-smoothstep(thr-bw,thr+bw,nz);                // 1 = parede molhada pelo líquido
+        float sup=mis*exp(-pow((nz-thr)/0.06,2.0));                  // superfície livre (só na mistura)
+        float cel=fbm(vec3(ph2*1.6, vGn.y*22.0, 2.1),2,0.5); float bol=mis*emLiq*smoothstep(0.64-0.10*x,0.70-0.10*x,cel);
         float est=fbm(vec3(ph2*0.35, vGn.y*9.0, uTempo*0.4),2,0.5);
-        float pF=noLiq*(0.80+0.14*sin(ph2*6.2832*0.5))*(1.0-0.75*bol) + (1.0-noLiq)*(0.10+0.40*smoothstep(0.52,0.80,est)*(vap+mis));
+        float pF=emLiq*0.85*(1.0-0.45*bol) + (1.0-emLiq)*(0.07+0.28*smoothstep(0.55,0.80,est)*(vap+mis)) + 0.55*sup;
         float p=mix(pG, pF, aaF*uFase);
-        brilho=p; vec3 c=mix(col, mix(col, vec3(1.0), 0.45), bol*aaF*uFase);
+        vec3 cF=mix(col*0.16, col, emLiq); cF=mix(cF, vec3(1.0), clamp(0.75*bol+0.45*sup,0.0,1.0));   // vapor escuro e ralo; líquido cheio
+        brilho=p; vec3 c=mix(col, cF, aaF*uFase);
         if(uPulso>=0.0){ float d=abs(fract(vGn.x-uPulso+0.5)-0.5); brilho += 2.2*exp(-d*d/0.00018); c=mix(c, vec3(1.0,0.96,0.85), clamp(2.0*exp(-d*d/0.00018),0.0,1.0)); }
         return c; }
       float alturaRelevo(){

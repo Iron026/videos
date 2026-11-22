@@ -2,1921 +2,1921 @@
 {
 "palavra": "Você",
 "inicio": 0.11,
-"fim": 0.472
+"fim": 0.2
 },
 {
 "palavra": "já",
-"inicio": 0.472,
-"fim": 0.719
+"inicio": 0.2,
+"fim": 0.38
 },
 {
 "palavra": "reparou",
-"inicio": 0.719,
-"fim": 1.253
+"inicio": 0.38,
+"fim": 0.88
 },
 {
 "palavra": "que",
-"inicio": 1.253,
-"fim": 1.558
+"inicio": 0.88,
+"fim": 1.02
 },
 {
 "palavra": "a",
-"inicio": 1.558,
-"fim": 1.748
+"inicio": 1.02,
+"fim": 1.08
 },
 {
 "palavra": "geladeira",
-"inicio": 1.748,
-"fim": 2.397
+"inicio": 1.08,
+"fim": 1.52
 },
 {
 "palavra": "é",
-"inicio": 2.397,
-"fim": 2.587
+"inicio": 1.52,
+"fim": 1.6
 },
 {
 "palavra": "fria",
-"inicio": 2.587,
-"fim": 2.949
+"inicio": 1.6,
+"fim": 2.0
 },
 {
 "palavra": "por",
-"inicio": 2.949,
-"fim": 3.253
+"inicio": 2.0,
+"fim": 2.16
 },
 {
 "palavra": "dentro,",
-"inicio": 3.253,
-"fim": 3.73
+"inicio": 2.16,
+"fim": 2.62
 },
 {
 "palavra": "mas",
-"inicio": 3.85,
-"fim": 3.962
+"inicio": 2.76,
+"fim": 2.98
 },
 {
 "palavra": "pode",
-"inicio": 3.962,
-"fim": 4.095
+"inicio": 2.98,
+"fim": 3.28
 },
 {
 "palavra": "ficar",
-"inicio": 4.095,
-"fim": 4.249
+"inicio": 3.28,
+"fim": 3.54
 },
 {
 "palavra": "quente",
-"inicio": 4.249,
-"fim": 4.425
+"inicio": 3.85,
+"fim": 4.02
 },
 {
 "palavra": "por",
-"inicio": 4.425,
-"fim": 4.537
+"inicio": 4.02,
+"fim": 4.22
 },
 {
 "palavra": "fora?",
-"inicio": 4.537,
-"fim": 4.67
+"inicio": 4.22,
+"fim": 4.54
 },
 {
 "palavra": "Parece",
 "inicio": 5.12,
-"fim": 5.504
+"fim": 5.24
 },
 {
 "palavra": "estranho:",
-"inicio": 5.504,
-"fim": 5.98
+"inicio": 5.24,
+"fim": 5.94
 },
 {
 "palavra": "como",
 "inicio": 6.31,
-"fim": 6.6
+"fim": 6.38
 },
 {
 "palavra": "a",
-"inicio": 6.6,
-"fim": 6.752
+"inicio": 6.38,
+"fim": 6.5
 },
 {
 "palavra": "mesma",
-"inicio": 6.752,
-"fim": 7.089
+"inicio": 6.5,
+"fim": 6.88
 },
 {
 "palavra": "máquina",
-"inicio": 7.089,
-"fim": 7.517
+"inicio": 6.88,
+"fim": 7.3
 },
 {
 "palavra": "consegue",
-"inicio": 7.517,
-"fim": 7.992
+"inicio": 7.3,
+"fim": 7.72
 },
 {
 "palavra": "fazer",
-"inicio": 7.992,
-"fim": 8.328
+"inicio": 7.72,
+"fim": 8.08
 },
 {
 "palavra": "as",
-"inicio": 8.328,
-"fim": 8.526
+"inicio": 8.08,
+"fim": 8.26
 },
 {
 "palavra": "duas",
-"inicio": 8.526,
-"fim": 8.817
+"inicio": 8.26,
+"fim": 8.52
 },
 {
 "palavra": "coisas",
-"inicio": 8.817,
-"fim": 9.199
+"inicio": 8.52,
+"fim": 9.0
 },
 {
 "palavra": "ao",
-"inicio": 9.199,
-"fim": 9.397
+"inicio": 9.0,
+"fim": 9.26
 },
 {
 "palavra": "mesmo",
-"inicio": 9.397,
-"fim": 9.734
+"inicio": 9.26,
+"fim": 9.52
 },
 {
 "palavra": "tempo?",
-"inicio": 9.734,
-"fim": 10.07
+"inicio": 9.52,
+"fim": 9.92
 },
 {
 "palavra": "A",
 "inicio": 10.39,
-"fim": 10.586
+"fim": 10.45
 },
 {
 "palavra": "resposta",
-"inicio": 10.586,
-"fim": 11.197
+"inicio": 10.45,
+"fim": 10.78
 },
 {
 "palavra": "é",
-"inicio": 11.197,
-"fim": 11.393
+"inicio": 10.78,
+"fim": 11.1
 },
 {
 "palavra": "surpreendente.",
-"inicio": 11.393,
-"fim": 12.3
+"inicio": 11.1,
+"fim": 12.18
 },
 {
 "palavra": "A",
 "inicio": 12.63,
-"fim": 12.799
+"fim": 12.69
 },
 {
 "palavra": "geladeira",
-"inicio": 12.799,
-"fim": 13.378
+"inicio": 12.69,
+"fim": 13.16
 },
 {
 "palavra": "não",
-"inicio": 13.378,
-"fim": 13.65
+"inicio": 13.16,
+"fim": 13.42
 },
 {
 "palavra": "fabrica",
-"inicio": 13.65,
-"fim": 14.127
+"inicio": 13.42,
+"fim": 14.1
 },
 {
 "palavra": "frio.",
-"inicio": 14.127,
-"fim": 14.45
+"inicio": 14.1,
+"fim": 14.42
 },
 {
 "palavra": "Ela",
 "inicio": 14.79,
-"fim": 15.105
+"fim": 14.86
 },
 {
 "palavra": "transporta",
-"inicio": 15.105,
-"fim": 15.836
+"inicio": 14.86,
+"fim": 15.78
 },
 {
 "palavra": "calor.",
-"inicio": 15.836,
-"fim": 16.27
+"inicio": 15.78,
+"fim": 15.98
 },
 {
 "palavra": "Imagine",
 "inicio": 16.69,
-"fim": 17.098
+"fim": 16.92
 },
 {
 "palavra": "uma",
-"inicio": 17.098,
-"fim": 17.331
+"inicio": 16.92,
+"fim": 17.14
 },
 {
 "palavra": "garrafa",
-"inicio": 17.331,
-"fim": 17.739
+"inicio": 17.14,
+"fim": 17.62
 },
 {
 "palavra": "de",
-"inicio": 17.739,
-"fim": 17.928
+"inicio": 17.62,
+"fim": 17.68
 },
 {
 "palavra": "água",
-"inicio": 17.928,
-"fim": 18.205
+"inicio": 17.68,
+"fim": 18.0
 },
 {
 "palavra": "em",
-"inicio": 18.205,
-"fim": 18.394
+"inicio": 18.0,
+"fim": 18.2
 },
 {
 "palavra": "temperatura",
-"inicio": 18.394,
-"fim": 18.978
+"inicio": 18.2,
+"fim": 18.58
 },
 {
 "palavra": "ambiente.",
-"inicio": 18.978,
-"fim": 19.43
+"inicio": 18.58,
+"fim": 19.02
 },
 {
 "palavra": "Quando",
 "inicio": 19.77,
-"fim": 20.106
+"fim": 19.83
 },
 {
 "palavra": "você",
-"inicio": 20.106,
-"fim": 20.36
+"inicio": 19.83,
+"fim": 20.1
 },
 {
 "palavra": "a",
-"inicio": 20.36,
-"fim": 20.494
+"inicio": 20.1,
+"fim": 20.22
 },
 {
 "palavra": "coloca",
-"inicio": 20.494,
-"fim": 20.829
+"inicio": 20.22,
+"fim": 20.54
 },
 {
 "palavra": "na",
-"inicio": 20.829,
-"fim": 21.003
+"inicio": 20.54,
+"fim": 20.84
 },
 {
 "palavra": "geladeira,",
-"inicio": 21.003,
-"fim": 21.46
+"inicio": 20.84,
+"fim": 21.42
 },
 {
 "palavra": "ela",
 "inicio": 21.69,
-"fim": 21.954
+"fim": 21.75
 },
 {
 "palavra": "começa",
-"inicio": 21.954,
-"fim": 22.367
+"inicio": 21.75,
+"fim": 22.14
 },
 {
 "palavra": "a",
-"inicio": 22.367,
-"fim": 22.531
+"inicio": 22.14,
+"fim": 22.34
 },
 {
 "palavra": "perder",
-"inicio": 22.531,
-"fim": 22.944
+"inicio": 22.34,
+"fim": 22.64
 },
 {
 "palavra": "energia",
-"inicio": 22.944,
-"fim": 23.407
+"inicio": 22.64,
+"fim": 23.06
 },
 {
 "palavra": "térmica.",
-"inicio": 23.407,
-"fim": 23.87
+"inicio": 23.06,
+"fim": 23.78
 },
 {
 "palavra": "Mas",
 "inicio": 24.19,
-"fim": 24.483
+"fim": 24.28
 },
 {
 "palavra": "esse",
-"inicio": 24.483,
-"fim": 24.832
+"inicio": 24.28,
+"fim": 24.58
 },
 {
 "palavra": "calor",
-"inicio": 24.832,
-"fim": 25.236
+"inicio": 24.58,
+"fim": 24.92
 },
 {
 "palavra": "não",
-"inicio": 25.236,
-"fim": 25.529
+"inicio": 24.92,
+"fim": 25.28
 },
 {
 "palavra": "desaparece.",
-"inicio": 25.529,
-"fim": 26.21
+"inicio": 25.28,
+"fim": 26.14
 },
 {
 "palavra": "Ele",
 "inicio": 26.55,
-"fim": 26.788
+"fim": 26.61
 },
 {
 "palavra": "precisa",
-"inicio": 26.788,
-"fim": 27.207
+"inicio": 26.61,
+"fim": 27.08
 },
 {
 "palavra": "ir",
-"inicio": 27.207,
-"fim": 27.4
+"inicio": 27.08,
+"fim": 27.44
 },
 {
 "palavra": "para",
-"inicio": 27.4,
-"fim": 27.683
+"inicio": 27.44,
+"fim": 27.64
 },
 {
 "palavra": "algum",
-"inicio": 27.683,
-"fim": 28.012
+"inicio": 27.64,
+"fim": 27.84
 },
 {
 "palavra": "lugar.",
-"inicio": 28.012,
-"fim": 28.34
+"inicio": 27.84,
+"fim": 28.16
 },
 {
 "palavra": "Para",
 "inicio": 28.71,
-"fim": 28.981
+"fim": 28.77
 },
 {
 "palavra": "descobrir",
-"inicio": 28.981,
-"fim": 29.468
+"inicio": 28.77,
+"fim": 29.14
 },
 {
 "palavra": "para",
-"inicio": 29.468,
-"fim": 29.739
+"inicio": 29.14,
+"fim": 29.5
 },
 {
 "palavra": "onde,",
-"inicio": 29.739,
-"fim": 30.01
+"inicio": 29.5,
+"fim": 29.82
 },
 {
 "palavra": "vamos",
 "inicio": 30.25,
-"fim": 30.586
+"fim": 30.34
 },
 {
 "palavra": "abrir",
-"inicio": 30.586,
-"fim": 30.922
+"inicio": 30.34,
+"fim": 30.72
 },
 {
 "palavra": "a",
-"inicio": 30.922,
-"fim": 31.074
+"inicio": 30.72,
+"fim": 30.94
 },
 {
 "palavra": "geladeira",
-"inicio": 31.074,
-"fim": 31.594
+"inicio": 30.94,
+"fim": 31.48
 },
 {
 "palavra": "de",
-"inicio": 31.594,
-"fim": 31.792
+"inicio": 31.48,
+"fim": 31.58
 },
 {
 "palavra": "um",
-"inicio": 31.792,
-"fim": 31.99
+"inicio": 31.58,
+"fim": 31.68
 },
 {
 "palavra": "jeito",
-"inicio": 31.99,
-"fim": 32.326
+"inicio": 31.68,
+"fim": 32.02
 },
 {
 "palavra": "que",
-"inicio": 32.326,
-"fim": 32.57
+"inicio": 32.02,
+"fim": 32.16
 },
 {
 "palavra": "você",
-"inicio": 32.57,
-"fim": 32.86
+"inicio": 32.16,
+"fim": 32.4
 },
 {
 "palavra": "nunca",
-"inicio": 32.86,
-"fim": 33.196
+"inicio": 32.4,
+"fim": 32.92
 },
 {
 "palavra": "viu.",
-"inicio": 33.196,
-"fim": 33.44
+"inicio": 32.92,
+"fim": 33.28
 },
 {
 "palavra": "Escondido",
 "inicio": 33.92,
-"fim": 34.485
+"fim": 34.34
 },
 {
 "palavra": "atrás",
-"inicio": 34.485,
-"fim": 34.85
+"inicio": 34.34,
+"fim": 34.6
 },
 {
 "palavra": "das",
-"inicio": 34.85,
-"fim": 35.115
+"inicio": 34.6,
+"fim": 34.92
 },
 {
 "palavra": "paredes,",
-"inicio": 35.115,
-"fim": 35.58
+"inicio": 34.92,
+"fim": 35.5
 },
 {
 "palavra": "existe",
 "inicio": 35.74,
-"fim": 36.17
+"fim": 35.92
 },
 {
 "palavra": "um",
-"inicio": 36.17,
-"fim": 36.393
+"inicio": 35.92,
+"fim": 36.12
 },
 {
 "palavra": "circuito",
-"inicio": 36.393,
-"fim": 36.927
+"inicio": 36.12,
+"fim": 36.7
 },
 {
 "palavra": "fechado",
-"inicio": 36.927,
-"fim": 37.409
+"inicio": 36.7,
+"fim": 37.26
 },
 {
 "palavra": "de",
-"inicio": 37.409,
-"fim": 37.632
+"inicio": 37.26,
+"fim": 37.44
 },
 {
 "palavra": "tubos.",
-"inicio": 37.632,
-"fim": 38.01
+"inicio": 37.44,
+"fim": 37.92
 },
 {
 "palavra": "Dentro",
 "inicio": 38.27,
-"fim": 38.696
+"fim": 38.56
 },
 {
 "palavra": "dele",
-"inicio": 38.696,
-"fim": 39.02
+"inicio": 38.56,
+"fim": 38.76
 },
 {
 "palavra": "circula",
-"inicio": 39.02,
-"fim": 39.497
+"inicio": 38.76,
+"fim": 39.38
 },
 {
 "palavra": "uma",
-"inicio": 39.497,
-"fim": 39.77
+"inicio": 39.38,
+"fim": 39.48
 },
 {
 "palavra": "substância",
-"inicio": 39.77,
-"fim": 40.401
+"inicio": 39.48,
+"fim": 40.12
 },
 {
 "palavra": "especial:",
-"inicio": 40.401,
-"fim": 40.93
+"inicio": 40.12,
+"fim": 40.62
 },
 {
 "palavra": "o",
 "inicio": 41.26,
-"fim": 41.46
+"fim": 41.32
 },
 {
 "palavra": "fluido",
-"inicio": 41.46,
-"fim": 41.963
+"inicio": 41.51,
+"fim": 41.82
 },
 {
 "palavra": "refrigerante.",
-"inicio": 41.963,
-"fim": 42.83
+"inicio": 41.82,
+"fim": 42.72
 },
 {
 "palavra": "Durante",
 "inicio": 43.16,
-"fim": 43.574
+"fim": 43.46
 },
 {
 "palavra": "o",
-"inicio": 43.574,
-"fim": 43.721
+"inicio": 43.46,
+"fim": 43.52
 },
 {
 "palavra": "percurso,",
-"inicio": 43.721,
-"fim": 44.18
+"inicio": 43.52,
+"fim": 44.1
 },
 {
 "palavra": "ele",
 "inicio": 44.31,
-"fim": 44.567
+"fim": 44.4
 },
 {
 "palavra": "muda",
-"inicio": 44.567,
-"fim": 44.872
+"inicio": 44.4,
+"fim": 44.82
 },
 {
 "palavra": "de",
-"inicio": 44.872,
-"fim": 45.08
+"inicio": 44.82,
+"fim": 44.92
 },
 {
 "palavra": "pressão,",
-"inicio": 45.08,
-"fim": 45.53
+"inicio": 44.92,
+"fim": 45.44
 },
 {
 "palavra": "de",
 "inicio": 45.68,
-"fim": 45.927
+"fim": 45.74
 },
 {
 "palavra": "temperatura",
-"inicio": 45.927,
-"fim": 46.689
+"inicio": 45.74,
+"fim": 46.18
 },
 {
 "palavra": "e",
-"inicio": 46.689,
-"fim": 46.878
+"inicio": 46.18,
+"fim": 46.62
 },
 {
 "palavra": "até",
-"inicio": 46.878,
-"fim": 47.182
+"inicio": 46.79,
+"fim": 47.06
 },
 {
 "palavra": "de",
-"inicio": 47.182,
-"fim": 47.429
+"inicio": 47.06,
+"fim": 47.32
 },
 {
 "palavra": "estado",
-"inicio": 47.429,
-"fim": 47.904
+"inicio": 47.32,
+"fim": 47.62
 },
 {
 "palavra": "físico.",
-"inicio": 47.904,
-"fim": 48.38
+"inicio": 47.62,
+"fim": 48.28
 },
 {
 "palavra": "Vamos",
 "inicio": 48.79,
-"fim": 49.17
+"fim": 48.88
 },
 {
 "palavra": "começar",
-"inicio": 49.17,
-"fim": 49.653
+"inicio": 48.88,
+"fim": 49.3
 },
 {
 "palavra": "pelo",
-"inicio": 49.653,
-"fim": 49.981
+"inicio": 49.3,
+"fim": 49.64
 },
 {
 "palavra": "evaporador,",
-"inicio": 49.981,
-"fim": 50.62
+"inicio": 49.64,
+"fim": 50.48
 },
 {
 "palavra": "a",
 "inicio": 50.85,
-"fim": 50.999
+"fim": 50.91
 },
 {
 "palavra": "parte",
-"inicio": 50.999,
-"fim": 51.329
+"inicio": 50.91,
+"fim": 51.18
 },
 {
 "palavra": "que",
-"inicio": 51.329,
-"fim": 51.569
+"inicio": 51.18,
+"fim": 51.4
 },
 {
 "palavra": "absorve",
-"inicio": 51.569,
-"fim": 51.99
+"inicio": 51.4,
+"fim": 51.96
 },
 {
 "palavra": "calor",
-"inicio": 51.99,
-"fim": 52.32
+"inicio": 51.96,
+"fim": 52.16
 },
 {
 "palavra": "do",
-"inicio": 52.32,
-"fim": 52.514
+"inicio": 52.16,
+"fim": 52.46
 },
 {
 "palavra": "interior.",
-"inicio": 52.514,
-"fim": 52.98
+"inicio": 52.46,
+"fim": 52.66
 },
 {
 "palavra": "Ali,",
 "inicio": 53.31,
-"fim": 53.65
+"fim": 53.44
 },
 {
 "palavra": "o",
 "inicio": 53.82,
-"fim": 53.988
+"fim": 53.88
 },
 {
 "palavra": "fluido",
-"inicio": 53.988,
-"fim": 54.412
+"inicio": 53.88,
+"fim": 54.22
 },
 {
 "palavra": "chega",
-"inicio": 54.412,
-"fim": 54.784
+"inicio": 54.22,
+"fim": 54.4
 },
 {
 "palavra": "frio",
-"inicio": 54.784,
-"fim": 55.105
+"inicio": 54.4,
+"fim": 54.94
 },
 {
 "palavra": "e",
-"inicio": 55.105,
-"fim": 55.273
+"inicio": 54.94,
+"fim": 55.1
 },
 {
 "palavra": "sob",
-"inicio": 55.273,
-"fim": 55.544
+"inicio": 55.1,
+"fim": 55.3
 },
 {
 "palavra": "baixa",
-"inicio": 55.544,
-"fim": 55.916
+"inicio": 55.3,
+"fim": 55.8
 },
 {
 "palavra": "pressão,",
-"inicio": 55.916,
-"fim": 56.39
+"inicio": 55.8,
+"fim": 56.32
 },
 {
 "palavra": "numa",
 "inicio": 56.56,
-"fim": 56.859
+"fim": 56.64
 },
 {
 "palavra": "mistura",
-"inicio": 56.859,
-"fim": 57.301
+"inicio": 56.64,
+"fim": 57.12
 },
 {
 "palavra": "de",
-"inicio": 57.301,
-"fim": 57.505
+"inicio": 57.12,
+"fim": 57.28
 },
 {
 "palavra": "líquido",
-"inicio": 57.505,
-"fim": 57.947
+"inicio": 57.28,
+"fim": 57.82
 },
 {
 "palavra": "e",
-"inicio": 57.947,
-"fim": 58.103
+"inicio": 57.82,
+"fim": 57.92
 },
 {
 "palavra": "vapor.",
-"inicio": 58.103,
-"fim": 58.45
+"inicio": 57.92,
+"fim": 58.14
 },
 {
 "palavra": "Como",
 "inicio": 58.8,
-"fim": 59.064
+"fim": 58.86
 },
 {
 "palavra": "está",
-"inicio": 59.064,
-"fim": 59.328
+"inicio": 58.86,
+"fim": 59.04
 },
 {
 "palavra": "mais",
-"inicio": 59.328,
-"fim": 59.592
+"inicio": 59.04,
+"fim": 59.26
 },
 {
 "palavra": "frio",
-"inicio": 59.592,
-"fim": 59.857
+"inicio": 59.26,
+"fim": 59.76
 },
 {
 "palavra": "que",
-"inicio": 59.857,
-"fim": 60.079
+"inicio": 59.76,
+"fim": 59.88
 },
 {
 "palavra": "o",
-"inicio": 60.079,
-"fim": 60.217
+"inicio": 59.88,
+"fim": 59.98
 },
 {
 "palavra": "ar",
-"inicio": 60.217,
-"fim": 60.398
+"inicio": 59.98,
+"fim": 60.24
 },
 {
 "palavra": "e",
-"inicio": 60.398,
-"fim": 60.536
+"inicio": 60.24,
+"fim": 60.4
 },
 {
 "palavra": "os",
-"inicio": 60.536,
-"fim": 60.716
+"inicio": 60.4,
+"fim": 60.46
 },
 {
 "palavra": "alimentos,",
-"inicio": 60.716,
-"fim": 61.19
+"inicio": 60.46,
+"fim": 60.82
 },
 {
 "palavra": "recebe",
 "inicio": 61.37,
-"fim": 61.789
+"fim": 61.62
 },
 {
 "palavra": "calor",
-"inicio": 61.789,
-"fim": 62.157
+"inicio": 61.62,
+"fim": 61.92
 },
 {
 "palavra": "através",
-"inicio": 62.157,
-"fim": 62.627
+"inicio": 61.92,
+"fim": 62.28
 },
 {
 "palavra": "das",
-"inicio": 62.627,
-"fim": 62.894
+"inicio": 62.28,
+"fim": 62.68
 },
 {
 "palavra": "paredes",
-"inicio": 62.894,
-"fim": 63.364
+"inicio": 62.68,
+"fim": 63.24
 },
 {
 "palavra": "dos",
-"inicio": 63.364,
-"fim": 63.631
+"inicio": 63.24,
+"fim": 63.36
 },
 {
 "palavra": "tubos.",
-"inicio": 63.631,
-"fim": 64.0
+"inicio": 63.36,
+"fim": 63.9
 },
 {
 "palavra": "Ao",
 "inicio": 64.32,
-"fim": 64.538
+"fim": 64.38
 },
 {
 "palavra": "absorver",
-"inicio": 64.538,
-"fim": 65.06
+"inicio": 64.38,
+"fim": 64.98
 },
 {
 "palavra": "essa",
-"inicio": 65.06,
-"fim": 65.379
+"inicio": 64.98,
+"fim": 65.16
 },
 {
 "palavra": "energia,",
-"inicio": 65.379,
-"fim": 65.85
+"inicio": 65.16,
+"fim": 65.46
 },
 {
 "palavra": "a",
 "inicio": 66.02,
-"fim": 66.213
+"fim": 66.08
 },
 {
 "palavra": "parte",
-"inicio": 66.213,
-"fim": 66.641
+"inicio": 66.08,
+"fim": 66.3
 },
 {
 "palavra": "líquida",
-"inicio": 66.641,
-"fim": 67.185
+"inicio": 66.3,
+"fim": 66.9
 },
 {
 "palavra": "evapora.",
-"inicio": 67.185,
-"fim": 67.73
+"inicio": 66.9,
+"fim": 67.64
 },
 {
 "palavra": "O",
 "inicio": 68.07,
-"fim": 68.239
+"fim": 68.13
 },
 {
 "palavra": "calor",
-"inicio": 68.239,
-"fim": 68.613
+"inicio": 68.13,
+"fim": 68.38
 },
 {
 "palavra": "saiu",
-"inicio": 68.613,
-"fim": 68.935
+"inicio": 68.38,
+"fim": 68.88
 },
 {
 "palavra": "dos",
-"inicio": 68.935,
-"fim": 69.206
+"inicio": 68.88,
+"fim": 69.04
 },
 {
 "palavra": "alimentos",
-"inicio": 69.206,
-"fim": 69.784
+"inicio": 69.04,
+"fim": 69.42
 },
 {
 "palavra": "e",
-"inicio": 69.784,
-"fim": 69.953
+"inicio": 69.94,
+"fim": 70.0
 },
 {
 "palavra": "entrou",
-"inicio": 69.953,
-"fim": 70.378
+"inicio": 70.0,
+"fim": 70.38
 },
 {
 "palavra": "no",
-"inicio": 70.378,
-"fim": 70.598
+"inicio": 70.38,
+"fim": 70.52
 },
 {
 "palavra": "refrigerante.",
-"inicio": 70.598,
-"fim": 71.33
+"inicio": 70.52,
+"fim": 71.24
 },
 {
 "palavra": "Mas",
 "inicio": 71.67,
-"fim": 71.945
+"fim": 71.73
 },
 {
 "palavra": "como",
-"inicio": 71.945,
-"fim": 72.271
+"inicio": 72.19,
+"fim": 72.25
 },
 {
 "palavra": "mandar",
-"inicio": 72.271,
-"fim": 72.702
+"inicio": 72.25,
+"fim": 72.7
 },
 {
 "palavra": "esse",
-"inicio": 72.702,
-"fim": 73.028
+"inicio": 72.7,
+"fim": 72.98
 },
 {
 "palavra": "calor",
-"inicio": 73.028,
-"fim": 73.407
+"inicio": 72.98,
+"fim": 73.3
 },
 {
 "palavra": "para",
-"inicio": 73.407,
-"fim": 73.733
+"inicio": 73.3,
+"fim": 73.52
 },
 {
 "palavra": "fora?",
-"inicio": 73.733,
-"fim": 74.06
+"inicio": 73.52,
+"fim": 73.86
 },
 {
 "palavra": "É",
 "inicio": 74.43,
-"fim": 74.449
+"fim": 74.49
 },
 {
 "palavra": "aqui",
-"inicio": 74.449,
-"fim": 74.486
+"inicio": 74.79,
+"fim": 74.85
 },
 {
 "palavra": "que",
-"inicio": 74.486,
-"fim": 74.517
+"inicio": 74.85,
+"fim": 75.0
 },
 {
 "palavra": "entra",
-"inicio": 74.517,
-"fim": 74.559
+"inicio": 75.0,
+"fim": 75.4
 },
 {
 "palavra": "o",
-"inicio": 74.559,
-"fim": 74.578
+"inicio": 75.4,
+"fim": 75.5
 },
 {
 "palavra": "compressor,",
-"inicio": 74.578,
-"fim": 74.65
+"inicio": 75.5,
+"fim": 75.88
 },
 {
 "palavra": "movido",
-"inicio": 74.79,
-"fim": 75.239
+"inicio": 76.52,
+"fim": 76.9
 },
 {
 "palavra": "por",
-"inicio": 75.239,
-"fim": 75.526
+"inicio": 76.9,
+"fim": 77.14
 },
 {
 "palavra": "eletricidade.",
-"inicio": 75.526,
-"fim": 76.3
+"inicio": 77.14,
+"fim": 77.94
 },
 {
 "palavra": "Ele",
-"inicio": 76.52,
-"fim": 76.734
+"inicio": 78.39,
+"fim": 78.46
 },
 {
 "palavra": "suga",
-"inicio": 76.734,
-"fim": 76.989
+"inicio": 78.46,
+"fim": 78.96
 },
 {
 "palavra": "o",
-"inicio": 76.989,
-"fim": 77.122
+"inicio": 78.96,
+"fim": 79.04
 },
 {
 "palavra": "vapor",
-"inicio": 77.122,
-"fim": 77.417
+"inicio": 79.04,
+"fim": 79.38
 },
 {
 "palavra": "e",
-"inicio": 77.417,
-"fim": 77.551
+"inicio": 79.38,
+"fim": 79.66
 },
 {
 "palavra": "o",
-"inicio": 77.551,
-"fim": 77.684
+"inicio": 79.66,
+"fim": 79.72
 },
 {
 "palavra": "comprime,",
-"inicio": 77.684,
-"fim": 78.1
+"inicio": 79.72,
+"fim": 80.34
 },
 {
 "palavra": "elevando",
-"inicio": 78.39,
-"fim": 78.841
+"inicio": 80.62,
+"fim": 81.08
 },
 {
 "palavra": "sua",
-"inicio": 78.841,
-"fim": 79.073
+"inicio": 81.08,
+"fim": 81.24
 },
 {
 "palavra": "pressão",
-"inicio": 79.073,
-"fim": 79.481
+"inicio": 81.24,
+"fim": 81.76
 },
 {
 "palavra": "e",
-"inicio": 79.481,
-"fim": 79.625
+"inicio": 81.76,
+"fim": 81.9
 },
 {
 "palavra": "sua",
-"inicio": 79.625,
-"fim": 79.858
+"inicio": 81.9,
+"fim": 82.1
 },
 {
 "palavra": "temperatura.",
-"inicio": 79.858,
-"fim": 80.44
+"inicio": 82.1,
+"fim": 82.58
 },
 {
 "palavra": "Agora,",
-"inicio": 80.62,
-"fim": 82.91
+"inicio": 83.19,
+"fim": 83.38
 },
 {
 "palavra": "o",
-"inicio": 83.19,
-"fim": 83.364
+"inicio": 83.82,
+"fim": 83.88
 },
 {
 "palavra": "refrigerante",
-"inicio": 83.364,
-"fim": 84.119
+"inicio": 83.88,
+"fim": 84.44
 },
 {
 "palavra": "está",
-"inicio": 84.119,
-"fim": 84.451
+"inicio": 84.44,
+"fim": 84.66
 },
 {
 "palavra": "mais",
-"inicio": 84.451,
-"fim": 84.783
+"inicio": 84.66,
+"fim": 85.0
 },
 {
 "palavra": "quente",
-"inicio": 84.783,
-"fim": 85.221
+"inicio": 85.0,
+"fim": 85.46
 },
 {
 "palavra": "que",
-"inicio": 85.221,
-"fim": 85.501
+"inicio": 85.46,
+"fim": 85.7
 },
 {
 "palavra": "o",
-"inicio": 85.501,
-"fim": 85.675
+"inicio": 85.7,
+"fim": 85.74
 },
 {
 "palavra": "ar",
-"inicio": 85.675,
-"fim": 85.902
+"inicio": 85.74,
+"fim": 85.94
 },
 {
 "palavra": "da",
-"inicio": 85.902,
-"fim": 86.129
+"inicio": 85.94,
+"fim": 86.08
 },
 {
 "palavra": "cozinha.",
-"inicio": 86.129,
-"fim": 86.62
+"inicio": 86.08,
+"fim": 86.54
 },
 {
 "palavra": "Por",
 "inicio": 86.91,
-"fim": 87.111
+"fim": 86.97
 },
 {
 "palavra": "isso,",
-"inicio": 87.111,
-"fim": 87.35
+"inicio": 86.97,
+"fim": 87.22
 },
 {
 "palavra": "ao",
 "inicio": 87.52,
-"fim": 87.722
+"fim": 87.58
 },
 {
 "palavra": "atravessar",
-"inicio": 87.722,
-"fim": 88.3
+"inicio": 87.58,
+"fim": 88.24
 },
 {
 "palavra": "o",
-"inicio": 88.3,
-"fim": 88.455
+"inicio": 88.24,
+"fim": 88.3
 },
 {
 "palavra": "condensador,",
-"inicio": 88.455,
-"fim": 89.08
+"inicio": 88.3,
+"fim": 88.96
 },
 {
 "palavra": "ele",
 "inicio": 89.28,
-"fim": 89.532
+"fim": 89.34
 },
 {
 "palavra": "consegue",
-"inicio": 89.532,
-"fim": 90.023
+"inicio": 89.34,
+"fim": 89.72
 },
 {
 "palavra": "liberar",
-"inicio": 90.023,
-"fim": 90.465
+"inicio": 89.72,
+"fim": 90.44
 },
 {
 "palavra": "calor",
-"inicio": 90.465,
-"fim": 90.813
+"inicio": 90.44,
+"fim": 90.74
 },
 {
 "palavra": "para",
-"inicio": 90.813,
-"fim": 91.113
+"inicio": 90.74,
+"fim": 91.04
 },
 {
 "palavra": "o",
-"inicio": 91.113,
-"fim": 91.27
+"inicio": 91.04,
+"fim": 91.14
 },
 {
 "palavra": "ambiente.",
-"inicio": 91.27,
-"fim": 91.76
+"inicio": 91.14,
+"fim": 91.38
 },
 {
 "palavra": "Enquanto",
 "inicio": 92.09,
-"fim": 92.626
+"fim": 92.44
 },
 {
 "palavra": "perde",
-"inicio": 92.626,
-"fim": 93.006
+"inicio": 92.44,
+"fim": 92.74
 },
 {
 "palavra": "energia,",
-"inicio": 93.006,
-"fim": 93.49
+"inicio": 92.74,
+"fim": 93.04
 },
 {
 "palavra": "o",
 "inicio": 93.66,
-"fim": 93.821
+"fim": 93.72
 },
 {
 "palavra": "vapor",
-"inicio": 93.821,
-"fim": 94.177
+"inicio": 93.72,
+"fim": 93.9
 },
 {
 "palavra": "se",
-"inicio": 94.177,
-"fim": 94.387
+"inicio": 93.9,
+"fim": 94.2
 },
 {
 "palavra": "transforma",
-"inicio": 94.387,
-"fim": 94.986
+"inicio": 94.2,
+"fim": 94.86
 },
 {
 "palavra": "novamente",
-"inicio": 94.986,
-"fim": 95.537
+"inicio": 94.86,
+"fim": 95.22
 },
 {
 "palavra": "em",
-"inicio": 95.537,
-"fim": 95.747
+"inicio": 95.22,
+"fim": 95.7
 },
 {
 "palavra": "líquido.",
-"inicio": 95.747,
-"fim": 96.2
+"inicio": 95.7,
+"fim": 96.14
 },
 {
 "palavra": "Só",
 "inicio": 96.51,
-"fim": 96.761
+"fim": 96.6
 },
 {
 "palavra": "falta",
-"inicio": 96.761,
-"fim": 97.186
+"inicio": 96.6,
+"fim": 97.0
 },
 {
 "palavra": "uma",
-"inicio": 97.186,
-"fim": 97.495
+"inicio": 97.0,
+"fim": 97.3
 },
 {
 "palavra": "etapa.",
-"inicio": 97.495,
-"fim": 97.92
+"inicio": 97.3,
+"fim": 97.72
 },
 {
 "palavra": "Esse",
 "inicio": 98.23,
-"fim": 98.518
+"fim": 98.32
 },
 {
 "palavra": "líquido",
-"inicio": 98.518,
-"fim": 98.944
+"inicio": 98.32,
+"fim": 98.82
 },
 {
 "palavra": "passa",
-"inicio": 98.944,
-"fim": 99.278
+"inicio": 98.82,
+"fim": 99.06
 },
 {
 "palavra": "por",
-"inicio": 99.278,
-"fim": 99.52
+"inicio": 99.06,
+"fim": 99.3
 },
 {
 "palavra": "um",
-"inicio": 99.52,
-"fim": 99.717
+"inicio": 99.3,
+"fim": 99.42
 },
 {
 "palavra": "tubo",
-"inicio": 99.717,
-"fim": 100.005
+"inicio": 99.42,
+"fim": 99.76
 },
 {
 "palavra": "muito",
-"inicio": 100.005,
-"fim": 100.339
+"inicio": 99.76,
+"fim": 100.06
 },
 {
 "palavra": "estreito,",
-"inicio": 100.339,
-"fim": 100.81
+"inicio": 100.06,
+"fim": 100.74
 },
 {
 "palavra": "chamado",
 "inicio": 100.96,
-"fim": 101.505
+"fim": 101.16
 },
 {
 "palavra": "capilar.",
-"inicio": 101.505,
-"fim": 102.05
+"inicio": 101.16,
+"fim": 101.88
 },
 {
 "palavra": "A",
 "inicio": 102.32,
-"fim": 102.502
+"fim": 102.38
 },
 {
 "palavra": "pressão",
-"inicio": 102.502,
-"fim": 103.015
+"inicio": 102.38,
+"fim": 102.78
 },
 {
 "palavra": "cai",
-"inicio": 103.015,
-"fim": 103.307
+"inicio": 102.78,
+"fim": 103.02
 },
 {
 "palavra": "bruscamente,",
-"inicio": 103.307,
-"fim": 104.04
+"inicio": 103.02,
+"fim": 103.84
 },
 {
 "palavra": "e",
 "inicio": 104.23,
-"fim": 104.315
+"fim": 104.29
 },
 {
 "palavra": "parte",
-"inicio": 104.315,
-"fim": 104.502
+"inicio": 104.29,
+"fim": 104.58
 },
 {
 "palavra": "do",
-"inicio": 104.502,
-"fim": 104.613
+"inicio": 104.58,
+"fim": 104.78
 },
 {
 "palavra": "líquido",
-"inicio": 104.613,
-"fim": 104.852
+"inicio": 104.78,
+"fim": 105.16
 },
 {
 "palavra": "evapora,",
-"inicio": 104.852,
-"fim": 105.091
+"inicio": 105.16,
+"fim": 105.8
 },
 {
 "palavra": "resfriando",
-"inicio": 105.21,
-"fim": 105.526
+"inicio": 106.07,
+"fim": 106.64
 },
 {
 "palavra": "a",
-"inicio": 105.526,
-"fim": 105.611
+"inicio": 106.64,
+"fim": 106.72
 },
 {
 "palavra": "mistura.",
-"inicio": 105.611,
-"fim": 105.85
+"inicio": 106.72,
+"fim": 107.18
 },
 {
 "palavra": "Assim,",
-"inicio": 106.07,
-"fim": 107.25
+"inicio": 107.55,
+"fim": 107.76
 },
 {
 "palavra": "ela",
-"inicio": 107.55,
-"fim": 107.92
+"inicio": 108.15,
+"fim": 108.22
 },
 {
 "palavra": "volta",
-"inicio": 107.92,
-"fim": 108.43
+"inicio": 108.22,
+"fim": 108.72
 },
 {
 "palavra": "ao",
-"inicio": 108.43,
-"fim": 108.731
+"inicio": 108.72,
+"fim": 108.82
 },
 {
 "palavra": "evaporador,",
-"inicio": 108.731,
-"fim": 109.59
+"inicio": 108.82,
+"fim": 109.42
 },
 {
 "palavra": "pronta",
 "inicio": 109.85,
-"fim": 110.251
+"fim": 110.1
 },
 {
 "palavra": "para",
-"inicio": 110.251,
-"fim": 110.555
+"inicio": 110.1,
+"fim": 110.28
 },
 {
 "palavra": "absorver",
-"inicio": 110.555,
-"fim": 111.053
+"inicio": 110.28,
+"fim": 110.8
 },
 {
 "palavra": "mais",
-"inicio": 111.053,
-"fim": 111.357
+"inicio": 110.8,
+"fim": 111.12
 },
 {
 "palavra": "calor.",
-"inicio": 111.357,
-"fim": 111.71
+"inicio": 111.12,
+"fim": 111.52
 },
 {
 "palavra": "E",
 "inicio": 112.0,
-"fim": 112.015
+"fim": 112.06
 },
 {
 "palavra": "tudo",
-"inicio": 112.015,
-"fim": 112.043
+"inicio": 112.27,
+"fim": 112.34
 },
 {
 "palavra": "recomeça,",
-"inicio": 112.043,
-"fim": 112.09
+"inicio": 112.34,
+"fim": 113.1
 },
 {
 "palavra": "sempre",
-"inicio": 112.27,
-"fim": 112.848
+"inicio": 113.31,
+"fim": 113.6
 },
 {
 "palavra": "que",
-"inicio": 112.848,
-"fim": 113.217
+"inicio": 113.6,
+"fim": 113.88
 },
 {
 "palavra": "o",
-"inicio": 113.217,
-"fim": 113.447
+"inicio": 113.88,
+"fim": 113.92
 },
 {
 "palavra": "sistema",
-"inicio": 113.447,
-"fim": 114.095
+"inicio": 113.92,
+"fim": 114.24
 },
 {
 "palavra": "precisa",
-"inicio": 114.095,
-"fim": 114.743
+"inicio": 114.24,
+"fim": 114.68
 },
 {
 "palavra": "resfriar.",
-"inicio": 114.743,
-"fim": 115.46
+"inicio": 114.68,
+"fim": 115.34
 },
 {
 "palavra": "Agora",
 "inicio": 115.85,
-"fim": 116.164
+"fim": 115.96
 },
 {
 "palavra": "pense",
-"inicio": 116.164,
-"fim": 116.478
+"inicio": 115.98,
+"fim": 116.34
 },
 {
 "palavra": "no",
-"inicio": 116.478,
-"fim": 116.663
+"inicio": 116.34,
+"fim": 116.52
 },
 {
 "palavra": "que",
-"inicio": 116.663,
-"fim": 116.891
+"inicio": 116.54,
+"fim": 116.6
 },
 {
 "palavra": "acontece",
-"inicio": 116.891,
-"fim": 117.334
+"inicio": 116.6,
+"fim": 117.0
 },
 {
 "palavra": "quando",
-"inicio": 117.334,
-"fim": 117.692
+"inicio": 117.0,
+"fim": 117.44
 },
 {
 "palavra": "você",
-"inicio": 117.692,
-"fim": 117.963
+"inicio": 117.44,
+"fim": 117.7
 },
 {
 "palavra": "deixa",
-"inicio": 117.963,
-"fim": 118.277
+"inicio": 117.7,
+"fim": 118.12
 },
 {
 "palavra": "a",
-"inicio": 118.277,
-"fim": 118.419
+"inicio": 118.12,
+"fim": 118.24
 },
 {
 "palavra": "porta",
-"inicio": 118.419,
-"fim": 118.733
+"inicio": 118.24,
+"fim": 118.48
 },
 {
 "palavra": "aberta.",
-"inicio": 118.733,
-"fim": 119.09
+"inicio": 118.48,
+"fim": 118.94
 },
 {
 "palavra": "O",
 "inicio": 119.43,
-"fim": 119.599
+"fim": 119.49
 },
 {
 "palavra": "calor",
-"inicio": 119.599,
-"fim": 119.973
+"inicio": 119.49,
+"fim": 119.76
 },
 {
 "palavra": "do",
-"inicio": 119.973,
-"fim": 120.194
+"inicio": 119.76,
+"fim": 119.92
 },
 {
 "palavra": "ambiente",
-"inicio": 120.194,
-"fim": 120.722
+"inicio": 119.92,
+"fim": 120.18
 },
 {
 "palavra": "entra",
-"inicio": 120.722,
-"fim": 121.096
+"inicio": 120.18,
+"fim": 120.72
 },
 {
 "palavra": "continuamente,",
-"inicio": 121.096,
-"fim": 121.88
+"inicio": 121.01,
+"fim": 121.72
 },
 {
 "palavra": "e",
 "inicio": 122.07,
-"fim": 122.232
+"fim": 122.13
 },
 {
 "palavra": "o",
-"inicio": 122.232,
-"fim": 122.393
+"inicio": 122.13,
+"fim": 122.19
 },
 {
 "palavra": "compressor",
-"inicio": 122.393,
-"fim": 122.994
+"inicio": 122.19,
+"fim": 122.54
 },
 {
 "palavra": "precisa",
-"inicio": 122.994,
-"fim": 123.449
+"inicio": 122.54,
+"fim": 123.06
 },
 {
 "palavra": "trabalhar",
-"inicio": 123.449,
-"fim": 124.002
+"inicio": 123.06,
+"fim": 123.6
 },
 {
 "palavra": "mais.",
-"inicio": 124.002,
-"fim": 124.31
+"inicio": 123.6,
+"fim": 124.02
 },
 {
 "palavra": "Se",
 "inicio": 124.61,
-"fim": 124.797
+"fim": 124.67
 },
 {
 "palavra": "a",
-"inicio": 124.797,
-"fim": 124.941
+"inicio": 124.67,
+"fim": 124.76
 },
 {
 "palavra": "porta",
-"inicio": 124.941,
-"fim": 125.259
+"inicio": 124.76,
+"fim": 124.98
 },
 {
 "palavra": "ficar",
-"inicio": 125.259,
-"fim": 125.578
+"inicio": 124.98,
+"fim": 125.22
 },
 {
 "palavra": "aberta",
-"inicio": 125.578,
-"fim": 125.939
+"inicio": 125.22,
+"fim": 125.72
 },
 {
 "palavra": "na",
-"inicio": 125.939,
-"fim": 126.127
+"inicio": 125.72,
+"fim": 125.86
 },
 {
 "palavra": "mesma",
-"inicio": 126.127,
-"fim": 126.445
+"inicio": 125.86,
+"fim": 126.2
 },
 {
 "palavra": "cozinha,",
-"inicio": 126.445,
-"fim": 126.85
+"inicio": 126.2,
+"fim": 126.72
 },
 {
 "palavra": "a",
 "inicio": 127.03,
-"fim": 127.188
+"fim": 127.09
 },
 {
 "palavra": "geladeira",
-"inicio": 127.188,
-"fim": 127.731
+"inicio": 127.09,
+"fim": 127.54
 },
 {
 "palavra": "não",
-"inicio": 127.731,
-"fim": 127.985
+"inicio": 127.54,
+"fim": 127.78
 },
 {
 "palavra": "consegue",
-"inicio": 127.985,
-"fim": 128.479
+"inicio": 127.78,
+"fim": 128.26
 },
 {
 "palavra": "resfriar",
-"inicio": 128.479,
-"fim": 128.973
+"inicio": 128.26,
+"fim": 128.96
 },
 {
 "palavra": "o",
-"inicio": 128.973,
-"fim": 129.132
+"inicio": 128.96,
+"fim": 129.06
 },
 {
 "palavra": "cômodo.",
-"inicio": 129.132,
-"fim": 129.53
+"inicio": 129.06,
+"fim": 129.48
 },
 {
 "palavra": "No",
 "inicio": 129.83,
-"fim": 130.044
+"fim": 129.9
 },
 {
 "palavra": "balanço",
-"inicio": 130.044,
-"fim": 130.507
+"inicio": 129.9,
+"fim": 130.34
 },
 {
 "palavra": "total,",
-"inicio": 130.507,
-"fim": 130.87
+"inicio": 130.34,
+"fim": 130.62
 },
 {
 "palavra": "ela",
 "inicio": 131.07,
-"fim": 131.309
+"fim": 131.16
 },
 {
 "palavra": "libera",
-"inicio": 131.309,
-"fim": 131.683
+"inicio": 131.16,
+"fim": 131.7
 },
 {
 "palavra": "o",
-"inicio": 131.683,
-"fim": 131.832
+"inicio": 131.7,
+"fim": 131.7
 },
 {
 "palavra": "calor",
-"inicio": 131.832,
-"fim": 132.162
+"inicio": 131.72,
+"fim": 132.06
 },
 {
 "palavra": "que",
-"inicio": 132.162,
-"fim": 132.401
+"inicio": 132.06,
+"fim": 132.24
 },
 {
 "palavra": "retirou,",
-"inicio": 132.401,
-"fim": 132.82
+"inicio": 132.24,
+"fim": 132.76
 },
 {
 "palavra": "mais",
 "inicio": 132.98,
-"fim": 133.307
+"fim": 133.18
 },
 {
 "palavra": "a",
-"inicio": 133.307,
-"fim": 133.478
+"inicio": 133.18,
+"fim": 133.4
 },
 {
 "palavra": "energia",
-"inicio": 133.478,
-"fim": 133.96
+"inicio": 133.4,
+"fim": 133.68
 },
 {
 "palavra": "usada",
-"inicio": 133.96,
-"fim": 134.338
+"inicio": 133.68,
+"fim": 134.4
 },
 {
 "palavra": "para",
-"inicio": 134.338,
-"fim": 134.664
+"inicio": 134.4,
+"fim": 134.56
 },
 {
 "palavra": "funcionar.",
-"inicio": 134.664,
-"fim": 135.25
+"inicio": 134.56,
+"fim": 135.12
 },
 {
 "palavra": "Então,",
 "inicio": 135.57,
-"fim": 135.99
+"fim": 135.8
 },
 {
 "palavra": "por",
 "inicio": 136.15,
-"fim": 136.386
+"fim": 136.21
 },
 {
 "palavra": "que",
-"inicio": 136.386,
-"fim": 136.621
+"inicio": 136.21,
+"fim": 136.44
 },
 {
 "palavra": "ela",
-"inicio": 136.621,
-"fim": 136.857
+"inicio": 136.44,
+"fim": 136.58
 },
 {
 "palavra": "é",
-"inicio": 136.857,
-"fim": 137.004
+"inicio": 136.58,
+"fim": 136.68
 },
 {
 "palavra": "fria",
-"inicio": 137.004,
-"fim": 137.284
+"inicio": 136.68,
+"fim": 137.08
 },
 {
 "palavra": "por",
-"inicio": 137.284,
-"fim": 137.52
+"inicio": 137.08,
+"fim": 137.22
 },
 {
 "palavra": "dentro",
-"inicio": 137.52,
-"fim": 137.888
+"inicio": 137.22,
+"fim": 137.62
 },
 {
 "palavra": "e",
-"inicio": 137.888,
-"fim": 138.035
+"inicio": 137.62,
+"fim": 137.88
 },
 {
 "palavra": "quente",
-"inicio": 138.035,
-"fim": 138.404
+"inicio": 138.09,
+"fim": 138.28
 },
 {
 "palavra": "por",
-"inicio": 138.404,
-"fim": 138.64
+"inicio": 138.28,
+"fim": 138.46
 },
 {
 "palavra": "fora?",
-"inicio": 138.64,
-"fim": 138.92
+"inicio": 138.46,
+"fim": 138.82
 },
 {
 "palavra": "Porque",
 "inicio": 139.24,
-"fim": 139.654
+"fim": 139.34
 },
 {
 "palavra": "o",
-"inicio": 139.654,
-"fim": 139.819
+"inicio": 139.34,
+"fim": 139.5
 },
 {
 "palavra": "frio",
-"inicio": 139.819,
-"fim": 140.133
+"inicio": 139.5,
+"fim": 139.92
 },
 {
 "palavra": "não",
-"inicio": 140.133,
-"fim": 140.398
+"inicio": 139.92,
+"fim": 140.2
 },
 {
 "palavra": "está",
-"inicio": 140.398,
-"fim": 140.712
+"inicio": 140.2,
+"fim": 140.48
 },
 {
 "palavra": "sendo",
-"inicio": 140.712,
-"fim": 141.076
+"inicio": 140.48,
+"fim": 140.82
 },
 {
 "palavra": "produzido.",
-"inicio": 141.076,
-"fim": 141.64
+"inicio": 140.82,
+"fim": 141.58
 },
 {
 "palavra": "O",
 "inicio": 141.9,
-"fim": 142.056
+"fim": 141.96
 },
 {
 "palavra": "calor",
-"inicio": 142.056,
-"fim": 142.402
+"inicio": 141.96,
+"fim": 142.22
 },
 {
 "palavra": "está",
-"inicio": 142.402,
-"fim": 142.7
+"inicio": 142.22,
+"fim": 142.52
 },
 {
 "palavra": "sendo",
-"inicio": 142.7,
-"fim": 143.046
+"inicio": 142.52,
+"fim": 142.8
 },
 {
 "palavra": "retirado",
-"inicio": 143.046,
-"fim": 143.534
+"inicio": 142.8,
+"fim": 143.58
 },
 {
 "palavra": "de",
-"inicio": 143.534,
-"fim": 143.737
+"inicio": 143.58,
+"fim": 143.72
 },
 {
 "palavra": "um",
-"inicio": 143.737,
-"fim": 143.941
+"inicio": 143.72,
+"fim": 143.76
 },
 {
 "palavra": "lugar",
-"inicio": 143.941,
-"fim": 144.287
+"inicio": 143.76,
+"fim": 144.02
 },
 {
 "palavra": "e",
-"inicio": 144.287,
-"fim": 144.443
+"inicio": 144.38,
+"fim": 144.44
 },
 {
 "palavra": "levado",
-"inicio": 144.443,
-"fim": 144.836
+"inicio": 144.44,
+"fim": 144.78
 },
 {
 "palavra": "para",
-"inicio": 144.836,
-"fim": 145.134
+"inicio": 144.78,
+"fim": 144.98
 },
 {
 "palavra": "outro.",
-"inicio": 145.134,
-"fim": 145.48
+"inicio": 144.98,
+"fim": 145.32
 },
 {
 "palavra": "A",
 "inicio": 145.76,
-"fim": 145.947
+"fim": 145.82
 },
 {
 "palavra": "geladeira",
-"inicio": 145.947,
-"fim": 146.587
+"inicio": 145.82,
+"fim": 146.36
 },
 {
 "palavra": "não",
-"inicio": 146.587,
-"fim": 146.887
+"inicio": 146.36,
+"fim": 146.6
 },
 {
 "palavra": "cria",
-"inicio": 146.887,
-"fim": 147.243
+"inicio": 146.92,
+"fim": 147.14
 },
 {
 "palavra": "frio.",
-"inicio": 147.243,
-"fim": 147.6
+"inicio": 147.14,
+"fim": 147.56
 },
 {
 "palavra": "Ela",
 "inicio": 147.92,
-"fim": 148.182
+"fim": 147.98
 },
 {
 "palavra": "dá",
-"inicio": 148.182,
-"fim": 148.395
+"inicio": 147.98,
+"fim": 148.22
 },
 {
 "palavra": "um",
-"inicio": 148.395,
-"fim": 148.607
+"inicio": 148.22,
+"fim": 148.32
 },
 {
 "palavra": "destino",
-"inicio": 148.607,
-"fim": 149.067
+"inicio": 148.32,
+"fim": 149.08
 },
 {
 "palavra": "ao",
-"inicio": 149.067,
-"fim": 149.279
+"inicio": 149.08,
+"fim": 149.16
 },
 {
 "palavra": "calor.",
-"inicio": 149.279,
+"inicio": 149.16,
 "fim": 149.64
 }
 ]

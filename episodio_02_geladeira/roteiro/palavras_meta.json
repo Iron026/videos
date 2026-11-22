@@ -2,6 +2,8 @@
  "narracao": "voz/ElevenLabs_2026-11-21T21_13_42_Will_-_Deep_pvc_s60_sim75_v4.mp3",
  "sha256": "fdedd87772aee9d4dac5d0193db3b9e1ef97c4b699c8ce01b0c8de7ae05726ee",
  "aprovada_pelo_usuario": "2026-11-21 (mensagem: \"essa é a narração aprovada\", com o texto idêntico ao roteiro oficial)",
- "metodo_tempos": "alinhamento por pausas (voz/alinhar_por_pausas.py): fins de frase confiáveis (37/37 casados); palavras aproximadas dentro das frases",
- "verificacao_palavra_a_palavra": "PENDENTE: modelo Whisper local não autorizado nesta sessão"
+ "metodo_tempos": "v2: identidade e ordem das palavras pelo Whisper OFICIAL (openai/whisper-large-v3, local) + ataque acústico medido (voz/refinar_tempos.py: 78 pausas → início da palavra seguinte). v1 (alinhamento por pausas) preservada em roteiro/palavras_v1_pausas.json",
+ "verificacao_palavra_a_palavra": "FEITA em 2026-11-22: 384/384 palavras do roteiro reconhecidas em ordem (prob. média 0,99). Única divergência: \"condensador. Veja o\" inserido a 116,52 s com duração 0 → artefato do decodificador; o trecho retranscrito sem contexto diz exatamente \"Agora pense no que acontece quando você deixa a porta aberta\". Detalhes: voz/verificacao_whisper.json",
+ "sha256_palavras_json": "728f9ba689033c2d1bee812d01273e7977a55bbeaf51f1d44e923b30e27b8e64",
+ "licenca": "PENDENTE: plano da ElevenLabs não informado; até lá, tratar como plano gratuito (sem uso comercial, atribuição obrigatória)"
 }

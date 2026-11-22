@@ -1,0 +1,27 @@
+{
+ "blocos": 123,
+ "palavras": 384,
+ "blocos_apos_pausa_medidos": 73,
+ "palavras_fora_da_tela_enquanto_faladas": [],
+ "blocos_antes_do_ataque": {
+  "n": 0,
+  "max_s": -0.0,
+  "lista": []
+ },
+ "blocos_depois_do_ataque": {
+  "n": 0,
+  "max_s": 0.0,
+  "lista": []
+ },
+ "desvio_abs_medio_s": 0.0,
+ "v1": {
+  "blocos": 120,
+  "blocos_apos_pausa_medidos": 70,
+  "desvio_abs_medio_s": 0.006,
+  "max_antes_s": -0.156,
+  "max_depois_s": 0.148,
+  "fora_de_1_quadro": 4,
+  "palavras_fora_da_tela": 0,
+  "nota": "a v1 tinha palavras com instantes errados dentro das frases (ex.: E2 \"É aqui que entra o compressor\" comprimido em 0,15 s); a cobertura acima usa os tempos da própria v1 e não revela isso"
+ }
+}

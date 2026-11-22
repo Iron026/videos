@@ -70,7 +70,7 @@ def exportar_atual(pasta, n=0, anim=None, fps=30, extra_meta=None, agrupar=False
     os.makedirs(pasta, exist_ok=True)
     s = bpy.context.scene; dg = bpy.context.evaluated_depsgraph_get()
     grupos, metas, anim_objs, surgir = {}, {}, {}, {}
-    for o in s.objects:
+    for o in sorted(s.objects, key=lambda o: o.name):   # v2: ordem determinística (a ordem de s.objects variava entre execuções)
         if o.type not in ('MESH', 'CURVE', 'FONT') or o.hide_render: continue
         if any(c.hide_render for c in o.users_collection if c != s.collection): continue
         mov = _animado(o)

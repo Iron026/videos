@@ -1,5 +1,5 @@
 {
- "origem": "narração aprovada (palavras.json · alinhamento por pausas)",
+ "origem": "narração aprovada (palavras.json · Whisper oficial, 384/384 palavras verificadas + ataque acústico medido)",
  "duracao": 151.24,
  "planos": [
   {
@@ -8,8 +8,8 @@
    "cena": "cozinha",
    "ancora": "F01",
    "t0": 0.0,
-   "t1": 2.337,
-   "dur": 2.337,
+   "t1": 1.35,
+   "dur": 1.35,
    "narrado": "Você já reparou que a geladeira",
    "acontecimento": "Cozinha ao entardecer; a porta da geladeira se abre; luz interna; garrafa na prateleira"
   },
@@ -18,9 +18,9 @@
    "seq": "A",
    "cena": "cozinha",
    "ancora": "F01.8",
-   "t0": 2.337,
-   "t1": 3.712,
-   "dur": 1.375,
+   "t0": 1.35,
+   "t1": 2.73,
+   "dur": 1.38,
    "narrado": "é fria por dentro,",
    "acontecimento": "\"fria por dentro\": visão térmica varre o interior, que fica azul (mais frio que o ambiente)"
   },
@@ -29,9 +29,9 @@
    "seq": "A",
    "cena": "cozinha",
    "ancora": "F01.12",
-   "t0": 3.712,
+   "t0": 2.73,
    "t1": 4.87,
-   "dur": 1.158,
+   "dur": 2.14,
    "narrado": "mas pode ficar quente por fora?",
    "acontecimento": "\"quente por fora\": a câmera contorna até a traseira; serpentina e compressor laranja/vermelho"
   },
@@ -239,8 +239,8 @@
    "cena": "compressor",
    "ancora": "F20",
    "t0": 74.18,
-   "t1": 76.27,
-   "dur": 2.09,
+   "t1": 78.14,
+   "dur": 3.96,
    "narrado": "É aqui que entra o compressor, movido por eletricidade.",
    "acontecimento": "Compressor por fora; cabo com pulsos violeta (trabalho); rótulo \"Compressor\""
   },
@@ -249,9 +249,9 @@
    "seq": "E",
    "cena": "compressor",
    "ancora": "F21",
-   "t0": 76.27,
-   "t1": 80.37,
-   "dur": 4.1,
+   "t0": 78.14,
+   "t1": 82.94,
+   "dur": 4.8,
    "narrado": "Ele suga o vapor e o comprime, elevando sua pressão e sua temperatura.",
    "acontecimento": "Corte do compressor: motor, virabrequim, pistão e válvulas (Câmera lenta); fluido azul → vermelho; manômetro sobe"
   },
@@ -260,9 +260,9 @@
    "seq": "E",
    "cena": "compressor",
    "ancora": "F22",
-   "t0": 80.37,
+   "t0": 82.94,
    "t1": 86.66,
-   "dur": 6.29,
+   "dur": 3.72,
    "narrado": "Agora, o refrigerante está mais quente que o ar da cozinha.",
    "acontecimento": "Linha de descarga vermelha ao lado do ar da cozinha (cinza): comparação \"mais quente que a cozinha\""
   },
@@ -316,8 +316,8 @@
    "cena": "capilar",
    "ancora": "F27",
    "t0": 102.07,
-   "t1": 105.82,
-   "dur": 3.75,
+   "t1": 107.3,
+   "dur": 5.23,
    "narrado": "A pressão cai bruscamente, e parte do líquido evapora, resfriando a mistura.",
    "acontecimento": "Macro ao longo do capilar: manômetro cai, bolhas surgem a partir da metade, a cor vai para azul"
   },
@@ -326,9 +326,9 @@
    "seq": "H",
    "cena": "corte",
    "ancora": "F28",
-   "t0": 105.82,
+   "t0": 107.3,
    "t1": 111.75,
-   "dur": 5.93,
+   "dur": 4.45,
    "narrado": "Assim, ela volta ao evaporador, pronta para absorver mais calor.",
    "acontecimento": "A mistura entra de novo no evaporador; a câmera se afasta até o circuito inteiro"
   },
