@@ -33,8 +33,10 @@ def s_capilar(g):
     nas palavras: o trecho líquido em "A pressão cai bruscamente", o início da evaporação (s = 0,53 no modelo) em
     "parte do líquido evapora" e a saída fria em "resfriando a mistura"."""
     t0 = T0('G3') - 0.5; W_ = lambda w: E.T(w, apos=t0)
-    return E_trilha([(W_('pressão') - 0.15, 0.0), (W_('parte') - 0.2, 0.50), (W_('evapora') + 0.1, 0.60),
-                     (W_('resfriando') - 0.1, 0.80), (W_('mistura') + 0.15, 1.0)], g)
+    # rodada 8: a lupa demora no início da evaporação durante "evapora" (o rótulo entra na palavra); o marcador continua
+    # chegando a s = 0,532 entre "parte" e "evapora"
+    return E_trilha([(W_('pressão') - 0.15, 0.0), (W_('parte') - 0.2, 0.45), (W_('evapora') + 0.7, 0.58),
+                     (W_('resfriando') + 0.3, 0.80), (W_('mistura') + 0.15, 1.0)], g)
 
 
 def E_trilha(ch, g): return PE.trilha(ch, g)
@@ -98,14 +100,17 @@ def plano(pid):
     parede = pid in ('A1', 'A2', 'A4', 'J1', 'C1', 'B1', 'B2', 'B3', 'B4', 'B5', 'B6', 'B7', 'I1', 'I2', 'I3', 'I4', 'J2', 'J4')   # v2: I3/I4 com a parede (cômodo fechado)
     s, cam = C.nova(); C.luzes_cozinha(); C.lampada_interna()
     G.FOLGA_PORTA = 0.0005 if pid in CORRECAO_PORTA else 0.0
-    G.FOLGA_GAB = 0.0005 if pid in CORRECAO_GAB else 0.0
+    corte_gab = seq in 'CDEGH' or pid in ('J3',)   # v2: F sem corte do gabinete (a serpentina é externa; o corte poluía o fundo)
+    CORTE_REAL = corte_gab and pid != 'C1'           # C1: corte desligado (cozinha por fora)
+    # rodada 8 (aprovado para validação): folga de 0,5 mm nas peças que ENCOSTAM nas laterais (topo, fundo, base, degraus,
+    # contraporta — ver relatorios/coplanares_*.json), só onde o corte expõe essas faces
+    G.FOLGA_GAB = 0.0005 if (CORTE_REAL or pid in CORRECAO_GAB) else 0.0
     obj = G.montar(parede_traseira=parede)
     mec = CM.montar(); tab = CM.ciclo()
     # garrafa extra sobre a bancada (B4: "Imagine uma garrafa...")
     if pid == 'B4':   # v2: na beira da bancada, ao lado da geladeira aberta; a garrafa de dentro some (é a mesma que vai entrar em B5)
         for nm in ('garrafa', 'garrafa_tampa', 'garrafa_agua_vol', 'garrafa_rot'): bpy.data.objects[nm].hide_render = True
         G.garrafa_agua(obj['mt'], (-0.50, -0.11, 0.90))
-    corte_gab = seq in 'CDEGH' or pid in ('J3',)   # v2: F sem corte do gabinete (a serpentina é externa; o corte poluía o fundo)
     if corte_gab:   # gabinete, forro e porta entram no corte ilustrativo (metade x > 0 removida)
         nomes = ('gab_', 'forro', 'porta_', 'prat_', 'gaveta')
         for o in bpy.data.objects:
@@ -168,12 +173,12 @@ def plano(pid):
                    (0.10, 0.20, 0.20), (-0.10, 0.20, 0.20), (-0.28, 0.345, 0.30), (-0.20, 0.345, 0.80), (0.0, 0.40, 1.20), (0.0, 0.42, 1.65)]
             revela = 1.0
         feixe(pid, pts, 0.018, cresce(F(pid, 0.05), F(pid, 0.85)), sobre=True)
-        rot.add('calor', lambda g: Vector((0.0, 0.40, 1.25)), F(pid, 0.55), T1(pid)) if pid == 'B3' else None
+        rot.add('calor', lambda g: Vector((0.0, 0.40, 1.25)), F(pid, 0.55), T1(pid), linha=False) if pid == 'B3' else None
     elif pid == 'B4':
         # v2: a garrafa (temperatura ambiente) recortada contra o interior frio da geladeira aberta, ao fundo
         cam_k = K((0, (-0.40, -1.62, 1.14), (-0.36, -0.12, 1.00), 34), (1, (-0.40, -1.50, 1.13), (-0.36, -0.12, 1.00), 34))
         porta = lambda g: 100
-        rot.add('temperatura ambiente', lambda g: Vector((-0.50, -0.11, 1.12)), F('B4', 0.50), T1('B4'), dx=-0.06)
+        rot.add('temperatura ambiente', lambda g: Vector((-0.50, -0.11, 1.12)), F('B4', 0.50), T1('B4'), dx=-0.06, linha=False)
         termico = [[F('B4', 0.25), 0], [F('B4', 0.45), 1]]
     elif pid in ('B5', 'B6', 'B7'):
         alvo0 = {'B5': (-0.12, -0.10, 0.66), 'B6': (-0.10, -0.08, 0.86), 'B7': (-0.06, -0.04, 1.08)}[pid]
@@ -220,7 +225,7 @@ def plano(pid):
     elif pid == 'C3':
         zp = 1.425 - 5 * 0.072   # 6º passe do condensador (escoa para −x): condensando, líquido embaixo e vapor em cima
         cam_k = K((0, (0.16, 0.44, zp + 0.035), (0.10, COND_Y, zp), 40), (1, (-0.06, 0.44, zp + 0.035), (-0.12, COND_Y, zp), 40))
-        revela = 1.0; rot.add('fluido refrigerante', lambda g: Vector((0.0, COND_Y, zp)), F('C3', 0.25), T1('C3'))
+        revela = 1.0; rot.add('fluido refrigerante', lambda g: Vector((0.0, COND_Y, zp)), E.T('fluido', apos=T0('C3') - 0.5), T1('C3'), linha=False)   # rodada 8: no ataque de "fluido"
         bpy.data.objects['pote'].hide_render = True   # v2: defeito da v1 — o pote tapava metade do quadro no início do plano
     elif pid == 'C4':
         cam_k = K((0, (1.65, -1.05, 1.50), (0.0, 0.10, 0.76), 30), (0.75, (1.75, 0.10, 1.55), (0.0, 0.15, 0.76), 30), (1, (1.25, 0.30, 1.35), (0.0, 0.22, 0.70), 32))
@@ -229,7 +234,7 @@ def plano(pid):
         man.add('alta', (-0.284, 0.345, 0.70), F('C4', 0.18), T1('C4'), 1.0)
     elif pid == 'D1':
         cam_k = K((0, (0.48, -0.60, 1.48), (0.0, 0.0, 1.29), 35), (1, (0.36, -0.42, 1.36), (0.0, 0.0, 1.29), 35))
-        revela = 1.0; rot.add('Evaporador', lambda g: Vector((0.219, -0.10, 1.30)), F('D1', 0.2), T1('D1'))
+        revela = 1.0; rot.add('Evaporador', lambda g: Vector((0.219, -0.10, 1.30)), F('D1', 0.2), T1('D1'), linha=False)
     elif pid == 'D2':
         cam_k = K((0, (0.10, 0.11, 1.440), (-0.15, 0.215, 1.412), 45), (1, (0.02, 0.11, 1.436), (-0.17, 0.205, 1.408), 45))
         revela = 1.0; man.add('baixa', (-0.15, 0.235, 1.43), F('D2', 0.3), T1('D2'), 0.0)
@@ -248,8 +253,8 @@ def plano(pid):
         for i, x in enumerate([-0.24, -0.14, -0.04, 0.06, 0.16, 0.24]):   # calor do ar entrando pela parede do canal
             feixe(f'D4_{i}', [(x, Y - 0.01, Z - 0.20), (x + 0.01, Y, Z - 0.10), (x, Y, Z - r_c - 0.002)], 0.0045,
                   dict(p0=[[0, 0]], p1=[[F('D4', 0.02 + 0.07 * i) - 0.4, 0], [F('D4', 0.25 + 0.07 * i), 1.0]], forca=[[0, 1]]), onda=11)
-        rot.add('entra: líquido + vapor', lambda g: Vector((-0.27, Y, Z + r_c)), F('D4', 0.05), F('D4', 0.50))
-        rot.add('sai: só vapor', lambda g: Vector((0.29, Y, Z + r_c)), F('D4', 0.55), T1('D4'))
+        rot.add('entra: líquido + vapor', lambda g: Vector((-0.27, Y, Z + r_c)), F('D4', 0.05), F('D4', 0.50), linha=False)
+        rot.add('sai: só vapor', lambda g: Vector((0.29, Y, Z + r_c)), E.T('evapora', apos=T0('D4')), T1('D4'), linha=False)   # rodada 8: em "evapora"
         revela = 1.0
     elif pid == 'D5':
         # v2: começa num plano médio do interior (a v1 começava no macro da v1 de D4); o calor dos alimentos já está no evaporador
@@ -265,7 +270,7 @@ def plano(pid):
     elif pid == 'E2':
         cam_k = K((0, (0.48, 0.80, 0.26), (0.0, 0.18, 0.14), 35), (1, (0.34, 0.62, 0.23), (0.0, 0.18, 0.14), 35))
         revela = 1.0; curvas['uTrab'] = [[F('E2', 0.30), 0], [F('E2', 0.45), 1]]
-        rot.add('Compressor', lambda g: Vector((0.0, 0.22, 0.26)), F('E2', 0.15), T1('E2'))
+        rot.add('Compressor', lambda g: Vector((0.0, 0.22, 0.26)), E.T('compressor', apos=T0('E2') - 0.5), T1('E2'), linha=False)
     elif pid == 'E3':
         cam_k = K((0, (0.07, 0.42, 0.34), (-0.03, 0.18, 0.18), 40), (1, (0.05, 0.36, 0.30), (-0.035, 0.18, 0.18), 40))
         revela = 1.0; curvas['uTrab'] = [[0, 1]]; curvas['corte2'] = [[0, 0.18]]; extra['corte2'] = dict(n=[0, -1, 0])
@@ -274,8 +279,8 @@ def plano(pid):
     elif pid == 'E4':
         cam_k = K((0, (-0.10, 0.80, 0.52), (-0.284, 0.345, 0.44), 40), (1, (-0.12, 0.76, 0.54), (-0.284, 0.345, 0.47), 40))
         revela = 1.0; curvas['uTrab'] = [[0, 1]]
-        rot.add('fluido: mais quente', lambda g: Vector((-0.284, 0.345, 0.50)), F('E4', 0.2), T1('E4'))
-        rot.add('ar da cozinha', lambda g: Vector((-0.55, 0.40, 0.70)), F('E4', 0.4), T1('E4'), dx=-0.06)
+        rot.add('fluido: mais quente', lambda g: Vector((-0.284, 0.345, 0.50)), E.T('quente', apos=T0('E4') - 0.5), T1('E4'))
+        rot.add('ar da cozinha', lambda g: Vector((-0.55, 0.40, 0.70)), E.T('cozinha', apos=T0('E4') - 0.5), T1('E4'), dx=-0.06, linha=False)
     elif pid == 'F1':
         cam_k = K((0, (0.95, 1.50, 0.85), (0.0, 0.345, 0.85), 30), (1, (0.95, 1.50, 1.20), (0.0, 0.345, 1.10), 30))
         revela = 1.0; curvas['uTrab'] = [[0, 1]]
@@ -283,7 +288,7 @@ def plano(pid):
             for j, x in enumerate([-0.15, 0.15]):
                 pts = [(x, 0.35, z), (x, 0.40, z + 0.10), (x * 1.2, 0.43, z + 0.35), (x * 1.4, 0.44, z + 0.65)]
                 feixe(f'F1_{i}{j}', pts, 0.007, dict(p0=[[0, 0]], p1=[[F('F1', 0.10 + 0.1 * i), 0], [F('F1', 0.75 + 0.05 * i), 1.0]], forca=[[0, 1]]), onda=8)
-        rot.add('Condensador', lambda g: Vector((0.262, 0.345, 0.70)), F('F1', 0.15), T1('F1'))
+        rot.add('Condensador', lambda g: Vector((0.262, 0.345, 0.70)), E.T('condensador', apos=T0('F1') - 0.5), T1('F1'), linha=False)
     elif pid == 'F2':
         # v2: canal do condensador esticado e ampliado (os arames tapavam os tubos na v1): vapor quente → gotas → líquido
         Y, Z = 1.30, 1.00; r_c = 0.022
@@ -293,15 +298,15 @@ def plano(pid):
         for i, x in enumerate([-0.26, -0.16, -0.06, 0.04, 0.14, 0.24]):   # calor saindo pela parede do canal para o ar
             feixe(f'F2_{i}', [(x, Y, Z + r_c + 0.002), (x + 0.01, Y, Z + 0.10), (x, Y + 0.01, Z + 0.22)], 0.0045,
                   dict(p0=[[0, 0]], p1=[[F('F2', 0.02 + 0.07 * i) - 0.4, 0], [F('F2', 0.25 + 0.07 * i), 1.0]], forca=[[0, 1]]), onda=11)
-        rot.add('entra: vapor quente', lambda g: Vector((-0.27, Y, Z - r_c)), F('F2', 0.05), F('F2', 0.50), dy=0.06)
-        rot.add('sai: líquido', lambda g: Vector((0.29, Y, Z - r_c)), F('F2', 0.55), T1('F2'), dy=0.06)
+        rot.add('entra: vapor quente', lambda g: Vector((-0.27, Y, Z - r_c)), E.T('vapor', apos=T0('F2') - 0.5), E.T('líquido', apos=T0('F2') - 0.5) - 0.3, dy=0.06, linha=False)
+        rot.add('sai: líquido', lambda g: Vector((0.29, Y, Z - r_c)), E.T('líquido', apos=T0('F2') - 0.5), T1('F2'), dy=0.06, linha=False)
         revela = 1.0
     elif pid == 'G1':
         cam_k = K((0, (0.48, 0.66, 0.36), (0.245, 0.30, 0.27), 40), (1, (0.42, 0.60, 0.31), (0.245, 0.30, 0.25), 40))
         revela = 1.0
     elif pid == 'G2':
         cam_k = K((0, (0.36, 0.58, 0.26), (0.205, 0.255, 0.22), 50), (1, (0.33, 0.55, 0.25), (0.205, 0.255, 0.22), 50))
-        revela = 1.0; rot.add('Capilar', lambda g: Vector((0.235, 0.255, 0.24)), F('G2', 0.3), T1('G2'))
+        revela = 1.0; rot.add('Capilar', lambda g: Vector((0.235, 0.255, 0.24)), E.T('capilar', apos=T0('G2') - 0.5), T1('G2'))
     elif pid == 'G3':
         # polimento: CONTEXTO — o capilar real inteiro (enrolado junto ao compressor e subindo pela parede até o
         # evaporador), visto pelo lado em corte. O manômetro é um MARCADOR que percorre o capilar real no mesmo ponto s(g)
@@ -344,9 +349,9 @@ def plano(pid):
         s_flash = next(q['s'] for q in cap_ if q['x'] > 0)                     # primeiro vapor no modelo (0,532)
         # cada rótulo preso ao PONTO FÍSICO que descreve (a lupa só desenha os que estão dentro do círculo)
         liq = lambda g: Vector((sx(min(s_capilar(g), s_flash - 0.04)), Y, Z + r_c))
-        rot.add('líquido', liq, E.T('pressão', apos=T0('G3') - 0.5) - 0.1, E.T('parte', apos=T0('G3') - 0.5) - 0.3)
-        rot.add('começa a evaporar', Vector((sx(s_flash), Y, Z + r_c)), E.T('parte', apos=T0('G3') - 0.5) - 0.1, E.T('resfriando', apos=T0('G3') - 0.5) - 0.3)
-        rot.add('mistura fria', Vector((sx(0.96), Y, Z + r_c)), E.T('resfriando', apos=T0('G3') - 0.5), T1('G3'))
+        # rodada 8: rótulos só quando a narração fala ("evapora", "mistura"); "líquido" saiu (a fala diz "parte do líquido evapora")
+        rot.add('começa a evaporar', Vector((sx(s_flash), Y, Z + r_c)), E.T('evapora', apos=T0('G3') - 0.5), E.T('resfriando', apos=T0('G3') - 0.5) + 0.15)
+        rot.add('mistura fria', Vector((sx(0.96), Y, Z + r_c)), E.T('mistura', apos=T0('G3') - 0.5), T1('G3'))
         revela = 1.0
     elif pid == 'H1':
         cam_k = K((0, (0.40, -0.50, 1.42), (0.0, 0.02, 1.29), 35), (0.35, (0.70, -0.75, 1.45), (0.0, 0.05, 1.18), 33), (1, (1.70, -0.90, 1.60), (0.0, 0.10, 0.78), 30))
@@ -361,7 +366,7 @@ def plano(pid):
         # v2: rótulos afastados entre si (na v1 "Compressor" e "Capilar" se sobrepunham e um manômetro cobria "Condensador")
         for nome, anc, dx, dy in [('Evaporador', (0.219, -0.10, 1.30), 0.06, -0.05), ('Compressor', (-0.02, 0.20, 0.24), -0.10, 0.03),
                                   ('Condensador', (0.262, 0.345, 1.20), 0.04, -0.06), ('Capilar', (0.235, 0.255, 0.24), 0.05, 0.06)]:
-            rot.add(nome, (lambda a: lambda g: Vector(a))(anc), F('H2', 0.2), T1('H2'), dx=dx, dy=dy)
+            rot.add(nome, (lambda a: lambda g: Vector(a))(anc), F('H2', 0.2), T1('H2'), dx=dx, dy=dy, linha=(nome == 'Capilar'))   # rodada 8
         man.add('baixa', (0.205, 0.287, 0.70), F('H2', 0.1), T1('H2'), 0.0); man.add('alta', (-0.284, 0.345, 0.70), F('H2', 0.1), T1('H2'), 1.0)
     elif pid == 'I1':
         # v3: rima com A1 — o personagem entra, abre e DEIXA a porta aberta
@@ -383,15 +388,15 @@ def plano(pid):
             loop = [(X, -1.20, 1.10), (X, -0.60, 1.05), (X, -0.05, 1.00), (X, 0.38, 0.95), (X, 0.41, 1.60), (X, 0.10, 1.98),
                     (X, -0.80, 1.95), (X, -1.30, 1.55), (X, -1.20, 1.10)]
             feixe('I3', loop, 0.026, cresce(F('I3', 0.05), F('I3', 0.85)), sobre=True, onda=10)
-            rot.add('o calor volta para a mesma cozinha', lambda g: Vector((X, -0.80, 1.95)), F('I3', 0.55), T1('I3'), dx=0.04, dy=-0.06)
+            rot.add('o calor volta para a mesma cozinha', lambda g: Vector((X, -0.80, 1.95)), F('I3', 0.55), T1('I3'), dx=0.04, dy=-0.06, linha=False)
         else:   # balanço: entrada (Q̇_abs), trabalho (Ẇ, violeta) e saída mais larga (Q̇_abs + Ẇ) — larguras proporcionais
             E_ = MOD['energia_W']; r_in = 0.026; r_out = r_in * E_['Q_rej_total'] / E_['Q_abs_total']; r_w = r_in * E_['W_eletrico'] / E_['Q_abs_total']
             feixe('I4_in', [(X, -1.25, 1.10), (X, -0.70, 1.05), (X, -0.10, 1.00)], r_in, cresce(F('I4', 0.03), F('I4', 0.30)), sobre=True, onda=10)
             feixe('I4_w', [(-0.55, 0.44, 0.32), (-0.40, 0.40, 0.12), (-0.05, 0.22, 0.12)], r_w, cresce(F('I4', 0.33), F('I4', 0.55)), sobre=True, onda=10, cor='#9a6bff')
             feixe('I4_out', [(X, 0.39, 0.95), (X, 0.41, 1.45), (X, 0.38, 2.05)], r_out, cresce(F('I4', 0.58), F('I4', 0.85)), sobre=True, onda=10)
-            rot.add('calor retirado', lambda g: Vector((X, -0.95, 1.08)), F('I4', 0.12), T1('I4'), dx=0.06, dy=0.05)
-            rot.add('energia elétrica', lambda g: Vector((-0.45, 0.42, 0.20)), F('I4', 0.40), T1('I4'), dx=-0.08, dy=0.05)
-            rot.add('calor liberado = retirado + elétrica', lambda g: Vector((X, 0.38, 1.95)), F('I4', 0.66), T1('I4'), dx=0.03, dy=-0.05)
+            rot.add('calor retirado', lambda g: Vector((X, -0.95, 1.08)), E.T('retirou', apos=T0('I4')), T1('I4'), dx=0.06, dy=0.05, linha=False)
+            rot.add('energia elétrica', lambda g: Vector((-0.45, 0.42, 0.20)), E.T('energia', apos=T0('I4')), T1('I4'), dx=-0.08, dy=0.05)
+            rot.add('calor liberado = retirado + elétrica', lambda g: Vector((X, 0.38, 1.95)), E.T('usada', apos=T0('I4')), T1('I4'), dx=0.03, dy=-0.05, linha=False)
     elif pid == 'J1':
         cam_k = K((0, (-1.25, 1.55, 2.35), (0.05, -0.20, 0.80), 30), (1, (-1.45, 1.80, 2.50), (0.05, -0.25, 0.78), 30))
         porta = lambda g: 100; termico = [[0, 1]]
@@ -410,9 +415,22 @@ def plano(pid):
     if seq in 'CDEFGHJ' and 'uTrab' not in curvas and revela: curvas['uTrab'] = [[0, 1]]
     planos_cam = [(g0 - 1, [(t, p_, a_, l_) for (t, p_, a_, l_) in cam_k])]
     piv = obj['porta']
+    # rodada 8: no I1 o personagem PEGA o leite e sai com ele; de I2 a I4 a caixa não está mais na prateleira
+    leite = [bpy.data.objects[n] for n in ('leite', 'leite_rot') if n in bpy.data.objects]
+    if pid in ('I2', 'I3', 'I4'):
+        for o in leite: o.hide_render = True
+    leite_rel = {}
+    if pid == 'I1':
+        for o in leite: o['anim'] = 1; o.location = o.location - Vector((0.12, -0.08, 0.84 + 0.098)) + E.LEITE_I1
+        bpy.context.view_layer.update(); leite_base = {o.name: o.matrix_world.copy() for o in leite}
     def anim(g):
         piv.rotation_euler = (0, 0, math.radians(porta(g)))
         if pers: PE.posar(pers, PERS[pid](g))
+        if pid == 'I1':
+            mao = pers['mao_d'].matrix_world if g < E.T_PEGA else (pers['maof_d'].matrix_world if 'maof_d' in pers else pers['mao_d'].matrix_world)
+            if g >= E.T_PEGA and not leite_rel:   # no instante da pega, a caixa passa a seguir a mão (sem salto)
+                for o in leite: leite_rel[o.name] = mao.inverted() @ leite_base[o.name]
+            for o in leite: o.matrix_world = (mao @ leite_rel[o.name]) if leite_rel else leite_base[o.name]
         if theta: CM.posicionar(mec, theta(g), tab)
         else: CM.posicionar(mec, 2 * math.pi * 0.8 * g, tab)
         B.camera_planos(cam, planos_cam, g); bpy.context.view_layer.update(); man.registrar(g)
@@ -424,6 +442,7 @@ def plano(pid):
         for k in ('env_pos', 'env_cena', 'sombra_areas'): meta.pop(k, None)
         meta['modo_luz'] = 'tecnico'
     else: meta['modo_luz'] = 'cozinha'
+    if CORTE_REAL: meta.update(ao_corte=True, ao_tampa=True)   # rodada 8: AO coerente com o corte + tampas sem AO (máscara suavizada)
     meta.update(extra)
     pasta = os.path.join(SAIDA, pid + os.environ.get('SUFIXO_PASTA', '')); os.makedirs(pasta, exist_ok=True)   # rodada 7: variantes de teste em pasta própria
     B.exportar_seg(pasta, g0, g1, anim, rot=rot, extra=meta)

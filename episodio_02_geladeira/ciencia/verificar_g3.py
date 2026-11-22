@@ -69,7 +69,7 @@ res_rot = {n: dict(visivel_s=[vis(n)[0], vis(n)[-1]] if vis(n) else None) for n 
 for n, (arr, k) in {'líquido': (X, 'x'), 'começa a evaporar': (X, 'x'), 'mistura fria': (T, 'T_C')}.items():
     v_ = [em(l['rotulos'][n], arr) for l in linhas if n in l['rotulos']]
     if v_: res_rot[n][k + '_no_ponto'] = [round(min(v_), 3), round(max(v_), 3)]
-    else: falhas.append(f"rótulo '{n}' nunca aparece dentro da lupa")
+    elif any(r[0] == n for q in rz['quadros'] for r in q): falhas.append(f"rótulo '{n}' nunca aparece dentro da lupa")   # rodada 8: só cobra rótulos exportados
 t_flash = next((l['t'] for l in linhas if l['s_marcador'] >= s_flash), None)
 t_fim = next((l['t'] for l in linhas if l['s_marcador'] >= 0.999), None)
 sinc = dict(palavras=W, marcador_chega_ao_inicio_da_evaporacao=t_flash, atraso_em_relacao_a_evapora_s=round(t_flash - W['evapora'], 2) if t_flash else None,

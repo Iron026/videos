@@ -227,7 +227,7 @@ def posar(P, e):
     frente_w = (tronco.to_3x3() @ Vector((0, 1, 0))).normalized()
     for lado, sx in (('d', 1), ('e', -1)):
         S = tronco @ Vector((sx * OMBRO_LOCAL[0], OMBRO_LOCAL[1], OMBRO_LOCAL[2]))
-        b = e[f'braco_{lado}']; fechada = b[0] == 'queixo' and b[1] > 0.15     # mão fechada durante o gesto do queixo
+        b = e[f'braco_{lado}']; fechada = (b[0] == 'queixo' and b[1] > 0.15) or bool(e.get('fecha_' + lado))   # queixo ou segurando um objeto
         if b[0] == 'queixo':   # ('queixo', k, repouso, polo): a mão sai do repouso e APOIA sob o queixo da cabeça já posicionada
             k = b[1]; R3 = cab.to_3x3(); cima = (R3 @ Vector((0, 0.15, 1))).normalized()
             contato = cab @ Vector((sx * 0.012, 0.100, 0.040))                  # sob o queixo, levemente para o lado da mão

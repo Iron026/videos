@@ -102,22 +102,28 @@ def dados(pid, arq, g):
     return q[f] if 0 <= f < len(q) else []
 
 
-def caixa_rotulo(txt, u, v, dx, dy):
+def caixa_rotulo(txt, u, v, dx, dy, linha=True):
     ax, ay = u * W, v * H; bx, by = ax + dx * W, ay + dy * H
     tw = F_ROT.getlength(txt); pad = 20 * ESC; h = 44 * ESC + 2 * pad * 0.55; w = tw + 2 * pad
-    lx = bx if dx >= 0 else bx - w; lx = min(max(lx, 0.04 * W), 0.96 * W - w); ly = min(max(by - h / 2, 0.09 * H), 0.62 * H - h)
+    if linha: lx = bx if dx >= 0 else bx - w; ly = by - h / 2
+    else: lx = ax - w / 2; ly = ay - h - 10 * ESC          # rodada 8: sem linha — o rótulo encosta no próprio elemento
+    lx = min(max(lx, 0.04 * W), 0.96 * W - w); ly = min(max(ly, 0.09 * H), 0.62 * H - h)
     return lx, ly, w, h
+def _rot(r):   # [txt, u, v, a, dx, dy(, linha)] — o 7º campo (0) marca rótulo SEM linha de chamada
+    return r[:6] + [len(r) < 7 or bool(r[6])]
 
 
-def rotulo(img, txt, u, v, a, dx, dy):
+def rotulo(img, txt, u, v, a, dx, dy, linha=True):
     if a <= 0.01: return
     cam = Image.new('RGBA', img.size, (0, 0, 0, 0)); d = ImageDraw.Draw(cam)
     ax, ay = u * W, v * H; pad = 20 * ESC
-    lx, ly, w, h = caixa_rotulo(txt, u, v, dx, dy)
+    lx, ly, w, h = caixa_rotulo(txt, u, v, dx, dy, linha)
     ex = min(max(ax, lx), lx + w); ey = ly + h / 2; al = int(255 * a)
-    d.line([(ax, ay), (ex, ey)], fill=CREME + (al,), width=max(2, int(4 * ESC)))
-    r = 11 * ESC; d.ellipse([ax - r, ay - r, ax + r, ay + r], fill=AMARELO + (al,), outline=AZUL + (al,), width=max(1, int(3 * ESC)))
-    d.rounded_rectangle([lx, ly, lx + w, ly + h], radius=h / 2, fill=AZUL + (int(240 * a),)); _cx('rotulo', txt, (lx, ly, lx + w, ly + h)); _cx('ligacao_rotulo', txt, (ax, ay, ex, ey))
+    if linha:   # rodada 8: linha de chamada só para elementos pequenos, detalhes ampliados ou fora do quadro
+        d.line([(ax, ay), (ex, ey)], fill=CREME + (al,), width=max(2, int(4 * ESC)))
+        r = 11 * ESC; d.ellipse([ax - r, ay - r, ax + r, ay + r], fill=AMARELO + (al,), outline=AZUL + (al,), width=max(1, int(3 * ESC)))
+        _cx('ligacao_rotulo', txt, (ax, ay, ex, ey))
+    d.rounded_rectangle([lx, ly, lx + w, ly + h], radius=h / 2, fill=AZUL + (int(240 * a),)); _cx('rotulo', txt, (lx, ly, lx + w, ly + h))
     d.rounded_rectangle([lx + h * 0.3, ly + h - 5 * ESC, lx + w - h * 0.3, ly + h], radius=2, fill=AMARELO + (al,))
     d.text((lx + pad, ly + h / 2), txt, font=F_ROT, fill=CREME + (al,), anchor='lm')
     img.paste(Image.alpha_composite(img.convert('RGBA'), cam).convert('RGB'))
@@ -134,20 +140,27 @@ def centro_manometro(u, v, lado):
 # ---- rodada 7: POSICIONAMENTO dos manômetros legíveis (MAN_LEG). Candidatos em volta da âncora; o primeiro sem colisão com
 # bordas, lupa, faixa da legenda, avisos, rótulos e o outro mostrador; histerese (fica no lugar enquanto couber) e
 # escolha no plano inteiro com o mínimo de trocas; troca inevitável vira fusão curta. Pares (baixa/alta) lado a lado, na ordem horizontal das âncoras.
+MAN_CARTAO = os.environ.get('MANOMETRO_CARTAO', '1') == '1'   # rodada 8: manômetro como CARTÃO de pressão (linguagem dos rótulos)
+CW, CH = 250 * ESC, 200 * ESC
+def _caixa_cartao(cx, cy): return (cx - CW / 2, cy - CH / 2, cx + CW / 2, cy + CH / 2)
 def _textos_man(cx, cy, R_):
     """Posições (centro) dos textos do mostrador legível: 'pressão' no topo; 'baixa'/'alta' nas LATERAIS do anel, na altura
     das pontas da escala (220° e −40°) — a parte de baixo fica livre para a linha de ligação."""
     yb = cy + 0.62 * R_; m = 8 * ESC
     return {'pressão': (cx, cy - R_ - 28 * ESC), 'baixa': (cx - R_ - m - F_MAN2.getlength('baixa') / 2, yb), 'alta': (cx + R_ + m + F_MAN2.getlength('alta') / 2, yb)}
 def _caixas_textos_man(cx, cy, R_):
+    if MAN_CARTAO: return {'cartao': _caixa_cartao(cx, cy)}
     out = {}
     for t, (x, y) in _textos_man(cx, cy, R_).items():
         w = F_MAN2.getlength(t) / 2 + 5 * ESC; out[t] = (x - w, y - 20 * ESC, x + w, y + 20 * ESC)
     return out
 def _extensao_man(cx, cy, R_):
+    if MAN_CARTAO: return _caixa_cartao(cx, cy)
     cs = list(_caixas_textos_man(cx, cy, R_).values()) + [(cx - R_, cy - R_, cx + R_, cy + R_)]
     return (min(c[0] for c in cs), min(c[1] for c in cs), max(c[2] for c in cs), max(c[3] for c in cs))
 def _ponto_ligacao(cx, cy, R_, ax, ay):
+    if MAN_CARTAO:   # ponto da borda do cartão mais próximo da âncora
+        x0, y0, x1, y1 = _caixa_cartao(cx, cy); return (min(max(ax, x0), x1), min(max(ay, y0), y1))
     vx, vy = ax - cx, ay - cy; nv = max(1e-6, math.hypot(vx, vy)); return (cx + vx / nv * R_, cy + vy / nv * R_)
 def _seg_cruza(p, q, c):
     for k in range(1, 40):
@@ -159,8 +172,8 @@ def _obstaculos(pid, g):
     nchips = len(chips_dinamicos(g) + [t for (a, b, t) in CHIPS if a <= g < b])
     if nchips: ob.append((W - 640 * ESC, 0, W, 70 * ESC + nchips * 56 * ESC))                   # avisos (canto superior direito)
     if PERFIL != 'final': ob.append((0, H - 95 * ESC, W, H))                                      # selo da prévia
-    for (txt, u, v, a, dx, dy) in dados(pid, 'rotulos2d.json', g):
-        if a > 0.05: lx, ly, w, h = caixa_rotulo(txt, u, v, dx, dy); ob.append((lx, ly, lx + w, ly + h))
+    for (txt, u, v, a, dx, dy, ln) in map(_rot, dados(pid, 'rotulos2d.json', g)):
+        if a > 0.05: lx, ly, w, h = caixa_rotulo(txt, u, v, dx, dy, ln); ob.append((lx, ly, lx + w, ly + h))
     circ = []
     if pid in INSET:
         c = INSET[pid]; t0, t1 = PL_T[pid]
@@ -183,7 +196,7 @@ def layout_manometros(pid):
     (segue a âncora suavemente). Troca inevitável → fusão de TROCA_Q quadros (some num lugar, aparece no outro)."""
     if pid in _LAYOUT: return _LAYOUT[pid]
     dados(pid, 'manometros2d.json', 0.0); dd = _dados[(pid, 'manometros2d.json')]; g0 = dd['g0']; Q = dd['quadros']
-    R_ = 80 * ESC; FIX = [(fx * W, fy * H) for fy in (0.16, 0.26, 0.36, 0.46, 0.56, 0.64) for fx in (0.22, 0.5, 0.78)]
+    R_ = (CH / 2 if MAN_CARTAO else 80 * ESC); FIX = [(fx * W, fy * H) for fy in (0.16, 0.26, 0.36, 0.46, 0.56, 0.64) for fx in (0.22, 0.5, 0.78)]
     NC = 10 + len(FIX); um = {}
     for q in Q:
         for m in q: um.setdefault(m[0], []).append(m[1])
@@ -192,7 +205,7 @@ def layout_manometros(pid):
     def pos(ms, k):
         anc = [(m[1] * W, m[2] * H) for m in ms]; n = len(ms)
         mx = sum(a[0] for a in anc) / n; top, bot = min(a[1] for a in anc), max(a[1] for a in anc)
-        dy_up = -(R_ + 130 * ESC); dy_dn = R_ + 150 * ESC; lado = larg * 0.5 + R_ * 0.3
+        dy_up = -(R_ + (70 if MAN_CARTAO else 130) * ESC); dy_dn = R_ + (80 if MAN_CARTAO else 150) * ESC; lado = larg * 0.5 + R_ * 0.3
         base = ([(mx, top + dy_up), (mx + lado, top + dy_up), (mx - lado, top + dy_up), (mx, top + dy_up * 1.6),
                  (mx + larg, (top + bot) / 2), (mx - larg, (top + bot) / 2), (mx, bot + dy_dn), (mx + lado, bot + dy_dn),
                  (mx - lado, bot + dy_dn), (mx, bot + dy_dn * 1.5)] + FIX)[k]     # 10 relativos à âncora + posições FIXAS na tela
@@ -238,7 +251,7 @@ def layout_manometros(pid):
 def valido(centros, ob, circ, anc, lupa=None):
     """Candidato válido: nenhum mostrador/texto colide com bordas/legenda/avisos/rótulos/lupa nem entre si; nenhuma linha de
     ligação cruza um texto (de qualquer mostrador do grupo)."""
-    R_ = 80 * ESC; exts = [_extensao_man(cx, cy, R_) for (cx, cy) in centros]
+    R_ = (CH / 2 if MAN_CARTAO else 80 * ESC); exts = [_extensao_man(cx, cy, R_) for (cx, cy) in centros]
     if any(_colide(e, ob, circ) for e in exts): return False
     for a in range(len(exts)):
         for b in range(a + 1, len(exts)):
@@ -249,14 +262,14 @@ def valido(centros, ob, circ, anc, lupa=None):
         p = _ponto_ligacao(cx, cy, R_, ax, ay)
         if any(_seg_cruza((ax, ay), p, c) for c in textos): return False
         for (cx2, cy2) in centros:   # a ligação não atravessa o OUTRO mostrador
-            if (cx2, cy2) != (cx, cy) and _seg_cruza((ax, ay), p, (cx2 - R_, cy2 - R_, cx2 + R_, cy2 + R_)): return False
+            if (cx2, cy2) != (cx, cy) and _seg_cruza((ax, ay), p, _extensao_man(cx2, cy2, R_)): return False
     if lupa:   # a linha da lupa (borda do círculo → topo do mostrador) não cruza textos nem mostradores
         c, (mx, my) = lupa; lx, ly, lr = c['cx'] * W, c['cy'] * H, c['r'] * W
-        fim = (mx, my - R_ - 50 * ESC); vx, vy = fim[0] - lx, fim[1] - ly; nv = max(1e-6, math.hypot(vx, vy))
+        fim = (mx, my - R_ - (4 if MAN_CARTAO else 50) * ESC); vx, vy = fim[0] - lx, fim[1] - ly; nv = max(1e-6, math.hypot(vx, vy))
         if nv <= lr + 8 * ESC: return False
         ini = (lx + vx / nv * lr, ly + vy / nv * lr)
         if any(_seg_cruza(ini, fim, t) for t in textos): return False
-        if any(_seg_cruza(ini, fim, (cx - R_, cy - R_, cx + R_, cy + R_)) for (cx, cy) in centros): return False
+        if any(_seg_cruza(ini, fim, _extensao_man(cx, cy, R_)) for (cx, cy) in centros if not MAN_CARTAO): return False
     return True
 def posicoes_manometro(pid, nome, g):
     g0, L = layout_manometros(pid); f = int(round((g - g0) * FPS))
@@ -273,6 +286,24 @@ def manometro(img, nome, u, v, a, val, lado, pid=None, pp=None):
         return
     cam = Image.new('RGBA', img.size, (0, 0, 0, 0)); d = ImageDraw.Draw(cam); al = int(255 * a)
     R_, cx, cy = centro_manometro(u, v, lado)
+    if MAN_CARTAO and pp:   # rodada 8: CARTÃO de pressão — mesma linguagem dos rótulos (cápsula azul + sublinhado amarelo)
+        cx, cy = pp; x0, y0, x1, y1 = _caixa_cartao(cx, cy); ax, ay = u * W, v * H; fim = _ponto_ligacao(cx, cy, R_, ax, ay)
+        if math.hypot(ax - fim[0], ay - fim[1]) > 30 * ESC:   # ponto de medição num tubo fino: linha curta até o cartão
+            d.line([(ax, ay), fim], fill=CREME + (al,), width=max(2, int(4 * ESC)))
+        rr_ = 11 * ESC; d.ellipse([ax - rr_, ay - rr_, ax + rr_, ay + rr_], fill=AMARELO + (al,), outline=AZUL + (al,), width=max(1, int(3 * ESC)))
+        d.rounded_rectangle([x0, y0, x1, y1], radius=28 * ESC, fill=AZUL + (int(240 * a),))
+        d.rounded_rectangle([x0 + 0.2 * CW, y1 - 6 * ESC, x1 - 0.2 * CW, y1], radius=2, fill=AMARELO + (al,))
+        d.text((cx, y0 + 36 * ESC), 'pressão', font=F_MAN2, fill=CREME + (al,), anchor='mm')
+        Rg, esp = 72 * ESC, max(3, int(15 * ESC)); gc = (cx, y0 + 148 * ESC); bb = [gc[0] - Rg, gc[1] - Rg, gc[0] + Rg, gc[1] + Rg]
+        vv = max(0.0, min(1.0, val)); ang = 180 + 180 * vv
+        d.arc(bb, start=180, end=360, fill=(246, 244, 236, int(70 * a)), width=esp)                    # trilho da escala
+        if vv > 0.004: d.arc(bb, start=180, end=ang, fill=AMARELO + (al,), width=esp)                   # preenchido até o valor
+        kx, ky = gc[0] + Rg * math.cos(math.radians(ang)), gc[1] + Rg * math.sin(math.radians(ang)); kr = 12 * ESC
+        d.ellipse([kx - kr, ky - kr, kx + kr, ky + kr], fill=CREME + (al,), outline=AZUL + (al,), width=max(1, int(4 * ESC)))
+        for txt, xx in (('baixa', gc[0] - Rg), ('alta', gc[0] + Rg)):
+            d.text((xx, y0 + 178 * ESC), txt, font=F_MAN2, fill=CREME + (al,), anchor='mm')
+        _cx('mostrador', nome, (x0, y0, x1, y1)); _cx('ligacao_man', nome, (ax, ay) + fim); _cx('texto_man', nome + ':cartao', (x0, y0, x1, y1))
+        _cx('ponteiro', nome, (val, ang, 0, 0)); img.paste(Image.alpha_composite(img.convert('RGBA'), cam).convert('RGB')); return
     if pp:   # rodada 7: posição resolvida; a ligação sai da âncora e chega ao anel no ponto voltado para ela
         cx, cy = pp; fim = _ponto_ligacao(cx, cy, R_, u * W, v * H)
         d.line([(u * W, v * H), fim], fill=CREME + (al,), width=max(2, int(3 * ESC)))
@@ -336,7 +367,7 @@ def lupa(img, pid, g, k):
         R_m, mx, my = centro_manometro(anc[0], anc[1], 0)
         pp = posicao_manometro(pid, c['ancora'], g) if MAN_LEG else None
         if pp: mx, my = pp
-        ax, ay = mx, my - R_m - (50 if MAN_LEG else 34) * ESC
+        ax, ay = mx, my - ((CH / 2 + 4 * ESC) if MAN_CARTAO else R_m + (50 if MAN_LEG else 34) * ESC)
         vx, vy = ax - cx, ay - cy; n = max(1e-6, (vx * vx + vy * vy) ** 0.5)
         if n > D / 2 + 8: ex, ey = cx + vx / n * D / 2, cy + vy / n * D / 2; _cx('ligacao_lupa', pid, (ex, ey, ax, ay)); d.line((ex, ey, ax, ay), fill=(16, 22, 46, al), width=max(3, int(7 * ESC))); d.line((ex, ey, ax, ay), fill=(246, 244, 236, al), width=max(1, int(3 * ESC)))
     img.paste(Image.alpha_composite(img.convert('RGBA'), cam).convert('RGB'))
@@ -344,7 +375,7 @@ def lupa(img, pid, g, k):
     anel = Image.new('RGBA', img.size, (0, 0, 0, 0)); ImageDraw.Draw(anel).ellipse((cx - D // 2, cy - D // 2, cx + D // 2, cy + D // 2), outline=(246, 244, 236, int(255 * a)), width=max(2, int(6 * ESC)))
     img.paste(Image.alpha_composite(img.convert('RGBA'), anel).convert('RGB'))
     # rótulos do canal, levados para dentro do círculo
-    for (txt, u, v, aa, dx, dy) in dados(z, 'rotulos2d.json', g):
+    for (txt, u, v, aa, dx, dy, _ln) in map(_rot, dados(z, 'rotulos2d.json', g)):
         X = cx + (u * W - W / 2) / W * D; Y = cy + (v * H - (top + W / 2)) / W * D
         if (X - cx) ** 2 + (Y - cy) ** 2 < (D / 2) ** 2: rotulo(img, txt, X / W, Y / H, aa * a, 0.03, -0.035)
 
@@ -358,7 +389,7 @@ def compor(g):
         k = min(1.0, max(0.0, (g - (t0 - f2 / 2)) / f2)); k = k * k * (3 - 2 * k)
         img = Image.blend(quadro(p1, g), quadro(p2, g), k); camadas = [(p1, 1 - k), (p2, k)]
     for (pid, k) in camadas:
-        for (txt, u, v, a, dx, dy) in dados(pid, 'rotulos2d.json', g): rotulo(img, txt, u, v, a * k, dx, dy)
+        for (txt, u, v, a, dx, dy, ln) in map(_rot, dados(pid, 'rotulos2d.json', g)): rotulo(img, txt, u, v, a * k, dx, dy, ln)
         ms = dados(pid, 'manometros2d.json', g)
         G_ATUAL[0] = g
         for j, (nome, u, v, a, val) in enumerate(ms): manometro(img, nome, u, v, a * k, val, (-1 if j % 2 == 0 else 1) if len(ms) > 1 else 0, pid)

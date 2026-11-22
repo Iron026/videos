@@ -16,14 +16,30 @@ def hcena(pid):
     h = hashlib.sha256(); d = os.path.join(A, 'cenas', pid)
     for f in sorted(os.listdir(d)): h.update(f.encode()); h.update(open(os.path.join(d, f), 'rb').read())
     return h.hexdigest()[:16]
+import numpy as np
+def integrar(src, dst_f, js):
+    """Obturador: média em luz LINEAR dos sub-quadros js (mesma integração de obturador.py, validada na rodada 7)."""
+    lin = lambda a: np.where(a <= 0.04045, a / 12.92, ((a + 0.055) / 1.055) ** 2.4)
+    srgb = lambda a: np.where(a <= 0.0031308, a * 12.92, 1.055 * np.power(np.clip(a, 0, 1), 1 / 2.4) - 0.055)
+    acc = sum(lin(np.asarray(Image.open(os.path.join(src, f'q{j:04d}.jpg')).convert('RGB'), np.float32) / 255.0) for j in js) / len(js)
+    tmp = dst_f + '.tmp.jpg'; Image.fromarray(np.clip(srgb(acc) * 255 + 0.5, 0, 255).astype(np.uint8)).save(tmp, quality=95); os.replace(tmp, dst_f)
+OBT = CFG.get('obturador', {})
 for pid in IDS:
     q = f"cena=/episodio_02_geladeira/episodio/cenas/{pid}/&escala={P['escala']}&{P['consulta']}{CFG['por_plano'].get(pid, '')}"
     reg = dict(consulta=q, passo=P['passo'], motor=MOT, cena=hcena(pid)); d = os.path.join(OUT, pid); man = os.path.join(d, '_manifesto.json')
+    if pid in OBT: reg['obturador'] = dict(OBT[pid], cena_sub=hcena(pid + '_obt'))
     n = len(json.load(open(os.path.join(A, 'cenas', pid, 'cena.json')))['animacao']['quadros'])
     esperados = list(range(0, n, P['passo']))
     if os.path.exists(man) and json.load(open(man)).get('reg') == reg and all(os.path.exists(os.path.join(d, f'q{i:04d}.jpg')) for i in esperados):
         log(f'{pid} já renderizado com a mesma configuração'); continue
-    t = time.time(); r = subprocess.run(['node', 'render_anim.mjs', q, d, str(P['passo'])], cwd=MOTOR, capture_output=True, text=True)
+    t = time.time()
+    if pid in OBT:   # rodada 8: obturador de 180° — renderiza os m sub-quadros de cada quadro e integra em luz linear
+        m = OBT[pid]['sub']; qs = q.replace(f'/cenas/{pid}/', f'/cenas/{pid}_obt/'); dsub = os.path.join(OUT, pid + '_obt')
+        r = subprocess.run(['node', 'render_anim.mjs', qs, dsub, '1', str(esperados[0] * m), str(esperados[-1] * m + m - 1)], cwd=MOTOR, capture_output=True, text=True)
+        os.makedirs(d, exist_ok=True)
+        if r.returncode == 0:
+            for i in esperados: integrar(dsub, os.path.join(d, f'q{i:04d}.jpg'), range(i * m, i * m + m))
+    else: r = subprocess.run(['node', 'render_anim.mjs', q, d, str(P['passo'])], cwd=MOTOR, capture_output=True, text=True)
     ruins = []
     for i in esperados:
         f = os.path.join(d, f'q{i:04d}.jpg')

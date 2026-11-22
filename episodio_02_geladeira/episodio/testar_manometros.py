@@ -25,7 +25,7 @@ def circ_inter(c, box):
     nx, ny = min(max(cx, box[0]), box[2]), min(max(cy, box[1]), box[3]); return (nx - cx) ** 2 + (ny - cy) ** 2 < r * r
 res = {}
 for modo in (False, True):
-    M.MAN_LEG = modo; chave = 'proposta' if modo else 'atual'; R = res[chave] = dict(quadros=0, problemas={}, ponteiros={}, alturas_texto_px=set())
+    M.MAN_LEG = True; M.MAN_CARTAO = modo; M._LAYOUT.clear(); chave = 'cartao_r8' if modo else 'aprovado_r7'; R = res[chave] = dict(quadros=0, problemas={}, ponteiros={}, alturas_texto_px=set())
     for p in M.PLANOS:
         if p['id'] not in PLANOS: continue
         for i in range(int(round(p['t0'] * 30)), int(round(p['t1'] * 30)), PASSO):
@@ -42,7 +42,7 @@ for modo in (False, True):
                     if not caixa_no_circulo(c, cx, cy, r): prob('texto encosta ou sai do anel', n)
                 else:
                     for nm, m in most.items():
-                        if circ_inter(m, c): prob('texto sobre um mostrador', f'{n} × {nm}')
+                        if nm != n.split(':')[0] and circ_inter(m, c): prob('texto sobre um mostrador', f'{n} × {nm}')
                 for (t2, n2, c2) in C:
                     if t2 in ('legenda', 'aviso', 'rotulo') and inter(c, c2): prob(f'texto do manômetro × {t2}', f'{n} × {n2}')
                     if t2 == 'lupa' and circ_inter(c2, c): prob('texto do manômetro × lupa', n)
@@ -57,11 +57,11 @@ for modo in (False, True):
                 for nm2, m2 in most.items():
                     if nm2 > nm and circ_inter(m, m2): prob('mostrador × mostrador', f'{nm} × {nm2}')
             for (t, n, c) in C:
-                if t == 'ponteiro': R['ponteiros'][f"{p['id']}:{n}:{g:.3f}"] = round(c[1], 4)
+                if t == 'ponteiro': R['ponteiros'][f"{p['id']}:{n}:{g:.3f}"] = round(c[0], 5)   # VALOR (0 = baixa … 1 = alta)
     R['alturas_texto_px'] = sorted(R['alturas_texto_px'])
     R['resumo'] = {k: len(v) for k, v in R['problemas'].items()}
     R['problemas'] = {k: v[:6] + ([f'… +{len(v) - 6}'] if len(v) > 6 else []) for k, v in R['problemas'].items()}
-pa, pp = res['atual'].pop('ponteiros'), res['proposta'].pop('ponteiros')
+pa, pp = res['aprovado_r7'].pop('ponteiros'), res['cartao_r8'].pop('ponteiros')
 res['ponteiros_identicos'] = dict(comparados=len(pa), iguais=sum(1 for k in pa if pp.get(k) == pa[k]))
 json.dump(res, open(os.path.join(A, '..', 'relatorios', 'teste_manometros.json'), 'w'), ensure_ascii=False, indent=1)
 print(json.dumps({k: (v['quadros'], v['resumo'], v['alturas_texto_px']) if isinstance(v, dict) and 'resumo' in v else v for k, v in res.items()}, ensure_ascii=False, indent=1))

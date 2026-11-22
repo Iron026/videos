@@ -12,11 +12,5 @@
  "ducking_max_db": -18.0,
  "limitador_max_db": -3.86,
  "lufs_wav": -14.08,
- "tp_wav": -1.8,
- "limitador_atuacao": {
-  "limitador_max_db": -3.86,
-  "tempo_com_reducao_maior_1db_pct": 0.52,
-  "maior_2db_pct": 0.08,
-  "maior_3db_pct": 0.013
- }
+ "tp_wav": -1.8
 }

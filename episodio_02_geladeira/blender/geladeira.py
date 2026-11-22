@@ -198,11 +198,16 @@ def porta(mt):
     f_ = FOLGA_PORTA
     P('porta_painel', (2 * GX, 0.055 - f_, GZ - 0.02), (0, GY0 - 0.0285 - f_ / 2, (GZ - 0.02) / 2 + 0.03), mt['branco'])
     P('porta_vedacao', (2 * GX - 0.03, 0.012, GZ - 0.10), (0, GY0 - 0.0005 + 0.0055, (GZ - 0.10) / 2 + 0.07), mt['vedacao'])
-    P('porta_contraporta', (2 * GX - 0.09, 0.03, GZ - 0.22), (0, GY0 + 0.015 + 0.012, (GZ - 0.22) / 2 + 0.13), mt['porta_int'])
+    P('porta_contraporta', (2 * GX - 0.09 - 2 * FOLGA_GAB, 0.03, GZ - 0.22), (0, GY0 + 0.015 + 0.012, (GZ - 0.22) / 2 + 0.13), mt['porta_int'])   # rodada 8: encosta nas laterais (x = ±IX)
     for z in (0.32, 0.70, 1.08):
         P(f'porta_prat{z}', (2 * GX - 0.13, 0.085, 0.012), (0, GY0 + 0.07, z), mt['porta_int'])
         P(f'porta_grade{z}', (2 * GX - 0.13, 0.006, 0.055), (0, GY0 + 0.112, z + 0.03), mt['vidro'])
     P('puxador', (0.03, 0.035, 0.55), (-GX + 0.045, GY0 - 0.072, 1.05), mt['vedacao'])
+    if ITENS_EXTRA:   # rodada 8: dois frascos de molho na prateleira do meio da porta (giram com a porta)
+        for nome, x, cor in (('molho_verde', -0.16, '#5c7f3a'), ('molho_claro', -0.08, '#e3dcc4')):
+            m = M.pintura(nome, cor, rug=0.45, coat=0.3, temp=6.0)
+            o = lib.cilindro(nome, 0.024, 0.13, (x - GX, GY0 + 0.07 - GY0, 0.70 + 0.006 + 0.065), m, lados=16); o.parent = piv
+            t = lib.cilindro(nome + '_tampa', 0.014, 0.025, (x - GX, GY0 + 0.07 - GY0, 0.70 + 0.006 + 0.142), mt['plastico_cinza'], lados=12); t.parent = piv
     return piv
 
 
@@ -230,11 +235,34 @@ def interior(mt):
     pote = M.pintura('pote', '#d94f3d', rug=0.35, coat=0.3, temp=5.0)
     lib.cilindro('pote', 0.055, 0.08, (-0.10, 0.05, 0.84 + 0.045), pote, lados=24)
     fruta = M.pintura('tomate', '#c8362a', rug=0.3, coat=0.4, temp=6.0)
+    if ITENS_EXTRA: itens_extra(mt)
     for i, (x, y) in enumerate([(-0.15, -0.20), (-0.07, -0.17), (0.02, -0.21), (0.11, -0.16)]):
         bpy.ops.mesh.primitive_uv_sphere_add(radius=0.034, location=(x, y, IZ0 + 0.045), segments=20, ring_count=12)
         o = bpy.context.active_object; o.name = f'tomate{i}'; o.data.materials.append(fruta); o.scale.z = 0.85
         bpy.ops.object.shade_smooth()
     return objs
+
+
+ITENS_EXTRA = True   # rodada 8 (pedido): geladeira menos vazia — itens simples, cores fora da linguagem didática (sem laranja/azul)
+
+
+def itens_extra(mt):
+    """Itens cotidianos (formas simples), temperaturas coerentes para a visão térmica: geladeira ~5 °C, congelador −18 °C.
+    Posições escolhidas para não ficar na frente do evaporador nem dos feixes didáticos (conferido nas folhas de contato)."""
+    iog = M.pintura('iogurte', '#f1efe8', rug=0.5, temp=5.0); tampa_v = M.pintura('tampa_verde', '#5a9e4b', rug=0.4, temp=5.0)
+    for i, (x, y) in enumerate([(-0.03, -0.19), (0.035, -0.20)]):                       # prateleira de cima: 2 iogurtes
+        lib.cilindro(f'iogurte{i}', 0.03, 0.07, (x, y, 0.84 + 0.0025 + 0.035), iog, lados=18)
+        lib.cilindro(f'iogurte_tampa{i}', 0.031, 0.006, (x, y, 0.84 + 0.0025 + 0.073), tampa_v, lados=18)
+    suco = M.pintura('suco', '#d6c34c', rug=0.5, temp=5.0)                                 # prateleira do meio: suco e pote baixo
+    lib.caixa('suco', (0.06, 0.06, 0.17), (0.15, -0.05, 0.5025 + 0.085), suco)
+    pote2 = M.pintura('pote_baixo', '#cfc6b8', rug=0.4, coat=0.2, temp=5.0)
+    lib.cilindro('pote_baixo', 0.07, 0.045, (0.02, 0.10, 0.5025 + 0.0225), pote2, lados=24)
+    # (maçãs retiradas: na gaveta ficavam atrás da serpentina do capilar em G1/G2 e competiam com ela — folha de contato r8)
+    gelo = M.pintura('forma_gelo', '#e6edf0', rug=0.3, temp=-18.0)                         # congelador: forma de gelo e congelados
+    e = EVAP
+    lib.caixa('forma_gelo', (0.10, 0.16, 0.018), (0.09, 0.07, e['z0'] + 0.0025 + 0.009), gelo)
+    cong = M.pintura('congelados', '#dde4e1', rug=0.7, temp=-18.0)       # branco de gelo, baixo e no fundo: não compete com o evaporador
+    lib.caixa('congelados', (0.12, 0.08, 0.025), (-0.10, 0.10, e['z0'] + 0.0025 + 0.0125), cong)
 
 
 def garrafa_agua(mt, base):

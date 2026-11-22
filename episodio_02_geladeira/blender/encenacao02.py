@@ -116,10 +116,12 @@ def est_abertura(g):
     if g > 3.15: me = repouso('e', pos, yaw, -0.06 * math.sin(2 * math.pi * fase[0]) * fase[1] if fase else 0.0)
     e['braco_e'] = ('ik', me, tuple(corpo(pos, yaw, (-0.7, -0.4, -1.0))), (0, 0, -1))
     # postura
-    e['incl'] = PE.trilha([(0.15, 0.0), (0.35, -3.0), (0.70, 0.0), (1.5, 0.0), (1.9, 7.0), (2.85, 7.0), (3.2, 0.0)], g)
+    e['incl'] = PE.trilha([(0.15, 0.0), (0.35, -3.0), (0.70, 0.0), (1.5, 0.0), (1.9, 7.0), (2.85, 7.0), (3.2, 0.0),
+                           (4.30, -3.5), (4.95, -3.5), (5.70, 0.0)], g)      # rodada 8: inclinado para trás olhando o alto da traseira
+    e['giro'] = PE.trilha([(4.85, 6.0), (5.05, 6.0), (5.75, 0.0)], g)       # rodada 8: o tronco acompanha a cabeça com atraso (overlap)
     # olhar: puxador → interior (fria por dentro) → alto da traseira (quente por fora) → reação
     alvo = PE.trilha([(-0.25, tuple(alca(0))), (0.45, tuple(alca(20))), (0.95, INTERIOR), (T('fria'), INTERIOR), (2.6, (0.05, -0.05, 0.9)),
-                      (T('quente') - 0.35, TOPO_TRAS), (T('parece'), TOPO_TRAS), (T('parece') + 0.7, INTERIOR),
+                      (T('quente') - 0.35, TOPO_TRAS), (4.80, TOPO_TRAS), (5.50, INTERIOR),     # rodada 8: A4 começa com ele AINDA olhando o que A3 mostrou
                       (T('mesma') + 0.2, INTERIOR), (T('duas') - 0.1, TOPO_TRAS), (T('coisas') + 0.2, INTERIOR), (t_pens + 0.1, (0.15, 0.30, 1.72))], g)
     cy, cp = olhar(pos, yaw, alvo, incl=e['incl'])
     rol = PE.trilha([(T('parece'), 0.0), (T('parece') + 0.4, -7.0), (T('mesma'), -3.0), (t_pens, -3.0), (t_pens + 0.5, -9.0)], g)
@@ -128,29 +130,48 @@ def est_abertura(g):
                      (t_pens, 0.35), (t_pens + 0.4, 0.55)], g)
     inc = PE.trilha([(T('parece'), 0.0), (T('parece') + 0.4, 0.45), (6.0, 0.2), (t_pens + 0.4, 0.35)], g)
     ass = PE.trilha([(t_pens, 0.0), (t_pens + 0.45, 0.30)], g)     # v4: uma sobrancelha um pouco mais alta ao pensar
-    e['sobr'] = (sob, inc, ass); e['piscar'] = PE.piscadas(g, [1.15, 3.55, 6.9, 8.85])
+    e['sobr'] = (sob, inc, ass); e['piscar'] = PE.piscadas(g, [1.15, 3.55, 5.25, 6.9, 8.85])   # rodada 8: piscada na virada do olhar
     return e
 
 
 PI = (-1.38, -1.48)                       # entrada pela esquerda em I1
 PC = (-1.45, -0.95); YC = -62.7           # recuo: de lado, olhando a geladeira aberta (fora do caminho do calor)
+PG = (-0.45, -0.55); YG = -35.0          # rodada 8: um passo à frente, diante da abertura (a porta já passou de 60°)
+PX = (-1.32, -1.30)                       # saída pela esquerda (fora de quadro logo depois)
+LEITE_I1 = Vector((-0.19, -0.22, 0.84 + 0.098))   # leite na frente esquerda da prateleira de cima (só no I1)
+T_PASSO = (118.05, 118.40); T_PEGA = 118.66; T_SAI = (118.80, 119.70)
+def tempos_passos_i1():
+    """Pousos dos pés no I1 (para o som): entrada (3), passo à frente (1), saída (2)."""
+    return [115.55 + (116.95 - 115.55) * k / 3 for k in (1, 2, 3)] + [T_PASSO[1]] + [T_SAI[0] + (T_SAI[1] - T_SAI[0]) * k / 2 for k in (1, 2)]
+
+
 def est_porta_aberta(g):
     """I1–I4. I1: entra, abre a porta, solta e recua um passo — a porta FICA aberta; I2: sai de quadro pela esquerda;
     I3: acompanha com o olhar o calor que volta à cozinha; I4: ergue o olhar para o calor liberado atrás da geladeira."""
     t_puxa = T('deixa') - 0.13                 # a porta começa a abrir em "deixa a porta aberta"
     ang = porta_ang(t_puxa)
-    t_recua = t_puxa + 0.95
-    if g < t_recua: pos, yaw, bob_, pes, bl = passada(g, 115.55, 116.95, PI, PA, -52.0, YA)
-    else: pos, yaw, bob_, pes, bl = passada(g, t_recua, t_recua + 0.95, PA, PC, YA, YC, fracs=(0.5, 1.0), largura=0.10)
+    # rodada 8: entra, abre, dá um passo à frente, PEGA o leite e sai com ele pela esquerda — a porta fica aberta
+    YX = 123.0                                   # de frente para a saída (vira ~170° andando)
+    if g < T_PASSO[0]: pos, yaw, bob_, pes, bl = passada(g, 115.55, 116.95, PI, PA, -52.0, YA)
+    elif g < T_SAI[0]: pos, yaw, bob_, pes, bl = passada(g, T_PASSO[0], T_PASSO[1], PA, PG, YA, YG, fracs=(1.0,), largura=0.10)
+    else: pos, yaw, bob_, pes, bl = passada(g, T_SAI[0], T_SAI[1], PG, PX, YG, YX, fracs=(0.5, 1.0), largura=0.10)
     e = dict(pos=pos, yaw=yaw, bob=bob_, pes=pes, t=g)
     bal = lambda sgn: -sgn * 0.07 * bl
     md = _mao_puxando(None, g, t_puxa - 0.45, t_puxa, ang, pos, yaw)
-    if g < 117.0 or g > t_puxa + 1.0: md = repouso('d', pos, yaw, bal(1))
+    if g < 117.0: md = repouso('d', pos, yaw, bal(1))
+    pega = tuple(LEITE_I1 + Vector((0.0, 0.0, 0.02)))                        # pulso tal que a mão fechada encoste na frente da caixa
+    junto = tuple(corpo(PG, YG, (0.20, 0.16, 0.92)))                          # leite recolhido junto ao corpo
+    if g >= 118.20:   # alcança → pega → recolhe → desce ao lado do corpo (andando)
+        md = PE.trilha([(118.20, tuple(md)), (T_PEGA, pega), (T_PEGA + 0.08, pega), (T_PEGA + 0.35, junto),
+                        (T_SAI[0] + 0.45, repouso('d', pos, yaw, 0.04))], g) if g < T_SAI[0] + 0.45 else repouso('d', pos, yaw, bal(1) * 0.4)
     e['braco_d'] = ('ik', md, tuple(corpo(pos, yaw, (0.7, -0.4, -1.0))), (0, 0, -1))
+    e['fecha_d'] = g >= T_PEGA - 0.04                                       # mão fechada segurando a caixa
     e['braco_e'] = ('ik', repouso('e', pos, yaw, bal(-1)), tuple(corpo(pos, yaw, (-0.7, -0.4, -1.0))), (0, 0, -1))
-    e['incl'] = PE.trilha([(t_puxa, 0.0), (t_puxa + 0.2, -3.0), (t_puxa + 0.55, 0.0)], g)
+    e['incl'] = PE.trilha([(t_puxa, 0.0), (t_puxa + 0.2, -3.0), (t_puxa + 0.55, 0.0), (118.30, 0.0), (T_PEGA, 11.0),
+                           (T_PEGA + 0.3, 3.0), (T_SAI[0] + 0.3, 0.0)], g)
     t_volta = T('cômodo'); t_lib = T('libera')
-    alvo = PE.trilha([(115.55, (-0.2, -0.3, 1.2)), (116.9, tuple(alca(0))), (t_puxa + 0.5, tuple(alca(30))), (t_puxa + 0.9, INTERIOR),
+    alvo = PE.trilha([(115.55, (-0.2, -0.3, 1.2)), (116.9, tuple(alca(0))), (t_puxa + 0.4, tuple(alca(30))), (118.15, tuple(LEITE_I1)),
+                      (T_PEGA + 0.1, tuple(LEITE_I1)), (T_SAI[0] + 0.25, (-2.6, -1.9, 1.45)), (T_SAI[1], (-2.6, -1.9, 1.45)),
                       (T('mesma', 1) - 0.2, INTERIOR), (T('mesma', 1) + 0.5, (-0.05, -1.3, 1.5)), (t_volta - 0.4, (0.0, 0.2, 1.95)),
                       (t_volta + 0.6, INTERIOR), (t_lib - 0.2, INTERIOR), (t_lib + 0.6, TOPO_TRAS), (T('energia', -1), TOPO_TRAS),
                       (T('funcionar'), (0.0, 0.0, 1.3))], g)

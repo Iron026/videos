@@ -71,16 +71,17 @@ def carregar_frases():
 class Rotulos:
     """Rótulos da marca desenhados na montagem: âncora 3D (fixa ou função do tempo) projetada a cada quadro."""
     def __init__(self): self.itens = []; self.quadros = []
-    def add(self, texto, ancora, t0, t1, dx=0.06, dy=-0.05):
-        self.itens.append((texto, ancora, t0, t1, dx, dy))
+    def add(self, texto, ancora, t0, t1, dx=0.06, dy=-0.05, linha=True):
+        # rodada 8: linha=False → elemento grande e evidente no quadro: o rótulo encosta nele, sem linha de chamada
+        self.itens.append((texto, ancora, t0, t1, dx, dy, linha))
     def registrar(self, g):
         s = bpy.context.scene; cam = s.camera; q = []
-        for (txt, anc, t0, t1, dx, dy) in self.itens:
+        for (txt, anc, t0, t1, dx, dy, linha) in self.itens:
             if not (t0 - 0.01 <= g <= t1 + 0.35): continue
             p = anc(g) if callable(anc) else Vector(anc)
             u, v, z = world_to_camera_view(s, cam, p)
             a = min(suave((g - t0) / 0.3), 1 - suave((g - t1) / 0.3))
-            if z > 0: q.append([txt, round(u, 4), round(1 - v, 4), round(a, 3), dx, dy])
+            if z > 0: q.append([txt, round(u, 4), round(1 - v, 4), round(a, 3), dx, dy] + ([] if linha else [0]))
         self.quadros.append(q)
 
 
@@ -88,6 +89,14 @@ def exportar_seg(pasta, g0, g1, anim, rot=None, extra=None):
     """Exporta o segmento [g0, g1] (tempo global). anim(g) posiciona tudo no tempo global g."""
     n = int(round((g1 - g0) * FPS)) + 1
     rot = rot or Rotulos()
+    m = int(os.environ.get('OBTURADOR_SUB', '0'))   # rodada 8: obturador de 180° — m instantes por quadro em [−¼, +¼] de quadro
+    if m:
+        offs = [-0.25 + 0.5 * j / (m - 1) for j in range(m)]
+        def af(f):
+            k, j = divmod(f, m); g = g0 + (k + offs[j]) / FPS
+            anim(g); bpy.context.view_layer.update(); return g
+        exportar_rt2.exportar_atual(pasta, n=n * m, anim=af, fps=FPS * m, extra_meta=dict(extra or {}, g0=g0, g1=g1, obturador=dict(sub=m, graus=180)), agrupar=True)
+        print('SEGMENTO (obturador)', pasta, g0, g1, n, 'quadros ×', m); return
     def af(f):
         g = g0 + f / FPS
         anim(g); bpy.context.view_layer.update(); rot.registrar(g)

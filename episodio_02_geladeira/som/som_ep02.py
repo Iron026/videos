@@ -143,10 +143,12 @@ def porta():
 def passos():
     e = ESC['passos']; pousos = []
     t0, t1 = 115.55, 116.95; pousos += [(t0 + (k + 1) * (t1 - t0) / 3, -10.0, 'entrada (I1)') for k in range(3)]
-    tr = T('deixa') - 0.13 + 0.95; pousos += [(tr + (k + 1) * 0.95 / 2, -12.0, 'recuo (I1)') for k in range(2)]
+    # rodada 8: no I1 ele dá um passo à frente, pega o leite e sai pela esquerda (mesmos tempos de encenacao02.tempos_passos_i1)
+    pousos += [(118.40, -12.0, 'passo à frente (I1)')] + [(118.80 + (119.70 - 118.80) * k / 2, -12.0, 'saída com o leite (I1)') for k in (1, 2)]
     pousos += [(3.05 + (k + 1) * (4.20 - 3.05) / 3, -22.0, 'recuo fora de quadro (A3)') for k in range(3)]
+    amostra = list(range(len(pousos) - 3)) + [5, 6, 7]   # rodada 8: A3 mantém as MESMAS amostras da mixagem aprovada (5, 6, 7)
     for j, (t, gdb, onde) in enumerate(pousos):
-        a = e['passos'][j % len(e['passos'])]
+        a = e['passos'][amostra[j] % len(e['passos'])]
         x = trecho(e['id'], a - 0.03, 0.32, fi=0.003, fo=0.12, uso=f'passo — {onde}')
         por(t - 0.03, x, e.get('db', -12.0) + gdb + 10, 'efeitos', -0.2, 0.3)
 

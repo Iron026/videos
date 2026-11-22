@@ -77,7 +77,7 @@
   "ini": 2.85,
   "dur": 0.32,
   "tom": 1.0,
-  "uso": "passo — recuo (I1)"
+  "uso": "passo — passo à frente (I1)"
  },
  {
   "id": "138052",
@@ -85,7 +85,15 @@
   "ini": 3.61,
   "dur": 0.32,
   "tom": 1.0,
-  "uso": "passo — recuo (I1)"
+  "uso": "passo — saída com o leite (I1)"
+ },
+ {
+  "id": "138052",
+  "titulo": "walking_footsteps_tennis _shoes_tile_floor_2.wav",
+  "ini": 4.37,
+  "dur": 0.32,
+  "tom": 1.0,
+  "uso": "passo — saída com o leite (I1)"
  },
  {
   "id": "138052",
