@@ -44,13 +44,13 @@ def curva_cena(pid, nome, g, padrao=0.0):
     return k[-1][1]
 def termico_visivel(pid, g):
     ativo = lambda q: curva_cena(q, 'uTermico', g) > 0.01 and curva_cena(q, 'uVarre', g, 1.0) > 0.01
-    if pid in DIVIDIDA: return ativo(pid) or (k_divisao(pid, g) > 0.0 and ativo(DIVIDIDA[pid]))
+    if pid in DIVIDIDA: return ativo(pid) or (k_divisao(pid, g) > 0.02 and ativo(DIVIDIDA[pid]))
     return ativo(pid)
 def chips_dinamicos(g):
     vivos = [p['id'] for p in PLANOS if p['t0'] <= g < p['t1']]
     out = []
     if any(termico_visivel(q, g) for q in vivos): out.append('Visão térmica (ilustrativa)')
-    if any(q in DIVIDIDA and k_divisao(q, g) > 0.0 for q in vivos): out.append('Corte ilustrativo')   # metade traseira: parede em corte
+    if any(q in DIVIDIDA and k_divisao(q, g) > 0.02 for q in vivos): out.append('Corte ilustrativo')   # metade traseira: parede em corte
     return out
 
 

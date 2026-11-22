@@ -1,0 +1,66 @@
+{
+ "linha_do_tempo_avisos_dinamicos": [
+  [
+   0.0,
+   []
+  ],
+  [
+   1.5,
+   [
+    "Visão térmica (ilustrativa)"
+   ]
+  ],
+  [
+   4.9,
+   []
+  ],
+  [
+   5.47,
+   [
+    "Visão térmica (ilustrativa)",
+    "Corte ilustrativo"
+   ]
+  ],
+  [
+   9.7,
+   []
+  ],
+  [
+   17.27,
+   [
+    "Visão térmica (ilustrativa)"
+   ]
+  ],
+  [
+   28.47,
+   []
+  ],
+  [
+   135.33,
+   [
+    "Visão térmica (ilustrativa)"
+   ]
+  ],
+  [
+   135.77,
+   [
+    "Visão térmica (ilustrativa)",
+    "Corte ilustrativo"
+   ]
+  ],
+  [
+   139.0,
+   []
+  ]
+ ],
+ "fora_dos_planos_rerenderizados": {
+  "dif_media": 0.3524,
+  "dif_max": 1.033,
+  "quadros_acima_1": [
+   [
+    12.33,
+    1.03
+   ]
+  ]
+ }
+}

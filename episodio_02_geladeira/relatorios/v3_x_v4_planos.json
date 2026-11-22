@@ -1,0 +1,80 @@
+{
+ "ruido_natural": "B1×B1 (mesma cena e motor): média até 2,37, máx 81",
+ "planos": {
+  "A2": {
+   "media": 8.73,
+   "pior_quadro": 15.28,
+   "pct_acima_8": 48.9
+  },
+  "A3": {
+   "media": 1.32,
+   "pior_quadro": 1.39,
+   "pct_acima_8": 2.5
+  },
+  "A4b": {
+   "media": 1.65,
+   "pior_quadro": 1.9,
+   "pct_acima_8": 3.6
+  },
+  "B4": {
+   "media": 5.81,
+   "pior_quadro": 9.23,
+   "pct_acima_8": 24.8
+  },
+  "B5": {
+   "media": 24.68,
+   "pior_quadro": 26.46,
+   "pct_acima_8": 94.1
+  },
+  "B6": {
+   "media": 31.54,
+   "pior_quadro": 32.17,
+   "pct_acima_8": 94.2
+  },
+  "G1": {
+   "media": 0.68,
+   "pior_quadro": 0.79,
+   "pct_acima_8": 0.5
+  },
+  "G2": {
+   "media": 1.2,
+   "pior_quadro": 1.23,
+   "pct_acima_8": 0.4
+  },
+  "J1": {
+   "media": 22.01,
+   "pior_quadro": 22.53,
+   "pct_acima_8": 70.7
+  },
+  "J1b": {
+   "media": 1.82,
+   "pior_quadro": 1.93,
+   "pct_acima_8": 3.6
+  },
+  "A4": {
+   "media": 22.81,
+   "pior_quadro": 34.03,
+   "pct_acima_8": 81.1
+  },
+  "B7": {
+   "media": 57.25,
+   "pior_quadro": 59.4,
+   "pct_acima_8": 97.0
+  },
+  "C2": {
+   "media": 25.22,
+   "pior_quadro": 83.27,
+   "pct_acima_8": 95.0
+  },
+  "E1": {
+   "media": 97.48,
+   "pior_quadro": 102.26,
+   "pct_acima_8": 97.6
+  },
+  "G3": {
+   "media": 53.4,
+   "pior_quadro": 82.98,
+   "pct_acima_8": 99.9
+  }
+ }
+}
