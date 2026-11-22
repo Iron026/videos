@@ -6,7 +6,7 @@ import os, sys, json, math
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import bpy
 from mathutils import Vector
-import lib, mats02 as M, geladeira as G, ep_base as B, cenas02 as C, compressor_mec as CM
+import lib, mats02 as M, geladeira as G, ep_base as B, cenas02 as C, compressor_mec as CM, personagem as PE, encenacao02 as E
 COND_Y = G.COND_Y
 
 AQUI = os.path.dirname(os.path.abspath(__file__)); RAIZ = os.path.join(AQUI, '..')
@@ -81,7 +81,7 @@ def p_rel(P): return (P - PB) / (PA - PB)            # 0 = baixa, 1 = alta
 def plano(pid):
     p = PL[BASE(pid)]; g0, g1 = p['t0'] - MARGEM, p['t1'] + MARGEM
     seq = pid[0]
-    parede = pid in ('A1', 'A2', 'A4', 'J1', 'B1', 'B2', 'B3', 'B4', 'B5', 'B6', 'B7', 'I1', 'I2', 'I3', 'I4', 'J2', 'J4')   # v2: I3/I4 com a parede (cômodo fechado)
+    parede = pid in ('A1', 'A2', 'A4', 'J1', 'C1', 'B1', 'B2', 'B3', 'B4', 'B5', 'B6', 'B7', 'I1', 'I2', 'I3', 'I4', 'J2', 'J4')   # v2: I3/I4 com a parede (cômodo fechado)
     s, cam = C.nova(); C.luzes_cozinha(); C.lampada_interna()
     obj = G.montar(parede_traseira=parede)
     mec = CM.montar(); tab = CM.ciclo()
@@ -98,16 +98,22 @@ def plano(pid):
     if pid in ('E3',):
         M.ajustar(obj['mt']['compressor'], corte=2)
     curvas = {}; rot = B.Rotulos(); man = Manometros(); extra = {}
+    # v3: personagem só onde ele é VISTO agindo: A1 (abre), A2 (olha o interior), A4 (reage à pergunta), I1 (deixa aberta).
+    # Em A3 ele estaria escondido atrás da geladeira e em I2–I4 já saiu de quadro: esses planos ficam como na v2.
+    PERS = {'A1': E.est_abertura, 'A2': E.est_abertura, 'A4': E.est_abertura, 'I1': E.est_porta_aberta}
+    pers = PE.montar() if pid in PERS else None
     porta = lambda g: 0.0
     termico = None; revela = 0.0; theta = None
     garrafa_T = None
     # ---------------- câmeras e eventos
     K = lambda *ks: [(F(pid, f), pos, alvo, lente) for (f, pos, alvo, lente) in ks]
     if pid == 'A1':
-        cam_k = K((0, (0.58, -2.62, 1.16), (-0.03, -0.15, 0.86), 30), (1, (0.47, -2.10, 1.13), (-0.03, -0.15, 0.86), 30))
-        porta = lambda g: 100 * B.suave((g - F('A1', 0.15)) / 1.1)
+        # v3: o personagem abre a porta (a mão segue o puxador); plano médio que inclui ele e a geladeira
+        cam_k = K((0, (-0.22, -3.10, 1.40), (-0.28, -0.48, 0.98), 28), (1, (-0.20, -2.85, 1.38), (-0.27, -0.48, 0.98), 28))
+        porta = E.porta_ang(0.20)
     elif pid == 'A2':
-        cam_k = K((0, (0.47, -2.10, 1.13), (-0.03, -0.15, 0.86), 30), (1, (0.40, -1.80, 1.11), (-0.03, -0.15, 0.88), 30))
+        # v3: por cima do ombro do personagem, olhando o interior que a varredura térmica revela frio
+        cam_k = K((0, (-0.55, -2.00, 1.70), (0.0, -0.15, 1.00), 32), (1, (-0.50, -1.88, 1.68), (0.0, -0.15, 0.99), 32))
         porta = lambda g: 100; termico = [[F('A2', 0.0), 0], [F('A2', 0.05), 1]]; curvas['uVarre'] = [[F('A2', 0.05), 0.0], [F('A2', 0.75), 1.0]]
     elif pid == 'A3':
         # v2: 3/4 traseiro quase fixo (a órbita de 1,2 s da v1 passava rente à lateral: quadro tomado pela parede cinza)
@@ -116,6 +122,12 @@ def plano(pid):
         calor_traseira(pid, F('A3', 0.0), F('A3', 0.8))
     elif pid in ('A4', 'J1'):   # tela dividida, metade da FRENTE: interior frio
         cam_k = K((0, (0.12, -1.95, 1.18), (0.0, -0.15, 0.88), 30), (1, (0.10, -2.15, 1.20), (0.0, -0.15, 0.88), 30))
+        if pid == 'A4':   # v3: aberto (personagem + geladeira) quando a tela está inteira; centrado no interior durante a divisão
+            # contraplano de DENTRO da geladeira para o rosto do personagem (tela inteira: início e fim); interior centrado
+            # durante a divisão. As trocas de câmera acontecem enquanto a divisória desliza (corte disfarçado pelo movimento).
+            reac = lambda k: ((0.06, -0.42 - 0.04 * k, 1.42), (-0.80, -1.18, 1.50 - 0.02 * k), 30)
+            centro = ((0.10, -2.05, 1.20), (0.0, -0.15, 0.88), 30)
+            cam_k = K((0,) + reac(0), (0.165,) + reac(0.3), (0.17,) + centro, (0.80,) + centro, (0.805,) + reac(0.5), (1,) + reac(1))
         porta = lambda g: 100; termico = [[0, 1]] if pid == 'J1' else [[F('A4', 0.0), 1], [F('A4', 0.80), 1], [F('A4', 0.95), 0]]
     elif pid in ('A4b', 'J1b'):  # tela dividida, metade de TRÁS: condensador e compressor quentes (parede em corte)
         cam_k = K((0, (0.18, 1.55, 1.02), (0.0, 0.30, 0.78), 30), (1, (0.16, 1.75, 1.05), (0.0, 0.30, 0.78), 30))
@@ -160,13 +172,27 @@ def plano(pid):
             pts = [(-0.12 + dx, -0.10 + dy, 0.62), (-0.12 + dx * 1.6, -0.08 + dy, 0.80), (-0.06 + dx * 2, -0.04, 1.00), (-0.02 + dx * 2.5, 0.0, 1.17)]
             feixe(f'{pid}_{i}', pts, 0.006, dict(p0=[[0, 0]], p1=[[T0('B5') + 0.3 * i, 0], [T1('B7') - 0.4 + 0.2 * i, 1.0]], forca=[[0, 1]]), onda=9)
     elif pid == 'C1':
-        cam_k = K((0, (0.12, -2.20, 1.25), (0.0, -0.05, 0.84), 30), (0.30, (0.45, -2.15, 1.30), (0.0, 0.0, 0.82), 30), (1, (1.55, -1.25, 1.42), (0.0, 0.05, 0.78), 30))
+        # v3: EXTERNO, com a cozinha: a porta fecha e a câmera contorna pela frente; nada é cortado ainda (o corte vem em
+        # "Escondido", no plano seguinte, de outro ângulo)
+        # aberto (geladeira inteira + cozinha) e aproximação lenta até o canto traseiro, onde a borda da serpentina aparece:
+        # antecipa "atrás das paredes" sem mostrar nada por dentro
+        cam_k = K((0, (0.08, -3.05, 1.40), (0.0, -0.10, 0.82), 28), (0.25, (0.25, -3.05, 1.42), (0.02, -0.05, 0.82), 28),
+                  (1, (2.35, -2.50, 1.62), (0.10, 0.12, 0.80), 26))
         porta = lambda g: 100 * (1 - B.suave((g - F('C1', 0.02)) / 1.0))
-        curvas['corte'] = [[F('C1', 0.24), 99.0], [F('C1', 0.25), 0.36], [F('C1', 0.80), 0.0]]
+        curvas['corte'] = [[0, 99.0]]
     elif pid == 'C2':
-        cam_k = K((0, (1.55, -1.25, 1.42), (0.0, 0.05, 0.78), 30), (1, (1.60, -1.20, 1.44), (0.0, 0.05, 0.78), 30))
-        revela = [[F('C2', 0.0), 0], [F('C2', 0.22), 1]]
-        curvas['uPulso'] = [[F('C2', 0.15), 0.0], [F('C2', 0.95), 1.0]]
+        # v3: REVELAÇÃO em "Escondido" (corte seco no ataque da palavra): ângulo traseiro-lateral, onde compressor e
+        # condensador já estão à vista (são externos); o corte varre a lateral e expõe o que estava escondido — a linha de
+        # sucção dentro da parede traseira e o evaporador no congelador. Um pulso parte do compressor e percorre o circuito
+        # inteiro; a câmera acompanha o pulso (condensador → capilar → evaporador → sucção) e se afasta até o circuito todo.
+        bpy.data.objects['parede_fundo_d'].hide_render = True      # corte ilustrativo também na parede da cozinha
+        s_c = next(t for t in obj['tracado'] if t['id'] == 'compressor')['s0']
+        cam_k = K((0.00, (1.30, 1.25, 0.88), (0.00, 0.30, 0.55), 28), (0.26, (1.30, 1.30, 1.30), (0.00, 0.33, 0.95), 28),
+                  (0.56, (1.42, 1.05, 1.45), (0.05, 0.25, 1.00), 28), (0.70, (1.62, 0.25, 1.70), (0.00, 0.05, 1.25), 28),
+                  (0.92, (1.95, -0.25, 1.60), (0.00, 0.10, 0.82), 28), (1.00, (2.00, -0.33, 1.60), (0.00, 0.10, 0.82), 28))
+        curvas['corte'] = [[F('C2', 0.08), 0.34], [F('C2', 0.40), 0.0]]
+        revela = [[F('C2', 0.10), 0], [F('C2', 0.35), 1]]
+        curvas['uPulso'] = [[F('C2', 0.20), s_c], [F('C2', 0.96), s_c + 1.0]]
     elif pid == 'C3':
         zp = 1.425 - 5 * 0.072   # 6º passe do condensador (escoa para −x): condensando, líquido embaixo e vapor em cima
         cam_k = K((0, (0.16, 0.44, zp + 0.035), (0.10, COND_Y, zp), 40), (1, (-0.06, 0.44, zp + 0.035), (-0.12, COND_Y, zp), 40))
@@ -284,8 +310,9 @@ def plano(pid):
             rot.add(nome, (lambda a: lambda g: Vector(a))(anc), F('H2', 0.2), T1('H2'), dx=dx, dy=dy)
         man.add('baixa', (0.205, 0.287, 0.70), F('H2', 0.1), T1('H2'), 0.0); man.add('alta', (-0.284, 0.345, 0.70), F('H2', 0.1), T1('H2'), 1.0)
     elif pid == 'I1':
-        cam_k = K((0, (0.58, -2.62, 1.16), (-0.03, -0.15, 0.86), 30), (1, (0.50, -2.25, 1.14), (-0.03, -0.15, 0.86), 30))
-        porta = lambda g: 100 * B.suave((g - F('I1', 0.55)) / 1.1)
+        # v3: rima com A1 — o personagem entra, abre e DEIXA a porta aberta
+        cam_k = K((0, (-0.30, -3.15, 1.40), (-0.34, -0.50, 0.98), 28), (1, (-0.24, -2.90, 1.38), (-0.30, -0.48, 0.98), 28))
+        porta = E.porta_ang(E.T('deixa') - 0.13)
     elif pid == 'I2':
         cam_k = K((0, (-1.10, -1.55, 1.15), (0.05, -0.38, 0.85), 30), (1, (-1.00, -1.45, 1.15), (0.05, -0.38, 0.85), 30))
         porta = lambda g: 100; curvas['uTrab'] = [[0, 1]]; curvas['uTrabVel'] = [[F('I2', 0.4), 1], [F('I2', 0.7), 2.2]]
@@ -331,6 +358,7 @@ def plano(pid):
     piv = obj['porta']
     def anim(g):
         piv.rotation_euler = (0, 0, math.radians(porta(g)))
+        if pers: PE.posar(pers, PERS[pid](g))
         if theta: CM.posicionar(mec, theta(g), tab)
         else: CM.posicionar(mec, 2 * math.pi * 0.8 * g, tab)
         B.camera_planos(cam, planos_cam, g); bpy.context.view_layer.update(); man.registrar(g)

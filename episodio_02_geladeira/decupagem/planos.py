@@ -6,6 +6,7 @@ Uso: python3 planos.py  → imprime e grava planos_resolvidos.json (com a origem
 import json, os
 A = os.path.dirname(os.path.abspath(__file__)); R = os.path.join(A, '..', 'roteiro')
 CAUDA = 1.6   # respiro depois da última palavra (s)
+ANTECIPA = {'C2': 0.0}   # v3: o corte de C2 cai no ATAQUE de "Escondido" (sem os 0,25 s de antecipação dos demais)
 
 # (id, âncora de início, sequência, cena 3D, resumo do acontecimento)
 PLANOS = [
@@ -85,8 +86,8 @@ def resolvidos():
     for i, (pid, anc, seq, cena, txt) in enumerate(PLANOS):
         t1 = ts[i + 1] if i + 1 < len(PLANOS) else dur
         # o corte acontece um pouco ANTES da palavra (antecipação de 0,25 s), como na montagem do Ep. 01
-        t0 = max(0.0, ts[i] - 0.25) if i else 0.0
-        t1 = (max(0.0, t1 - 0.25) if i + 1 < len(PLANOS) else t1)
+        t0 = max(0.0, ts[i] - ANTECIPA.get(pid, 0.25)) if i else 0.0
+        t1 = (max(0.0, t1 - ANTECIPA.get(PLANOS[i + 1][0], 0.25)) if i + 1 < len(PLANOS) else t1)
         palavras = ' '.join(w['palavra'] for w in p if t0 <= w['inicio'] < t1)
         out.append(dict(id=pid, seq=seq, cena=cena, ancora=anc, t0=round(t0, 3), t1=round(t1, 3), dur=round(t1 - t0, 3), narrado=palavras, acontecimento=txt))
     return dict(origem=origem, duracao=dur, planos=out)

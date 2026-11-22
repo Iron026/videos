@@ -22,12 +22,12 @@ F_TAG = ImageFont.truetype(os.path.join(FONTE, 'Montserrat-700.ttf'), int(26 * E
 F_MAN = ImageFont.truetype(os.path.join(FONTE, 'Montserrat-700.ttf'), int(22 * ESC))
 AZUL, CREME, AMARELO, ESCURO = (32, 43, 87), (246, 244, 236), (243, 181, 68), (16, 22, 46)
 FUSAO = 0.20
-FUSOES = {'B1': 0.30, 'C1': 0.30, 'D1': 0.30, 'E1': 0.30, 'F1': 0.30, 'I1': 0.30, 'J1': 0.30, 'J4': 0.40}   # fusão na ENTRADA do plano
+FUSOES = {'B1': 0.30, 'C1': 0.30, 'C2': 0.0, 'D1': 0.30, 'E1': 0.30, 'F1': 0.30, 'I1': 0.30, 'J1': 0.30, 'J4': 0.40}   # fusão na ENTRADA do plano   # v3: C2 em corte SECO no ataque de "Escondido"
 # avisos honestos (canto superior direito), por plano
 def faixa(a, b, txt): return (PL_T[a][0], PL_T[b][1], txt)
 PL_T = {p['id']: (p['t0'], p['t1']) for p in PLANOS}
 CHIPS = [faixa('A2', 'A4', 'Visão térmica (ilustrativa)'), faixa('A3', 'A4', 'Corte ilustrativo'), faixa('B4', 'B7', 'Visão térmica (ilustrativa)'),
-         faixa('B5', 'B7', 'Tempo acelerado'), faixa('C1', 'H2', 'Corte ilustrativo'), faixa('D4', 'D4', 'Fluxo desacelerado'),
+         faixa('B5', 'B7', 'Tempo acelerado'), faixa('C2', 'H2', 'Corte ilustrativo'), faixa('D4', 'D4', 'Fluxo desacelerado'),
          faixa('F2', 'F2', 'Fluxo desacelerado'), faixa('D4', 'D4', 'Canal ampliado (esquema)'), faixa('F2', 'F2', 'Canal ampliado (esquema)'), faixa('G3', 'G3', 'Fluxo desacelerado'), faixa('E3', 'E3', 'Câmera lenta'),
          faixa('I3', 'I4', 'Corte ilustrativo'), faixa('J1', 'J1', 'Visão térmica (ilustrativa)'), faixa('J3', 'J3', 'Corte ilustrativo')]
 

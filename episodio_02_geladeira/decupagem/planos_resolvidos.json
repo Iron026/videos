@@ -129,8 +129,8 @@
    "cena": "corte",
    "ancora": "F10",
    "t0": 28.46,
-   "t1": 33.67,
-   "dur": 5.21,
+   "t1": 33.92,
+   "dur": 5.46,
    "narrado": "Para descobrir para onde, vamos abrir a geladeira de um jeito que você nunca viu.",
    "acontecimento": "Afastamento; porta fecha; a carcaça e o isolamento entram em corte ilustrativo"
   },
@@ -139,9 +139,9 @@
    "seq": "C",
    "cena": "corte",
    "ancora": "F11",
-   "t0": 33.67,
+   "t0": 33.92,
    "t1": 38.02,
-   "dur": 4.35,
+   "dur": 4.1,
    "narrado": "Escondido atrás das paredes, existe um circuito fechado de tubos.",
    "acontecimento": "Circuito de tubos revelado; um pulso percorre o circuito inteiro e volta ao início (fechado)"
   },

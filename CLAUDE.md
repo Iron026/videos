@@ -214,3 +214,14 @@ Arquivos-chave (em `episodio_01_navio_v2/`): `episodio/decupagem_ep01_v3.md` (de
   "não mudou" com a variação natural medida, não com hash.
 - Laços de exportação "padrão" podem esquecer peças (metades de tela dividida). Conferir o hash de toda cena exportada.
 - Objetos do cenário na linha de visão (pote) são o defeito mais comum de macro: conferir os quadros de início dos planos.
+
+## Lições novas do Ep. 02 (rodada 3)
+
+- **Personagem:** consultar a identidade oficial antes. O mascote oficial (2D, `episodio_01_navio_v2/referencias/`) não
+  tem 3D aprovado: um personagem narrativo deve ser original, diferente do mascote, com cores fora da linguagem didática.
+- Partes rígidas articuladas + IK de dois ossos bastam para animatic; a mão deve usar a MESMA curva do objeto que segura.
+- Personagem só onde ele é visto agindo; quando atrapalha o diagrama (feixes por cima do corpo), tirá-lo do plano.
+  Contraplano "de dentro da geladeira" mostra a reação sem tirar o objeto do centro da história.
+- **Pré-visualização também altera dados da montagem** (rótulos/manômetros 2D vêm da cena exportada): reexportar com o
+  código final todo plano que foi pré-visualizado com câmera experimental, e provar com diff do vídeo montado.
+- Revelação ancorada no ataque da palavra: corte sem antecipação (`ANTECIPA`) e sem fusão (`FUSOES` = 0) só naquele plano.
