@@ -178,7 +178,7 @@ def posar(P, e):
     cy, cp, cr = e['cab']
     cab = tronco @ Matrix.Translation(PESCOCO_LOCAL) @ _rot('Z', cy) @ _rot('X', cp) @ _rot('Y', cr)
     P['cabeca'].matrix_world = cab; P['cabelo'].matrix_world = cab; P['boca'].matrix_world = cab
-    oy, op = e['olhar']; pisca = max(0.08, 1.0 - e['piscar']); sob, inc = e['sobr']
+    oy, op = e['olhar']; pisca = max(0.08, 1.0 - e['piscar']); sob, inc = e['sobr'][:2]; ass = e['sobr'][2] if len(e['sobr']) > 2 else 0.0
     for lado, sx in (('d', 1), ('e', -1)):
         base = cab @ Matrix.Translation((sx * 0.043, 0.104, 0.142)) @ _rot('Z', sx * -8)          # olhos levemente para fora
         P[f'olho_{lado}'].matrix_world = base
@@ -186,12 +186,19 @@ def posar(P, e):
         # pálpebra superior: em repouso cobre o terço de cima (olhar calmo); desce até fechar na piscada; sobe um pouco com as sobrancelhas
         # (a calota z ≥ 0 girada em X: a borda da frente sobe com ângulo positivo; −90° = olho fechado)
         P[f'palp_{lado}'].matrix_world = base @ _rot('X', 34 + 10 * max(0.0, sob) - 124 * (1.0 - pisca))
-        P[f'sobr_{lado}'].matrix_world = cab @ Matrix.Translation((sx * 0.046, 0.106, 0.183 + 0.012 * sob)) @ _rot('Y', sx * (6 + 14 * inc))
+        sl = sob + sx * ass        # assimetria: uma sobrancelha um pouco mais alta (curiosidade contida)
+        P[f'sobr_{lado}'].matrix_world = cab @ Matrix.Translation((sx * 0.046, 0.106, 0.183 + 0.012 * sl)) @ _rot('Y', sx * (6 + 14 * inc))
     # braços
     frente_w = (tronco.to_3x3() @ Vector((0, 1, 0))).normalized()
     for lado, sx in (('d', 1), ('e', -1)):
         S = tronco @ Vector((sx * OMBRO_LOCAL[0], OMBRO_LOCAL[1], OMBRO_LOCAL[2]))
         b = e[f'braco_{lado}']
+        if b[0] == 'queixo':   # ('queixo', k, repouso, polo): a mão sai do repouso e APOIA sob o queixo da cabeça já posicionada
+            k = b[1]; R3 = cab.to_3x3(); cima = (R3 @ Vector((0, 0.15, 1))).normalized()
+            contato = cab @ Vector((sx * 0.012, 0.100, 0.040))                  # sob o queixo, levemente para o lado da mão
+            pulso = contato - cima * 0.098                                     # a ponta da mão (0,10 m) toca o contato
+            alvo = Vector(b[2]).lerp(pulso, k)
+            b = ('ik', tuple(alvo), b[3], tuple((Vector((0, 0, -1)).lerp(cima, k)).normalized()))
         if b[0] == 'ik':
             T = Vector(b[1]); polo = Vector(b[2]) if len(b) > 2 else (tronco.to_3x3() @ Vector((sx * 0.6, -0.5, -1.0)))
             E, T = _ik(S, T, BRACO, ANTEBRACO, polo)

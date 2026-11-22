@@ -78,10 +78,10 @@ def est_abertura(g):
     # mão direita: puxa a porta; no fim de A4, ao queixo
     md = _mao_puxando(None, g, -0.25, 0.20, ang, pos, yaw)
     if g > 3.0: md = repouso('d', pos, yaw, 0.06 * math.sin(2 * math.pi * fase[0]) * fase[1] if fase else 0.0)
-    queixo = tuple(corpo(PB, YB, (0.03, 0.13, 1.405)))
-    if g > t_pens - 0.15: md = PE.trilha([(t_pens - 0.15, repouso('d', PB, YB)), (t_pens + 0.45, queixo)], g)
-    e['braco_d'] = ('ik', md, tuple(corpo(pos, yaw, (0.7, -0.4, -1.0))), (0, 0, -1)) if g < t_pens - 0.15 else \
-                   ('ik', md, tuple(corpo(pos, yaw, (0.5, -0.2, -1.0))), (0, 0, 1))
+    e['braco_d'] = ('ik', md, tuple(corpo(pos, yaw, (0.7, -0.4, -1.0))), (0, 0, -1))
+    if g > t_pens - 0.15:   # v4: a mão APOIA sob o queixo (alvo calculado da cabeça já posicionada, não de um ponto fixo)
+        e['braco_d'] = ('queixo', PE.trilha([(t_pens - 0.15, 0.0), (t_pens + 0.50, 1.0)], g), repouso('d', PB, YB),
+                        tuple(corpo(PB, YB, (0.65, 0.25, -1.0))))
     # mão esquerda: apoia no batente esquerdo enquanto olha o interior (A2), solta antes de recuar
     me = PE.trilha([(1.45, repouso('e', PA, YA)), (1.85, BATENTE_E), (2.85, BATENTE_E), (3.15, repouso('e', PA, YA))], g)
     if g > 3.15: me = repouso('e', pos, yaw, -0.06 * math.sin(2 * math.pi * fase[0]) * fase[1] if fase else 0.0)
@@ -91,14 +91,15 @@ def est_abertura(g):
     # olhar: puxador → interior (fria por dentro) → alto da traseira (quente por fora) → reação
     alvo = PE.trilha([(-0.25, tuple(alca(0))), (0.45, tuple(alca(20))), (0.95, INTERIOR), (T('fria'), INTERIOR), (2.6, (0.05, -0.05, 0.9)),
                       (T('quente') - 0.35, TOPO_TRAS), (T('parece'), TOPO_TRAS), (T('parece') + 0.7, INTERIOR),
-                      (T('mesma') + 0.2, INTERIOR), (T('duas') - 0.1, TOPO_TRAS), (T('coisas') + 0.2, INTERIOR), (t_pens, (0.0, 0.10, 1.55))], g)
+                      (T('mesma') + 0.2, INTERIOR), (T('duas') - 0.1, TOPO_TRAS), (T('coisas') + 0.2, INTERIOR), (t_pens + 0.1, (0.15, 0.30, 1.72))], g)
     cy, cp = olhar(pos, yaw, alvo, incl=e['incl'])
     rol = PE.trilha([(T('parece'), 0.0), (T('parece') + 0.4, -7.0), (T('mesma'), -3.0), (t_pens, -3.0), (t_pens + 0.5, -9.0)], g)
     e['cab'] = (cy * 0.85, cp * 0.85, rol); e['olhar'] = (cy * 0.15, cp * 0.2)
     sob = PE.trilha([(1.4, 0.0), (T('fria'), 0.25), (2.6, 0.1), (T('quente'), 0.5), (T('parece'), 0.65), (6.0, 0.35),
-                     (t_pens, 0.35), (t_pens + 0.4, 0.8)], g)
-    inc = PE.trilha([(T('parece'), 0.0), (T('parece') + 0.4, 0.45), (6.0, 0.2), (t_pens + 0.4, 0.6)], g)
-    e['sobr'] = (sob, inc); e['piscar'] = PE.piscadas(g, [1.15, 3.55, 6.9, 8.85])
+                     (t_pens, 0.35), (t_pens + 0.4, 0.55)], g)
+    inc = PE.trilha([(T('parece'), 0.0), (T('parece') + 0.4, 0.45), (6.0, 0.2), (t_pens + 0.4, 0.35)], g)
+    ass = PE.trilha([(t_pens, 0.0), (t_pens + 0.45, 0.30)], g)     # v4: uma sobrancelha um pouco mais alta ao pensar
+    e['sobr'] = (sob, inc, ass); e['piscar'] = PE.piscadas(g, [1.15, 3.55, 6.9, 8.85])
     return e
 
 

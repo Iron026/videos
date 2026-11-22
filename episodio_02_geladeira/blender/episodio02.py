@@ -128,7 +128,8 @@ def plano(pid):
             reac = lambda k: ((0.06, -0.42 - 0.04 * k, 1.42), (-0.80, -1.18, 1.50 - 0.02 * k), 30)
             centro = ((0.10, -2.05, 1.20), (0.0, -0.15, 0.88), 30)
             cam_k = K((0,) + reac(0), (0.165,) + reac(0.3), (0.17,) + centro, (0.80,) + centro, (0.805,) + reac(0.5), (1,) + reac(1))
-        porta = lambda g: 100; termico = [[0, 1]] if pid == 'J1' else [[F('A4', 0.0), 1], [F('A4', 0.80), 1], [F('A4', 0.95), 0]]
+        porta = lambda g: 100; termico = [[0, 1]] if pid == 'J1' else [[F('A4', 0.165), 0], [F('A4', 0.17), 1], [F('A4', 0.80), 1], [F('A4', 0.805), 0]]
+        # v4: em A4 a visão térmica só existe durante a tela dividida; o contraplano do rosto (início e fim) é imagem normal
     elif pid in ('A4b', 'J1b'):  # tela dividida, metade de TRÁS: condensador e compressor quentes (parede em corte)
         cam_k = K((0, (0.18, 1.55, 1.02), (0.0, 0.30, 0.78), 30), (1, (0.16, 1.75, 1.05), (0.0, 0.30, 0.78), 30))
         calor_traseira(pid, F(BASE(pid), 0.0) - 0.6, F(BASE(pid), 0.4))   # v2: o calor rejeitado sobe da serpentina para a cozinha
@@ -164,7 +165,9 @@ def plano(pid):
         z0 = {'B5': 0.70, 'B6': 0.78, 'B7': 0.90}[pid]; z1 = {'B5': 0.72, 'B6': 0.88, 'B7': 0.98}[pid]
         cam_k = K((0, (0.10, -0.62, z0), alvo0, 28), (1, (0.08, -0.60, z1), alvo1, 28))
         if pid == 'B7':   # v2: plano mais aberto, com a caixa do congelador inteira recebendo os feixes
-            cam_k = K((0, (0.16, -0.92, 0.98), (-0.04, -0.04, 1.06), 30), (1, (0.14, -0.84, 1.02), (-0.04, -0.04, 1.10), 30))
+            # v4: de frente e abaixo do congelador: a caixa (−18 °C, azul-profundo) ocupa o alto do quadro, o interior (+5 °C,
+            # azul-gelo) em volta, e os feixes sobem até ela
+            cam_k = K((0, (0.06, -0.86, 0.92), (0.0, -0.05, 1.20), 30), (1, (0.05, -0.80, 0.96), (0.0, -0.05, 1.23), 30))
         porta = lambda g: 100; termico = [[0, 1]]
         garrafa_T = [[T0('B5'), 25.0], [T1('B7'), 9.0]]
         # feixes saem da garrafa, sobem com o ar morno e chegam ao evaporador
@@ -189,7 +192,9 @@ def plano(pid):
         s_c = next(t for t in obj['tracado'] if t['id'] == 'compressor')['s0']
         cam_k = K((0.00, (1.30, 1.25, 0.88), (0.00, 0.30, 0.55), 28), (0.26, (1.30, 1.30, 1.30), (0.00, 0.33, 0.95), 28),
                   (0.56, (1.42, 1.05, 1.45), (0.05, 0.25, 1.00), 28), (0.70, (1.62, 0.25, 1.70), (0.00, 0.05, 1.25), 28),
-                  (0.92, (1.95, -0.25, 1.60), (0.00, 0.10, 0.82), 28), (1.00, (2.00, -0.33, 1.60), (0.00, 0.10, 0.82), 28))
+                  (0.92, (1.15, 1.62, 1.82), (0.00, 0.14, 0.80), 26), (1.00, (1.20, 1.68, 1.85), (0.00, 0.14, 0.80), 26))
+        # v4: termina em 3/4 traseiro alto — condensador de frente, corte lateral com evaporador e sucção, compressor e
+        # capilar embaixo: o circuito inteiro e fechado num só quadro
         curvas['corte'] = [[F('C2', 0.08), 0.34], [F('C2', 0.40), 0.0]]
         revela = [[F('C2', 0.10), 0], [F('C2', 0.35), 1]]
         curvas['uPulso'] = [[F('C2', 0.20), s_c], [F('C2', 0.96), s_c + 1.0]]
@@ -235,7 +240,8 @@ def plano(pid):
                   dict(p0=[[0, 0]], p1=[[0, 1.0]], forca=[[F('D5', 0.55), 1], [F('D5', 0.85), 0]]), onda=9)
         revela = 1.0
     elif pid == 'E1':
-        cam_k = K((0, (0.42, 0.62, 1.30), (0.205, 0.287, 1.22), 35), (1, (0.42, 0.62, 0.45), (0.205, 0.287, 0.37), 35))
+        # v4: pelo lado em corte (sem os arames do condensador entre a câmera e a linha de sucção); desce com o vapor
+        cam_k = K((0, (0.66, 0.02, 1.32), (0.205, 0.287, 1.22), 35), (1, (0.66, 0.02, 0.47), (0.205, 0.287, 0.37), 35))
         revela = 1.0
     elif pid == 'E2':
         cam_k = K((0, (0.48, 0.80, 0.26), (0.0, 0.18, 0.14), 35), (1, (0.34, 0.62, 0.23), (0.0, 0.18, 0.14), 35))
@@ -279,8 +285,11 @@ def plano(pid):
         revela = 1.0; rot.add('Capilar', lambda g: Vector((0.235, 0.255, 0.24)), F('G2', 0.3), T1('G2'))
     elif pid == 'G3':
         z = lambda g: 0.40 + 0.92 * B.suave((g - T0('G3')) / (T1('G3') - T0('G3')))
-        cam_k = [(T0('G3'), lambda g: Vector((0.172, 0.330, z(g))), lambda g: Vector((0.125, 0.283, z(g) + 0.012)), 50),
-                 (T1('G3'), lambda g: Vector((0.172, 0.330, z(g))), lambda g: Vector((0.125, 0.283, z(g) + 0.012)), 50)]
+        # v4: de lado, com a linha de sucção (mais grossa) ao lado do capilar e o corte da parede isolante ao fundo
+        # v4: entre a parede traseira e o condensador (sem arames na frente), mais afastada e com lente mais aberta: o capilar
+        # no centro, a linha de sucção (mais grossa) ao lado e as camadas da parede em corte como contexto
+        cam_k = [(T0('G3'), lambda g: Vector((0.245, 0.336, z(g) + 0.03)), lambda g: Vector((0.135, 0.280, z(g) + 0.012)), 30),
+                 (T1('G3'), lambda g: Vector((0.245, 0.336, z(g) + 0.03)), lambda g: Vector((0.135, 0.280, z(g) + 0.012)), 30)]
         revela = 1.0
         cap = next(t for t in MOD['circuito'] if t['id'] == 'capilar')['perfil']
         tr = {t['id']: t for t in obj['tracado']}['capilar']

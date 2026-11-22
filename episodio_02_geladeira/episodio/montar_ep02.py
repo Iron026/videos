@@ -26,10 +26,32 @@ FUSOES = {'B1': 0.30, 'C1': 0.30, 'C2': 0.0, 'D1': 0.30, 'E1': 0.30, 'F1': 0.30,
 # avisos honestos (canto superior direito), por plano
 def faixa(a, b, txt): return (PL_T[a][0], PL_T[b][1], txt)
 PL_T = {p['id']: (p['t0'], p['t1']) for p in PLANOS}
-CHIPS = [faixa('A2', 'A4', 'Visão térmica (ilustrativa)'), faixa('A3', 'A4', 'Corte ilustrativo'), faixa('B4', 'B7', 'Visão térmica (ilustrativa)'),
+CHIPS = [faixa('A3', 'A3', 'Corte ilustrativo'),
          faixa('B5', 'B7', 'Tempo acelerado'), faixa('C2', 'H2', 'Corte ilustrativo'), faixa('D4', 'D4', 'Fluxo desacelerado'),
          faixa('F2', 'F2', 'Fluxo desacelerado'), faixa('D4', 'D4', 'Canal ampliado (esquema)'), faixa('F2', 'F2', 'Canal ampliado (esquema)'), faixa('G3', 'G3', 'Fluxo desacelerado'), faixa('E3', 'E3', 'Câmera lenta'),
-         faixa('I3', 'I4', 'Corte ilustrativo'), faixa('J1', 'J1', 'Visão térmica (ilustrativa)'), faixa('J3', 'J3', 'Corte ilustrativo')]
+         faixa('I3', 'I4', 'Corte ilustrativo'), faixa('J3', 'J3', 'Corte ilustrativo')]
+# v4: avisos que dependem do MODO ativo (visão térmica; parede em corte só na metade traseira da tela dividida) são
+# calculados das curvas gravadas em cada cena (mesma interpolação smoothstep do motor), não por plano inteiro
+_curvas = {}
+def curva_cena(pid, nome, g, padrao=0.0):
+    if pid not in _curvas:
+        f = os.path.join(A, 'cenas', pid, 'cena.json'); _curvas[pid] = json.load(open(f)).get('curvas', {}) if os.path.exists(f) else {}
+    k = _curvas[pid].get(nome)
+    if not k: return padrao
+    if g <= k[0][0]: return k[0][1]
+    for (t0, v0), (t1, v1) in zip(k, k[1:]):
+        if g <= t1: u = (g - t0) / max(t1 - t0, 1e-6); return v0 + (v1 - v0) * u * u * (3 - 2 * u)
+    return k[-1][1]
+def termico_visivel(pid, g):
+    ativo = lambda q: curva_cena(q, 'uTermico', g) > 0.01 and curva_cena(q, 'uVarre', g, 1.0) > 0.01
+    if pid in DIVIDIDA: return ativo(pid) or (k_divisao(pid, g) > 0.0 and ativo(DIVIDIDA[pid]))
+    return ativo(pid)
+def chips_dinamicos(g):
+    vivos = [p['id'] for p in PLANOS if p['t0'] <= g < p['t1']]
+    out = []
+    if any(termico_visivel(q, g) for q in vivos): out.append('Visão térmica (ilustrativa)')
+    if any(q in DIVIDIDA and k_divisao(q, g) > 0.0 for q in vivos): out.append('Corte ilustrativo')   # metade traseira: parede em corte
+    return out
 
 
 def pasta(pid): return os.path.join(A, f'quadros_{PERFIL}', pid)
@@ -41,11 +63,14 @@ def meta(pid):
 
 
 DIVIDIDA = {'A4': 'A4b', 'J1': 'J1b'}
+def k_divisao(pid, g):
+    t0, t1 = PL_T[pid]; k = min(1.0, max(0.0, (g - t0 - 0.10 * (t1 - t0)) / 0.8)); k = k * k * (3 - 2 * k)
+    if pid == 'A4': k *= 1.0 - min(1.0, max(0.0, (g - t0 - 0.80 * (t1 - t0)) / 0.6))   # A4 volta à frente inteira no fim
+    return k
 def quadro(pid, g):
     if pid in DIVIDIDA and os.path.isdir(pasta(DIVIDIDA[pid])):
         a, b = quadro_simples(pid, g), quadro_simples(DIVIDIDA[pid], g)
-        t0, t1 = PL_T[pid]; k = min(1.0, max(0.0, (g - t0 - 0.10 * (t1 - t0)) / 0.8)); k = k * k * (3 - 2 * k)
-        if pid == 'A4': k *= 1.0 - min(1.0, max(0.0, (g - t0 - 0.80 * (t1 - t0)) / 0.6))   # A4 volta à frente inteira no fim
+        k = k_divisao(pid, g)
         x = int(W - (W / 2) * k)
         if x >= W: return a
         im = Image.new('RGB', (W, H)); la = W // 2 - x // 2; lb = W // 2 - (W - x) // 2   # cada metade mostra o CENTRO da sua imagem
@@ -137,8 +162,8 @@ def compor(g):
     for (a, b, txt) in LEG:
         if a <= g < b: d.text((W // 2, int(0.74 * H)), txt, font=F_LEG, fill=(255, 255, 255), stroke_width=max(2, int(7 * ESC)), stroke_fill=ESCURO, anchor='mm')
     y = int(70 * ESC)
-    for (a, b, txt) in CHIPS:
-        if a <= g < b:
+    for txt in chips_dinamicos(g) + [txt for (a, b, txt) in CHIPS if a <= g < b]:
+        if True:
             tw = d.textlength(txt, font=F_TAG); x1 = W - int(30 * ESC); x0 = x1 - tw - 36 * ESC
             d.rounded_rectangle((x0, y, x1, y + 46 * ESC), radius=23 * ESC, fill=AMARELO); d.text((x0 + 18 * ESC, y + 23 * ESC), txt, font=F_TAG, fill=AZUL, anchor='lm')
             y += int(56 * ESC)
