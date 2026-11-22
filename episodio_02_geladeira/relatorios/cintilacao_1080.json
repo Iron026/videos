@@ -1,0 +1,139 @@
+{
+ "resolucao": "1080x1920",
+ "config": "escala 1.0, AO 16, MSAA 4x, bloom 0,18 (perfil final)",
+ "criterio": "pixels que vão e voltam |Δ|>30 em quadros seguidos; bloco 16×16 com ≥25 %",
+ "trechos": {
+  "C2": {
+   "quadros": 28,
+   "com_blocos": 28,
+   "piores": [
+    {
+     "quadro": "q0113.jpg",
+     "blocos": 1603,
+     "pixels": 212567
+    },
+    {
+     "quadro": "q0108.jpg",
+     "blocos": 1549,
+     "pixels": 229711
+    },
+    {
+     "quadro": "q0114.jpg",
+     "blocos": 1536,
+     "pixels": 200007
+    }
+   ],
+   "classificacao": "falso positivo: linhas finas (arames, bordas) em órbita rápida da câmera (16–26 px/quadro); sem z-fighting. Risco a avaliar a olho: estroboscopia da grade de arames (passo ~12 px × deslocamento horizontal 0–18 px/quadro)"
+  },
+  "G3": {
+   "quadros": 28,
+   "com_blocos": 0,
+   "piores": [
+    {
+     "quadro": "q0099.jpg",
+     "blocos": 0,
+     "pixels": 734
+    },
+    {
+     "quadro": "q0098.jpg",
+     "blocos": 0,
+     "pixels": 787
+    },
+    {
+     "quadro": "q0097.jpg",
+     "blocos": 0,
+     "pixels": 703
+    }
+   ],
+   "classificacao": "limpo (0 quadros): correção porta × vedação confirmada em 1080"
+  },
+  "G3z": {
+   "quadros": 28,
+   "com_blocos": 28,
+   "piores": [
+    {
+     "quadro": "q0096.jpg",
+     "blocos": 266,
+     "pixels": 44485
+    },
+    {
+     "quadro": "q0097.jpg",
+     "blocos": 252,
+     "pixels": 43096
+    },
+    {
+     "quadro": "q0095.jpg",
+     "blocos": 250,
+     "pixels": 41200
+    }
+   ],
+   "classificacao": "falso positivo: bolhas de vapor animadas na lupa (textura que escoa)"
+  },
+  "D4": {
+   "quadros": 28,
+   "com_blocos": 28,
+   "piores": [
+    {
+     "quadro": "q0060.jpg",
+     "blocos": 340,
+     "pixels": 57144
+    },
+    {
+     "quadro": "q0061.jpg",
+     "blocos": 324,
+     "pixels": 59647
+    },
+    {
+     "quadro": "q0058.jpg",
+     "blocos": 313,
+     "pixels": 54401
+    }
+   ],
+   "classificacao": "falso positivo: bolhas de vapor e faixas de calor animadas (textura que escoa)"
+  },
+  "E1": {
+   "quadros": 28,
+   "com_blocos": 28,
+   "piores": [
+    {
+     "quadro": "q0059.jpg",
+     "blocos": 548,
+     "pixels": 94924
+    },
+    {
+     "quadro": "q0060.jpg",
+     "blocos": 539,
+     "pixels": 95270
+    },
+    {
+     "quadro": "q0055.jpg",
+     "blocos": 520,
+     "pixels": 86999
+    }
+   ],
+   "classificacao": "falso positivo: tubos horizontais do condensador passando com a câmera em descida; a linha cinza vertical é o capilar real (persiste sem AO)"
+  },
+  "J3": {
+   "quadros": 28,
+   "com_blocos": 0,
+   "piores": [
+    {
+     "quadro": "q0112.jpg",
+     "blocos": 0,
+     "pixels": 996
+    },
+    {
+     "quadro": "q0111.jpg",
+     "blocos": 0,
+     "pixels": 1048
+    },
+    {
+     "quadro": "q0110.jpg",
+     "blocos": 0,
+     "pixels": 1057
+    }
+   ],
+   "classificacao": "limpo (0 quadros): correção porta × vedação confirmada em 1080"
+  }
+ }
+}

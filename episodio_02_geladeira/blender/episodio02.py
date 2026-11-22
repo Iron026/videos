@@ -12,7 +12,7 @@ COND_Y = G.COND_Y
 AQUI = os.path.dirname(os.path.abspath(__file__)); RAIZ = os.path.join(AQUI, '..')
 SAIDA = os.path.join(RAIZ, 'episodio', 'cenas')
 PL = C.PLANOS
-CORRECAO_PORTA = {'G3'}   # rodada 5: folga porta × vedação (z-fighting). G3 = regressão da câmera nova; J3 = defeito antigo, aguarda decisão
+CORRECAO_PORTA = {'G3', 'J3'}   # folga porta × vedação (z-fighting): G3 (rodada 5, regressão da câmera nova); J3 (rodada 6, defeito antigo, autorizado)
 MARGEM = 0.25    # quadros extras antes/depois de cada plano (fusões na montagem)
 MOD = json.load(open(os.path.join(RAIZ, 'ciencia', 'ciclo_modelo.json')))
 BASE = lambda p: p[:2]

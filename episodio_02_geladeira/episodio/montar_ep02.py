@@ -112,23 +112,34 @@ def rotulo(img, txt, u, v, a, dx, dy):
     img.paste(Image.alpha_composite(img.convert('RGBA'), cam).convert('RGB'))
 
 
+MAN_LEG = os.environ.get('MANOMETRO_LEGIVEL') == '1'   # rodada 6, PROPOSTA (desligada): mostrador maior, textos de 30 px fora do anel
+F_MAN2 = ImageFont.truetype(os.path.join(FONTE, 'Montserrat-800.ttf'), int(30 * ESC))
+def centro_manometro(u, v, lado):
+    R_ = (80 if MAN_LEG else 64) * ESC; cx = min(max(u * W + lado * 150 * ESC, R_ + 12 * ESC), W - R_ - 12 * ESC); cy = min(max(v * H - 110 * ESC, R_ + 120 * ESC), 0.62 * H)
+    return R_, cx, cy
+
+
 def manometro(img, nome, u, v, a, val, lado):
     """Mostrador neutro (creme/azul da marca): ponteiro de 'baixa' a 'alta' pressão. Sem números (comparação relativa)."""
     if a <= 0.01: return
     cam = Image.new('RGBA', img.size, (0, 0, 0, 0)); d = ImageDraw.Draw(cam); al = int(255 * a)
-    R_ = 64 * ESC; cx = min(max(u * W + lado * 150 * ESC, R_ + 12 * ESC), W - R_ - 12 * ESC); cy = min(max(v * H - 110 * ESC, R_ + 120 * ESC), 0.62 * H)
+    R_, cx, cy = centro_manometro(u, v, lado)
     d.line([(u * W, v * H), (cx, cy + R_)], fill=CREME + (al,), width=max(2, int(3 * ESC)))
     d.ellipse([cx - R_, cy - R_, cx + R_, cy + R_], fill=CREME + (al,), outline=AZUL + (al,), width=max(2, int(5 * ESC)))
     a0, a1 = math.radians(220), math.radians(-40)
     for k in range(11):
         t = a0 + (a1 - a0) * k / 10; r1, r2 = R_ * 0.78, R_ * (0.62 if k % 5 == 0 else 0.70)
         d.line([(cx + r1 * math.cos(t), cy - r1 * math.sin(t)), (cx + r2 * math.cos(t), cy - r2 * math.sin(t))], fill=AZUL + (al,), width=max(1, int(3 * ESC)))
-    d.text((cx - R_ * 0.55, cy + R_ * 0.45), 'baixa', font=F_MAN, fill=AZUL + (al,), anchor='mm')
-    d.text((cx + R_ * 0.55, cy + R_ * 0.45), 'alta', font=F_MAN, fill=AZUL + (al,), anchor='mm')
+    if MAN_LEG:   # fora do anel, junto às pontas da escala, com contorno (legível sobre qualquer fundo)
+        for txt, sx in (('baixa', -1), ('alta', 1)):
+            d.text((cx + sx * R_ * 0.78, cy + R_ + 22 * ESC), txt, font=F_MAN2, fill=CREME + (al,), anchor='mm', stroke_width=max(2, int(5 * ESC)), stroke_fill=ESCURO + (al,))
+    else:
+        d.text((cx - R_ * 0.55, cy + R_ * 0.45), 'baixa', font=F_MAN, fill=AZUL + (al,), anchor='mm')
+        d.text((cx + R_ * 0.55, cy + R_ * 0.45), 'alta', font=F_MAN, fill=AZUL + (al,), anchor='mm')
     t = a0 + (a1 - a0) * (0.1 + 0.8 * max(0.0, min(1.0, val)))
     d.line([(cx, cy), (cx + R_ * 0.72 * math.cos(t), cy - R_ * 0.72 * math.sin(t))], fill=(200, 60, 40, al), width=max(2, int(5 * ESC)))
     rr = 7 * ESC; d.ellipse([cx - rr, cy - rr, cx + rr, cy + rr], fill=AZUL + (al,))
-    d.text((cx, cy - R_ - 16 * ESC), 'pressão', font=F_MAN, fill=CREME + (al,), anchor='mm', stroke_width=max(1, int(3 * ESC)), stroke_fill=ESCURO + (al,))
+    d.text((cx, cy - R_ - (22 if MAN_LEG else 16) * ESC), 'pressão', font=F_MAN2 if MAN_LEG else F_MAN, fill=CREME + (al,), anchor='mm', stroke_width=max(1, int((5 if MAN_LEG else 3) * ESC)), stroke_fill=ESCURO + (al,))
     img.paste(Image.alpha_composite(img.convert('RGBA'), cam).convert('RGB'))
 
 
@@ -161,7 +172,10 @@ def lupa(img, pid, g, k):
     anc = next(((u, v) for (nome, u, v, aa, val) in dados(pid, 'manometros2d.json', g) if nome == c['ancora']), None)
     cam = Image.new('RGBA', img.size, (0, 0, 0, 0)); d = ImageDraw.Draw(cam); al = int(230 * a)
     if anc:
-        ax, ay = anc[0] * W, anc[1] * H; vx, vy = ax - cx, ay - cy; n = max(1e-6, (vx * vx + vy * vy) ** 0.5)
+        # rodada 6: a linha termina no TOPO do manômetro (acima de "pressão"), que tem a própria ligação até o capilar; antes ela
+        # descia até a âncora e atravessava o mostrador (cortava "pressão" — visto no teste em 1080)
+        R_m, mx, my = centro_manometro(anc[0], anc[1], 0); ax, ay = mx, my - R_m - (44 if MAN_LEG else 34) * ESC
+        vx, vy = ax - cx, ay - cy; n = max(1e-6, (vx * vx + vy * vy) ** 0.5)
         if n > D / 2 + 8: ex, ey = cx + vx / n * D / 2, cy + vy / n * D / 2; d.line((ex, ey, ax, ay), fill=(16, 22, 46, al), width=max(3, int(7 * ESC))); d.line((ex, ey, ax, ay), fill=(246, 244, 236, al), width=max(1, int(3 * ESC)))
     img.paste(Image.alpha_composite(img.convert('RGBA'), cam).convert('RGB'))
     img.paste(quad, (cx - D // 2, cy - D // 2), mask)
@@ -206,15 +220,19 @@ def compor(g):
 
 if __name__ == '__main__':
     au = os.environ.get('AUDIO_EP02')
-    n = int(round(DUR * FPS))
-    entrada_audio = ['-i', au] if au else ['-f', 'lavfi', '-i', 'anullsrc=r=48000:cl=stereo']
+    n = int(round(DUR * FPS)); DUR_V = n / FPS     # rodada 6: a trilha termina no ÚLTIMO QUADRO (antes passava 7 ms do vídeo)
+    # JANELA_EP02="t0,t1": monta só esse trecho (testes curtos em 1080); quadros da janela, áudio recortado no mesmo trecho
+    jan = [float(x) for x in os.environ['JANELA_EP02'].split(',')] if os.environ.get('JANELA_EP02') else None
+    q0, q1 = (int(round(jan[0] * FPS)), int(round(jan[1] * FPS))) if jan else (0, n)
+    entrada_audio = (['-ss', f'{q0 / FPS:.4f}'] if jan and au else []) + (['-i', au] if au else ['-f', 'lavfi', '-i', 'anullsrc=r=48000:cl=stereo'])
     # MIXAGEM_EP02=1: o áudio já é a mixagem masterizada (−14 LUFS, pico verdadeiro medido) — entra SEM renormalizar
-    filtro_audio = [] if os.environ.get('MIXAGEM_EP02') else (['-af', 'loudnorm=I=-16:TP=-1.5:LRA=11,aresample=48000'] if au else [])   # animatic: só a voz, nivelada
+    filtro_audio = ((['-af', f'afade=t=out:st={DUR_V - 0.05:.4f}:d=0.05'] if not jan else []) if os.environ.get('MIXAGEM_EP02')   # fim sem clique (ambiente a −45 dBFS)
+                    else (['-af', 'loudnorm=I=-16:TP=-1.5:LRA=11,aresample=48000'] if au else []))   # animatic: só a voz, nivelada
     titulo = 'De Olho no Invisível · Ep. 02 · ' + ('animatic (não publicar)' if PERFIL == 'animatic' else 'versão de revisão (não publicar)' if PERFIL != 'final' else 'Como a geladeira esfria sem produzir frio?')
     ff = subprocess.Popen(['ffmpeg', '-y', '-v', 'error', '-f', 'rawvideo', '-pix_fmt', 'rgb24', '-s', f'{W}x{H}', '-r', str(FPS), '-i', '-', *entrada_audio,
                            '-c:v', 'libx264', '-preset', 'medium', '-crf', '17' if PERFIL == 'final' else '21', '-pix_fmt', 'yuv420p',
-                           *filtro_audio, '-c:a', 'aac', '-b:a', '192k', '-ar', '48000', '-t', f'{DUR:.3f}', '-movflags', '+faststart', '-metadata', f'title={titulo}', SAIDA], stdin=subprocess.PIPE)
-    for i in range(n):
+                           *filtro_audio, '-c:a', 'aac', '-b:a', '192k', '-ar', '48000', '-t', f'{(q1 - q0) / FPS:.4f}', '-movflags', '+faststart', '-metadata', f'title={titulo}', SAIDA], stdin=subprocess.PIPE)
+    for i in range(q0, q1):
         ff.stdin.write(compor(i / FPS).tobytes())
         if i % 600 == 0: print('quadro', i, '/', n, flush=True)
     ff.stdin.close(); ff.wait(); print('ok', SAIDA)

@@ -26,6 +26,7 @@ const CENA = P.get('cena') || '../cena2_q3/';
 const ESCALA = parseFloat(P.get('escala') || '0.5');
 const AO = P.get('ao') !== '0';
 const AO_AMOSTRAS = parseInt(P.get('aoamostras') || '16');
+const AO_CORTE_P = P.get('aocorte');   // '1' liga / '0' desliga a correção do AO com corte (padrão: meta.ao_corte, senão desligada)
 const SOMBRA = P.get('sombra') || 'pcf';
 const SMAP = parseInt(P.get('smap') || '4096');
 const CACHE = P.get('cache') === '1';
@@ -37,6 +38,8 @@ const OCL_K = parseFloat(P.get('ocl') || '0.994');   // fator de aproximação d
 const OCULTAR = new Set((P.get('ocultar') || '').split(',').filter(Boolean));   // diagnóstico: não carrega estes materiais (nome ou tipo)
 const BLOOM = parseFloat(P.get('bloom') || '0');      // brilho suave só nas luzes fortes (solda, reflexo do sol, linhas luminosas)
 const meta = await (await fetch(CENA + 'cena.json')).json();
+const AO_CORTE = AO_CORTE_P === '1' || (AO_CORTE_P !== '0' && meta.ao_corte === true);
+const AO_SEM = new Set(P.get('aosem') !== null ? P.get('aosem').split(',').filter(Boolean) : (meta.ao_excluir || []));   // objetos fora do AO
 const W = Math.round(meta.camera.largura * ESCALA), H = Math.round(meta.camera.altura * ESCALA);
 // ---- Ep. 02: uniformes globais animados por curvas [[t, v], ...] (tempo global do episódio)
 const UG = { uTermico: { value: 0 }, uVarre: { value: 1 }, uRevela: { value: 0 }, uPulso: { value: -1 }, uFluxo: { value: 1.0 },
@@ -533,6 +536,7 @@ const SEM_SOMBRA = new Set(meta.sem_sombra || []);   // interiores fechados (por
 const ANIM = meta.animacao; const animados = {}; const SURG = meta.surgir || {}; const surgem = [];
 const cenaOclusor = new THREE.Scene();   // só profundidade: impede a água de aparecer dentro do casco em cortes
 function registrarAnim(mesh, m) {
+  mesh.userData.objeto = m.objeto;   // rodada 6: permite excluir uma peça animada do passe do AO (ao_excluir)
   if (!m.objeto) return; mesh.matrixAutoUpdate = false;
   if (SURG[m.objeto]) { const sv = SURG[m.objeto]; surgem.push({ mesh, sv, Mrel: new THREE.Matrix4().fromArray(sv.M), op: mesh.material.opacity }); mesh.visible = false; }
   else (animados[m.objeto] ||= []).push(mesh);
@@ -646,7 +650,33 @@ function capturarAmbiente() {
 const rt = new THREE.WebGLRenderTarget(W, H, { samples: MSAA, type: THREE.HalfFloatType });
 const composer = new EffectComposer(renderer, rt);
 composer.addPass(new RenderPass(scene, camera));
-if (AO) { const ao = new GTAOPass(scene, camera, W, H); ao.updateGtaoMaterial({ radius: meta.ao_raio ?? 2.5, distanceExponent: 1.5, thickness: meta.ao_espessura ?? 2.0, scale: 1.0, samples: AO_AMOSTRAS }); ao.blendIntensity = 0.9; composer.addPass(ao); }
+if (AO) { const ao = new GTAOPass(scene, camera, W, H); ao.updateGtaoMaterial({ radius: meta.ao_raio ?? 2.5, distanceExponent: 1.5, thickness: meta.ao_espessura ?? 2.0, scale: 1.0, samples: AO_AMOSTRAS }); ao.blendIntensity = 0.9;
+  if (AO_CORTE) {   // Ep. 02 rodada 6: o GTAO desenha normais/profundidade com UM material de substituição SEM planos de corte → o AO
+    // "via" a metade cortada fora (linha vertical fina no G3 = vinco porta × lateral removidas). Opção: cada peça cortada usa
+    // um material de normais com o MESMO corte (dupla face, como na cor); as demais, o material original do GTAO (sem mudança).
+    const LADO_AOC = P.get('aocorte_lado') === 'frente' ? THREE.FrontSide : THREE.DoubleSide;   // diagnóstico: tampas fora do AO
+    const nK = new THREE.MeshNormalMaterial({ clippingPlanes: [planoCorte], side: LADO_AOC, blending: THREE.NoBlending });
+    const nK2 = new THREE.MeshNormalMaterial({ clippingPlanes: [planoCorte2], side: LADO_AOC, blending: THREE.NoBlending });
+    const orig = ao.renderOverride.bind(ao);
+    ao.renderOverride = (r, om, alvo, cc, ca) => {
+      if (om !== ao.normalMaterial) return orig(r, om, alvo, cc, ca);
+      const troca = []; scene.traverse(o => { if (o.isMesh && o.material) { troca.push([o, o.material]); const cp = o.material.clippingPlanes;
+        o.material = cp && cp.length ? (cp[0] === planoCorte ? nK : nK2) : ao.normalMaterial; } });
+      const corAnt = new THREE.Color(); r.getClearColor(corAnt); const alfaAnt = r.getClearAlpha(), autoAnt = r.autoClear;
+      r.setRenderTarget(alvo); r.autoClear = false; r.setClearColor(cc); r.setClearAlpha(ca || 0.0); r.clear();
+      r.render(scene, camera); for (const [o, m] of troca) o.material = m;
+      r.autoClear = autoAnt; r.setClearColor(corAnt); r.setClearAlpha(alfaAnt);
+    };
+  }
+  if (AO_SEM.size) {   // Ep. 02 rodada 6: peças fora do passe de normais/profundidade do AO (o resto do AO fica idêntico)
+    const orig2 = ao.renderOverride.bind(ao);
+    ao.renderOverride = (r, om, alvo, cc, ca) => {
+      if (om !== ao.normalMaterial) return orig2(r, om, alvo, cc, ca);
+      const esc = []; scene.traverse(o => { if (o.isMesh && o.visible && AO_SEM.has(o.userData.objeto)) { esc.push(o); o.visible = false; } });
+      orig2(r, om, alvo, cc, ca); for (const o of esc) o.visible = true;
+    };
+  }
+  composer.addPass(ao); }
 if (cenaTransp.children.length) composer.addPass(new PassoTransp());
 if (BLOOM > 0) composer.addPass(new UnrealBloomPass(new THREE.Vector2(W, H), BLOOM, 0.4, 1.6));
 composer.addPass(new OutputPass());

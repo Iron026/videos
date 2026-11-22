@@ -245,3 +245,16 @@ Arquivos-chave (em `episodio_01_navio_v2/`): `episodio/decupagem_ep01_v3.md` (de
 - **Som:** Freesound CC0 (licença conferida na página de cada som, prévia HQ) quando Mixkit/Commons limitam (429).
   A narração tem ~20 dB entre pico e loudness: compressão suave (2,5:1) só na CÓPIA de mixagem reduz o trabalho do
   limitador; o MP3 não muda. A/B com a narração no mesmo nível = mixagem "só voz" com o MESMO master fixo.
+
+## Lições novas do Ep. 02 (rodada 6)
+
+- **O GTAO do three.js ignora planos de corte:** ele desenha normais/profundidade com um único material de substituição
+  sem `clippingPlanes`, então o AO "vê" a parte cortada fora (linha fina = vinco invisível). Diagnóstico: ocultar peças
+  uma a uma + desligar passes. Opção `aocorte` no motor (desligada até decisão: muda o sombreado de todo plano em corte).
+- Linha fina suspeita: testar com AO desligado antes de concluir — a do E1 persistiu e era o capilar real.
+- Detector absoluto em 1080 marca linhas finas em câmera rápida e texturas animadas; mapear os pixels e conferir a câmera
+  exportada (trepidação × órbita suave) antes de chamar de defeito.
+- Diferenças pequenas em planos NÃO renderizados (≤ 1,1) que terminam no quadro-chave do x264 são do codificador
+  (mb-tree/lookahead), não da imagem: provar com data dos quadros-fonte + posição dos quadros-chave.
+- Trilha de áudio deve terminar no último QUADRO (n/30), não na duração da decupagem; fade de 50 ms evita clique.
+- Peça trocada só num gesto (mão fechada): mesma dimensão da peça original, para não mudar contato nem trajetória.

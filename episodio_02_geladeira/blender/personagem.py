@@ -81,6 +81,23 @@ def _mao(sx):
     return _juntar(*partes)
 
 
+def _ao_longo_x(vf, sx):
+    """Cápsula feita ao longo de −Z passa a apontar para ±X (sx)."""
+    return [(-z * sx, y, x) for (x, y, z) in vf[0]], vf[1]
+
+
+def _mao_fechada(sx):
+    """Rodada 5 (pedido do usuário): mão FECHADA e relaxada para o apoio sob o queixo — mesma palma e mesmo comprimento da
+    mão aberta (≈ 0,10 m, então o ponto de contato e o braço não mudam); dedos dobrados formam a fileira dos nós na ponta
+    (a parte que encosta no queixo), as pontas e o polegar ficam do lado do pescoço; para fora (câmera) fica o dorso dos dedos dobrados."""
+    partes = [_superelipsoide((0, 0.002, -0.040), (0.036, 0.020, 0.044), 2.3, 16, 10)]
+    for dx, r in ((-0.024, 0.0092), (-0.008, 0.0102), (0.008, 0.0100), (0.024, 0.0090)):
+        partes.append(_mover(_girar_x(_capsula(0.038, r, r * 0.95, 10, 4), 90, (0, 0, 0)), (sx * dx, -0.024, -0.0885)))   # dedos dobrados: fileira dos nós
+        partes.append(_mover(_capsula(0.016, r * 0.95, r * 0.9, 10, 4), (sx * dx, -0.026, -0.072)))                      # pontas recolhidas (lado do pescoço)
+    partes.append(_mover(_ao_longo_x(_capsula(0.030, 0.0100, 0.0088, 10, 4), sx), (sx * -0.032, -0.034, -0.064)))       # polegar (lado do pescoço)
+    return _juntar(*partes)
+
+
 def _capsula(L, r0, r1, n=18, anel=8):
     """Cápsula da origem (raio r0) até z = −L (raio r1), com calotas hemisféricas."""
     v, f = [], []
@@ -149,6 +166,7 @@ def montar():
         P[f'antebraco_{lado}'] = _obj(f'pers_antebraco_{lado}', _capsula(ANTEBRACO - 0.04, 0.043, 0.037), m['sueter'])
         P[f'punho_{lado}'] = _obj(f'pers_punho_{lado}', _superelipsoide((0, 0, -ANTEBRACO + 0.03), (0.041, 0.041, 0.03), 2.4, 16, 8), m['punho'])
         P[f'mao_{lado}'] = _obj(f'pers_mao_{lado}', _mao(sx), m['pele'])
+        P[f'maof_{lado}'] = _obj(f'pers_maof_{lado}', _mao_fechada(sx), m['pele'])     # só aparece no apoio sob o queixo
         P[f'coxa_{lado}'] = _obj(f'pers_coxa_{lado}', _capsula(COXA, 0.082, 0.064), m['calca'])
         P[f'canela_{lado}'] = _obj(f'pers_canela_{lado}', _capsula(CANELA, 0.062, 0.05), m['calca'])
         P[f'pe_{lado}'] = _obj(f'pers_pe_{lado}', _juntar(_superelipsoide((0, 0.055, -0.04), (0.055, 0.125, 0.048), 2.6),
@@ -209,7 +227,7 @@ def posar(P, e):
     frente_w = (tronco.to_3x3() @ Vector((0, 1, 0))).normalized()
     for lado, sx in (('d', 1), ('e', -1)):
         S = tronco @ Vector((sx * OMBRO_LOCAL[0], OMBRO_LOCAL[1], OMBRO_LOCAL[2]))
-        b = e[f'braco_{lado}']
+        b = e[f'braco_{lado}']; fechada = b[0] == 'queixo' and b[1] > 0.15     # mão fechada durante o gesto do queixo
         if b[0] == 'queixo':   # ('queixo', k, repouso, polo): a mão sai do repouso e APOIA sob o queixo da cabeça já posicionada
             k = b[1]; R3 = cab.to_3x3(); cima = (R3 @ Vector((0, 0.15, 1))).normalized()
             contato = cab @ Vector((sx * 0.012, 0.100, 0.040))                  # sob o queixo, levemente para o lado da mão
@@ -228,7 +246,10 @@ def posar(P, e):
         P[f'antebraco_{lado}'].matrix_world = _segmento(E, (T - E).normalized(), frente_w)
         P[f'punho_{lado}'].matrix_world = P[f'antebraco_{lado}'].matrix_world
         mao_dir = (T - E).normalized() if b[0] == 'fk' else ((T - E).normalized() * 0.7 + Vector(b[3] if len(b) > 3 else (0, 0, -1)) * 0.3).normalized()
-        P[f'mao_{lado}'].matrix_world = _segmento(T, mao_dir, frente_w)
+        Mm = _segmento(T, mao_dir, frente_w); oculta = Matrix.Translation(E.lerp(T, 0.9)) @ Matrix.Scale(1e-4, 4)   # escondida dentro do punho
+        if 'maof_' + lado in P:
+            P[f'mao_{lado}'].matrix_world = oculta if fechada else Mm; P[f'maof_{lado}'].matrix_world = Mm if fechada else oculta
+        else: P[f'mao_{lado}'].matrix_world = Mm
     # pernas: parado (leve flexão) ou caminhada simples
     for lado, sx, ph in (('d', 1, 0.0), ('e', -1, 0.5)):
         H = pelve @ Vector((sx * QUADRIL_LOCAL[0], QUADRIL_LOCAL[1], QUADRIL_LOCAL[2]))
