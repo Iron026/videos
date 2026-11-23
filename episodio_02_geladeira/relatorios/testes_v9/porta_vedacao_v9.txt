@@ -1,0 +1,5 @@
+C4 {'quadros': 185, 'quadros_com_faixa_a_vista': 92, 'largura_max_px_540': 38.8, 'trios_avaliados': 91, 'pixels_alternando_total': 11448, 'pixels_alternando_max_quadro': 280, 'trios_com_mais_de_50_px': 65, 'fonte': 'quadros_revisao'}
+G3 {'quadros': 173, 'quadros_com_faixa_a_vista': 173, 'largura_max_px_540': 21.8, 'trios_avaliados': 171, 'pixels_alternando_total': 15, 'pixels_alternando_max_quadro': 2, 'trios_com_mais_de_50_px': 0, 'fonte': 'quadros_revisao'}
+H1 {'quadros': 150, 'quadros_com_faixa_a_vista': 61, 'largura_max_px_540': 45.6, 'trios_avaliados': 60, 'pixels_alternando_total': 10099, 'pixels_alternando_max_quadro': 355, 'trios_com_mais_de_50_px': 43, 'fonte': 'quadros_revisao'}
+H2 {'quadros': 131, 'quadros_com_faixa_a_vista': 131, 'largura_max_px_540': 38.4, 'trios_avaliados': 129, 'pixels_alternando_total': 10516, 'pixels_alternando_max_quadro': 228, 'trios_com_mais_de_50_px': 68, 'fonte': 'quadros_revisao'}
+J3 {'quadros': 132, 'quadros_com_faixa_a_vista': 132, 'largura_max_px_540': 36.2, 'trios_avaliados': 130, 'pixels_alternando_total': 157, 'pixels_alternando_max_quadro': 27, 'trios_com_mais_de_50_px': 0, 'fonte': 'quadros_revisao'}

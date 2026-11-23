@@ -1,0 +1,12 @@
+C2 137 padrão 116 | sensível nos cortes 99 2113917 {'quadro': 'q0076.jpg', 'blocos_sensivel': 245, 'pixels_sensivel': 34059, 'blocos_padrao': 267}
+C3 161 padrão 92 | sensível nos cortes 157 1490287 {'quadro': 'q0073.jpg', 'blocos_sensivel': 406, 'pixels_sensivel': 61134, 'blocos_padrao': 739}
+C4 183 padrão 54 | sensível nos cortes 59 464450 {'quadro': 'q0138.jpg', 'blocos_sensivel': 55, 'pixels_sensivel': 8842, 'blocos_padrao': 81}
+D1 150 padrão 2 | sensível nos cortes 0 43596 {'quadro': 'q0055.jpg', 'blocos_sensivel': 0, 'pixels_sensivel': 913, 'blocos_padrao': 0}
+D3 180 padrão 68 | sensível nos cortes 1 29701 {'quadro': 'q0157.jpg', 'blocos_sensivel': 1, 'pixels_sensivel': 223, 'blocos_padrao': 4}
+D5 122 padrão 93 | sensível nos cortes 30 230059 {'quadro': 'q0079.jpg', 'blocos_sensivel': 40, 'pixels_sensivel': 5962, 'blocos_padrao': 85}
+G1 66 padrão 21 | sensível nos cortes 31 164586 {'quadro': 'q0040.jpg', 'blocos_sensivel': 34, 'pixels_sensivel': 6480, 'blocos_padrao': 32}
+G2 137 padrão 0 | sensível nos cortes 0 27738 {'quadro': 'q0070.jpg', 'blocos_sensivel': 0, 'pixels_sensivel': 425, 'blocos_padrao': 0}
+G3 171 padrão 0 | sensível nos cortes 0 27391 {'quadro': 'q0070.jpg', 'blocos_sensivel': 0, 'pixels_sensivel': 511, 'blocos_padrao': 0}
+H1 148 padrão 96 | sensível nos cortes 97 997046 {'quadro': 'q0102.jpg', 'blocos_sensivel': 104, 'pixels_sensivel': 17464, 'blocos_padrao': 254}
+H2 129 padrão 8 | sensível nos cortes 23 125997 {'quadro': 'q0063.jpg', 'blocos_sensivel': 3, 'pixels_sensivel': 1916, 'blocos_padrao': 0}
+J3 130 padrão 0 | sensível nos cortes 11 50262 {'quadro': 'q0062.jpg', 'blocos_sensivel': 1, 'pixels_sensivel': 565, 'blocos_padrao': 0}
