@@ -1,0 +1,17 @@
+{
+ "folga_0.5mm_R8": {
+  "px_alternando_total": 1359,
+  "max_quadro": 529,
+  "px_escuros_media": 1290.4
+ },
+ "folga_0.15mm": {
+  "px_alternando_total": 2974,
+  "max_quadro": 357,
+  "px_escuros_media": 623.4
+ },
+ "sobreposicao_0.5mm": {
+  "px_alternando_total": 7,
+  "max_quadro": 3,
+  "px_escuros_media": 87700.0
+ }
+}

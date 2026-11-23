@@ -1,0 +1,67 @@
+   0.11–   2.00  Você já reparou / que a geladeira é fria
+   2.00–   4.79  por dentro, mas pode ficar / quente por fora?
+   5.12–   7.30  Parece estranho: / como a mesma máquina
+   7.30–  10.17  consegue fazer as duas / coisas ao mesmo tempo?
+  10.39–  12.43  A resposta / é surpreendente
+  12.63–  14.67  A geladeira / não fabrica frio
+  14.79–  16.23  Ela transporta calor
+  16.69–  17.62  Imagine uma garrafa
+  17.62–  19.27  de água / em temperatura ambiente
+  19.77–  21.67  Quando você / a coloca na geladeira
+  21.69–  24.03  ela começa a perder / energia térmica
+  24.19–  26.39  Mas esse calor / não desaparece
+  26.55–  28.41  Ele precisa ir / para algum lugar
+  28.71–  30.72  Para descobrir / para onde, vamos abrir
+  30.72–  33.53  a geladeira de um jeito / que você nunca viu
+  33.92–  35.74  Escondido atrás / das paredes
+  35.74–  38.17  existe um circuito / fechado de tubos
+  38.27–  40.87  Dentro dele circula / uma substância especial
+  41.26–  42.97  o fluido refrigerante
+  43.16–  45.68  Durante o percurso, / ele muda de pressão
+  45.68–  48.53  de temperatura / e até de estado físico
+  48.79–  50.73  Vamos começar / pelo evaporador
+  50.85–  52.91  a parte que absorve / calor do interior
+  53.31–  56.56  Ali, o fluido chega frio / e sob baixa pressão
+  56.56–  58.39  numa mistura / de líquido e vapor
+  58.80–  61.07  Como está mais frio / que o ar e os alimentos
+  61.37–  64.15  recebe calor através / das paredes dos tubos
+  64.32–  67.89  Ao absorver essa energia, / a parte líquida evapora  [revela]
+  68.07–  71.49  O calor saiu dos alimentos / e entrou no refrigerante  [revela]
+  71.67–  74.11  Mas como mandar / esse calor para fora?  [revela]
+  74.43–  76.13  É aqui que entra / o compressor
+  76.52–  78.19  movido por eletricidade
+  78.39–  80.59  Ele suga o vapor / e o comprime
+  80.62–  82.83  elevando sua pressão / e sua temperatura
+  83.19–  84.44  Agora, o refrigerante
+  84.44–  86.79  está mais quente / que o ar da cozinha
+  86.91–  89.21  Por isso, ao atravessar / o condensador
+  89.28–  91.63  ele consegue liberar / calor para o ambiente
+  92.09–  93.29  Enquanto perde energia
+  93.66–  96.39  o vapor se transforma / novamente em líquido
+  96.51–  97.97  Só falta uma etapa
+  98.23–  99.76  Esse líquido passa / por um tubo
+  99.76– 102.13  muito estreito, / chamado capilar
+ 102.32– 104.09  A pressão / cai bruscamente
+ 104.23– 106.05  e parte do líquido evapora
+ 106.07– 107.43  resfriando a mistura
+ 107.55– 109.67  Assim, ela volta / ao evaporador
+ 109.85– 111.77  pronta para absorver / mais calor
+ 112.00– 113.31  E tudo recomeça
+ 113.31– 115.59  sempre que o sistema / precisa resfriar
+ 115.85– 117.00  Agora pense / no que acontece
+ 117.00– 119.19  quando você deixa / a porta aberta
+ 119.43– 121.97  O calor do ambiente / entra continuamente
+ 122.07– 124.27  e o compressor / precisa trabalhar mais
+ 124.61– 126.97  Se a porta ficar aberta / na mesma cozinha
+ 127.03– 129.73  a geladeira não consegue / resfriar o cômodo
+ 129.83– 132.98  No balanço total, ela libera / o calor que retirou
+ 132.98– 135.37  mais a energia / usada para funcionar
+ 135.57– 137.08  Então, por que ela é fria
+ 137.08– 139.07  por dentro / e quente por fora?
+ 139.24– 141.83  Porque o frio / não está sendo produzido
+ 141.90– 144.27  O calor está sendo / retirado de um lugar
+ 144.38– 145.57  e levado para outro
+ 145.76– 147.81  A geladeira não cria frio
+ 147.92– 149.89  Ela dá um destino ao calor
+{'blocos': 65, 'terminam_em_palavra_fraca': 0, 'menos_de_0_6s': 0, 'duas_linhas': 51, 'com_revelacao': 3}
+texto idêntico à narração: True
