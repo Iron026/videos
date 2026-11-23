@@ -40,7 +40,7 @@ CHIPS = [faixa('A3', 'A3', 'Corte ilustrativo'),
 _curvas = {}
 def curva_cena(pid, nome, g, padrao=0.0):
     if pid not in _curvas:
-        f = os.path.join(A, 'cenas', pid, 'cena.json'); _curvas[pid] = json.load(open(f)).get('curvas', {}) if os.path.exists(f) else {}
+        f = os.path.join(A, 'cenas', _id(pid), 'cena.json'); _curvas[pid] = json.load(open(f)).get('curvas', {}) if os.path.exists(f) else {}
     k = _curvas[pid].get(nome)
     if not k: return padrao
     if g <= k[0][0]: return k[0][1]
@@ -59,11 +59,15 @@ def chips_dinamicos(g):
     return out
 
 
-def pasta(pid): return os.path.join(A, f'quadros_{PERFIL}', pid)
+PREVIA_R9 = os.environ.get('PREVIA_R9', '0') == '1'   # rodada 9: prévias da fase 3 — cenas/<id>_r9 e quadros_previa_r9/<id>_r9 quando existirem
+def _id(pid): return pid + '_r9' if PREVIA_R9 and os.path.isdir(os.path.join(A, 'cenas', pid + '_r9')) else pid
+def pasta(pid):
+    if PREVIA_R9 and os.path.isdir(os.path.join(A, 'quadros_previa_r9', pid + '_r9')): return os.path.join(A, 'quadros_previa_r9', pid + '_r9')
+    return os.path.join(A, f'quadros_{PERFIL}', pid)
 _idx = {}; _meta = {}
 def meta(pid):
     if pid not in _meta:
-        c = json.load(open(os.path.join(A, 'cenas', pid, 'cena.json'))); _meta[pid] = c['g0']
+        c = json.load(open(os.path.join(A, 'cenas', _id(pid), 'cena.json'))); _meta[pid] = c['g0']
     return _meta[pid]
 
 
@@ -97,7 +101,7 @@ _dados = {}
 def dados(pid, arq, g):
     k = (pid, arq)
     if k not in _dados:
-        p = os.path.join(A, 'cenas', pid, arq)
+        p = os.path.join(A, 'cenas', _id(pid), arq)
         p9 = os.path.join(A, 'rotulos_r9', pid + '.json')   # rodada 9: âncoras visíveis (mesmos tempos; ver rotulos_r9.py)
         if arq == 'rotulos2d.json' and os.environ.get('COMPOSICAO_R9', '0') == '1' and os.path.exists(p9): p = p9
         _dados[k] = json.load(open(p)) if os.path.exists(p) else dict(g0=0, quadros=[])
@@ -434,7 +438,7 @@ _rosto_cache = {}
 def rosto(pid, g):
     """Caixa do rosto do personagem no quadro (projeção da cabeça exportada); None se não houver personagem à vista."""
     if pid not in _rosto_cache:
-        f = os.path.join(A, 'cenas', pid, 'cena.json'); c = json.load(open(f)) if os.path.exists(f) else {}
+        f = os.path.join(A, 'cenas', _id(pid), 'cena.json'); c = json.load(open(f)) if os.path.exists(f) else {}
         _rosto_cache[pid] = (c.get('g0', 0), c.get('animacao', {}).get('quadros', []))
     g0, Q = _rosto_cache[pid]; i = int(round((g - g0) * FPS))
     if not (0 <= i < len(Q)) or 'pers_cabeca' not in Q[i]['objetos']: return None
