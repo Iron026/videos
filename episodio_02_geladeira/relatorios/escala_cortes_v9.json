@@ -1,0 +1,45 @@
+{
+ "C4_para_D1_v9": {
+  "C4[-1]": {
+   "materiais": [
+    "circ_evaporador",
+    "evap_aluminio"
+   ],
+   "centro": [
+    550,
+    668
+   ],
+   "largura": 1091,
+   "altura": 601,
+   "fracao_tela": 0.312
+  },
+  "D1[0]": {
+   "materiais": [
+    "circ_evaporador",
+    "evap_aluminio"
+   ],
+   "centro": [
+    453,
+    1190
+   ],
+   "largura": 2292,
+   "altura": 1517,
+   "fracao_tela": 0.775
+  },
+  "D1[9]": {
+   "materiais": [
+    "circ_evaporador",
+    "evap_aluminio"
+   ],
+   "centro": [
+    453,
+    1190
+   ],
+   "largura": 2293,
+   "altura": 1517,
+   "fracao_tela": 0.775
+  }
+ },
+ "salto_de_escala": 2.1,
+ "nota": "projeção das malhas do evaporador pela câmera exportada (px em 1080×1920); D1 entra com fusão de 0,30 s"
+}

@@ -9,7 +9,7 @@ GX, GY0, GY1, GZ = 0.300, -0.340, 0.310, 1.500; ESP = 0.045; IX, IY1, IZ1 = GX -
 JUNTAS = {   # nome: 4 cantos do retângulo coincidente (lado mantido pelo corte, x ≤ 0)
     'degrau×fundo_tras (y = IY1)': [(-IX + e, IY1, NZ1), (0, IY1, NZ1), (0, IY1, NZ1 + 0.032), (-IX + e, IY1, NZ1 + 0.032)],
     'fundo_tras×topo (z = IZ1)': [(-IX + e, IY1, IZ1), (0, IY1, IZ1), (0, GY1, IZ1), (-IX + e, GY1, IZ1)]}
-base, saida = sys.argv[1], sys.argv[2]; A = os.path.dirname(os.path.abspath(__file__)); CEN = os.path.join(A, 'cenas')
+base, saida = sys.argv[1], sys.argv[2]; A = os.path.dirname(os.path.abspath(__file__)); CEN = os.path.join(A, os.environ.get('CENAS_DIR', 'cenas'))
 IDS = sys.argv[3:] or sorted(p for p in os.listdir(CEN) if os.path.exists(os.path.join(CEN, p, 'cena.json')) and json.load(open(os.path.join(CEN, p, 'cena.json'))).get('ao_corte'))
 def proj(cam, P, W=540, H=960):
     pos = np.array(cam['pos']); f = np.array(cam['dir']); f /= np.linalg.norm(f); r = np.cross(f, cam['up']); r /= np.linalg.norm(r); u = np.cross(r, f)

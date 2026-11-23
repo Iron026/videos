@@ -17,7 +17,7 @@ def opt(k, d=None):
     return d
 VIDEO, PASSO, QUADROS = opt('--video'), int(opt('--passo', '1')), opt('--quadros')
 T = {p['id']: (p['t0'], p['t1']) for p in PL.resolvidos()['planos']}
-CEN = os.path.join(A, 'cenas')
+CEN = os.path.join(A, os.environ.get('CENAS_DIR', 'cenas'))   # rodada 9: CENAS_DIR=cenas_v8 para projetar com as câmeras da V8
 IDS = args or sorted(p for p in os.listdir(CEN) if os.path.exists(os.path.join(CEN, p, 'cena.json')) and json.load(open(os.path.join(CEN, p, 'cena.json'))).get('ao_corte'))
 def proj(cam, P, W=540, H=960):
     pos = np.array(cam['pos']); f = np.array(cam['dir']); f /= np.linalg.norm(f); r = np.cross(f, cam['up']); r /= np.linalg.norm(r); u = np.cross(r, f)
