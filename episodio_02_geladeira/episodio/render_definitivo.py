@@ -24,7 +24,7 @@ BLOCO = 60; CORR_MIN, DIF_MAX = 0.93, 6.0
 sys.path.insert(0, os.path.join(RAIZ, 'decupagem')); import planos as PL
 ids_arg = [a for a in args if not a.startswith('--') and a != PERFIL]
 IDS = ids_arg or [x for p in PL.resolvidos()['planos'] for x in ([p['id']] + ([p['id'] + 'b'] if p['id'] in ('A4', 'J1') else ['G3z'] if p['id'] == 'G3' else []))]
-OUT = os.path.join(A, f'quadros_{PERFIL}'); os.makedirs(OUT, exist_ok=True); LOG = os.path.join(OUT, '_definitivo.log')
+OUT = os.path.join(A, f'quadros_{PERFIL}'); V8REF = os.path.join(A, f'quadros_{PERFIL}_v8'); os.makedirs(OUT, exist_ok=True); LOG = os.path.join(OUT, '_definitivo.log')
 sha = lambda p: hashlib.sha256(open(p, 'rb').read()).hexdigest()
 MOT = sha(os.path.join(MOTOR, 'render3.js'))[:16] + sha(os.path.join(MOTOR, 'render_anim.mjs'))[:8]
 def log(m):
@@ -110,6 +110,13 @@ for pid in IDS:
             ft = os.path.join(tmp, f'q{i:04d}.jpg'); ok, motivo, ant_ = verificar(ft, ant); just = None
             if not ok and motivo.startswith('salto') and i in TRANS:   # transição desenhada na cena (varredura térmica etc.)
                 ok, just = True, motivo + ' — justificado: efeito da cena em transição neste quadro'; log(f'{pid} quadro {i}: {just}')
+            if not ok and motivo.startswith('salto'):   # o MESMO salto na versão aprovada (V8), com a imagem equivalente à dela
+                fv, fv0 = (os.path.join(V8REF, pid, f'q{j:04d}.jpg') for j in (i, i - 1))
+                if os.path.exists(fv) and os.path.exists(fv0) and ant is not None:
+                    gv, gv0, gn = (np.asarray(Image.open(x).convert('L').resize((32, 56)), np.float32) for x in (fv, fv0, ft))
+                    cv = float(np.corrcoef(gv.ravel(), gv0.ravel())[0, 1]); cn = float(np.corrcoef(gn.ravel(), ant.ravel())[0, 1]); cx = float(np.corrcoef(gn.ravel(), gv.ravel())[0, 1])
+                    if abs(cn - cv) <= 0.03 and cx >= CORR_MIN:
+                        ok, just = True, motivo + f' — justificado: mesmo salto na V8 aprovada (corr V8 {cv:.3f}; novo × V8 {cx:.3f})'; log(f'{pid} quadro {i}: {just}')
             if not ok:
                 gravar_json(mf, man); log(f'PARADA {pid} quadro {i}: {motivo} — investigar antes de continuar (arquivo em {tmp})'); sys.exit(4)
             dst = os.path.join(d, f'q{i:04d}.jpg'); os.replace(ft, dst); ant = ant_
