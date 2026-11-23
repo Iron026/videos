@@ -1,0 +1,47 @@
+{
+ "plano": "D1",
+ "manifesto_depois": {
+  "reg": {
+   "consulta": "cena=/episodio_02_geladeira/episodio/cenas/D1/&escala=0.5&aoamostras=16&msaa=4&bloom=0.18",
+   "passo": 1,
+   "motor": "79b25d43c4395dc535da39da",
+   "cena": "59e6bb8ac8fd44c7"
+  },
+  "quadros": 152,
+  "ruins": [],
+  "segundos": 788.7,
+  "saida": [
+   "FIM 152 quadros em 778.6 s (5.12 s/quadro)"
+  ],
+  "provas_reuso": [
+   {
+    "quando": "2026-11-23 10:30:17",
+    "cena_render": "3f2b2b893ca349f8",
+    "cena_atual": "59e6bb8ac8fd44c7",
+    "cena_json": "idêntico",
+    "malhas_identicas_byte": 60,
+    "malhas_iguais_sem_ordem": [
+     "m008.bin",
+     "m054.bin"
+    ],
+    "composicao_mudou": [
+     "rotulos2d.json"
+    ]
+   }
+  ]
+ },
+ "manifesto_antes": {
+  "reg": {
+   "consulta": "cena=/episodio_02_geladeira/episodio/cenas/D1/&escala=0.5&aoamostras=16&msaa=4&bloom=0.18",
+   "passo": 1,
+   "motor": "79b25d43c4395dc535da39da",
+   "cena": "3f2b2b893ca349f8"
+  },
+  "quadros": 152,
+  "ruins": [],
+  "segundos": 788.7,
+  "saida": [
+   "FIM 152 quadros em 778.6 s (5.12 s/quadro)"
+  ]
+ }
+}

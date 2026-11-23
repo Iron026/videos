@@ -1,0 +1,239 @@
+{
+ "porta_fechada": {
+  "invasoes": [
+   {
+    "item": "garrafa_agua_vol",
+    "peca": "garrafa_rot",
+    "cm3": 224.45
+   },
+   {
+    "item": "molho_claro",
+    "peca": "prat_borda_0.84",
+    "cm3": 2.3
+   },
+   {
+    "item": "molho_claro_tampa",
+    "peca": "prat_borda_0.84",
+    "cm3": 2.45
+   },
+   {
+    "item": "molho_claro_tampa",
+    "peca": "prat_vidro_0.84",
+    "cm3": 3.92
+   },
+   {
+    "item": "molho_verde",
+    "peca": "prat_borda_0.84",
+    "cm3": 2.3
+   },
+   {
+    "item": "molho_verde_tampa",
+    "peca": "prat_borda_0.84",
+    "cm3": 2.45
+   },
+   {
+    "item": "molho_verde_tampa",
+    "peca": "prat_vidro_0.84",
+    "cm3": 3.92
+   }
+  ],
+  "apoio": [
+   {
+    "item": "garrafa",
+    "folga_mm": 2.5,
+    "tipo": "flutuando"
+   },
+   {
+    "item": "iogurte0",
+    "folga_mm": 0.0,
+    "tipo": "coplanar"
+   },
+   {
+    "item": "iogurte1",
+    "folga_mm": 0.0,
+    "tipo": "coplanar"
+   },
+   {
+    "item": "molho_claro",
+    "folga_mm": 0.0,
+    "tipo": "coplanar"
+   },
+   {
+    "item": "molho_verde",
+    "folga_mm": 0.0,
+    "tipo": "coplanar"
+   },
+   {
+    "item": "pote",
+    "folga_mm": 2.5,
+    "tipo": "flutuando"
+   },
+   {
+    "item": "pote_baixo",
+    "folga_mm": 0.0,
+    "tipo": "coplanar"
+   },
+   {
+    "item": "suco",
+    "folga_mm": 0.0,
+    "tipo": "coplanar"
+   },
+   {
+    "item": "tomate0",
+    "folga_mm": 14.5,
+    "tipo": "flutuando"
+   },
+   {
+    "item": "tomate1",
+    "folga_mm": 14.5,
+    "tipo": "flutuando"
+   },
+   {
+    "item": "tomate2",
+    "folga_mm": 14.5,
+    "tipo": "flutuando"
+   },
+   {
+    "item": "tomate3",
+    "folga_mm": 14.5,
+    "tipo": "flutuando"
+   }
+  ]
+ },
+ "porta_aberta_100": {
+  "invasoes": [
+   {
+    "item": "garrafa_agua_vol",
+    "peca": "garrafa_rot",
+    "cm3": 224.45
+   },
+   {
+    "item": "molho_claro",
+    "peca": "porta_contraporta",
+    "cm3": 290.49
+   },
+   {
+    "item": "molho_claro",
+    "peca": "porta_grade0.7",
+    "cm3": 29.56
+   },
+   {
+    "item": "molho_claro",
+    "peca": "porta_painel",
+    "cm3": 121.06
+   },
+   {
+    "item": "molho_claro",
+    "peca": "porta_vedacao",
+    "cm3": 177.68
+   },
+   {
+    "item": "molho_claro_tampa",
+    "peca": "porta_contraporta",
+    "cm3": 19.01
+   },
+   {
+    "item": "molho_claro_tampa",
+    "peca": "porta_painel",
+    "cm3": 6.79
+   },
+   {
+    "item": "molho_claro_tampa",
+    "peca": "porta_vedacao",
+    "cm3": 13.14
+   },
+   {
+    "item": "molho_verde",
+    "peca": "porta_contraporta",
+    "cm3": 290.49
+   },
+   {
+    "item": "molho_verde",
+    "peca": "porta_painel",
+    "cm3": 206.43
+   },
+   {
+    "item": "molho_verde",
+    "peca": "porta_vedacao",
+    "cm3": 263.05
+   },
+   {
+    "item": "molho_verde_tampa",
+    "peca": "porta_contraporta",
+    "cm3": 19.01
+   },
+   {
+    "item": "molho_verde_tampa",
+    "peca": "porta_painel",
+    "cm3": 16.37
+   },
+   {
+    "item": "molho_verde_tampa",
+    "peca": "porta_vedacao",
+    "cm3": 19.01
+   }
+  ],
+  "apoio": [
+   {
+    "item": "garrafa",
+    "folga_mm": 2.5,
+    "tipo": "flutuando"
+   },
+   {
+    "item": "iogurte0",
+    "folga_mm": 0.0,
+    "tipo": "coplanar"
+   },
+   {
+    "item": "iogurte1",
+    "folga_mm": 0.0,
+    "tipo": "coplanar"
+   },
+   {
+    "item": "molho_claro",
+    "folga_mm": 0.0,
+    "tipo": "coplanar"
+   },
+   {
+    "item": "molho_verde",
+    "folga_mm": 0.0,
+    "tipo": "coplanar"
+   },
+   {
+    "item": "pote",
+    "folga_mm": 2.5,
+    "tipo": "flutuando"
+   },
+   {
+    "item": "pote_baixo",
+    "folga_mm": 0.0,
+    "tipo": "coplanar"
+   },
+   {
+    "item": "suco",
+    "folga_mm": 0.0,
+    "tipo": "coplanar"
+   },
+   {
+    "item": "tomate0",
+    "folga_mm": 14.5,
+    "tipo": "flutuando"
+   },
+   {
+    "item": "tomate1",
+    "folga_mm": 14.5,
+    "tipo": "flutuando"
+   },
+   {
+    "item": "tomate2",
+    "folga_mm": 14.5,
+    "tipo": "flutuando"
+   },
+   {
+    "item": "tomate3",
+    "folga_mm": 14.5,
+    "tipo": "flutuando"
+   }
+  ]
+ }
+}

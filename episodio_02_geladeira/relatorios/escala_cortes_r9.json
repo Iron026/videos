@@ -1,0 +1,48 @@
+{
+ "C4->D1": {
+  "elemento": "evaporador",
+  "fim_do_plano_aberto": {
+   "centro": [
+    -110,
+    -218
+   ],
+   "altura_px": 653,
+   "largura_px": 1296,
+   "fracao_da_tela": 0.028
+  },
+  "inicio_do_close": {
+   "centro": [
+    450,
+    1208
+   ],
+   "altura_px": 1468,
+   "largura_px": 2281,
+   "fracao_da_tela": 0.753
+  },
+  "salto_de_escala": 2.25,
+  "deslocamento_do_centro_px": 1532
+ },
+ "E4->F1": {
+  "elemento": "condensador",
+  "fim_do_plano_aberto": {
+   "centro": [
+    -9910,
+    -16504
+   ],
+   "altura_px": 39949,
+   "largura_px": 21023,
+   "fracao_da_tela": 0.557
+  },
+  "inicio_do_close": {
+   "centro": [
+    498,
+    914
+   ],
+   "altura_px": 2117,
+   "largura_px": 744,
+   "fracao_da_tela": 0.689
+  },
+  "salto_de_escala": 0.05,
+  "deslocamento_do_centro_px": 20291
+ }
+}

@@ -97,7 +97,10 @@ _dados = {}
 def dados(pid, arq, g):
     k = (pid, arq)
     if k not in _dados:
-        p = os.path.join(A, 'cenas', pid, arq); _dados[k] = json.load(open(p)) if os.path.exists(p) else dict(g0=0, quadros=[])
+        p = os.path.join(A, 'cenas', pid, arq)
+        p9 = os.path.join(A, 'rotulos_r9', pid + '.json')   # rodada 9: âncoras visíveis (mesmos tempos; ver rotulos_r9.py)
+        if arq == 'rotulos2d.json' and os.environ.get('COMPOSICAO_R9', '0') == '1' and os.path.exists(p9): p = p9
+        _dados[k] = json.load(open(p)) if os.path.exists(p) else dict(g0=0, quadros=[])
     d = _dados[k]; f = int(round((g - d['g0']) * FPS)); q = d['quadros']
     return q[f] if 0 <= f < len(q) else []
 
@@ -107,8 +110,38 @@ def caixa_rotulo(txt, u, v, dx, dy, linha=True):
     tw = F_ROT.getlength(txt); pad = 20 * ESC; h = 44 * ESC + 2 * pad * 0.55; w = tw + 2 * pad
     if linha: lx = bx if dx >= 0 else bx - w; ly = by - h / 2
     else: lx = ax - w / 2; ly = ay - h - 10 * ESC          # rodada 8: sem linha — o rótulo encosta no próprio elemento
-    lx = min(max(lx, 0.04 * W), 0.96 * W - w); ly = min(max(ly, 0.09 * H), 0.62 * H - h)
+    if R9: lx = min(max(lx, ZONA['esquerda'] * ESC), W - ZONA['direita'] * ESC - w); ly = min(max(ly, (ZONA['topo'] + 8) * ESC), 0.62 * H - h)
+    else: lx = min(max(lx, 0.04 * W), 0.96 * W - w); ly = min(max(ly, 0.09 * H), 0.62 * H - h)
     return lx, ly, w, h
+LUPA_AVISO = 'Lupa: canal ampliado (esquema)'
+def avisos_topo(g):
+    vs = chips_dinamicos(g) + [t for (a, b, t) in CHIPS if a <= g < b]
+    return [t for t in vs if not (R9 and t == LUPA_AVISO)]
+def caixas_avisos(g):
+    y = (ZONA['topo'] + 12) * ESC if R9 else 70 * ESC; out = []
+    for txt in avisos_topo(g):
+        tw = F_TAG.getlength(txt); x1 = W - int(30 * ESC); x0 = x1 - tw - 36 * ESC; out.append((x0, y, x1, y + 46 * ESC)); y += int(56 * ESC)
+    return out
+def separar_rotulos(rs, g=None):
+    """Rodada 9: rótulos do mesmo quadro que se encostam (ex.: depois de sair da coluna de botões) — o que está mais abaixo
+    sobe acima do outro (ajusta v da âncora só para a caixa; a linha de chamada, se houver, continua na âncora real)."""
+    out, caixas = [], []
+    fixas = caixas_avisos(g) if g is not None else []
+    for r in sorted(rs, key=lambda r: -r[2]):
+        txt, u, v, a, dx, dy, ln = r
+        lx, ly, w, h = caixa_rotulo(txt, u, v, dx, dy, ln); dv = 0.0
+        for c in fixas:   # rótulo que encosta num aviso desce para baixo da pilha de avisos (rótulos não entram na faixa superior)
+            if not (lx + w + 8 * ESC <= c[0] or c[2] + 8 * ESC <= lx or ly + h + 6 * ESC <= c[1] or c[3] + 6 * ESC <= ly):
+                dv = (max(f[3] for f in fixas) + 10 * ESC + h + 10 * ESC - v * H) / H if not ln else dv
+                if ln: dv = (max(f[3] for f in fixas) + 10 * ESC + h / 2 - (v * H + dy * H)) / H
+                lx, ly, w, h = caixa_rotulo(txt, u, v + dv, dx, dy, ln) if not ln else caixa_rotulo(txt, u, v, dx, dy + dv, ln)
+                break
+        for _ in range(6):
+            bate = [c for c in caixas if not (lx + w + 8 * ESC <= c[0] or c[2] + 8 * ESC <= lx or ly + h + 6 * ESC <= c[1] or c[3] + 6 * ESC <= ly)]
+            if not bate or ln: break
+            dv -= (h + 12 * ESC) / H; lx, ly, w, h = caixa_rotulo(txt, u, v + dv, dx, dy, ln)
+        caixas.append((lx, ly, lx + w, ly + h)); out.append([txt, u, v + dv, a, dx, dy, ln] if not ln else [txt, u, v, a, dx, dy + dv, ln])
+    return out
 def _rot(r):   # [txt, u, v, a, dx, dy(, linha)] — o 7º campo (0) marca rótulo SEM linha de chamada
     return r[:6] + [len(r) < 7 or bool(r[6])]
 
@@ -117,6 +150,7 @@ def rotulo(img, txt, u, v, a, dx, dy, linha=True):
     if a <= 0.01: return
     cam = Image.new('RGBA', img.size, (0, 0, 0, 0)); d = ImageDraw.Draw(cam)
     ax, ay = u * W, v * H; pad = 20 * ESC
+    if linha and R9 and not (0.0 <= u <= 1.0 and 0.0 <= v <= 1.0): linha = False   # rodada 9: nunca uma linha para fora da tela
     lx, ly, w, h = caixa_rotulo(txt, u, v, dx, dy, linha)
     ex = min(max(ax, lx), lx + w); ey = ly + h / 2; al = int(255 * a)
     if linha:   # rodada 8: linha de chamada só para elementos pequenos, detalhes ampliados ou fora do quadro
@@ -131,6 +165,8 @@ def rotulo(img, txt, u, v, a, dx, dy, linha=True):
 
 MAN_LEG = os.environ.get('MANOMETRO_LEGIVEL', '1') == '1'   # rodada 7: PADRÃO (aprovado): mostrador 25 % maior, textos de 30 px fora do anel; '0' = versão anterior
 F_MAN2 = ImageFont.truetype(os.path.join(FONTE, 'Montserrat-800.ttf'), int(30 * ESC))
+F_CART_T = ImageFont.truetype(os.path.join(FONTE, 'Montserrat-800.ttf'), int(38 * ESC))   # rodada 9: título do cartão (hierarquia)
+F_CART_E = ImageFont.truetype(os.path.join(FONTE, 'Montserrat-700.ttf'), int(29 * ESC))   # rodada 9: extremos da escala
 G_ATUAL = [0.0]
 def centro_manometro(u, v, lado):
     R_ = (80 if MAN_LEG else 64) * ESC; cx = min(max(u * W + lado * 150 * ESC, R_ + 12 * ESC), W - R_ - 12 * ESC); cy = min(max(v * H - 110 * ESC, R_ + 120 * ESC), 0.62 * H)
@@ -167,12 +203,21 @@ def _seg_cruza(p, q, c):
         t = k / 40; x, y = p[0] + (q[0] - p[0]) * t, p[1] + (q[1] - p[1]) * t
         if c[0] < x < c[2] and c[1] < y < c[3]: return True
     return False
+class _Obs(list): textos = ()
 def _obstaculos(pid, g):
-    ob = [(0, 0.74 * H - 50 * ESC, W, 0.74 * H + 50 * ESC)]                                    # faixa da legenda
-    nchips = len(chips_dinamicos(g) + [t for (a, b, t) in CHIPS if a <= g < b])
-    if nchips: ob.append((W - 640 * ESC, 0, W, 70 * ESC + nchips * 56 * ESC))                   # avisos (canto superior direito)
+    if R9:   # rodada 9: a legenda do instante (posição escolhida por bloco) e a faixa superior/inferior das plataformas
+        cl = caixa_legenda_em(g); ob = _Obs([cl] if cl else []); ob.textos = ([cl] if cl else []) + caixas_avisos(g)   # linhas de ligação não cruzam texto
+        ob += [(0, 0, W, ZONA['topo'] * ESC), (0, H - ZONA['base'] * ESC, W, H)]
+    else: ob = [(0, 0.74 * H - 50 * ESC, W, 0.74 * H + 50 * ESC)]                               # faixa da legenda
+    if R9:
+        ob += caixas_avisos(g) + [(W - ZONA['direita'] * ESC, ZONA['direita_desde'] * H, W, H)]   # avisos + coluna de botões
+        if pid in INSET and PL_T[pid][0] - 0.05 <= g <= PL_T[pid][1] + 0.4: ob.append(caixa_aviso_lupa(INSET[pid]))
+    else:
+        nchips = len(chips_dinamicos(g) + [t for (a, b, t) in CHIPS if a <= g < b])
+        if nchips: ob.append((W - 640 * ESC, 0, W, 70 * ESC + nchips * 56 * ESC))           # avisos (canto superior direito)
     if PERFIL != 'final': ob.append((0, H - 95 * ESC, W, H))                                      # selo da prévia
-    for (txt, u, v, a, dx, dy, ln) in map(_rot, dados(pid, 'rotulos2d.json', g)):
+    rs = list(map(_rot, dados(pid, 'rotulos2d.json', g)))
+    for (txt, u, v, a, dx, dy, ln) in (separar_rotulos(rs, g) if R9 else rs):
         if a > 0.05: lx, ly, w, h = caixa_rotulo(txt, u, v, dx, dy, ln); ob.append((lx, ly, lx + w, ly + h))
     circ = []
     if pid in INSET:
@@ -261,6 +306,7 @@ def valido(centros, ob, circ, anc, lupa=None):
     for (cx, cy), (ax, ay) in zip(centros, anc):
         p = _ponto_ligacao(cx, cy, R_, ax, ay)
         if any(_seg_cruza((ax, ay), p, c) for c in textos): return False
+        if any(_seg_cruza((ax, ay), p, c) for c in getattr(ob, 'textos', ())): return False   # rodada 9: nem sobre a legenda/avisos
         for (cx2, cy2) in centros:   # a ligação não atravessa o OUTRO mostrador
             if (cx2, cy2) != (cx, cy) and _seg_cruza((ax, ay), p, _extensao_man(cx2, cy2, R_)): return False
     if lupa:   # a linha da lupa (borda do círculo → topo do mostrador) não cruza textos nem mostradores
@@ -286,6 +332,29 @@ def manometro(img, nome, u, v, a, val, lado, pid=None, pp=None):
         return
     cam = Image.new('RGBA', img.size, (0, 0, 0, 0)); d = ImageDraw.Draw(cam); al = int(255 * a)
     R_, cx, cy = centro_manometro(u, v, lado)
+    if MAN_CARTAO and pp and R9:   # rodada 9: mesmo cartão, só visual — hierarquia (título > extremos), escala com 3 marcas,
+        # arco preenchido até o valor + marcador maior (lê melhor nos extremos que uma agulha), fundo opaco, ligação mais fina.
+        # Valor e ângulo: MESMA fórmula da R8 (ang = 180 + 180·valor).
+        cx, cy = pp; x0, y0, x1, y1 = _caixa_cartao(cx, cy); ax, ay = u * W, v * H; fim = _ponto_ligacao(cx, cy, R_, ax, ay)
+        if math.hypot(ax - fim[0], ay - fim[1]) > 30 * ESC:
+            d.line([(ax, ay), fim], fill=CREME + (int(200 * a),), width=max(1, int(3 * ESC)))
+        rr_ = 8 * ESC; d.ellipse([ax - rr_, ay - rr_, ax + rr_, ay + rr_], fill=AMARELO + (al,), outline=AZUL + (al,), width=max(1, int(3 * ESC)))
+        d.rounded_rectangle([x0, y0, x1, y1], radius=28 * ESC, fill=AZUL + (int(252 * a),))
+        d.rounded_rectangle([x0 + 0.2 * CW, y1 - 6 * ESC, x1 - 0.2 * CW, y1], radius=2, fill=AMARELO + (al,))
+        d.text((cx, y0 + 36 * ESC), 'pressão', font=F_CART_T, fill=CREME + (al,), anchor='mm')
+        Rg, esp = 66 * ESC, max(3, int(14 * ESC)); gc = (cx, y0 + 146 * ESC); bb = [gc[0] - Rg, gc[1] - Rg, gc[0] + Rg, gc[1] + Rg]
+        vv = max(0.0, min(1.0, val)); ang = 180 + 180 * vv
+        d.arc(bb, start=180, end=360, fill=(246, 244, 236, int(90 * a)), width=esp)                    # escala (trilho)
+        if vv > 0.004: d.arc(bb, start=180, end=ang, fill=AMARELO + (al,), width=esp)                   # preenchido até o valor
+        for f_ in (0.0, 0.5, 1.0):                                                                     # 3 marcas por fora: baixa · meio · alta
+            t_ = math.radians(180 + 180 * f_); r1, r2 = Rg + 5 * ESC, Rg + 15 * ESC
+            d.line([(gc[0] + r1 * math.cos(t_), gc[1] + r1 * math.sin(t_)), (gc[0] + r2 * math.cos(t_), gc[1] + r2 * math.sin(t_))], fill=CREME + (int(200 * a),), width=max(1, int(3 * ESC)))
+        rm = Rg - esp / 2; kx, ky = gc[0] + rm * math.cos(math.radians(ang)), gc[1] + rm * math.sin(math.radians(ang)); kr = 15 * ESC
+        d.ellipse([kx - kr, ky - kr, kx + kr, ky + kr], fill=CREME + (al,), outline=AZUL + (al,), width=max(1, int(5 * ESC)))   # marcador (ponteiro)
+        for txt, xx in (('baixa', gc[0] - Rg), ('alta', gc[0] + Rg)):
+            d.text((xx, y0 + 180 * ESC), txt, font=F_CART_E, fill=CREME + (int(215 * a),), anchor='mm')
+        _cx('mostrador', nome, (x0, y0, x1, y1)); _cx('ligacao_man', nome, (ax, ay) + fim); _cx('texto_man', nome + ':cartao', (x0, y0, x1, y1))
+        _cx('ponteiro', nome, (val, ang, 0, 0)); img.paste(Image.alpha_composite(img.convert('RGBA'), cam).convert('RGB')); return
     if MAN_CARTAO and pp:   # rodada 8: CARTÃO de pressão — mesma linguagem dos rótulos (cápsula azul + sublinhado amarelo)
         cx, cy = pp; x0, y0, x1, y1 = _caixa_cartao(cx, cy); ax, ay = u * W, v * H; fim = _ponto_ligacao(cx, cy, R_, ax, ay)
         if math.hypot(ax - fim[0], ay - fim[1]) > 30 * ESC:   # ponto de medição num tubo fino: linha curta até o cartão
@@ -347,9 +416,138 @@ def legendas():
 LEG = legendas()
 
 
+# ---- rodada 9 (COMPOSICAO_R9=1; '0' = V8 idêntica): legendas por unidades de sentido, posição escolhida por bloco fora
+# das zonas de interface e longe de rosto/mecanismo/rótulos; avisos abaixo da faixa superior das plataformas
+R9 = os.environ.get('COMPOSICAO_R9', '0') == '1'
+# zonas de interface (aprox., em px de 1080 × 1920; guias de terceiros — Shorts: topo 120, base 300, coluna direita ~96;
+# Reels: topo ~250, base ~340 (atribuído à Meta), coluna direita ~120). Usamos a UNIÃO (o mais restritivo de cada lado).
+ZONA = dict(topo=250, base=340, direita=120, direita_desde=0.40, esquerda=60)
+ZONA_BASE_CONSERVADORA = 670          # número mais conservador citado para Reels (só relatado; penalidade leve)
+LH_LEG = 70 * ESC                     # altura de linha da legenda
+Y_LEG_CAND = [0.74, 0.71, 0.68, 0.65, 0.62, 0.59]   # centros candidatos (fração da altura); escolha por bloco
+def _proj(cam, P):
+    pos = np.array(cam['pos']); f = np.array(cam['dir'], float); f /= np.linalg.norm(f); r = np.cross(f, cam['up']); r /= np.linalg.norm(r); u = np.cross(r, f)
+    d = np.asarray(P, float) - pos; z = d @ f; t = math.tan(math.radians(cam['fov'] / 2))
+    return ((d @ r / z) / (t * W / H) + 1) / 2 * W, (1 - (d @ u / z) / t) / 2 * H, z, t
+_rosto_cache = {}
+def rosto(pid, g):
+    """Caixa do rosto do personagem no quadro (projeção da cabeça exportada); None se não houver personagem à vista."""
+    if pid not in _rosto_cache:
+        f = os.path.join(A, 'cenas', pid, 'cena.json'); c = json.load(open(f)) if os.path.exists(f) else {}
+        _rosto_cache[pid] = (c.get('g0', 0), c.get('animacao', {}).get('quadros', []))
+    g0, Q = _rosto_cache[pid]; i = int(round((g - g0) * FPS))
+    if not (0 <= i < len(Q)) or 'pers_cabeca' not in Q[i]['objetos']: return None
+    m = Q[i]['objetos']['pers_cabeca']; P = (m[12], m[13], m[14] + 0.12)
+    x, y, z, t = _proj(Q[i]['camera'], P)
+    if z <= 0.05: return None
+    rr = 0.17 / (z * t) * H / 2
+    b = (x - rr, y - rr, x + rr, y + rr)
+    return b if b[2] > 0 and b[0] < W and b[3] > 0 and b[1] < H else None
+# mecanismos (coordenadas do modelo, as mesmas dos rótulos do H2 e da caixa do evaporador): só contam quando o circuito está
+# revelado (uRevela) — antes disso estão escondidos atrás das paredes e a projeção não diria nada sobre o que se vê
+MECS = [((-0.10, 0.12, 0.12), (0.06, 0.26, 0.30)),          # compressor (carcaça; caixa justa — a projeção da caixa 3D já infla o retângulo)
+        ((-0.215, -0.235, 1.185), (0.215, 0.205, 1.405)),   # evaporador (caixa do congelador)
+        ((0.20, 0.22, 0.20), (0.27, 0.29, 0.30))]           # capilar (trecho junto ao compressor)
+def mecanismos(pid, g):
+    if curva_cena(pid, 'uRevela', g, 0.0) < 0.5: return []
+    if pid not in _rosto_cache: rosto(pid, g)
+    g0, Q = _rosto_cache[pid]; i = int(round((g - g0) * FPS))
+    if not (0 <= i < len(Q)): return []
+    cam = Q[i]['camera']; out = []
+    pts = [MECS[k] for k in range(len(MECS))] + [((m[12] - 0.04, m[13] - 0.04, m[14] - 0.04), (m[12] + 0.04, m[13] + 0.04, m[14] + 0.04))
+                                                for n_, m in Q[i]['objetos'].items() if n_.startswith('mec_') and n_.endswith('pivo')]
+    for (a, b) in pts:
+        cs = [_proj(cam, (x, y, z)) for x in (a[0], b[0]) for y in (a[1], b[1]) for z in (a[2], b[2])]
+        if any(c[2] <= 0.05 for c in cs): continue
+        xs = [c[0] for c in cs]; ys = [c[1] for c in cs]; bb = (max(0, min(xs)), max(0, min(ys)), min(W, max(xs)), min(H, max(ys)))
+        if bb[2] > bb[0] and bb[3] > bb[1]: out.append(bb)
+    return out
+def _linhas_leg(b): return b['linhas']
+def caixa_legenda(b, yc):
+    hl = len(b['linhas']) * LH_LEG; wl = max(F_LEG.getlength(l) for l in b['linhas']) + 2 * 7 * ESC
+    return (W / 2 - wl / 2, yc - hl / 2 - 6 * ESC, W / 2 + wl / 2, yc + hl / 2 + 6 * ESC)
+def _sobrepoe(a, b, m=0):
+    return not (a[2] + m <= b[0] or b[2] + m <= a[0] or a[3] + m <= b[1] or b[3] + m <= a[1])
+def _custo_posicao(b, yf):
+    """Custo de um centro candidato para o bloco inteiro (amostras a cada 3 quadros): zonas de interface, rosto, âncoras de
+    rótulos e pressão (o que o rótulo aponta é mecanismo), caixas de rótulos, lupa; leve preferência pelo terço inferior."""
+    yc = yf * H; cx = caixa_legenda(b, yc); s = 1080 / W
+    c = 0.0
+    if cx[3] > H - ZONA['base'] / s: c += 500
+    if cx[3] > H - ZONA_BASE_CONSERVADORA / s: c += 3
+    if cx[2] > W - ZONA['direita'] / s and cx[3] > ZONA['direita_desde'] * H: c += 200
+    if cx[1] < ZONA['topo'] / s: c += 500
+    c += 2.0 * abs(yf - 0.68) / 0.03 + (12.0 * (0.68 - yf) / 0.03 if yf < 0.68 else 0.0)   # prefere o terço inferior; subir para o centro (onde fica a ação) só com motivo forte
+    fixo, c, n = c, 0.0, 0
+    for k in np.arange(b['t0'], b['t1'], 0.1):
+        vivos = [p['id'] for p in PLANOS if p['t0'] <= k < p['t1']]; n += 1
+        for pid in vivos:
+            r = rosto(pid, k)
+            if r and _sobrepoe(cx, r, 8 * ESC): c += 40
+            fr = 0.0
+            for mb in mecanismos(pid, k):   # fração da caixa da legenda que cobre o mecanismo (a maior, não a soma: peças do mesmo compressor)
+                ix = max(0, min(cx[2], mb[2]) - max(cx[0], mb[0])) * max(0, min(cx[3], mb[3]) - max(cx[1], mb[1]))
+                fr = max(fr, ix / ((cx[2] - cx[0]) * (cx[3] - cx[1])))
+            c += 20 * fr
+            for (txt, u, v, a, dx, dy, ln) in map(_rot, dados(pid, 'rotulos2d.json', k)):
+                if a < 0.05: continue
+                lx, ly, w, h = caixa_rotulo(txt, u, v, dx, dy, ln)
+                if _sobrepoe(cx, (lx, ly, lx + w, ly + h), 6 * ESC): c += 30
+                if 0 <= u <= 1 and 0 <= v <= 1 and cx[0] - 10 * ESC <= u * W <= cx[2] + 10 * ESC and cx[1] - 10 * ESC <= v * H <= cx[3] + 10 * ESC: c += 25
+            for (nome, u, v, a, val) in dados(pid, 'manometros2d.json', k):
+                if a > 0.05 and cx[0] - 10 * ESC <= u * W <= cx[2] + 10 * ESC and cx[1] - 10 * ESC <= v * H <= cx[3] + 10 * ESC: c += 25
+                if a > 0.05 and cx[3] < v * H < cx[3] + CH + 110 * ESC and cx[0] - 100 * ESC < u * W < cx[2] + 100 * ESC: c += 30   # âncora logo ABAIXO da legenda sem espaço para o cartão entre as duas: a ligação cruzaria o texto
+            if pid in INSET:
+                L_ = INSET[pid]; lc = (L_['cx'] * W, L_['cy'] * H, L_['r'] * W)
+                nx, ny = min(max(lc[0], cx[0]), cx[2]), min(max(lc[1], cx[1]), cx[3])
+                if (nx - lc[0]) ** 2 + (ny - lc[1]) ** 2 < (lc[2] + 8 * ESC) ** 2: c += 40
+    return fixo + (c / n * 10 if n else 0.0)             # parte dinâmica: média das amostras (escala ×10)
+LEG9, POS9 = [], []
+if R9:
+    import legendas_r9
+    LEG9 = legendas_r9.blocos(lambda s: F_LEG.getlength(s) + 14 * ESC, (1080 - 2 * ZONA['direita']) * ESC, DUR)   # simétrica: fora da coluna de botões
+POSICAO_LEG_FIXA = float(os.environ['LEGENDA_Y']) if os.environ.get('LEGENDA_Y') else None   # testes: posição única
+def posicoes_legenda():
+    """Programação dinâmica sobre os blocos: custo de cada posição + custo de MUDAR de altura entre blocos seguidos (a legenda
+    não deve pular à toa)."""
+    if POS9 or not LEG9: return POS9
+    if POSICAO_LEG_FIXA is not None: POS9.extend([POSICAO_LEG_FIXA] * len(LEG9)); return POS9
+    K = len(Y_LEG_CAND); cs = [[_custo_posicao(b, y) for y in Y_LEG_CAND] for b in LEG9]
+    tot = [cs[0][:]]; tr = []
+    for i in range(1, len(LEG9)):
+        colado = LEG9[i]['t0'] - LEG9[i - 1]['t1'] < 0.4; troca = 60.0 if colado else 15.0   # a legenda só muda de altura com motivo forte
+        row, back = [], []
+        for k in range(K):
+            j = min(range(K), key=lambda jj: tot[-1][jj] + (0 if jj == k else troca))
+            row.append(tot[-1][j] + (0 if j == k else troca) + cs[i][k]); back.append(j)
+        tot.append(row); tr.append(back)
+    k = min(range(K), key=lambda kk: tot[-1][kk]); seq = [k]
+    for back in reversed(tr): k = back[k]; seq.append(k)
+    seq.reverse(); POS9.extend(Y_LEG_CAND[k] for k in seq); return POS9
+def legenda_r9(d, g):
+    ps = posicoes_legenda()
+    for b, yf in zip(LEG9, ps):
+        if not (b['t0'] <= g < b['t1']): continue
+        visiveis = min([m for (t, m) in b['revela'] if g < t] + [len(b['palavras'])])   # pausa longa: o resto entra no ataque
+        yc = yf * H; y0 = yc - (len(b['linhas']) - 1) * LH_LEG / 2; usadas = 0
+        for q, lin in enumerate(b['linhas']):
+            ws = lin.split(); mostra = ws[:max(0, min(len(ws), visiveis - usadas))]; usadas += len(ws)
+            x0 = W / 2 - F_LEG.getlength(lin) / 2; y = y0 + q * LH_LEG
+            if mostra: d.text((x0, y), ' '.join(mostra), font=F_LEG, fill=(255, 255, 255), stroke_width=max(2, int(7 * ESC)), stroke_fill=ESCURO, anchor='lm')
+        _cx('legenda', ' / '.join(b['linhas']), caixa_legenda(b, yc))
+def caixa_legenda_em(g):
+    for b, yf in zip(LEG9, posicoes_legenda()):
+        if b['t0'] <= g < b['t1']: return caixa_legenda(b, yf * H)
+    return None
+
+
 # polimento: LUPA — ampliação didática localizada (plano renderizado à parte, composto num círculo) ligada por uma linha
 # ao marcador do plano principal (manômetro que percorre o capilar real no mesmo ponto)
 INSET = {'G3': dict(plano='G3z', cx=0.50, cy=0.255, r=0.31, ancora='capilar')}
+if os.environ.get('COMPOSICAO_R9', '0') == '1': INSET['G3'].update(cx=0.46, cy=0.32)   # rodada 9: topo abaixo da faixa superior e livre dos avisos (mesmo tamanho)
+def caixa_aviso_lupa(c):
+    tw = F_TAG.getlength(LUPA_AVISO); x0 = c['cx'] * W - tw / 2 - 18 * ESC; yb = c['cy'] * H + c['r'] * W
+    return (x0, yb - 23 * ESC, x0 + tw + 36 * ESC, yb + 23 * ESC)
 def lupa(img, pid, g, k):
     c = INSET[pid]; z = c['plano']
     if not os.path.isdir(pasta(z)): return
@@ -374,10 +572,19 @@ def lupa(img, pid, g, k):
     img.paste(quad, (cx - D // 2, cy - D // 2), mask); _cx('lupa', pid, (cx - D // 2, cy - D // 2, cx + D // 2, cy + D // 2))
     anel = Image.new('RGBA', img.size, (0, 0, 0, 0)); ImageDraw.Draw(anel).ellipse((cx - D // 2, cy - D // 2, cx + D // 2, cy + D // 2), outline=(246, 244, 236, int(255 * a)), width=max(2, int(6 * ESC)))
     img.paste(Image.alpha_composite(img.convert('RGBA'), anel).convert('RGB'))
+    if R9:   # rodada 9: o aviso da lupa fica preso ao anel (descreve a própria lupa), fora da pilha do canto
+        b = caixa_aviso_lupa(c); sel = Image.new('RGBA', img.size, (0, 0, 0, 0)); ds = ImageDraw.Draw(sel)
+        ds.rounded_rectangle(b, radius=23 * ESC, fill=AMARELO + (int(255 * a),)); ds.text((b[0] + 18 * ESC, (b[1] + b[3]) / 2), LUPA_AVISO, font=F_TAG, fill=AZUL + (int(255 * a),), anchor='lm')
+        img.paste(Image.alpha_composite(img.convert('RGBA'), sel).convert('RGB')); _cx('aviso_lupa', LUPA_AVISO, b)
     # rótulos do canal, levados para dentro do círculo
     for (txt, u, v, aa, dx, dy, _ln) in map(_rot, dados(z, 'rotulos2d.json', g)):
         X = cx + (u * W - W / 2) / W * D; Y = cy + (v * H - (top + W / 2)) / W * D
-        if (X - cx) ** 2 + (Y - cy) ** 2 < (D / 2) ** 2: rotulo(img, txt, X / W, Y / H, aa * a, 0.03, -0.035)
+        if (X - cx) ** 2 + (Y - cy) ** 2 < (D / 2) ** 2:
+            ddy = -0.035
+            if R9:   # rodada 9: rótulo da lupa que encostaria num aviso vai para baixo do ponto
+                lx, ly, w, h = caixa_rotulo(txt, X / W, Y / H, 0.03, ddy, True)
+                if any(not (lx + w <= b[0] or b[2] <= lx or ly + h <= b[1] or b[3] <= ly) for b in caixas_avisos(g)): ddy = 0.035
+            rotulo(img, txt, X / W, Y / H, aa * a, 0.03, ddy)
 
 
 def compor(g):
@@ -389,16 +596,20 @@ def compor(g):
         k = min(1.0, max(0.0, (g - (t0 - f2 / 2)) / f2)); k = k * k * (3 - 2 * k)
         img = Image.blend(quadro(p1, g), quadro(p2, g), k); camadas = [(p1, 1 - k), (p2, k)]
     for (pid, k) in camadas:
-        for (txt, u, v, a, dx, dy, ln) in map(_rot, dados(pid, 'rotulos2d.json', g)): rotulo(img, txt, u, v, a * k, dx, dy, ln)
+        rs = list(map(_rot, dados(pid, 'rotulos2d.json', g)))
+        if R9: rs = separar_rotulos(rs, g)
+        for (txt, u, v, a, dx, dy, ln) in rs: rotulo(img, txt, u, v, a * k, dx, dy, ln)
         ms = dados(pid, 'manometros2d.json', g)
         G_ATUAL[0] = g
         for j, (nome, u, v, a, val) in enumerate(ms): manometro(img, nome, u, v, a * k, val, (-1 if j % 2 == 0 else 1) if len(ms) > 1 else 0, pid)
         if pid in INSET: lupa(img, pid, g, k)
     d = ImageDraw.Draw(img)
-    for (a, b, txt) in LEG:
-        if a <= g < b: d.text((W // 2, int(0.74 * H)), txt, font=F_LEG, fill=(255, 255, 255), stroke_width=max(2, int(7 * ESC)), stroke_fill=ESCURO, anchor='mm'); _cx('legenda', txt, d.textbbox((W // 2, int(0.74 * H)), txt, font=F_LEG, anchor='mm', stroke_width=max(2, int(7 * ESC))))
-    y = int(70 * ESC)
-    for txt in chips_dinamicos(g) + [txt for (a, b, txt) in CHIPS if a <= g < b]:
+    if R9: legenda_r9(d, g)
+    else:
+        for (a, b, txt) in LEG:
+            if a <= g < b: d.text((W // 2, int(0.74 * H)), txt, font=F_LEG, fill=(255, 255, 255), stroke_width=max(2, int(7 * ESC)), stroke_fill=ESCURO, anchor='mm'); _cx('legenda', txt, d.textbbox((W // 2, int(0.74 * H)), txt, font=F_LEG, anchor='mm', stroke_width=max(2, int(7 * ESC))))
+    y = int((ZONA['topo'] + 12) * ESC) if R9 else int(70 * ESC)   # rodada 9: avisos abaixo da faixa superior das plataformas
+    for txt in avisos_topo(g):
         if True:
             tw = d.textlength(txt, font=F_TAG); x1 = W - int(30 * ESC); x0 = x1 - tw - 36 * ESC
             d.rounded_rectangle((x0, y, x1, y + 46 * ESC), radius=23 * ESC, fill=AMARELO); _cx('aviso', txt, (x0, y, x1, y + 46 * ESC)); d.text((x0 + 18 * ESC, y + 23 * ESC), txt, font=F_TAG, fill=AZUL, anchor='lm')
