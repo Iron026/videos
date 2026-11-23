@@ -22,5 +22,18 @@
   "roteiro/palavras.json": "728f9ba689033c2d1bee812d01273e7977a55bbeaf51f1d44e923b30e27b8e64"
  },
  "_nota": "Rodada 9: versões preservadas (V8 e V9a aprovada como base de composição). Commits: V8 1fc440f; V9a a931e79. A V9a é montada com COMPOSICAO_R9=1 sobre os quadros da V8 (montar_ep02.py do commit a931e79).",
- "_quando": "2026-11-23 12:05"
+ "_quando": "2026-11-23 12:05",
+ "V9": {
+  "episodio/ep02_v9_revisao.mp4": "c4e646f06f3a53e55666fb1c01591c5f345a985130949699ff6a3d7af2caf39a",
+  "som/audio_ep02_r9.wav": "67ab642fa2fcf84873fb1b324894943108d22a437ee6a794727a67f43538cc99",
+  "episodio/montar_v9.sh": "162916f933b1bf7ed4cd2f648ba955dc1496b0f43e89dff4ab4d49be5a0b8ccf",
+  "episodio/montar_ep02.py": "b9ca8ed9ec51237fab5feba6efa339948177464388f5f08ca939428d14c46a73",
+  "blender/episodio02.py": "bdbcf049923eb74f15e1d7417f9ff7ce7f59a1e58c93878331c690310b02d013",
+  "blender/encenacao02.py": "b45d1a10825e783288b243d5cd006e5a0b90afde6ade8113b707655337cc3571",
+  "blender/geladeira.py": "f63a3153eb2cad4ddb2c3ecec79e5776c319a294b787911713654cab251b8b28",
+  "config/producao.json": "011b94363a3d6c1efafabfd59b36d7f5eb8ee39cc4043547f346f13dbcccbe60",
+  "_obs": "V9 completa em 540: 31 planos re-renderizados (manifestos com SHA-256 em episodio/quadros_revisao/<plano>/_manifesto_quadros.json) + 11 reaproveitados da V8 com prova (_manifesto.json); cenas da V9 em episodio/cenas (não versionadas; reprodutíveis pelos scripts deste commit com CENA_R9=1)",
+  "som/audio_ep02_v9.flac": "38294db0759e1cef4e83487008fcfe869349df7bd55b16bb7cec22472fdb651d",
+  "_obs_audio": "som/audio_ep02_v9.flac = som/audio_ep02_r9.wav sem perdas (PCM 24 bits idêntico amostra a amostra); o .wav não é versionado"
+ }
 }
