@@ -466,5 +466,31 @@
   },
   "faixa_vizinha_B_menos_A": -17.0,
   "dif_media_quadro": 11.0
+ },
+ "J3": {
+  "janela": [
+   56,
+   67
+  ],
+  "A_aocorte0": {
+   "trios_blocos_padrao": 0,
+   "px_padrao": 2516,
+   "px_sens_dentro": 42,
+   "trios_blocos_sens_dentro": 0,
+   "px_sens_borda": 4081
+  },
+  "B_aocorte1_tampa": {
+   "trios_blocos_padrao": 0,
+   "px_padrao": 2795,
+   "px_sens_dentro": 42,
+   "trios_blocos_sens_dentro": 0,
+   "px_sens_borda": 4768
+  },
+  "granulado_tampas": {
+   "A": 6.51,
+   "B": 6.77
+  },
+  "faixa_vizinha_B_menos_A": -13.19,
+  "dif_media_quadro": 9.59
  }
 }
