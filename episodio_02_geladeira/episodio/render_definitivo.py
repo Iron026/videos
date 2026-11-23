@@ -24,7 +24,7 @@ BLOCO = 60; CORR_MIN, DIF_MAX = 0.93, 6.0
 sys.path.insert(0, os.path.join(RAIZ, 'decupagem')); import planos as PL
 ids_arg = [a for a in args if not a.startswith('--') and a != PERFIL]
 IDS = ids_arg or [x for p in PL.resolvidos()['planos'] for x in ([p['id']] + ([p['id'] + 'b'] if p['id'] in ('A4', 'J1') else ['G3z'] if p['id'] == 'G3' else []))]
-OUT = os.path.join(A, f'quadros_{PERFIL}'); V8REF = os.path.join(A, f'quadros_{PERFIL}_v8'); os.makedirs(OUT, exist_ok=True); LOG = os.path.join(OUT, '_definitivo.log')
+OUT = os.path.join(A, f'quadros_{PERFIL}'); V8REF = os.path.join(A, f'quadros_{PERFIL}_v8'); _fi = os.path.join(A, '..', 'relatorios', 'saltos_investigados_r9.json'); INVEST = json.load(open(_fi)) if os.path.exists(_fi) else []; os.makedirs(OUT, exist_ok=True); LOG = os.path.join(OUT, '_definitivo.log')
 sha = lambda p: hashlib.sha256(open(p, 'rb').read()).hexdigest()
 MOT = sha(os.path.join(MOTOR, 'render3.js'))[:16] + sha(os.path.join(MOTOR, 'render_anim.mjs'))[:8]
 def log(m):
@@ -118,6 +118,10 @@ for pid in IDS:
                     cv = float(np.corrcoef(gv.ravel(), gv0.ravel())[0, 1]); cn = float(np.corrcoef(gn.ravel(), ant.ravel())[0, 1]); cx = float(np.corrcoef(gn.ravel(), gv.ravel())[0, 1])
                     if abs(cn - cv) <= 0.03 and cx >= CORR_MIN:
                         ok, just = True, motivo + f' — justificado: mesmo salto na {nref} (corr ref. {cv:.3f}; novo × ref. {cx:.3f})'; log(f'{pid} quadro {i}: {just}')
+            if not ok and motivo.startswith('salto'):   # salto investigado por mim e registrado com evidência (relatorios/saltos_investigados_r9.json)
+                for x in INVEST:
+                    if x['plano'] == pid and x['quadros'][0] <= i <= x['quadros'][1]:
+                        ok, just = True, motivo + ' — justificado: ' + x['motivo']; log(f'{pid} quadro {i}: {just}'); break
             if not ok:
                 gravar_json(mf, man); log(f'PARADA {pid} quadro {i}: {motivo} — investigar antes de continuar (arquivo em {tmp})'); sys.exit(4)
             dst = os.path.join(d, f'q{i:04d}.jpg'); os.replace(ft, dst); ant = ant_
