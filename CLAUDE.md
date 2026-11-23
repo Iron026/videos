@@ -290,3 +290,13 @@ Arquivos-chave (em `episodio_01_navio_v2/`): `episodio/decupagem_ep01_v3.md` (de
 - AAC: mudar um trecho do áudio desloca a quantização segundos depois (pico verdadeiro mudou em 130 s por causa de 118–120 s);
   medir de novo sempre no AAC final.
 - Espera longa: um `run_in_background` tem limite de 2 h; para filas maiores, Monitor re-armado por eventos do log.
+
+## Lições novas do Ep. 02 (rodada 9)
+
+- **Verificador de render:** salto entre quadros só é aceito com prova (efeito da cena mudando naquele quadro, mesmo salto
+  numa versão aprovada com imagem equivalente ≥ 0,93, ou registro investigado com evidência); fora disso, PARA.
+- **Mudança de animação num plano exige conferir a continuidade no corte com o vizinho** (porta física no A1 deixou o A2
+  com degrau 88° → 100°). Medir ângulo e velocidade dos dois lados do corte.
+- Mudança de câmera aprovada pode criar estroboscopia de grade/tubos finos: medir com `medir_estrobo.py` depois de
+  qualquer aproximação rápida e oferecer o obturador de 180° como A/B desligado.
+- Composição testada em todos os quadros depois da montagem final, não só na prévia.
