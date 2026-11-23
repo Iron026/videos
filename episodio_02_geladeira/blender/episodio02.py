@@ -236,6 +236,8 @@ def plano(pid):
         cam_k = K((0, (0.16, 0.44, zp + 0.035), (0.10, COND_Y, zp), 40), (1, (-0.06, 0.44, zp + 0.035), (-0.12, COND_Y, zp), 40))
         revela = 1.0; rot.add('fluido refrigerante', lambda g: Vector((0.0, COND_Y, zp)), E.T('fluido', apos=T0('C3') - 0.5), T1('C3'), linha=False)   # rodada 8: no ataque de "fluido"
         bpy.data.objects['pote'].hide_render = True   # v2: defeito da v1 — o pote tapava metade do quadro no início do plano
+        if R9:   # rodada 9: na posição única, o leite apareceria grande atrás do tubo de cobre (mesmo motivo do pote): close técnico
+            for n_ in ('leite', 'leite_rot'): bpy.data.objects[n_].hide_render = True
     elif pid == 'C4':
         cam_k = K((0, (1.65, -1.05, 1.50), (0.0, 0.10, 0.76), 30), (0.75, (1.75, 0.10, 1.55), (0.0, 0.15, 0.76), 30), (1, (1.25, 0.30, 1.35), (0.0, 0.22, 0.70), 32))
         if R9:   # rodada 9: no fim do C4 a câmera sobe e se aproxima do EVAPORADOR (no último quadro da V8 ele estava fora do quadro e o

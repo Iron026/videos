@@ -467,14 +467,15 @@
    "item_marmita",
    "item_marmita_tampa"
   ],
-  "malhas_removidas": [],
+  "malhas_removidas": [
+   "caixa_leite",
+   "leite_faixa"
+  ],
   "malhas_mudadas": [
    "ANIM|porta_pivo|molho_claro @porta_pivo",
    "ANIM|porta_pivo|molho_verde @porta_pivo",
    "ANIM|porta_pivo|plast_cinza @porta_pivo",
-   "caixa_leite",
    "iogurte",
-   "leite_faixa",
    "pote_baixo",
    "suco",
    "tampa_verde"
