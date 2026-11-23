@@ -1,0 +1,108 @@
+{
+ "porta_fechada": {
+  "invasoes": [
+   {
+    "item": "garrafa_agua_vol",
+    "peca": "garrafa_rot",
+    "cm3": 224.45
+   },
+   {
+    "item": "item_ovo0",
+    "peca": "item_ovos_bandeja",
+    "cm3": 5.78
+   },
+   {
+    "item": "item_ovo1",
+    "peca": "item_ovos_bandeja",
+    "cm3": 5.78
+   },
+   {
+    "item": "item_ovo2",
+    "peca": "item_ovos_bandeja",
+    "cm3": 5.78
+   },
+   {
+    "item": "item_ovo3",
+    "peca": "item_ovos_bandeja",
+    "cm3": 5.78
+   },
+   {
+    "item": "item_ovo4",
+    "peca": "item_ovos_bandeja",
+    "cm3": 5.78
+   }
+  ],
+  "apoio": [
+   {
+    "item": "garrafa",
+    "folga_mm": 2.5,
+    "tipo": "flutuando"
+   },
+   {
+    "item": "item_alface",
+    "folga_mm": 14.4,
+    "tipo": "flutuando"
+   },
+   {
+    "item": "item_lima0",
+    "folga_mm": 14.4,
+    "tipo": "flutuando"
+   },
+   {
+    "item": "item_lima1",
+    "folga_mm": 14.4,
+    "tipo": "flutuando"
+   },
+   {
+    "item": "item_ovo0",
+    "folga_mm": 10.5,
+    "tipo": "flutuando"
+   },
+   {
+    "item": "item_ovo1",
+    "folga_mm": 10.5,
+    "tipo": "flutuando"
+   },
+   {
+    "item": "item_ovo2",
+    "folga_mm": 10.5,
+    "tipo": "flutuando"
+   },
+   {
+    "item": "item_ovo3",
+    "folga_mm": 10.5,
+    "tipo": "flutuando"
+   },
+   {
+    "item": "item_ovo4",
+    "folga_mm": 10.5,
+    "tipo": "flutuando"
+   },
+   {
+    "item": "pote",
+    "folga_mm": 2.5,
+    "tipo": "flutuando"
+   },
+   {
+    "item": "tomate0",
+    "folga_mm": 14.5,
+    "tipo": "flutuando"
+   },
+   {
+    "item": "tomate1",
+    "folga_mm": 14.5,
+    "tipo": "flutuando"
+   },
+   {
+    "item": "tomate2",
+    "folga_mm": 14.5,
+    "tipo": "flutuando"
+   },
+   {
+    "item": "tomate3",
+    "folga_mm": 14.5,
+    "tipo": "flutuando"
+   }
+  ]
+ }
+}

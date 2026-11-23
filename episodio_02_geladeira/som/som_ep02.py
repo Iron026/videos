@@ -144,7 +144,10 @@ def passos():
     e = ESC['passos']; pousos = []
     t0, t1 = 115.55, 116.95; pousos += [(t0 + (k + 1) * (t1 - t0) / 3, -10.0, 'entrada (I1)') for k in range(3)]
     # rodada 8: no I1 ele dá um passo à frente, pega o leite e sai pela esquerda (mesmos tempos de encenacao02.tempos_passos_i1)
-    pousos += [(118.40, -12.0, 'passo à frente (I1)')] + [(118.80 + (119.70 - 118.80) * k / 2, -12.0, 'saída com o leite (I1)') for k in (1, 2)]
+    if os.environ.get('CENA_R9') == '1':   # rodada 9: mesmos instantes de pouso da encenação nova (encenacao02: T_PASSO = (117,92; 118,22), T_SAI = (118,62; 119,55), 2 passos)
+        pousos += [(118.22, -12.0, 'passo à frente (I1)')] + [(118.62 + (119.55 - 118.62) * k / 2, -12.0, 'saída com o leite (I1)') for k in (1, 2)]
+    else:
+        pousos += [(118.40, -12.0, 'passo à frente (I1)')] + [(118.80 + (119.70 - 118.80) * k / 2, -12.0, 'saída com o leite (I1)') for k in (1, 2)]
     pousos += [(3.05 + (k + 1) * (4.20 - 3.05) / 3, -22.0, 'recuo fora de quadro (A3)') for k in range(3)]
     amostra = list(range(len(pousos) - 3)) + [5, 6, 7]   # rodada 8: A3 mantém as MESMAS amostras da mixagem aprovada (5, 6, 7)
     for j, (t, gdb, onde) in enumerate(pousos):
@@ -239,7 +242,7 @@ def mixar(master_fixo_db=None, ganhos_fixos_db=None, sufixo=''):
     for k in STEMS: STEMS[k] = STEMS[k] - meio[k] + meio[k] * gs[:, None]
     soma = VOZ + sum(STEMS.values())
     mg = master_fixo_db if master_fixo_db is not None else (-14.0 - lufs(soma))
-    mix, red = limitador(soma * db(mg), -1.8)
+    mix, red = limitador(soma * db(mg), float(os.environ.get('TETO_LIMITADOR_DB', '-1.8')))   # rodada 9: teto opcional (margem de pico verdadeiro no AAC)
     os.makedirs(os.path.join(A, 'stems'), exist_ok=True)
     for k in STEMS: sf.write(os.path.join(A, 'stems', f'ep02_{k}{sufixo}.wav'), (STEMS[k] * db(mg)).astype(np.float32), SR, subtype='PCM_24')
     sf.write(os.path.join(A, 'stems', f'ep02_voz{sufixo}.wav'), (VOZ * db(mg)).astype(np.float32), SR, subtype='PCM_24')
@@ -254,7 +257,8 @@ if __name__ == '__main__':
     ref = None
     if os.environ.get('MASTER_FIXO_DB'): ref = float(os.environ['MASTER_FIXO_DB'])
     gk = json.loads(os.environ['GANHOS_FIXOS']) if os.environ.get('GANHOS_FIXOS') else None
-    rel = mixar(ref, gk, '_sem_efeitos' if SEM_FX else '')
-    json.dump(rel, open(os.path.join(A, 'mix_ep02' + ('_sem_efeitos' if SEM_FX else '') + '.json'), 'w'), ensure_ascii=False, indent=1)
-    if not SEM_FX: json.dump(USOS, open(os.path.join(A, 'usos_ep02.json'), 'w'), ensure_ascii=False, indent=1)
+    suf = ('_sem_efeitos' if SEM_FX else '') + os.environ.get('SUFIXO_MIX', '')   # rodada 9: variantes NÃO sobrescrevem a mixagem aprovada
+    rel = mixar(ref, gk, suf)
+    json.dump(rel, open(os.path.join(A, 'mix_ep02' + suf + '.json'), 'w'), ensure_ascii=False, indent=1)
+    if not SEM_FX: json.dump(USOS, open(os.path.join(A, 'usos_ep02' + os.environ.get('SUFIXO_MIX', '') + '.json'), 'w'), ensure_ascii=False, indent=1)
     print(json.dumps(rel, ensure_ascii=False))

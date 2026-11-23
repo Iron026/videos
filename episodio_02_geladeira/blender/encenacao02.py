@@ -2,7 +2,7 @@
 (roteiro/palavras.json, Whisper oficial + ataque acústico), nunca segundos redondos. Atuação contida: olhar, cabeça,
 sobrancelhas, postura e mãos com propósito (puxar a porta, apoiar no batente, mão no queixo ao pensar). Sem fala.
 A porta e a mão usam a MESMA curva de ângulo: a mão acompanha o puxador enquanto puxa e solta quando a porta segue sozinha."""
-import math
+import math, os
 from mathutils import Vector, Matrix
 import geladeira as G, personagem as PE, ep_base as B
 
@@ -88,11 +88,13 @@ INTERIOR = (0.0, -0.05, 1.00); TOPO_TRAS = (0.0, 0.38, 1.80); BATENTE_E = (-0.31
 
 def _mao_puxando(lado_d_estado, g, t_alcance, t_puxa, ang, pos, yaw):
     """Mão direita: repouso → puxador (antes de puxar) → acompanha o puxador até 38° → volta ao repouso."""
-    a = ang(g); t_solta = t_puxa + 0.46 * 1.1          # porta a ~38° (smoothstep = 0,38)
+    a = ang(g); t_solta = t_puxa + (SOLTA_R9 if R9 else 0.46) * 1.1          # porta a ~38° (smoothstep = 0,38); R9: ~20° (o antebraço não cruza o painel)
     rest = repouso('d', pos, yaw)
     if g < t_alcance: return rest
     if g < t_puxa: return PE.trilha([(t_alcance, rest), (t_puxa - 0.04, tuple(alca(0)))], g)
     if g < t_solta: return tuple(alca(a))
+    if R9:   # rodada 9: recua primeiro para a ESQUERDA e para trás (fora do arco que a borda da porta ainda varre), depois desce
+        p0 = alca(ang(t_solta)); return PE.trilha([(t_solta, tuple(p0)), (t_solta + 0.14, tuple(p0 + Vector((-0.17, -0.12, -0.04)))), (t_solta + 0.50, rest)], g)
     return PE.trilha([(t_solta, tuple(alca(ang(t_solta)))), (t_solta + 0.45, rest)], g)
 
 
@@ -140,6 +142,16 @@ PG = (-0.45, -0.55); YG = -35.0          # rodada 8: um passo à frente, diante 
 PX = (-1.32, -1.30)                       # saída pela esquerda (fora de quadro logo depois)
 LEITE_I1 = Vector((-0.19, -0.22, 0.84 + 0.098))   # leite na frente esquerda da prateleira de cima (só no I1)
 T_PASSO = (118.05, 118.40); T_PEGA = 118.66; T_SAI = (118.80, 119.70)
+# ---- rodada 9 (CENA_R9=1; desligado = V8): leite numa posição ÚNICA em todos os planos, ao alcance da mão (testar_leite.py
+# achou no I1 da V8: braço 3 cm dentro do painel da porta, mão 13 cm longe da caixa na pega, caixa 2,4 mm dentro do vidro)
+R9 = os.environ.get('CENA_R9', '0') == '1'
+SOLTA_R9 = 0.30                                   # solta o puxador a ~20°: a porta segue pelo embalo (o antebraço não cruza o painel)
+LEITE_R9 = Vector((-0.12, -0.22, 0.84 + 0.098))   # frente da prateleira de cima, um pouco à esquerda (iogurtes 2,5 cm à direita)
+if R9:
+    LEITE_I1 = LEITE_R9; PG = (-0.40, -0.50); YG = -30.0
+    T_PASSO = (117.92, 118.22); T_PEGA = 118.44; T_SAI = (118.62, 119.55)   # pega 0,22 s antes; saída visível ~0,55 s
+PEGA_R9 = (0.0, -0.083, 0.015)                    # pulso diante da face da frente da caixa: a mão fechada encosta nela
+PA_I1 = (-0.42, -0.70)                            # rodada 9: diante do puxador e ao alcance do braço (fora do arco da porta)
 def tempos_passos_i1():
     """Pousos dos pés no I1 (para o som): entrada (3), passo à frente (1), saída (2)."""
     return [115.55 + (116.95 - 115.55) * k / 3 for k in (1, 2, 3)] + [T_PASSO[1]] + [T_SAI[0] + (T_SAI[1] - T_SAI[0]) * k / 2 for k in (1, 2)]
@@ -152,8 +164,9 @@ def est_porta_aberta(g):
     ang = porta_ang(t_puxa)
     # rodada 8: entra, abre, dá um passo à frente, PEGA o leite e sai com ele pela esquerda — a porta fica aberta
     YX = 123.0                                   # de frente para a saída (vira ~170° andando)
-    if g < T_PASSO[0]: pos, yaw, bob_, pes, bl = passada(g, 115.55, 116.95, PI, PA, -52.0, YA)
-    elif g < T_SAI[0]: pos, yaw, bob_, pes, bl = passada(g, T_PASSO[0], T_PASSO[1], PA, PG, YA, YG, fracs=(1.0,), largura=0.10)
+    pa = PA_I1 if R9 else PA   # rodada 9: para ao alcance do puxador (da V8 o puxador ficava 15 cm além do braço)
+    if g < T_PASSO[0]: pos, yaw, bob_, pes, bl = passada(g, 115.55, 116.95, PI, pa, -52.0, YA)
+    elif g < T_SAI[0]: pos, yaw, bob_, pes, bl = passada(g, T_PASSO[0], T_PASSO[1], pa, PG, YA, YG, fracs=(1.0,), largura=0.10)
     else: pos, yaw, bob_, pes, bl = passada(g, T_SAI[0], T_SAI[1], PG, PX, YG, YX, fracs=(0.5, 1.0), largura=0.10)
     e = dict(pos=pos, yaw=yaw, bob=bob_, pes=pes, t=g)
     bal = lambda sgn: -sgn * 0.07 * bl
@@ -161,7 +174,12 @@ def est_porta_aberta(g):
     if g < 117.0: md = repouso('d', pos, yaw, bal(1))
     pega = tuple(LEITE_I1 + Vector((0.0, 0.0, 0.02)))                        # pulso tal que a mão fechada encoste na frente da caixa
     junto = tuple(corpo(PG, YG, (0.20, 0.16, 0.92)))                          # leite recolhido junto ao corpo
-    if g >= 118.20:   # alcança → pega → recolhe → desce ao lado do corpo (andando)
+    if R9 and g >= T_PEGA - 0.28:   # rodada 9: alcança → pega → ERGUE 2 cm (passa sobre a borda) → puxa para fora → recolhe → desce
+        pega = tuple(LEITE_I1 + Vector(PEGA_R9))
+        sobe = tuple(Vector(pega) + Vector((0.0, -0.010, 0.032))); fora = tuple(Vector(pega) + Vector((0.0, -0.17, 0.030)))
+        md = PE.trilha([(T_PEGA - 0.28, tuple(md)), (T_PEGA, pega), (T_PEGA + 0.03, pega), (T_PEGA + 0.11, sobe), (T_PEGA + 0.25, fora),
+                        (T_PEGA + 0.42, junto), (T_SAI[0] + 0.55, repouso('d', pos, yaw, 0.04))], g) if g < T_SAI[0] + 0.55 else repouso('d', pos, yaw, bal(1) * 0.4)
+    elif not R9 and g >= 118.20:   # alcança → pega → recolhe → desce ao lado do corpo (andando)
         md = PE.trilha([(118.20, tuple(md)), (T_PEGA, pega), (T_PEGA + 0.08, pega), (T_PEGA + 0.35, junto),
                         (T_SAI[0] + 0.45, repouso('d', pos, yaw, 0.04))], g) if g < T_SAI[0] + 0.45 else repouso('d', pos, yaw, bal(1) * 0.4)
     e['braco_d'] = ('ik', md, tuple(corpo(pos, yaw, (0.7, -0.4, -1.0))), (0, 0, -1))

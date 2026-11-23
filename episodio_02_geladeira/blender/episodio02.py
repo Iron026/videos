@@ -12,6 +12,8 @@ COND_Y = G.COND_Y
 AQUI = os.path.dirname(os.path.abspath(__file__)); RAIZ = os.path.join(AQUI, '..')
 SAIDA = os.path.join(RAIZ, 'episodio', 'cenas')
 PL = C.PLANOS
+R9 = os.environ.get('CENA_R9', '0') == '1'
+def LEITE_TOPO(): return (G.LEITE_POS[0], G.LEITE_POS[1], 1.03)   # feixes de calor que saem do leite seguem a posição dele (V8: (0,12; −0,08))
 CORRECAO_PORTA = {'G3', 'J3', 'C4', 'H1', 'H2'}   # folga porta × vedação (z-fighting): G3 (rodada 5, regressão da câmera nova); J3 (rodada 6, defeito antigo, autorizado);
 # C4, H1, H2 (rodada 8: o mesmo defeito antigo, achado pelo detector sensível e confirmado na V6; a junção só fica à vista pelo corte
 # nesses 5 planos — verificação geométrica em relatorios/porta_vedacao_r8.json). Reverter: tirar os três ids do conjunto.
@@ -103,12 +105,15 @@ def plano(pid):
     parede = pid in ('A1', 'A2', 'A4', 'J1', 'C1', 'B1', 'B2', 'B3', 'B4', 'B5', 'B6', 'B7', 'I1', 'I2', 'I3', 'I4', 'J2', 'J4')   # v2: I3/I4 com a parede (cômodo fechado)
     s, cam = C.nova(); C.luzes_cozinha(); C.lampada_interna()
     G.FOLGA_PORTA = 0.0005 if pid in CORRECAO_PORTA else 0.0
+    if os.environ.get('FOLGA_PORTA_TESTE') and pid in CORRECAO_PORTA: G.FOLGA_PORTA = float(os.environ['FOLGA_PORTA_TESTE'])   # rodada 9 (teste): negativo = sobreposição painel × vedação
     corte_gab = seq in 'CDEGH' or pid in ('J3',)   # v2: F sem corte do gabinete (a serpentina é externa; o corte poluía o fundo)
     CORTE_REAL = corte_gab and pid != 'C1'           # C1: corte desligado (cozinha por fora)
     # rodada 8 (aprovado para validação): folga de 0,5 mm nas peças que ENCOSTAM nas laterais (topo, fundo, base, degraus,
     # contraporta — ver relatorios/coplanares_*.json), só onde o corte expõe essas faces
     G.FOLGA_GAB = 0.0005 if (CORTE_REAL or pid in CORRECAO_GAB) else 0.0
     G.FOLGA_DEGRAU = 0.0005 if pid in CORRECAO_DEGRAU else 0.0
+    if R9:   # rodada 9: itens novos + correções de apoio, leite na posição única (prévias; desligado = V8)
+        G.ITENS_R9 = True; G.LEITE_POS = tuple(E.LEITE_R9)
     obj = G.montar(parede_traseira=parede)
     mec = CM.montar(); tab = CM.ciclo()
     # garrafa extra sobre a bancada (B4: "Imagine uma garrafa...")
@@ -233,9 +238,13 @@ def plano(pid):
         bpy.data.objects['pote'].hide_render = True   # v2: defeito da v1 — o pote tapava metade do quadro no início do plano
     elif pid == 'C4':
         cam_k = K((0, (1.65, -1.05, 1.50), (0.0, 0.10, 0.76), 30), (0.75, (1.75, 0.10, 1.55), (0.0, 0.15, 0.76), 30), (1, (1.25, 0.30, 1.35), (0.0, 0.22, 0.70), 32))
+        if R9:   # rodada 9: no fim do C4 a câmera sobe e se aproxima do EVAPORADOR (no último quadro da V8 ele estava fora do quadro e o
+            # D1 o mostrava ocupando 75 % da tela — salto medido em relatorios/escala_cortes_r9.json). Mesmo início e mesmo meio.
+            cam_k = K((0, (1.65, -1.05, 1.50), (0.0, 0.10, 0.76), 30), (0.75, (1.75, 0.10, 1.55), (0.0, 0.15, 0.76), 30), (1, (1.32, -0.05, 1.52), (0.0, 0.0, 1.12), 32))
         revela = 1.0
-        man.add('baixa', (0.205, 0.287, 0.70), F('C4', 0.18), T1('C4'), 0.0)
-        man.add('alta', (-0.284, 0.345, 0.70), F('C4', 0.18), T1('C4'), 1.0)
+        fim_man = (E.T('físico') + 0.18) if R9 else T1('C4')   # R9: some com a palavra "físico", antes de a câmera subir ao evaporador (âncoras saem embaixo em 48,09 s)
+        man.add('baixa', (0.205, 0.287, 0.70), F('C4', 0.18), fim_man, 0.0)
+        man.add('alta', (-0.284, 0.345, 0.70), F('C4', 0.18), fim_man, 1.0)
     elif pid == 'D1':
         cam_k = K((0, (0.48, -0.60, 1.48), (0.0, 0.0, 1.29), 35), (1, (0.36, -0.42, 1.36), (0.0, 0.0, 1.29), 35))
         revela = 1.0; rot.add('Evaporador', lambda g: Vector((0.219, -0.10, 1.30)), E.T('evaporador', apos=T0('D1') - 0.5), T1('D1'), linha=False)
@@ -245,7 +254,7 @@ def plano(pid):
     elif pid == 'D3':
         cam_k = K((0, (0.50, -0.30, 0.95), (0.0, -0.02, 0.95), 30), (1, (0.46, -0.25, 1.00), (0.0, -0.02, 1.00), 30))
         revela = 1.0
-        for i, (x, y, z) in enumerate([(-0.10, 0.05, 0.93), (0.12, -0.08, 1.03), (-0.12, -0.10, 0.80), (0.0, -0.18, 0.18)]):
+        for i, (x, y, z) in enumerate([(-0.10, 0.05, 0.93), LEITE_TOPO(), (-0.12, -0.10, 0.80), (0.0, -0.18, 0.18)]):
             pts = [(x, y, z), (x * 0.8, y * 0.7, (z + 1.17) / 2), (x * 0.5, y * 0.4, 1.17)]
             feixe(f'D3_{i}', pts, 0.006, dict(p0=[[0, 0]], p1=[[F('D3', 0.05 + 0.08 * i), 0], [F('D3', 0.70 + 0.05 * i), 1.0]], forca=[[0, 1]]), onda=9)
         rot.add('fluido mais frio que o ar', lambda g: Vector((0.219, -0.05, 1.21)), F('D3', 0.45), T1('D3'))
@@ -263,7 +272,7 @@ def plano(pid):
     elif pid == 'D5':
         # v2: começa num plano médio do interior (a v1 começava no macro da v1 de D4); o calor dos alimentos já está no evaporador
         cam_k = K((0, (0.46, -0.28, 1.04), (0.0, -0.02, 1.12), 30), (1, (0.85, -0.85, 1.20), (0.0, 0.0, 1.05), 30))
-        for i, (x, y, z) in enumerate([(-0.10, 0.05, 0.93), (0.12, -0.08, 1.03), (-0.12, -0.10, 0.80)]):
+        for i, (x, y, z) in enumerate([(-0.10, 0.05, 0.93), LEITE_TOPO(), (-0.12, -0.10, 0.80)]):
             feixe(f'D5_{i}', [(x, y, z), (x * 0.8, y * 0.7, (z + 1.17) / 2), (x * 0.5, y * 0.4, 1.17)], 0.006,
                   dict(p0=[[0, 0]], p1=[[0, 1.0]], forca=[[F('D5', 0.55), 1], [F('D5', 0.85), 0]]), onda=9)
         revela = 1.0
@@ -363,7 +372,7 @@ def plano(pid):
     elif pid == 'H2':
         cam_k = K((0, (1.70, -0.90, 1.60), (0.0, 0.10, 0.78), 30), (1, (1.80, -0.45, 1.62), (0.0, 0.12, 0.78), 30))
         revela = 1.0; curvas['uTrab'] = [[0, 1]]
-        for i, (x, y, z) in enumerate([(-0.10, 0.05, 0.93), (0.12, -0.08, 1.03)]):
+        for i, (x, y, z) in enumerate([(-0.10, 0.05, 0.93), LEITE_TOPO()]):
             feixe(f'H2_in{i}', [(x, y, z), (x * 0.6, y * 0.5, 1.05), (x * 0.4, y * 0.3, 1.17)], 0.008, cresce(F('H2', 0.05), F('H2', 0.6)), onda=9)
         for i, z in enumerate([0.65, 1.05]):
             feixe(f'H2_out{i}', [(0.0, 0.35, z), (0.0, 0.42, z + 0.15), (0.0, 0.44, z + 0.55)], 0.010, cresce(F('H2', 0.15), F('H2', 0.7)), onda=8)
@@ -375,6 +384,9 @@ def plano(pid):
     elif pid == 'I1':
         # v3: rima com A1 — o personagem entra, abre e DEIXA a porta aberta
         cam_k = K((0, (-0.30, -3.15, 1.40), (-0.34, -0.50, 0.98), 28), (1, (-0.24, -2.90, 1.38), (-0.30, -0.48, 0.98), 28))
+        if R9:   # rodada 9: enquanto ele sai pela esquerda com o leite, a câmera devolve a atenção à geladeira ABERTA (prepara o I2)
+            cam_k = K((0, (-0.30, -3.15, 1.40), (-0.34, -0.50, 0.98), 28), (0.80, (-0.252, -2.95, 1.384), (-0.308, -0.484, 0.98), 28),
+                      (1, (-0.15, -2.84, 1.37), (-0.05, -0.32, 0.96), 28))
         porta = E.porta_ang(E.T('deixa') - 0.13)
     elif pid == 'I2':
         cam_k = K((0, (-1.10, -1.55, 1.15), (0.05, -0.38, 0.85), 30), (1, (-1.00, -1.45, 1.15), (0.05, -0.38, 0.85), 30))
@@ -421,11 +433,11 @@ def plano(pid):
     piv = obj['porta']
     # rodada 8: no I1 o personagem PEGA o leite e sai com ele; de I2 a I4 a caixa não está mais na prateleira
     leite = [bpy.data.objects[n] for n in ('leite', 'leite_rot') if n in bpy.data.objects]
-    if pid in ('I2', 'I3', 'I4'):
+    if pid in ('I2', 'I3', 'I4') or (R9 and pid in ('J1', 'J1b', 'J2', 'J3')):   # R9: levado no I1, não volta sem explicação
         for o in leite: o.hide_render = True
     leite_rel = {}
     if pid == 'I1':
-        for o in leite: o['anim'] = 1; o.location = o.location - Vector((0.12, -0.08, 0.84 + 0.098)) + E.LEITE_I1
+        for o in leite: o['anim'] = 1; o.location = o.location - Vector(G.LEITE_POS) + E.LEITE_I1   # R9: deslocamento zero (mesma posição)
         bpy.context.view_layer.update(); leite_base = {o.name: o.matrix_world.copy() for o in leite}
     def anim(g):
         piv.rotation_euler = (0, 0, math.radians(porta(g)))

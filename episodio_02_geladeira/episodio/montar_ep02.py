@@ -154,7 +154,8 @@ def rotulo(img, txt, u, v, a, dx, dy, linha=True):
     lx, ly, w, h = caixa_rotulo(txt, u, v, dx, dy, linha)
     ex = min(max(ax, lx), lx + w); ey = ly + h / 2; al = int(255 * a)
     if linha:   # rodada 8: linha de chamada só para elementos pequenos, detalhes ampliados ou fora do quadro
-        d.line([(ax, ay), (ex, ey)], fill=CREME + (al,), width=max(2, int(4 * ESC)))
+        if R9: linha_com_vao(d, (ax, ay), (ex, ey), CREME + (al,), max(2, int(4 * ESC)), 'ligacao_rotulo_trecho', txt)
+        else: d.line([(ax, ay), (ex, ey)], fill=CREME + (al,), width=max(2, int(4 * ESC)))
         r = 11 * ESC; d.ellipse([ax - r, ay - r, ax + r, ay + r], fill=AMARELO + (al,), outline=AZUL + (al,), width=max(1, int(3 * ESC)))
         _cx('ligacao_rotulo', txt, (ax, ay, ex, ey))
     d.rounded_rectangle([lx, ly, lx + w, ly + h], radius=h / 2, fill=AZUL + (int(240 * a),)); _cx('rotulo', txt, (lx, ly, lx + w, ly + h))
@@ -206,7 +207,7 @@ def _seg_cruza(p, q, c):
 class _Obs(list): textos = ()
 def _obstaculos(pid, g):
     if R9:   # rodada 9: a legenda do instante (posição escolhida por bloco) e a faixa superior/inferior das plataformas
-        cl = caixa_legenda_em(g); ob = _Obs([cl] if cl else []); ob.textos = ([cl] if cl else []) + caixas_avisos(g)   # linhas de ligação não cruzam texto
+        cl = caixa_legenda_em(g); ob = _Obs([cl] if cl else []); ob.textos = caixas_avisos(g)   # linhas de ligação não cruzam os avisos (na legenda a linha é interrompida: linha_com_vao)
         ob += [(0, 0, W, ZONA['topo'] * ESC), (0, H - ZONA['base'] * ESC, W, H)]
     else: ob = [(0, 0.74 * H - 50 * ESC, W, 0.74 * H + 50 * ESC)]                               # faixa da legenda
     if R9:
@@ -306,7 +307,7 @@ def valido(centros, ob, circ, anc, lupa=None):
     for (cx, cy), (ax, ay) in zip(centros, anc):
         p = _ponto_ligacao(cx, cy, R_, ax, ay)
         if any(_seg_cruza((ax, ay), p, c) for c in textos): return False
-        if any(_seg_cruza((ax, ay), p, c) for c in getattr(ob, 'textos', ())): return False   # rodada 9: nem sobre a legenda/avisos
+        if any(_seg_cruza((ax, ay), p, c) for c in getattr(ob, 'textos', ())): return False   # rodada 9: nem sobre avisos (na legenda a linha é interrompida)
         for (cx2, cy2) in centros:   # a ligação não atravessa o OUTRO mostrador
             if (cx2, cy2) != (cx, cy) and _seg_cruza((ax, ay), p, _extensao_man(cx2, cy2, R_)): return False
     if lupa:   # a linha da lupa (borda do círculo → topo do mostrador) não cruza textos nem mostradores
@@ -337,7 +338,7 @@ def manometro(img, nome, u, v, a, val, lado, pid=None, pp=None):
         # Valor e ângulo: MESMA fórmula da R8 (ang = 180 + 180·valor).
         cx, cy = pp; x0, y0, x1, y1 = _caixa_cartao(cx, cy); ax, ay = u * W, v * H; fim = _ponto_ligacao(cx, cy, R_, ax, ay)
         if math.hypot(ax - fim[0], ay - fim[1]) > 30 * ESC:
-            d.line([(ax, ay), fim], fill=CREME + (int(200 * a),), width=max(1, int(3 * ESC)))
+            linha_com_vao(d, (ax, ay), fim, CREME + (int(200 * a),), max(1, int(3 * ESC)), 'ligacao_man_trecho', nome)
         rr_ = 8 * ESC; d.ellipse([ax - rr_, ay - rr_, ax + rr_, ay + rr_], fill=AMARELO + (al,), outline=AZUL + (al,), width=max(1, int(3 * ESC)))
         d.rounded_rectangle([x0, y0, x1, y1], radius=28 * ESC, fill=AZUL + (int(252 * a),))
         d.rounded_rectangle([x0 + 0.2 * CW, y1 - 6 * ESC, x1 - 0.2 * CW, y1], radius=2, fill=AMARELO + (al,))
@@ -462,6 +463,26 @@ def mecanismos(pid, g):
         xs = [c[0] for c in cs]; ys = [c[1] for c in cs]; bb = (max(0, min(xs)), max(0, min(ys)), min(W, max(xs)), min(H, max(ys)))
         if bb[2] > bb[0] and bb[3] > bb[1]: out.append(bb)
     return out
+def linha_com_vao(d, p, q, fill, width, tipo, nome):
+    """Rodada 9: linha de ligação INTERROMPIDA onde passa pela legenda do instante (vão de 14 px em volta do texto): nenhuma linha
+    sobre o texto. Cada trecho desenhado é registrado (teste de composição)."""
+    cl = caixa_legenda_em(G_ATUAL[0]) if R9 else None
+    caixas = ([cl] if cl else []) + (caixas_avisos(G_ATUAL[0]) if R9 else [])   # vão na legenda e nos avisos
+    pts = [(0.0, 1.0)]; dx, dy = q[0] - p[0], q[1] - p[1]
+    for cb in caixas:
+        m = 14 * ESC; b = (cb[0] - m, cb[1] - m, cb[2] + m, cb[3] + m); t0, t1 = 0.0, 1.0
+        for pp, qq in ((-dx, p[0] - b[0]), (dx, b[2] - p[0]), (-dy, p[1] - b[1]), (dy, b[3] - p[1])):   # Liang–Barsky
+            if pp == 0:
+                if qq < 0: t0, t1 = 1.0, 0.0
+            else:
+                r = qq / pp
+                if pp < 0: t0 = max(t0, r)
+                else: t1 = min(t1, r)
+        if t0 < t1: pts = [piece for (a_, b_) in pts for piece in ((a_, min(b_, t0)), (max(a_, t1), b_)) if piece[1] > piece[0]]
+    for a_, b_ in pts:
+        if b_ - a_ < 1e-3: continue
+        A = (p[0] + (q[0] - p[0]) * a_, p[1] + (q[1] - p[1]) * a_); Bq = (p[0] + (q[0] - p[0]) * b_, p[1] + (q[1] - p[1]) * b_)
+        d.line([A, Bq], fill=fill, width=width); _cx(tipo, nome, A + Bq)
 def _linhas_leg(b): return b['linhas']
 def caixa_legenda(b, yc):
     hl = len(b['linhas']) * LH_LEG; wl = max(F_LEG.getlength(l) for l in b['linhas']) + 2 * 7 * ESC
@@ -496,7 +517,6 @@ def _custo_posicao(b, yf):
                 if 0 <= u <= 1 and 0 <= v <= 1 and cx[0] - 10 * ESC <= u * W <= cx[2] + 10 * ESC and cx[1] - 10 * ESC <= v * H <= cx[3] + 10 * ESC: c += 25
             for (nome, u, v, a, val) in dados(pid, 'manometros2d.json', k):
                 if a > 0.05 and cx[0] - 10 * ESC <= u * W <= cx[2] + 10 * ESC and cx[1] - 10 * ESC <= v * H <= cx[3] + 10 * ESC: c += 25
-                if a > 0.05 and cx[3] < v * H < cx[3] + CH + 110 * ESC and cx[0] - 100 * ESC < u * W < cx[2] + 100 * ESC: c += 30   # âncora logo ABAIXO da legenda sem espaço para o cartão entre as duas: a ligação cruzaria o texto
             if pid in INSET:
                 L_ = INSET[pid]; lc = (L_['cx'] * W, L_['cy'] * H, L_['r'] * W)
                 nx, ny = min(max(lc[0], cx[0]), cx[2]), min(max(lc[1], cx[1]), cx[3])
@@ -567,7 +587,12 @@ def lupa(img, pid, g, k):
         if pp: mx, my = pp
         ax, ay = mx, my - ((CH / 2 + 4 * ESC) if MAN_CARTAO else R_m + (50 if MAN_LEG else 34) * ESC)
         vx, vy = ax - cx, ay - cy; n = max(1e-6, (vx * vx + vy * vy) ** 0.5)
-        if n > D / 2 + 8: ex, ey = cx + vx / n * D / 2, cy + vy / n * D / 2; _cx('ligacao_lupa', pid, (ex, ey, ax, ay)); d.line((ex, ey, ax, ay), fill=(16, 22, 46, al), width=max(3, int(7 * ESC))); d.line((ex, ey, ax, ay), fill=(246, 244, 236, al), width=max(1, int(3 * ESC)))
+        if n > D / 2 + 8:
+            ex, ey = cx + vx / n * D / 2, cy + vy / n * D / 2; _cx('ligacao_lupa', pid, (ex, ey, ax, ay))
+            if R9:
+                linha_com_vao(d, (ex, ey), (ax, ay), (16, 22, 46, al), max(3, int(7 * ESC)), 'ligacao_lupa_trecho', pid)
+                linha_com_vao(d, (ex, ey), (ax, ay), (246, 244, 236, al), max(1, int(3 * ESC)), 'ligacao_lupa_trecho2', pid)
+            else: d.line((ex, ey, ax, ay), fill=(16, 22, 46, al), width=max(3, int(7 * ESC))); d.line((ex, ey, ax, ay), fill=(246, 244, 236, al), width=max(1, int(3 * ESC)))
     img.paste(Image.alpha_composite(img.convert('RGBA'), cam).convert('RGB'))
     img.paste(quad, (cx - D // 2, cy - D // 2), mask); _cx('lupa', pid, (cx - D // 2, cy - D // 2, cx + D // 2, cy + D // 2))
     anel = Image.new('RGBA', img.size, (0, 0, 0, 0)); ImageDraw.Draw(anel).ellipse((cx - D // 2, cy - D // 2, cx + D // 2, cy + D // 2), outline=(246, 244, 236, int(255 * a)), width=max(2, int(6 * ESC)))
@@ -588,6 +613,7 @@ def lupa(img, pid, g, k):
 
 
 def compor(g):
+    G_ATUAL[0] = g   # rodada 9: o instante vale para TODAS as camadas (antes só era atualizado depois dos rótulos)
     fz = lambda i: FUSOES.get(PLANOS[i]['id'], FUSAO); fs = lambda i: fz(i + 1) if i + 1 < len(PLANOS) else FUSAO
     ativos = [(p['id'], fz(i)) for i, p in enumerate(PLANOS) if p['t0'] - fz(i) / 2 <= g < p['t1'] + fs(i) / 2]
     if len(ativos) == 1: img = quadro(ativos[0][0], g); camadas = [(ativos[0][0], 1.0)]

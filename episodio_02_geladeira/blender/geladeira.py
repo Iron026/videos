@@ -205,10 +205,14 @@ def porta(mt):
         P(f'porta_grade{z}', (2 * GX - 0.13, 0.006, 0.055), (0, GY0 + 0.112, z + 0.03), mt['vidro'])
     P('puxador', (0.03, 0.035, 0.55), (-GX + 0.045, GY0 - 0.072, 1.05), mt['vedacao'])
     if ITENS_EXTRA:   # rodada 8: dois frascos de molho na prateleira do meio da porta (giram com a porta)
+        # rodada 9 (ITENS_R9): com a porta FECHADA a tampa (topo 0,86) invadia a prateleira de vidro de cima e a borda (0,832)
+        # — defeito da rodada 8 achado por testar_itens.py. Frasco 9,5 cm (topo 0,826) e fundo 0,5 mm acima da prateleira.
+        hj, lev = (0.095, 0.0005) if ITENS_R9 else (0.13, 0.0)
         for nome, x, cor in (('molho_verde', -0.16, '#5c7f3a'), ('molho_claro', -0.08, '#e3dcc4')):
             m = M.pintura(nome, cor, rug=0.45, coat=0.3, temp=6.0)
-            o = lib.cilindro(nome, 0.024, 0.13, (x - GX, GY0 + 0.07 - GY0, 0.70 + 0.006 + 0.065), m, lados=16); o.parent = piv
-            t = lib.cilindro(nome + '_tampa', 0.014, 0.025, (x - GX, GY0 + 0.07 - GY0, 0.70 + 0.006 + 0.142), mt['plastico_cinza'], lados=12); t.parent = piv
+            o = lib.cilindro(nome, 0.024, hj, (x - GX, GY0 + 0.07 - GY0, 0.70 + 0.006 + lev + hj / 2), m, lados=16); o.parent = piv
+            t = lib.cilindro(nome + '_tampa', 0.014, 0.025, (x - GX, GY0 + 0.07 - GY0, 0.70 + 0.006 + lev + hj + 0.012), mt['plastico_cinza'], lados=12); t.parent = piv   # V8: 0,706 + 0,142
+    if ITENS_R9: itens_porta_r9(mt, piv)
     return piv
 
 
@@ -232,11 +236,13 @@ def interior(mt):
     garrafa = garrafa_agua(mt, (-0.12, -0.10, 0.505))
     objs['garrafa'] = garrafa
     leite = M.pintura('caixa_leite', '#e9eef2', rug=0.5, temp=5.0); faixa = M.pintura('leite_faixa', '#2f6fb3', rug=0.5, temp=5.0)
-    lib.caixa('leite', (0.07, 0.07, 0.19), (0.12, -0.08, 0.84 + 0.098), leite); lib.caixa('leite_rot', (0.072, 0.072, 0.05), (0.12, -0.08, 0.84 + 0.09), faixa)
+    lx, ly = LEITE_POS[0], LEITE_POS[1]   # rodada 9: posição ÚNICA (a mesma de onde o personagem a retira no I1)
+    lib.caixa('leite', (0.07, 0.07, 0.19), (lx, ly, 0.84 + 0.098), leite); lib.caixa('leite_rot', (0.072, 0.072, 0.05), (lx, ly, 0.84 + 0.09), faixa)
     pote = M.pintura('pote', '#d94f3d', rug=0.35, coat=0.3, temp=5.0)
     lib.cilindro('pote', 0.055, 0.08, (-0.10, 0.05, 0.84 + 0.045), pote, lados=24)
     fruta = M.pintura('tomate', '#c8362a', rug=0.3, coat=0.4, temp=6.0)
     if ITENS_EXTRA: itens_extra(mt)
+    if ITENS_R9: itens_r9(mt)
     for i, (x, y) in enumerate([(-0.15, -0.20), (-0.07, -0.17), (0.02, -0.21), (0.11, -0.16)]):
         bpy.ops.mesh.primitive_uv_sphere_add(radius=0.034, location=(x, y, IZ0 + 0.045), segments=20, ring_count=12)
         o = bpy.context.active_object; o.name = f'tomate{i}'; o.data.materials.append(fruta); o.scale.z = 0.85
@@ -245,6 +251,46 @@ def interior(mt):
 
 
 ITENS_EXTRA = True   # rodada 8 (pedido): geladeira menos vazia — itens simples, cores fora da linguagem didática (sem laranja/azul)
+ITENS_R9 = False     # rodada 9 (teste, desligado = V8): mais itens cotidianos + correções de apoio/invasão (testar_itens.py)
+LEITE_POS = (0.12, -0.08, 0.84 + 0.098)   # V8; rodada 9 (CENA_R9): (−0,12; −0,22) — ver encenacao02.LEITE_R9
+LEV = 0.0005         # rodada 9: fundo dos itens 0,5 mm acima do vidro (fundo coplanar com o vidro transparente = z-fighting visto de baixo)
+
+
+def itens_porta_r9(mt, piv):
+    """Prateleiras da porta (giram com ela). Alturas limitadas para a porta FECHAR sem invadir prateleiras/gaveta internas:
+    prateleira de baixo (0,32) até 0,476 (vidro do meio começa em 0,492); de cima (1,08) até 1,147 (bandeja do evaporador 1,151)."""
+    def no_piv(o): o.parent = piv; return o
+    y = 0.0735; z1 = 0.32 + 0.006 + LEV   # centro 3,5 mm atrás do da prateleira: o vidro de 3 cm de raio não encosta na contraporta (y = GY0 + 0,042)
+    vd = M.pintura('item_vidro_verde', '#3f6b4a', rug=0.12, coat=0.8, temp=6.0); bege = M.pintura('item_caixa_bege', '#cdbf9f', rug=0.6, temp=6.0)
+    no_piv(lib.cilindro('item_garrafa_porta', 0.03, 0.13, (0.16 - GX, y, z1 + 0.065), vd, lados=18))
+    no_piv(lib.cilindro('item_garrafa_porta_tampa', 0.014, 0.02, (0.16 - GX, y, z1 + 0.13 + 0.01), mt['plastico_cinza'], lados=12))
+    no_piv(lib.caixa('item_caixa_porta', (0.055, 0.055, 0.14), (0.07 - GX, y, z1 + 0.07), bege))
+    z3 = 1.08 + 0.006 + LEV; ovo = M.pintura('item_ovo', '#ecdfc7', rug=0.55, temp=6.0)
+    no_piv(lib.caixa('item_ovos_bandeja', (0.20, 0.058, 0.014), (-0.02 - GX, y, z3 + 0.007), mt['plastico_cinza']))
+    for i in range(5):
+        bpy.ops.mesh.primitive_uv_sphere_add(radius=0.019, location=(-0.10 + 0.04 * i - GX, y, z3 + 0.014 + 0.019 * 1.25 - 0.004), segments=16, ring_count=10)
+        o = bpy.context.active_object; o.name = f'item_ovo{i}'; o.data.materials.append(ovo); o.scale.z = 1.25; bpy.ops.object.shade_smooth(); no_piv(o)
+
+
+def itens_r9(mt):
+    """Interior: verduras/frutas na gaveta (à frente-direita/esquerda, longe da serpentina do capilar vista em G1/G2), pote com
+    tampa na prateleira do meio, dois congelados baixos no fundo do evaporador. Cores fora da linguagem didática."""
+    folha = M.pintura('item_alface', '#6f9a4f', rug=0.7, temp=6.0); lima = M.pintura('item_lima', '#86a845', rug=0.5, coat=0.2, temp=6.0)
+    zg = IZ0 + 0.016                                                             # fundo da gaveta (como os tomates)
+    bpy.ops.mesh.primitive_uv_sphere_add(radius=0.055, location=(0.18, -0.06, zg + 0.055 * 0.75), segments=20, ring_count=12)
+    o = bpy.context.active_object; o.name = 'item_alface'; o.data.materials.append(folha); o.scale.z = 0.75; bpy.ops.object.shade_smooth()
+    for i, (x, yy) in enumerate([(-0.19, -0.07), (-0.135, -0.045)]):
+        bpy.ops.mesh.primitive_uv_sphere_add(radius=0.026, location=(x, yy, zg + 0.026), segments=16, ring_count=10)
+        o = bpy.context.active_object; o.name = f'item_lima{i}'; o.data.materials.append(lima); bpy.ops.object.shade_smooth()
+    vid = M.pintura('item_marmita', '#dcd8cf', rug=0.3, coat=0.5, temp=5.0); tp = M.pintura('item_marmita_tampa', '#7d8f88', rug=0.5, temp=5.0)
+    zm = 0.5025 + LEV
+    lib.caixa('item_marmita', (0.12, 0.09, 0.055), (-0.15, 0.13, zm + 0.0275), vid)
+    lib.caixa('item_marmita_tampa', (0.124, 0.094, 0.012), (-0.15, 0.13, zm + 0.055 + 0.006), tp)
+    e = EVAP; zf = e['z0'] + 0.00125 + LEV            # topo da placa de base do evaporador + 0,5 mm
+    erv = M.pintura('item_ervilhas', '#6e9a5a', rug=0.75, temp=-18.0); sor = M.pintura('item_sorvete', '#efe7da', rug=0.5, temp=-18.0)
+    lib.caixa('item_ervilhas', (0.10, 0.07, 0.03), (-0.12, -0.12, zf + 0.015), erv)
+    lib.cilindro('item_sorvete', 0.048, 0.065, (0.10, -0.12, zf + 0.0325), sor, lados=20)
+    lib.cilindro('item_sorvete_tampa', 0.05, 0.008, (0.10, -0.12, zf + 0.065 + 0.004), M.pintura('item_sorvete_tampa', '#8a6f5a', rug=0.5, temp=-18.0), lados=20)
 
 
 def itens_extra(mt):
@@ -252,12 +298,14 @@ def itens_extra(mt):
     Posições escolhidas para não ficar na frente do evaporador nem dos feixes didáticos (conferido nas folhas de contato)."""
     iog = M.pintura('iogurte', '#f1efe8', rug=0.5, temp=5.0); tampa_v = M.pintura('tampa_verde', '#5a9e4b', rug=0.4, temp=5.0)
     for i, (x, y) in enumerate([(-0.03, -0.19), (0.035, -0.20)]):                       # prateleira de cima: 2 iogurtes
-        lib.cilindro(f'iogurte{i}', 0.03, 0.07, (x, y, 0.84 + 0.0025 + 0.035), iog, lados=18)
-        lib.cilindro(f'iogurte_tampa{i}', 0.031, 0.006, (x, y, 0.84 + 0.0025 + 0.073), tampa_v, lados=18)
+        lv = LEV if ITENS_R9 else 0.0
+        lib.cilindro(f'iogurte{i}', 0.03, 0.07, (x, y, 0.84 + 0.0025 + lv + 0.035), iog, lados=18)
+        lib.cilindro(f'iogurte_tampa{i}', 0.031, 0.006, (x, y, 0.84 + 0.0025 + lv + 0.073), tampa_v, lados=18)
     suco = M.pintura('suco', '#d6c34c', rug=0.5, temp=5.0)                                 # prateleira do meio: suco e pote baixo
-    lib.caixa('suco', (0.06, 0.06, 0.17), (0.15, -0.05, 0.5025 + 0.085), suco)
+    lv = LEV if ITENS_R9 else 0.0
+    lib.caixa('suco', (0.06, 0.06, 0.17), (0.15, -0.05, 0.5025 + lv + 0.085), suco)
     pote2 = M.pintura('pote_baixo', '#cfc6b8', rug=0.4, coat=0.2, temp=5.0)
-    lib.cilindro('pote_baixo', 0.07, 0.045, (0.02, 0.10, 0.5025 + 0.0225), pote2, lados=24)
+    lib.cilindro('pote_baixo', 0.07, 0.045, (0.02, 0.10, 0.5025 + lv + 0.0225), pote2, lados=24)
     # (maçãs retiradas: na gaveta ficavam atrás da serpentina do capilar em G1/G2 e competiam com ela — folha de contato r8)
     gelo = M.pintura('forma_gelo', '#e6edf0', rug=0.3, temp=-18.0)                         # congelador: forma de gelo e congelados
     e = EVAP

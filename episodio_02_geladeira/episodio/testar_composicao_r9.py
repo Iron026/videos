@@ -42,9 +42,9 @@ for i in range(0, int(round(M.DUR * M.FPS)), PASSO):
         if b[3] > H - Z['base'] + 1: prob['zona inferior'].append(f'{tag} {t}:{nm}')
         if b[2] > W - Z['direita'] + 1 and b[3] > Z['direita_desde'] * H: prob['coluna direita'].append(f'{tag} {t}:{nm}')
     for (t, nm, l) in cx:
-        if t in ('ligacao_rotulo', 'ligacao_man', 'ligacao_lupa'):
+        if t in ('ligacao_rotulo_trecho', 'ligacao_man_trecho', 'ligacao_lupa_trecho') or (t in ('ligacao_rotulo', 'ligacao_man', 'ligacao_lupa') and not any(x[0] == t + '_trecho' and x[1] == nm for x in cx)):   # R9: trechos realmente desenhados
             for (t2, nm2, b) in caixas:
-                if t2 in ('legenda', 'aviso') or (t2 == 'rotulo' and nm2 != nm and t == 'ligacao_rotulo') or (t2 == 'mostrador' and nm2 != nm and t == 'ligacao_man'):
+                if t2 in ('legenda', 'aviso') or (t2 == 'rotulo' and nm2 != nm and t.startswith('ligacao_rotulo')) or (t2 == 'mostrador' and nm2 != nm and t.startswith('ligacao_man')):
                     if seg(l[:2], l[2:4], b): prob['linha sobre texto'].append(f'{tag} {t}:{nm} × {t2}:{nm2}')
     vivos = [p['id'] for p in M.PLANOS if p['t0'] - 0.3 <= g < p['t1'] + 0.3]   # inclui o plano que sai na fusão
     for (t, nm, l) in cx:

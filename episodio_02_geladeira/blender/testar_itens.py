@@ -11,10 +11,11 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import bpy
 import geladeira as G
 R9 = len(sys.argv) > 1 and sys.argv[1] == 'r9'
-if R9: G.ITENS_R9 = True
+if R9: G.ITENS_R9 = True; G.LEITE_POS = (-0.12, -0.22, 0.84 + 0.098)   # posição única da rodada 9
 for o in list(bpy.data.objects): bpy.data.objects.remove(o)
 obj = G.montar(parede_traseira=True); bpy.context.view_layer.update()
 ITENS = ('leite', 'pote', 'garrafa', 'tomate', 'iogurte', 'suco', 'pote_baixo', 'forma_gelo', 'congelados', 'molho', 'item_')
+NA_GAVETA = ('tomate', 'item_alface', 'item_lima')
 APOIOS = ('prat_vidro', 'gaveta', 'evap_base', 'porta_prat', 'forro_b')
 eh_item = lambda n: n.startswith(ITENS)
 def aabb(o):
@@ -32,7 +33,7 @@ def medir(rotulo):
         for m, b in caixas.items():
             if m == n or (eh_item(m) and m < n): continue
             if (m.startswith(n) or n.startswith(m)) and ('_rot' in m + n or '_tampa' in m + n or '_vol' in m + n): continue   # partes do mesmo item
-            if m.startswith('gaveta') and n.startswith('tomate'): continue      # tomates DENTRO da gaveta (caixa de vidro): a AABB da gaveta os contém
+            if m.startswith('gaveta') and n.startswith(NA_GAVETA): continue      # dentro da gaveta (caixa de vidro): a AABB da gaveta os contém
             v = vol(a, b)
             if v > 1e-6: out['invasoes'].append(dict(item=n, peca=m, cm3=round(v * 1e6, 2)))
         # apoio: maior topo de apoio abaixo do fundo do item, sobrepondo em x/y
@@ -46,5 +47,6 @@ def medir(rotulo):
     return out
 piv = obj['porta']; res = {}
 piv.rotation_euler = (0, 0, 0); res['porta_fechada'] = medir('porta fechada')
-piv.rotation_euler = (0, 0, math.radians(100)); res['porta_aberta_100'] = medir('porta aberta 100°')
+# porta aberta: as peças da porta giram juntas (geometria rígida, já testada fechada); a AABB de peças giradas 100° acusaria falsos
+# positivos — a interação com a porta aberta (mão, caixa de leite) é testada em testar_leite.py
 json.dump(res, open(os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', 'relatorios', 'teste_itens' + ('_r9' if R9 else '') + '.json'), 'w'), ensure_ascii=False, indent=1)
