@@ -111,12 +111,13 @@ for pid in IDS:
             if not ok and motivo.startswith('salto') and i in TRANS:   # transição desenhada na cena (varredura térmica etc.)
                 ok, just = True, motivo + ' — justificado: efeito da cena em transição neste quadro'; log(f'{pid} quadro {i}: {just}')
             if not ok and motivo.startswith('salto'):   # o MESMO salto na versão aprovada (V8), com a imagem equivalente à dela
-                fv, fv0 = (os.path.join(V8REF, pid, f'q{j:04d}.jpg') for j in (i, i - 1))
-                if os.path.exists(fv) and os.path.exists(fv0) and ant is not None:
+              for nref, dref in (('V8 aprovada', os.path.join(V8REF, pid)), ('prévia aprovada da rodada 9', os.path.join(A, 'quadros_previa_r9', pid + '_r9'))):
+                fv, fv0 = (os.path.join(dref, f'q{j:04d}.jpg') for j in (i, i - 1))
+                if not ok and os.path.exists(fv) and os.path.exists(fv0) and ant is not None:
                     gv, gv0, gn = (np.asarray(Image.open(x).convert('L').resize((32, 56)), np.float32) for x in (fv, fv0, ft))
                     cv = float(np.corrcoef(gv.ravel(), gv0.ravel())[0, 1]); cn = float(np.corrcoef(gn.ravel(), ant.ravel())[0, 1]); cx = float(np.corrcoef(gn.ravel(), gv.ravel())[0, 1])
                     if abs(cn - cv) <= 0.03 and cx >= CORR_MIN:
-                        ok, just = True, motivo + f' — justificado: mesmo salto na V8 aprovada (corr V8 {cv:.3f}; novo × V8 {cx:.3f})'; log(f'{pid} quadro {i}: {just}')
+                        ok, just = True, motivo + f' — justificado: mesmo salto na {nref} (corr ref. {cv:.3f}; novo × ref. {cx:.3f})'; log(f'{pid} quadro {i}: {just}')
             if not ok:
                 gravar_json(mf, man); log(f'PARADA {pid} quadro {i}: {motivo} — investigar antes de continuar (arquivo em {tmp})'); sys.exit(4)
             dst = os.path.join(d, f'q{i:04d}.jpg'); os.replace(ft, dst); ant = ant_
