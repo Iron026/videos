@@ -152,483 +152,483 @@
   },
   {
    "g": 0.233,
-   "porta_graus": 0.3,
+   "porta_graus": 0.2,
    "alcance_mm": 0.0,
    "alcance_mao_e_mm": 39.6,
    "segurando": true,
    "folga_braco_mm": 16.0,
    "braco_peca": "porta:porta_painel",
-   "folga_tronco_porta_mm": 203.6
+   "folga_tronco_porta_mm": 204.0
   },
   {
    "g": 0.267,
-   "porta_graus": 1.1,
+   "porta_graus": 0.8,
    "alcance_mm": 0.0,
    "alcance_mao_e_mm": 39.0,
    "segurando": true,
    "folga_braco_mm": 16.0,
    "braco_peca": "porta:porta_painel",
-   "folga_tronco_porta_mm": 198.9
+   "folga_tronco_porta_mm": 200.3
   },
   {
    "g": 0.3,
-   "porta_graus": 2.3,
+   "porta_graus": 1.8,
    "alcance_mm": 0.0,
    "alcance_mao_e_mm": 38.5,
    "segurando": true,
    "folga_braco_mm": 16.0,
    "braco_peca": "porta:porta_painel",
-   "folga_tronco_porta_mm": 191.9
+   "folga_tronco_porta_mm": 194.6
   },
   {
    "g": 0.333,
-   "porta_graus": 4.1,
+   "porta_graus": 3.3,
    "alcance_mm": 0.0,
    "alcance_mao_e_mm": 38.2,
    "segurando": true,
    "folga_braco_mm": 16.0,
    "braco_peca": "porta:porta_painel",
-   "folga_tronco_porta_mm": 182.1
+   "folga_tronco_porta_mm": 187.1
   },
   {
    "g": 0.367,
-   "porta_graus": 6.2,
+   "porta_graus": 5.1,
    "alcance_mm": 0.0,
    "alcance_mao_e_mm": 38.2,
    "segurando": true,
    "folga_braco_mm": 16.0,
    "braco_peca": "porta:porta_painel",
-   "folga_tronco_porta_mm": 168.8
+   "folga_tronco_porta_mm": 175.4
   },
   {
    "g": 0.4,
-   "porta_graus": 8.7,
+   "porta_graus": 7.3,
    "alcance_mm": 0.0,
    "alcance_mao_e_mm": 38.3,
    "segurando": true,
    "folga_braco_mm": 16.0,
    "braco_peca": "porta:porta_painel",
-   "folga_tronco_porta_mm": 155.4
+   "folga_tronco_porta_mm": 162.4
   },
   {
    "g": 0.433,
-   "porta_graus": 11.6,
+   "porta_graus": 10.0,
    "alcance_mm": 0.0,
    "alcance_mao_e_mm": 38.5,
    "segurando": true,
    "folga_braco_mm": 16.0,
    "braco_peca": "porta:porta_painel",
-   "folga_tronco_porta_mm": 143.6
+   "folga_tronco_porta_mm": 149.7
   },
   {
    "g": 0.467,
-   "porta_graus": 14.8,
+   "porta_graus": 13.1,
    "alcance_mm": 0.0,
    "alcance_mao_e_mm": 38.8,
    "segurando": true,
    "folga_braco_mm": 16.0,
    "braco_peca": "porta:porta_painel",
-   "folga_tronco_porta_mm": 135.1
+   "folga_tronco_porta_mm": 139.0
   },
   {
    "g": 0.5,
-   "porta_graus": 18.3,
+   "porta_graus": 16.5,
    "alcance_mm": 0.0,
    "alcance_mao_e_mm": 39.1,
    "segurando": true,
    "folga_braco_mm": 16.0,
    "braco_peca": "porta:porta_painel",
-   "folga_tronco_porta_mm": 132.1
+   "folga_tronco_porta_mm": 132.8
   },
   {
    "g": 0.533,
-   "porta_graus": 22.0,
+   "porta_graus": 20.4,
    "alcance_mm": 0.0,
    "alcance_mao_e_mm": 39.4,
    "segurando": false,
-   "folga_braco_mm": -20.9,
+   "folga_braco_mm": -21.1,
    "braco_peca": "porta:puxador",
-   "folga_tronco_porta_mm": 134.4
+   "folga_tronco_porta_mm": 133.4
   },
   {
    "g": 0.567,
-   "porta_graus": 25.9,
+   "porta_graus": 24.4,
    "alcance_mm": 0.0,
    "alcance_mao_e_mm": 39.7,
    "segurando": false,
-   "folga_braco_mm": 11.2,
+   "folga_braco_mm": 11.9,
    "braco_peca": "porta:porta_painel",
-   "folga_tronco_porta_mm": 136.5
+   "folga_tronco_porta_mm": 135.0
   },
   {
    "g": 0.6,
-   "porta_graus": 30.1,
+   "porta_graus": 28.3,
    "alcance_mm": 0.0,
    "alcance_mao_e_mm": 40.0,
    "segurando": false,
-   "folga_braco_mm": 102.6,
+   "folga_braco_mm": 102.4,
    "braco_peca": "porta:porta_painel",
-   "folga_tronco_porta_mm": 146.6
+   "folga_tronco_porta_mm": 141.2
   },
   {
    "g": 0.633,
-   "porta_graus": 34.3,
+   "porta_graus": 32.0,
    "alcance_mm": 0.0,
    "alcance_mao_e_mm": 40.2,
    "segurando": false,
-   "folga_braco_mm": 130.8,
+   "folga_braco_mm": 129.1,
    "braco_peca": "porta:porta_painel",
-   "folga_tronco_porta_mm": 165.7
+   "folga_tronco_porta_mm": 154.5
   },
   {
    "g": 0.667,
-   "porta_graus": 38.7,
+   "porta_graus": 35.7,
    "alcance_mm": 0.0,
    "alcance_mao_e_mm": 40.4,
    "segurando": false,
-   "folga_braco_mm": 134.9,
+   "folga_braco_mm": 132.2,
    "braco_peca": "porta:porta_painel",
-   "folga_tronco_porta_mm": 192.9
+   "folga_tronco_porta_mm": 173.5
   },
   {
    "g": 0.7,
-   "porta_graus": 43.2,
+   "porta_graus": 39.3,
    "alcance_mm": 0.0,
    "alcance_mao_e_mm": 40.4,
    "segurando": false,
-   "folga_braco_mm": 152.9,
+   "folga_braco_mm": 140.9,
    "braco_peca": "porta:porta_painel",
-   "folga_tronco_porta_mm": 204.8
+   "folga_tronco_porta_mm": 195.7
   },
   {
    "g": 0.733,
-   "porta_graus": 47.7,
+   "porta_graus": 42.7,
    "alcance_mm": 0.0,
    "alcance_mao_e_mm": 40.4,
    "segurando": false,
-   "folga_braco_mm": 183.6,
+   "folga_braco_mm": 158.6,
    "braco_peca": "porta:porta_painel",
-   "folga_tronco_porta_mm": 222.3
+   "folga_tronco_porta_mm": 203.4
   },
   {
    "g": 0.767,
-   "porta_graus": 52.3,
+   "porta_graus": 46.1,
    "alcance_mm": 0.0,
    "alcance_mao_e_mm": 40.4,
    "segurando": false,
-   "folga_braco_mm": 222.9,
+   "folga_braco_mm": 182.1,
    "braco_peca": "porta:porta_painel",
-   "folga_tronco_porta_mm": 246.5
+   "folga_tronco_porta_mm": 215.2
   },
   {
    "g": 0.8,
-   "porta_graus": 56.8,
+   "porta_graus": 49.4,
    "alcance_mm": 0.0,
    "alcance_mao_e_mm": 40.4,
    "segurando": false,
-   "folga_braco_mm": 256.7,
-   "braco_peca": "porta:porta_contraporta",
-   "folga_tronco_porta_mm": 275.9
+   "folga_braco_mm": 209.2,
+   "braco_peca": "porta:porta_painel",
+   "folga_tronco_porta_mm": 230.4
   },
   {
    "g": 0.833,
-   "porta_graus": 61.3,
+   "porta_graus": 52.5,
    "alcance_mm": 0.0,
    "alcance_mao_e_mm": 40.4,
    "segurando": false,
-   "folga_braco_mm": 272.7,
-   "braco_peca": "porta:porta_grade0.7",
-   "folga_tronco_porta_mm": 309.2
+   "folga_braco_mm": 237.9,
+   "braco_peca": "porta:porta_contraporta",
+   "folga_tronco_porta_mm": 248.1
   },
   {
    "g": 0.867,
-   "porta_graus": 65.7,
+   "porta_graus": 55.6,
    "alcance_mm": 0.0,
    "alcance_mao_e_mm": 40.4,
    "segurando": false,
-   "folga_braco_mm": 296.5,
+   "folga_braco_mm": 247.6,
    "braco_peca": "porta:porta_grade0.7",
-   "folga_tronco_porta_mm": 344.9
+   "folga_tronco_porta_mm": 267.7
   },
   {
    "g": 0.9,
-   "porta_graus": 69.9,
+   "porta_graus": 58.6,
    "alcance_mm": 0.0,
    "alcance_mao_e_mm": 40.4,
    "segurando": false,
-   "folga_braco_mm": 326.1,
+   "folga_braco_mm": 257.7,
    "braco_peca": "porta:porta_grade0.7",
-   "folga_tronco_porta_mm": 381.9
+   "folga_tronco_porta_mm": 288.6
   },
   {
    "g": 0.933,
-   "porta_graus": 74.1,
-   "alcance_mm": 14.7,
+   "porta_graus": 61.4,
+   "alcance_mm": 14.5,
    "alcance_mao_e_mm": 40.3,
    "segurando": false,
-   "folga_braco_mm": 363.2,
+   "folga_braco_mm": 276.1,
    "braco_peca": "porta:porta_grade0.7",
-   "folga_tronco_porta_mm": 419.0
+   "folga_tronco_porta_mm": 310.3
   },
   {
    "g": 0.967,
-   "porta_graus": 78.0,
-   "alcance_mm": 27.5,
+   "porta_graus": 64.2,
+   "alcance_mm": 27.4,
    "alcance_mao_e_mm": 40.3,
    "segurando": false,
-   "folga_braco_mm": 400.1,
+   "folga_braco_mm": 295.6,
    "braco_peca": "porta:porta_grade0.7",
-   "folga_tronco_porta_mm": 455.3
+   "folga_tronco_porta_mm": 332.5
   },
   {
    "g": 1.0,
-   "porta_graus": 81.7,
+   "porta_graus": 66.8,
    "alcance_mm": 35.7,
    "alcance_mao_e_mm": 40.3,
    "segurando": false,
-   "folga_braco_mm": 435.2,
+   "folga_braco_mm": 315.0,
    "braco_peca": "porta:porta_grade0.7",
-   "folga_tronco_porta_mm": 487.7
+   "folga_tronco_porta_mm": 354.7
   },
   {
    "g": 1.033,
-   "porta_graus": 85.2,
+   "porta_graus": 69.4,
    "alcance_mm": 38.2,
    "alcance_mao_e_mm": 40.3,
    "segurando": false,
-   "folga_braco_mm": 438.3,
-   "braco_peca": "gab_lado_e",
-   "folga_tronco_porta_mm": 515.0
+   "folga_braco_mm": 333.7,
+   "braco_peca": "porta:porta_grade0.7",
+   "folga_tronco_porta_mm": 376.8
   },
   {
    "g": 1.067,
-   "porta_graus": 88.4,
+   "porta_graus": 71.8,
    "alcance_mm": 38.2,
    "alcance_mao_e_mm": 40.3,
    "segurando": false,
-   "folga_braco_mm": 438.2,
-   "braco_peca": "gab_lado_e",
-   "folga_tronco_porta_mm": 537.5
+   "folga_braco_mm": 352.2,
+   "braco_peca": "porta:porta_grade0.7",
+   "folga_tronco_porta_mm": 398.6
   },
   {
    "g": 1.1,
-   "porta_graus": 91.3,
+   "porta_graus": 74.2,
    "alcance_mm": 38.2,
    "alcance_mao_e_mm": 40.3,
    "segurando": false,
-   "folga_braco_mm": 438.0,
-   "braco_peca": "gab_lado_e",
-   "folga_tronco_porta_mm": 555.6
+   "folga_braco_mm": 370.9,
+   "braco_peca": "porta:porta_grade0.7",
+   "folga_tronco_porta_mm": 419.9
   },
   {
    "g": 1.133,
-   "porta_graus": 93.8,
+   "porta_graus": 76.4,
    "alcance_mm": 38.2,
    "alcance_mao_e_mm": 40.2,
    "segurando": false,
-   "folga_braco_mm": 437.9,
-   "braco_peca": "gab_lado_e",
-   "folga_tronco_porta_mm": 569.7
+   "folga_braco_mm": 389.5,
+   "braco_peca": "porta:porta_grade0.7",
+   "folga_tronco_porta_mm": 440.5
   },
   {
    "g": 1.167,
-   "porta_graus": 95.9,
+   "porta_graus": 78.6,
    "alcance_mm": 38.2,
    "alcance_mao_e_mm": 40.2,
    "segurando": false,
-   "folga_braco_mm": 437.7,
-   "braco_peca": "gab_lado_e",
-   "folga_tronco_porta_mm": 580.4
+   "folga_braco_mm": 407.8,
+   "braco_peca": "porta:porta_grade0.7",
+   "folga_tronco_porta_mm": 460.2
   },
   {
    "g": 1.2,
-   "porta_graus": 97.7,
+   "porta_graus": 80.6,
    "alcance_mm": 38.2,
    "alcance_mao_e_mm": 40.2,
    "segurando": false,
-   "folga_braco_mm": 437.5,
-   "braco_peca": "gab_lado_e",
-   "folga_tronco_porta_mm": 588.2
+   "folga_braco_mm": 425.7,
+   "braco_peca": "porta:porta_grade0.7",
+   "folga_tronco_porta_mm": 478.1
   },
   {
    "g": 1.233,
-   "porta_graus": 98.9,
+   "porta_graus": 82.5,
    "alcance_mm": 38.2,
    "alcance_mao_e_mm": 40.2,
    "segurando": false,
    "folga_braco_mm": 437.4,
    "braco_peca": "gab_lado_e",
-   "folga_tronco_porta_mm": 593.4
+   "folga_tronco_porta_mm": 494.2
   },
   {
    "g": 1.267,
-   "porta_graus": 99.7,
+   "porta_graus": 84.4,
    "alcance_mm": 38.2,
    "alcance_mao_e_mm": 40.2,
    "segurando": false,
    "folga_braco_mm": 437.2,
    "braco_peca": "gab_lado_e",
-   "folga_tronco_porta_mm": 596.5
+   "folga_tronco_porta_mm": 508.6
   },
   {
    "g": 1.3,
-   "porta_graus": 100.0,
+   "porta_graus": 86.1,
    "alcance_mm": 38.2,
    "alcance_mao_e_mm": 40.2,
    "segurando": false,
    "folga_braco_mm": 437.0,
    "braco_peca": "gab_lado_e",
-   "folga_tronco_porta_mm": 597.5
+   "folga_tronco_porta_mm": 521.5
   },
   {
    "g": 1.333,
-   "porta_graus": 100.0,
+   "porta_graus": 87.7,
    "alcance_mm": 38.2,
    "alcance_mao_e_mm": 40.1,
    "segurando": false,
    "folga_braco_mm": 436.9,
    "braco_peca": "gab_lado_e",
-   "folga_tronco_porta_mm": 597.5
+   "folga_tronco_porta_mm": 533.0
   },
   {
    "g": 1.367,
-   "porta_graus": 100.0,
+   "porta_graus": 89.3,
    "alcance_mm": 38.2,
    "alcance_mao_e_mm": 40.1,
    "segurando": false,
    "folga_braco_mm": 436.7,
    "braco_peca": "gab_lado_e",
-   "folga_tronco_porta_mm": 597.5
+   "folga_tronco_porta_mm": 543.1
   },
   {
    "g": 1.4,
-   "porta_graus": 100.0,
+   "porta_graus": 90.7,
    "alcance_mm": 38.2,
    "alcance_mao_e_mm": 40.1,
    "segurando": false,
    "folga_braco_mm": 436.5,
    "braco_peca": "gab_lado_e",
-   "folga_tronco_porta_mm": 597.5
+   "folga_tronco_porta_mm": 552.1
   },
   {
    "g": 1.433,
-   "porta_graus": 100.0,
+   "porta_graus": 92.0,
    "alcance_mm": 38.2,
    "alcance_mao_e_mm": 40.1,
    "segurando": false,
    "folga_braco_mm": 436.3,
    "braco_peca": "gab_lado_e",
-   "folga_tronco_porta_mm": 597.5
+   "folga_tronco_porta_mm": 559.9
   },
   {
    "g": 1.467,
-   "porta_graus": 100.0,
+   "porta_graus": 93.3,
    "alcance_mm": 38.2,
    "alcance_mao_e_mm": 38.1,
    "segurando": false,
    "folga_braco_mm": 436.2,
    "braco_peca": "gab_lado_e",
-   "folga_tronco_porta_mm": 597.5
+   "folga_tronco_porta_mm": 566.7
   },
   {
    "g": 1.5,
-   "porta_graus": 100.0,
+   "porta_graus": 94.4,
    "alcance_mm": 38.2,
    "alcance_mao_e_mm": 23.2,
    "segurando": false,
    "folga_braco_mm": 436.0,
    "braco_peca": "gab_lado_e",
-   "folga_tronco_porta_mm": 597.5
+   "folga_tronco_porta_mm": 572.7
   },
   {
    "g": 1.533,
-   "porta_graus": 100.0,
+   "porta_graus": 95.4,
    "alcance_mm": 38.2,
    "alcance_mao_e_mm": 0.0,
    "segurando": false,
    "folga_braco_mm": 436.8,
    "braco_peca": "gab_lado_e",
-   "folga_tronco_porta_mm": 597.5
+   "folga_tronco_porta_mm": 577.8
   },
   {
    "g": 1.567,
-   "porta_graus": 100.0,
+   "porta_graus": 96.3,
    "alcance_mm": 38.2,
    "alcance_mao_e_mm": 0.0,
    "segurando": false,
    "folga_braco_mm": 439.3,
    "braco_peca": "gab_lado_e",
-   "folga_tronco_porta_mm": 597.5
+   "folga_tronco_porta_mm": 582.2
   },
   {
    "g": 1.6,
-   "porta_graus": 100.0,
+   "porta_graus": 97.1,
    "alcance_mm": 38.3,
    "alcance_mao_e_mm": 0.0,
    "segurando": false,
    "folga_braco_mm": 443.1,
    "braco_peca": "gab_lado_e",
-   "folga_tronco_porta_mm": 597.5
+   "folga_tronco_porta_mm": 585.9
   },
   {
    "g": 1.633,
-   "porta_graus": 100.0,
+   "porta_graus": 97.8,
    "alcance_mm": 38.3,
    "alcance_mao_e_mm": 0.0,
    "segurando": false,
    "folga_braco_mm": 448.0,
    "braco_peca": "gab_lado_e",
-   "folga_tronco_porta_mm": 597.5
+   "folga_tronco_porta_mm": 588.9
   },
   {
    "g": 1.667,
-   "porta_graus": 100.0,
+   "porta_graus": 98.5,
    "alcance_mm": 38.4,
    "alcance_mao_e_mm": 0.0,
    "segurando": false,
    "folga_braco_mm": 453.6,
    "braco_peca": "gab_lado_e",
-   "folga_tronco_porta_mm": 597.5
+   "folga_tronco_porta_mm": 591.5
   },
   {
    "g": 1.7,
-   "porta_graus": 100.0,
+   "porta_graus": 99.0,
    "alcance_mm": 38.4,
    "alcance_mao_e_mm": 0.0,
    "segurando": false,
    "folga_braco_mm": 455.6,
    "braco_peca": "gab_lado_e",
-   "folga_tronco_porta_mm": 597.5
+   "folga_tronco_porta_mm": 593.5
   },
   {
    "g": 1.733,
-   "porta_graus": 100.0,
+   "porta_graus": 99.4,
    "alcance_mm": 38.4,
    "alcance_mao_e_mm": 0.0,
    "segurando": false,
    "folga_braco_mm": 456.0,
    "braco_peca": "gab_lado_e",
-   "folga_tronco_porta_mm": 597.5
+   "folga_tronco_porta_mm": 595.1
   },
   {
    "g": 1.767,
-   "porta_graus": 100.0,
+   "porta_graus": 99.7,
    "alcance_mm": 38.4,
    "alcance_mao_e_mm": 0.0,
    "segurando": false,
    "folga_braco_mm": 456.4,
    "braco_peca": "gab_lado_e",
-   "folga_tronco_porta_mm": 597.5
+   "folga_tronco_porta_mm": 596.3
   },
   {
    "g": 1.8,
-   "porta_graus": 100.0,
+   "porta_graus": 99.9,
    "alcance_mm": 38.4,
    "alcance_mao_e_mm": 0.0,
    "segurando": false,
    "folga_braco_mm": 456.7,
    "braco_peca": "gab_lado_e",
-   "folga_tronco_porta_mm": 597.5
+   "folga_tronco_porta_mm": 597.0
   },
   {
    "g": 1.833,
@@ -638,7 +638,7 @@
    "segurando": false,
    "folga_braco_mm": 456.9,
    "braco_peca": "gab_lado_e",
-   "folga_tronco_porta_mm": 597.5
+   "folga_tronco_porta_mm": 597.4
   },
   {
    "g": 1.867,
@@ -913,8 +913,8 @@
  ],
  "resumo": {
   "alcance": 38.2,
-  "braco": -20.9,
-  "tronco": 132.1,
+  "braco": -21.1,
+  "tronco": 132.8,
   "alcance_g": -0.26666666666666666,
   "braco_peca": "porta:puxador",
   "braco_g": 0.5333333333333333,

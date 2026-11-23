@@ -20,6 +20,15 @@ def T(palavra, n=0, apos=None):
 
 
 def porta_ang(t_inicio, dur=1.1):
+    if R9:   # rodada 9: a mão solta a ~20°; a porta NÃO pode acelerar depois (pareceria abrir sozinha). Puxão = aceleração
+        # (θ ∝ t²) até a soltura; depois, desaceleração constante (atrito da dobradiça) até parar em 100°, velocidade contínua.
+        Tp = SOLTA_R9 * dur; th_r = 20.0; w_r = 2 * th_r / Tp; alfa = w_r * w_r / (2 * (100.0 - th_r)); ts = w_r / alfa
+        def f(g):
+            t = g - t_inicio
+            if t <= 0: return 0.0
+            if t <= Tp: return th_r * (t / Tp) ** 2
+            u = min(t - Tp, ts); return th_r + w_r * u - alfa * u * u / 2
+        return f
     return lambda g: 100.0 * B.suave((g - t_inicio) / dur)
 
 
