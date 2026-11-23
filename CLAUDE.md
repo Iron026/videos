@@ -273,3 +273,20 @@ Arquivos-chave (em `episodio_01_navio_v2/`): `episodio/decupagem_ep01_v3.md` (de
 - **Estroboscopia de grades:** medir pela geometria (deslocamento por quadro ÷ passo na tela; ≥ 0,5 = ambíguo). Desacelerar
   raramente basta com cortes e duração fixos; obturador real (média em luz linear de sub-quadros, 180°) reduz sem mudar
   câmera, pulso nem enquadramento — o sub-quadro central deve coincidir com o quadro aprovado.
+
+## Lições novas do Ep. 02 (rodada 8)
+
+- **Detector sensível acha defeitos ANTIGOS escondidos** (porta × vedação em C4/H1/H2, degrau × fundo no E2): conferir na
+  versão aprovada antes de chamar de regressão; corrigir com a mesma família de correção já aprovada, só nos planos onde a
+  **projeção geométrica da junção** mostra que ela aparece (escopo provado, não "todos os planos").
+- Classificar o que pisca **dentro da tampa × na borda**; listar falsos positivos (arames sobre a tampa, feixes, canal animado).
+- Um defeito que **não muda com a resolução** (mesma contagem em 540 e 1080 ajustada à escala) não é conflito de profundidade.
+- **Folga corrige z-fighting mas pode criar fresta**: 0,5 mm visto de quina vira linha tracejada em 1080. Medir em 1080 e
+  localizar cada linha projetando as faces candidatas; alternativa melhor costuma ser sobreposição (sem faces coplanares).
+- **Exportação não determinística na ordem dos triângulos**: comparar malhas sem ordem; congelar cenas por hash e não
+  reexportar depois. Conferir manifestos de render × cenas atuais antes de montar (achou D1 reexportado só nos rótulos).
+- Comparar com animatic de passo 2 em trios de 2 quadros; o selo/IDs de revisão contam como diferença em todo plano.
+- **Obturador**: validar nitidez com câmera parada (integrado/central ≈ 1) e primeiro/último quadro iguais ao aprovado.
+- AAC: mudar um trecho do áudio desloca a quantização segundos depois (pico verdadeiro mudou em 130 s por causa de 118–120 s);
+  medir de novo sempre no AAC final.
+- Espera longa: um `run_in_background` tem limite de 2 h; para filas maiores, Monitor re-armado por eventos do log.
