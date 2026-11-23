@@ -144,7 +144,7 @@ def plano(pid):
     elif pid == 'A2':
         # v3: por cima do ombro do personagem, olhando o interior que a varredura térmica revela frio
         cam_k = K((0, (-0.55, -2.00, 1.70), (0.0, -0.15, 1.00), 32), (1, (-0.50, -1.88, 1.68), (0.0, -0.15, 0.99), 32))
-        porta = lambda g: 100; termico = [[F('A2', 0.0), 0], [F('A2', 0.05), 1]]; curvas['uVarre'] = [[F('A2', 0.05), 0.0], [F('A2', 0.75), 1.0]]
+        porta = (E.porta_ang(0.20) if R9 else (lambda g: 100)); termico = [[F('A2', 0.0), 0], [F('A2', 0.05), 1]]; curvas['uVarre'] = [[F('A2', 0.05), 0.0], [F('A2', 0.75), 1.0]]
     elif pid == 'A3':
         # v2: 3/4 traseiro quase fixo (a órbita de 1,2 s da v1 passava rente à lateral: quadro tomado pela parede cinza)
         cam_k = K((0, (1.30, 1.95, 1.38), (0.0, 0.30, 0.88), 30), (1, (1.22, 1.85, 1.36), (0.0, 0.30, 0.88), 30))
