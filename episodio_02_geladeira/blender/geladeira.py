@@ -168,7 +168,7 @@ def gabinete(mt, cortar_parede=False):
     objs['topo'] = W('gab_topo', -IX + e, IX - e, GY0, GY1, IZ1, GZ, mt['branco'])
     objs['fundo'] = W('gab_fundo_tras', -IX + e, IX - e, IY1, GY1, NICHO_Z1, IZ1, mt['branco'])
     objs['base'] = W('gab_base', -IX + e, IX - e, GY0, NICHO_Y0, 0.035, IZ0, mt['branco'])
-    objs['degrau'] = W('gab_degrau', -IX + e, IX - e, NICHO_Y0, IY1 + 0.0, NICHO_Z1 - 0.004, NICHO_Z1 + 0.032, mt['branco'])
+    objs['degrau'] = W('gab_degrau', -IX + e, IX - e, NICHO_Y0, IY1 - FOLGA_DEGRAU, NICHO_Z1 - 0.004, NICHO_Z1 + 0.032, mt['branco'])   # rodada 8: recuo opcional em y
     objs['degrau_frente'] = W('gab_degrau_f', -IX + e, IX - e, NICHO_Y0 - 0.004, NICHO_Y0 + 0.030, IZ0 - 0.01, NICHO_Z1 + 0.032, mt['branco'])
     # forro interno (plástico branco), 2 mm para dentro das paredes
     f = 0.002
@@ -186,6 +186,7 @@ def gabinete(mt, cortar_parede=False):
 
 FOLGA_PORTA = 0.0   # m (0 = geometria da V4)
 FOLGA_GAB = 0.0     # m (0 = geometria aprovada) — rodada 7
+FOLGA_DEGRAU = 0.0  # m (0 = geometria aprovada) — rodada 8: degrau × fundo traseiro encostados em y = IY1 (z-fighting no E2)
 
 
 def porta(mt):

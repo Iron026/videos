@@ -15,6 +15,7 @@ PL = C.PLANOS
 CORRECAO_PORTA = {'G3', 'J3', 'C4', 'H1', 'H2'}   # folga porta × vedação (z-fighting): G3 (rodada 5, regressão da câmera nova); J3 (rodada 6, defeito antigo, autorizado);
 # C4, H1, H2 (rodada 8: o mesmo defeito antigo, achado pelo detector sensível e confirmado na V6; a junção só fica à vista pelo corte
 # nesses 5 planos — verificação geométrica em relatorios/porta_vedacao_r8.json). Reverter: tirar os três ids do conjunto.
+CORRECAO_DEGRAU = {'E2'}   # rodada 8: folga degrau × fundo traseiro (defeito antigo; só no E2 a junta pisca à vista — relatorios/juntas_gabinete_r8.json)
 CORRECAO_GAB = set(os.environ.get('CORRECAO_GAB', '').split(',')) - {''}   # rodada 7: folga topo/base × laterais (teste; vazio = aprovado)
 MARGEM = 0.25    # quadros extras antes/depois de cada plano (fusões na montagem)
 MOD = json.load(open(os.path.join(RAIZ, 'ciencia', 'ciclo_modelo.json')))
@@ -107,6 +108,7 @@ def plano(pid):
     # rodada 8 (aprovado para validação): folga de 0,5 mm nas peças que ENCOSTAM nas laterais (topo, fundo, base, degraus,
     # contraporta — ver relatorios/coplanares_*.json), só onde o corte expõe essas faces
     G.FOLGA_GAB = 0.0005 if (CORTE_REAL or pid in CORRECAO_GAB) else 0.0
+    G.FOLGA_DEGRAU = 0.0005 if pid in CORRECAO_DEGRAU else 0.0
     obj = G.montar(parede_traseira=parede)
     mec = CM.montar(); tab = CM.ciclo()
     # garrafa extra sobre a bancada (B4: "Imagine uma garrafa...")
