@@ -36,6 +36,21 @@ def hcena(pid):
     return h.hexdigest()[:16]
 def gravar_json(p, obj):
     tmp = p + '.tmp'; json.dump(obj, open(tmp, 'w'), ensure_ascii=False, indent=1); os.replace(tmp, p)
+EFEITOS = ('uVarre', 'uTermico', 'uRevela', 'corte', 'uFoco', 'uDivide')   # efeitos gravados na cena que MUDAM a imagem de propósito
+def quadros_em_transicao(cena, n):
+    """Rodada 9: quadros k em que algum efeito da cena muda entre k−1 e k (mesma interpolação smoothstep do motor). Um salto
+    nesses quadros é a transição desenhada (ex.: varredura da visão térmica), não defeito; fora deles, o salto continua PARANDO."""
+    cv = cena.get('curvas', {}); g0 = cena['g0']; fps = 30
+    def val(k_, g):
+        k = cv[k_]
+        if g <= k[0][0]: return k[0][1]
+        for (t0, v0), (t1, v1) in zip(k, k[1:]):
+            if g <= t1: u = (g - t0) / max(t1 - t0, 1e-6); return v0 + (v1 - v0) * u * u * (3 - 2 * u)
+        return k[-1][1]
+    out = set()
+    for k in range(1, n):
+        if any(e in cv and abs(val(e, g0 + k / fps) - val(e, g0 + (k - 1) / fps)) > 1e-4 for e in EFEITOS): out.add(k)
+    return out
 def verificar(f, anterior):
     try:
         im = Image.open(f); im.load(); g = np.asarray(im.convert('L').resize((32, 56)), np.float32)
@@ -77,6 +92,7 @@ for pid in IDS:
     for i in faltam:
         if blocos and i == blocos[-1][-1] + 1 and len(blocos[-1]) < BLOCO: blocos[-1].append(i)
         else: blocos.append([i])
+    TRANS = quadros_em_transicao(cena, n)
     for b in blocos:
         t = time.time(); tmp = os.path.join(d, '_tmp'); shutil.rmtree(tmp, ignore_errors=True); os.makedirs(tmp)
         if pid in OBT:
@@ -91,11 +107,13 @@ for pid in IDS:
         if b[0] - 1 in validos or str(b[0] - 1) in man['quadros']:
             fa = os.path.join(d, f'q{b[0] - 1:04d}.jpg'); ant = np.asarray(Image.open(fa).convert('L').resize((32, 56)), np.float32) if os.path.exists(fa) else None
         for i in b:
-            ft = os.path.join(tmp, f'q{i:04d}.jpg'); ok, motivo, ant_ = verificar(ft, ant)
+            ft = os.path.join(tmp, f'q{i:04d}.jpg'); ok, motivo, ant_ = verificar(ft, ant); just = None
+            if not ok and motivo.startswith('salto') and i in TRANS:   # transição desenhada na cena (varredura térmica etc.)
+                ok, just = True, motivo + ' — justificado: efeito da cena em transição neste quadro'; log(f'{pid} quadro {i}: {just}')
             if not ok:
                 gravar_json(mf, man); log(f'PARADA {pid} quadro {i}: {motivo} — investigar antes de continuar (arquivo em {tmp})'); sys.exit(4)
             dst = os.path.join(d, f'q{i:04d}.jpg'); os.replace(ft, dst); ant = ant_
-            man['quadros'][str(i)] = dict(ok=True, sha256=sha(dst), bytes=os.path.getsize(dst), quando=time.strftime('%Y-%m-%dT%H:%M:%S'))
+            man['quadros'][str(i)] = dict(ok=True, sha256=sha(dst), bytes=os.path.getsize(dst), quando=time.strftime('%Y-%m-%dT%H:%M:%S'), **({'salto_justificado': just} if just else {}))
         gravar_json(mf, man); shutil.rmtree(tmp, ignore_errors=True)
         log(f'{pid}: bloco {b[0]}–{b[-1]} ({len(b)} quadros{f" × {m} sub" if m > 1 else ""}) em {time.time() - t:.0f} s')
 if SIMULAR:
