@@ -1,0 +1,305 @@
+{
+ "C2": {
+  "r8_1080": {
+   "trios": 18,
+   "trios_blocos_padrao": 18,
+   "px_padrao": 2036299,
+   "px_sens_dentro": 74489,
+   "trios_blocos_sens_dentro": 8,
+   "px_sens_borda": 1475420,
+   "gran": 9.41,
+   "area_tampas_pct": 9.6
+  },
+  "r6_1080_mesmos_quadros": {
+   "trios": 18,
+   "trios_blocos_padrao": 18,
+   "px_padrao": 3156576,
+   "px_sens_dentro": 1844,
+   "trios_blocos_sens_dentro": 0,
+   "px_sens_borda": 1952559,
+   "gran": 7.09,
+   "area_tampas_pct": 8.5
+  },
+  "dif_1080red_x_540": {
+   "media": 1.92,
+   "max_media": 2.11,
+   "p99_medio": 18.1
+  }
+ },
+ "C4": {
+  "r8_1080": {
+   "trios": 28,
+   "trios_blocos_padrao": 0,
+   "px_padrao": 67667,
+   "px_sens_dentro": 315,
+   "trios_blocos_sens_dentro": 0,
+   "px_sens_borda": 97447,
+   "gran": 2.79,
+   "area_tampas_pct": 14.3
+  },
+  "dif_1080red_x_540": {
+   "media": 3.92,
+   "max_media": 3.99,
+   "p99_medio": 47.8
+  }
+ },
+ "C3": {
+  "r8_1080": {
+   "trios": 28,
+   "trios_blocos_padrao": 28,
+   "px_padrao": 13942688,
+   "px_sens_dentro": 0,
+   "trios_blocos_sens_dentro": 0,
+   "px_sens_borda": 3161603,
+   "gran": 0.97,
+   "area_tampas_pct": 18.7
+  },
+  "dif_1080red_x_540": {
+   "media": 1.47,
+   "max_media": 1.67,
+   "p99_medio": 13.8
+  }
+ },
+ "G3": {
+  "r8_1080": {
+   "trios": 28,
+   "trios_blocos_padrao": 0,
+   "px_padrao": 21053,
+   "px_sens_dentro": 98,
+   "trios_blocos_sens_dentro": 0,
+   "px_sens_borda": 28280,
+   "gran": 2.64,
+   "area_tampas_pct": 6.5
+  },
+  "r6_1080_mesmos_quadros": {
+   "trios": 28,
+   "trios_blocos_padrao": 0,
+   "px_padrao": 20466,
+   "px_sens_dentro": 71,
+   "trios_blocos_sens_dentro": 0,
+   "px_sens_borda": 27058,
+   "gran": 3.01,
+   "area_tampas_pct": 6.2
+  },
+  "dif_1080red_x_540": {
+   "media": 2.25,
+   "max_media": 2.4,
+   "p99_medio": 37.2
+  }
+ },
+ "H2": {
+  "r8_1080": {
+   "trios": 28,
+   "trios_blocos_padrao": 0,
+   "px_padrao": 115319,
+   "px_sens_dentro": 65,
+   "trios_blocos_sens_dentro": 0,
+   "px_sens_borda": 187266,
+   "gran": 2.9,
+   "area_tampas_pct": 12.6
+  },
+  "dif_1080red_x_540": {
+   "media": 3.86,
+   "max_media": 3.95,
+   "p99_medio": 46.6
+  }
+ },
+ "J3": {
+  "r8_1080": {
+   "trios": 28,
+   "trios_blocos_padrao": 0,
+   "px_padrao": 27750,
+   "px_sens_dentro": 290,
+   "trios_blocos_sens_dentro": 0,
+   "px_sens_borda": 47975,
+   "gran": 4.02,
+   "area_tampas_pct": 21.2
+  },
+  "r6_1080_mesmos_quadros": {
+   "trios": 28,
+   "trios_blocos_padrao": 0,
+   "px_padrao": 27370,
+   "px_sens_dentro": 270,
+   "trios_blocos_sens_dentro": 0,
+   "px_sens_borda": 59056,
+   "gran": 4.02,
+   "area_tampas_pct": 19.9
+  },
+  "dif_1080red_x_540": {
+   "media": 3.62,
+   "max_media": 3.68,
+   "p99_medio": 46.5
+  }
+ },
+ "C2_obturador": {
+  "por_quadro": [
+   {
+    "q": 97,
+    "nit_central": 436.08,
+    "nit_integrado": 118.79,
+    "nit_r6": 394.09,
+    "dif_integ_central": 3.6,
+    "dif_central_r6": 10.36
+   },
+   {
+    "q": 98,
+    "nit_central": 420.76,
+    "nit_integrado": 127.9,
+    "nit_r6": 399.46,
+    "dif_integ_central": 4.21,
+    "dif_central_r6": 10.19
+   },
+   {
+    "q": 99,
+    "nit_central": 417.59,
+    "nit_integrado": 140.01,
+    "nit_r6": 384.5,
+    "dif_integ_central": 4.29,
+    "dif_central_r6": 9.94
+   },
+   {
+    "q": 100,
+    "nit_central": 436.45,
+    "nit_integrado": 146.77,
+    "nit_r6": 402.6,
+    "dif_integ_central": 4.35,
+    "dif_central_r6": 10.82
+   },
+   {
+    "q": 101,
+    "nit_central": 587.57,
+    "nit_integrado": 194.46,
+    "nit_r6": 546.27,
+    "dif_integ_central": 5.23,
+    "dif_central_r6": 10.77
+   },
+   {
+    "q": 102,
+    "nit_central": 655.23,
+    "nit_integrado": 216.53,
+    "nit_r6": 605.78,
+    "dif_integ_central": 6.3,
+    "dif_central_r6": 10.73
+   },
+   {
+    "q": 103,
+    "nit_central": 690.56,
+    "nit_integrado": 214.65,
+    "nit_r6": 661.81,
+    "dif_integ_central": 7.47,
+    "dif_central_r6": 10.34
+   },
+   {
+    "q": 104,
+    "nit_central": 800.11,
+    "nit_integrado": 222.35,
+    "nit_r6": 782.86,
+    "dif_integ_central": 8.16,
+    "dif_central_r6": 9.68
+   },
+   {
+    "q": 105,
+    "nit_central": 808.18,
+    "nit_integrado": 226.5,
+    "nit_r6": 800.87,
+    "dif_integ_central": 9.18,
+    "dif_central_r6": 9.29
+   },
+   {
+    "q": 106,
+    "nit_central": 781.48,
+    "nit_integrado": 210.79,
+    "nit_r6": 785.52,
+    "dif_integ_central": 8.87,
+    "dif_central_r6": 9.02
+   },
+   {
+    "q": 107,
+    "nit_central": 763.92,
+    "nit_integrado": 203.73,
+    "nit_r6": 767.52,
+    "dif_integ_central": 9.7,
+    "dif_central_r6": 8.65
+   },
+   {
+    "q": 108,
+    "nit_central": 942.03,
+    "nit_integrado": 214.08,
+    "nit_r6": 963.11,
+    "dif_integ_central": 9.78,
+    "dif_central_r6": 8.17
+   },
+   {
+    "q": 109,
+    "nit_central": 1013.79,
+    "nit_integrado": 233.71,
+    "nit_r6": 1024.06,
+    "dif_integ_central": 9.55,
+    "dif_central_r6": 7.65
+   },
+   {
+    "q": 110,
+    "nit_central": 1061.24,
+    "nit_integrado": 232.88,
+    "nit_r6": 1067.92,
+    "dif_integ_central": 9.99,
+    "dif_central_r6": 7.38
+   },
+   {
+    "q": 111,
+    "nit_central": 1061.5,
+    "nit_integrado": 228.61,
+    "nit_r6": 1066.6,
+    "dif_integ_central": 9.99,
+    "dif_central_r6": 7.06
+   },
+   {
+    "q": 112,
+    "nit_central": 1082.67,
+    "nit_integrado": 234.14,
+    "nit_r6": 1083.72,
+    "dif_integ_central": 9.55,
+    "dif_central_r6": 6.71
+   },
+   {
+    "q": 113,
+    "nit_central": 1045.34,
+    "nit_integrado": 221.95,
+    "nit_r6": 1064.92,
+    "dif_integ_central": 9.0,
+    "dif_central_r6": 6.46
+   },
+   {
+    "q": 114,
+    "nit_central": 1038.5,
+    "nit_integrado": 220.64,
+    "nit_r6": 1050.34,
+    "dif_integ_central": 8.36,
+    "dif_central_r6": 6.1
+   },
+   {
+    "q": 115,
+    "nit_central": 1024.27,
+    "nit_integrado": 209.12,
+    "nit_r6": 1044.37,
+    "dif_integ_central": 7.87,
+    "dif_central_r6": 5.84
+   },
+   {
+    "q": 116,
+    "nit_central": 1065.69,
+    "nit_integrado": 200.09,
+    "nit_r6": 1090.43,
+    "dif_integ_central": 7.4,
+    "dif_central_r6": 5.61
+   }
+  ],
+  "medias": {
+   "nit_central": 806.65,
+   "nit_integrado": 200.88,
+   "nit_r6": 799.34,
+   "dif_integ_central": 7.64,
+   "dif_central_r6": 8.54
+  }
+ }
+}
