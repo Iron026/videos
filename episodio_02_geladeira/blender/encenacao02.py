@@ -94,7 +94,7 @@ def _mao_puxando(lado_d_estado, g, t_alcance, t_puxa, ang, pos, yaw):
     if g < t_puxa: return PE.trilha([(t_alcance, rest), (t_puxa - 0.04, tuple(alca(0)))], g)
     if g < t_solta: return tuple(alca(a))
     if R9:   # rodada 9: recua primeiro para a ESQUERDA e para trás (fora do arco que a borda da porta ainda varre), depois desce
-        p0 = alca(ang(t_solta)); return PE.trilha([(t_solta, tuple(p0)), (t_solta + 0.14, tuple(p0 + Vector((-0.17, -0.12, -0.04)))), (t_solta + 0.50, rest)], g)
+        p0 = alca(ang(t_solta)); return PE.trilha([(t_solta, tuple(p0)), (t_solta + 0.09, tuple(p0 + Vector((-0.15, -0.15, -0.03)))), (t_solta + 0.50, rest)], g)
     return PE.trilha([(t_solta, tuple(alca(ang(t_solta)))), (t_solta + 0.45, rest)], g)
 
 
@@ -103,6 +103,7 @@ def est_abertura(g):
     olhando o alto da traseira (fora de quadro); A4 reage à pergunta: estranhamento contido e mão no queixo."""
     ang = porta_ang(0.20)
     t_pens = T('ao')          # "ao mesmo tempo?"
+    PA = PA_A_R9 if R9 else globals()['PA']   # rodada 9: ~15 cm mais perto do puxador (na V8 ele ficava 14,5 cm além do alcance)
     pos, fase = _caminhada(g, 3.05, 4.20, PA, PB)
     yaw = PE.trilha([(3.05, YA), (4.20, YB)], g)
     e = dict(pos=pos, yaw=yaw, passo=(-fase[0], fase[1]) if fase else None, t=g)      # recua de costas: fase negativa (fora de quadro)
@@ -152,6 +153,7 @@ if R9:
     T_PASSO = (117.92, 118.22); T_PEGA = 118.44; T_SAI = (118.62, 119.55)   # pega 0,22 s antes; saída visível ~0,55 s
 PEGA_R9 = (0.0, -0.083, 0.015)                    # pulso diante da face da frente da caixa: a mão fechada encosta nela
 PA_I1 = (-0.42, -0.70)                            # rodada 9: diante do puxador e ao alcance do braço (fora do arco da porta)
+PA_A_R9 = (-0.53, -0.70)                          # rodada 9 (A1–A3): PA deslocado 15 cm na direção do puxador (fora do arco da porta)
 def tempos_passos_i1():
     """Pousos dos pés no I1 (para o som): entrada (3), passo à frente (1), saída (2)."""
     return [115.55 + (116.95 - 115.55) * k / 3 for k in (1, 2, 3)] + [T_PASSO[1]] + [T_SAI[0] + (T_SAI[1] - T_SAI[0]) * k / 2 for k in (1, 2)]

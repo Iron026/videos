@@ -1,0 +1,26 @@
+{
+ "V8": {
+  "episodio/ep02_v8_revisao.mp4": "197b81fc17e27355478fbe39f6fb83059364c0ffc36e88438c8c8b3879ffb0d1",
+  "som/audio_ep02_v8.flac": "235100f851454d52e2ea63657432fd9430eadf66e514af94d4cff6d1fd7220ff",
+  "arquivo/cenas_v8.tgz": "4bc9b241c729bba21787067123f089674c3a754de774aaa55254df251d28ffc4"
+ },
+ "V9a": {
+  "episodio/ep02_v9a_revisao.mp4": "bd79ab3aa921d29fbd343bf1058125f49ea19403148af3eb322f710ade0b1366",
+  "relatorios/relatorio_rodada9_v9a.md": "13224ab31e114cb830d9c0b194c916704b5c195876c322e0af52827cdbc9e61b",
+  "relatorios/teste_composicao_r9.json": "4ac7a7a509041fae0ac5939f90ccb4c9f47a4d79c63b9fa585e63c0bdfa9ed9a",
+  "episodio/montar_ep02.py": "b889a643daf007dccaddce13a5cbfa16d1f93064e5301490e658d81b18a749ef",
+  "episodio/legendas_r9.py": "c516bc97b81c17ac964f86371b13b169c7351cd9e19c3f8dad9d07f9cafc7e9c",
+  "episodio/rotulos_r9.py": "69688fc946bac3065cdeff8508db9cb168006b1265b3d6baa75fdb4804532a26",
+  "_obs": "hashes dos scripts no commit a931e79 (o montar_ep02.py atual ganhou a chave PREVIA_R9, desligada = idêntico)"
+ },
+ "V6_aprovada": {
+  "episodio/ep02_animatic.mp4": "6edfc1b253f6eafd6bb8fd19e2bd9e0c6c5bf30abb8f633d70c8b83f301e6f83",
+  "som/audio_ep02_v6.flac": "bbbedab64058475b3c76d2e09ee103e56880bd179e7f5867aa5b3397d522aa76"
+ },
+ "narracao": {
+  "voz/ElevenLabs_2026-11-21T21_13_42_Will_-_Deep_pvc_s60_sim75_v4.mp3": "fdedd87772aee9d4dac5d0193db3b9e1ef97c4b699c8ce01b0c8de7ae05726ee",
+  "roteiro/palavras.json": "728f9ba689033c2d1bee812d01273e7977a55bbeaf51f1d44e923b30e27b8e64"
+ },
+ "_nota": "Rodada 9: versões preservadas (V8 e V9a aprovada como base de composição). Commits: V8 1fc440f; V9a a931e79. A V9a é montada com COMPOSICAO_R9=1 sobre os quadros da V8 (montar_ep02.py do commit a931e79).",
+ "_quando": "2026-11-23 12:05"
+}

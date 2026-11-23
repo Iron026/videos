@@ -289,8 +289,7 @@ def itens_r9(mt):
     e = EVAP; zf = e['z0'] + 0.00125 + LEV            # topo da placa de base do evaporador + 0,5 mm
     erv = M.pintura('item_ervilhas', '#6e9a5a', rug=0.75, temp=-18.0); sor = M.pintura('item_sorvete', '#efe7da', rug=0.5, temp=-18.0)
     lib.caixa('item_ervilhas', (0.10, 0.07, 0.03), (-0.12, -0.12, zf + 0.015), erv)
-    lib.cilindro('item_sorvete', 0.048, 0.065, (0.10, -0.12, zf + 0.0325), sor, lados=20)
-    lib.cilindro('item_sorvete_tampa', 0.05, 0.008, (0.10, -0.12, zf + 0.065 + 0.004), M.pintura('item_sorvete_tampa', '#8a6f5a', rug=0.5, temp=-18.0), lados=20)
+    # (pote de sorvete retirado: na prévia do D1 ficava grande no centro do close do evaporador e competia com o mecanismo)
 
 
 def itens_extra(mt):

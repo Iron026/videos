@@ -60,5 +60,5 @@ for i in range(0, int(round(M.DUR * M.FPS)), PASSO):
     if i % 300 == 0: print(f'{g:7.2f} s', {k: len(v) for k, v in prob.items()}, flush=True)
 res = dict(quadros_testados=n, passo=PASSO, ponteiros=dict(desenhados=ponteiros[0], iguais_ao_modelo=ponteiros[1]),
            resumo={k: len(v) for k, v in prob.items()}, exemplos={k: v[:12] for k, v in prob.items()})
-json.dump(res, open(os.path.join(A, '..', 'relatorios', 'teste_composicao_r9.json'), 'w'), ensure_ascii=False, indent=1)
+json.dump(res, open(os.path.join(A, '..', 'relatorios', os.environ.get('SAIDA_TESTE', 'teste_composicao_r9.json')), 'w'), ensure_ascii=False, indent=1)
 print(json.dumps({k: v for k, v in res.items() if k != 'exemplos'}, ensure_ascii=False))

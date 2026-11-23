@@ -22,7 +22,9 @@ F_TAG = ImageFont.truetype(os.path.join(FONTE, 'Montserrat-700.ttf'), int(26 * E
 F_MAN = ImageFont.truetype(os.path.join(FONTE, 'Montserrat-700.ttf'), int(22 * ESC))
 AZUL, CREME, AMARELO, ESCURO = (32, 43, 87), (246, 244, 236), (243, 181, 68), (16, 22, 46)
 FUSAO = 0.20
+TRANSICAO_A4 = os.environ.get('TRANSICAO_A4', 'fusao')   # rodada 9 (teste): fusao (V8/V9a) | escuro | corte
 FUSOES = {'B1': 0.30, 'C1': 0.30, 'C2': 0.0, 'D1': 0.30, 'E1': 0.30, 'F1': 0.30, 'I1': 0.30, 'J1': 0.30, 'J4': 0.40}   # fusão na ENTRADA do plano   # v3: C2 em corte SECO no ataque de "Escondido"
+if TRANSICAO_A4 == 'corte': FUSOES['A4'] = 0.0
 # avisos honestos (canto superior direito), por plano
 CAIXAS = [] if os.environ.get('CAIXAS_EP02') == '1' else None   # rodada 7: registro das caixas desenhadas (testes de sobreposição)
 def _cx(tipo, nome, caixa):
@@ -624,7 +626,11 @@ def compor(g):
     else:
         (p1, _), (p2, f2) = ativos[0], ativos[1]; t0 = PL_T[p2][0]
         k = min(1.0, max(0.0, (g - (t0 - f2 / 2)) / f2)); k = k * k * (3 - 2 * k)
-        img = Image.blend(quadro(p1, g), quadro(p2, g), k); camadas = [(p1, 1 - k), (p2, k)]
+        if p2 == 'A4' and TRANSICAO_A4 == 'escuro':   # rodada 9 (teste): passagem pelo escuro no MESMO intervalo — sem imagem fantasma
+            u = min(1.0, max(0.0, (g - (t0 - f2 / 2)) / f2)); preto = Image.new('RGB', (W, H), ESCURO)
+            img = Image.blend(quadro(p1, g), preto, min(1.0, 2 * u)) if u < 0.5 else Image.blend(preto, quadro(p2, g), min(1.0, 2 * u - 1))
+            camadas = [(p1, 1.0 - min(1.0, 2 * u))] if u < 0.5 else [(p2, min(1.0, 2 * u - 1))]
+        else: img = Image.blend(quadro(p1, g), quadro(p2, g), k); camadas = [(p1, 1 - k), (p2, k)]
     for (pid, k) in camadas:
         rs = list(map(_rot, dados(pid, 'rotulos2d.json', g)))
         if R9: rs = separar_rotulos(rs, g)
