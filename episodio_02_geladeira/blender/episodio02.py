@@ -466,7 +466,9 @@ def plano(pid):
             m = garrafa_mov; s5 = lambda u: u * u * u * (u * (6 * u - 15) + 10)
             u = min(max((g - m['t_a']) / (m['t_h'] - m['t_a']), 0.0), 1.0); y = -0.50 + 0.40 * s5(u)   # de fora (à frente, fora do quadro) até o lugar
             w = min(max((y + 0.50) / 0.18, 0.0), 1.0); z = 0.560 - 0.038 * (w * w * (3 - 2 * w))     # desce em arco até 0,522 antes da borda (y = −0,283)
-            if g > m['t_h']: z = 0.522 - 0.017 * math.sin(0.5 * math.pi * min((g - m['t_h']) / (m['t_p'] - m['t_h']), 1.0))   # pousa: chega devagar
+            # pousa: desce 1,7 cm começando ENQUANTO termina de deslizar (antes: só depois de parar, com a velocidade máxima no
+            # início → tranco de 4 → 26 px/quadro medido na prévia); smoothstep: começa e chega com velocidade zero
+            d0 = m['t_h'] - 0.12; v_ = min(max((g - d0) / (m['t_p'] - d0), 0.0), 1.0); z = z - 0.017 * v_ * v_ * (3 - 2 * v_)
             return Vector((0.0, y + 0.10, z - 0.505))
     def anim(g):
         piv.rotation_euler = (0, 0, math.radians(porta(g)))
