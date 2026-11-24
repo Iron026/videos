@@ -315,3 +315,15 @@ Arquivos-chave (em `episodio_01_navio_v2/`): `episodio/decupagem_ep01_v3.md` (de
   graves, faixa da voz, dinâmica) e deixar a audição para o usuário. Música −8 dB sob a fala com antecipação de 0,15 s.
 - Supersampling 1,5× (custo 2,25×) não deu ganho consistente sobre o MSAA 4×: medir contra referência 2160 antes de pagar.
 - Picos de AAC mudam de lugar quando qualquer camada muda: medir sempre no AAC final de CADA variante.
+
+## Lições novas do Ep. 02 (rodada 11)
+
+- **Quadros-ponte de transição** (rosto continuado depois do corte) devem continuar a câmera APROVADA (posição e velocidade
+  do último quadro), derivada dos dados exportados — chaves novas no Blender mudam a curva e fazem a câmera "frear".
+- **Desfoque de movimento na composição**: janela CENTRADA no instante do quadro (média só para um lado desloca a imagem n/2 px).
+- **Comentário `#` dentro de uma lista numa linha só desligou avisos de outros planos** (3ª vez neste projeto). Depois de
+  qualquer edição na montagem: SHA-256 de todos os quadros compostos contra a versão anterior (`verificar_transicao_a4.py hashes`).
+- Sons pontuais que coincidem com a fala (apresentação de componentes, pouso de objeto) somem sob o abaixamento automático:
+  stem próprio com nível relativo à voz NAQUELE instante (−12 dB na faixa do celular) e medir.
+- Variantes de mixagem não podem sobrescrever stems nem registros aprovados (sufixo próprio; hash antes/depois).
+- Páginas com proteção anti-robô (Pixabay) não se acessam automaticamente: pedir a confirmação da licença ao usuário.
