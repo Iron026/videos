@@ -300,3 +300,18 @@ Arquivos-chave (em `episodio_01_navio_v2/`): `episodio/decupagem_ep01_v3.md` (de
 - Mudança de câmera aprovada pode criar estroboscopia de grade/tubos finos: medir com `medir_estrobo.py` depois de
   qualquer aproximação rápida e oferecer o obturador de 180° como A/B desligado.
 - Composição testada em todos os quadros depois da montagem final, não só na prévia.
+
+## Lições novas do Ep. 02 (rodada 10)
+
+- **Stems em PCM 24 cortam acima de 0 dBFS:** com master de +5 dB a soma dos stems não reproduz a mixagem. Gravar stems em
+  ponto flutuante e PROVAR "soma = mixagem aprovada" (nulo ≤ −130 dBFS) antes de acrescentar camadas.
+- **O validador também erra:** "voz − resto" lia os stems da 1ª mixagem. Validar com os stems da versão medida
+  (STEMS_VOZ/STEMS_RESTO) e conferir o arquivo de entrada de toda métrica.
+- Mixagem antiga depende das CÂMERAS com que foi gerada (perspectiva sonora): reproduzir com as cenas da época (CENAS_SOM).
+- **Troca de câmera mais curta que 1 quadro** gera um quadro intermediário (câmera interpolada): varrer cenas por "dois
+  saltos seguidos". Corrigir sem mexer na trilha (interpolação suave: chave nova muda os vizinhos) e provar quadro a quadro.
+- Reexportação localizada: `provar_quadros_iguais.py` + reuso por prova no render (só os quadros diferentes saem).
+- Trilha: Mixkit Music (YouTube/redes ok, sem Content ID, sem arquivo isolado no git). Escolher por medida (percussão,
+  graves, faixa da voz, dinâmica) e deixar a audição para o usuário. Música −8 dB sob a fala com antecipação de 0,15 s.
+- Supersampling 1,5× (custo 2,25×) não deu ganho consistente sobre o MSAA 4×: medir contra referência 2160 antes de pagar.
+- Picos de AAC mudam de lugar quando qualquer camada muda: medir sempre no AAC final de CADA variante.

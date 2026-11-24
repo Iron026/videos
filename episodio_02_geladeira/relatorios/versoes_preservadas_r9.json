@@ -35,5 +35,14 @@
   "_obs": "V9 completa em 540: 31 planos re-renderizados (manifestos com SHA-256 em episodio/quadros_revisao/<plano>/_manifesto_quadros.json) + 11 reaproveitados da V8 com prova (_manifesto.json); cenas da V9 em episodio/cenas (não versionadas; reprodutíveis pelos scripts deste commit com CENA_R9=1)",
   "som/audio_ep02_v9.flac": "38294db0759e1cef4e83487008fcfe869349df7bd55b16bb7cec22472fdb651d",
   "_obs_audio": "som/audio_ep02_v9.flac = som/audio_ep02_r9.wav sem perdas (PCM 24 bits idêntico amostra a amostra); o .wav não é versionado"
+ },
+ "V10": {
+  "episodio/ep02_v10_revisao_audio_v9.mp4": "a9f911290955a6f2323454eaad672163a9546138ed0f9f97d02186c8493bc904",
+  "episodio/ep02_v10_revisao_efeitos.mp4": "c62744d01a2db37753e84998c3a65a8c09992ad93081508238ca8bb73d18f631",
+  "episodio/ep02_v10_revisao_trilha.mp4": "cf70b10eaacc28602c2e00f9fbdd9e7e4c695f36f1c5b8ac767108eed2b6366c",
+  "episodio/ep02_v10_revisao_efeitos_e_trilha.mp4": "9f5b32c16497d63a19f6aee0f7bfa3bc70aa1abbc147058dee6e6c55847d7ce4",
+  "config/producao.json": "c3bc1157b68370a958910195ca05ca698e94d4819362b1e363d9c48823ebe895",
+  "relatorios/manifesto_congelamento_r10.json": "0a54847c13f629ab2b76a2e344f91bab92ca2d21068431cb37c9dc904ebcd37b",
+  "_obs": "V10 = imagem da V9 + C4 126–178 com obturador + A4 q34 corrigido; 4 versões de áudio com o MESMO vídeo (stream idêntico)"
  }
 }
