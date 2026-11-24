@@ -1,0 +1,470 @@
+{
+ "A1": {
+  "L_p1": 0.5,
+  "L_p50": 59.3,
+  "L_p99": 87.4,
+  "estourado_pct": 0.0,
+  "preto_pct": 6.32,
+  "croma_med": 8.4,
+  "neutros_ab": [
+   0.0,
+   5.0
+  ]
+ },
+ "A2": {
+  "L_p1": 1.4,
+  "L_p50": 36.7,
+  "L_p99": 89.5,
+  "estourado_pct": 0.0,
+  "preto_pct": 1.22,
+  "croma_med": 19.7,
+  "neutros_ab": [
+   0.2,
+   -1.3
+  ]
+ },
+ "A3": {
+  "L_p1": 14.2,
+  "L_p50": 31.9,
+  "L_p99": 78.5,
+  "estourado_pct": 0.1,
+  "preto_pct": 0.02,
+  "croma_med": 12.2,
+  "neutros_ab": [
+   1.1,
+   -5.2
+  ]
+ },
+ "A4": {
+  "L_p1": 11.3,
+  "L_p50": 50.1,
+  "L_p99": 65.0,
+  "estourado_pct": 0.0,
+  "preto_pct": 0.32,
+  "croma_med": 29.3,
+  "neutros_ab": [
+   1.0,
+   -5.9
+  ]
+ },
+ "B1": {
+  "L_p1": 19.7,
+  "L_p50": 61.3,
+  "L_p99": 93.8,
+  "estourado_pct": 0.01,
+  "preto_pct": 0.0,
+  "croma_med": 8.6,
+  "neutros_ab": [
+   -0.8,
+   5.7
+  ]
+ },
+ "B2": {
+  "L_p1": 22.9,
+  "L_p50": 54.1,
+  "L_p99": 93.1,
+  "estourado_pct": 0.01,
+  "preto_pct": 0.0,
+  "croma_med": 9.1,
+  "neutros_ab": [
+   -0.9,
+   5.2
+  ]
+ },
+ "B3": {
+  "L_p1": 13.3,
+  "L_p50": 70.3,
+  "L_p99": 94.5,
+  "estourado_pct": 0.03,
+  "preto_pct": 0.0,
+  "croma_med": 11.0,
+  "neutros_ab": [
+   -1.0,
+   5.4
+  ]
+ },
+ "B4": {
+  "L_p1": 8.3,
+  "L_p50": 35.5,
+  "L_p99": 63.9,
+  "estourado_pct": 0.0,
+  "preto_pct": 0.01,
+  "croma_med": 15.8,
+  "neutros_ab": [
+   1.0,
+   -6.0
+  ]
+ },
+ "B5": {
+  "L_p1": 22.3,
+  "L_p50": 51.6,
+  "L_p99": 73.0,
+  "estourado_pct": 0.02,
+  "preto_pct": 0.0,
+  "croma_med": 35.1,
+  "neutros_ab": [
+   1.8,
+   -4.5
+  ]
+ },
+ "B6": {
+  "L_p1": 24.0,
+  "L_p50": 55.5,
+  "L_p99": 80.8,
+  "estourado_pct": 0.1,
+  "preto_pct": 0.0,
+  "croma_med": 38.4,
+  "neutros_ab": [
+   2.1,
+   -2.6
+  ]
+ },
+ "B7": {
+  "L_p1": 11.1,
+  "L_p50": 48.9,
+  "L_p99": 79.8,
+  "estourado_pct": 0.09,
+  "preto_pct": 0.0,
+  "croma_med": 49.4,
+  "neutros_ab": [
+   4.0,
+   -1.1
+  ]
+ },
+ "C1": {
+  "L_p1": 18.4,
+  "L_p50": 71.5,
+  "L_p99": 91.2,
+  "estourado_pct": 0.0,
+  "preto_pct": 0.38,
+  "croma_med": 9.9,
+  "neutros_ab": [
+   -0.2,
+   6.7
+  ]
+ },
+ "C2": {
+  "L_p1": 1.1,
+  "L_p50": 35.5,
+  "L_p99": 88.0,
+  "estourado_pct": 0.01,
+  "preto_pct": 3.1,
+  "croma_med": 10.8,
+  "neutros_ab": [
+   -0.7,
+   2.1
+  ]
+ },
+ "C3": {
+  "L_p1": 0.8,
+  "L_p50": 38.2,
+  "L_p99": 48.0,
+  "estourado_pct": 0.02,
+  "preto_pct": 17.97,
+  "croma_med": 4.5,
+  "neutros_ab": [
+   -0.5,
+   2.5
+  ]
+ },
+ "C4": {
+  "L_p1": 1.3,
+  "L_p50": 60.1,
+  "L_p99": 91.7,
+  "estourado_pct": 0.01,
+  "preto_pct": 3.41,
+  "croma_med": 11.1,
+  "neutros_ab": [
+   -0.7,
+   1.7
+  ]
+ },
+ "D1": {
+  "L_p1": 7.0,
+  "L_p50": 33.7,
+  "L_p99": 86.4,
+  "estourado_pct": 0.01,
+  "preto_pct": 0.0,
+  "croma_med": 13.2,
+  "neutros_ab": [
+   -0.4,
+   3.0
+  ]
+ },
+ "D2": {
+  "L_p1": 4.1,
+  "L_p50": 29.9,
+  "L_p99": 56.3,
+  "estourado_pct": 0.0,
+  "preto_pct": 0.01,
+  "croma_med": 8.9,
+  "neutros_ab": [
+   -0.2,
+   3.1
+  ]
+ },
+ "D3": {
+  "L_p1": 10.8,
+  "L_p50": 64.0,
+  "L_p99": 97.1,
+  "estourado_pct": 0.21,
+  "preto_pct": 0.03,
+  "croma_med": 10.7,
+  "neutros_ab": [
+   -0.5,
+   3.2
+  ]
+ },
+ "D4": {
+  "L_p1": 4.7,
+  "L_p50": 10.4,
+  "L_p99": 80.8,
+  "estourado_pct": 0.05,
+  "preto_pct": 0.0,
+  "croma_med": 18.5,
+  "neutros_ab": [
+   1.8,
+   -4.5
+  ]
+ },
+ "D5": {
+  "L_p1": 6.7,
+  "L_p50": 58.5,
+  "L_p99": 93.6,
+  "estourado_pct": 0.5,
+  "preto_pct": 0.0,
+  "croma_med": 13.0,
+  "neutros_ab": [
+   -0.6,
+   1.0
+  ]
+ },
+ "E1": {
+  "L_p1": 0.3,
+  "L_p50": 74.5,
+  "L_p99": 92.2,
+  "estourado_pct": 0.13,
+  "preto_pct": 16.4,
+  "croma_med": 16.6,
+  "neutros_ab": [
+   0.2,
+   4.0
+  ]
+ },
+ "E2": {
+  "L_p1": 1.1,
+  "L_p50": 39.3,
+  "L_p99": 76.0,
+  "estourado_pct": 0.01,
+  "preto_pct": 13.07,
+  "croma_med": 7.1,
+  "neutros_ab": [
+   -0.7,
+   1.4
+  ]
+ },
+ "E3": {
+  "L_p1": 5.1,
+  "L_p50": 41.8,
+  "L_p99": 94.8,
+  "estourado_pct": 0.0,
+  "preto_pct": 0.26,
+  "croma_med": 14.6,
+  "neutros_ab": [
+   -0.9,
+   0.0
+  ]
+ },
+ "E4": {
+  "L_p1": 0.6,
+  "L_p50": 24.8,
+  "L_p99": 72.4,
+  "estourado_pct": 0.04,
+  "preto_pct": 3.89,
+  "croma_med": 7.8,
+  "neutros_ab": [
+   -0.7,
+   2.4
+  ]
+ },
+ "F1": {
+  "L_p1": 0.7,
+  "L_p50": 47.0,
+  "L_p99": 80.7,
+  "estourado_pct": 0.16,
+  "preto_pct": 6.85,
+  "croma_med": 10.2,
+  "neutros_ab": [
+   -0.6,
+   5.6
+  ]
+ },
+ "F2": {
+  "L_p1": 2.2,
+  "L_p50": 4.7,
+  "L_p99": 81.9,
+  "estourado_pct": 0.04,
+  "preto_pct": 5.79,
+  "croma_med": 12.8,
+  "neutros_ab": [
+   3.5,
+   6.0
+  ]
+ },
+ "G1": {
+  "L_p1": 2.1,
+  "L_p50": 44.2,
+  "L_p99": 78.7,
+  "estourado_pct": 0.0,
+  "preto_pct": 4.87,
+  "croma_med": 14.9,
+  "neutros_ab": [
+   -0.7,
+   2.0
+  ]
+ },
+ "G2": {
+  "L_p1": 6.1,
+  "L_p50": 44.5,
+  "L_p99": 86.6,
+  "estourado_pct": 0.0,
+  "preto_pct": 0.83,
+  "croma_med": 18.9,
+  "neutros_ab": [
+   -0.8,
+   2.3
+  ]
+ },
+ "G3": {
+  "L_p1": 7.9,
+  "L_p50": 72.5,
+  "L_p99": 91.2,
+  "estourado_pct": 0.01,
+  "preto_pct": 0.58,
+  "croma_med": 11.7,
+  "neutros_ab": [
+   -0.3,
+   3.1
+  ]
+ },
+ "H1": {
+  "L_p1": 1.9,
+  "L_p50": 56.5,
+  "L_p99": 92.9,
+  "estourado_pct": 0.01,
+  "preto_pct": 1.6,
+  "croma_med": 13.0,
+  "neutros_ab": [
+   -0.7,
+   2.4
+  ]
+ },
+ "H2": {
+  "L_p1": 1.7,
+  "L_p50": 62.8,
+  "L_p99": 92.5,
+  "estourado_pct": 0.03,
+  "preto_pct": 2.47,
+  "croma_med": 13.4,
+  "neutros_ab": [
+   -0.7,
+   1.9
+  ]
+ },
+ "I1": {
+  "L_p1": 0.7,
+  "L_p50": 62.9,
+  "L_p99": 91.1,
+  "estourado_pct": 0.0,
+  "preto_pct": 6.37,
+  "croma_med": 9.3,
+  "neutros_ab": [
+   -0.2,
+   6.3
+  ]
+ },
+ "I2": {
+  "L_p1": 11.3,
+  "L_p50": 80.9,
+  "L_p99": 95.7,
+  "estourado_pct": 0.1,
+  "preto_pct": 0.36,
+  "croma_med": 11.3,
+  "neutros_ab": [
+   -0.9,
+   5.8
+  ]
+ },
+ "I3": {
+  "L_p1": 4.6,
+  "L_p50": 67.8,
+  "L_p99": 93.7,
+  "estourado_pct": 0.05,
+  "preto_pct": 0.75,
+  "croma_med": 11.2,
+  "neutros_ab": [
+   -0.4,
+   5.9
+  ]
+ },
+ "I4": {
+  "L_p1": 10.6,
+  "L_p50": 68.3,
+  "L_p99": 93.7,
+  "estourado_pct": 0.04,
+  "preto_pct": 0.75,
+  "croma_med": 11.2,
+  "neutros_ab": [
+   -0.5,
+   5.9
+  ]
+ },
+ "J1": {
+  "L_p1": 8.8,
+  "L_p50": 49.0,
+  "L_p99": 62.8,
+  "estourado_pct": 0.0,
+  "preto_pct": 0.33,
+  "croma_med": 29.2,
+  "neutros_ab": [
+   1.0,
+   -6.0
+  ]
+ },
+ "J2": {
+  "L_p1": 24.9,
+  "L_p50": 54.8,
+  "L_p99": 90.9,
+  "estourado_pct": 0.0,
+  "preto_pct": 0.0,
+  "croma_med": 9.1,
+  "neutros_ab": [
+   -1.1,
+   5.2
+  ]
+ },
+ "J3": {
+  "L_p1": 2.0,
+  "L_p50": 69.0,
+  "L_p99": 92.7,
+  "estourado_pct": 0.16,
+  "preto_pct": 1.73,
+  "croma_med": 16.5,
+  "neutros_ab": [
+   -0.5,
+   2.7
+  ]
+ },
+ "J4": {
+  "L_p1": 16.0,
+  "L_p50": 75.2,
+  "L_p99": 92.2,
+  "estourado_pct": 0.01,
+  "preto_pct": 0.58,
+  "croma_med": 9.2,
+  "neutros_ab": [
+   -0.1,
+   6.6
+  ]
+ }
+}

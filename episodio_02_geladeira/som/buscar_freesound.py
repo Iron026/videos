@@ -7,7 +7,8 @@ import os, re, json, time, html, subprocess, urllib.parse
 A = os.path.dirname(os.path.abspath(__file__)); BIB = os.path.join(A, 'bib', 'freesound'); os.makedirs(BIB, exist_ok=True)
 REG = os.path.join(A, 'fontes_freesound.json')
 UA = 'Mozilla/5.0'
-CONSULTAS = {   # papel no episódio → termos (só CC0)
+CONSULTAS = json.loads(os.environ['CONSULTAS_FS']) if os.environ.get('CONSULTAS_FS') else {   # rodada 10: consultas extras por variável (o registro só ACRESCENTA)
+   # papel no episódio → termos (só CC0)
     'porta': ['refrigerator door', 'fridge door open', 'fridge door close'],
     'zumbido': ['refrigerator hum', 'fridge hum', 'fridge compressor'],
     'gorgolejo': ['refrigerator gurgle', 'fridge gurgling', 'refrigerator bubbling'],

@@ -244,8 +244,9 @@ def mixar(master_fixo_db=None, ganhos_fixos_db=None, sufixo=''):
     mg = master_fixo_db if master_fixo_db is not None else (-14.0 - lufs(soma))
     mix, red = limitador(soma * db(mg), float(os.environ.get('TETO_LIMITADOR_DB', '-1.8')))   # rodada 9: teto opcional (margem de pico verdadeiro no AAC)
     os.makedirs(os.path.join(A, 'stems'), exist_ok=True)
-    for k in STEMS: sf.write(os.path.join(A, 'stems', f'ep02_{k}{sufixo}.wav'), (STEMS[k] * db(mg)).astype(np.float32), SR, subtype='PCM_24')
-    sf.write(os.path.join(A, 'stems', f'ep02_voz{sufixo}.wav'), (VOZ * db(mg)).astype(np.float32), SR, subtype='PCM_24')
+    fl = os.environ.get('STEMS_FLOAT') == '1'   # rodada 10: stems em ponto flutuante (PCM 24 corta acima de 0 dBFS: a soma não reproduzia a mixagem)
+    for k in STEMS: sf.write(os.path.join(A, 'stems', f'ep02_{k}{sufixo}{"_f32" if fl else ""}.wav'), (STEMS[k] * db(mg)).astype(np.float32), SR, subtype='FLOAT' if fl else 'PCM_24')
+    sf.write(os.path.join(A, 'stems', f'ep02_voz{sufixo}{"_f32" if fl else ""}.wav'), (VOZ * db(mg)).astype(np.float32), SR, subtype='FLOAT' if fl else 'PCM_24')
     sf.write(os.path.join(A, f'audio_ep02{sufixo}.wav'), mix.astype(np.float32), SR, subtype='PCM_24')
     return dict(compressao_voz_max_db=round(COMP_VOZ, 1), compressao_voz_limiar_dbfs=round(LIM_V, 1), compressao_voz_razao=RAZ, compressao_voz_media_na_fala_db=round(COMP_MED, 2), master_db=round(mg, 2), ganhos_stems_db={k: round(v_, 2) for k, v_ in GK.items()}, ducking_max_db=round(float(20 * np.log10(gs.min())), 1),
                 limitador_max_db=round(red, 2), lufs_wav=round(lufs(mix), 2), tp_wav=round(pico_verdadeiro(mix), 2))

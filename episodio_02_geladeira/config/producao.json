@@ -1,33 +1,42 @@
 {
-  "_nota": "Configuração ÚNICA de render do Ep. 02 (lição do Ep. 01: scripts antigos guardavam parâmetros desatualizados). Todos os scripts leem daqui.",
-  "fps": 30,
-  "perfis": {
-    "animatic": {
-      "escala": 0.25,
-      "passo": 2,
-      "consulta": "aoamostras=8&msaa=4"
-    },
-    "revisao": {
-      "escala": 0.5,
-      "passo": 1,
-      "consulta": "aoamostras=16&msaa=4&bloom=0.18"
-    },
-    "final": {
-      "escala": 1.0,
-      "passo": 1,
-      "consulta": "aoamostras=16&msaa=4&bloom=0.18"
-    }
+ "_nota": "Configuração ÚNICA de render do Ep. 02 (lição do Ep. 01: scripts antigos guardavam parâmetros desatualizados). Todos os scripts leem daqui.",
+ "fps": 30,
+ "perfis": {
+  "animatic": {
+   "escala": 0.25,
+   "passo": 2,
+   "consulta": "aoamostras=8&msaa=4"
   },
-  "por_plano": {},
-  "verificacao": {
-    "bytes_min": 4000,
-    "media_min": 3
+  "revisao": {
+   "escala": 0.5,
+   "passo": 1,
+   "consulta": "aoamostras=16&msaa=4&bloom=0.18"
   },
-  "obturador": {
-    "C2": {
-      "graus": 180,
-      "sub": 5,
-      "_nota": "rodada 8 (aprovado): desfoque de movimento por integração temporal de 5 sub-quadros em [−¼, +¼] de quadro; cena cenas/C2_obt (OBTURADOR_SUB=5)"
-    }
+  "final": {
+   "escala": 1.0,
+   "passo": 1,
+   "consulta": "aoamostras=16&msaa=4&bloom=0.18"
   }
+ },
+ "por_plano": {},
+ "verificacao": {
+  "bytes_min": 4000,
+  "media_min": 3
+ },
+ "obturador": {
+  "C2": {
+   "graus": 180,
+   "sub": 5,
+   "_nota": "rodada 8 (aprovado): desfoque de movimento por integração temporal de 5 sub-quadros em [−¼, +¼] de quadro; cena cenas/C2_obt (OBTURADOR_SUB=5)"
+  },
+  "C4": {
+   "graus": 180,
+   "sub": 5,
+   "quadros": [
+    126,
+    178
+   ],
+   "_nota": "rodada 10 (aprovado): obturador de 180° SÓ nos quadros 126–178 do C4 (fim da aproximação ao evaporador: grade do condensador com razão deslocamento/passo até 3,6); 5 sub-quadros em [−¼, +¼]; cena cenas/C4_obt (OBTURADOR_SUB=5); fora da faixa, quadros normais"
+  }
+ }
 }

@@ -71,10 +71,23 @@ for pid in IDS:
     cena = json.load(open(os.path.join(A, 'cenas', pid, 'cena.json'))); n = len(cena['animacao']['quadros'])
     q = f"cena=/episodio_02_geladeira/episodio/cenas/{pid}/&escala={P['escala']}&{P['consulta']}{CFG['por_plano'].get(pid, '')}"
     reg = dict(consulta=q, perfil=PERFIL, motor=MOT, cena=hcena(pid))
-    if pid in OBT: reg['obturador'] = dict(graus=OBT[pid]['graus'], sub=OBT[pid]['sub'], cena_sub=hcena(pid + '_obt'))
+    if pid in OBT: reg['obturador'] = dict(graus=OBT[pid]['graus'], sub=OBT[pid]['sub'], cena_sub=hcena(pid + '_obt'), **({'quadros': OBT[pid]['quadros']} if 'quadros' in OBT[pid] else {}))
+    faixa = OBT.get(pid, {}).get('quadros'); em_obt = lambda i: pid in OBT and (faixa is None or faixa[0] <= i <= faixa[1])   # rodada 10: obturador só numa faixa
     d = os.path.join(OUT, pid); os.makedirs(d, exist_ok=True); mf = os.path.join(d, '_manifesto_quadros.json')
     man = json.load(open(mf)) if os.path.exists(mf) else dict(reg=reg, quadros={})
-    if man.get('reg') != reg:   # configuração/cena/motor mudou: nada é reaproveitado; arquivos antigos vão para _descartados
+    so_faixa = (man.get('reg') != reg and faixa is not None and 'obturador' not in man.get('reg', {}) and {k: v for k, v in man.get('reg', {}).items()} == {k: v for k, v in reg.items() if k != 'obturador'})
+    if so_faixa:   # rodada 10: SÓ ganhou obturador numa faixa — quadros fora dela continuam válidos (mesma cena, motor e consulta)
+        dsc = os.path.join(d, '_descartados', time.strftime('%Y%m%d_%H%M%S') + '_faixa_obturador')
+        if not SIMULAR:
+            os.makedirs(dsc, exist_ok=True)
+            for i in range(faixa[0], faixa[1] + 1):
+                f = os.path.join(d, f'q{i:04d}.jpg')
+                if os.path.exists(f): shutil.move(f, dsc)
+                man['quadros'].pop(str(i), None)
+            log(f'{pid}: obturador na faixa {faixa[0]}–{faixa[1]} — esses quadros vão para {dsc}; os demais seguem válidos (SHA-256)')
+            man['reg'] = reg; man.setdefault('historico', []).append(dict(quando=time.strftime('%Y-%m-%dT%H:%M:%S'), mudanca=f'obturador {OBT[pid]["graus"]}° na faixa {faixa}'))
+            gravar_json(mf, man)
+    if man.get('reg') != reg and not so_faixa:   # configuração/cena/motor mudou: nada é reaproveitado; arquivos antigos vão para _descartados
         if man.get('quadros') and not SIMULAR:
             dsc = os.path.join(d, '_descartados', time.strftime('%Y%m%d_%H%M%S')); os.makedirs(dsc, exist_ok=True)
             for f in os.listdir(d):
@@ -83,19 +96,19 @@ for pid in IDS:
         man = dict(reg=reg, quadros={})
     validos = {int(k) for k, v in man['quadros'].items() if v.get('ok') and os.path.exists(os.path.join(d, f'q{int(k):04d}.jpg')) and sha(os.path.join(d, f'q{int(k):04d}.jpg')) == v['sha256']}
     faltam = [i for i in range(n) if i not in validos]
-    m = OBT.get(pid, {}).get('sub', 1); total_render += len(faltam) * m
+    m = OBT.get(pid, {}).get('sub', 1); total_render += sum(m if em_obt(i) else 1 for i in faltam)
     plano_trabalho.append(dict(plano=pid, quadros=n, reaproveitados=len(validos), a_renderizar=len(faltam), sub_quadros=m, blocos=-(-len(faltam) // BLOCO)))
     if SIMULAR or not faltam:
         if not faltam: log(f'{pid}: completo ({n} quadros conferidos por SHA-256)')
         continue
     blocos = []
     for i in faltam:
-        if blocos and i == blocos[-1][-1] + 1 and len(blocos[-1]) < BLOCO: blocos[-1].append(i)
+        if blocos and i == blocos[-1][-1] + 1 and len(blocos[-1]) < BLOCO and em_obt(i) == em_obt(blocos[-1][-1]): blocos[-1].append(i)
         else: blocos.append([i])
     TRANS = quadros_em_transicao(cena, n)
     for b in blocos:
         t = time.time(); tmp = os.path.join(d, '_tmp'); shutil.rmtree(tmp, ignore_errors=True); os.makedirs(tmp)
-        if pid in OBT:
+        if em_obt(b[0]):
             qs = q.replace(f'/cenas/{pid}/', f'/cenas/{pid}_obt/'); tsub = os.path.join(tmp, 'sub')
             r = subprocess.run(['node', 'render_anim.mjs', qs, tsub, '1', str(b[0] * m), str(b[-1] * m + m - 1)], cwd=MOTOR, capture_output=True, text=True)
             if r.returncode == 0:
@@ -125,9 +138,9 @@ for pid in IDS:
             if not ok:
                 gravar_json(mf, man); log(f'PARADA {pid} quadro {i}: {motivo} — investigar antes de continuar (arquivo em {tmp})'); sys.exit(4)
             dst = os.path.join(d, f'q{i:04d}.jpg'); os.replace(ft, dst); ant = ant_
-            man['quadros'][str(i)] = dict(ok=True, sha256=sha(dst), bytes=os.path.getsize(dst), quando=time.strftime('%Y-%m-%dT%H:%M:%S'), **({'salto_justificado': just} if just else {}))
+            man['quadros'][str(i)] = dict(ok=True, sha256=sha(dst), bytes=os.path.getsize(dst), quando=time.strftime('%Y-%m-%dT%H:%M:%S'), **({'salto_justificado': just} if just else {}), **({'obturador': True} if em_obt(i) else {}))
         gravar_json(mf, man); shutil.rmtree(tmp, ignore_errors=True)
-        log(f'{pid}: bloco {b[0]}–{b[-1]} ({len(b)} quadros{f" × {m} sub" if m > 1 else ""}) em {time.time() - t:.0f} s')
+        log(f'{pid}: bloco {b[0]}–{b[-1]} ({len(b)} quadros{f" × {m} sub" if em_obt(b[0]) and m > 1 else ""}) em {time.time() - t:.0f} s')
 if SIMULAR:
     print(json.dumps(dict(perfil=PERFIL, planos=len(plano_trabalho), quadros_a_renderizar=sum(p['a_renderizar'] for p in plano_trabalho),
                           renders_de_motor=total_render, detalhes=plano_trabalho), ensure_ascii=False, indent=1))

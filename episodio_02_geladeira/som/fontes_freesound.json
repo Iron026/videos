@@ -816,7 +816,8 @@
   "atribuicao_exigida": false,
   "arquivo_local": "som/bib/freesound/635559.mp3",
   "papeis": [
-   "partida"
+   "partida",
+   "vibracao"
   ],
   "consulta": "refrigerator compressor start",
   "descricao": "Freesound: collaborative database of creative-commons licensed sound for musicians and sound lovers. Have you freed your sound today?",
@@ -1681,6 +1682,1326 @@
    "walking",
    "wood",
    "wooden-floor"
+  ],
+  "obs": "prévia pública em MP3 128 kb/s do Freesound (o original exige login)"
+ },
+ {
+  "id": "558935",
+  "titulo": "soda cans in fridge.wav",
+  "autor": "sidequesting",
+  "url_pagina": "https://freesound.org/people/sidequesting/sounds/558935/",
+  "url_arquivo": "https://cdn.freesound.org/previews/558/558935_10247258-hq.mp3",
+  "licenca": "CC0 1.0",
+  "atribuicao_exigida": false,
+  "arquivo_local": "som/bib/freesound/558935.mp3",
+  "papeis": [
+   "puxador"
+  ],
+  "consulta": "fridge handle",
+  "descricao": "Freesound: collaborative database of creative-commons licensed sound for musicians and sound lovers. Have you freed your sound today?",
+  "etiquetas": [
+   "can",
+   "cans",
+   "soda"
+  ],
+  "obs": "prévia pública em MP3 128 kb/s do Freesound (o original exige login)"
+ },
+ {
+  "id": "451329",
+  "titulo": "bun wrapped in plastic crickle handling foley pickup various grab India.flac",
+  "autor": "kyles",
+  "url_pagina": "https://freesound.org/people/kyles/sounds/451329/",
+  "url_arquivo": "https://cdn.freesound.org/previews/451/451329_612689-hq.mp3",
+  "licenca": "CC0 1.0",
+  "atribuicao_exigida": false,
+  "arquivo_local": "som/bib/freesound/451329.mp3",
+  "papeis": [
+   "puxador"
+  ],
+  "consulta": "grab plastic handle",
+  "descricao": "Freesound: collaborative database of creative-commons licensed sound for musicians and sound lovers. Have you freed your sound today?",
+  "etiquetas": [
+   "India",
+   "bun",
+   "crickle",
+   "foley",
+   "handling",
+   "pickup",
+   "plastic",
+   "wrapped"
+  ],
+  "obs": "prévia pública em MP3 128 kb/s do Freesound (o original exige login)"
+ },
+ {
+  "id": "573195",
+  "titulo": "plastic_wrapper_handling.wav",
+  "autor": "j1987",
+  "url_pagina": "https://freesound.org/people/j1987/sounds/573195/",
+  "url_arquivo": "https://cdn.freesound.org/previews/573/573195_367313-hq.mp3",
+  "licenca": "CC0 1.0",
+  "atribuicao_exigida": false,
+  "arquivo_local": "som/bib/freesound/573195.mp3",
+  "papeis": [
+   "puxador"
+  ],
+  "consulta": "grab plastic handle",
+  "descricao": "Freesound: collaborative database of creative-commons licensed sound for musicians and sound lovers. Have you freed your sound today?",
+  "etiquetas": [
+   "candy",
+   "candy-bar",
+   "chocolate",
+   "crinkle",
+   "drop",
+   "grab",
+   "pick-up",
+   "plastic",
+   "wrapper"
+  ],
+  "obs": "prévia pública em MP3 128 kb/s do Freesound (o original exige login)"
+ },
+ {
+  "id": "802609",
+  "titulo": "Candy Bag Crinkle",
+  "autor": "JelloApocalypse",
+  "url_pagina": "https://freesound.org/people/JelloApocalypse/sounds/802609/",
+  "url_arquivo": "https://cdn.freesound.org/previews/802/802609_3501916-hq.mp3",
+  "licenca": "CC0 1.0",
+  "atribuicao_exigida": false,
+  "arquivo_local": "som/bib/freesound/802609.mp3",
+  "papeis": [
+   "puxador"
+  ],
+  "consulta": "grab plastic handle",
+  "descricao": "Freesound: collaborative database of creative-commons licensed sound for musicians and sound lovers. Have you freed your sound today?",
+  "etiquetas": [
+   "bag",
+   "candy",
+   "container",
+   "crinkle",
+   "food",
+   "grip",
+   "open",
+   "plastic",
+   "rustle",
+   "rustling",
+   "shake",
+   "shaking",
+   "snack",
+   "snacking",
+   "twist",
+   "twisting",
+   "wrap",
+   "wrapper"
+  ],
+  "obs": "prévia pública em MP3 128 kb/s do Freesound (o original exige login)"
+ },
+ {
+  "id": "876485",
+  "titulo": "Compact disc handling",
+  "autor": "ottoojala",
+  "url_pagina": "https://freesound.org/people/ottoojala/sounds/876485/",
+  "url_arquivo": "https://cdn.freesound.org/previews/876/876485_19451555-hq.mp3",
+  "licenca": "CC0 1.0",
+  "atribuicao_exigida": false,
+  "arquivo_local": "som/bib/freesound/876485.mp3",
+  "papeis": [
+   "puxador"
+  ],
+  "consulta": "grab plastic handle",
+  "descricao": "Freesound: collaborative database of creative-commons licensed sound for musicians and sound lovers. Have you freed your sound today?",
+  "etiquetas": [
+   "CD",
+   "case",
+   "closing",
+   "opening",
+   "plastic",
+   "rattle"
+  ],
+  "obs": "prévia pública em MP3 128 kb/s do Freesound (o original exige login)"
+ },
+ {
+  "id": "330242",
+  "titulo": "Carton crush_05.wav",
+  "autor": "deleted_user_2104797",
+  "url_pagina": "https://freesound.org/people/deleted_user_2104797/sounds/330242/",
+  "url_arquivo": "https://cdn.freesound.org/previews/330/330242_2104797-hq.mp3",
+  "licenca": "CC0 1.0",
+  "atribuicao_exigida": false,
+  "arquivo_local": "som/bib/freesound/330242.mp3",
+  "papeis": [
+   "leite"
+  ],
+  "consulta": "milk carton",
+  "descricao": "Freesound: collaborative database of creative-commons licensed sound for musicians and sound lovers. Have you freed your sound today?",
+  "etiquetas": [
+   "break",
+   "carton",
+   "crack",
+   "crush",
+   "milk",
+   "plastic",
+   "squash",
+   "squish"
+  ],
+  "obs": "prévia pública em MP3 128 kb/s do Freesound (o original exige login)"
+ },
+ {
+  "id": "418858",
+  "titulo": "Slurp.wav",
+  "autor": "LittleRainySeasons",
+  "url_pagina": "https://freesound.org/people/LittleRainySeasons/sounds/418858/",
+  "url_arquivo": "https://cdn.freesound.org/previews/418/418858_5865517-hq.mp3",
+  "licenca": "CC0 1.0",
+  "atribuicao_exigida": false,
+  "arquivo_local": "som/bib/freesound/418858.mp3",
+  "papeis": [
+   "leite"
+  ],
+  "consulta": "milk carton",
+  "descricao": "Freesound: collaborative database of creative-commons licensed sound for musicians and sound lovers. Have you freed your sound today?",
+  "etiquetas": [
+   "carton",
+   "effect",
+   "milk",
+   "sfx",
+   "sipping",
+   "slurp",
+   "slurping",
+   "sound",
+   "straw"
+  ],
+  "obs": "prévia pública em MP3 128 kb/s do Freesound (o original exige login)"
+ },
+ {
+  "id": "824896",
+  "titulo": "the last bit of chocolate milk in the box",
+  "autor": "paulmegens",
+  "url_pagina": "https://freesound.org/people/paulmegens/sounds/824896/",
+  "url_arquivo": "https://cdn.freesound.org/previews/824/824896_15434263-hq.mp3",
+  "licenca": "CC0 1.0",
+  "atribuicao_exigida": false,
+  "arquivo_local": "som/bib/freesound/824896.mp3",
+  "papeis": [
+   "leite"
+  ],
+  "consulta": "milk carton",
+  "descricao": "Freesound: collaborative database of creative-commons licensed sound for musicians and sound lovers. Have you freed your sound today?",
+  "etiquetas": [
+   "box",
+   "carton",
+   "chocolatemilk",
+   "milk"
+  ],
+  "obs": "prévia pública em MP3 128 kb/s do Freesound (o original exige login)"
+ },
+ {
+  "id": "820006",
+  "titulo": "carton_31",
+  "autor": "Dreadwolf910",
+  "url_pagina": "https://freesound.org/people/Dreadwolf910/sounds/820006/",
+  "url_arquivo": "https://cdn.freesound.org/previews/820/820006_3004743-hq.mp3",
+  "licenca": "CC0 1.0",
+  "atribuicao_exigida": false,
+  "arquivo_local": "som/bib/freesound/820006.mp3",
+  "papeis": [
+   "leite"
+  ],
+  "consulta": "milk carton",
+  "descricao": "Freesound: collaborative database of creative-commons licensed sound for musicians and sound lovers. Have you freed your sound today?",
+  "etiquetas": [
+   "carton",
+   "clack",
+   "click",
+   "foley",
+   "industrial",
+   "plastic"
+  ],
+  "obs": "prévia pública em MP3 128 kb/s do Freesound (o original exige login)"
+ },
+ {
+  "id": "616056",
+  "titulo": "fa!rlife-MilkCarton-BlueTube-SM57.wav",
+  "autor": "PeteHaase",
+  "url_pagina": "https://freesound.org/people/PeteHaase/sounds/616056/",
+  "url_arquivo": "https://cdn.freesound.org/previews/616/616056_337353-hq.mp3",
+  "licenca": "CC0 1.0",
+  "atribuicao_exigida": false,
+  "arquivo_local": "som/bib/freesound/616056.mp3",
+  "papeis": [
+   "leite"
+  ],
+  "consulta": "milk carton",
+  "descricao": "Freesound: collaborative database of creative-commons licensed sound for musicians and sound lovers. Have you freed your sound today?",
+  "etiquetas": [
+   "drum",
+   "hand",
+   "sample"
+  ],
+  "obs": "prévia pública em MP3 128 kb/s do Freesound (o original exige login)"
+ },
+ {
+  "id": "624481",
+  "titulo": "Freezer - fridge floor - glass - take - put down - hit.wav",
+  "autor": "ValentinPetiteau",
+  "url_pagina": "https://freesound.org/people/ValentinPetiteau/sounds/624481/",
+  "url_arquivo": "https://cdn.freesound.org/previews/624/624481_10443988-hq.mp3",
+  "licenca": "CC0 1.0",
+  "atribuicao_exigida": false,
+  "arquivo_local": "som/bib/freesound/624481.mp3",
+  "papeis": [
+   "prateleira"
+  ],
+  "consulta": "glass shelf",
+  "descricao": "Freesound: collaborative database of creative-commons licensed sound for musicians and sound lovers. Have you freed your sound today?",
+  "etiquetas": [
+   "bottle",
+   "foley",
+   "fridge",
+   "glass",
+   "hit",
+   "shelf"
+  ],
+  "obs": "prévia pública em MP3 128 kb/s do Freesound (o original exige login)"
+ },
+ {
+  "id": "232244",
+  "titulo": "Cup shelf rattling ",
+  "autor": "nick121087",
+  "url_pagina": "https://freesound.org/people/nick121087/sounds/232244/",
+  "url_arquivo": "https://cdn.freesound.org/previews/232/232244_3840537-hq.mp3",
+  "licenca": "CC0 1.0",
+  "atribuicao_exigida": false,
+  "arquivo_local": "som/bib/freesound/232244.mp3",
+  "papeis": [
+   "prateleira"
+  ],
+  "consulta": "glass shelf",
+  "descricao": "Freesound: collaborative database of creative-commons licensed sound for musicians and sound lovers. Have you freed your sound today?",
+  "etiquetas": [
+   "cup",
+   "earthquake",
+   "glass",
+   "rattling",
+   "shaking",
+   "shelf"
+  ],
+  "obs": "prévia pública em MP3 128 kb/s do Freesound (o original exige login)"
+ },
+ {
+  "id": "474010",
+  "titulo": "Glass Bottles Foley",
+  "autor": "Gammelsmurfen778",
+  "url_pagina": "https://freesound.org/people/Gammelsmurfen778/sounds/474010/",
+  "url_arquivo": "https://cdn.freesound.org/previews/474/474010_8947290-hq.mp3",
+  "licenca": "CC0 1.0",
+  "atribuicao_exigida": false,
+  "arquivo_local": "som/bib/freesound/474010.mp3",
+  "papeis": [
+   "prateleira"
+  ],
+  "consulta": "glass shelf",
+  "descricao": "Freesound: collaborative database of creative-commons licensed sound for musicians and sound lovers. Have you freed your sound today?",
+  "etiquetas": [
+   "against",
+   "beer",
+   "bottle",
+   "foley",
+   "glass",
+   "move",
+   "shelf",
+   "wine"
+  ],
+  "obs": "prévia pública em MP3 128 kb/s do Freesound (o original exige login)"
+ },
+ {
+  "id": "540904",
+  "titulo": "Glassware rattle and shake movement.wav",
+  "autor": "khenshom",
+  "url_pagina": "https://freesound.org/people/khenshom/sounds/540904/",
+  "url_arquivo": "https://cdn.freesound.org/previews/540/540904_6652872-hq.mp3",
+  "licenca": "CC0 1.0",
+  "atribuicao_exigida": false,
+  "arquivo_local": "som/bib/freesound/540904.mp3",
+  "papeis": [
+   "prateleira"
+  ],
+  "consulta": "glass shelf",
+  "descricao": "Freesound: collaborative database of creative-commons licensed sound for musicians and sound lovers. Have you freed your sound today?",
+  "etiquetas": [
+   "bottle",
+   "collapsing",
+   "construction",
+   "cupboard",
+   "cups",
+   "earth",
+   "earthquake",
+   "glass",
+   "glassware",
+   "kitchen",
+   "marbles",
+   "movement",
+   "moving",
+   "mugs",
+   "quake",
+   "rattle",
+   "rattling",
+   "rumbling",
+   "shake",
+   "shelf"
+  ],
+  "obs": "prévia pública em MP3 128 kb/s do Freesound (o original exige login)"
+ },
+ {
+  "id": "868628",
+  "titulo": "Arranging Glass Jars on a Shelf",
+  "autor": "adamlenhart",
+  "url_pagina": "https://freesound.org/people/adamlenhart/sounds/868628/",
+  "url_arquivo": "https://cdn.freesound.org/previews/868/868628_19205976-hq.mp3",
+  "licenca": "CC0 1.0",
+  "atribuicao_exigida": false,
+  "arquivo_local": "som/bib/freesound/868628.mp3",
+  "papeis": [
+   "prateleira"
+  ],
+  "consulta": "glass shelf",
+  "descricao": "Freesound: collaborative database of creative-commons licensed sound for musicians and sound lovers. Have you freed your sound today?",
+  "etiquetas": [
+   "arranging",
+   "glass",
+   "jar",
+   "liquid",
+   "organizing",
+   "wood"
+  ],
+  "obs": "prévia pública em MP3 128 kb/s do Freesound (o original exige login)"
+ },
+ {
+  "id": "400392",
+  "titulo": "sfx: refrigerator compressor",
+  "autor": "chromakei",
+  "url_pagina": "https://freesound.org/people/chromakei/sounds/400392/",
+  "url_arquivo": "https://cdn.freesound.org/previews/400/400392_7553603-hq.mp3",
+  "licenca": "CC0 1.0",
+  "atribuicao_exigida": false,
+  "arquivo_local": "som/bib/freesound/400392.mp3",
+  "papeis": [
+   "vibracao"
+  ],
+  "consulta": "refrigerator compressor close",
+  "descricao": "Freesound: collaborative database of creative-commons licensed sound for musicians and sound lovers. Have you freed your sound today?",
+  "etiquetas": [
+   "compressor",
+   "foley",
+   "gamesound",
+   "machine",
+   "motor",
+   "refrigerator",
+   "sfx",
+   "short",
+   "sounddesign"
+  ],
+  "obs": "prévia pública em MP3 128 kb/s do Freesound (o original exige login)"
+ },
+ {
+  "id": "740089",
+  "titulo": "Fridge hum 2",
+  "autor": "FOSSarts",
+  "url_pagina": "https://freesound.org/people/FOSSarts/sounds/740089/",
+  "url_arquivo": "https://cdn.freesound.org/previews/740/740089_14631530-hq.mp3",
+  "licenca": "CC0 1.0",
+  "atribuicao_exigida": false,
+  "arquivo_local": "som/bib/freesound/740089.mp3",
+  "papeis": [
+   "vibracao"
+  ],
+  "consulta": "refrigerator compressor close",
+  "descricao": "Freesound: collaborative database of creative-commons licensed sound for musicians and sound lovers. Have you freed your sound today?",
+  "etiquetas": [
+   "compressor",
+   "fridge",
+   "hum",
+   "refrigeration",
+   "refrigerator"
+  ],
+  "obs": "prévia pública em MP3 128 kb/s do Freesound (o original exige login)"
+ },
+ {
+  "id": "162322",
+  "titulo": "Insides of a Fridge 1",
+  "autor": "unfa",
+  "url_pagina": "https://freesound.org/people/unfa/sounds/162322/",
+  "url_arquivo": "https://cdn.freesound.org/previews/162/162322_1038806-hq.mp3",
+  "licenca": "CC0 1.0",
+  "atribuicao_exigida": false,
+  "arquivo_local": "som/bib/freesound/162322.mp3",
+  "papeis": [
+   "vibracao"
+  ],
+  "consulta": "refrigerator compressor close",
+  "descricao": "Freesound: collaborative database of creative-commons licensed sound for musicians and sound lovers. Have you freed your sound today?",
+  "etiquetas": [
+   "close",
+   "doors",
+   "fridge",
+   "motor",
+   "refrigerator",
+   "rumble",
+   "slam",
+   "thump"
+  ],
+  "obs": "prévia pública em MP3 128 kb/s do Freesound (o original exige login)"
+ },
+ {
+  "id": "71509",
+  "titulo": "fridge_door.wav",
+  "autor": "philberts",
+  "url_pagina": "https://freesound.org/people/philberts/sounds/71509/",
+  "url_arquivo": "https://cdn.freesound.org/previews/71/71509_835438-hq.mp3",
+  "licenca": "CC0 1.0",
+  "atribuicao_exigida": false,
+  "arquivo_local": "som/bib/freesound/71509.mp3",
+  "papeis": [
+   "vibracao"
+  ],
+  "consulta": "refrigerator compressor close",
+  "descricao": "Freesound: collaborative database of creative-commons licensed sound for musicians and sound lovers. Have you freed your sound today?",
+  "etiquetas": [
+   "ambient",
+   "appliance",
+   "frig",
+   "kitchen",
+   "refrigerator"
+  ],
+  "obs": "prévia pública em MP3 128 kb/s do Freesound (o original exige login)"
+ },
+ {
+  "id": "168641",
+  "titulo": "Old Fridge",
+  "autor": "karlis.stigis",
+  "url_pagina": "https://freesound.org/people/karlis.stigis/sounds/168641/",
+  "url_arquivo": "https://cdn.freesound.org/previews/168/168641_853134-hq.mp3",
+  "licenca": "CC0 1.0",
+  "atribuicao_exigida": false,
+  "arquivo_local": "som/bib/freesound/168641.mp3",
+  "papeis": [
+   "vibracao"
+  ],
+  "consulta": "fridge vibration",
+  "descricao": "Freesound: collaborative database of creative-commons licensed sound for musicians and sound lovers. Have you freed your sound today?",
+  "etiquetas": [
+   "Fridge",
+   "motor",
+   "rattle",
+   "vibration"
+  ],
+  "obs": "prévia pública em MP3 128 kb/s do Freesound (o original exige login)"
+ },
+ {
+  "id": "342970",
+  "titulo": "Fridge slim high Glas Front Door open Leonrod.wav",
+  "autor": "breiti",
+  "url_pagina": "https://freesound.org/people/breiti/sounds/342970/",
+  "url_arquivo": "https://cdn.freesound.org/previews/342/342970_567141-hq.mp3",
+  "licenca": "CC0 1.0",
+  "atribuicao_exigida": false,
+  "arquivo_local": "som/bib/freesound/342970.mp3",
+  "papeis": [
+   "vibracao"
+  ],
+  "consulta": "fridge vibration",
+  "descricao": "Freesound: collaborative database of creative-commons licensed sound for musicians and sound lovers. Have you freed your sound today?",
+  "etiquetas": [
+   "Fridge",
+   "Humming",
+   "Vibrating"
+  ],
+  "obs": "prévia pública em MP3 128 kb/s do Freesound (o original exige login)"
+ },
+ {
+  "id": "586269",
+  "titulo": "Audio 6.wav",
+  "autor": "lidalee34",
+  "url_pagina": "https://freesound.org/people/lidalee34/sounds/586269/",
+  "url_arquivo": "https://cdn.freesound.org/previews/586/586269_13163194-hq.mp3",
+  "licenca": "CC0 1.0",
+  "atribuicao_exigida": false,
+  "arquivo_local": "som/bib/freesound/586269.mp3",
+  "papeis": [
+   "vibracao"
+  ],
+  "consulta": "fridge vibration",
+  "descricao": "Freesound: collaborative database of creative-commons licensed sound for musicians and sound lovers. Have you freed your sound today?",
+  "etiquetas": [
+   "closing",
+   "domestic",
+   "door",
+   "fridge",
+   "house-recording",
+   "kitchen",
+   "open",
+   "refrigerator"
+  ],
+  "obs": "prévia pública em MP3 128 kb/s do Freesound (o original exige login)"
+ },
+ {
+  "id": "342971",
+  "titulo": "Fridge slim high Glas Front Door closed Leonrod.wav",
+  "autor": "breiti",
+  "url_pagina": "https://freesound.org/people/breiti/sounds/342971/",
+  "url_arquivo": "https://cdn.freesound.org/previews/342/342971_567141-hq.mp3",
+  "licenca": "CC0 1.0",
+  "atribuicao_exigida": false,
+  "arquivo_local": "som/bib/freesound/342971.mp3",
+  "papeis": [
+   "vibracao"
+  ],
+  "consulta": "fridge vibration",
+  "descricao": "Freesound: collaborative database of creative-commons licensed sound for musicians and sound lovers. Have you freed your sound today?",
+  "etiquetas": [
+   "Fridge",
+   "Humming",
+   "Vibrating"
+  ],
+  "obs": "prévia pública em MP3 128 kb/s do Freesound (o original exige login)"
+ },
+ {
+  "id": "635546",
+  "titulo": "fridge refrigerator compressor close hum vibrate bubbly.flac",
+  "autor": "kyles",
+  "url_pagina": "https://freesound.org/people/kyles/sounds/635546/",
+  "url_arquivo": "https://cdn.freesound.org/previews/635/635546_612689-hq.mp3",
+  "licenca": "CC0 1.0",
+  "atribuicao_exigida": false,
+  "arquivo_local": "som/bib/freesound/635546.mp3",
+  "papeis": [
+   "vibracao"
+  ],
+  "consulta": "fridge vibration",
+  "descricao": "Freesound: collaborative database of creative-commons licensed sound for musicians and sound lovers. Have you freed your sound today?",
+  "etiquetas": [
+   "bubbly",
+   "close",
+   "compressor",
+   "fridge",
+   "refrigerator",
+   "vibrate"
+  ],
+  "obs": "prévia pública em MP3 128 kb/s do Freesound (o original exige login)"
+ },
+ {
+  "id": "470603",
+  "titulo": "door handle grab then opening door then closing",
+  "autor": "mrrap4food",
+  "url_pagina": "https://freesound.org/people/mrrap4food/sounds/470603/",
+  "url_arquivo": "https://cdn.freesound.org/previews/470/470603_781461-hq.mp3",
+  "licenca": "CC0 1.0",
+  "atribuicao_exigida": false,
+  "arquivo_local": "som/bib/freesound/470603.mp3",
+  "papeis": [
+   "puxador"
+  ],
+  "consulta": "door handle grab",
+  "descricao": "Freesound: collaborative database of creative-commons licensed sound for musicians and sound lovers. Have you freed your sound today?",
+  "etiquetas": [
+   "closing",
+   "door",
+   "grab",
+   "handle",
+   "opening",
+   "then"
+  ],
+  "obs": "prévia pública em MP3 128 kb/s do Freesound (o original exige login)"
+ },
+ {
+  "id": "361823",
+  "titulo": "Truck Door Open and Close",
+  "autor": "Jofae",
+  "url_pagina": "https://freesound.org/people/Jofae/sounds/361823/",
+  "url_arquivo": "https://cdn.freesound.org/previews/361/361823_6512973-hq.mp3",
+  "licenca": "CC0 1.0",
+  "atribuicao_exigida": false,
+  "arquivo_local": "som/bib/freesound/361823.mp3",
+  "papeis": [
+   "puxador"
+  ],
+  "consulta": "door handle grab",
+  "descricao": "Freesound: collaborative database of creative-commons licensed sound for musicians and sound lovers. Have you freed your sound today?",
+  "etiquetas": [
+   "audio",
+   "close",
+   "closing",
+   "door",
+   "doors",
+   "effect",
+   "grab",
+   "handle",
+   "metal",
+   "open",
+   "pull",
+   "push",
+   "release",
+   "shut",
+   "slam",
+   "sound",
+   "truck"
+  ],
+  "obs": "prévia pública em MP3 128 kb/s do Freesound (o original exige login)"
+ },
+ {
+  "id": "440646",
+  "titulo": "Grabbing Door Handle.wav",
+  "autor": "SeanSecret",
+  "url_pagina": "https://freesound.org/people/SeanSecret/sounds/440646/",
+  "url_arquivo": "https://cdn.freesound.org/previews/440/440646_2742396-hq.mp3",
+  "licenca": "CC0 1.0",
+  "atribuicao_exigida": false,
+  "arquivo_local": "som/bib/freesound/440646.mp3",
+  "papeis": [
+   "puxador"
+  ],
+  "consulta": "door handle grab",
+  "descricao": "Freesound: collaborative database of creative-commons licensed sound for musicians and sound lovers. Have you freed your sound today?",
+  "etiquetas": [
+   "Door",
+   "close",
+   "closing",
+   "door",
+   "foley",
+   "fx",
+   "grab",
+   "help",
+   "idk",
+   "mechanical",
+   "open",
+   "opened",
+   "phone",
+   "recording",
+   "umm",
+   "wood"
+  ],
+  "obs": "prévia pública em MP3 128 kb/s do Freesound (o original exige login)"
+ },
+ {
+  "id": "868376",
+  "titulo": "DoorKnobHandling",
+  "autor": "laurbgill",
+  "url_pagina": "https://freesound.org/people/laurbgill/sounds/868376/",
+  "url_arquivo": "https://cdn.freesound.org/previews/868/868376_7960638-hq.mp3",
+  "licenca": "CC0 1.0",
+  "atribuicao_exigida": false,
+  "arquivo_local": "som/bib/freesound/868376.mp3",
+  "papeis": [
+   "puxador"
+  ],
+  "consulta": "door handle grab",
+  "descricao": "Freesound: collaborative database of creative-commons licensed sound for musicians and sound lovers. Have you freed your sound today?",
+  "etiquetas": [
+   "door",
+   "foley",
+   "handle",
+   "handling",
+   "knob"
+  ],
+  "obs": "prévia pública em MP3 128 kb/s do Freesound (o original exige login)"
+ },
+ {
+  "id": "438446",
+  "titulo": "G31-08-Wooden Door Sounds.wav",
+  "autor": "craigsmith",
+  "url_pagina": "https://freesound.org/people/craigsmith/sounds/438446/",
+  "url_arquivo": "https://cdn.freesound.org/previews/438/438446_2524442-hq.mp3",
+  "licenca": "CC0 1.0",
+  "atribuicao_exigida": false,
+  "arquivo_local": "som/bib/freesound/438446.mp3",
+  "papeis": [
+   "puxador"
+  ],
+  "consulta": "door handle grab",
+  "descricao": "Freesound: collaborative database of creative-commons licensed sound for musicians and sound lovers. Have you freed your sound today?",
+  "etiquetas": [
+   "Doors",
+   "Optical",
+   "Vintage",
+   "Wooden"
+  ],
+  "obs": "prévia pública em MP3 128 kb/s do Freesound (o original exige login)"
+ },
+ {
+  "id": "523271",
+  "titulo": "Foley_HandDrill_Grab.wav",
+  "autor": "MrFossy",
+  "url_pagina": "https://freesound.org/people/MrFossy/sounds/523271/",
+  "url_arquivo": "https://cdn.freesound.org/previews/523/523271_129727-hq.mp3",
+  "licenca": "CC0 1.0",
+  "atribuicao_exigida": false,
+  "arquivo_local": "som/bib/freesound/523271.mp3",
+  "papeis": [
+   "puxador"
+  ],
+  "consulta": "hand grab foley",
+  "descricao": "Freesound: collaborative database of creative-commons licensed sound for musicians and sound lovers. Have you freed your sound today?",
+  "etiquetas": [
+   "catch",
+   "drill",
+   "foley",
+   "grab",
+   "hand",
+   "hand-drill",
+   "metal",
+   "metallic",
+   "tool"
+  ],
+  "obs": "prévia pública em MP3 128 kb/s do Freesound (o original exige login)"
+ },
+ {
+  "id": "812359",
+  "titulo": "Skin contact grab",
+  "autor": "avainquin",
+  "url_pagina": "https://freesound.org/people/avainquin/sounds/812359/",
+  "url_arquivo": "https://cdn.freesound.org/previews/812/812359_16359719-hq.mp3",
+  "licenca": "CC0 1.0",
+  "atribuicao_exigida": false,
+  "arquivo_local": "som/bib/freesound/812359.mp3",
+  "papeis": [
+   "puxador"
+  ],
+  "consulta": "hand grab foley",
+  "descricao": "Freesound: collaborative database of creative-commons licensed sound for musicians and sound lovers. Have you freed your sound today?",
+  "etiquetas": [
+   "attack",
+   "fight",
+   "foley",
+   "grab",
+   "hand",
+   "scuffle"
+  ],
+  "obs": "prévia pública em MP3 128 kb/s do Freesound (o original exige login)"
+ },
+ {
+  "id": "582295",
+  "titulo": "body touch 02.mp3",
+  "autor": "TitanKaempfer",
+  "url_pagina": "https://freesound.org/people/TitanKaempfer/sounds/582295/",
+  "url_arquivo": "https://cdn.freesound.org/previews/582/582295_9713112-hq.mp3",
+  "licenca": "CC0 1.0",
+  "atribuicao_exigida": false,
+  "arquivo_local": "som/bib/freesound/582295.mp3",
+  "papeis": [
+   "puxador"
+  ],
+  "consulta": "hand grab foley",
+  "descricao": "Freesound: collaborative database of creative-commons licensed sound for musicians and sound lovers. Have you freed your sound today?",
+  "etiquetas": [
+   "Body",
+   "Foley",
+   "Grab",
+   "Hand",
+   "Shoulder",
+   "Touch"
+  ],
+  "obs": "prévia pública em MP3 128 kb/s do Freesound (o original exige login)"
+ },
+ {
+  "id": "320722",
+  "titulo": "Freezer Ice Bucket",
+  "autor": "AlfredHitch",
+  "url_pagina": "https://freesound.org/people/AlfredHitch/sounds/320722/",
+  "url_arquivo": "https://cdn.freesound.org/previews/320/320722_575561-hq.mp3",
+  "licenca": "CC0 1.0",
+  "atribuicao_exigida": false,
+  "arquivo_local": "som/bib/freesound/320722.mp3",
+  "papeis": [
+   "puxador"
+  ],
+  "consulta": "hand grab foley",
+  "descricao": "Freesound: collaborative database of creative-commons licensed sound for musicians and sound lovers. Have you freed your sound today?",
+  "etiquetas": [
+   "bucket",
+   "clatter",
+   "cold",
+   "crack",
+   "crackle",
+   "foley",
+   "freezer",
+   "frozen",
+   "ice",
+   "rattle",
+   "scoop"
+  ],
+  "obs": "prévia pública em MP3 128 kb/s do Freesound (o original exige login)"
+ },
+ {
+  "id": "237047",
+  "titulo": "Cloth Grabbing",
+  "autor": "j1987",
+  "url_pagina": "https://freesound.org/people/j1987/sounds/237047/",
+  "url_arquivo": "https://cdn.freesound.org/previews/237/237047_367313-hq.mp3",
+  "licenca": "CC0 1.0",
+  "atribuicao_exigida": false,
+  "arquivo_local": "som/bib/freesound/237047.mp3",
+  "papeis": [
+   "puxador"
+  ],
+  "consulta": "hand grab foley",
+  "descricao": "Freesound: collaborative database of creative-commons licensed sound for musicians and sound lovers. Have you freed your sound today?",
+  "etiquetas": [
+   "backpack",
+   "click",
+   "cloth",
+   "clothes",
+   "fabric",
+   "foley",
+   "movement",
+   "pack",
+   "rustle",
+   "rustling",
+   "snap",
+   "stereo"
+  ],
+  "obs": "prévia pública em MP3 128 kb/s do Freesound (o original exige login)"
+ },
+ {
+  "id": "687140",
+  "titulo": "Picking up cellphone from table",
+  "autor": "khenshom",
+  "url_pagina": "https://freesound.org/people/khenshom/sounds/687140/",
+  "url_arquivo": "https://cdn.freesound.org/previews/687/687140_6652872-hq.mp3",
+  "licenca": "CC0 1.0",
+  "atribuicao_exigida": false,
+  "arquivo_local": "som/bib/freesound/687140.mp3",
+  "papeis": [
+   "puxador"
+  ],
+  "consulta": "grab object foley",
+  "descricao": "Freesound: collaborative database of creative-commons licensed sound for musicians and sound lovers. Have you freed your sound today?",
+  "etiquetas": [
+   "cellphone",
+   "foley",
+   "grab",
+   "handling",
+   "hard",
+   "holding",
+   "mobile",
+   "movement",
+   "night",
+   "object",
+   "phone",
+   "pick",
+   "slide",
+   "smartphone",
+   "surface",
+   "table",
+   "telephone",
+   "up",
+   "wood"
+  ],
+  "obs": "prévia pública em MP3 128 kb/s do Freesound (o original exige login)"
+ },
+ {
+  "id": "706115",
+  "titulo": "ObjectCatchHold.mp3",
+  "autor": "RandomWizKid",
+  "url_pagina": "https://freesound.org/people/RandomWizKid/sounds/706115/",
+  "url_arquivo": "https://cdn.freesound.org/previews/706/706115_14591892-hq.mp3",
+  "licenca": "CC0 1.0",
+  "atribuicao_exigida": false,
+  "arquivo_local": "som/bib/freesound/706115.mp3",
+  "papeis": [
+   "puxador"
+  ],
+  "consulta": "grab object foley",
+  "descricao": "Freesound: collaborative database of creative-commons licensed sound for musicians and sound lovers. Have you freed your sound today?",
+  "etiquetas": [
+   "catch",
+   "collect",
+   "foley",
+   "gadget",
+   "grab",
+   "hold",
+   "item",
+   "object",
+   "pick-up",
+   "tech",
+   "throw"
+  ],
+  "obs": "prévia pública em MP3 128 kb/s do Freesound (o original exige login)"
+ },
+ {
+  "id": "850376",
+  "titulo": "Keys Grabbed",
+  "autor": "Flip_Book",
+  "url_pagina": "https://freesound.org/people/Flip_Book/sounds/850376/",
+  "url_arquivo": "https://cdn.freesound.org/previews/850/850376_18700158-hq.mp3",
+  "licenca": "CC0 1.0",
+  "atribuicao_exigida": false,
+  "arquivo_local": "som/bib/freesound/850376.mp3",
+  "papeis": [
+   "puxador"
+  ],
+  "consulta": "grab object foley",
+  "descricao": "Freesound: collaborative database of creative-commons licensed sound for musicians and sound lovers. Have you freed your sound today?",
+  "etiquetas": [
+   "close-up",
+   "everyday",
+   "foley",
+   "grab",
+   "jingle",
+   "keys",
+   "metal",
+   "movement",
+   "object",
+   "pickup",
+   "realistic",
+   "sound-effect"
+  ],
+  "obs": "prévia pública em MP3 128 kb/s do Freesound (o original exige login)"
+ },
+ {
+  "id": "850375",
+  "titulo": "Keys Grabbed",
+  "autor": "Flip_Book",
+  "url_pagina": "https://freesound.org/people/Flip_Book/sounds/850375/",
+  "url_arquivo": "https://cdn.freesound.org/previews/850/850375_18700158-hq.mp3",
+  "licenca": "CC0 1.0",
+  "atribuicao_exigida": false,
+  "arquivo_local": "som/bib/freesound/850375.mp3",
+  "papeis": [
+   "puxador"
+  ],
+  "consulta": "grab object foley",
+  "descricao": "Freesound: collaborative database of creative-commons licensed sound for musicians and sound lovers. Have you freed your sound today?",
+  "etiquetas": [
+   "close-up",
+   "everyday",
+   "foley",
+   "grab",
+   "jingle",
+   "keys",
+   "metal",
+   "movement",
+   "object",
+   "pickup",
+   "realistic",
+   "sound-effect"
+  ],
+  "obs": "prévia pública em MP3 128 kb/s do Freesound (o original exige login)"
+ },
+ {
+  "id": "743237",
+  "titulo": "Item Snapping into Slot",
+  "autor": "qubodup",
+  "url_pagina": "https://freesound.org/people/qubodup/sounds/743237/",
+  "url_arquivo": "https://cdn.freesound.org/previews/743/743237_71257-hq.mp3",
+  "licenca": "CC0 1.0",
+  "atribuicao_exigida": false,
+  "arquivo_local": "som/bib/freesound/743237.mp3",
+  "papeis": [
+   "puxador"
+  ],
+  "consulta": "grab object foley",
+  "descricao": "Freesound: collaborative database of creative-commons licensed sound for musicians and sound lovers. Have you freed your sound today?",
+  "etiquetas": [
+   "click",
+   "foley",
+   "game",
+   "grab",
+   "grid",
+   "interact",
+   "inventory",
+   "inventory-management",
+   "item",
+   "items",
+   "negatory",
+   "object",
+   "pick-up",
+   "slot",
+   "snap",
+   "snapping",
+   "video-game"
+  ],
+  "obs": "prévia pública em MP3 128 kb/s do Freesound (o original exige login)"
+ },
+ {
+  "id": "575324",
+  "titulo": "plastic egg carton handling",
+  "autor": "breadparticles",
+  "url_pagina": "https://freesound.org/people/breadparticles/sounds/575324/",
+  "url_arquivo": "https://cdn.freesound.org/previews/575/575324_9246516-hq.mp3",
+  "licenca": "CC0 1.0",
+  "atribuicao_exigida": false,
+  "arquivo_local": "som/bib/freesound/575324.mp3",
+  "papeis": [
+   "leite"
+  ],
+  "consulta": "carton handling",
+  "descricao": "Freesound: collaborative database of creative-commons licensed sound for musicians and sound lovers. Have you freed your sound today?",
+  "etiquetas": [
+   "carton",
+   "container",
+   "crackle",
+   "crinkle",
+   "foley",
+   "handling",
+   "hit",
+   "plastic"
+  ],
+  "obs": "prévia pública em MP3 128 kb/s do Freesound (o original exige login)"
+ },
+ {
+  "id": "524841",
+  "titulo": "Carton Handling",
+  "autor": "Sheyvan",
+  "url_pagina": "https://freesound.org/people/Sheyvan/sounds/524841/",
+  "url_arquivo": "https://cdn.freesound.org/previews/524/524841_3248005-hq.mp3",
+  "licenca": "CC0 1.0",
+  "atribuicao_exigida": false,
+  "arquivo_local": "som/bib/freesound/524841.mp3",
+  "papeis": [
+   "leite"
+  ],
+  "consulta": "carton handling",
+  "descricao": "Freesound: collaborative database of creative-commons licensed sound for musicians and sound lovers. Have you freed your sound today?",
+  "etiquetas": [
+   "Carton",
+   "Handling",
+   "Paper"
+  ],
+  "obs": "prévia pública em MP3 128 kb/s do Freesound (o original exige login)"
+ },
+ {
+  "id": "215475",
+  "titulo": "CardboardBoxes_01.wav",
+  "autor": "TheWAVLab",
+  "url_pagina": "https://freesound.org/people/TheWAVLab/sounds/215475/",
+  "url_arquivo": "https://cdn.freesound.org/previews/215/215475_9083-hq.mp3",
+  "licenca": "CC0 1.0",
+  "atribuicao_exigida": false,
+  "arquivo_local": "som/bib/freesound/215475.mp3",
+  "papeis": [
+   "leite"
+  ],
+  "consulta": "carton handling",
+  "descricao": "Freesound: collaborative database of creative-commons licensed sound for musicians and sound lovers. Have you freed your sound today?",
+  "etiquetas": [
+   "box",
+   "cardboard",
+   "carton",
+   "crash",
+   "falling",
+   "handling",
+   "noise"
+  ],
+  "obs": "prévia pública em MP3 128 kb/s do Freesound (o original exige login)"
+ },
+ {
+  "id": "364737",
+  "titulo": "rub-handle-cardboard-box.wav",
+  "autor": "newagesoup",
+  "url_pagina": "https://freesound.org/people/newagesoup/sounds/364737/",
+  "url_arquivo": "https://cdn.freesound.org/previews/364/364737_4067257-hq.mp3",
+  "licenca": "CC0 1.0",
+  "atribuicao_exigida": false,
+  "arquivo_local": "som/bib/freesound/364737.mp3",
+  "papeis": [
+   "leite"
+  ],
+  "consulta": "carton handling",
+  "descricao": "Freesound: collaborative database of creative-commons licensed sound for musicians and sound lovers. Have you freed your sound today?",
+  "etiquetas": [
+   "board",
+   "box",
+   "break",
+   "card",
+   "card-board",
+   "cardboard",
+   "carton",
+   "crunch",
+   "drum",
+   "eat",
+   "foley",
+   "handle",
+   "hit",
+   "natural",
+   "pack",
+   "package",
+   "rub",
+   "rubbing"
+  ],
+  "obs": "prévia pública em MP3 128 kb/s do Freesound (o original exige login)"
+ },
+ {
+  "id": "807384",
+  "titulo": "Contactor/motor overload relay noises",
+  "autor": "tt_runscript",
+  "url_pagina": "https://freesound.org/people/tt_runscript/sounds/807384/",
+  "url_arquivo": "https://cdn.freesound.org/previews/807/807384_5365416-hq.mp3",
+  "licenca": "CC0 1.0",
+  "atribuicao_exigida": false,
+  "arquivo_local": "som/bib/freesound/807384.mp3",
+  "papeis": [
+   "rele"
+  ],
+  "consulta": "relay click",
+  "descricao": "Freesound: collaborative database of creative-commons licensed sound for musicians and sound lovers. Have you freed your sound today?",
+  "etiquetas": [
+   "click",
+   "contactor",
+   "electrical",
+   "industrial",
+   "machine",
+   "relay",
+   "thunk"
+  ],
+  "obs": "prévia pública em MP3 128 kb/s do Freesound (o original exige login)"
+ },
+ {
+  "id": "876593",
+  "titulo": "relay1.wav",
+  "autor": "Mihacappy",
+  "url_pagina": "https://freesound.org/people/Mihacappy/sounds/876593/",
+  "url_arquivo": "https://cdn.freesound.org/previews/876/876593_10594370-hq.mp3",
+  "licenca": "CC0 1.0",
+  "atribuicao_exigida": false,
+  "arquivo_local": "som/bib/freesound/876593.mp3",
+  "papeis": [
+   "rele"
+  ],
+  "consulta": "relay click",
+  "descricao": "Freesound: collaborative database of creative-commons licensed sound for musicians and sound lovers. Have you freed your sound today?",
+  "etiquetas": [
+   "button",
+   "clack",
+   "click",
+   "relay",
+   "switch"
+  ],
+  "obs": "prévia pública em MP3 128 kb/s do Freesound (o original exige login)"
+ },
+ {
+  "id": "740253",
+  "titulo": "Relay 3",
+  "autor": "JoontheFloof",
+  "url_pagina": "https://freesound.org/people/JoontheFloof/sounds/740253/",
+  "url_arquivo": "https://cdn.freesound.org/previews/740/740253_16085440-hq.mp3",
+  "licenca": "CC0 1.0",
+  "atribuicao_exigida": false,
+  "arquivo_local": "som/bib/freesound/740253.mp3",
+  "papeis": [
+   "rele"
+  ],
+  "consulta": "relay click",
+  "descricao": "Freesound: collaborative database of creative-commons licensed sound for musicians and sound lovers. Have you freed your sound today?",
+  "etiquetas": [
+   "Electronic",
+   "Relay",
+   "click",
+   "component",
+   "control",
+   "double-click",
+   "electric",
+   "robotic",
+   "robotics"
+  ],
+  "obs": "prévia pública em MP3 128 kb/s do Freesound (o original exige login)"
+ },
+ {
+  "id": "845625",
+  "titulo": "Siemens Dishwasher – Close Mechanical Detail, Water Jets & Pump Action (LCT 440 Pure, 96 kHz) - 240220_009_Tr3",
+  "autor": "TSP-Talk",
+  "url_pagina": "https://freesound.org/people/TSP-Talk/sounds/845625/",
+  "url_arquivo": "https://cdn.freesound.org/previews/845/845625_14079354-hq.mp3",
+  "licenca": "CC0 1.0",
+  "atribuicao_exigida": false,
+  "arquivo_local": "som/bib/freesound/845625.mp3",
+  "papeis": [
+   "rele"
+  ],
+  "consulta": "relay click",
+  "descricao": "Freesound: collaborative database of creative-commons licensed sound for musicians and sound lovers. Have you freed your sound today?",
+  "etiquetas": [
+   "24bit",
+   "96khz",
+   "click",
+   "close-up",
+   "condenser",
+   "detail",
+   "dishwasher",
+   "foley",
+   "high-frequency",
+   "large-diaphragm",
+   "lct440-pure",
+   "mechanical",
+   "pcm",
+   "pump",
+   "spray-arm",
+   "valve",
+   "water-jet",
+   "zoom-f6"
+  ],
+  "obs": "prévia pública em MP3 128 kb/s do Freesound (o original exige login)"
+ },
+ {
+  "id": "183994",
+  "titulo": "Light Switch On Off.flac",
+  "autor": "qubodup",
+  "url_pagina": "https://freesound.org/people/qubodup/sounds/183994/",
+  "url_arquivo": "https://cdn.freesound.org/previews/183/183994_71257-hq.mp3",
+  "licenca": "CC0 1.0",
+  "atribuicao_exigida": false,
+  "arquivo_local": "som/bib/freesound/183994.mp3",
+  "papeis": [
+   "rele"
+  ],
+  "consulta": "relay click",
+  "descricao": "Freesound: collaborative database of creative-commons licensed sound for musicians and sound lovers. Have you freed your sound today?",
+  "etiquetas": [
+   "button",
+   "control",
+   "controller",
+   "controlling",
+   "controls",
+   "electricity",
+   "light",
+   "mechanical",
+   "panel",
+   "press",
+   "relay",
+   "steampunk",
+   "switch",
+   "switching"
+  ],
+  "obs": "prévia pública em MP3 128 kb/s do Freesound (o original exige login)"
+ },
+ {
+  "id": "634144",
+  "titulo": "Running Oven Fan and Thermostat Noises",
+  "autor": "Erbsland-Music",
+  "url_pagina": "https://freesound.org/people/Erbsland-Music/sounds/634144/",
+  "url_arquivo": "https://cdn.freesound.org/previews/634/634144_522747-hq.mp3",
+  "licenca": "CC0 1.0",
+  "atribuicao_exigida": false,
+  "arquivo_local": "som/bib/freesound/634144.mp3",
+  "papeis": [
+   "rele"
+  ],
+  "consulta": "thermostat click",
+  "descricao": "Freesound: collaborative database of creative-commons licensed sound for musicians and sound lovers. Have you freed your sound today?",
+  "etiquetas": [
+   "beep",
+   "clicks",
+   "erbsland",
+   "erbsland-music",
+   "fan",
+   "field-recording",
+   "high-quality",
+   "kitchen",
+   "motor",
+   "operation",
+   "oven",
+   "rise",
+   "signals",
+   "stereo",
+   "thermostat"
   ],
   "obs": "prévia pública em MP3 128 kb/s do Freesound (o original exige login)"
  }
