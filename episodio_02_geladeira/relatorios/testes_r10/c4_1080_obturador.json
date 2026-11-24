@@ -175,7 +175,7 @@
  "zfighting_blocos_persistentes_r10_x_r9_q156_183": {
   "r10": 156,
   "r9_sem_obturador": 373,
-  "leitura": "blocos que alternam no limiar sensível em >= 3 trios seguidos: concentrados nas bordas em movimento da aproximação (caem com o obturador); não são conflito de profundidade"
+  "leitura": "blocos que alternam no limiar sensível em >= 3 trios seguidos: bordas em movimento da aproximação (caem com o obturador); não são conflito de profundidade"
  },
  "borda_178_179": {
   "media": 0.91,
@@ -186,6 +186,11 @@
    "p99": 5.0,
    "px_acima_10_pct": 0.33
   },
-  "leitura": "troca de 5 sub-quadros integrados (menos ruído de AO, leve desfoque) para 1 amostra: diferença só em contornos finos e granulado do AO junto ao evaporador; câmera já quase parada. Opção: estender o obturador até 184 (fim do plano, +30 sub-quadros, ~15 min em 1080) e eliminar a troca dentro do C4."
+  "leitura": "troca de 5 sub-quadros integrados para 1 amostra: diferença só em contornos finos e granulado do AO junto ao evaporador; opção: estender o obturador até 184 (+30 sub-quadros, ~15 min em 1080)"
+ },
+ "d1_1080_q0_20": {
+  "quadros_com_blocos": 3,
+  "pior_blocos": 1,
+  "leitura": "início do D1 estável"
  }
 }

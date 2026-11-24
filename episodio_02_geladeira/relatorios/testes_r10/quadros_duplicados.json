@@ -1,0 +1,8 @@
+{
+ "perfil_final_passo": 1,
+ "fps": 30,
+ "quadros_fonte": 5638,
+ "identicos_ao_anterior": 130,
+ "identicos_no_trecho_visivel": 0,
+ "leitura": "os 130 ficam nas margens antes/depois do trecho visível (câmera ainda parada antes da primeira chave), usados só em fusões/cortes; nenhum quadro do vídeo repete o anterior por duplicação do pipeline"
+}
