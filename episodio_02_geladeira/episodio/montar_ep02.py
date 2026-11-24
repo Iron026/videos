@@ -37,7 +37,9 @@ def _T_POUSO_B5():   # rodada 11: ataque de "geladeira" (≥ 20 s) — mesmo ins
 def faixa(a, b, txt): return (PL_T[a][0], PL_T[b][1], txt)
 PL_T = {p['id']: (p['t0'], p['t1']) for p in PLANOS}
 CHIPS = [faixa('A3', 'A3', 'Corte ilustrativo'),
-         ((_T_POUSO_B5() + 0.15, PL_T['B7'][1], 'Tempo acelerado') if os.environ.get('GARRAFA_B5') == '1' else faixa('B5', 'B7', 'Tempo acelerado')),   # R11: só depois do pouso da garrafa (antes, movimento em tempo real) faixa('C2', 'H2', 'Corte ilustrativo'), faixa('D4', 'D4', 'Fluxo desacelerado'),
+         # R11 (GARRAFA_B5=1): "Tempo acelerado" só depois do pouso da garrafa (antes dele, o movimento é em tempo real)
+         ((_T_POUSO_B5() + 0.15, PL_T['B7'][1], 'Tempo acelerado') if os.environ.get('GARRAFA_B5') == '1' else faixa('B5', 'B7', 'Tempo acelerado')),
+         faixa('C2', 'H2', 'Corte ilustrativo'), faixa('D4', 'D4', 'Fluxo desacelerado'),
          faixa('F2', 'F2', 'Fluxo desacelerado'), faixa('D4', 'D4', 'Canal ampliado (esquema)'), faixa('F2', 'F2', 'Canal ampliado (esquema)'), faixa('G3', 'G3', 'Fluxo desacelerado'), faixa('G3', 'G3', 'Lupa: canal ampliado (esquema)'), faixa('E3', 'E3', 'Câmera lenta'),
          faixa('I3', 'I4', 'Corte ilustrativo'), faixa('J3', 'J3', 'Corte ilustrativo')]
 # v4: avisos que dependem do MODO ativo (visão térmica; parede em corte só na metade traseira da tela dividida) são
