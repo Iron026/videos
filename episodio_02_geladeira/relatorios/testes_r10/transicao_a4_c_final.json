@@ -120,7 +120,7 @@
    "deslocamento_desde_quadro_anterior_px": 162,
    "rastro_px": 73,
    "rastro_sobre_deslocamento": 0.494,
-   "erro_posicao_interior_px": 1,
+   "erro_posicao_interior_px": 2,
    "correlacao": 0.968
   },
   {
@@ -149,7 +149,7 @@
    "rastro_px": 22,
    "rastro_sobre_deslocamento": 0.491,
    "erro_posicao_interior_px": 1,
-   "correlacao": 0.997
+   "correlacao": 0.996
   },
   {
    "quadro": 177,
@@ -176,20 +176,18 @@
    "identico_ao_corte": true
   }
  ],
- "continuidade_rosto_q30_a_q40": {
+ "continuidade_rosto_q30_a_q38": {
   "saltos": [
    4.78,
    6.05,
    7.35,
-   5.17,
-   0.32,
-   0.31,
-   0.31,
-   0.3,
-   0.3,
-   0.29
+   6.75,
+   6.34,
+   6.3,
+   6.4,
+   6.79
   ],
-  "nota": "q≤33 = A4 aprovado; q≥34 = quadro-ponte (rosto continuado). Junção = 4º valor (q33→q34)"
+  "nota": "q≤33 = A4 aprovado; q≥34 = quadro-ponte A4_rosto_c (câmera aprovada continuada). Junção = 4º valor (q33→q34). A transição usa até q37"
  },
  "continuidade_interior_q27_a_q37": {
   "saltos": [

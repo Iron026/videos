@@ -58,8 +58,8 @@ def seq(lado, f0, f1):
     for f in range(f0, f1 + 1):
         g = M.meta('A4') + f / FPS; out.append(cinza(M._ponte(lado, g)))
     return [round(float(np.abs(out[k] - out[k - 1]).mean()), 2) for k in range(1, len(out))]
-res['continuidade_rosto_q30_a_q40'] = dict(saltos=seq('rosto', 30, 40), nota='q≤33 = A4 aprovado; q≥34 = quadro-ponte (rosto continuado). Junção = 4º valor (q33→q34)')
+res['continuidade_rosto_q30_a_q38'] = dict(saltos=seq('rosto', 30, 38), nota='q≤33 = A4 aprovado; q≥34 = quadro-ponte A4_rosto_c (câmera aprovada continuada). Junção = 4º valor (q33→q34). A transição usa até q37')
 res['continuidade_interior_q27_a_q37'] = dict(saltos=seq('interior', 27, 37), nota='q≤33 = quadro-ponte (interior antes do corte); q≥34 = A4 aprovado. Junção = 7º valor (q33→q34)')
 json.dump(res, open(os.path.join(M.A, '..', 'relatorios', 'testes_r10', f'transicao_a4_c_{PERFIL}.json'), 'w'), ensure_ascii=False, indent=1)
 for r in res['quadros']: print(r)
-print('rosto', res['continuidade_rosto_q30_a_q40']['saltos']); print('interior', res['continuidade_interior_q27_a_q37']['saltos'])
+print('rosto', res['continuidade_rosto_q30_a_q38']['saltos']); print('interior', res['continuidade_interior_q27_a_q37']['saltos'])

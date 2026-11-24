@@ -1,0 +1,23 @@
+{
+ "arquivo": "_v10_si_g_pop.mp4",
+ "lufs_aac": -14.1,
+ "pico_verdadeiro_aac_dbtp": -1.68,
+ "perda_mono_db": -0.01,
+ "ultimo_0_5s_dbfs": -45.6,
+ "stems_medidos": {
+  "voz": "ep02_voz_r9ref_f32.wav",
+  "resto": "ep02_efeitos_r9ref_f32.wav,ep02_mecanismo_r9ref_f32.wav,ep02_ambiencias_r9ref_f32.wav,ep02_efeitos_r10_si_g_pop.wav,ep02_mecanismo_r10_si_g_pop.wav,ep02_musica_r10_si_g_pop.wav"
+ },
+ "voz_menos_resto_celular_db": {
+  "pior": -4.0,
+  "p5": 12.7,
+  "mediana": 26.0,
+  "janelas": 370
+ },
+ "metas": {
+  "lufs": -14.0,
+  "tp_max": -1.5,
+  "voz_celular_min_db": 10.0
+ },
+ "aprovado_tecnico": true
+}
