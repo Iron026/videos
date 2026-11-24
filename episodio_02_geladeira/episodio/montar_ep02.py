@@ -25,6 +25,7 @@ FUSAO = 0.20
 TRANSICAO_A4 = os.environ.get('TRANSICAO_A4', 'fusao')   # rodada 9 (teste): fusao (V8/V9a) | escuro | corte
 FUSOES = {'B1': 0.30, 'C1': 0.30, 'C2': 0.0, 'D1': 0.30, 'E1': 0.30, 'F1': 0.30, 'I1': 0.30, 'J1': 0.30, 'J4': 0.40}   # fusão na ENTRADA do plano   # v3: C2 em corte SECO no ataque de "Escondido"
 if TRANSICAO_A4 == 'corte': FUSOES['A4'] = 0.0
+SEM_LEGENDAS = os.environ.get('SEM_LEGENDAS') == '1'   # rodada 11: master de imagem sem legendas (o áudio troca depois, sem refazer a imagem)
 # avisos honestos (canto superior direito), por plano
 CAIXAS = [] if os.environ.get('CAIXAS_EP02') == '1' else None   # rodada 7: registro das caixas desenhadas (testes de sobreposição)
 def _cx(tipo, nome, caixa):
@@ -640,7 +641,8 @@ def compor(g):
         for j, (nome, u, v, a, val) in enumerate(ms): manometro(img, nome, u, v, a * k, val, (-1 if j % 2 == 0 else 1) if len(ms) > 1 else 0, pid)
         if pid in INSET: lupa(img, pid, g, k)
     d = ImageDraw.Draw(img)
-    if R9: legenda_r9(d, g)
+    if SEM_LEGENDAS: pass   # rodada 11: master de imagem sem legendas (rótulos, cartões, avisos e lupa continuam)
+    elif R9: legenda_r9(d, g)
     else:
         for (a, b, txt) in LEG:
             if a <= g < b: d.text((W // 2, int(0.74 * H)), txt, font=F_LEG, fill=(255, 255, 255), stroke_width=max(2, int(7 * ESC)), stroke_fill=ESCURO, anchor='mm'); _cx('legenda', txt, d.textbbox((W // 2, int(0.74 * H)), txt, font=F_LEG, anchor='mm', stroke_width=max(2, int(7 * ESC))))
