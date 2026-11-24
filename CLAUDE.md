@@ -327,3 +327,6 @@ Arquivos-chave (em `episodio_01_navio_v2/`): `episodio/decupagem_ep01_v3.md` (de
   stem próprio com nível relativo à voz NAQUELE instante (−12 dB na faixa do celular) e medir.
 - Variantes de mixagem não podem sobrescrever stems nem registros aprovados (sufixo próprio; hash antes/depois).
 - Páginas com proteção anti-robô (Pixabay) não se acessam automaticamente: pedir a confirmação da licença ao usuário.
+- **Re-render localizado: passar os planos** (`render_definitivo.py --perfil revisao B5`). Sem a lista, o script percorre o
+  episódio e refaz planos cujos quadros de 540 vieram de outros scripts (sem `_manifesto_quadros.json`: D2, D4, E1–E4,
+  F1, F2, G3z, J4) — no Ep. 02 isso re-renderizou o D2 em 540 sem necessidade (conteúdo equivalente; vídeo V10 intacto).
