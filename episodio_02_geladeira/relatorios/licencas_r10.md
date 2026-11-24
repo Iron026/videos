@@ -93,6 +93,8 @@ redistribuir o arquivo isolado. O registro acima permite baixar de novo e confer
 | Publicação no Mixkit | 28/01/2020 |
 | Atribuição | não exigida |
 
+**Confirmação do usuário (24/11):** o arquivo enviado por você (`mixkit-secret-garden-595.mp3`) é **idêntico byte a byte** ao baixado (mesmo SHA-256 `fda04cb4…`, 153,05 s, 256 kb/s). A faixa usada é exatamente a que você escolheu.
+
 **Como a licença foi conferida:**
 - os metadados da listagem de Film Score (`relatorios/testes_r10/mixkit_film_score_listagem_secret_garden.html`) trazem
   `"copyrightNotice": "Mixkit Stock Music Free License"` e o link da licença;
