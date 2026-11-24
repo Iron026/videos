@@ -78,6 +78,44 @@ redistribuir o arquivo isolado. O registro acima permite baixar de novo e confer
 - **Válvulas:** são uma **representação**. O som é um clique de relé abafado, não uma gravação da válvula de um
   compressor, e está declarado assim no relatório.
 
+
+## Rodada 11: trilha escolhida pelo usuário, "Secret Garden" (substitui "Rest Now")
+
+| Campo | Valor |
+|---|---|
+| Título | Secret Garden |
+| Autor | Eugenio Mininni |
+| Fonte | Mixkit (Envato), gênero Film Score |
+| Página | https://mixkit.co/free-stock-music/film-score/ (item 595) |
+| Arquivo original | https://assets.mixkit.co/music/595/595.mp3 (MP3 256 kb/s, 44,1 kHz, 2 min 33 s) |
+| Arquivo baixado | SHA-256 `fda04cb4597c1ffd80d14ce82a74f6938c657952647dc50889138cd3e4903034` |
+| Licença | **Mixkit Stock Music Free License** (https://mixkit.co/license/#musicFree) |
+| Publicação no Mixkit | 28/01/2020 |
+| Atribuição | não exigida |
+
+**Como a licença foi conferida:**
+- os metadados da listagem de Film Score (`relatorios/testes_r10/mixkit_film_score_listagem_secret_garden.html`) trazem
+  `"copyrightNotice": "Mixkit Stock Music Free License"` e o link da licença;
+- o texto da licença foi baixado de novo em 24/11 e é idêntico ao arquivado (`testes_r10/musicFree.html`);
+- o Mixkit não tem página fixa para o item: o endereço `free-stock-music/secret-garden-595/` redireciona para a busca, que
+  mostra o mesmo item 595.
+
+**Permitido:** uso comercial; YouTube; redes sociais; anúncios online.
+
+**Não permitido:** TV, rádio, CD, DVD e jogos; remixar a faixa ou incorporá-la numa faixa só de música; registrar em
+sistemas de gestão de direitos (Content ID); redistribuir o arquivo isolado.
+
+**Edição para sincronia (não é remix):**
+- faixa deslocada em 1,5 s;
+- filtro passa-altas de 80 Hz;
+- cerca de −3 dB entre 0,9 e 3,2 kHz;
+- volume ajustado por trecho do episódio, abaixando sob a fala;
+- o final natural da música termina às 145,7 s.
+
+**Fora do git:** o arquivo isolado da faixa fica fora do repositório.
+
+"Rest Now" continua registrada acima, como referência histórica da versão experimental da rodada 10.
+
 ## Narração (restrição independente)
 
 - **Origem:** ElevenLabs, plano gratuito: **sem uso comercial**, atribuição obrigatória.
