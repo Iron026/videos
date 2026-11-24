@@ -416,9 +416,10 @@
     3.335
    ],
    "ataque_na_gravacao": 3.04,
-   "db": -24.0,
-   "stem": "efeitos",
-   "uso": "garrafa pousa na prateleira de vidro (B5)"
+   "stem": "destaque",
+   "uso": "garrafa pousa na prateleira de vidro (B5)",
+   "rel_voz_celular_db": -12.0,
+   "ganho_db": -8.9
   }
  ],
  "variantes": {
@@ -426,7 +427,7 @@
    "lufs_wav": -14.08,
    "tp_wav": -1.8,
    "limitador_max_db": -3.86,
-   "diferenca_max_v9_dbfs": -14.9
+   "diferenca_max_v9_dbfs": -8.9
   },
   "musica": {
    "lufs_wav": -14.07,
@@ -435,10 +436,10 @@
    "diferenca_max_v9_dbfs": -23.4
   },
   "completo": {
-   "lufs_wav": -14.07,
+   "lufs_wav": -14.08,
    "tp_wav": -1.8,
    "limitador_max_db": -3.96,
-   "diferenca_max_v9_dbfs": -15.1
+   "diferenca_max_v9_dbfs": -8.9
   }
  },
  "musica_lufs": -40.29,

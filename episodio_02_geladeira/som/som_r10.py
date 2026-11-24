@@ -52,15 +52,19 @@ for lista, base, nome in ((DES, -24.0, 'descarga'), (SUC, -30.0, 'sucção')):
 # ataque de "geladeira" (mesmo instante da cena B5_garrafa); evento "put down" da mesma gravação de prateleira de vidro (3,04 s)
 if os.environ.get('GARRAFA_B5') == '1':
     T_POUSO = next(w['inicio'] for w in json.load(open(os.path.join(R_, 'roteiro', 'palavras.json'))) if w['palavra'].strip('.,').lower() == 'geladeira' and w['inicio'] >= 20.0)
-    evento(T_POUSO, '624481', 3.015, 0.32, 3.04, -24.0, 'efeitos', 'garrafa pousa na prateleira de vidro (B5)', -0.15, filtro=abafa(6000))
+    DESTAQUE = [(T_POUSO, '624481', 3.015, 0.32, 3.04, -0.15, 'garrafa pousa na prateleira de vidro (B5)', abafa(6000))]
 # rodada 11 (pedido, teste desligado = aprovado): APRESENTA_R11=madeira|pop → um som curto e discreto quando cada COMPONENTE
 # novo é apresentado (primeiro quadro visível do rótulo com o nome: som/apresentacoes_r11.json); pan suave pela posição do
 # rótulo. Gravações Freesound CC0: 551921 "Tiny Soft Lay Down Wood Table" (toque de madeira, ~700 Hz) | 776443 "pop out,
 # bubble, soft bursting" (estalo curto, ~2,7 kHz). Só 5 eventos: rótulos de estado (entra/sai, quente/frio) não ganham som.
-AP = {'madeira': ('551921', 0.345, 0.30, 0.365, -27.0), 'pop': ('776443', 0.135, 0.20, 0.150, -30.0)}.get(os.environ.get('APRESENTA_R11', ''))
+# 1ª versão: dentro do stem de efeitos, com o abaixamento sob a fala → medido 27–31 dB abaixo da voz na faixa do celular
+# (inaudível; o usuário não ouviu). Agora: stem PRÓPRIO 'destaque', fora do abaixamento, com o nível de CADA evento
+# calculado para ficar DESTAQUE_REL_DB (padrão −12 dB) abaixo da voz naquele instante (faixa do celular, 350 Hz–7 kHz).
+AP = {'madeira': ('551921', 0.345, 0.30, 0.365), 'pop': ('776443', 0.135, 0.20, 0.150)}.get(os.environ.get('APRESENTA_R11', ''))
+if 'DESTAQUE' not in dir(): DESTAQUE = []
 if AP:
     for ev_ in json.load(open(os.path.join(A, 'apresentacoes_r11.json')))['eventos']:
-        evento(ev_['t'], AP[0], AP[1], AP[2], AP[3], AP[4], 'efeitos', f"apresentação: {ev_['nome']} ({ev_['plano']})", round((ev_['u'] - 0.5) * 0.4, 2), 0.15)
+        DESTAQUE.append((ev_['t'], AP[0], AP[1], AP[2], AP[3], round((ev_['u'] - 0.5) * 0.4, 2), f"apresentação: {ev_['nome']} ({ev_['plano']})", None))
 ir = B.S.resposta_impulso('cozinha')
 NOVO = {}
 for k in B.STEMS:
@@ -81,6 +85,21 @@ meio = lambda x: x - lpz(x, 200, 4) - hpz(x, 5000, 4)
 nm = sum(meio(NOVO[k]) for k in NOVO); tot = np.sqrt(mm(((meio(resto) + nm) ** 2).mean(1))) + 1e-9
 gfx = suaviza(1 - (1 - np.maximum(np.minimum(1.0, vm * db(-13.0) / tot), db(-18.0))) * ativa, 0.010, 0.45)
 for k in NOVO: NOVO[k] = NOVO[k] - meio(NOVO[k]) + meio(NOVO[k]) * gfx[:, None]
+
+# ------------------------------------------------------------------ rodada 11: stem 'destaque' (pouso da garrafa, apresentações)
+from scipy.signal import butter as _bt, sosfiltfilt as _sf
+_cel = _bt(4, [350, 7000], 'bandpass', fs=SR, output='sos'); _rms = lambda x: float(np.sqrt(np.mean(x ** 2)) + 1e-12)
+REL = float(os.environ.get('DESTAQUE_REL_DB', '-12')); DEST = np.zeros((N, 2)); DEST_REL = []
+for (t, fonte, ini, dur, ataque, pan, uso, filtro) in DESTAQUE:
+    x = B.trecho(fonte, ini, dur, fi=0.003, fo=min(0.08, dur / 3), uso=uso)
+    if filtro: x = filtro(x)
+    x = x / (np.abs(x).max() + 1e-9); i0 = int((t - (ataque - ini)) * SR); x = x[: N - i0]
+    a, b = int((t - 0.02) * SR), int((t + 0.20) * SR)                                  # janela do evento percebido
+    rv = _rms(_sf(_cel, V9['voz'][a:b].mean(1))); rv = rv if rv > 1e-5 else _rms(_sf(_cel, V9['voz'][a - SR // 2: b + SR // 2].mean(1)))
+    xs = np.zeros((N, 2)); xs[i0:i0 + len(x)] = x; xs[:, 0] *= math.sqrt(0.5 - pan / 2) * math.sqrt(2); xs[:, 1] *= math.sqrt(0.5 + pan / 2) * math.sqrt(2)
+    rx = _rms(_sf(_cel, xs[a:b].mean(1))); g = rv * db(REL) / rx; DEST += xs * g
+    EV.append(dict(t=round(t, 3), fonte=fonte, trecho=[ini, round(ini + dur, 3)], ataque_na_gravacao=ataque, stem='destaque', uso=uso, rel_voz_celular_db=REL, ganho_db=round(20 * math.log10(g), 1)))
+NOVO['efeitos'] = NOVO['efeitos'] + DEST
 
 # ------------------------------------------------------------------ trilha
 TRILHAS = {   # rodada 11: a trilha é escolhida por MUSICA (padrão: Rest Now, a versão experimental da rodada 10, preservada)

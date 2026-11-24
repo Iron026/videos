@@ -416,9 +416,10 @@
     3.335
    ],
    "ataque_na_gravacao": 3.04,
-   "db": -24.0,
-   "stem": "efeitos",
-   "uso": "garrafa pousa na prateleira de vidro (B5)"
+   "stem": "destaque",
+   "uso": "garrafa pousa na prateleira de vidro (B5)",
+   "rel_voz_celular_db": -12.0,
+   "ganho_db": -8.9
   },
   {
    "t": 41.57,
@@ -428,9 +429,10 @@
     0.645
    ],
    "ataque_na_gravacao": 0.365,
-   "db": -27.0,
-   "stem": "efeitos",
-   "uso": "apresentação: fluido refrigerante (C3)"
+   "stem": "destaque",
+   "uso": "apresentação: fluido refrigerante (C3)",
+   "rel_voz_celular_db": -12.0,
+   "ganho_db": -14.6
   },
   {
    "t": 49.69,
@@ -440,9 +442,10 @@
     0.645
    ],
    "ataque_na_gravacao": 0.365,
-   "db": -27.0,
-   "stem": "efeitos",
-   "uso": "apresentação: Evaporador (D1)"
+   "stem": "destaque",
+   "uso": "apresentação: Evaporador (D1)",
+   "rel_voz_celular_db": -12.0,
+   "ganho_db": -7.2
   },
   {
    "t": 75.563,
@@ -452,9 +455,10 @@
     0.645
    ],
    "ataque_na_gravacao": 0.365,
-   "db": -27.0,
-   "stem": "efeitos",
-   "uso": "apresentação: Compressor (E2)"
+   "stem": "destaque",
+   "uso": "apresentação: Compressor (E2)",
+   "rel_voz_celular_db": -12.0,
+   "ganho_db": -9.6
   },
   {
    "t": 88.343,
@@ -464,9 +468,10 @@
     0.645
    ],
    "ataque_na_gravacao": 0.365,
-   "db": -27.0,
-   "stem": "efeitos",
-   "uso": "apresentação: Condensador (F1)"
+   "stem": "destaque",
+   "uso": "apresentação: Condensador (F1)",
+   "rel_voz_celular_db": -12.0,
+   "ganho_db": -5.0
   },
   {
    "t": 101.23,
@@ -476,17 +481,18 @@
     0.645
    ],
    "ataque_na_gravacao": 0.365,
-   "db": -27.0,
-   "stem": "efeitos",
-   "uso": "apresentação: Capilar (G2)"
+   "stem": "destaque",
+   "uso": "apresentação: Capilar (G2)",
+   "rel_voz_celular_db": -12.0,
+   "ganho_db": -12.2
   }
  ],
  "variantes": {
   "efeitos": {
-   "lufs_wav": -14.08,
+   "lufs_wav": -14.07,
    "tp_wav": -1.8,
    "limitador_max_db": -3.86,
-   "diferenca_max_v9_dbfs": -14.9
+   "diferenca_max_v9_dbfs": -5.6
   },
   "musica": {
    "lufs_wav": -14.07,
@@ -498,7 +504,7 @@
    "lufs_wav": -14.07,
    "tp_wav": -1.8,
    "limitador_max_db": -3.96,
-   "diferenca_max_v9_dbfs": -15.1
+   "diferenca_max_v9_dbfs": -5.7
   }
  },
  "musica_lufs": -40.29,
