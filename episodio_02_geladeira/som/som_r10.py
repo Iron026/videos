@@ -48,6 +48,19 @@ for lista, base, nome in ((DES, -24.0, 'descarga'), (SUC, -30.0, 'sucção')):
         if not (B.PLAN['E2']['t0'] <= t < B.PLAN['E3']['t1']): continue
         gd = 20 * math.log10(gdist[int(t * SR)] + 1e-9)
         evento(t, '876593', 0.005, 0.06, 0.015, base + gd, 'mecanismo', f'válvula de {nome} abre (E2/E3) — clique de relé filtrado (representação)', 0.1, 0.12, filtro=abafa(2200))
+# rodada 11 (teste, desligado = mixagem aprovada): GARRAFA_B5=1 → a garrafa entra sozinha e POUSA na prateleira de vidro no
+# ataque de "geladeira" (mesmo instante da cena B5_garrafa); evento "put down" da mesma gravação de prateleira de vidro (3,04 s)
+if os.environ.get('GARRAFA_B5') == '1':
+    T_POUSO = next(w['inicio'] for w in json.load(open(os.path.join(R_, 'roteiro', 'palavras.json'))) if w['palavra'].strip('.,').lower() == 'geladeira' and w['inicio'] >= 20.0)
+    evento(T_POUSO, '624481', 3.015, 0.32, 3.04, -24.0, 'efeitos', 'garrafa pousa na prateleira de vidro (B5)', -0.15, filtro=abafa(6000))
+# rodada 11 (pedido, teste desligado = aprovado): APRESENTA_R11=madeira|pop → um som curto e discreto quando cada COMPONENTE
+# novo é apresentado (primeiro quadro visível do rótulo com o nome: som/apresentacoes_r11.json); pan suave pela posição do
+# rótulo. Gravações Freesound CC0: 551921 "Tiny Soft Lay Down Wood Table" (toque de madeira, ~700 Hz) | 776443 "pop out,
+# bubble, soft bursting" (estalo curto, ~2,7 kHz). Só 5 eventos: rótulos de estado (entra/sai, quente/frio) não ganham som.
+AP = {'madeira': ('551921', 0.345, 0.30, 0.365, -27.0), 'pop': ('776443', 0.135, 0.20, 0.150, -30.0)}.get(os.environ.get('APRESENTA_R11', ''))
+if AP:
+    for ev_ in json.load(open(os.path.join(A, 'apresentacoes_r11.json')))['eventos']:
+        evento(ev_['t'], AP[0], AP[1], AP[2], AP[3], AP[4], 'efeitos', f"apresentação: {ev_['nome']} ({ev_['plano']})", round((ev_['u'] - 0.5) * 0.4, 2), 0.15)
 ir = B.S.resposta_impulso('cozinha')
 NOVO = {}
 for k in B.STEMS:
@@ -122,7 +135,8 @@ for nome, x in VAR.items():
     d = mix - ref; fora = np.ones(N, bool)
     rel['variantes'][nome] = dict(lufs_wav=round(B.lufs(mix), 2), tp_wav=round(B.pico_verdadeiro(mix), 2), limitador_max_db=round(red, 2),
                                   diferenca_max_v9_dbfs=round(20 * math.log10(np.abs(d).max() + 1e-12), 1))
-for k, x in (('efeitos_r10', NOVO['efeitos']), ('mecanismo_r10', NOVO['mecanismo']), (f'musica_r10{os.environ.get("SUF_R10", "")}', mus)):
+_ss = os.environ.get('SUF_R10', '') if (os.environ.get('GARRAFA_B5') or os.environ.get('APRESENTA_R11')) else ''   # rodada 11: variantes não sobrescrevem os stems aprovados
+for k, x in ((f'efeitos_r10{_ss}', NOVO['efeitos']), (f'mecanismo_r10{_ss}', NOVO['mecanismo']), (f'musica_r10{os.environ.get("SUF_R10", "")}', mus)):
     sf.write(os.path.join(A, 'stems', f'ep02_{k}.wav'), x.astype(np.float32), SR, subtype='PCM_24')
 rel['musica_lufs'] = round(B.lufs(mus), 2); rel['musica_rel_voz_db'] = round(B.lufs(mus) - Lv, 2)
 json.dump(rel, open(os.path.join(A, f'mix_ep02_r10{os.environ.get("SUF_R10", "")}.json'), 'w'), ensure_ascii=False, indent=1)

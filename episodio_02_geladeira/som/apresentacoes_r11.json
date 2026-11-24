@@ -1,0 +1,40 @@
+{
+ "nota": "Rodada 11: primeiro quadro em que cada componente NOVO é apresentado (rótulo com nome, alfa > 0,05), medido nos rótulos exportados da montagem (rotulos_r9 / cenas). Só nomes de componentes; rótulos de estado (entra/sai, quente/frio) não contam.",
+ "eventos": [
+  {
+   "nome": "fluido refrigerante",
+   "t": 41.57,
+   "plano": "C3",
+   "u": 0.3927,
+   "fonte": "rotulos_r9/C3.json"
+  },
+  {
+   "nome": "Evaporador",
+   "t": 49.69,
+   "plano": "D1",
+   "u": 0.7062,
+   "fonte": "rotulos_r9/D1.json"
+  },
+  {
+   "nome": "Compressor",
+   "t": 75.5633,
+   "plano": "E2",
+   "u": 0.5921,
+   "fonte": "cenas/E2/rotulos2d.json"
+  },
+  {
+   "nome": "Condensador",
+   "t": 88.3433,
+   "plano": "F1",
+   "u": 0.1624,
+   "fonte": "cenas/F1/rotulos2d.json"
+  },
+  {
+   "nome": "Capilar",
+   "t": 101.23,
+   "plano": "G2",
+   "u": 0.1715,
+   "fonte": "cenas/G2/rotulos2d.json"
+  }
+ ]
+}

@@ -134,7 +134,7 @@ def plano(pid):
     pers = PE.montar() if pid in PERS else None
     porta = lambda g: 0.0
     termico = None; revela = 0.0; theta = None
-    garrafa_T = None
+    garrafa_T = None; garrafa_mov = None
     # ---------------- câmeras e eventos
     K = lambda *ks: [(F(pid, f), pos, alvo, lente) for (f, pos, alvo, lente) in ks]
     janela_corte = None   # rodada 10: (g0, g1) de uma troca de câmera mais curta que 1 quadro: dentro dela, câmera do fim
@@ -206,10 +206,21 @@ def plano(pid):
             cam_k = K((0, (0.06, -0.86, 0.92), (0.0, -0.05, 1.20), 30), (1, (0.05, -0.80, 0.96), (0.0, -0.05, 1.23), 30))
         porta = lambda g: 100; termico = [[0, 1]]
         garrafa_T = [[T0('B5'), 25.0], [T1('B7'), 9.0]]
+        # rodada 11 (pedido, teste desligado = aprovado): GARRAFA_B5=1 → a garrafa ENTRA sozinha na geladeira em "Quando você a
+        # coloca na geladeira" e pousa na prateleira no ataque de "geladeira"; só então esfria e solta os feixes. B6/B7 não mudam:
+        # no fim do B5 a temperatura e os feixes voltam ao valor da curva aprovada (mesma interpolação smoothstep do motor).
+        if pid == 'B5' and os.environ.get('GARRAFA_B5') == '1':
+            ss = lambda u: u * u * (3 - 2 * u); orig = lambda a, b, va, vb, t: va + (vb - va) * ss(min(max((t - a) / (b - a), 0.0), 1.0))
+            T_POUSO = E.T('geladeira', apos=20.0)
+            garrafa_T = [[T0('B5'), 25.0], [T_POUSO, 25.0], [T1('B5'), orig(T0('B5'), T1('B7'), 25.0, 9.0, T1('B5'))], [T1('B7'), 9.0]]
+            garrafa_mov = dict(t_a=E.T('quando', apos=19.0) + 0.03, t_h=T_POUSO - 0.14, t_p=T_POUSO)
         # feixes saem da garrafa, sobem com o ar morno e chegam ao evaporador
         for i, (dx, dy) in enumerate([(-0.03, 0.0), (0.03, 0.01), (0.0, -0.03)]):
             pts = [(-0.12 + dx, -0.10 + dy, 0.62), (-0.12 + dx * 1.6, -0.08 + dy, 0.80), (-0.06 + dx * 2, -0.04, 1.00), (-0.02 + dx * 2.5, 0.0, 1.17)]
-            feixe(f'{pid}_{i}', pts, 0.006, dict(p0=[[0, 0]], p1=[[T0('B5') + 0.3 * i, 0], [T1('B7') - 0.4 + 0.2 * i, 1.0]], forca=[[0, 1]]), onda=9)
+            p1 = [[T0('B5') + 0.3 * i, 0], [T1('B7') - 0.4 + 0.2 * i, 1.0]]
+            if garrafa_mov:   # feixes só depois do pouso; no fim do B5, de volta à curva aprovada
+                p1 = [[T_POUSO + 0.25 + 0.3 * i, 0], [T1('B5'), orig(p1[0][0], p1[1][0], 0.0, 1.0, T1('B5'))], p1[1]]
+            feixe(f'{pid}_{i}', pts, 0.006, dict(p0=[[0, 0]], p1=p1, forca=[[0, 1]]), onda=9)
     elif pid == 'C1':
         # v3: EXTERNO, com a cozinha: a porta fecha e a câmera contorna pela frente; nada é cortado ainda (o corte vem em
         # "Escondido", no plano seguinte, de outro ângulo)
@@ -447,8 +458,21 @@ def plano(pid):
     if pid == 'I1':
         for o in leite: o['anim'] = 1; o.location = o.location - Vector(G.LEITE_POS) + E.LEITE_I1   # R9: deslocamento zero (mesma posição)
         bpy.context.view_layer.update(); leite_base = {o.name: o.matrix_world.copy() for o in leite}
+    garrafas = {}
+    if garrafa_mov:   # rodada 11: deslocamento (dy, dz) da garrafa em relação ao repouso na prateleira (−0,12; −0,10; 0,505)
+        for nm in ('garrafa', 'garrafa_tampa', 'garrafa_agua_vol', 'garrafa_rot'):
+            o = bpy.data.objects[nm]; o['anim'] = 1; garrafas[nm] = o.location.copy()
+        def desloc_garrafa(g):
+            m = garrafa_mov; s5 = lambda u: u * u * u * (u * (6 * u - 15) + 10)
+            u = min(max((g - m['t_a']) / (m['t_h'] - m['t_a']), 0.0), 1.0); y = -0.50 + 0.40 * s5(u)   # de fora (à frente, fora do quadro) até o lugar
+            w = min(max((y + 0.50) / 0.18, 0.0), 1.0); z = 0.560 - 0.038 * (w * w * (3 - 2 * w))     # desce em arco até 0,522 antes da borda (y = −0,283)
+            if g > m['t_h']: z = 0.522 - 0.017 * math.sin(0.5 * math.pi * min((g - m['t_h']) / (m['t_p'] - m['t_h']), 1.0))   # pousa: chega devagar
+            return Vector((0.0, y + 0.10, z - 0.505))
     def anim(g):
         piv.rotation_euler = (0, 0, math.radians(porta(g)))
+        if garrafas:
+            d = desloc_garrafa(g)
+            for nm, l0 in garrafas.items(): bpy.data.objects[nm].location = l0 + d
         if pers: PE.posar(pers, PERS[pid](g))
         if pid == 'I1':
             mao = pers['mao_d'].matrix_world if g < E.T_PEGA else (pers['maof_d'].matrix_world if 'maof_d' in pers else pers['mao_d'].matrix_world)
@@ -468,6 +492,18 @@ def plano(pid):
     else: meta['modo_luz'] = 'cozinha'
     if CORTE_REAL: meta.update(ao_corte=True, ao_tampa=True)   # rodada 8: AO coerente com o corte + tampas sem AO (máscara suavizada)
     meta.update(extra)
+    if garrafas and os.environ.get('TESTE_COLISAO') == '1':   # rodada 11: a garrafa em trânsito não pode invadir prateleiras, bordas, itens, paredes
+        from mathutils.bvhtree import BVHTree
+        dg = bpy.context.evaluated_depsgraph_get(); outros = [o for o in bpy.data.objects if o.type == 'MESH' and o.name not in garrafas and not o.hide_render]
+        def bvh(o): m = o.evaluated_get(dg).to_mesh(); vs = [o.matrix_world @ v.co for v in m.vertices]; return BVHTree.FromPolygons(vs, [tuple(p.vertices) for p in m.polygons])
+        res = []; m = garrafa_mov; ts = [m['t_a'] - 0.05 + k * (m['t_p'] + 0.1 - m['t_a']) / 60 for k in range(61)]
+        anim(ts[0]); bpy.context.view_layer.update(); dg.update(); bb_o = {o.name: bvh(o) for o in outros if not o.name.startswith('feixe_')}   # porta já na posição do plano (100°); feixes não são sólidos
+        for g in ts:
+            anim(g); bpy.context.view_layer.update(); dg.update(); bg = [bvh(bpy.data.objects[n]) for n in garrafas]
+            hits = sorted({n for n, t in bb_o.items() for b in bg if b.overlap(t)})
+            res.append(dict(t=round(g, 3), invasoes=hits, desloc=[round(c, 4) for c in desloc_garrafa(g)]))
+        json.dump(res, open(os.path.join(RAIZ, 'relatorios', 'testes_r10', 'colisao_garrafa_b5.json'), 'w'), ensure_ascii=False, indent=0)
+        print('COLISAO', sorted({h for r in res for h in r['invasoes']}), 'em', [r['t'] for r in res if r['invasoes']][:8])
     pasta = os.path.join(SAIDA, pid + os.environ.get('SUFIXO_PASTA', '')); os.makedirs(pasta, exist_ok=True)   # rodada 7: variantes de teste em pasta própria
     B.exportar_seg(pasta, g0, g1, anim, rot=rot, extra=meta)
     n = int(round((g1 - g0) * B.FPS)) + 1
