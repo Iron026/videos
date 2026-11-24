@@ -15,7 +15,7 @@
  },
  "configuracao": {
   "arquivo": "config/producao.json",
-  "sha256": "c3bc1157b68370a958910195ca05ca698e94d4819362b1e363d9c48823ebe895",
+  "sha256": "516899ff14cb51564211174effb08e1c732c65e7b52b4bddd62ca2f00bc82f13",
   "perfil_final": {
    "escala": 1.0,
    "passo": 1,
@@ -37,9 +37,9 @@
     "sub": 5,
     "quadros": [
      126,
-     178
+     184
     ],
-    "_nota": "rodada 10 (aprovado): obturador de 180° SÓ nos quadros 126–178 do C4 (fim da aproximação ao evaporador: grade do condensador com razão deslocamento/passo até 3,6); 5 sub-quadros em [−¼, +¼]; cena cenas/C4_obt (OBTURADOR_SUB=5); fora da faixa, quadros normais"
+    "_nota": "rodada 10 (aprovado): obturador de 180° no fim do C4, quadros 126–184 (estendido de 178 a 184 por decisão do usuário para eliminar a troca 178→179); 5 sub-quadros em [−¼, +¼]; cena cenas/C4_obt"
    }
   },
   "fps": 30,
@@ -51,7 +51,7 @@
   "x264": "CRF 17 (final), preset medium, yuv420p; áudio AAC 192 kb/s 48 kHz"
  },
  "scripts": {
-  "episodio/render_definitivo.py": "441a05bd5ce17e4c96ee4ad8bc76eb52f3264714cd6cbc3ea9b767ad5a4c92dd",
+  "episodio/render_definitivo.py": "8807e9f8d4b1ba5fb91b3542d8de1f32cf10c1a8bc395ea0847f719780b5546a",
   "episodio/montar_ep02.py": "b9ca8ed9ec51237fab5feba6efa339948177464388f5f08ca939428d14c46a73",
   "episodio/montar_v9.sh": "162916f933b1bf7ed4cd2f648ba955dc1496b0f43e89dff4ab4d49be5a0b8ccf",
   "episodio/grade.py": "aa821bc3fd0c49a1ee22578b68119e5cf79fbec508e15ff9a119a70b680bfc62",
@@ -62,7 +62,7 @@
   "blender/geladeira.py": "f63a3153eb2cad4ddb2c3ecec79e5776c319a294b787911713654cab251b8b28",
   "blender/ep_base.py": "48f146c53ac18a8ad321459e64310b0da7dbf19ed85247b8329a883767ce2d13",
   "som/som_ep02.py": "84177d0efd562521f6bce341cfb12be67ee3e17d752be6e74efbfab44679d0a3",
-  "som/som_r10.py": "0e4aea3e5bfe83e059a1c486ca65f429b59ae2ec513bba96b1cc20f5686c21ac"
+  "som/som_r10.py": "a764021d018055bffb7138ff59e05a45428c510b8b8c787d44004b7cabb5e5eb"
  },
  "cenas": {
   "A1": "b57af3dfaeecd8bf",

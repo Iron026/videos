@@ -75,16 +75,19 @@ for pid in IDS:
     faixa = OBT.get(pid, {}).get('quadros'); em_obt = lambda i: pid in OBT and (faixa is None or faixa[0] <= i <= faixa[1])   # rodada 10: obturador só numa faixa
     d = os.path.join(OUT, pid); os.makedirs(d, exist_ok=True); mf = os.path.join(d, '_manifesto_quadros.json')
     man = json.load(open(mf)) if os.path.exists(mf) else dict(reg=reg, quadros={})
-    so_faixa = (man.get('reg') != reg and faixa is not None and 'obturador' not in man.get('reg', {}) and {k: v for k, v in man.get('reg', {}).items()} == {k: v for k, v in reg.items() if k != 'obturador'})
-    if so_faixa:   # rodada 10: SÓ ganhou obturador numa faixa — quadros fora dela continuam válidos (mesma cena, motor e consulta)
+    ob_ant = man.get('reg', {}).get('obturador'); fx_ant = ob_ant.get('quadros') if ob_ant else None
+    so_faixa = (man.get('reg') != reg and faixa is not None and {k: v for k, v in man.get('reg', {}).items() if k != 'obturador'} == {k: v for k, v in reg.items() if k != 'obturador'}
+                and (ob_ant is None or (fx_ant is not None and {k: v for k, v in ob_ant.items() if k != 'quadros'} == {k: v for k, v in reg['obturador'].items() if k != 'quadros'})))
+    if so_faixa:   # rodada 10: SÓ mudou a faixa do obturador (ou ele entrou numa faixa) — só os quadros que entram/saem da faixa são refeitos
         dsc = os.path.join(d, '_descartados', time.strftime('%Y%m%d_%H%M%S') + '_faixa_obturador')
         if not SIMULAR:
             os.makedirs(dsc, exist_ok=True)
-            for i in range(faixa[0], faixa[1] + 1):
+            muda = set(range(faixa[0], faixa[1] + 1)) ^ (set(range(fx_ant[0], fx_ant[1] + 1)) if fx_ant else set())
+            for i in sorted(muda):
                 f = os.path.join(d, f'q{i:04d}.jpg')
                 if os.path.exists(f): shutil.move(f, dsc)
                 man['quadros'].pop(str(i), None)
-            log(f'{pid}: obturador na faixa {faixa[0]}–{faixa[1]} — esses quadros vão para {dsc}; os demais seguem válidos (SHA-256)')
+            log(f'{pid}: obturador na faixa {faixa[0]}–{faixa[1]} (antes: {fx_ant}) — quadros que mudam {sorted(muda)} vão para {dsc}; os demais seguem válidos (SHA-256)')
             man['reg'] = reg; man.setdefault('historico', []).append(dict(quando=time.strftime('%Y-%m-%dT%H:%M:%S'), mudanca=f'obturador {OBT[pid]["graus"]}° na faixa {faixa}'))
             gravar_json(mf, man)
     pv = os.path.join(d, '_prova_reuso_quadros.json'); prova = json.load(open(pv)) if os.path.exists(pv) else None
@@ -136,7 +139,7 @@ for pid in IDS:
             if not ok and motivo.startswith('salto') and i in TRANS:   # transição desenhada na cena (varredura térmica etc.)
                 ok, just = True, motivo + ' — justificado: efeito da cena em transição neste quadro'; log(f'{pid} quadro {i}: {just}')
             if not ok and motivo.startswith('salto'):   # o MESMO salto na versão aprovada (V8), com a imagem equivalente à dela
-              for nref, dref in (('V8 aprovada', os.path.join(V8REF, pid)), ('prévia aprovada da rodada 9', os.path.join(A, 'quadros_previa_r9', pid + '_r9'))):
+              for nref, dref in ((('V10 aprovada (540, mesma cena)', os.path.join(A, 'quadros_revisao', pid)),) if PERFIL == 'final' else ()) + (('V8 aprovada', os.path.join(V8REF, pid)), ('prévia aprovada da rodada 9', os.path.join(A, 'quadros_previa_r9', pid + '_r9'))):   # rodada 11: no 1080, a referência é a V10 aprovada (comparação em 32×56, independente da resolução)
                 fv, fv0 = (os.path.join(dref, f'q{j:04d}.jpg') for j in (i, i - 1))
                 if not ok and os.path.exists(fv) and os.path.exists(fv0) and ant is not None:
                     gv, gv0, gn = (np.asarray(Image.open(x).convert('L').resize((32, 56)), np.float32) for x in (fv, fv0, ft))

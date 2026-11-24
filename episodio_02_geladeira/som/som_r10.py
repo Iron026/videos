@@ -17,7 +17,7 @@ Uso: python3 som_r10.py  → som/audio_ep02_r10_{efeitos,musica,completo}.wav, s
 import os, sys, json, math, subprocess
 import numpy as np, soundfile as sf
 from scipy.signal import fftconvolve, sosfiltfilt, butter
-A = os.path.dirname(os.path.abspath(__file__)); sys.path.insert(0, A)
+A = os.path.dirname(os.path.abspath(__file__)); sys.path.insert(0, A); R_ = os.path.join(A, '..')
 import som_ep02 as B                                          # funções da mixagem aprovada (só importadas)
 from sintese import SR, n_, lpz, hpz, bp, db
 N, DUR, PAL = B.N, B.DUR, B.PAL
@@ -70,17 +70,29 @@ gfx = suaviza(1 - (1 - np.maximum(np.minimum(1.0, vm * db(-13.0) / tot), db(-18.
 for k in NOVO: NOVO[k] = NOVO[k] - meio(NOVO[k]) + meio(NOVO[k]) * gfx[:, None]
 
 # ------------------------------------------------------------------ trilha
-MUS = dict(id='584', titulo='Rest Now', autor='Eugenio Mininni', fonte='Mixkit', url_pagina='https://mixkit.co/free-stock-music/ambient/',
-           url_arquivo='https://assets.mixkit.co/music/584/584.mp3', licenca='Mixkit Stock Music Free License (https://mixkit.co/license/#musicFree)',
-           arquivo_local='som/bib/mixkit/584.mp3', deslocamento_s=0.4)
-m = np.frombuffer(subprocess.run(['ffmpeg', '-v', 'error', '-i', os.path.join(A, 'bib', 'mixkit', '584.mp3'), '-ac', '2', '-ar', str(SR), '-f', 'f32le', '-'],
+TRILHAS = {   # rodada 11: a trilha é escolhida por MUSICA (padrão: Rest Now, a versão experimental da rodada 10, preservada)
+    'rest_now': dict(id='584', titulo='Rest Now', autor='Eugenio Mininni', fonte='Mixkit', url_pagina='https://mixkit.co/free-stock-music/ambient/',
+                     url_arquivo='https://assets.mixkit.co/music/584/584.mp3', licenca='Mixkit Stock Music Free License (https://mixkit.co/license/#musicFree)',
+                     arquivo_local='som/bib/mixkit/584.mp3', deslocamento_s=0.4, passa_altas_hz=60,
+                     auto=[(0.0, -40), (2.5, -4), (10.3, -4), (10.6, -3), (16.0, -3), (16.6, -6), (28.6, -6), (33.6, -4), (33.92, -3), (37.5, -3), (40.0, -7),
+                           (71.4, -7), (72.0, -5), (74.2, -5), (75.0, -12), (91.5, -12), (92.5, -8), (111.6, -8), (112.2, -5), (115.3, -5), (115.9, -6),
+                           (135.2, -6), (135.6, -7), (145.0, -7), (147.6, -60), (DUR, -60)]),
+    # Secret Garden (escolha do usuário, rodada 11): 153,05 s; final natural entre 146 e 149 s da faixa → deslocamento de 1,5 s faz o último
+    # acorde morrer ~147,5 s, ANTES de "Ela dá um destino ao calor" (147,92 s); 50 % da energia < 120 Hz → passa-altas em 80 Hz.
+    'secret_garden': dict(id='595', titulo='Secret Garden', autor='Eugenio Mininni', fonte='Mixkit (gênero Film Score)', url_pagina='https://mixkit.co/free-stock-music/film-score/ (item 595; a URL do item redireciona para a busca)',
+                     url_arquivo='https://assets.mixkit.co/music/595/595.mp3', licenca='Mixkit Stock Music Free License (https://mixkit.co/license/#musicFree)',
+                     arquivo_local='som/bib/mixkit/595.mp3', deslocamento_s=1.5, passa_altas_hz=80,
+                     auto=[(0.0, -40), (2.5, -3), (10.3, -3), (16.0, -3), (16.6, -5), (28.6, -5), (33.6, -4), (33.92, -2), (37.5, -2), (40.0, -6),   # abertura · revelação
+                           (48.3, -6), (48.8, -8), (71.4, -8), (74.2, -8), (75.0, -11), (86.5, -11), (87.2, -7), (111.6, -7),            # evaporador · compressor · condensador/capilar
+                           (112.2, -5), (115.3, -5), (115.9, -6), (135.2, -6), (135.6, -6), (145.0, -6), (147.8, -60), (DUR, -60)]),       # recomeça · porta aberta · conclusão (final natural)
+}
+MUS = TRILHAS[os.environ.get('MUSICA', 'rest_now')]; AUTO = MUS['auto']
+m = np.frombuffer(subprocess.run(['ffmpeg', '-v', 'error', '-i', os.path.join(R_, MUS['arquivo_local']), '-ac', '2', '-ar', str(SR), '-f', 'f32le', '-'],
                                  capture_output=True, check=True).stdout, np.float32).astype(np.float64).reshape(-1, 2)
 i0 = int(MUS['deslocamento_s'] * SR); mus = m[i0:i0 + N]; mus = np.pad(mus, ((0, N - len(mus)), (0, 0)))
-mus = hpz(mus, 60, 2)                                                                  # sem graves contínuos
+mus = hpz(mus, MUS['passa_altas_hz'], 2)                                              # sem graves contínuos
 s1 = butter(2, [900, 3200], 'bandpass', fs=SR, output='sos'); mus = mus - 0.30 * sosfiltfilt(s1, mus, axis=0)   # ≈ −3 dB na faixa da voz
-AUTO = [(0.0, -40), (2.5, -4), (10.3, -4), (10.6, -3), (16.0, -3), (16.6, -6), (28.6, -6), (33.6, -4), (33.92, -3), (37.5, -3), (40.0, -7),
-        (71.4, -7), (72.0, -5), (74.2, -5), (75.0, -12), (91.5, -12), (92.5, -8), (111.6, -8), (112.2, -5), (115.3, -5), (115.9, -6),
-        (135.2, -6), (135.6, -7), (145.0, -7), (147.6, -60), (DUR, -60)]                    # (s, dB): função narrativa
+# AUTO vem da trilha escolhida (TRILHAS)                    # (s, dB): função narrativa
 ta = np.arange(N) / SR; auto = db(np.interp(ta, [a for a, _ in AUTO], [b for _, b in AUTO]))
 ativa_m = np.maximum(ativa, np.r_[ativa[n_(0.15):], np.zeros(n_(0.15))])   # antecipa 0,15 s: a música já está baixa no início da palavra
 gvoz = suaviza(1 - (1 - db(float(os.environ.get('MUSICA_DUCK_DB', '-8')))) * ativa_m, 0.06, 0.6)   # abaixa enquanto há fala real (−8 dB: p5 voz−resto no celular ≥ 13 dB)
@@ -102,7 +114,7 @@ for nome, x in VAR.items():
     d = mix - ref; fora = np.ones(N, bool)
     rel['variantes'][nome] = dict(lufs_wav=round(B.lufs(mix), 2), tp_wav=round(B.pico_verdadeiro(mix), 2), limitador_max_db=round(red, 2),
                                   diferenca_max_v9_dbfs=round(20 * math.log10(np.abs(d).max() + 1e-12), 1))
-for k, x in (('efeitos_r10', NOVO['efeitos']), ('mecanismo_r10', NOVO['mecanismo']), ('musica_r10', mus)):
+for k, x in (('efeitos_r10', NOVO['efeitos']), ('mecanismo_r10', NOVO['mecanismo']), (f'musica_r10{os.environ.get("SUF_R10", "")}', mus)):
     sf.write(os.path.join(A, 'stems', f'ep02_{k}.wav'), x.astype(np.float32), SR, subtype='PCM_24')
 rel['musica_lufs'] = round(B.lufs(mus), 2); rel['musica_rel_voz_db'] = round(B.lufs(mus) - Lv, 2)
 json.dump(rel, open(os.path.join(A, f'mix_ep02_r10{os.environ.get("SUF_R10", "")}.json'), 'w'), ensure_ascii=False, indent=1)

@@ -34,9 +34,9 @@
    "sub": 5,
    "quadros": [
     126,
-    178
+    184
    ],
-   "_nota": "rodada 10 (aprovado): obturador de 180° SÓ nos quadros 126–178 do C4 (fim da aproximação ao evaporador: grade do condensador com razão deslocamento/passo até 3,6); 5 sub-quadros em [−¼, +¼]; cena cenas/C4_obt (OBTURADOR_SUB=5); fora da faixa, quadros normais"
+   "_nota": "rodada 10 (aprovado): obturador de 180° no fim do C4, quadros 126–184 (estendido de 178 a 184 por decisão do usuário para eliminar a troca 178→179); 5 sub-quadros em [−¼, +¼]; cena cenas/C4_obt"
   }
  }
 }
