@@ -95,14 +95,20 @@ def quadro(pid, g):
 TRANS_A4I = os.environ.get('TRANSICAO_A4_INTERNA', 'corte')   # rodada 11 (teste): rosto → interior azul no A4 (5,74 s): corte | varredura | empurrao
 TC_A4I = 4.62 + 33.5 / 30   # instante do corte (entre os quadros 33 e 34 do A4)
 def _ponte(lado, g):   # quadros-ponte (render à parte): rosto continuado depois do corte / interior antes dele; fora deles, o próprio A4
-    d = os.path.join(A, 'quadros_pontes_r11', PERFIL, 'A4_' + lado); f = int(round((g - meta('A4')) * FPS))
+    # rosto: ponte com a câmera APROVADA continuada (A4_rosto_c, ver pontes_camera_continua.py); PONTE_ROSTO_ANTIGA=1 reproduz a prévia de 24/11
+    sub = 'A4_rosto_c' if lado == 'rosto' and os.environ.get('PONTE_ROSTO_ANTIGA') != '1' else 'A4_' + lado
+    d = os.path.join(A, 'quadros_pontes_r11', PERFIL, sub); f = int(round((g - meta('A4')) * FPS))
     q = os.path.join(d, f'q{f:04d}.jpg')
     if (lado == 'rosto' and f >= 34) or (lado == 'interior' and f <= 33):
         return graduar(Image.open(q).convert('RGB').resize((W, H), Image.BICUBIC))
     return _quadro_simples('A4', g)
-def _borrar_h(im, n):   # desfoque de movimento horizontal (média de n px)
+def _borrar_h(im, n):   # desfoque de movimento horizontal (média de n px), CENTRADO no instante do quadro (obturador 180° como no C2/C4)
     if n < 2: return im
-    a = np.asarray(im, np.float32); c = np.cumsum(np.pad(a, ((0, 0), (n, 0), (0, 0)), mode='edge'), axis=1); return Image.fromarray(((c[:, n:] - c[:, :-n]) / n).clip(0, 255).astype(np.uint8))
+    a = np.asarray(im, np.float32)
+    if os.environ.get('DESFOQUE_A4_ATRASADO') == '1':   # prévia de 24/11 (janela só à esquerda: imagem desviada n/2 px) — só para reproduzir/comparar
+        c = np.cumsum(np.pad(a, ((0, 0), (n, 0), (0, 0)), mode='edge'), axis=1); return Image.fromarray(((c[:, n:] - c[:, :-n]) / n).clip(0, 255).astype(np.uint8))
+    from scipy.ndimage import uniform_filter1d
+    return Image.fromarray(uniform_filter1d(a, size=n, axis=1, mode='nearest').clip(0, 255).astype(np.uint8))
 def quadro_simples(pid, g):
     if pid == 'A4' and TRANS_A4I != 'corte':
         meia = 0.20 if TRANS_A4I == 'varredura' else 0.15
