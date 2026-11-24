@@ -84,10 +84,11 @@ def por(t, x, ganho_db, stem='efeitos', pan=0.0, envio=0.25, env=None):
 # ------------------------------------------------------------------ geometria: distância real da câmera, por quadro
 _cam = {}
 def cam_pos(g):
-    """Posição da câmera do plano ativo no instante g (cena.json, 30 qps); planos de lupa/canal usam o plano principal."""
+    """Posição da câmera do plano ativo no instante g (cena.json, 30 qps); planos de lupa/canal usam o plano principal.
+    Rodada 10: CENAS_SOM=cenas_v8 reproduz a mixagem V9 aprovada (gerada antes da promoção das cenas da rodada 9)."""
     p = next((q for q in R['planos'] if q['t0'] <= g < q['t1']), R['planos'][-1]); pid = p['id']
     if pid not in _cam:
-        c = json.load(open(os.path.join(RAIZ, 'episodio', 'cenas', pid, 'cena.json'))); _cam[pid] = (c['g0'], np.array([q['camera']['pos'] for q in c['animacao']['quadros']]))
+        c = json.load(open(os.path.join(RAIZ, 'episodio', os.environ.get('CENAS_SOM', 'cenas'), pid, 'cena.json'))); _cam[pid] = (c['g0'], np.array([q['camera']['pos'] for q in c['animacao']['quadros']]))
     g0, P = _cam[pid]; return P[max(0, min(len(P) - 1, int(round((g - g0) * 30))))], pid
 
 

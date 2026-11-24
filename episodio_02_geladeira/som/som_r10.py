@@ -1,6 +1,7 @@
 """Rodada 10: enriquecimento sonoro + trilha musical EXPERIMENTAL, sobre a mixagem V9 APROVADA (que não muda).
 
-Arquitetura: os 4 stems da V9 (stems/ep02_{voz,efeitos,mecanismo,ambiencias}_r9.wav, já com o master de 5,45 dB) são
+Arquitetura: os 4 stems da V9 (stems/ep02_*_r9ref_f32.wav: a V9 regenerada em ponto flutuante, provada idêntica à aprovada;
+os *_r9.wav antigos estão cortados em 0 dBFS pelo PCM 24 e não somam a V9), já com o master de 5,45 dB, são
 somados SEM alteração; as camadas novas entram em stems próprios, com o MESMO master fixo, e o conjunto passa pelo MESMO
 limitador (teto −1,8 dBFS) da V9. Prova: sem camadas novas, a saída é igual à V9 amostra a amostra (`nulo_v9`).
 
@@ -22,7 +23,7 @@ from sintese import SR, n_, lpz, hpz, bp, db
 N, DUR, PAL = B.N, B.DUR, B.PAL
 MG = 5.45                                                     # master fixo da V9 (mix_ep02_r9.json)
 GK = {'efeitos': 0.15, 'mecanismo': -10.85}                   # ganhos fixos de stem da V9: mesma escala de 'db' por som
-V9 = {k: sf.read(os.path.join(A, 'stems', f'ep02_{k}_r9.wav'))[0] for k in ('voz', 'efeitos', 'mecanismo', 'ambiencias')}
+V9 = {k: sf.read(os.path.join(A, 'stems', f'ep02_{k}_r9ref_f32.wav'))[0] for k in ('voz', 'efeitos', 'mecanismo', 'ambiencias')}   # stems V9 em ponto flutuante (regenerados idênticos: CENAS_SOM=cenas_v8)
 
 # ------------------------------------------------------------------ camadas novas (stems próprios, gerador isolado)
 B.STEMS = {k: np.zeros((N, 2)) for k in ('efeitos', 'mecanismo')}; B.ENVIO = {k: np.zeros(N) for k in B.STEMS}; B.USOS = []
@@ -82,7 +83,7 @@ AUTO = [(0.0, -40), (2.5, -4), (10.3, -4), (10.6, -3), (16.0, -3), (16.6, -6), (
         (135.2, -6), (135.6, -4), (145.0, -4), (147.6, -60), (DUR, -60)]                    # (s, dB): função narrativa
 ta = np.arange(N) / SR; auto = db(np.interp(ta, [a for a, _ in AUTO], [b for _, b in AUTO]))
 gvoz = suaviza(1 - (1 - db(-5.0)) * ativa, 0.06, 0.5)                                    # −5 dB enquanto há fala real
-Lv = B.lufs(V9['voz']); mus = mus * auto[:, None]; GM = (Lv - 20.0) - B.lufs(mus); mus = mus * db(GM) * gvoz[:, None]
+Lv = B.lufs(V9['voz']); mus = mus * auto[:, None]; GM = (Lv + float(os.environ.get('MUSICA_REL_DB', '-17'))) - B.lufs(mus); mus = mus * db(GM) * gvoz[:, None]
 k_ = n_(1.0); mus[-k_:] *= 0.0
 
 # ------------------------------------------------------------------ variantes e medidas
