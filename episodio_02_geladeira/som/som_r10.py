@@ -140,5 +140,5 @@ for k, x in ((f'efeitos_r10{_ss}', NOVO['efeitos']), (f'mecanismo_r10{_ss}', NOV
     sf.write(os.path.join(A, 'stems', f'ep02_{k}.wav'), x.astype(np.float32), SR, subtype='PCM_24')
 rel['musica_lufs'] = round(B.lufs(mus), 2); rel['musica_rel_voz_db'] = round(B.lufs(mus) - Lv, 2)
 json.dump(rel, open(os.path.join(A, f'mix_ep02_r10{os.environ.get("SUF_R10", "")}.json'), 'w'), ensure_ascii=False, indent=1)
-json.dump(B.USOS, open(os.path.join(A, 'usos_ep02_r10.json'), 'w'), ensure_ascii=False, indent=1)
+json.dump(B.USOS, open(os.path.join(A, f'usos_ep02_r10{_ss}.json'), 'w'), ensure_ascii=False, indent=1)
 print(json.dumps({k: v for k, v in rel.items() if k not in ('eventos', 'automacao_musica')}, ensure_ascii=False, indent=1))
