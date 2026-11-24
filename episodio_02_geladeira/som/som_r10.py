@@ -90,19 +90,21 @@ k_ = n_(1.0); mus[-k_:] *= 0.0
 # ------------------------------------------------------------------ variantes e medidas
 def final(extra):
     soma = sum(V9.values()) + extra
-    return B.limitador(soma, -1.8)
-nulo, _ = final(0.0); ref = sf.read(os.path.join(A, 'audio_ep02_r9.wav'))[0]
+    return B.limitador(soma, float(os.environ.get('TETO_R10', '-1.8')))   # teto do limitador (V9: −1,8)
+_t = os.environ.pop('TETO_R10', None); nulo, _ = final(0.0)
+if _t: os.environ['TETO_R10'] = _t
+ref = sf.read(os.path.join(A, 'audio_ep02_r9.wav'))[0]
 nulo_db = 20 * math.log10(np.abs(nulo - ref).max() + 1e-12)
 VAR = {'efeitos': NOVO['efeitos'] + NOVO['mecanismo'], 'musica': mus, 'completo': NOVO['efeitos'] + NOVO['mecanismo'] + mus}
 rel = dict(nulo_v9_dbfs=round(nulo_db, 1), master_fixo_db=MG, ganho_musica_db=round(GM, 2), lufs_voz=round(Lv, 2), trilha=MUS, automacao_musica=AUTO, eventos=EV, variantes={})
 for nome, x in VAR.items():
-    mix, red = final(x); sf.write(os.path.join(A, f'audio_ep02_r10_{nome}.wav'), mix.astype(np.float32), SR, subtype='PCM_24')
+    mix, red = final(x); sf.write(os.path.join(A, f'audio_ep02_r10_{nome}{os.environ.get("SUF_R10", "")}.wav'), mix.astype(np.float32), SR, subtype='PCM_24')
     d = mix - ref; fora = np.ones(N, bool)
     rel['variantes'][nome] = dict(lufs_wav=round(B.lufs(mix), 2), tp_wav=round(B.pico_verdadeiro(mix), 2), limitador_max_db=round(red, 2),
                                   diferenca_max_v9_dbfs=round(20 * math.log10(np.abs(d).max() + 1e-12), 1))
 for k, x in (('efeitos_r10', NOVO['efeitos']), ('mecanismo_r10', NOVO['mecanismo']), ('musica_r10', mus)):
     sf.write(os.path.join(A, 'stems', f'ep02_{k}.wav'), x.astype(np.float32), SR, subtype='PCM_24')
 rel['musica_lufs'] = round(B.lufs(mus), 2); rel['musica_rel_voz_db'] = round(B.lufs(mus) - Lv, 2)
-json.dump(rel, open(os.path.join(A, 'mix_ep02_r10.json'), 'w'), ensure_ascii=False, indent=1)
+json.dump(rel, open(os.path.join(A, f'mix_ep02_r10{os.environ.get("SUF_R10", "")}.json'), 'w'), ensure_ascii=False, indent=1)
 json.dump(B.USOS, open(os.path.join(A, 'usos_ep02_r10.json'), 'w'), ensure_ascii=False, indent=1)
 print(json.dumps({k: v for k, v in rel.items() if k not in ('eventos', 'automacao_musica')}, ensure_ascii=False, indent=1))

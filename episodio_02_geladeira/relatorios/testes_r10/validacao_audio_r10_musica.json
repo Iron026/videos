@@ -1,17 +1,17 @@
 {
- "arquivo": "tmp_musica.mp4",
- "lufs_aac": -14.1,
- "pico_verdadeiro_aac_dbtp": -1.59,
- "perda_mono_db": -0.01,
+ "arquivo": "ep02_v10_revisao_trilha.mp4",
+ "lufs_aac": -14.11,
+ "pico_verdadeiro_aac_dbtp": -1.52,
+ "perda_mono_db": -0.0,
  "ultimo_0_5s_dbfs": -45.6,
  "stems_medidos": {
   "voz": "ep02_voz_r9ref_f32.wav",
   "resto": "ep02_efeitos_r9ref_f32.wav,ep02_mecanismo_r9ref_f32.wav,ep02_ambiencias_r9ref_f32.wav,ep02_musica_r10.wav"
  },
  "voz_menos_resto_celular_db": {
-  "pior": -2.1,
-  "p5": 10.8,
-  "mediana": 23.2,
+  "pior": -0.9,
+  "p5": 13.6,
+  "mediana": 25.7,
   "janelas": 370
  },
  "metas": {
