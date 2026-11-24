@@ -1,0 +1,108 @@
+{
+ "plano": "B5",
+ "nota": "Rodada 11: garrafa entrando sozinha (aprovada). Saltos entre quadros do render novo × prévia aprovada (540, quadros_previa_r11/B5_garrafa, mesma cena).",
+ "quadros": [
+  {
+   "q": 33,
+   "salto_novo": 0.854,
+   "salto_previa": 0.854,
+   "novo_x_previa": 1.0
+  },
+  {
+   "q": 34,
+   "salto_novo": 0.894,
+   "salto_previa": 0.894,
+   "novo_x_previa": 1.0
+  },
+  {
+   "q": 35,
+   "salto_novo": 0.921,
+   "salto_previa": 0.921,
+   "novo_x_previa": 1.0
+  },
+  {
+   "q": 36,
+   "salto_novo": 0.943,
+   "salto_previa": 0.943,
+   "novo_x_previa": 1.0
+  },
+  {
+   "q": 37,
+   "salto_novo": 0.963,
+   "salto_previa": 0.963,
+   "novo_x_previa": 1.0
+  },
+  {
+   "q": 38,
+   "salto_novo": 0.978,
+   "salto_previa": 0.978,
+   "novo_x_previa": 1.0
+  },
+  {
+   "q": 39,
+   "salto_novo": 0.99,
+   "salto_previa": 0.99,
+   "novo_x_previa": 1.0
+  },
+  {
+   "q": 40,
+   "salto_novo": 0.995,
+   "salto_previa": 0.995,
+   "novo_x_previa": 1.0
+  },
+  {
+   "q": 41,
+   "salto_novo": 0.998,
+   "salto_previa": 0.998,
+   "novo_x_previa": 1.0
+  },
+  {
+   "q": 42,
+   "salto_novo": 0.999,
+   "salto_previa": 0.999,
+   "novo_x_previa": 1.0
+  },
+  {
+   "q": 43,
+   "salto_novo": 0.999,
+   "salto_previa": 0.999,
+   "novo_x_previa": 1.0
+  },
+  {
+   "q": 44,
+   "salto_novo": 0.999,
+   "salto_previa": 0.999,
+   "novo_x_previa": 1.0
+  },
+  {
+   "q": 45,
+   "salto_novo": 0.999,
+   "salto_previa": 0.999,
+   "novo_x_previa": 1.0
+  },
+  {
+   "q": 46,
+   "salto_novo": 0.999,
+   "salto_previa": 0.999,
+   "novo_x_previa": 1.0
+  },
+  {
+   "q": 47,
+   "salto_novo": 0.999,
+   "salto_previa": 0.999,
+   "novo_x_previa": 1.0
+  },
+  {
+   "q": 48,
+   "salto_novo": 1.0,
+   "salto_previa": 1.0,
+   "novo_x_previa": 1.0
+  },
+  {
+   "q": 49,
+   "salto_novo": 1.0,
+   "salto_previa": 1.0,
+   "novo_x_previa": 1.0
+  }
+ ]
+}

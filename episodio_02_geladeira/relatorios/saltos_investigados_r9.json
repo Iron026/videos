@@ -1,5 +1,20 @@
 [
- {"plano": "I1", "quadros": [98, 115],
+ {
+  "plano": "I1",
+  "quadros": [
+   98,
+   115
+  ],
   "motivo": "investigado: câmera volta à geladeira (~10 mm e 0,28° por quadro) enquanto o personagem gira e sai com a caixa; salto quadro a quadro igual ao da prévia aprovada (±0,01 na correlação); a imagem difere da prévia só pelo ângulo da porta (curva física corrigida depois da prévia)",
-  "evidencia": "relatorios/previas_r9/i1_previa_x_v9_q92_q102.jpg"}
+  "evidencia": "relatorios/previas_r9/i1_previa_x_v9_q92_q102.jpg"
+ },
+ {
+  "plano": "B5",
+  "quadros": [
+   28,
+   47
+  ],
+  "motivo": "investigado (rodada 11): a garrafa entra sozinha no quadro e desliza até a prateleira (movimento aprovado pelo usuário em 24/11); salto quadro a quadro igual ao da prévia aprovada (±0,001 na correlação) e imagem igual à dela (correlação 1,000, diferença média 0,1)",
+  "evidencia": "relatorios/testes_r10/saltos_b5_garrafa.json"
+ }
 ]
