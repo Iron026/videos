@@ -134,53 +134,5 @@
   "dur": 0.044,
   "tom": 1.0,
   "uso": "válvula de sucção abre (E2/E3) — clique de relé filtrado (representação)"
- },
- {
-  "id": "624481",
-  "titulo": "Freezer - fridge floor - glass - take - put down - hit.wav",
-  "ini": 3.015,
-  "dur": 0.32,
-  "tom": 1.0,
-  "uso": "garrafa pousa na prateleira de vidro (B5)"
- },
- {
-  "id": "776443",
-  "titulo": "pop out, bubble, soft bursting",
-  "ini": 0.135,
-  "dur": 0.2,
-  "tom": 1.0,
-  "uso": "apresentação: fluido refrigerante (C3)"
- },
- {
-  "id": "776443",
-  "titulo": "pop out, bubble, soft bursting",
-  "ini": 0.135,
-  "dur": 0.2,
-  "tom": 1.0,
-  "uso": "apresentação: Evaporador (D1)"
- },
- {
-  "id": "776443",
-  "titulo": "pop out, bubble, soft bursting",
-  "ini": 0.135,
-  "dur": 0.2,
-  "tom": 1.0,
-  "uso": "apresentação: Compressor (E2)"
- },
- {
-  "id": "776443",
-  "titulo": "pop out, bubble, soft bursting",
-  "ini": 0.135,
-  "dur": 0.2,
-  "tom": 1.0,
-  "uso": "apresentação: Condensador (F1)"
- },
- {
-  "id": "776443",
-  "titulo": "pop out, bubble, soft bursting",
-  "ini": 0.135,
-  "dur": 0.2,
-  "tom": 1.0,
-  "uso": "apresentação: Capilar (G2)"
  }
 ]
