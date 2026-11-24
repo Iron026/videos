@@ -85,11 +85,19 @@ TRILHAS = {   # rodada 11: a trilha é escolhida por MUSICA (padrão: Rest Now, 
                      auto=[(0.0, -40), (2.5, -3), (10.3, -3), (16.0, -3), (16.6, -5), (28.6, -5), (33.6, -4), (33.92, -2), (37.5, -2), (40.0, -6),   # abertura · revelação
                            (48.3, -6), (48.8, -8), (71.4, -8), (74.2, -8), (75.0, -11), (86.5, -11), (87.2, -7), (111.6, -7),            # evaporador · compressor · condensador/capilar
                            (112.2, -5), (115.3, -5), (115.9, -6), (135.2, -6), (135.6, -6), (145.0, -6), (147.8, -60), (DUR, -60)]),       # recomeça · porta aberta · conclusão (final natural)
+    # Spice Intrigue (escolha do usuário, rodada 11; arquivo enviado pelo usuário — a página do Pixabay recusa acesso automático): 131,6 s, o som
+    # termina ~125 s da faixa; ENTRA com o rosto do rapaz (4,87 s, "Parece estranho…") e termina natural ~128–130 s, antes de "No balanço total".
+    'spice_intrigue': dict(id='334566', titulo='Spice Intrigue', autor='RomanSenykMusic', fonte='Pixabay (arquivo enviado pelo usuário)', url_pagina='https://pixabay.com/music/comedy-spice-intrigue-334566/',
+                     url_arquivo='(enviado pelo usuário: romansenykmusic-spice-intrigue-334566.mp3)', licenca='Pixabay Content License (a conferir pelo usuário na página: acesso automático bloqueado)',
+                     arquivo_local='som/bib/pixabay/334566.mp3', deslocamento_s=-4.87, passa_altas_hz=60,
+                     auto=[(0.0, -60), (4.87, -60), (6.4, -3), (10.3, -3), (16.0, -3), (16.6, -5), (28.6, -5), (33.6, -4), (33.92, -2), (37.5, -2), (40.0, -6),
+                           (48.3, -6), (48.8, -8), (71.4, -8), (74.2, -8), (75.0, -11), (86.5, -11), (87.2, -7), (111.6, -7),
+                           (112.2, -5), (115.3, -5), (115.9, -6), (DUR, -6)]),
 }
 MUS = TRILHAS[os.environ.get('MUSICA', 'rest_now')]; AUTO = MUS['auto']
 m = np.frombuffer(subprocess.run(['ffmpeg', '-v', 'error', '-i', os.path.join(R_, MUS['arquivo_local']), '-ac', '2', '-ar', str(SR), '-f', 'f32le', '-'],
                                  capture_output=True, check=True).stdout, np.float32).astype(np.float64).reshape(-1, 2)
-i0 = int(MUS['deslocamento_s'] * SR); mus = m[i0:i0 + N]; mus = np.pad(mus, ((0, N - len(mus)), (0, 0)))
+i0 = int(MUS['deslocamento_s'] * SR); mus = m[i0:i0 + N] if i0 >= 0 else np.concatenate([np.zeros((-i0, 2)), m])[:N]; mus = np.pad(mus, ((0, N - len(mus)), (0, 0)))   # deslocamento < 0: a faixa ENTRA depois
 mus = hpz(mus, MUS['passa_altas_hz'], 2)                                              # sem graves contínuos
 s1 = butter(2, [900, 3200], 'bandpass', fs=SR, output='sos'); mus = mus - 0.30 * sosfiltfilt(s1, mus, axis=0)   # ≈ −3 dB na faixa da voz
 # AUTO vem da trilha escolhida (TRILHAS)                    # (s, dB): função narrativa

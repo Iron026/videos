@@ -127,3 +127,36 @@ sistemas de gestão de direitos (Content ID); redistribuir o arquivo isolado.
 - **Arquivo:** o MP3 original está intacto (`fdedd877…`).
 
 **Nada publicado. Nenhum serviço contratado. Nenhuma licença comprada. Nenhuma voz gerada.**
+
+## Rodada 11 (ajuste final): trilha "Spice Intrigue" (proposta, aguardando sua audição)
+
+| Campo | Valor |
+|---|---|
+| Título | Spice Intrigue |
+| Autor | RomanSenykMusic |
+| Fonte | Pixabay Music, página https://pixabay.com/music/comedy-spice-intrigue-334566/ (categoria "comedy" no endereço) |
+| Arquivo | o que você enviou: `romansenykmusic-spice-intrigue-334566.mp3`, SHA-256 `f31f497a…` (MP3 256 kb/s, 131,58 s) |
+| Licença declarada | Pixabay Content License (https://pixabay.com/service/license-summary/) |
+| Conferência da página | **não feita por mim:** o Pixabay bloqueia acesso automático (proteção Cloudflare). Não tentei contornar. |
+
+**Pendente:** a confirmação da licença é sua. Confira na página da faixa:
+1. a licença (Pixabay Content License);
+2. se há aviso de **Content ID**. Algumas faixas do Pixabay são registradas pelos autores, e o vídeo pode receber
+   reivindicação automática no YouTube mesmo com uso permitido.
+
+**Termos gerais da Pixabay Content License** (a conferir no texto oficial):
+- uso comercial permitido, sem atribuição obrigatória;
+- não é permitido vender ou redistribuir o arquivo isolado sem modificação;
+- não é permitido sugerir endosso do autor.
+
+**Fora do git:** o arquivo isolado continua fora do repositório.
+
+**Edição para sincronia (não é remix):**
+- entra com o rosto às 4,87 s;
+- filtro passa-altas de 60 Hz;
+- volume ajustado por trecho do episódio, abaixando −8 dB sob a fala;
+- termina naturalmente por volta de 128,8 s (a faixa tem 131,6 s). Os ~22 s finais ficam sem música.
+
+**Preservadas:**
+- Secret Garden (decisão da rodada 11) e Rest Now continuam registradas acima;
+- as mixagens V9, V10 e Secret Garden **não foram alteradas**.
