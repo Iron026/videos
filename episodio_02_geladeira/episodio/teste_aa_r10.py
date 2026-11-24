@@ -36,7 +36,7 @@ if 'medir' in sys.argv[1:] or len(sys.argv) == 1:
         R = [reduzir(os.path.join(OUT, f'{pid}_ss2', f'q{i:04d}.jpg'), 2) for i in range(i0, i1 + 1)]
         d1 = os.path.join(A, 'quadros_final_r10', pid) if os.path.isdir(os.path.join(A, 'quadros_final_r10', pid)) else os.path.join(OUT, f'{pid}_ss1')
         T = [np.asarray(Image.open(os.path.join(d1, f'q{i:04d}.jpg')).convert('RGB'), np.float32) for i in range(i0, i1 + 1)]
-        S = [reduzir(os.path.join(OUT, f'{pid}_ss15', f'q{i:04d}.jpg'), 1.5) for i in range(i0, i1 + 1)] if os.path.isdir(os.path.join(OUT, f'{pid}_ss15')) else None
+        S = [reduzir(os.path.join(OUT, f'{pid}_ss15', f'q{i:04d}.jpg'), 1.5) for i in range(i0, i1 + 1)] if all(os.path.exists(os.path.join(OUT, f'{pid}_ss15', f'q{i:04d}.jpg')) for i in range(i0, i1 + 1)) else None
         g = lambda x: x.mean(2)
         bordas = [np.hypot(sobel(g(r), 0), sobel(g(r), 1)) for r in R]; mask = [b > np.percentile(b, 90) for b in bordas]
         esp = lambda X: float(np.mean([np.abs(g(x) - g(r))[m].mean() for x, r, m in zip(X, R, mask)]))
