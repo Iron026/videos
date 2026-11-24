@@ -1,0 +1,584 @@
+{
+ "rodada": 11,
+ "observacao": "Rodada 11: manifesto de produção = congelamento da rodada 10 + decisões aprovadas na rodada 11. A versão da rodada 10 fica preservada em manifesto_congelamento_r10.json.",
+ "versoes": {
+  "three": "0.170.0",
+  "playwright": "global",
+  "node": "v22.23.5",
+  "ffmpeg": "ffmpeg version 6.1.1-3ubuntu5 Copyright (c) 2000-2023 the FFmpeg developers",
+  "navegador": "Chromium (Playwright) + SwiftShader (ANGLE), sem GPU"
+ },
+ "motor": {
+  "motor/render3.js": "79b25d43c4395dc5ec04a8e59b3b2b773e7c77f05bf152d06a6d42470a2645a3",
+  "motor/render_anim.mjs": "35da39daa4b5bfe6649c9ec7a7b1061312769220793925433b7a452fb4985ef9",
+  "motor/index.html": "7403b60a9fbf5fbf1daea12271aaf3f218c4394b40a0f5e3afff188d48fb78af"
+ },
+ "configuracao": {
+  "arquivo": "config/producao.json",
+  "sha256": "516899ff14cb51564211174effb08e1c732c65e7b52b4bddd62ca2f00bc82f13",
+  "perfil_final": {
+   "escala": 1.0,
+   "passo": 1,
+   "consulta": "aoamostras=16&msaa=4&bloom=0.18"
+  },
+  "consulta_final": "aoamostras=16&msaa=4&bloom=0.18",
+  "antisserrilhado": "MSAA 4× (render target com 4 amostras; MAX_SAMPLES do SwiftShader)",
+  "ao": "GTAO 16 amostras, raio/espessura por cena (meta ao_raio/ao_espessura), AO com corte + máscara das tampas onde aprovado",
+  "bloom": 0.18,
+  "correcao_de_cor": "grade.py (curva em S leve, saturação +5 %, sombras frias/altas luzes quentes, vinheta −10 %) — aplicada na montagem",
+  "obturadores": {
+   "C2": {
+    "graus": 180,
+    "sub": 5,
+    "_nota": "rodada 8 (aprovado): desfoque de movimento por integração temporal de 5 sub-quadros em [−¼, +¼] de quadro; cena cenas/C2_obt (OBTURADOR_SUB=5)"
+   },
+   "C4": {
+    "graus": 180,
+    "sub": 5,
+    "quadros": [
+     126,
+     184
+    ],
+    "_nota": "rodada 10 (aprovado): obturador de 180° no fim do C4, quadros 126–184 (estendido de 178 a 184 por decisão do usuário para eliminar a troca 178→179); 5 sub-quadros em [−¼, +¼]; cena cenas/C4_obt"
+   }
+  },
+  "fps": 30,
+  "verificacao": {
+   "bytes_min": 4000,
+   "media_min": 3
+  },
+  "quadro_jpeg": "q95 (screenshot do Chromium)",
+  "x264": "CRF 17 (final), preset medium, yuv420p; áudio AAC 192 kb/s 48 kHz"
+ },
+ "scripts": {
+  "episodio/render_definitivo.py": "8807e9f8d4b1ba5fb91b3542d8de1f32cf10c1a8bc395ea0847f719780b5546a",
+  "episodio/montar_ep02.py": "b9ca8ed9ec51237fab5feba6efa339948177464388f5f08ca939428d14c46a73",
+  "episodio/montar_v9.sh": "162916f933b1bf7ed4cd2f648ba955dc1496b0f43e89dff4ab4d49be5a0b8ccf",
+  "episodio/grade.py": "aa821bc3fd0c49a1ee22578b68119e5cf79fbec508e15ff9a119a70b680bfc62",
+  "episodio/legendas_r9.py": "c516bc97b81c17ac964f86371b13b169c7351cd9e19c3f8dad9d07f9cafc7e9c",
+  "episodio/rotulos_r9.py": "69688fc946bac3065cdeff8508db9cb168006b1265b3d6baa75fdb4804532a26",
+  "blender/episodio02.py": "2059dd9007ba2d86ca66b14f4e9185c3c6add21b793d47d8ea0ec9564dcedca5",
+  "blender/encenacao02.py": "b45d1a10825e783288b243d5cd006e5a0b90afde6ade8113b707655337cc3571",
+  "blender/geladeira.py": "f63a3153eb2cad4ddb2c3ecec79e5776c319a294b787911713654cab251b8b28",
+  "blender/ep_base.py": "48f146c53ac18a8ad321459e64310b0da7dbf19ed85247b8329a883767ce2d13",
+  "som/som_ep02.py": "84177d0efd562521f6bce341cfb12be67ee3e17d752be6e74efbfab44679d0a3",
+  "som/som_r10.py": "a764021d018055bffb7138ff59e05a45428c510b8b8c787d44004b7cabb5e5eb"
+ },
+ "cenas": {
+  "A1": "b57af3dfaeecd8bf",
+  "A2": "ff23a600fed285b9",
+  "A3": "ca11d52ffd03c4d3",
+  "A4": "f5b556ea5269d29b",
+  "A4b": "82b726cb9564667c",
+  "B1": "ae2742f900b3bd96",
+  "B2": "ff1f3da1231c2b36",
+  "B3": "313635401969f7d5",
+  "B4": "3b984c9716450e9d",
+  "B5": "8358fcaa715e04f7",
+  "B6": "6f2be0a942590f8b",
+  "B7": "5d3c956c9c40d978",
+  "C1": "c633b2cb5c2cfbee",
+  "C2": "7191814bfcf2ee4f",
+  "C3": "78cb8fbf8b9f5d1d",
+  "C4": "4f106bffe4862288",
+  "D1": "c0e7556a655347d0",
+  "D2": "356b005012318edc",
+  "D3": "1654dcc30c12aea8",
+  "D4": "44fb023152e4d86a",
+  "D5": "4bd57ce8a6a50ec0",
+  "E1": "450291e911daddc5",
+  "E2": "b330933dcdfd6bba",
+  "E3": "f28eb3ab3cafa811",
+  "E4": "ffe9008f282f4d78",
+  "F1": "0f8d47717a8802c3",
+  "F2": "b867a89fdae6c370",
+  "G1": "453e53d8be286015",
+  "G2": "f4e81a9c96aa23a8",
+  "G3": "66f26fd22b86df00",
+  "G3z": "f2d5a0a0f10c796b",
+  "H1": "5e5e2a067447838b",
+  "H2": "65e42c31c4eac384",
+  "I1": "0dc166fbf8767125",
+  "I2": "9ab35ca986e90ea1",
+  "I3": "79f42d0c009a70eb",
+  "I4": "4eb1f7da065cbf4a",
+  "J1": "131aa4fb84bd41e4",
+  "J1b": "5367b85145a0ff79",
+  "J2": "166b0835b90cff9a",
+  "J3": "11e1d724ff20997b",
+  "J4": "8dc608272e56250e",
+  "C2_obt": "cce924a211505aaa",
+  "C4_obt": "f41780aaea2a73fe"
+ },
+ "correcoes_localizadas": [
+  {
+   "onde": "C4 q126–178",
+   "o_que": "obturador 180°, 5 sub-quadros (aprovado na rodada 10)",
+   "prova": "relatorios/testes_r10/c4_1080_obturador.json"
+  },
+  {
+   "onde": "A4 q34",
+   "o_que": "troca de câmera mais curta que 1 quadro: o quadro caía entre as chaves (parede vazia); câmera do fim da janela e visão térmica no mesmo instante",
+   "prova": "relatorios/testes_r10/prova_reuso_A4.json (só q34 muda)"
+  },
+  {
+   "onde": "C2 inteiro",
+   "o_que": "obturador 180° (aprovado na rodada 8)"
+  },
+  {
+   "onde": "A2",
+   "o_que": "porta segue a curva física do A1 (rodada 9)"
+  }
+ ],
+ "audio": {
+  "narracao": {
+   "voz/ElevenLabs_2026-11-21T21_13_42_Will_-_Deep_pvc_s60_sim75_v4.mp3": "fdedd87772aee9d4dac5d0193db3b9e1ef97c4b699c8ce01b0c8de7ae05726ee"
+  },
+  "palavras": {
+   "roteiro/palavras.json": "728f9ba689033c2d1bee812d01273e7977a55bbeaf51f1d44e923b30e27b8e64"
+  },
+  "mixagem_v9": {
+   "som/audio_ep02_v9.flac": "38294db0759e1cef4e83487008fcfe869349df7bd55b16bb7cec22472fdb651d"
+  },
+  "mixagens_r10": {
+   "audio_ep02_r10_efeitos.wav": "fbfa3db6f197e6c2f43c42e4c26050fbede7fe1b3f56d6eeca0d12035b3f03f7",
+   "audio_ep02_r10_musica.wav": "fa3ad041c35e17552769b4840751bae427b3ebbd9dcb96af7105cd08485e269c",
+   "audio_ep02_r10_completo.wav": "1a68aff841d69cf5219894c8b77852584ef8238d9760f09ab05bf71cd5f478c6"
+  },
+  "parametros": {
+   "nulo_v9_dbfs": -136.7,
+   "master_fixo_db": 5.45,
+   "ganho_musica_db": -10.6,
+   "lufs_voz": -14.06,
+   "trilha": {
+    "id": "584",
+    "titulo": "Rest Now",
+    "autor": "Eugenio Mininni",
+    "fonte": "Mixkit",
+    "url_pagina": "https://mixkit.co/free-stock-music/ambient/",
+    "url_arquivo": "https://assets.mixkit.co/music/584/584.mp3",
+    "licenca": "Mixkit Stock Music Free License (https://mixkit.co/license/#musicFree)",
+    "arquivo_local": "som/bib/mixkit/584.mp3",
+    "deslocamento_s": 0.4
+   },
+   "automacao_musica": [
+    [
+     0.0,
+     -40
+    ],
+    [
+     2.5,
+     -4
+    ],
+    [
+     10.3,
+     -4
+    ],
+    [
+     10.6,
+     -3
+    ],
+    [
+     16.0,
+     -3
+    ],
+    [
+     16.6,
+     -6
+    ],
+    [
+     28.6,
+     -6
+    ],
+    [
+     33.6,
+     -4
+    ],
+    [
+     33.92,
+     -3
+    ],
+    [
+     37.5,
+     -3
+    ],
+    [
+     40.0,
+     -7
+    ],
+    [
+     71.4,
+     -7
+    ],
+    [
+     72.0,
+     -5
+    ],
+    [
+     74.2,
+     -5
+    ],
+    [
+     75.0,
+     -12
+    ],
+    [
+     91.5,
+     -12
+    ],
+    [
+     92.5,
+     -8
+    ],
+    [
+     111.6,
+     -8
+    ],
+    [
+     112.2,
+     -5
+    ],
+    [
+     115.3,
+     -5
+    ],
+    [
+     115.9,
+     -6
+    ],
+    [
+     135.2,
+     -6
+    ],
+    [
+     135.6,
+     -7
+    ],
+    [
+     145.0,
+     -7
+    ],
+    [
+     147.6,
+     -60
+    ],
+    [
+     151.24,
+     -60
+    ]
+   ],
+   "eventos": [
+    {
+     "t": 0.2,
+     "fonte": "706115",
+     "trecho": [
+      0.17,
+      0.41
+     ],
+     "ataque_na_gravacao": 0.19,
+     "db": -20.0,
+     "stem": "efeitos",
+     "uso": "mão fecha no puxador (A1)"
+    },
+    {
+     "t": 117.51,
+     "fonte": "706115",
+     "trecho": [
+      0.17,
+      0.41
+     ],
+     "ataque_na_gravacao": 0.19,
+     "db": -20.0,
+     "stem": "efeitos",
+     "uso": "mão fecha no puxador (I1)"
+    },
+    {
+     "t": 118.44,
+     "fonte": "616056",
+     "trecho": [
+      1.77,
+      2.07
+     ],
+     "ataque_na_gravacao": 1.795,
+     "db": -19.0,
+     "stem": "efeitos",
+     "uso": "mão fecha na caixa de leite (I1)"
+    },
+    {
+     "t": 118.62,
+     "fonte": "624481",
+     "trecho": [
+      0.78,
+      1.08
+     ],
+     "ataque_na_gravacao": 0.8,
+     "db": -26.0,
+     "stem": "efeitos",
+     "uso": "caixa sai da prateleira de vidro (I1)"
+    },
+    {
+     "t": 74.897,
+     "fonte": "876593",
+     "trecho": [
+      0.005,
+      0.065
+     ],
+     "ataque_na_gravacao": 0.015,
+     "db": -26.294281557234164,
+     "stem": "mecanismo",
+     "uso": "válvula de descarga abre (E2/E3) — clique de relé filtrado (representação)"
+    },
+    {
+     "t": 76.13,
+     "fonte": "876593",
+     "trecho": [
+      0.005,
+      0.065
+     ],
+     "ataque_na_gravacao": 0.015,
+     "db": -25.133292588646537,
+     "stem": "mecanismo",
+     "uso": "válvula de descarga abre (E2/E3) — clique de relé filtrado (representação)"
+    },
+    {
+     "t": 77.397,
+     "fonte": "876593",
+     "trecho": [
+      0.005,
+      0.065
+     ],
+     "ataque_na_gravacao": 0.015,
+     "db": -23.67095094534643,
+     "stem": "mecanismo",
+     "uso": "válvula de descarga abre (E2/E3) — clique de relé filtrado (representação)"
+    },
+    {
+     "t": 78.59,
+     "fonte": "876593",
+     "trecho": [
+      0.005,
+      0.065
+     ],
+     "ataque_na_gravacao": 0.015,
+     "db": -18.519670189223017,
+     "stem": "mecanismo",
+     "uso": "válvula de descarga abre (E2/E3) — clique de relé filtrado (representação)"
+    },
+    {
+     "t": 79.823,
+     "fonte": "876593",
+     "trecho": [
+      0.005,
+      0.065
+     ],
+     "ataque_na_gravacao": 0.015,
+     "db": -18.06588266109145,
+     "stem": "mecanismo",
+     "uso": "válvula de descarga abre (E2/E3) — clique de relé filtrado (representação)"
+    },
+    {
+     "t": 81.09,
+     "fonte": "876593",
+     "trecho": [
+      0.005,
+      0.065
+     ],
+     "ataque_na_gravacao": 0.015,
+     "db": -17.01373597866051,
+     "stem": "mecanismo",
+     "uso": "válvula de descarga abre (E2/E3) — clique de relé filtrado (representação)"
+    },
+    {
+     "t": 82.323,
+     "fonte": "876593",
+     "trecho": [
+      0.005,
+      0.065
+     ],
+     "ataque_na_gravacao": 0.015,
+     "db": -16.39577516214876,
+     "stem": "mecanismo",
+     "uso": "válvula de descarga abre (E2/E3) — clique de relé filtrado (representação)"
+    },
+    {
+     "t": 75.197,
+     "fonte": "876593",
+     "trecho": [
+      0.005,
+      0.065
+     ],
+     "ataque_na_gravacao": 0.015,
+     "db": -32.1335433934447,
+     "stem": "mecanismo",
+     "uso": "válvula de sucção abre (E2/E3) — clique de relé filtrado (representação)"
+    },
+    {
+     "t": 76.463,
+     "fonte": "876593",
+     "trecho": [
+      0.005,
+      0.065
+     ],
+     "ataque_na_gravacao": 0.015,
+     "db": -30.66831028652392,
+     "stem": "mecanismo",
+     "uso": "válvula de sucção abre (E2/E3) — clique de relé filtrado (representação)"
+    },
+    {
+     "t": 77.697,
+     "fonte": "876593",
+     "trecho": [
+      0.005,
+      0.065
+     ],
+     "ataque_na_gravacao": 0.015,
+     "db": -29.52832393831771,
+     "stem": "mecanismo",
+     "uso": "válvula de sucção abre (E2/E3) — clique de relé filtrado (representação)"
+    },
+    {
+     "t": 79.323,
+     "fonte": "876593",
+     "trecho": [
+      0.005,
+      0.065
+     ],
+     "ataque_na_gravacao": 0.015,
+     "db": -24.334603459821448,
+     "stem": "mecanismo",
+     "uso": "válvula de sucção abre (E2/E3) — clique de relé filtrado (representação)"
+    },
+    {
+     "t": 80.59,
+     "fonte": "876593",
+     "trecho": [
+      0.005,
+      0.065
+     ],
+     "ataque_na_gravacao": 0.015,
+     "db": -23.45230113049046,
+     "stem": "mecanismo",
+     "uso": "válvula de sucção abre (E2/E3) — clique de relé filtrado (representação)"
+    },
+    {
+     "t": 81.823,
+     "fonte": "876593",
+     "trecho": [
+      0.005,
+      0.065
+     ],
+     "ataque_na_gravacao": 0.015,
+     "db": -22.512398465561837,
+     "stem": "mecanismo",
+     "uso": "válvula de sucção abre (E2/E3) — clique de relé filtrado (representação)"
+    }
+   ],
+   "variantes": {
+    "efeitos": {
+     "lufs_wav": -14.08,
+     "tp_wav": -1.8,
+     "limitador_max_db": -3.86,
+     "diferenca_max_v9_dbfs": -14.9
+    },
+    "musica": {
+     "lufs_wav": -14.08,
+     "tp_wav": -1.8,
+     "limitador_max_db": -3.79,
+     "diferenca_max_v9_dbfs": -25.4
+    },
+    "completo": {
+     "lufs_wav": -14.08,
+     "tp_wav": -1.8,
+     "limitador_max_db": -3.79,
+     "diferenca_max_v9_dbfs": -14.7
+    }
+   },
+   "musica_lufs": -40.3,
+   "musica_rel_voz_db": -26.24
+  }
+ },
+ "licencas": "relatorios/licencas_r10.md",
+ "criterios_validacao": {
+  "quadro": "decodifica, luma média ≥ 3, ≥ 4000 bytes, semelhança com o anterior (corr ≥ 0,93 OU dif ≤ 6) ou salto justificado com prova",
+  "composicao": "testar_composicao_r9.py em todos os quadros: 0 sobreposições/cortes/zonas",
+  "audio": "AAC: −14 ± 0,5 LUFS, pico verdadeiro ≤ −1,5 dBTP, voz − resto no celular p5 ≥ 10 dB, mono sem perda",
+  "cintilacao": "detector absoluto por plano comparado à versão aprovada; picos classificados por mapa"
+ },
+ "decisoes_r11": {
+  "transicao_a4": {
+   "aprovada": "Opção C — empurrão lateral",
+   "instante_s": 5.7367,
+   "duracao_s": 0.3,
+   "desfoque": "movimento horizontal, obturador 180°, CENTRADO no instante do quadro",
+   "onde": "composição (montar_ep02.py, TRANSICAO_A4_INTERNA=empurrao; montar_r11.sh)",
+   "render_3d": "só quadros-ponte (A4 rosto q33–38 com a câmera APROVADA continuada; A4 interior q26–34 com a câmera fixa do interior)",
+   "cena_ponte_rosto": {
+    "pasta": "episodio/cenas/A4_h_rosto_c (gerada por pontes_camera_continua.py)",
+    "sha256_cena": "dc00bb9c5106ca88bb370ba655b6897276081c4b61393e83d7fafd5a0d305cb1"
+   },
+   "quadros_ponte_sha256": {
+    "episodio/quadros_pontes_r11/final/A4_rosto_c": {
+     "q0033.jpg": "1dfbc3fa7165b40d002d23e27a396a7a03ca701dee592dcffa32ec46939d6c11",
+     "q0034.jpg": "a674b22ab3b4c4f32e41f6549ab675272c2803e5a99950c466b7e4f926324c36",
+     "q0035.jpg": "47359da750b16a48a7c52d0caf38fdaeff4ca8fcc4b534809c29b7f3fcc3460a",
+     "q0036.jpg": "1a91458efb1b316ae67b8f4b17a894e59e3244111e45860884af887b781deb60",
+     "q0037.jpg": "dd2486e048280ebe6068e60bb555243eb4c96f5a517485cc9cb3a30937303cf0",
+     "q0038.jpg": "994b3e5d858223073228ba59118433d0447e05a039b4f22234b0ecb041f0eed1"
+    },
+    "episodio/quadros_pontes_r11/revisao/A4_rosto_c": {
+     "q0033.jpg": "bb4633a957a4827ba9cb5b50f9f3e1cc5753dd97894ed9472302f9a815b25344",
+     "q0034.jpg": "bb80a15e2ece3ac5d76358f9993e04dda60d7b334fcfce017d857dc1f3716018",
+     "q0035.jpg": "1d0838bd4a42d0dfe72d95187ec94e52d50ed3dd7d243d7d940349c2e29a5946",
+     "q0036.jpg": "bb088182c1d3037416bbe4ed2a71f5e2294bb901188330f6d6751f7982d5754f",
+     "q0037.jpg": "7ebc993e3d2ef5598c891f58e09d33bb4dd570bc3126f872ab01c78271d3eba5",
+     "q0038.jpg": "b06a7e866977b650db3d042e30a6bc5b27c3bc7bbdbc5322e28b7b6bd110cf47"
+    },
+    "episodio/quadros_pontes_r11/final/A4_interior": {
+     "q0026.jpg": "50bda9768824c61ceddb1d8c35b18b275dd1bff9633d51eb5cfecdf92d311f90",
+     "q0027.jpg": "8831692ad50ed6ea783240199cac05058ce799d9ac0dea7d3c212ea2a01652e1",
+     "q0028.jpg": "50bda9768824c61ceddb1d8c35b18b275dd1bff9633d51eb5cfecdf92d311f90",
+     "q0029.jpg": "50bda9768824c61ceddb1d8c35b18b275dd1bff9633d51eb5cfecdf92d311f90",
+     "q0030.jpg": "50bda9768824c61ceddb1d8c35b18b275dd1bff9633d51eb5cfecdf92d311f90",
+     "q0031.jpg": "8831692ad50ed6ea783240199cac05058ce799d9ac0dea7d3c212ea2a01652e1",
+     "q0032.jpg": "50bda9768824c61ceddb1d8c35b18b275dd1bff9633d51eb5cfecdf92d311f90",
+     "q0033.jpg": "50bda9768824c61ceddb1d8c35b18b275dd1bff9633d51eb5cfecdf92d311f90",
+     "q0034.jpg": "50bda9768824c61ceddb1d8c35b18b275dd1bff9633d51eb5cfecdf92d311f90"
+    },
+    "episodio/quadros_pontes_r11/revisao/A4_interior": {
+     "q0026.jpg": "f00aab179e11002e91e86a0dc23d9c1c13b6300750cdaf96d4f296d82b5cfaa9",
+     "q0027.jpg": "f00aab179e11002e91e86a0dc23d9c1c13b6300750cdaf96d4f296d82b5cfaa9",
+     "q0028.jpg": "f00aab179e11002e91e86a0dc23d9c1c13b6300750cdaf96d4f296d82b5cfaa9",
+     "q0029.jpg": "f00aab179e11002e91e86a0dc23d9c1c13b6300750cdaf96d4f296d82b5cfaa9",
+     "q0030.jpg": "f00aab179e11002e91e86a0dc23d9c1c13b6300750cdaf96d4f296d82b5cfaa9",
+     "q0031.jpg": "f00aab179e11002e91e86a0dc23d9c1c13b6300750cdaf96d4f296d82b5cfaa9",
+     "q0032.jpg": "f00aab179e11002e91e86a0dc23d9c1c13b6300750cdaf96d4f296d82b5cfaa9",
+     "q0033.jpg": "f00aab179e11002e91e86a0dc23d9c1c13b6300750cdaf96d4f296d82b5cfaa9",
+     "q0034.jpg": "f00aab179e11002e91e86a0dc23d9c1c13b6300750cdaf96d4f296d82b5cfaa9"
+    }
+   },
+   "provas": [
+    "relatorios/testes_r10/transicao_a4_c_final.json (1080: procedência dos pixels, rastro/deslocamento 0,49, entrada/saída idênticas ao corte, continuidade nas junções)",
+    "relatorios/testes_r10/transicao_a4_c_integridade.json (SHA-256 por quadro: só 168–176 diferem; 540 = episódio inteiro, 1080 = 0–6,5 s)",
+    "relatorios/testes_r10/pontes_camera_continua.json"
+   ],
+   "preservado": "corte seco continua o padrão do montar_ep02.py (TRANSICAO_A4_INTERNA=corte); prévia de 24/11 reproduzível com PONTE_ROSTO_ANTIGA=1 DESFOQUE_A4_ATRASADO=1"
+  },
+  "trilha": {
+   "aprovada": "Spice Intrigue (RomanSenykMusic, Pixabay) — aprovada pelo usuário em 24/11 (aprovação auditiva final pendente na montagem definitiva)",
+   "arquivo_audio": "som/audio_ep02_r11_spice_intrigue.wav",
+   "sha256": "6df3e4aab3a3778058e011f27938a63060e6686a53cf1ccaef32283628d6eeb9",
+   "licenca": "Pixabay Content License — página não verificável por acesso automático; confirmação do usuário pendente (licença e aviso de Content ID)",
+   "preservadas": [
+    "som/audio_ep02_r9.wav (V9)",
+    "som/audio_ep02_r10_efeitos.wav (V10 efeitos)",
+    "som/audio_ep02_r11_secret_garden.wav",
+    "som/audio_ep02_r10_completo.wav (Rest Now)"
+   ]
+  },
+  "testes_nao_aprovados": {
+   "garrafa_b5": "GARRAFA_B5=1 (cenas/B5_garrafa; prévia 540) — aguardando decisão",
+   "sons_apresentacao": "APRESENTA_R11=madeira|pop, stem destaque −12 dB da voz — aguardando decisão"
+  },
+  "montagem_definitiva": "episodio/montar_r11.sh"
+ }
+}
