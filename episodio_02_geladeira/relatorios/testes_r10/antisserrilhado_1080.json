@@ -8,7 +8,8 @@
   "cintilacao_bordas_msaa4": 5.96,
   "movimento_bordas_ref": 8.52,
   "erro_espacial_bordas_ss15": 10.15,
-  "cintilacao_bordas_ss15": 4.67
+  "cintilacao_bordas_ss15": 4.67,
+  "cintilacao_ss15_vs_msaa4_pct": -22.0
  },
  "A2": {
   "quadros": [
@@ -17,7 +18,10 @@
   ],
   "erro_espacial_bordas_msaa4": 2.69,
   "cintilacao_bordas_msaa4": 3.1,
-  "movimento_bordas_ref": 8.6
+  "movimento_bordas_ref": 8.6,
+  "erro_espacial_bordas_ss15": 1.97,
+  "cintilacao_bordas_ss15": 2.42,
+  "cintilacao_ss15_vs_msaa4_pct": -22.0
  },
  "G3": {
   "quadros": [
@@ -26,7 +30,10 @@
   ],
   "erro_espacial_bordas_msaa4": 7.53,
   "cintilacao_bordas_msaa4": 4.68,
-  "movimento_bordas_ref": 2.7
+  "movimento_bordas_ref": 2.7,
+  "erro_espacial_bordas_ss15": 9.43,
+  "cintilacao_bordas_ss15": 3.78,
+  "cintilacao_ss15_vs_msaa4_pct": -19.0
  },
  "H1": {
   "quadros": [
@@ -35,7 +42,10 @@
   ],
   "erro_espacial_bordas_msaa4": 8.39,
   "cintilacao_bordas_msaa4": 10.36,
-  "movimento_bordas_ref": 82.1
+  "movimento_bordas_ref": 82.1,
+  "erro_espacial_bordas_ss15": 10.54,
+  "cintilacao_bordas_ss15": 12.3,
+  "cintilacao_ss15_vs_msaa4_pct": 19.0
  },
  "E1": {
   "quadros": [
@@ -44,6 +54,10 @@
   ],
   "erro_espacial_bordas_msaa4": 7.88,
   "cintilacao_bordas_msaa4": 3.95,
-  "movimento_bordas_ref": 13.01
- }
+  "movimento_bordas_ref": 13.01,
+  "erro_espacial_bordas_ss15": 13.03,
+  "cintilacao_bordas_ss15": 3.57,
+  "cintilacao_ss15_vs_msaa4_pct": -10.0
+ },
+ "_conclusao": "Escala 1,5× (custo 2,25×) reduz a cintilação de borda em 10–22 % em F1/A2/G3/E1 e AUMENTA 19 % no H1; o erro espacial contra a referência 2160 piora em 4 de 5 (redução Lanczos em sRGB × média 2×2 em luz linear da referência). Ganho pequeno e inconsistente → mantém MSAA 4× aprovado, sem ajuste local. O que sobra está nos arames/tubos mais finos que 1 pixel (mapas em episodio/quadros_aa_r10/*_mapa.jpg)."
 }
