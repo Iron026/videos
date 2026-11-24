@@ -37,7 +37,7 @@ abafa = lambda fc: (lambda x: lpz(x, fc, 2))
 evento(0.20, '706115', 0.17, 0.24, 0.19, -20.0, 'efeitos', 'mão fecha no puxador (A1)', 0.15, filtro=abafa(5000))
 evento(117.51, '706115', 0.17, 0.24, 0.19, -20.0, 'efeitos', 'mão fecha no puxador (I1)', 0.15, filtro=abafa(5000))
 # caixa de leite: 616056 (manuseio de caixa de leite), evento em 1,795 s (papelão com líquido, centroide 700 Hz)
-evento(118.44, '616056', 1.77, 0.30, 1.795, -16.0, 'efeitos', 'mão fecha na caixa de leite (I1)', -0.1)
+evento(118.44, '616056', 1.77, 0.30, 1.795, -19.0, 'efeitos', 'mão fecha na caixa de leite (I1)', -0.1)
 # saída da prateleira: 624481 ("Freezer - fridge floor - glass - take"), evento "take" em 0,80 s, mais fraco
 evento(118.62, '624481', 0.78, 0.30, 0.80, -26.0, 'efeitos', 'caixa sai da prateleira de vidro (I1)', -0.1, filtro=abafa(6000))
 # válvulas do compressor (E2, E3): instantes de abertura nas cenas; nível pela distância câmera × compressor
@@ -78,12 +78,13 @@ m = np.frombuffer(subprocess.run(['ffmpeg', '-v', 'error', '-i', os.path.join(A,
 i0 = int(MUS['deslocamento_s'] * SR); mus = m[i0:i0 + N]; mus = np.pad(mus, ((0, N - len(mus)), (0, 0)))
 mus = hpz(mus, 60, 2)                                                                  # sem graves contínuos
 s1 = butter(2, [900, 3200], 'bandpass', fs=SR, output='sos'); mus = mus - 0.30 * sosfiltfilt(s1, mus, axis=0)   # ≈ −3 dB na faixa da voz
-AUTO = [(0.0, -40), (2.5, -4), (10.3, -4), (10.6, -3), (16.0, -3), (16.6, -6), (28.6, -6), (33.6, -2), (33.92, 0), (37.5, 0), (40.0, -7),
+AUTO = [(0.0, -40), (2.5, -4), (10.3, -4), (10.6, -3), (16.0, -3), (16.6, -6), (28.6, -6), (33.6, -4), (33.92, -3), (37.5, -3), (40.0, -7),
         (71.4, -7), (72.0, -5), (74.2, -5), (75.0, -12), (91.5, -12), (92.5, -8), (111.6, -8), (112.2, -5), (115.3, -5), (115.9, -6),
-        (135.2, -6), (135.6, -4), (145.0, -4), (147.6, -60), (DUR, -60)]                    # (s, dB): função narrativa
+        (135.2, -6), (135.6, -7), (145.0, -7), (147.6, -60), (DUR, -60)]                    # (s, dB): função narrativa
 ta = np.arange(N) / SR; auto = db(np.interp(ta, [a for a, _ in AUTO], [b for _, b in AUTO]))
-gvoz = suaviza(1 - (1 - db(-5.0)) * ativa, 0.06, 0.5)                                    # −5 dB enquanto há fala real
-Lv = B.lufs(V9['voz']); mus = mus * auto[:, None]; GM = (Lv + float(os.environ.get('MUSICA_REL_DB', '-17'))) - B.lufs(mus); mus = mus * db(GM) * gvoz[:, None]
+ativa_m = np.maximum(ativa, np.r_[ativa[n_(0.15):], np.zeros(n_(0.15))])   # antecipa 0,15 s: a música já está baixa no início da palavra
+gvoz = suaviza(1 - (1 - db(float(os.environ.get('MUSICA_DUCK_DB', '-8')))) * ativa_m, 0.06, 0.6)   # abaixa enquanto há fala real (−8 dB: p5 voz−resto no celular ≥ 13 dB)
+Lv = B.lufs(V9['voz']); mus = mus * auto[:, None]; GM = (Lv + float(os.environ.get('MUSICA_REL_DB', '-18.5'))) - B.lufs(mus); mus = mus * db(GM) * gvoz[:, None]
 k_ = n_(1.0); mus[-k_:] *= 0.0
 
 # ------------------------------------------------------------------ variantes e medidas

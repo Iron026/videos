@@ -1,7 +1,7 @@
 {
- "nulo_v9_dbfs": -23.2,
+ "nulo_v9_dbfs": -136.7,
  "master_fixo_db": 5.45,
- "ganho_musica_db": -12.83,
+ "ganho_musica_db": -10.6,
  "lufs_voz": -14.06,
  "trilha": {
   "id": "584",
@@ -45,15 +45,15 @@
   ],
   [
    33.6,
-   -2
+   -4
   ],
   [
    33.92,
-   0
+   -3
   ],
   [
    37.5,
-   0
+   -3
   ],
   [
    40.0,
@@ -105,11 +105,11 @@
   ],
   [
    135.6,
-   -4
+   -7
   ],
   [
    145.0,
-   -4
+   -7
   ],
   [
    147.6,
@@ -153,7 +153,7 @@
     2.07
    ],
    "ataque_na_gravacao": 1.795,
-   "db": -16.0,
+   "db": -19.0,
    "stem": "efeitos",
    "uso": "mão fecha na caixa de leite (I1)"
   },
@@ -328,24 +328,24 @@
  ],
  "variantes": {
   "efeitos": {
-   "lufs_wav": -14.07,
+   "lufs_wav": -14.08,
    "tp_wav": -1.8,
    "limitador_max_db": -3.86,
-   "diferenca_max_v9_dbfs": -11.9
+   "diferenca_max_v9_dbfs": -14.9
   },
   "musica": {
    "lufs_wav": -14.08,
    "tp_wav": -1.8,
-   "limitador_max_db": -3.78,
-   "diferenca_max_v9_dbfs": -21.3
+   "limitador_max_db": -3.79,
+   "diferenca_max_v9_dbfs": -25.4
   },
   "completo": {
    "lufs_wav": -14.08,
    "tp_wav": -1.8,
-   "limitador_max_db": -3.78,
-   "diferenca_max_v9_dbfs": -11.8
+   "limitador_max_db": -3.79,
+   "diferenca_max_v9_dbfs": -14.7
   }
  },
- "musica_lufs": -38.61,
- "musica_rel_voz_db": -24.55
+ "musica_lufs": -40.3,
+ "musica_rel_voz_db": -26.24
 }

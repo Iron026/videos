@@ -1,0 +1,172 @@
+[
+ {
+  "t": 0.2,
+  "uso": "mão fecha no puxador (A1)",
+  "pico_dbfs": -17.6,
+  "ataque_medido": 0.203,
+  "atraso_ms": 3,
+  "voz_rms_db": -16.2,
+  "resto_v9_rms_db": -23.5,
+  "novo_rms_db": -41.4
+ },
+ {
+  "t": 117.51,
+  "uso": "mão fecha no puxador (I1)",
+  "pico_dbfs": -19.3,
+  "ataque_medido": 117.513,
+  "atraso_ms": 3,
+  "voz_rms_db": -20.0,
+  "resto_v9_rms_db": -24.0,
+  "novo_rms_db": -42.5
+ },
+ {
+  "t": 118.44,
+  "uso": "mão fecha na caixa de leite (I1)",
+  "pico_dbfs": -11.7,
+  "ataque_medido": 118.445,
+  "atraso_ms": 5,
+  "voz_rms_db": -17.1,
+  "resto_v9_rms_db": -32.8,
+  "novo_rms_db": -28.8
+ },
+ {
+  "t": 118.62,
+  "uso": "caixa sai da prateleira de vidro (I1)",
+  "pico_dbfs": -18.6,
+  "ataque_medido": 118.47,
+  "atraso_ms": -150,
+  "voz_rms_db": -17.4,
+  "resto_v9_rms_db": -35.8,
+  "novo_rms_db": -47.2
+ },
+ {
+  "t": 74.897,
+  "uso": "válvula de descarga abre (E2/E3) — clique de rel",
+  "pico_dbfs": -38.7,
+  "ataque_medido": 74.899,
+  "atraso_ms": 2,
+  "voz_rms_db": -16.7,
+  "resto_v9_rms_db": -28.2,
+  "novo_rms_db": -60.8
+ },
+ {
+  "t": 76.13,
+  "uso": "válvula de descarga abre (E2/E3) — clique de rel",
+  "pico_dbfs": -35.4,
+  "ataque_medido": 76.132,
+  "atraso_ms": 2,
+  "voz_rms_db": -18.5,
+  "resto_v9_rms_db": -26.8,
+  "novo_rms_db": -57.5
+ },
+ {
+  "t": 77.397,
+  "uso": "válvula de descarga abre (E2/E3) — clique de rel",
+  "pico_dbfs": -31.2,
+  "ataque_medido": 77.399,
+  "atraso_ms": 2,
+  "voz_rms_db": -18.8,
+  "resto_v9_rms_db": -25.3,
+  "novo_rms_db": -53.3
+ },
+ {
+  "t": 78.59,
+  "uso": "válvula de descarga abre (E2/E3) — clique de rel",
+  "pico_dbfs": -33.9,
+  "ataque_medido": 78.591,
+  "atraso_ms": 1,
+  "voz_rms_db": -17.3,
+  "resto_v9_rms_db": -22.2,
+  "novo_rms_db": -56.4
+ },
+ {
+  "t": 79.823,
+  "uso": "válvula de descarga abre (E2/E3) — clique de rel",
+  "pico_dbfs": -27.6,
+  "ataque_medido": 79.825,
+  "atraso_ms": 2,
+  "voz_rms_db": -19.3,
+  "resto_v9_rms_db": -22.1,
+  "novo_rms_db": -49.8
+ },
+ {
+  "t": 81.09,
+  "uso": "válvula de descarga abre (E2/E3) — clique de rel",
+  "pico_dbfs": -29.2,
+  "ataque_medido": 81.092,
+  "atraso_ms": 2,
+  "voz_rms_db": -16.0,
+  "resto_v9_rms_db": -20.2,
+  "novo_rms_db": -51.3
+ },
+ {
+  "t": 82.323,
+  "uso": "válvula de descarga abre (E2/E3) — clique de rel",
+  "pico_dbfs": -27.4,
+  "ataque_medido": 82.325,
+  "atraso_ms": 2,
+  "voz_rms_db": -15.2,
+  "resto_v9_rms_db": -19.8,
+  "novo_rms_db": -49.5
+ },
+ {
+  "t": 75.197,
+  "uso": "válvula de sucção abre (E2/E3) — clique de relé ",
+  "pico_dbfs": -43.2,
+  "ataque_medido": 75.199,
+  "atraso_ms": 2,
+  "voz_rms_db": -15.3,
+  "resto_v9_rms_db": -28.3,
+  "novo_rms_db": -65.3
+ },
+ {
+  "t": 76.463,
+  "uso": "válvula de sucção abre (E2/E3) — clique de relé ",
+  "pico_dbfs": -38.2,
+  "ataque_medido": 76.465,
+  "atraso_ms": 2,
+  "voz_rms_db": -14.5,
+  "resto_v9_rms_db": -26.7,
+  "novo_rms_db": -60.3
+ },
+ {
+  "t": 77.697,
+  "uso": "válvula de sucção abre (E2/E3) — clique de relé ",
+  "pico_dbfs": -39.2,
+  "ataque_medido": 77.699,
+  "atraso_ms": 2,
+  "voz_rms_db": -17.0,
+  "resto_v9_rms_db": -25.6,
+  "novo_rms_db": -61.4
+ },
+ {
+  "t": 79.323,
+  "uso": "válvula de sucção abre (E2/E3) — clique de relé ",
+  "pico_dbfs": -33.4,
+  "ataque_medido": 79.325,
+  "atraso_ms": 2,
+  "voz_rms_db": -15.8,
+  "resto_v9_rms_db": -22.4,
+  "novo_rms_db": -55.6
+ },
+ {
+  "t": 80.59,
+  "uso": "válvula de sucção abre (E2/E3) — clique de relé ",
+  "pico_dbfs": -31.9,
+  "ataque_medido": 80.592,
+  "atraso_ms": 2,
+  "voz_rms_db": -18.6,
+  "resto_v9_rms_db": -21.3,
+  "novo_rms_db": -54.1
+ },
+ {
+  "t": 81.823,
+  "uso": "válvula de sucção abre (E2/E3) — clique de relé ",
+  "pico_dbfs": -33.9,
+  "ataque_medido": 81.825,
+  "atraso_ms": 2,
+  "voz_rms_db": -24.6,
+  "resto_v9_rms_db": -19.2,
+  "novo_rms_db": -56.0
+ }
+]

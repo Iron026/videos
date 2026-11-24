@@ -32,8 +32,12 @@ res = dict(arquivo=os.path.basename(video), lufs_aac=round(lufs(aac), 2), pico_v
 mono = aac.mean(1); res['perda_mono_db'] = round(lufs(np.stack([mono, mono], 1)) - res['lufs_aac'], 2)
 fim = aac[-int(0.5 * SR):]; res['ultimo_0_5s_dbfs'] = round(float(20 * np.log10(np.sqrt((fim ** 2).mean()) + 1e-12)), 1)
 # voz × resto no celular: stems da mixagem (mesmo ganho de master)
-st = os.path.join(A, 'stems'); voz = sf.read(os.path.join(st, 'ep02_voz.wav'))[0].mean(1)
-resto = sum(sf.read(os.path.join(st, f'ep02_{k}.wav'))[0].mean(1) for k in ('efeitos', 'mecanismo', 'ambiencias'))
+st = os.path.join(A, 'stems')
+# rodada 10: o padrão lia SEMPRE os stems sem sufixo (os da 1ª mixagem), não os da mixagem validada. Agora STEMS_VOZ e
+# STEMS_RESTO (lista separada por vírgulas, caminhos relativos a som/stems) dizem quais stems compõem o áudio do vídeo.
+voz = sf.read(os.path.join(st, os.environ.get('STEMS_VOZ', 'ep02_voz.wav')))[0].mean(1)
+resto = sum(sf.read(os.path.join(st, f))[0].mean(1) for f in os.environ.get('STEMS_RESTO', 'ep02_efeitos.wav,ep02_mecanismo.wav,ep02_ambiencias.wav').split(','))
+res['stems_medidos'] = dict(voz=os.environ.get('STEMS_VOZ', 'ep02_voz.wav'), resto=os.environ.get('STEMS_RESTO', 'ep02_efeitos.wav,ep02_mecanismo.wav,ep02_ambiencias.wav'))
 vc, rc = cel(voz), cel(resto); w = int(0.4 * SR); difs = []
 for i in range(0, len(vc) - w, w):
     ev = 10 * np.log10((vc[i:i + w] ** 2).mean() + 1e-12); er = 10 * np.log10((rc[i:i + w] ** 2).mean() + 1e-12)

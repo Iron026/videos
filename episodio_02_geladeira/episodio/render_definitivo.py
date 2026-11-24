@@ -87,7 +87,19 @@ for pid in IDS:
             log(f'{pid}: obturador na faixa {faixa[0]}–{faixa[1]} — esses quadros vão para {dsc}; os demais seguem válidos (SHA-256)')
             man['reg'] = reg; man.setdefault('historico', []).append(dict(quando=time.strftime('%Y-%m-%dT%H:%M:%S'), mudanca=f'obturador {OBT[pid]["graus"]}° na faixa {faixa}'))
             gravar_json(mf, man)
-    if man.get('reg') != reg and not so_faixa:   # configuração/cena/motor mudou: nada é reaproveitado; arquivos antigos vão para _descartados
+    pv = os.path.join(d, '_prova_reuso_quadros.json'); prova = json.load(open(pv)) if os.path.exists(pv) else None
+    so_cena = (man.get('reg') != reg and prova and prova.get('valida') and {k: v for k, v in man.get('reg', {}).items() if k != 'cena'} == {k: v for k, v in reg.items() if k != 'cena'}
+               and man['reg'].get('cena') == prova['cena_atual'] and reg['cena'] == prova['cena_nova'])
+    if so_cena and not SIMULAR:   # rodada 10: reexportação LOCALIZADA provada quadro a quadro (provar_quadros_iguais.py) — só os quadros diferentes saem
+        dsc = os.path.join(d, '_descartados', time.strftime('%Y%m%d_%H%M%S') + '_cena_localizada'); os.makedirs(dsc, exist_ok=True); iguais = set(prova['quadros_iguais'])
+        for k_ in list(man['quadros']):
+            if int(k_) not in iguais:
+                f = os.path.join(d, f'q{int(k_):04d}.jpg')
+                if os.path.exists(f): shutil.move(f, dsc)
+                man['quadros'].pop(k_)
+        man.setdefault('historico', []).append(dict(quando=time.strftime('%Y-%m-%dT%H:%M:%S'), mudanca=f'cena {prova["cena_atual"]} → {prova["cena_nova"]}: {len(iguais)} quadros iguais por prova; diferentes: {sorted(prova["diferentes"], key=int)}'))
+        man['reg'] = reg; gravar_json(mf, man); log(f'{pid}: cena reexportada com prova quadro a quadro — {len(iguais)} quadros reaproveitados; a renderizar: {sorted(prova["diferentes"], key=int)} (antigos em {dsc})')
+    if man.get('reg') != reg and not so_faixa and not so_cena:   # configuração/cena/motor mudou: nada é reaproveitado; arquivos antigos vão para _descartados
         if man.get('quadros') and not SIMULAR:
             dsc = os.path.join(d, '_descartados', time.strftime('%Y%m%d_%H%M%S')); os.makedirs(dsc, exist_ok=True)
             for f in os.listdir(d):

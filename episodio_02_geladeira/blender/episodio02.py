@@ -137,6 +137,7 @@ def plano(pid):
     garrafa_T = None
     # ---------------- câmeras e eventos
     K = lambda *ks: [(F(pid, f), pos, alvo, lente) for (f, pos, alvo, lente) in ks]
+    janela_corte = None   # rodada 10: (g0, g1) de uma troca de câmera mais curta que 1 quadro: dentro dela, câmera do fim
     if pid == 'A1':
         # v3: o personagem abre a porta (a mão segue o puxador); plano médio que inclui ele e a geladeira
         cam_k = K((0, (-0.22, -3.10, 1.40), (-0.28, -0.48, 0.98), 28), (1, (-0.20, -2.85, 1.38), (-0.27, -0.48, 0.98), 28))
@@ -158,7 +159,9 @@ def plano(pid):
             reac = lambda k: ((0.06, -0.42 - 0.04 * k, 1.42), (-0.80, -1.18, 1.50 - 0.02 * k), 30)
             centro = ((0.10, -2.05, 1.20), (0.0, -0.15, 0.88), 30)
             cam_k = K((0,) + reac(0), (0.165,) + reac(0.3), (0.17,) + centro, (0.80,) + centro, (0.805,) + reac(0.5), (1,) + reac(1))
-        porta = lambda g: 100; termico = [[0, 1]] if pid == 'J1' else [[F('A4', 0.165), 0], [F('A4', 0.17), 1], [F('A4', 0.80), 1], [F('A4', 0.805), 0]]
+            if os.environ.get('CAM_A4_R10', '1') == '1':   # rodada 10: o quadro 34 caía ENTRE as chaves 0,165 e 0,17 (troca em 26 ms < 1 quadro): câmera
+                janela_corte = (F('A4', 0.165), F('A4', 0.17))   # interpolada = parede vazia. Dentro da janela usa a câmera do FIM dela (mesma trilha, chaves iguais)
+        porta = lambda g: 100; termico = [[0, 1]] if pid == 'J1' else ([[F('A4', 0.1675), 0], [F('A4', 0.16752), 1]] if os.environ.get('CAM_A4_R10', '1') == '1' else [[F('A4', 0.165), 0], [F('A4', 0.17), 1]]) + [[F('A4', 0.80), 1], [F('A4', 0.805), 0]]
         # v4: em A4 a visão térmica só existe durante a tela dividida; o contraplano do rosto (início e fim) é imagem normal
     elif pid in ('A4b', 'J1b'):  # tela dividida, metade de TRÁS: condensador e compressor quentes (parede em corte)
         cam_k = K((0, (0.18, 1.55, 1.02), (0.0, 0.30, 0.78), 30), (1, (0.16, 1.75, 1.05), (0.0, 0.30, 0.78), 30))
@@ -451,7 +454,7 @@ def plano(pid):
             for o in leite: o.matrix_world = (mao @ leite_rel[o.name]) if leite_rel else leite_base[o.name]
         if theta: CM.posicionar(mec, theta(g), tab)
         else: CM.posicionar(mec, 2 * math.pi * 0.8 * g, tab)
-        B.camera_planos(cam, planos_cam, g); bpy.context.view_layer.update(); man.registrar(g)
+        B.camera_planos(cam, planos_cam, janela_corte[1] if janela_corte and janela_corte[0] < g < janela_corte[1] else g); bpy.context.view_layer.update(); man.registrar(g)
         return g
     meta = C.meta_comum(curvas, dict(corte=dict(n=[-1, 0, 0]), plano=pid, seq=seq, g0p=p['t0'], g1p=p['t1']))
     # polimento: planos TÉCNICOS (corte ilustrativo, canais ampliados) mantêm a iluminação de leitura da V4 (céu como
