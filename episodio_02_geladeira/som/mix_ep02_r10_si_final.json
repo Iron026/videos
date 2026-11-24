@@ -1,0 +1,512 @@
+{
+ "nulo_v9_dbfs": -136.7,
+ "master_fixo_db": 5.45,
+ "ganho_musica_db": -13.63,
+ "lufs_voz": -14.06,
+ "trilha": {
+  "id": "334566",
+  "titulo": "Spice Intrigue",
+  "autor": "RomanSenykMusic",
+  "fonte": "Pixabay (arquivo enviado pelo usuário)",
+  "url_pagina": "https://pixabay.com/music/comedy-spice-intrigue-334566/",
+  "url_arquivo": "(enviado pelo usuário: romansenykmusic-spice-intrigue-334566.mp3)",
+  "licenca": "Pixabay Content License (a conferir pelo usuário na página: acesso automático bloqueado)",
+  "arquivo_local": "som/bib/pixabay/334566.mp3",
+  "deslocamento_s": -4.87,
+  "passa_altas_hz": 60,
+  "auto": [
+   [
+    0.0,
+    -60
+   ],
+   [
+    4.87,
+    -60
+   ],
+   [
+    6.4,
+    -3
+   ],
+   [
+    10.3,
+    -3
+   ],
+   [
+    16.0,
+    -3
+   ],
+   [
+    16.6,
+    -5
+   ],
+   [
+    28.6,
+    -5
+   ],
+   [
+    33.6,
+    -4
+   ],
+   [
+    33.92,
+    -2
+   ],
+   [
+    37.5,
+    -2
+   ],
+   [
+    40.0,
+    -6
+   ],
+   [
+    48.3,
+    -6
+   ],
+   [
+    48.8,
+    -8
+   ],
+   [
+    71.4,
+    -8
+   ],
+   [
+    74.2,
+    -8
+   ],
+   [
+    75.0,
+    -11
+   ],
+   [
+    86.5,
+    -11
+   ],
+   [
+    87.2,
+    -7
+   ],
+   [
+    111.6,
+    -7
+   ],
+   [
+    112.2,
+    -5
+   ],
+   [
+    115.3,
+    -5
+   ],
+   [
+    115.9,
+    -6
+   ],
+   [
+    151.24,
+    -6
+   ]
+  ]
+ },
+ "automacao_musica": [
+  [
+   0.0,
+   -60
+  ],
+  [
+   4.87,
+   -60
+  ],
+  [
+   6.4,
+   -3
+  ],
+  [
+   10.3,
+   -3
+  ],
+  [
+   16.0,
+   -3
+  ],
+  [
+   16.6,
+   -5
+  ],
+  [
+   28.6,
+   -5
+  ],
+  [
+   33.6,
+   -4
+  ],
+  [
+   33.92,
+   -2
+  ],
+  [
+   37.5,
+   -2
+  ],
+  [
+   40.0,
+   -6
+  ],
+  [
+   48.3,
+   -6
+  ],
+  [
+   48.8,
+   -8
+  ],
+  [
+   71.4,
+   -8
+  ],
+  [
+   74.2,
+   -8
+  ],
+  [
+   75.0,
+   -11
+  ],
+  [
+   86.5,
+   -11
+  ],
+  [
+   87.2,
+   -7
+  ],
+  [
+   111.6,
+   -7
+  ],
+  [
+   112.2,
+   -5
+  ],
+  [
+   115.3,
+   -5
+  ],
+  [
+   115.9,
+   -6
+  ],
+  [
+   151.24,
+   -6
+  ]
+ ],
+ "eventos": [
+  {
+   "t": 0.2,
+   "fonte": "706115",
+   "trecho": [
+    0.17,
+    0.41
+   ],
+   "ataque_na_gravacao": 0.19,
+   "db": -20.0,
+   "stem": "efeitos",
+   "uso": "mão fecha no puxador (A1)"
+  },
+  {
+   "t": 117.51,
+   "fonte": "706115",
+   "trecho": [
+    0.17,
+    0.41
+   ],
+   "ataque_na_gravacao": 0.19,
+   "db": -20.0,
+   "stem": "efeitos",
+   "uso": "mão fecha no puxador (I1)"
+  },
+  {
+   "t": 118.44,
+   "fonte": "616056",
+   "trecho": [
+    1.77,
+    2.07
+   ],
+   "ataque_na_gravacao": 1.795,
+   "db": -19.0,
+   "stem": "efeitos",
+   "uso": "mão fecha na caixa de leite (I1)"
+  },
+  {
+   "t": 118.62,
+   "fonte": "624481",
+   "trecho": [
+    0.78,
+    1.08
+   ],
+   "ataque_na_gravacao": 0.8,
+   "db": -26.0,
+   "stem": "efeitos",
+   "uso": "caixa sai da prateleira de vidro (I1)"
+  },
+  {
+   "t": 74.897,
+   "fonte": "876593",
+   "trecho": [
+    0.005,
+    0.065
+   ],
+   "ataque_na_gravacao": 0.015,
+   "db": -26.294281557234164,
+   "stem": "mecanismo",
+   "uso": "válvula de descarga abre (E2/E3) — clique de relé filtrado (representação)"
+  },
+  {
+   "t": 76.13,
+   "fonte": "876593",
+   "trecho": [
+    0.005,
+    0.065
+   ],
+   "ataque_na_gravacao": 0.015,
+   "db": -25.133292588646537,
+   "stem": "mecanismo",
+   "uso": "válvula de descarga abre (E2/E3) — clique de relé filtrado (representação)"
+  },
+  {
+   "t": 77.397,
+   "fonte": "876593",
+   "trecho": [
+    0.005,
+    0.065
+   ],
+   "ataque_na_gravacao": 0.015,
+   "db": -23.67095094534643,
+   "stem": "mecanismo",
+   "uso": "válvula de descarga abre (E2/E3) — clique de relé filtrado (representação)"
+  },
+  {
+   "t": 78.59,
+   "fonte": "876593",
+   "trecho": [
+    0.005,
+    0.065
+   ],
+   "ataque_na_gravacao": 0.015,
+   "db": -18.519670189223017,
+   "stem": "mecanismo",
+   "uso": "válvula de descarga abre (E2/E3) — clique de relé filtrado (representação)"
+  },
+  {
+   "t": 79.823,
+   "fonte": "876593",
+   "trecho": [
+    0.005,
+    0.065
+   ],
+   "ataque_na_gravacao": 0.015,
+   "db": -18.06588266109145,
+   "stem": "mecanismo",
+   "uso": "válvula de descarga abre (E2/E3) — clique de relé filtrado (representação)"
+  },
+  {
+   "t": 81.09,
+   "fonte": "876593",
+   "trecho": [
+    0.005,
+    0.065
+   ],
+   "ataque_na_gravacao": 0.015,
+   "db": -17.01373597866051,
+   "stem": "mecanismo",
+   "uso": "válvula de descarga abre (E2/E3) — clique de relé filtrado (representação)"
+  },
+  {
+   "t": 82.323,
+   "fonte": "876593",
+   "trecho": [
+    0.005,
+    0.065
+   ],
+   "ataque_na_gravacao": 0.015,
+   "db": -16.39577516214876,
+   "stem": "mecanismo",
+   "uso": "válvula de descarga abre (E2/E3) — clique de relé filtrado (representação)"
+  },
+  {
+   "t": 75.197,
+   "fonte": "876593",
+   "trecho": [
+    0.005,
+    0.065
+   ],
+   "ataque_na_gravacao": 0.015,
+   "db": -32.1335433934447,
+   "stem": "mecanismo",
+   "uso": "válvula de sucção abre (E2/E3) — clique de relé filtrado (representação)"
+  },
+  {
+   "t": 76.463,
+   "fonte": "876593",
+   "trecho": [
+    0.005,
+    0.065
+   ],
+   "ataque_na_gravacao": 0.015,
+   "db": -30.66831028652392,
+   "stem": "mecanismo",
+   "uso": "válvula de sucção abre (E2/E3) — clique de relé filtrado (representação)"
+  },
+  {
+   "t": 77.697,
+   "fonte": "876593",
+   "trecho": [
+    0.005,
+    0.065
+   ],
+   "ataque_na_gravacao": 0.015,
+   "db": -29.52832393831771,
+   "stem": "mecanismo",
+   "uso": "válvula de sucção abre (E2/E3) — clique de relé filtrado (representação)"
+  },
+  {
+   "t": 79.323,
+   "fonte": "876593",
+   "trecho": [
+    0.005,
+    0.065
+   ],
+   "ataque_na_gravacao": 0.015,
+   "db": -24.334603459821448,
+   "stem": "mecanismo",
+   "uso": "válvula de sucção abre (E2/E3) — clique de relé filtrado (representação)"
+  },
+  {
+   "t": 80.59,
+   "fonte": "876593",
+   "trecho": [
+    0.005,
+    0.065
+   ],
+   "ataque_na_gravacao": 0.015,
+   "db": -23.45230113049046,
+   "stem": "mecanismo",
+   "uso": "válvula de sucção abre (E2/E3) — clique de relé filtrado (representação)"
+  },
+  {
+   "t": 81.823,
+   "fonte": "876593",
+   "trecho": [
+    0.005,
+    0.065
+   ],
+   "ataque_na_gravacao": 0.015,
+   "db": -22.512398465561837,
+   "stem": "mecanismo",
+   "uso": "válvula de sucção abre (E2/E3) — clique de relé filtrado (representação)"
+  },
+  {
+   "t": 20.84,
+   "fonte": "624481",
+   "trecho": [
+    3.015,
+    3.335
+   ],
+   "ataque_na_gravacao": 3.04,
+   "stem": "destaque",
+   "uso": "garrafa pousa na prateleira de vidro (B5)",
+   "rel_voz_celular_db": -12.0,
+   "ganho_db": -8.9
+  },
+  {
+   "t": 41.57,
+   "fonte": "776443",
+   "trecho": [
+    0.135,
+    0.335
+   ],
+   "ataque_na_gravacao": 0.15,
+   "stem": "destaque",
+   "uso": "apresentação: fluido refrigerante (C3)",
+   "rel_voz_celular_db": -9.0,
+   "ganho_db": -13.8
+  },
+  {
+   "t": 49.69,
+   "fonte": "776443",
+   "trecho": [
+    0.135,
+    0.335
+   ],
+   "ataque_na_gravacao": 0.15,
+   "stem": "destaque",
+   "uso": "apresentação: Evaporador (D1)",
+   "rel_voz_celular_db": -9.0,
+   "ganho_db": -6.3
+  },
+  {
+   "t": 75.563,
+   "fonte": "776443",
+   "trecho": [
+    0.135,
+    0.335
+   ],
+   "ataque_na_gravacao": 0.15,
+   "stem": "destaque",
+   "uso": "apresentação: Compressor (E2)",
+   "rel_voz_celular_db": -9.0,
+   "ganho_db": -8.8
+  },
+  {
+   "t": 88.343,
+   "fonte": "776443",
+   "trecho": [
+    0.135,
+    0.335
+   ],
+   "ataque_na_gravacao": 0.15,
+   "stem": "destaque",
+   "uso": "apresentação: Condensador (F1)",
+   "rel_voz_celular_db": -9.0,
+   "ganho_db": -4.3
+  },
+  {
+   "t": 101.23,
+   "fonte": "776443",
+   "trecho": [
+    0.135,
+    0.335
+   ],
+   "ataque_na_gravacao": 0.15,
+   "stem": "destaque",
+   "uso": "apresentação: Capilar (G2)",
+   "rel_voz_celular_db": -9.0,
+   "ganho_db": -11.5
+  }
+ ],
+ "variantes": {
+  "efeitos": {
+   "lufs_wav": -14.08,
+   "tp_wav": -1.8,
+   "limitador_max_db": -3.86,
+   "diferenca_max_v9_dbfs": -5.6
+  },
+  "musica": {
+   "lufs_wav": -14.07,
+   "tp_wav": -1.8,
+   "limitador_max_db": -3.96,
+   "diferenca_max_v9_dbfs": -23.4
+  },
+  "completo": {
+   "lufs_wav": -14.07,
+   "tp_wav": -1.8,
+   "limitador_max_db": -3.96,
+   "diferenca_max_v9_dbfs": -5.6
+  }
+ },
+ "musica_lufs": -40.29,
+ "musica_rel_voz_db": -26.23
+}

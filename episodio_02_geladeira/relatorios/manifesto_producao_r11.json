@@ -567,7 +567,7 @@
    "aprovada": "Spice Intrigue (RomanSenykMusic, Pixabay) — aprovada pelo usuário em 24/11 (aprovação auditiva final pendente na montagem definitiva)",
    "arquivo_audio": "som/audio_ep02_r11_spice_intrigue.wav",
    "sha256": "6df3e4aab3a3778058e011f27938a63060e6686a53cf1ccaef32283628d6eeb9",
-   "licenca": "Pixabay Content License — página não verificável por acesso automático; confirmação do usuário pendente (licença e aviso de Content ID)",
+   "licenca": "Pixabay Content License — confirmada pelo usuário em 24/11 (\"tudo tranquilo\"); página não verificável por acesso automático",
    "preservadas": [
     "som/audio_ep02_r9.wav (V9)",
     "som/audio_ep02_r10_efeitos.wav (V10 efeitos)",
@@ -575,10 +575,21 @@
     "som/audio_ep02_r10_completo.wav (Rest Now)"
    ]
   },
-  "testes_nao_aprovados": {
-   "garrafa_b5": "GARRAFA_B5=1 (cenas/B5_garrafa; prévia 540) — aguardando decisão",
-   "sons_apresentacao": "APRESENTA_R11=madeira|pop, stem destaque −12 dB da voz — aguardando decisão"
+  "montagem_definitiva": "episodio/montar_r11.sh",
+  "garrafa_b5": {
+   "aprovada": "garrafa entra sozinha na geladeira em \"Quando você a coloca na geladeira\" e pousa no ataque de \"geladeira\" (20,84 s); esfria e solta feixes só depois; \"Tempo acelerado\" só depois do pouso",
+   "cena": "episodio/cenas/B5 (CENA_R9=1 GARRAFA_B5=1 blender/episodio02.py B5)",
+   "sha256_cena_json": "deda7d9c2523298551a4d9043629b0e0c296552ceadbafd6ec89c25ddb564329",
+   "colisao": "relatorios/testes_r10/colisao_garrafa_b5.json (sem invasões)",
+   "preservada": "arquivo/cenas_r11_B5.tgz (B5 da V10; também regenerável idêntico sem GARRAFA_B5)",
+   "montagem": "GARRAFA_B5=1 no montar_r11.sh (aviso Tempo acelerado)"
   },
-  "montagem_definitiva": "episodio/montar_r11.sh"
+  "som_final": {
+   "aprovado": "pop (Freesound 776443, CC0) nas 5 apresentações de componentes, 9 dB abaixo da voz em cada instante (usuário: \"um pouco mais alto\"); pouso da garrafa (Freesound 624481, CC0) 12 dB abaixo da voz",
+   "comando": "GARRAFA_B5=1 APRESENTA_R11=pop APRESENTA_REL_DB=-9 MUSICA=spice_intrigue SUF_R10=_si_final python3 som/som_r10.py; python3 som/ajuste_pico_local.py som/audio_ep02_r10_completo_si_final.wav som/audio_ep02_r11_final.wav -2.0 85.9",
+   "arquivo": "som/audio_ep02_r11_final.wav",
+   "sha256": "a2ef7f0d869646e814db4ae1ffe970cf7063d6d115ce5243571ef4ef1e50ba4e",
+   "validacao": "relatorios/testes_r10/validacao_audio_r11_final.json"
+  }
  }
 }

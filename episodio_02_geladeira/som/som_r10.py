@@ -97,8 +97,9 @@ for (t, fonte, ini, dur, ataque, pan, uso, filtro) in DESTAQUE:
     a, b = int((t - 0.02) * SR), int((t + 0.20) * SR)                                  # janela do evento percebido
     rv = _rms(_sf(_cel, V9['voz'][a:b].mean(1))); rv = rv if rv > 1e-5 else _rms(_sf(_cel, V9['voz'][a - SR // 2: b + SR // 2].mean(1)))
     xs = np.zeros((N, 2)); xs[i0:i0 + len(x)] = x; xs[:, 0] *= math.sqrt(0.5 - pan / 2) * math.sqrt(2); xs[:, 1] *= math.sqrt(0.5 + pan / 2) * math.sqrt(2)
-    rx = _rms(_sf(_cel, xs[a:b].mean(1))); g = rv * db(REL) / rx; DEST += xs * g
-    EV.append(dict(t=round(t, 3), fonte=fonte, trecho=[ini, round(ini + dur, 3)], ataque_na_gravacao=ataque, stem='destaque', uso=uso, rel_voz_celular_db=REL, ganho_db=round(20 * math.log10(g), 1)))
+    rel_ = float(os.environ.get('APRESENTA_REL_DB', REL)) if uso.startswith('apresentação') else REL   # usuário (24/11): apresentação "um pouco mais alto"
+    rx = _rms(_sf(_cel, xs[a:b].mean(1))); g = rv * db(rel_) / rx; DEST += xs * g
+    EV.append(dict(t=round(t, 3), fonte=fonte, trecho=[ini, round(ini + dur, 3)], ataque_na_gravacao=ataque, stem='destaque', uso=uso, rel_voz_celular_db=rel_, ganho_db=round(20 * math.log10(g), 1)))
 NOVO['efeitos'] = NOVO['efeitos'] + DEST
 
 # ------------------------------------------------------------------ trilha
