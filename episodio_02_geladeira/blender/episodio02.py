@@ -159,9 +159,12 @@ def plano(pid):
             reac = lambda k: ((0.06, -0.42 - 0.04 * k, 1.42), (-0.80, -1.18, 1.50 - 0.02 * k), 30)
             centro = ((0.10, -2.05, 1.20), (0.0, -0.15, 0.88), 30)
             cam_k = K((0,) + reac(0), (0.165,) + reac(0.3), (0.17,) + centro, (0.80,) + centro, (0.805,) + reac(0.5), (1,) + reac(1))
-            if os.environ.get('CAM_A4_R10', '1') == '1':   # rodada 10: o quadro 34 caía ENTRE as chaves 0,165 e 0,17 (troca em 26 ms < 1 quadro): câmera
+            H_A4 = os.environ.get('HANDLE_A4')   # rodada 11 (teste de transição): quadros-ponte — rosto continuado depois do corte / interior antes dele
+            if H_A4 == 'rosto': cam_k = K((0,) + reac(0), (0.165,) + reac(0.3), (0.30,) + reac(0.32), (1,) + reac(0.34))
+            elif H_A4 == 'interior': cam_k = K((0,) + centro, (1,) + centro)
+            if os.environ.get('CAM_A4_R10', '1') == '1' and not H_A4:   # rodada 10: o quadro 34 caía ENTRE as chaves 0,165 e 0,17 (troca em 26 ms < 1 quadro): câmera
                 janela_corte = (F('A4', 0.165), F('A4', 0.17))   # interpolada = parede vazia. Dentro da janela usa a câmera do FIM dela (mesma trilha, chaves iguais)
-        porta = lambda g: 100; termico = [[0, 1]] if pid == 'J1' else ([[F('A4', 0.1675), 0], [F('A4', 0.16752), 1]] if os.environ.get('CAM_A4_R10', '1') == '1' else [[F('A4', 0.165), 0], [F('A4', 0.17), 1]]) + [[F('A4', 0.80), 1], [F('A4', 0.805), 0]]
+        porta = lambda g: 100; termico = [[0, 1]] if pid == 'J1' else [[0, 0]] if (pid == 'A4' and os.environ.get('HANDLE_A4') == 'rosto') else [[0, 1]] if (pid == 'A4' and os.environ.get('HANDLE_A4') == 'interior') else ([[F('A4', 0.1675), 0], [F('A4', 0.16752), 1]] if os.environ.get('CAM_A4_R10', '1') == '1' else [[F('A4', 0.165), 0], [F('A4', 0.17), 1]]) + [[F('A4', 0.80), 1], [F('A4', 0.805), 0]]
         # v4: em A4 a visão térmica só existe durante a tela dividida; o contraplano do rosto (início e fim) é imagem normal
     elif pid in ('A4b', 'J1b'):  # tela dividida, metade de TRÁS: condensador e compressor quentes (parede em corte)
         cam_k = K((0, (0.18, 1.55, 1.02), (0.0, 0.30, 0.78), 30), (1, (0.16, 1.75, 1.05), (0.0, 0.30, 0.78), 30))

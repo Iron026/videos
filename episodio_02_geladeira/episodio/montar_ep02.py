@@ -92,7 +92,32 @@ def quadro(pid, g):
     return quadro_simples(pid, g)
 
 
+TRANS_A4I = os.environ.get('TRANSICAO_A4_INTERNA', 'corte')   # rodada 11 (teste): rosto → interior azul no A4 (5,74 s): corte | varredura | empurrao
+TC_A4I = 4.62 + 33.5 / 30   # instante do corte (entre os quadros 33 e 34 do A4)
+def _ponte(lado, g):   # quadros-ponte (render à parte): rosto continuado depois do corte / interior antes dele; fora deles, o próprio A4
+    d = os.path.join(A, 'quadros_pontes_r11', PERFIL, 'A4_' + lado); f = int(round((g - meta('A4')) * FPS))
+    q = os.path.join(d, f'q{f:04d}.jpg')
+    if (lado == 'rosto' and f >= 34) or (lado == 'interior' and f <= 33):
+        return graduar(Image.open(q).convert('RGB').resize((W, H), Image.BICUBIC))
+    return _quadro_simples('A4', g)
+def _borrar_h(im, n):   # desfoque de movimento horizontal (média de n px)
+    if n < 2: return im
+    a = np.asarray(im, np.float32); c = np.cumsum(np.pad(a, ((0, 0), (n, 0), (0, 0)), mode='edge'), axis=1); return Image.fromarray(((c[:, n:] - c[:, :-n]) / n).clip(0, 255).astype(np.uint8))
 def quadro_simples(pid, g):
+    if pid == 'A4' and TRANS_A4I != 'corte':
+        meia = 0.20 if TRANS_A4I == 'varredura' else 0.15
+        if abs(g - TC_A4I) < meia:
+            u = (g - (TC_A4I - meia)) / (2 * meia); p = u * u * (3 - 2 * u); ro, it = _ponte('rosto', g), _ponte('interior', g)
+            if TRANS_A4I == 'varredura':   # linha de varredura (mesma cor creme da divisória) revela o interior da direita para a esquerda
+                x = int(W * (1 - p)); im = ro.copy(); im.paste(it.crop((x, 0, W, H)), (x, 0))
+                a_ = np.asarray(im, np.float32); xs = np.arange(W) - x; br = np.exp(-(xs / (4 * ESC)) ** 2)[None, :, None]   # linha fina com brilho suave
+                a_ = a_ * (1 - 0.85 * br) + np.array(CREME, np.float32)[None, None, :] * 0.85 * br
+                return Image.fromarray(a_.clip(0, 255).astype(np.uint8))
+            dx = int(W * p); v = abs(6 * u * (1 - u)) * W / (2 * meia * FPS)   # empurrão: rosto sai à esquerda, interior entra pela direita
+            im = Image.new('RGB', (W, H)); im.paste(ro.crop((dx, 0, W, H)), (0, 0)); im.paste(it.crop((0, 0, dx, H)), (W - dx, 0))
+            return _borrar_h(im, int(v * 0.5))   # obturador de 180°: rastro = metade do deslocamento por quadro
+    return _quadro_simples(pid, g)
+def _quadro_simples(pid, g):
     d = pasta(pid)
     if d not in _idx: _idx[d] = sorted(int(f[1:5]) for f in os.listdir(d) if f.endswith('.jpg'))
     idx = _idx[d]; f = int(round((g - meta(pid)) * FPS)); f = idx[max(0, int(np.searchsorted(idx, f, side='right')) - 1)]
