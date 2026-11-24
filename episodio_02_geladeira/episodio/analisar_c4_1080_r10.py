@@ -42,6 +42,6 @@ def folha(pares, nome):
 folha([os.path.join(N9, 'q0160.jpg'), os.path.join(N10, 'q0160.jpg'), os.path.join(N9, 'q0170.jpg'), os.path.join(N10, 'q0170.jpg')], 'c4_1080_r9_x_r10_q160_q170.jpg')
 folha([os.path.join(N10, f'q{k:04d}.jpg') for k in (125, 126, 178, 179)], 'c4_1080_bordas_da_faixa.jpg')
 D1 = os.path.join(A, 'quadros_final_r10', 'D1')
-if os.path.isdir(D1): folha([os.path.join(N10, 'q0184.jpg')] + [os.path.join(D1, f'q{k:04d}.jpg') for k in (0, 4, 9)], 'c4_d1_1080.jpg')
+if os.path.exists(os.path.join(D1, 'q0009.jpg')): folha([os.path.join(N10, 'q0184.jpg')] + [os.path.join(D1, f'q{k:04d}.jpg') for k in (0, 4, 9)], 'c4_d1_1080.jpg')
 json.dump(res, open(os.path.join(A, '..', 'relatorios', 'testes_r10', 'c4_1080_obturador.json'), 'w'), ensure_ascii=False, indent=1)
 print(json.dumps({k: v for k, v in res.items() if k != 'salto_medio_por_quadro'}, ensure_ascii=False)[:1500])
