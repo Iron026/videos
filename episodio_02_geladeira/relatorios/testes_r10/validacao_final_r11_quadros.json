@@ -1,0 +1,202 @@
+{
+ "planos": {
+  "A1": {
+   "no_manifesto": 57,
+   "conferidos": 57,
+   "arquivos_fora_do_manifesto": []
+  },
+  "A2": {
+   "no_manifesto": 57,
+   "conferidos": 57,
+   "arquivos_fora_do_manifesto": []
+  },
+  "A3": {
+   "no_manifesto": 80,
+   "conferidos": 80,
+   "arquivos_fora_do_manifesto": []
+  },
+  "A4": {
+   "no_manifesto": 174,
+   "conferidos": 174,
+   "arquivos_fora_do_manifesto": []
+  },
+  "A4b": {
+   "no_manifesto": 174,
+   "conferidos": 174,
+   "arquivos_fora_do_manifesto": []
+  },
+  "B1": {
+   "no_manifesto": 83,
+   "conferidos": 83,
+   "arquivos_fora_do_manifesto": []
+  },
+  "B2": {
+   "no_manifesto": 81,
+   "conferidos": 81,
+   "arquivos_fora_do_manifesto": []
+  },
+  "B3": {
+   "no_manifesto": 73,
+   "conferidos": 73,
+   "arquivos_fora_do_manifesto": []
+  },
+  "B4": {
+   "no_manifesto": 108,
+   "conferidos": 108,
+   "arquivos_fora_do_manifesto": []
+  },
+  "B5": {
+   "no_manifesto": 149,
+   "conferidos": 149,
+   "arquivos_fora_do_manifesto": []
+  },
+  "B6": {
+   "no_manifesto": 87,
+   "conferidos": 87,
+   "arquivos_fora_do_manifesto": []
+  },
+  "B7": {
+   "no_manifesto": 81,
+   "conferidos": 81,
+   "arquivos_fora_do_manifesto": []
+  },
+  "C1": {
+   "no_manifesto": 180,
+   "conferidos": 180,
+   "arquivos_fora_do_manifesto": []
+  },
+  "C2": {
+   "no_manifesto": 139,
+   "conferidos": 139,
+   "arquivos_fora_do_manifesto": []
+  },
+  "C3": {
+   "no_manifesto": 163,
+   "conferidos": 163,
+   "arquivos_fora_do_manifesto": []
+  },
+  "C4": {
+   "no_manifesto": 185,
+   "conferidos": 185,
+   "arquivos_fora_do_manifesto": []
+  },
+  "D1": {
+   "no_manifesto": 152,
+   "conferidos": 152,
+   "arquivos_fora_do_manifesto": []
+  },
+  "D2": {
+   "no_manifesto": 181,
+   "conferidos": 181,
+   "arquivos_fora_do_manifesto": []
+  },
+  "D3": {
+   "no_manifesto": 182,
+   "conferidos": 182,
+   "arquivos_fora_do_manifesto": []
+  },
+  "D4": {
+   "no_manifesto": 129,
+   "conferidos": 129,
+   "arquivos_fora_do_manifesto": []
+  },
+  "D5": {
+   "no_manifesto": 124,
+   "conferidos": 124,
+   "arquivos_fora_do_manifesto": []
+  },
+  "E1": {
+   "no_manifesto": 99,
+   "conferidos": 99,
+   "arquivos_fora_do_manifesto": []
+  },
+  "E2": {
+   "no_manifesto": 135,
+   "conferidos": 135,
+   "arquivos_fora_do_manifesto": []
+  },
+  "E3": {
+   "no_manifesto": 160,
+   "conferidos": 160,
+   "arquivos_fora_do_manifesto": []
+  },
+  "E4": {
+   "no_manifesto": 128,
+   "conferidos": 128,
+   "arquivos_fora_do_manifesto": []
+  },
+  "F1": {
+   "no_manifesto": 171,
+   "conferidos": 171,
+   "arquivos_fora_do_manifesto": []
+  },
+  "F2": {
+   "no_manifesto": 149,
+   "conferidos": 149,
+   "arquivos_fora_do_manifesto": []
+  },
+  "G1": {
+   "no_manifesto": 68,
+   "conferidos": 68,
+   "arquivos_fora_do_manifesto": []
+  },
+  "G2": {
+   "no_manifesto": 139,
+   "conferidos": 139,
+   "arquivos_fora_do_manifesto": []
+  },
+  "G3": {
+   "no_manifesto": 173,
+   "conferidos": 173,
+   "arquivos_fora_do_manifesto": []
+  },
+  "G3z": {
+   "no_manifesto": 173,
+   "conferidos": 173,
+   "arquivos_fora_do_manifesto": []
+  },
+  "H1": {
+   "no_manifesto": 150,
+   "conferidos": 150,
+   "arquivos_fora_do_manifesto": []
+  },
+  "H2": {
+   "no_manifesto": 131,
+   "conferidos": 131,
+   "arquivos_fora_do_manifesto": []
+  },
+  "I1": {
+   "no_manifesto": 123,
+   "conferidos": 123,
+   "arquivos_fora_do_manifesto": []
+  },
+  "I2": {
+   "no_manifesto": 171,
+   "conferidos": 171,
+   "arquivos_fora_do_manifesto": []
+  },
+  "I3": {
+   "no_manifesto": 173,
+   "conferidos": 173,
+   "arquivos_fora_do_manifesto": []
+  },
+  "I4": {
+   "no_manifesto": 188,
+   "conferidos": 188,
+   "arquivos_fora_do_manifesto": []
+  },
+  "J1": {
+   "no_manifesto": 126,
+   "conferidos": 126,
+   "arquivos_fora_do_manifesto": []
+  }
+ },
+ "problemas": [
+  "J1b: sem manifesto",
+  "J2: sem manifesto",
+  "J3: sem manifesto",
+  "J4: sem manifesto"
+ ],
+ "quadros_conferidos": 5096,
+ "aprovado": false
+}
