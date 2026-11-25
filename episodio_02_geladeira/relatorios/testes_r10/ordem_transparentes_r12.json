@@ -1,0 +1,58 @@
+{
+ "defeito": "H2 (1:53, 113,35 s, quadro 48 do plano): água da garrafa fica esbranquiçada de uma vez",
+ "medida_canal_vermelho_regiao_agua_H2_final": {
+  "quadros_0_47": 110,
+  "quadro_48_em_diante": "165 → 154 (variação suave com a câmera)"
+ },
+ "diagnostico_540_q46_49": {
+  "base": [
+   111.3,
+   111.4,
+   165.5,
+   165.5
+  ],
+  "sem_garrafa_agua": [
+   114.4,
+   114.4,
+   166.8,
+   166.9
+  ],
+  "sem_prateleiras_vidro": [
+   95.8,
+   95.7,
+   95.9,
+   95.7
+  ],
+  "sem_garrafa_pet": [
+   165.4,
+   165.3,
+   165.6,
+   165.5
+  ],
+  "so_sem_prateleira_fixa_24": [
+   95.5,
+   95.6,
+   95.8,
+   95.7
+  ],
+  "so_sem_prateleira_da_porta_57": [
+   111.6,
+   111.6,
+   165.6,
+   165.6
+  ]
+ },
+ "causa": "three.js r170 ordena transparentes pela profundidade do centro da esfera envolvente; garrafa_pet (alfa 0,55) × prateleira_vidro fixa (alfa 0,35) empatam no quadro 48 e a prateleira passa a ser desenhada por cima da garrafa. Correto (câmera acima da prateleira): prateleira antes, garrafa por cima = estado azul de antes.",
+ "varredura": "relatorios/testes_r10/ordem_transparentes.json (episodio/varrer_ordem_transparentes.py): trocas em C2 q83/q111 (duas prateleiras), C4 q52 (garrafa × prateleira), F1 q8 (casca × água), H1 q75 (água × prateleira), H2 q48",
+ "visibilidade_540_opcao_ligada_x_desligada": {
+  "H2": "garrafa 165,4 → 111,5 (corrigida); 1.592 px mudam só na garrafa",
+  "C4": "1.723 px só na garrafa",
+  "H1": "181 px (garrafa cortada na borda de baixo)",
+  "C2": "nenhuma diferença acima da variação natural (troca invisível)",
+  "F1": "9 px no final (invisível)"
+ },
+ "escopo": "ordemtransp=1 em C4, H1, H2 (config/producao.json por_plano); C2 e F1 ficam como aprovados",
+ "prova_motor_desligado": "H2 q46–49 540: motor novo sem a opção × motor aprovado = 1,38–1,39; dois renders idênticos do motor novo = 1,37 (variação natural)",
+ "prova_reuso": "episodio/provar_ordem_reuso.py → quadros_final/<plano>/_prova_reuso_config.json: H2 0–47, C4 0–51, H1 0–74 têm a ordem de TODOS os pares igual à do quadro 0 (a opção não muda nada neles)",
+ "render": "H2 48–130, C4 52–184 (126–184 com obturador), H1 75–149: 291 quadros, 527 renders de motor"
+}

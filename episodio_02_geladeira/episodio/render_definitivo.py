@@ -90,6 +90,30 @@ for pid in IDS:
             log(f'{pid}: obturador na faixa {faixa[0]}–{faixa[1]} (antes: {fx_ant}) — quadros que mudam {sorted(muda)} vão para {dsc}; os demais seguem válidos (SHA-256)')
             man['reg'] = reg; man.setdefault('historico', []).append(dict(quando=time.strftime('%Y-%m-%dT%H:%M:%S'), mudanca=f'obturador {OBT[pid]["graus"]}° na faixa {faixa}'))
             gravar_json(mf, man)
+    # rodada 12: motor alterado com opção DESLIGADA por padrão (ordemtransp): planos que não a usam seguem válidos se o motor
+    # anterior estiver em config motor_equivalente (prova numérica registrada lá); nada muda no quadro
+    EQ = CFG.get('motor_equivalente', {}); ra = man.get('reg', {})
+    if (ra != reg and 'ordemtransp' not in q and EQ.get(ra.get('motor'), {}).get('novo') == MOT
+            and {k: v for k, v in ra.items() if k != 'motor'} == {k: v for k, v in reg.items() if k != 'motor'}):
+        man['reg'] = reg
+        if not SIMULAR:
+            man.setdefault('historico', []).append(dict(quando=time.strftime('%Y-%m-%dT%H:%M:%S'), mudanca=f'motor {ra["motor"]} → {MOT}: equivalente com ordemtransp desligado ({EQ[ra["motor"]]["prova"]})'))
+            gravar_json(mf, man); log(f'{pid}: motor {ra["motor"]} → {MOT} equivalente (opção nova desligada) — quadros seguem válidos (SHA-256)')
+    # rodada 12: mudança de CONFIGURAÇÃO localizada com prova (_prova_reuso_config.json): só os quadros provados iguais ficam
+    pc = os.path.join(d, '_prova_reuso_config.json'); pcfg = json.load(open(pc)) if os.path.exists(pc) else None
+    if pcfg and pcfg.get('valida') and man.get('reg') == pcfg['reg_anterior'] and reg == pcfg['reg_novo']:
+        iguais = set(pcfg['quadros_iguais'])
+        if not SIMULAR:
+            dsc = os.path.join(d, '_descartados', time.strftime('%Y%m%d_%H%M%S') + '_config_localizada'); os.makedirs(dsc, exist_ok=True)
+        for k_ in list(man['quadros']):
+            if int(k_) not in iguais:
+                f = os.path.join(d, f'q{int(k_):04d}.jpg')
+                if os.path.exists(f) and not SIMULAR: shutil.move(f, dsc)
+                man['quadros'].pop(k_)
+        man['reg'] = reg
+        if not SIMULAR:
+            man.setdefault('historico', []).append(dict(quando=time.strftime('%Y-%m-%dT%H:%M:%S'), mudanca=f'{pcfg["motivo"]}: {len(iguais)} quadros iguais por prova; refeitos os demais'))
+            gravar_json(mf, man); log(f'{pid}: {pcfg["motivo"]} — {len(iguais)} quadros reaproveitados por prova; antigos dos demais em {dsc}')
     pv = os.path.join(d, '_prova_reuso_quadros.json'); prova = json.load(open(pv)) if os.path.exists(pv) else None
     so_cena = (man.get('reg') != reg and prova and prova.get('valida') and {k: v for k, v in man.get('reg', {}).items() if k != 'cena'} == {k: v for k, v in reg.items() if k != 'cena'}
                and man['reg'].get('cena') == prova['cena_atual'] and reg['cena'] == prova['cena_nova'])

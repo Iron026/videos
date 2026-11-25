@@ -37,6 +37,11 @@ const JAN_OFF = parseFloat(P.get('janoff') || '0');   // teste: prioridade de pr
 const OCL_K = parseFloat(P.get('ocl') || '0.994');   // fator de aproximação do oclusor (1 = comportamento antigo, só diagnóstico)
 const OCULTAR = new Set((P.get('ocultar') || '').split(',').filter(Boolean));   // diagnóstico: não carrega estes materiais (nome ou tipo)
 const BLOOM = parseFloat(P.get('bloom') || '0');      // brilho suave só nas luzes fortes (solda, reflexo do sol, linhas luminosas)
+// rodada 12: o three ordena os transparentes pela profundidade do centro da esfera envolvente de cada malha; quando a câmera
+// cruza o ponto em que dois centros empatam (garrafa × prateleira de vidro no H2, 1:53), a mistura troca de uma vez.
+// ordemtransp=1 congela essa profundidade (só malhas com alfa < 1) na do QUADRO 0 do plano → ordem constante no plano inteiro.
+// Desligado (padrão) = comportamento aprovado, sem nenhuma diferença.
+const ORDEM_TRANSP = P.get('ordemtransp') === '1';
 const meta = await (await fetch(CENA + 'cena.json')).json();
 const AO_CORTE = AO_CORTE_P === '1' || (AO_CORTE_P !== '0' && meta.ao_corte === true);
 const AO_TAMPA = AO_CORTE && (P.get('aotampa') === '1' || (P.get('aotampa') !== '0' && meta.ao_tampa === true));   // rodada 7: AO não escurece as tampas de corte
@@ -180,7 +185,7 @@ function criarMaterial(m) {
   if (t === 'conteiner') { mat.roughness = 0.55; }
   if (t === 'emissivo') { mat.emissive = cor.clone(); mat.emissiveIntensity = m.forca ?? 6; }
   if (m.fade) mat.transparent = true;   // pode desbotar por opacidade ao surgir/sumir (setas, mapa de pressão)
-  if ((m.alfa ?? 1) < 1) { mat.transparent = true; mat.opacity = m.alfa; mat.depthWrite = false; }
+  if ((m.alfa ?? 1) < 1) { mat.transparent = true; mat.opacity = m.alfa; mat.depthWrite = false; mat.userData.alfaFixo = true; }
   if (m.corte) mat.clippingPlanes = [m.corte === 2 ? planoCorte2 : planoCorte];
   const faixas = (m.faixas || []).slice(0, 6);
   const U = {
@@ -748,8 +753,23 @@ if (CACHE) renderer.shadowMap.autoUpdate = false;
 const gl = renderer.getContext(); const px = new Uint8Array(4);
 
 let envFeito = false;
+let ordemFeita = false;
+function congelarOrdemTransp() {   // rodada 12: profundidade de ordenação de cada malha com alfa < 1 medida no quadro 0
+  posicionar(0); scene.updateMatrixWorld(true);
+  const PS = new THREE.Matrix4().multiplyMatrices(camera.projectionMatrix, camera.matrixWorldInverse), v = new THREE.Vector3();
+  scene.traverse(o => { if (o.isMesh && o.material && o.material.userData && o.material.userData.alfaFixo) {
+    if (!o.geometry.boundingSphere) o.geometry.computeBoundingSphere();
+    o.userData.zFixo = v.copy(o.geometry.boundingSphere.center).applyMatrix4(o.matrixWorld).applyMatrix4(PS).z; } });
+  renderer.setTransparentSort((a, b) => {   // mesma regra do three (reversePainterSortStable), com a profundidade congelada
+    if (a.groupOrder !== b.groupOrder) return a.groupOrder - b.groupOrder;
+    if (a.renderOrder !== b.renderOrder) return a.renderOrder - b.renderOrder;
+    const za = a.object.userData.zFixo ?? a.z, zb = b.object.userData.zFixo ?? b.z;
+    return za !== zb ? zb - za : a.id - b.id; });
+}
 window.quadro = (i) => {
-  posicionar(i); if (!envFeito) { capturarAmbiente(); envFeito = true; } const t0 = performance.now();
+  posicionar(i); if (!envFeito) { capturarAmbiente(); envFeito = true; }
+  if (ORDEM_TRANSP && !ordemFeita) { congelarOrdemTransp(); ordemFeita = true; posicionar(i); }   // depois do ambiente: a captura segue a regra aprovada
+  const t0 = performance.now();
   if (cenaTransp.children.length) { const vis = ceu.visible; ceu.visible = false;
     // Ep. 02: profundidade com o MESMO corte de cada objeto (paredes cortadas não podem esconder os feixes)
     const troca = []; scene.traverse(o => { if (o.isMesh && o !== ceu) { troca.push([o, o.material]);

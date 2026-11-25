@@ -81,7 +81,7 @@ A voz continua dominante em todos (≥ 6 dB por critério), e o AAC reproduz cad
 - **Mixagem final e stems da validação:** em FLAC 24 bits, em `som/preservado_r11/`:
   - a mixagem e os stems da R10 são idênticos amostra a amostra;
   - os quatro stems em ponto flutuante foram gravados × 0,5, porque têm pico acima de 0 dBFS. Restaurar × 2; o erro é de 1,2·10⁻⁷ (−138 dBFS).
-- **Stem de música:** não entra isolado no git, por causa da licença da Mixkit. Ele está dentro da mixagem.
+- **Stem de música:** não entra isolado no git, por causa da licença do Pixabay, que proíbe redistribuir o arquivo isolado. *Correção de 25/11: antes estava escrito "Mixkit" por engano.* Ele está dentro da mixagem.
 - **Manifestos:** os manifestos de render por plano ficam em `quadros_final/*/_manifesto_quadros.json`, que não estão no git, porque a pasta inteira é ignorada. O log, as validações e o manifesto de produção estão no git.
 - **Persistência provada:** depois do push, fiz um clone novo e parcial das pastas de entrega. A conferência de `partes.sha256` passou, a remontagem foi feita e o SHA-256 dos dois MP4 bateu com a tabela (detalhes no fim da seção 5).
 

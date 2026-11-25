@@ -1,0 +1,21 @@
+{
+ "H2": {
+  "transparentes": [
+   "garrafa_pet#20",
+   "garrafa_agua#21",
+   "prateleira_vidro#24",
+   "prateleira_vidro#57"
+  ],
+  "trocas": [
+   {
+    "quadro": 48,
+    "t": 113.1,
+    "a": "garrafa_pet#20",
+    "b": "prateleira_vidro#24",
+    "sobrepostos": true,
+    "antes": "b primeiro",
+    "depois": "a primeiro"
+   }
+  ]
+ }
+}

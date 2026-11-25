@@ -62,7 +62,7 @@ Para refazer o episódio com legendas e outro áudio, use `bash episodio/montar_
 ## Licenças
 
 - **Narração:** plano gratuito da ElevenLabs. O episódio **não está licenciado para exploração comercial** e a atribuição é obrigatória.
-- **Trilha:** "Spice Intrigue", da Mixkit. Uso em YouTube e redes permitido. É proibido redistribuir o arquivo isolado, por isso ele não está no git.
+- **Trilha:** "Spice Intrigue", de RomanSenykMusic, no Pixabay, sob a Pixabay Content License: uso comercial permitido e sem atribuição obrigatória, mas é proibido redistribuir o arquivo isolado, por isso ele não está no git. A conferência da licença e do Content ID na página da faixa fica com você (ver `relatorios/licencas_r10.md`). *Correção de 25/11: a versão anterior deste arquivo dizia "Mixkit" por engano.*
 - **Efeitos:** ver `relatorios/licencas_r10.md`.
 
 Nada foi publicado.

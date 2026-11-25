@@ -1,0 +1,67 @@
+{
+ "video": "rev_m3.mp4",
+ "wav": "audio_ep02_r12_musica_m3.wav",
+ "atraso_aac_amostras": 0,
+ "stems": {
+  "voz": "ep02_voz_r9ref_f32.wav",
+  "resto": "ep02_efeitos_r9ref_f32.wav,ep02_mecanismo_r9ref_f32.wav,ep02_ambiencias_r9ref_f32.wav,ep02_efeitos_r10_si_r12_m3.wav,ep02_mecanismo_r10_si_r12_m3.wav,ep02_musica_r10_si_r12_m3.wav"
+ },
+ "eventos": [
+  {
+   "t": 20.84,
+   "uso": "garrafa pousa na prateleira de vidro (B5)",
+   "alvo_rel_voz_db": -12.0,
+   "voz_menos_resto_evento_db": 12.0,
+   "voz_menos_resto_mais_menos_0_5s_db": 18.7,
+   "aac_x_wav_corr": 0.9999,
+   "aac_menos_wav_db": -0.02
+  },
+  {
+   "t": 41.57,
+   "uso": "apresentação: fluido refrigerante (C3)",
+   "alvo_rel_voz_db": -9.0,
+   "voz_menos_resto_evento_db": 8.9,
+   "voz_menos_resto_mais_menos_0_5s_db": 10.1,
+   "aac_x_wav_corr": 0.9998,
+   "aac_menos_wav_db": -0.02
+  },
+  {
+   "t": 49.69,
+   "uso": "apresentação: Evaporador (D1)",
+   "alvo_rel_voz_db": -9.0,
+   "voz_menos_resto_evento_db": 9.0,
+   "voz_menos_resto_mais_menos_0_5s_db": 14.8,
+   "aac_x_wav_corr": 1.0,
+   "aac_menos_wav_db": 0.01
+  },
+  {
+   "t": 75.563,
+   "uso": "apresentação: Compressor (E2)",
+   "alvo_rel_voz_db": -9.0,
+   "voz_menos_resto_evento_db": 8.9,
+   "voz_menos_resto_mais_menos_0_5s_db": 16.0,
+   "aac_x_wav_corr": 0.9999,
+   "aac_menos_wav_db": -0.01
+  },
+  {
+   "t": 88.343,
+   "uso": "apresentação: Condensador (F1)",
+   "alvo_rel_voz_db": -9.0,
+   "voz_menos_resto_evento_db": 9.0,
+   "voz_menos_resto_mais_menos_0_5s_db": 15.3,
+   "aac_x_wav_corr": 0.9999,
+   "aac_menos_wav_db": -0.01
+  },
+  {
+   "t": 101.23,
+   "uso": "apresentação: Capilar (G2)",
+   "alvo_rel_voz_db": -9.0,
+   "voz_menos_resto_evento_db": 8.4,
+   "voz_menos_resto_mais_menos_0_5s_db": 11.7,
+   "aac_x_wav_corr": 0.9999,
+   "aac_menos_wav_db": -0.01
+  }
+ ],
+ "nota": "voz − resto ≥ 6 dB na janela do evento = a fala continua dominante na faixa do celular; o evento fica abaixo da voz por construção (alvo −9/−12 dB)",
+ "aprovado_tecnico": true
+}
