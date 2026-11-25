@@ -591,5 +591,46 @@
    "sha256": "a2ef7f0d869646e814db4ae1ffe970cf7063d6d115ce5243571ef4ef1e50ba4e",
    "validacao": "relatorios/testes_r10/validacao_audio_r11_final.json"
   }
+ },
+ "entrega_definitiva": {
+  "data": "2026-11-25",
+  "render": {
+   "perfil": "final",
+   "resolucao": "1080x1920",
+   "planos": 42,
+   "quadros_renderizados": 5638,
+   "quadros_video": 4537,
+   "fps": 30,
+   "integridade": "5.638 conferidos: manifesto × SHA-256 × decodificação × 1080×1920 × não-preto; 0 problemas (relatorios/testes_r10/validacao_final_r11_quadros.json)",
+   "retomada": "contêiner reiniciado durante o C4; 1.906 quadros reaproveitados por manifesto + SHA-256; bloco 60–119 do C4 refeito; --simular final: 0 a renderizar",
+   "log": "episodio/quadros_final/_definitivo.log",
+   "paradas": 0
+  },
+  "arquivos": {
+   "ep02_definitivo_1080x1920.mp4": {
+    "bytes": 159996421,
+    "sha256": "32baf7334a461e2b00525ea0c5f27f46a06a5fcb77dd5bd28fc8fe6846efd4fa",
+    "partes": "episodio/definitivo/"
+   },
+   "ep02_master_imagem_sem_legendas_1080.mp4": {
+    "bytes": 161044951,
+    "sha256": "50cd04cfd2c9c26b3d50b0eab98e160353310f0001943d3b77e9df8d07ff21a0",
+    "partes": "episodio/definitivo/"
+   },
+   "ep02_v11_revisao_referencia.mp4": {
+    "bytes": 33969223,
+    "sha256": "f87a45aa695af9178c997f0124c9a3ea74df1c9af8ce73adb7d8005e56c29609",
+    "nota": "revisão 540 com as mesmas decisões (referência das comparações)"
+   }
+  },
+  "audio": {
+   "mixagem": "som/audio_ep02_r11_final.wav",
+   "sha256_wav": "a2ef7f0d869646e814db4ae1ffe970cf7063d6d115ce5243571ef4ef1e50ba4e",
+   "flac_sem_perdas": "som/preservado_r11/",
+   "audio_decodificado_sha256": "87d457ac59ef4889521804224cd6bbd81d42890cf6162a5f955949a372943331 (idêntico em definitivo, master e revisão 540)",
+   "narracao_mp3_sha256": "fdedd87772aee9d4dac5d0193db3b9e1ef97c4b699c8ce01b0c8de7ae05726ee"
+  },
+  "comando_montagem": "bash episodio/montar_r11.sh final ep02_definitivo_1080x1920.mp4 ; SEM_LEGENDAS=1 bash episodio/montar_r11.sh final ep02_master_imagem_sem_legendas_1080.mp4",
+  "relatorio": "relatorios/relatorio_r11_definitivo.md"
  }
 }
