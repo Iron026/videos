@@ -83,7 +83,7 @@ A voz continua dominante em todos (≥ 6 dB por critério), e o AAC reproduz cad
   - os quatro stems em ponto flutuante foram gravados × 0,5, porque têm pico acima de 0 dBFS. Restaurar × 2; o erro é de 1,2·10⁻⁷ (−138 dBFS).
 - **Stem de música:** não entra isolado no git, por causa da licença da Mixkit. Ele está dentro da mixagem.
 - **Manifestos:** os manifestos de render por plano ficam em `quadros_final/*/_manifesto_quadros.json`, que não estão no git, porque a pasta inteira é ignorada. O log, as validações e o manifesto de produção estão no git.
-- **Persistência provada:** depois do push, fiz um clone novo e parcial só desta pasta. A conferência de `partes.sha256` passou, a remontagem foi feita e o SHA-256 dos dois MP4 bateu com a tabela. O resultado está na seção 5.
+- **Persistência provada:** depois do push, fiz um clone novo e parcial das pastas de entrega. A conferência de `partes.sha256` passou, a remontagem foi feita e o SHA-256 dos dois MP4 bateu com a tabela (detalhes no fim da seção 5).
 
 ## 4. Problemas encontrados
 
@@ -105,4 +105,12 @@ A voz continua dominante em todos (≥ 6 dB por critério), e o AAC reproduz cad
 
 ### Prova de recuperação
 
-(preenchida abaixo depois do clone de teste)
+Feita em 25/11/2026 a partir do commit `f5c7d4e`, numa pasta nova, com clone parcial (`--filter=blob:none --sparse --depth 1`) só das pastas de entrega:
+
+- `sha256sum -c partes.sha256`: as 4 partes **OK**;
+- remontagem com `cat`:
+  - definitivo `32baf7334a46…6efd4fa`, **igual**;
+  - master `50cd04cfd2c9…07ff21a0`, **igual**;
+  - 4.537 quadros decodificados;
+- os 7 FLAC de `som/preservado_r11/` têm SHA-256 igual ao registrado;
+- a revisão 540 de referência tem SHA-256 `f87a45aa…`, **igual**.
