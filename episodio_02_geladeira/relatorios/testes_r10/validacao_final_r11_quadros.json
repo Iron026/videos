@@ -189,14 +189,29 @@
    "no_manifesto": 126,
    "conferidos": 126,
    "arquivos_fora_do_manifesto": []
+  },
+  "J1b": {
+   "no_manifesto": 126,
+   "conferidos": 126,
+   "arquivos_fora_do_manifesto": []
+  },
+  "J2": {
+   "no_manifesto": 96,
+   "conferidos": 96,
+   "arquivos_fora_do_manifesto": []
+  },
+  "J3": {
+   "no_manifesto": 132,
+   "conferidos": 132,
+   "arquivos_fora_do_manifesto": []
+  },
+  "J4": {
+   "no_manifesto": 188,
+   "conferidos": 188,
+   "arquivos_fora_do_manifesto": []
   }
  },
- "problemas": [
-  "J1b: sem manifesto",
-  "J2: sem manifesto",
-  "J3: sem manifesto",
-  "J4: sem manifesto"
- ],
- "quadros_conferidos": 5096,
- "aprovado": false
+ "problemas": [],
+ "quadros_conferidos": 5638,
+ "aprovado": true
 }
