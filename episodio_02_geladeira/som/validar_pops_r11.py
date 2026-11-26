@@ -33,4 +33,5 @@ for e in ev:
 res = dict(video=os.path.basename(video), wav=os.path.basename(wav), atraso_aac_amostras=lag, stems=dict(voz=os.environ['STEMS_VOZ'], resto=os.environ['STEMS_RESTO']), eventos=out,
            nota='voz − resto ≥ 6 dB na janela do evento = a fala continua dominante na faixa do celular; o evento fica abaixo da voz por construção (alvo −9/−12 dB)')
 res['aprovado_tecnico'] = all((o['voz_menos_resto_evento_db'] is None or o['voz_menos_resto_evento_db'] >= 6) and o['aac_x_wav_corr'] >= 0.98 for o in out)
-p = os.path.join(A, '..', 'relatorios', 'testes_r10', 'validacao_pops_r11.json'); json.dump(res, open(p, 'w'), ensure_ascii=False, indent=1); print(json.dumps(res, ensure_ascii=False, indent=1))
+p = os.path.join(A, '..', 'relatorios', 'testes_r10', f'validacao_pops_r11{os.environ.get("SUF_VALIDACAO", "")}.json')   # SUF_VALIDACAO (R12): não sobrescreve o registro aprovado
+json.dump(res, open(p, 'w'), ensure_ascii=False, indent=1); print(json.dumps(res, ensure_ascii=False, indent=1))

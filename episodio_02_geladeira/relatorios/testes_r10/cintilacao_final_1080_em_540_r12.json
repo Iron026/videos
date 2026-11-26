@@ -1,0 +1,65 @@
+{
+ "C4": {
+  "quadros": 183,
+  "com_blocos": 52,
+  "piores": [
+   {
+    "quadro": "q0146.jpg",
+    "blocos": 157,
+    "pixels": 20781
+   },
+   {
+    "quadro": "q0148.jpg",
+    "blocos": 153,
+    "pixels": 22374
+   },
+   {
+    "quadro": "q0152.jpg",
+    "blocos": 144,
+    "pixels": 20397
+   }
+  ]
+ },
+ "H1": {
+  "quadros": 148,
+  "com_blocos": 95,
+  "piores": [
+   {
+    "quadro": "q0084.jpg",
+    "blocos": 282,
+    "pixels": 36376
+   },
+   {
+    "quadro": "q0101.jpg",
+    "blocos": 279,
+    "pixels": 36235
+   },
+   {
+    "quadro": "q0100.jpg",
+    "blocos": 278,
+    "pixels": 36388
+   }
+  ]
+ },
+ "H2": {
+  "quadros": 129,
+  "com_blocos": 6,
+  "piores": [
+   {
+    "quadro": "q0116.jpg",
+    "blocos": 3,
+    "pixels": 331
+   },
+   {
+    "quadro": "q0113.jpg",
+    "blocos": 3,
+    "pixels": 343
+   },
+   {
+    "quadro": "q0110.jpg",
+    "blocos": 3,
+    "pixels": 336
+   }
+  ]
+ }
+}

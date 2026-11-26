@@ -45,4 +45,5 @@ for i in range(0, len(vc) - w, w):
 res['voz_menos_resto_celular_db'] = dict(pior=round(float(min(difs)), 1), p5=round(float(np.percentile(difs, 5)), 1), mediana=round(float(np.median(difs)), 1), janelas=len(difs))
 res['metas'] = dict(lufs=-14.0, tp_max=-1.5, voz_celular_min_db=10.0)
 res['aprovado_tecnico'] = bool(abs(res['lufs_aac'] + 14) <= 0.5 and res['pico_verdadeiro_aac_dbtp'] <= -1.5 and res['voz_menos_resto_celular_db']['p5'] >= 10.0)
-json.dump(res, open(os.path.join(A, 'validacao_audio.json'), 'w'), ensure_ascii=False, indent=1); print(json.dumps(res, ensure_ascii=False, indent=1))
+# SUF_VALIDACAO (opcional, rodada 12): grava validacao_audio<SUF>.json sem sobrescrever o registro aprovado
+json.dump(res, open(os.path.join(A, f'validacao_audio{os.environ.get("SUF_VALIDACAO", "")}.json'), 'w'), ensure_ascii=False, indent=1); print(json.dumps(res, ensure_ascii=False, indent=1))

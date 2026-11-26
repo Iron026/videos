@@ -16,7 +16,8 @@ MODO = sys.argv[1]
 
 
 def salvar(nome, obj):
-    p = os.path.join(OUTD, f'validacao_final_r11_{nome}.json'); json.dump(obj, open(p, 'w'), ensure_ascii=False, indent=1); print('→', p)
+    # rodada 12: SUF_VALIDACAO (opcional, padrão vazio = nome da R11) evita sobrescrever os registros aprovados
+    p = os.path.join(OUTD, f'validacao_final_r11_{nome}{os.environ.get("SUF_VALIDACAO", "")}.json'); json.dump(obj, open(p, 'w'), ensure_ascii=False, indent=1); print('→', p)
 
 
 if MODO == 'quadros':
