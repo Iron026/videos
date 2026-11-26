@@ -1,0 +1,444 @@
+{
+ "D3": {
+  "quadros": 182,
+  "trios": 180,
+  "trios_com_blocos_padrao": 68,
+  "trios_com_blocos_sensivel_nos_cortes": 1,
+  "pixels_sensivel_nos_cortes": 29701,
+  "area_tampas_pct": 5.4,
+  "piores": [
+   {
+    "quadro": "q0157.jpg",
+    "blocos_sensivel": 1,
+    "pixels_sensivel": 223,
+    "blocos_padrao": 4
+   },
+   {
+    "quadro": "q0018.jpg",
+    "blocos_sensivel": 0,
+    "pixels_sensivel": 357,
+    "blocos_padrao": 0
+   },
+   {
+    "quadro": "q0015.jpg",
+    "blocos_sensivel": 0,
+    "pixels_sensivel": 340,
+    "blocos_padrao": 0
+   },
+   {
+    "quadro": "q0007.jpg",
+    "blocos_sensivel": 0,
+    "pixels_sensivel": 339,
+    "blocos_padrao": 0
+   }
+  ]
+ },
+ "D4": {
+  "quadros": 129,
+  "trios": 127,
+  "trios_com_blocos_padrao": 124,
+  "trios_com_blocos_sensivel_nos_cortes": 75,
+  "pixels_sensivel_nos_cortes": 333838,
+  "area_tampas_pct": 3.2,
+  "piores": [
+   {
+    "quadro": "q0061.jpg",
+    "blocos_sensivel": 68,
+    "pixels_sensivel": 12059,
+    "blocos_padrao": 83
+   },
+   {
+    "quadro": "q0060.jpg",
+    "blocos_sensivel": 65,
+    "pixels_sensivel": 11092,
+    "blocos_padrao": 83
+   },
+   {
+    "quadro": "q0074.jpg",
+    "blocos_sensivel": 62,
+    "pixels_sensivel": 11422,
+    "blocos_padrao": 79
+   },
+   {
+    "quadro": "q0073.jpg",
+    "blocos_sensivel": 62,
+    "pixels_sensivel": 11224,
+    "blocos_padrao": 74
+   }
+  ]
+ },
+ "D5": {
+  "quadros": 124,
+  "trios": 122,
+  "trios_com_blocos_padrao": 93,
+  "trios_com_blocos_sensivel_nos_cortes": 30,
+  "pixels_sensivel_nos_cortes": 230059,
+  "area_tampas_pct": 6.9,
+  "piores": [
+   {
+    "quadro": "q0079.jpg",
+    "blocos_sensivel": 40,
+    "pixels_sensivel": 5962,
+    "blocos_padrao": 85
+   },
+   {
+    "quadro": "q0082.jpg",
+    "blocos_sensivel": 39,
+    "pixels_sensivel": 6530,
+    "blocos_padrao": 79
+   },
+   {
+    "quadro": "q0081.jpg",
+    "blocos_sensivel": 39,
+    "pixels_sensivel": 6351,
+    "blocos_padrao": 87
+   },
+   {
+    "quadro": "q0078.jpg",
+    "blocos_sensivel": 38,
+    "pixels_sensivel": 5709,
+    "blocos_padrao": 73
+   }
+  ]
+ },
+ "E1": {
+  "quadros": 99,
+  "trios": 97,
+  "trios_com_blocos_padrao": 73,
+  "trios_com_blocos_sensivel_nos_cortes": 78,
+  "pixels_sensivel_nos_cortes": 1452531,
+  "area_tampas_pct": 14.4,
+  "piores": [
+   {
+    "quadro": "q0048.jpg",
+    "blocos_sensivel": 174,
+    "pixels_sensivel": 24250,
+    "blocos_padrao": 153
+   },
+   {
+    "quadro": "q0047.jpg",
+    "blocos_sensivel": 173,
+    "pixels_sensivel": 24634,
+    "blocos_padrao": 154
+   },
+   {
+    "quadro": "q0035.jpg",
+    "blocos_sensivel": 171,
+    "pixels_sensivel": 24493,
+    "blocos_padrao": 159
+   },
+   {
+    "quadro": "q0030.jpg",
+    "blocos_sensivel": 167,
+    "pixels_sensivel": 24724,
+    "blocos_padrao": 162
+   }
+  ]
+ },
+ "E2": {
+  "quadros": 135,
+  "trios": 133,
+  "trios_com_blocos_padrao": 57,
+  "trios_com_blocos_sensivel_nos_cortes": 66,
+  "pixels_sensivel_nos_cortes": 184361,
+  "area_tampas_pct": 7.1,
+  "piores": [
+   {
+    "quadro": "q0081.jpg",
+    "blocos_sensivel": 30,
+    "pixels_sensivel": 6995,
+    "blocos_padrao": 30
+   },
+   {
+    "quadro": "q0075.jpg",
+    "blocos_sensivel": 26,
+    "pixels_sensivel": 6547,
+    "blocos_padrao": 26
+   },
+   {
+    "quadro": "q0073.jpg",
+    "blocos_sensivel": 25,
+    "pixels_sensivel": 6552,
+    "blocos_padrao": 24
+   },
+   {
+    "quadro": "q0064.jpg",
+    "blocos_sensivel": 24,
+    "pixels_sensivel": 6112,
+    "blocos_padrao": 24
+   }
+  ]
+ },
+ "E3": {
+  "quadros": 160,
+  "trios": 158,
+  "trios_com_blocos_padrao": 152,
+  "trios_com_blocos_sensivel_nos_cortes": 154,
+  "pixels_sensivel_nos_cortes": 359478,
+  "area_tampas_pct": 20.4,
+  "piores": [
+   {
+    "quadro": "q0035.jpg",
+    "blocos_sensivel": 35,
+    "pixels_sensivel": 6731,
+    "blocos_padrao": 43
+   },
+   {
+    "quadro": "q0103.jpg",
+    "blocos_sensivel": 32,
+    "pixels_sensivel": 7412,
+    "blocos_padrao": 31
+   },
+   {
+    "quadro": "q0070.jpg",
+    "blocos_sensivel": 31,
+    "pixels_sensivel": 6676,
+    "blocos_padrao": 34
+   },
+   {
+    "quadro": "q0029.jpg",
+    "blocos_sensivel": 29,
+    "pixels_sensivel": 6082,
+    "blocos_padrao": 29
+   }
+  ]
+ },
+ "E4": {
+  "quadros": 128,
+  "trios": 126,
+  "trios_com_blocos_padrao": 0,
+  "trios_com_blocos_sensivel_nos_cortes": 1,
+  "pixels_sensivel_nos_cortes": 170781,
+  "area_tampas_pct": 0.9,
+  "piores": [
+   {
+    "quadro": "q0074.jpg",
+    "blocos_sensivel": 1,
+    "pixels_sensivel": 1860,
+    "blocos_padrao": 0
+   },
+   {
+    "quadro": "q0070.jpg",
+    "blocos_sensivel": 0,
+    "pixels_sensivel": 2059,
+    "blocos_padrao": 0
+   },
+   {
+    "quadro": "q0071.jpg",
+    "blocos_sensivel": 0,
+    "pixels_sensivel": 1938,
+    "blocos_padrao": 0
+   },
+   {
+    "quadro": "q0073.jpg",
+    "blocos_sensivel": 0,
+    "pixels_sensivel": 1921,
+    "blocos_padrao": 0
+   }
+  ]
+ },
+ "G1": {
+  "quadros": 68,
+  "trios": 66,
+  "trios_com_blocos_padrao": 21,
+  "trios_com_blocos_sensivel_nos_cortes": 31,
+  "pixels_sensivel_nos_cortes": 164586,
+  "area_tampas_pct": 18.4,
+  "piores": [
+   {
+    "quadro": "q0040.jpg",
+    "blocos_sensivel": 34,
+    "pixels_sensivel": 6480,
+    "blocos_padrao": 32
+   },
+   {
+    "quadro": "q0028.jpg",
+    "blocos_sensivel": 33,
+    "pixels_sensivel": 6183,
+    "blocos_padrao": 33
+   },
+   {
+    "quadro": "q0052.jpg",
+    "blocos_sensivel": 33,
+    "pixels_sensivel": 4847,
+    "blocos_padrao": 29
+   },
+   {
+    "quadro": "q0034.jpg",
+    "blocos_sensivel": 32,
+    "pixels_sensivel": 6538,
+    "blocos_padrao": 23
+   }
+  ]
+ },
+ "G2": {
+  "quadros": 139,
+  "trios": 137,
+  "trios_com_blocos_padrao": 0,
+  "trios_com_blocos_sensivel_nos_cortes": 0,
+  "pixels_sensivel_nos_cortes": 27738,
+  "area_tampas_pct": 19.9,
+  "piores": [
+   {
+    "quadro": "q0070.jpg",
+    "blocos_sensivel": 0,
+    "pixels_sensivel": 425,
+    "blocos_padrao": 0
+   },
+   {
+    "quadro": "q0072.jpg",
+    "blocos_sensivel": 0,
+    "pixels_sensivel": 417,
+    "blocos_padrao": 0
+   },
+   {
+    "quadro": "q0073.jpg",
+    "blocos_sensivel": 0,
+    "pixels_sensivel": 398,
+    "blocos_padrao": 0
+   },
+   {
+    "quadro": "q0074.jpg",
+    "blocos_sensivel": 0,
+    "pixels_sensivel": 396,
+    "blocos_padrao": 0
+   }
+  ]
+ },
+ "G3": {
+  "quadros": 173,
+  "trios": 171,
+  "trios_com_blocos_padrao": 0,
+  "trios_com_blocos_sensivel_nos_cortes": 0,
+  "pixels_sensivel_nos_cortes": 27391,
+  "area_tampas_pct": 6.4,
+  "piores": [
+   {
+    "quadro": "q0070.jpg",
+    "blocos_sensivel": 0,
+    "pixels_sensivel": 511,
+    "blocos_padrao": 0
+   },
+   {
+    "quadro": "q0086.jpg",
+    "blocos_sensivel": 0,
+    "pixels_sensivel": 229,
+    "blocos_padrao": 0
+   },
+   {
+    "quadro": "q0073.jpg",
+    "blocos_sensivel": 0,
+    "pixels_sensivel": 218,
+    "blocos_padrao": 0
+   },
+   {
+    "quadro": "q0087.jpg",
+    "blocos_sensivel": 0,
+    "pixels_sensivel": 217,
+    "blocos_padrao": 0
+   }
+  ]
+ },
+ "G3z": {
+  "quadros": 173,
+  "trios": 171,
+  "trios_com_blocos_padrao": 98,
+  "trios_com_blocos_sensivel_nos_cortes": 62,
+  "pixels_sensivel_nos_cortes": 88365,
+  "area_tampas_pct": 11.0,
+  "piores": [
+   {
+    "quadro": "q0109.jpg",
+    "blocos_sensivel": 13,
+    "pixels_sensivel": 2207,
+    "blocos_padrao": 47
+   },
+   {
+    "quadro": "q0110.jpg",
+    "blocos_sensivel": 12,
+    "pixels_sensivel": 2357,
+    "blocos_padrao": 53
+   },
+   {
+    "quadro": "q0106.jpg",
+    "blocos_sensivel": 12,
+    "pixels_sensivel": 2178,
+    "blocos_padrao": 32
+   },
+   {
+    "quadro": "q0105.jpg",
+    "blocos_sensivel": 12,
+    "pixels_sensivel": 2020,
+    "blocos_padrao": 29
+   }
+  ]
+ },
+ "H1": {
+  "quadros": 150,
+  "trios": 148,
+  "trios_com_blocos_padrao": 96,
+  "trios_com_blocos_sensivel_nos_cortes": 97,
+  "pixels_sensivel_nos_cortes": 997046,
+  "area_tampas_pct": 10.8,
+  "piores": [
+   {
+    "quadro": "q0102.jpg",
+    "blocos_sensivel": 104,
+    "pixels_sensivel": 17464,
+    "blocos_padrao": 254
+   },
+   {
+    "quadro": "q0086.jpg",
+    "blocos_sensivel": 103,
+    "pixels_sensivel": 16108,
+    "blocos_padrao": 233
+   },
+   {
+    "quadro": "q0082.jpg",
+    "blocos_sensivel": 103,
+    "pixels_sensivel": 15092,
+    "blocos_padrao": 218
+   },
+   {
+    "quadro": "q0087.jpg",
+    "blocos_sensivel": 102,
+    "pixels_sensivel": 16433,
+    "blocos_padrao": 225
+   }
+  ]
+ },
+ "H2": {
+  "quadros": 131,
+  "trios": 129,
+  "trios_com_blocos_padrao": 8,
+  "trios_com_blocos_sensivel_nos_cortes": 23,
+  "pixels_sensivel_nos_cortes": 125997,
+  "area_tampas_pct": 12.1,
+  "piores": [
+   {
+    "quadro": "q0063.jpg",
+    "blocos_sensivel": 3,
+    "pixels_sensivel": 1916,
+    "blocos_padrao": 0
+   },
+   {
+    "quadro": "q0064.jpg",
+    "blocos_sensivel": 3,
+    "pixels_sensivel": 1899,
+    "blocos_padrao": 0
+   },
+   {
+    "quadro": "q0065.jpg",
+    "blocos_sensivel": 3,
+    "pixels_sensivel": 1856,
+    "blocos_padrao": 0
+   },
+   {
+    "quadro": "q0082.jpg",
+    "blocos_sensivel": 3,
+    "pixels_sensivel": 1757,
+    "blocos_padrao": 2
+   }
+  ]
+ }
+}

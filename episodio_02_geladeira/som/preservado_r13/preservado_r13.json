@@ -1,0 +1,51 @@
+{
+ "rodada": "13 (verificação) — mixagem B, candidata; NÃO é o definitivo (aguarda aprovação auditiva)",
+ "master_r13_db": -0.03,
+ "arquivos": {
+  "audio_ep02_r13B.flac": {
+   "origem": "audio_ep02_r13_r13_teste.wav",
+   "sha256_origem": "ea707e80b2f7d145dda05cb2150cae7d092df1ebf2eef3c290a0b23487643ac9",
+   "sha256_flac": "4e5deefff375f623240a4a4f382a19a97943edc8edd045a5175fb3ec46383c4c",
+   "fator": 1.0,
+   "restaurar": "× 1",
+   "erro_max_dbfs": -144.5,
+   "pico_origem_dbfs": -2.21
+  },
+  "ep02_efeitos_cc0_e_proprios_r13B_x0,5.flac": {
+   "origem": "stems/r13/efeitos_cc0_e_proprios.wav",
+   "sha256_origem": "697ffed8d94e09a5c5875dd1cb2900dcb8fa4121fc594ba586aebe89644c5a33",
+   "sha256_flac": "fd7c624e5f3447d4ad8be659b78ee4843157faec5bae5f0fe6d2faf7df2dfee8",
+   "fator": 0.5,
+   "restaurar": "× 2",
+   "erro_max_dbfs": -138.5,
+   "pico_origem_dbfs": 0.02
+  }
+ },
+ "voz": {
+  "e": "stem da V9 × master R13",
+  "fonte_preservada": "som/preservado_r11/ep02_voz_r9ref_f32.flac (× 0,5; restaurar × 2)",
+  "master_db": -0.03171,
+  "diferenca_max_dbfs": -144.7
+ },
+ "fora_do_git": {
+  "musica.wav": {
+   "sha256": "4b992e5100cf06a30c1667515dafec2e7bdc29ed799d31a1c85e90711380ece6",
+   "motivo": "licença: proibido redistribuir o item isolado (Pixabay / Mixkit)"
+  },
+  "efeitos_mixkit.wav": {
+   "sha256": "762d15c6d36c1d66c6e323289352da85351a7f7fde75839076dd835fbedc7e93",
+   "motivo": "licença: proibido redistribuir o item isolado (Pixabay / Mixkit)"
+  }
+ },
+ "fontes_para_reconstruir": {
+  "musica_mp3": "som/bib/pixabay/334566.mp3 (enviado pelo usuário)",
+  "musica_mp3_sha256": "f31f497aa81dafaf7270a48e55dc6062bd21962c6be3da3819afcc1aa9fe9abc",
+  "mixkit": "python3 som/baixar_mixkit_sfx.py (SHA-256 de cada prévia em som/fontes_mixkit_sfx.json)",
+  "freesound": "prévias CC0 em som/bib/freesound (python3 som/buscar_freesound.py; registro em som/fontes_freesound.json)",
+  "camadas_v9": "CENAS_SOM=cenas_v8 CENA_R9=1 python3 som/decompor_v9.py (prova: nulo ≤ −150 dBFS)",
+  "efeitos_r10_sem_pop": "GARRAFA_B5=1 MUSICA=spice_intrigue MUSICA_REL_DB=-13.5 SUF_R10=_r13_sempop python3 som/som_r10.py",
+  "mixagem": "python3 som/som_r13.py  (padrões: ALVO_MUS_LU −16, SEP_DB 16, MAXD_DB −12, REL_S 0,5, PAUSA_DB 1,5, TETO_R13 −2,2, FATIAS 0)",
+  "video_de_escuta": "ffmpeg -i episodio/ep02_definitivo_r12_1080x1920.mp4 -i som/audio_ep02_r13_r13_teste.wav -map 0:v -map 1:a -c:v copy -af \"afade=t=out:st=151.1833:d=0.05\" -c:a aac -b:a 192k -ar 48000 -t 151.2333 -movflags +faststart saida.mp4"
+ },
+ "referencia_r12": "som/preservado_r12/audio_ep02_r12_musica_m5.flac (intocado) + stems da R12 em som/preservado_r11 e stems/camadas_v9 (decomposição provada)"
+}

@@ -1,0 +1,517 @@
+11:55:25 A1: bloco 0–56 (57 quadros) em 988 s
+12:13:44 A2 quadro 18: salto em relação ao quadro anterior (corr 0.904, dif 7.3) — justificado: efeito da cena em transição neste quadro
+12:13:44 A2: bloco 0–56 (57 quadros) em 1099 s
+12:33:40 A3: bloco 0–59 (60 quadros) em 1195 s
+12:41:23 A1: completo (57 quadros conferidos por SHA-256)
+12:41:23 A2: completo (57 quadros conferidos por SHA-256)
+12:49:23 A3: bloco 60–79 (20 quadros) em 480 s
+13:02:22 A4 quadro 34: salto em relação ao quadro anterior (corr -0.234, dif 43.0) — justificado: efeito da cena em transição neste quadro
+13:02:23 A4: bloco 0–59 (60 quadros) em 779 s
+13:21:21 A4: bloco 60–119 (60 quadros) em 1138 s
+13:40:44 A1: completo (57 quadros conferidos por SHA-256)
+13:40:44 A2: completo (57 quadros conferidos por SHA-256)
+13:40:44 A3: completo (80 quadros conferidos por SHA-256)
+13:51:50 A4 quadro 134: salto em relação ao quadro anterior (corr 0.900, dif 7.5) — justificado: efeito da cena em transição neste quadro
+13:51:50 A4 quadro 135: salto em relação ao quadro anterior (corr -0.105, dif 39.4) — justificado: efeito da cena em transição neste quadro
+13:51:51 A4: bloco 120–173 (54 quadros) em 667 s
+13:52:59 A1: completo (57 quadros conferidos por SHA-256)
+13:52:59 A2: completo (57 quadros conferidos por SHA-256)
+13:52:59 A3: completo (80 quadros conferidos por SHA-256)
+13:52:59 A4: completo (174 quadros conferidos por SHA-256)
+14:17:09 A4b: bloco 0–59 (60 quadros) em 1450 s
+14:39:37 A4b: bloco 60–119 (60 quadros) em 1348 s
+15:01:29 A4b: bloco 120–173 (54 quadros) em 1312 s
+15:18:58 B1: bloco 0–59 (60 quadros) em 1049 s
+15:25:55 B1: bloco 60–82 (23 quadros) em 417 s
+15:43:15 B2: bloco 0–59 (60 quadros) em 1040 s
+15:49:39 B2: bloco 60–80 (21 quadros) em 384 s
+16:06:05 B3: bloco 0–59 (60 quadros) em 986 s
+16:10:08 B3: bloco 60–72 (13 quadros) em 243 s
+16:22:46 B4: bloco 0–59 (60 quadros) em 759 s
+16:32:56 B4: bloco 60–107 (48 quadros) em 610 s
+17:01:25 A1: completo (57 quadros conferidos por SHA-256)
+17:01:25 A2: completo (57 quadros conferidos por SHA-256)
+17:01:25 A3: completo (80 quadros conferidos por SHA-256)
+17:01:25 A4: completo (174 quadros conferidos por SHA-256)
+17:01:25 A4b: completo (174 quadros conferidos por SHA-256)
+17:01:25 B1: completo (83 quadros conferidos por SHA-256)
+17:01:25 B2: completo (81 quadros conferidos por SHA-256)
+17:01:25 B3: completo (73 quadros conferidos por SHA-256)
+17:01:25 B4: completo (108 quadros conferidos por SHA-256)
+17:26:57 A1: completo (57 quadros conferidos por SHA-256)
+17:26:58 A2: completo (57 quadros conferidos por SHA-256)
+17:26:58 A3: completo (80 quadros conferidos por SHA-256)
+17:26:58 A4: completo (174 quadros conferidos por SHA-256)
+17:26:58 A4b: completo (174 quadros conferidos por SHA-256)
+17:26:58 B1: completo (83 quadros conferidos por SHA-256)
+17:26:58 B2: completo (81 quadros conferidos por SHA-256)
+17:26:58 B3: completo (73 quadros conferidos por SHA-256)
+17:26:58 B4: completo (108 quadros conferidos por SHA-256)
+17:45:10 B5 quadro 32: salto em relação ao quadro anterior (corr 0.858, dif 6.1) — justificado: mesmo salto na V10 aprovada (540, mesma cena) (corr ref. 0.859; novo × ref. 1.000)
+17:45:10 B5 quadro 33: salto em relação ao quadro anterior (corr 0.853, dif 6.3) — justificado: mesmo salto na V10 aprovada (540, mesma cena) (corr ref. 0.853; novo × ref. 1.000)
+17:45:10 B5: bloco 0–59 (60 quadros) em 1092 s
+18:04:05 B5: bloco 60–119 (60 quadros) em 1134 s
+18:13:26 B5: bloco 120–148 (29 quadros) em 561 s
+18:31:41 B6: bloco 0–59 (60 quadros) em 1095 s
+18:40:32 B6: bloco 60–86 (27 quadros) em 531 s
+18:57:36 B7: bloco 0–59 (60 quadros) em 1024 s
+19:03:50 B7: bloco 60–80 (21 quadros) em 374 s
+19:16:46 C1 quadro 16: salto em relação ao quadro anterior (corr 0.912, dif 6.5) — justificado: mesmo salto na V10 aprovada (540, mesma cena) (corr ref. 0.913; novo × ref. 1.000)
+19:16:46 C1 quadro 17: salto em relação ao quadro anterior (corr 0.888, dif 6.8) — justificado: mesmo salto na V10 aprovada (540, mesma cena) (corr ref. 0.891; novo × ref. 1.000)
+19:16:46 C1 quadro 18: salto em relação ao quadro anterior (corr 0.885, dif 6.7) — justificado: mesmo salto na V10 aprovada (540, mesma cena) (corr ref. 0.887; novo × ref. 1.000)
+19:16:46 C1 quadro 19: salto em relação ao quadro anterior (corr 0.897, dif 6.5) — justificado: mesmo salto na V10 aprovada (540, mesma cena) (corr ref. 0.899; novo × ref. 1.000)
+19:16:46 C1 quadro 20: salto em relação ao quadro anterior (corr 0.890, dif 6.4) — justificado: mesmo salto na V10 aprovada (540, mesma cena) (corr ref. 0.892; novo × ref. 1.000)
+19:16:46 C1 quadro 21: salto em relação ao quadro anterior (corr 0.866, dif 6.9) — justificado: mesmo salto na V10 aprovada (540, mesma cena) (corr ref. 0.867; novo × ref. 1.000)
+19:16:46 C1 quadro 22: salto em relação ao quadro anterior (corr 0.864, dif 7.4) — justificado: mesmo salto na V10 aprovada (540, mesma cena) (corr ref. 0.864; novo × ref. 1.000)
+19:16:46 C1 quadro 23: salto em relação ao quadro anterior (corr 0.854, dif 8.7) — justificado: mesmo salto na V10 aprovada (540, mesma cena) (corr ref. 0.855; novo × ref. 1.000)
+19:16:46 C1 quadro 24: salto em relação ao quadro anterior (corr 0.868, dif 7.1) — justificado: mesmo salto na V10 aprovada (540, mesma cena) (corr ref. 0.869; novo × ref. 1.000)
+19:16:46 C1 quadro 25: salto em relação ao quadro anterior (corr 0.869, dif 7.4) — justificado: mesmo salto na V10 aprovada (540, mesma cena) (corr ref. 0.870; novo × ref. 1.000)
+19:16:46 C1 quadro 26: salto em relação ao quadro anterior (corr 0.880, dif 6.8) — justificado: mesmo salto na V10 aprovada (540, mesma cena) (corr ref. 0.882; novo × ref. 1.000)
+19:16:46 C1 quadro 27: salto em relação ao quadro anterior (corr 0.894, dif 6.1) — justificado: mesmo salto na V10 aprovada (540, mesma cena) (corr ref. 0.897; novo × ref. 1.000)
+19:16:47 C1: bloco 0–59 (60 quadros) em 776 s
+19:30:47 C1: bloco 60–119 (60 quadros) em 840 s
+19:43:55 C1: bloco 120–179 (60 quadros) em 788 s
+21:29:23 C2 quadro 26: salto em relação ao quadro anterior (corr 0.928, dif 12.8) — justificado: efeito da cena em transição neste quadro
+21:29:23 C2 quadro 31: salto em relação ao quadro anterior (corr 0.888, dif 13.8) — justificado: efeito da cena em transição neste quadro
+21:29:23 C2: bloco 0–59 (60 quadros × 5 sub) em 6328 s
+23:15:39 C2 quadro 79: salto em relação ao quadro anterior (corr 0.904, dif 13.0) — justificado: mesmo salto na V10 aprovada (540, mesma cena) (corr ref. 0.904; novo × ref. 1.000)
+23:15:39 C2 quadro 80: salto em relação ao quadro anterior (corr 0.883, dif 14.7) — justificado: mesmo salto na V10 aprovada (540, mesma cena) (corr ref. 0.884; novo × ref. 1.000)
+23:15:39 C2 quadro 81: salto em relação ao quadro anterior (corr 0.874, dif 15.0) — justificado: mesmo salto na V10 aprovada (540, mesma cena) (corr ref. 0.875; novo × ref. 1.000)
+23:15:39 C2 quadro 82: salto em relação ao quadro anterior (corr 0.858, dif 16.2) — justificado: mesmo salto na V10 aprovada (540, mesma cena) (corr ref. 0.857; novo × ref. 0.999)
+23:15:39 C2 quadro 83: salto em relação ao quadro anterior (corr 0.857, dif 15.8) — justificado: mesmo salto na V10 aprovada (540, mesma cena) (corr ref. 0.856; novo × ref. 1.000)
+23:15:39 C2 quadro 84: salto em relação ao quadro anterior (corr 0.845, dif 18.0) — justificado: mesmo salto na V10 aprovada (540, mesma cena) (corr ref. 0.847; novo × ref. 1.000)
+23:15:39 C2 quadro 85: salto em relação ao quadro anterior (corr 0.848, dif 18.6) — justificado: mesmo salto na V10 aprovada (540, mesma cena) (corr ref. 0.848; novo × ref. 1.000)
+23:15:39 C2 quadro 86: salto em relação ao quadro anterior (corr 0.861, dif 18.1) — justificado: mesmo salto na V10 aprovada (540, mesma cena) (corr ref. 0.862; novo × ref. 1.000)
+23:15:39 C2 quadro 87: salto em relação ao quadro anterior (corr 0.895, dif 16.3) — justificado: mesmo salto na V10 aprovada (540, mesma cena) (corr ref. 0.894; novo × ref. 1.000)
+23:15:39 C2 quadro 88: salto em relação ao quadro anterior (corr 0.902, dif 15.3) — justificado: mesmo salto na V10 aprovada (540, mesma cena) (corr ref. 0.902; novo × ref. 1.000)
+23:15:39 C2 quadro 100: salto em relação ao quadro anterior (corr 0.928, dif 13.6) — justificado: mesmo salto na V10 aprovada (540, mesma cena) (corr ref. 0.929; novo × ref. 1.000)
+23:15:39 C2 quadro 101: salto em relação ao quadro anterior (corr 0.920, dif 14.5) — justificado: mesmo salto na V10 aprovada (540, mesma cena) (corr ref. 0.920; novo × ref. 1.000)
+23:15:39 C2 quadro 102: salto em relação ao quadro anterior (corr 0.889, dif 16.8) — justificado: mesmo salto na V10 aprovada (540, mesma cena) (corr ref. 0.888; novo × ref. 1.000)
+23:15:39 C2 quadro 103: salto em relação ao quadro anterior (corr 0.878, dif 17.1) — justificado: mesmo salto na V10 aprovada (540, mesma cena) (corr ref. 0.878; novo × ref. 1.000)
+23:15:39 C2 quadro 104: salto em relação ao quadro anterior (corr 0.877, dif 17.1) — justificado: mesmo salto na V10 aprovada (540, mesma cena) (corr ref. 0.876; novo × ref. 0.999)
+23:15:39 C2 quadro 105: salto em relação ao quadro anterior (corr 0.870, dif 16.4) — justificado: mesmo salto na V10 aprovada (540, mesma cena) (corr ref. 0.871; novo × ref. 0.999)
+23:15:39 C2 quadro 106: salto em relação ao quadro anterior (corr 0.851, dif 17.9) — justificado: mesmo salto na V10 aprovada (540, mesma cena) (corr ref. 0.852; novo × ref. 1.000)
+23:15:39 C2 quadro 107: salto em relação ao quadro anterior (corr 0.860, dif 17.4) — justificado: mesmo salto na V10 aprovada (540, mesma cena) (corr ref. 0.860; novo × ref. 1.000)
+23:15:39 C2 quadro 108: salto em relação ao quadro anterior (corr 0.863, dif 16.7) — justificado: mesmo salto na V10 aprovada (540, mesma cena) (corr ref. 0.864; novo × ref. 1.000)
+23:15:39 C2 quadro 109: salto em relação ao quadro anterior (corr 0.870, dif 15.8) — justificado: mesmo salto na V10 aprovada (540, mesma cena) (corr ref. 0.872; novo × ref. 1.000)
+23:15:39 C2 quadro 110: salto em relação ao quadro anterior (corr 0.873, dif 15.2) — justificado: mesmo salto na V10 aprovada (540, mesma cena) (corr ref. 0.874; novo × ref. 1.000)
+23:15:39 C2 quadro 111: salto em relação ao quadro anterior (corr 0.886, dif 13.8) — justificado: mesmo salto na V10 aprovada (540, mesma cena) (corr ref. 0.887; novo × ref. 1.000)
+23:15:39 C2 quadro 112: salto em relação ao quadro anterior (corr 0.905, dif 12.4) — justificado: mesmo salto na V10 aprovada (540, mesma cena) (corr ref. 0.906; novo × ref. 1.000)
+23:15:40 C2 quadro 113: salto em relação ao quadro anterior (corr 0.916, dif 11.4) — justificado: mesmo salto na V10 aprovada (540, mesma cena) (corr ref. 0.917; novo × ref. 1.000)
+23:15:40 C2: bloco 60–119 (60 quadros × 5 sub) em 6376 s
+23:44:47 C2: bloco 120–138 (19 quadros × 5 sub) em 1747 s
+00:08:21 C3 quadro 24: salto em relação ao quadro anterior (corr 0.930, dif 14.1) — justificado: mesmo salto na V10 aprovada (540, mesma cena) (corr ref. 0.929; novo × ref. 1.000)
+00:08:21 C3 quadro 25: salto em relação ao quadro anterior (corr 0.912, dif 15.3) — justificado: mesmo salto na V10 aprovada (540, mesma cena) (corr ref. 0.915; novo × ref. 0.999)
+00:08:21 C3 quadro 26: salto em relação ao quadro anterior (corr 0.908, dif 15.8) — justificado: mesmo salto na V10 aprovada (540, mesma cena) (corr ref. 0.906; novo × ref. 1.000)
+00:08:21 C3 quadro 27: salto em relação ao quadro anterior (corr 0.892, dif 17.8) — justificado: mesmo salto na V10 aprovada (540, mesma cena) (corr ref. 0.891; novo × ref. 1.000)
+00:08:21 C3 quadro 28: salto em relação ao quadro anterior (corr 0.876, dif 18.9) — justificado: mesmo salto na V10 aprovada (540, mesma cena) (corr ref. 0.876; novo × ref. 1.000)
+00:08:22 C3 quadro 29: salto em relação ao quadro anterior (corr 0.860, dif 20.4) — justificado: mesmo salto na V10 aprovada (540, mesma cena) (corr ref. 0.859; novo × ref. 1.000)
+00:08:22 C3 quadro 30: salto em relação ao quadro anterior (corr 0.847, dif 21.4) — justificado: mesmo salto na V10 aprovada (540, mesma cena) (corr ref. 0.847; novo × ref. 1.000)
+00:08:22 C3 quadro 31: salto em relação ao quadro anterior (corr 0.824, dif 22.6) — justificado: mesmo salto na V10 aprovada (540, mesma cena) (corr ref. 0.823; novo × ref. 1.000)
+00:08:22 C3 quadro 32: salto em relação ao quadro anterior (corr 0.813, dif 24.0) — justificado: mesmo salto na V10 aprovada (540, mesma cena) (corr ref. 0.811; novo × ref. 1.000)
+00:08:22 C3 quadro 33: salto em relação ao quadro anterior (corr 0.789, dif 25.3) — justificado: mesmo salto na V10 aprovada (540, mesma cena) (corr ref. 0.788; novo × ref. 1.000)
+00:08:22 C3 quadro 34: salto em relação ao quadro anterior (corr 0.761, dif 26.7) — justificado: mesmo salto na V10 aprovada (540, mesma cena) (corr ref. 0.759; novo × ref. 1.000)
+00:08:22 C3 quadro 35: salto em relação ao quadro anterior (corr 0.740, dif 27.7) — justificado: mesmo salto na V10 aprovada (540, mesma cena) (corr ref. 0.739; novo × ref. 1.000)
+00:08:22 C3 quadro 36: salto em relação ao quadro anterior (corr 0.706, dif 29.7) — justificado: mesmo salto na V10 aprovada (540, mesma cena) (corr ref. 0.705; novo × ref. 1.000)
+00:08:22 C3 quadro 37: salto em relação ao quadro anterior (corr 0.666, dif 31.3) — justificado: mesmo salto na V10 aprovada (540, mesma cena) (corr ref. 0.665; novo × ref. 1.000)
+00:08:22 C3 quadro 38: salto em relação ao quadro anterior (corr 0.620, dif 33.7) — justificado: mesmo salto na V10 aprovada (540, mesma cena) (corr ref. 0.618; novo × ref. 1.000)
+00:08:22 C3 quadro 39: salto em relação ao quadro anterior (corr 0.587, dif 36.4) — justificado: mesmo salto na V10 aprovada (540, mesma cena) (corr ref. 0.585; novo × ref. 1.000)
+00:08:22 C3 quadro 40: salto em relação ao quadro anterior (corr 0.576, dif 36.3) — justificado: mesmo salto na V10 aprovada (540, mesma cena) (corr ref. 0.575; novo × ref. 1.000)
+00:08:22 C3 quadro 41: salto em relação ao quadro anterior (corr 0.563, dif 36.2) — justificado: mesmo salto na V10 aprovada (540, mesma cena) (corr ref. 0.561; novo × ref. 1.000)
+00:08:22 C3 quadro 42: salto em relação ao quadro anterior (corr 0.533, dif 37.1) — justificado: mesmo salto na V10 aprovada (540, mesma cena) (corr ref. 0.530; novo × ref. 1.000)
+00:08:22 C3 quadro 43: salto em relação ao quadro anterior (corr 0.514, dif 36.7) — justificado: mesmo salto na V10 aprovada (540, mesma cena) (corr ref. 0.511; novo × ref. 1.000)
+00:08:22 C3 quadro 44: salto em relação ao quadro anterior (corr 0.483, dif 35.9) — justificado: mesmo salto na V10 aprovada (540, mesma cena) (corr ref. 0.483; novo × ref. 1.000)
+00:08:22 C3 quadro 45: salto em relação ao quadro anterior (corr 0.409, dif 38.3) — justificado: mesmo salto na V10 aprovada (540, mesma cena) (corr ref. 0.406; novo × ref. 1.000)
+00:08:22 C3 quadro 46: salto em relação ao quadro anterior (corr 0.400, dif 37.3) — justificado: mesmo salto na V10 aprovada (540, mesma cena) (corr ref. 0.399; novo × ref. 1.000)
+00:08:22 C3 quadro 47: salto em relação ao quadro anterior (corr 0.359, dif 40.6) — justificado: mesmo salto na V10 aprovada (540, mesma cena) (corr ref. 0.358; novo × ref. 1.000)
+00:08:22 C3 quadro 48: salto em relação ao quadro anterior (corr 0.328, dif 41.8) — justificado: mesmo salto na V10 aprovada (540, mesma cena) (corr ref. 0.328; novo × ref. 1.000)
+00:08:22 C3 quadro 49: salto em relação ao quadro anterior (corr 0.301, dif 44.9) — justificado: mesmo salto na V10 aprovada (540, mesma cena) (corr ref. 0.299; novo × ref. 1.000)
+00:08:22 C3 quadro 50: salto em relação ao quadro anterior (corr 0.301, dif 46.8) — justificado: mesmo salto na V10 aprovada (540, mesma cena) (corr ref. 0.299; novo × ref. 1.000)
+00:08:22 C3 quadro 51: salto em relação ao quadro anterior (corr 0.307, dif 45.9) — justificado: mesmo salto na V10 aprovada (540, mesma cena) (corr ref. 0.305; novo × ref. 1.000)
+00:08:22 C3 quadro 52: salto em relação ao quadro anterior (corr 0.315, dif 46.8) — justificado: mesmo salto na V10 aprovada (540, mesma cena) (corr ref. 0.313; novo × ref. 1.000)
+00:08:22 C3 quadro 53: salto em relação ao quadro anterior (corr 0.319, dif 47.3) — justificado: mesmo salto na V10 aprovada (540, mesma cena) (corr ref. 0.318; novo × ref. 1.000)
+00:08:22 C3 quadro 54: salto em relação ao quadro anterior (corr 0.315, dif 48.9) — justificado: mesmo salto na V10 aprovada (540, mesma cena) (corr ref. 0.314; novo × ref. 1.000)
+00:08:22 C3 quadro 55: salto em relação ao quadro anterior (corr 0.332, dif 47.0) — justificado: mesmo salto na V10 aprovada (540, mesma cena) (corr ref. 0.329; novo × ref. 1.000)
+00:08:22 C3 quadro 56: salto em relação ao quadro anterior (corr 0.342, dif 44.1) — justificado: mesmo salto na V10 aprovada (540, mesma cena) (corr ref. 0.342; novo × ref. 1.000)
+00:08:22 C3 quadro 57: salto em relação ao quadro anterior (corr 0.318, dif 43.9) — justificado: mesmo salto na V10 aprovada (540, mesma cena) (corr ref. 0.317; novo × ref. 1.000)
+00:08:22 C3 quadro 58: salto em relação ao quadro anterior (corr 0.296, dif 39.7) — justificado: mesmo salto na V10 aprovada (540, mesma cena) (corr ref. 0.296; novo × ref. 1.000)
+00:08:22 C3 quadro 59: salto em relação ao quadro anterior (corr 0.301, dif 40.3) — justificado: mesmo salto na V10 aprovada (540, mesma cena) (corr ref. 0.312; novo × ref. 0.999)
+00:08:22 C3: bloco 0–59 (60 quadros) em 1416 s
+00:30:35 C3 quadro 60: salto em relação ao quadro anterior (corr 0.285, dif 40.6) — justificado: mesmo salto na V10 aprovada (540, mesma cena) (corr ref. 0.297; novo × ref. 1.000)
+00:30:35 C3 quadro 61: salto em relação ao quadro anterior (corr 0.218, dif 43.7) — justificado: mesmo salto na V10 aprovada (540, mesma cena) (corr ref. 0.218; novo × ref. 1.000)
+00:30:35 C3 quadro 62: salto em relação ao quadro anterior (corr 0.155, dif 46.7) — justificado: mesmo salto na V10 aprovada (540, mesma cena) (corr ref. 0.155; novo × ref. 1.000)
+00:30:35 C3 quadro 63: salto em relação ao quadro anterior (corr 0.154, dif 44.7) — justificado: mesmo salto na V10 aprovada (540, mesma cena) (corr ref. 0.154; novo × ref. 1.000)
+00:30:35 C3 quadro 64: salto em relação ao quadro anterior (corr 0.139, dif 45.4) — justificado: mesmo salto na V10 aprovada (540, mesma cena) (corr ref. 0.140; novo × ref. 1.000)
+00:30:35 C3 quadro 65: salto em relação ao quadro anterior (corr 0.170, dif 50.6) — justificado: mesmo salto na V10 aprovada (540, mesma cena) (corr ref. 0.170; novo × ref. 1.000)
+00:30:35 C3 quadro 66: salto em relação ao quadro anterior (corr 0.298, dif 46.2) — justificado: mesmo salto na V10 aprovada (540, mesma cena) (corr ref. 0.296; novo × ref. 1.000)
+00:30:35 C3 quadro 67: salto em relação ao quadro anterior (corr 0.348, dif 43.2) — justificado: mesmo salto na V10 aprovada (540, mesma cena) (corr ref. 0.348; novo × ref. 1.000)
+00:30:35 C3 quadro 68: salto em relação ao quadro anterior (corr 0.308, dif 43.8) — justificado: mesmo salto na V10 aprovada (540, mesma cena) (corr ref. 0.307; novo × ref. 1.000)
+00:30:35 C3 quadro 69: salto em relação ao quadro anterior (corr 0.368, dif 36.4) — justificado: mesmo salto na V10 aprovada (540, mesma cena) (corr ref. 0.367; novo × ref. 1.000)
+00:30:35 C3 quadro 70: salto em relação ao quadro anterior (corr 0.373, dif 36.4) — justificado: mesmo salto na V10 aprovada (540, mesma cena) (corr ref. 0.373; novo × ref. 1.000)
+00:30:35 C3 quadro 71: salto em relação ao quadro anterior (corr 0.255, dif 39.7) — justificado: mesmo salto na V10 aprovada (540, mesma cena) (corr ref. 0.256; novo × ref. 1.000)
+00:30:35 C3 quadro 72: salto em relação ao quadro anterior (corr 0.087, dif 40.8) — justificado: mesmo salto na V10 aprovada (540, mesma cena) (corr ref. 0.088; novo × ref. 1.000)
+00:30:35 C3 quadro 73: salto em relação ao quadro anterior (corr -0.099, dif 44.6) — justificado: mesmo salto na V10 aprovada (540, mesma cena) (corr ref. -0.098; novo × ref. 1.000)
+00:30:35 C3 quadro 74: salto em relação ao quadro anterior (corr -0.259, dif 47.2) — justificado: mesmo salto na V10 aprovada (540, mesma cena) (corr ref. -0.260; novo × ref. 1.000)
+00:30:35 C3 quadro 75: salto em relação ao quadro anterior (corr -0.244, dif 46.0) — justificado: mesmo salto na V10 aprovada (540, mesma cena) (corr ref. -0.249; novo × ref. 1.000)
+00:30:35 C3 quadro 76: salto em relação ao quadro anterior (corr -0.027, dif 41.9) — justificado: mesmo salto na V10 aprovada (540, mesma cena) (corr ref. -0.030; novo × ref. 1.000)
+00:30:35 C3 quadro 77: salto em relação ao quadro anterior (corr 0.131, dif 36.9) — justificado: mesmo salto na V10 aprovada (540, mesma cena) (corr ref. 0.128; novo × ref. 1.000)
+00:30:35 C3 quadro 78: salto em relação ao quadro anterior (corr 0.390, dif 29.7) — justificado: mesmo salto na V10 aprovada (540, mesma cena) (corr ref. 0.388; novo × ref. 1.000)
+00:30:35 C3 quadro 79: salto em relação ao quadro anterior (corr 0.273, dif 31.4) — justificado: mesmo salto na V10 aprovada (540, mesma cena) (corr ref. 0.270; novo × ref. 1.000)
+00:30:35 C3 quadro 80: salto em relação ao quadro anterior (corr -0.001, dif 32.2) — justificado: mesmo salto na V10 aprovada (540, mesma cena) (corr ref. -0.003; novo × ref. 1.000)
+00:30:35 C3 quadro 81: salto em relação ao quadro anterior (corr -0.157, dif 30.3) — justificado: mesmo salto na V10 aprovada (540, mesma cena) (corr ref. -0.157; novo × ref. 1.000)
+00:30:35 C3 quadro 82: salto em relação ao quadro anterior (corr -0.157, dif 31.1) — justificado: mesmo salto na V10 aprovada (540, mesma cena) (corr ref. -0.157; novo × ref. 1.000)
+00:30:35 C3 quadro 83: salto em relação ao quadro anterior (corr -0.156, dif 31.9) — justificado: mesmo salto na V10 aprovada (540, mesma cena) (corr ref. -0.156; novo × ref. 1.000)
+00:30:35 C3 quadro 84: salto em relação ao quadro anterior (corr -0.097, dif 31.3) — justificado: mesmo salto na V10 aprovada (540, mesma cena) (corr ref. -0.097; novo × ref. 1.000)
+00:30:36 C3 quadro 85: salto em relação ao quadro anterior (corr -0.101, dif 30.9) — justificado: mesmo salto na V10 aprovada (540, mesma cena) (corr ref. -0.103; novo × ref. 1.000)
+00:30:36 C3 quadro 86: salto em relação ao quadro anterior (corr -0.134, dif 29.3) — justificado: mesmo salto na V10 aprovada (540, mesma cena) (corr ref. -0.134; novo × ref. 1.000)
+00:30:36 C3 quadro 87: salto em relação ao quadro anterior (corr -0.013, dif 25.6) — justificado: mesmo salto na V10 aprovada (540, mesma cena) (corr ref. -0.014; novo × ref. 1.000)
+00:30:36 C3 quadro 88: salto em relação ao quadro anterior (corr -0.024, dif 27.0) — justificado: mesmo salto na V10 aprovada (540, mesma cena) (corr ref. -0.025; novo × ref. 1.000)
+00:30:36 C3 quadro 89: salto em relação ao quadro anterior (corr -0.100, dif 30.1) — justificado: mesmo salto na V10 aprovada (540, mesma cena) (corr ref. -0.099; novo × ref. 1.000)
+00:30:36 C3 quadro 90: salto em relação ao quadro anterior (corr -0.159, dif 29.8) — justificado: mesmo salto na V10 aprovada (540, mesma cena) (corr ref. -0.160; novo × ref. 1.000)
+00:30:36 C3 quadro 91: salto em relação ao quadro anterior (corr -0.155, dif 30.9) — justificado: mesmo salto na V10 aprovada (540, mesma cena) (corr ref. -0.155; novo × ref. 1.000)
+00:30:36 C3 quadro 92: salto em relação ao quadro anterior (corr -0.158, dif 31.7) — justificado: mesmo salto na V10 aprovada (540, mesma cena) (corr ref. -0.157; novo × ref. 1.000)
+00:30:36 C3 quadro 93: salto em relação ao quadro anterior (corr -0.108, dif 31.3) — justificado: mesmo salto na V10 aprovada (540, mesma cena) (corr ref. -0.108; novo × ref. 1.000)
+00:30:36 C3 quadro 94: salto em relação ao quadro anterior (corr -0.084, dif 30.6) — justificado: mesmo salto na V10 aprovada (540, mesma cena) (corr ref. -0.086; novo × ref. 1.000)
+00:30:36 C3 quadro 95: salto em relação ao quadro anterior (corr -0.081, dif 29.8) — justificado: mesmo salto na V10 aprovada (540, mesma cena) (corr ref. -0.079; novo × ref. 1.000)
+00:30:36 C3 quadro 96: salto em relação ao quadro anterior (corr -0.044, dif 27.7) — justificado: mesmo salto na V10 aprovada (540, mesma cena) (corr ref. -0.046; novo × ref. 1.000)
+00:30:36 C3 quadro 97: salto em relação ao quadro anterior (corr 0.030, dif 27.6) — justificado: mesmo salto na V10 aprovada (540, mesma cena) (corr ref. 0.030; novo × ref. 1.000)
+00:30:36 C3 quadro 98: salto em relação ao quadro anterior (corr 0.042, dif 26.3) — justificado: mesmo salto na V10 aprovada (540, mesma cena) (corr ref. 0.044; novo × ref. 1.000)
+00:30:36 C3 quadro 99: salto em relação ao quadro anterior (corr -0.090, dif 28.6) — justificado: mesmo salto na V10 aprovada (540, mesma cena) (corr ref. -0.091; novo × ref. 1.000)
+00:30:36 C3 quadro 100: salto em relação ao quadro anterior (corr -0.105, dif 29.2) — justificado: mesmo salto na V10 aprovada (540, mesma cena) (corr ref. -0.106; novo × ref. 1.000)
+00:30:36 C3 quadro 101: salto em relação ao quadro anterior (corr -0.095, dif 29.2) — justificado: mesmo salto na V10 aprovada (540, mesma cena) (corr ref. -0.095; novo × ref. 1.000)
+00:30:36 C3 quadro 102: salto em relação ao quadro anterior (corr -0.109, dif 30.6) — justificado: mesmo salto na V10 aprovada (540, mesma cena) (corr ref. -0.110; novo × ref. 1.000)
+00:30:36 C3 quadro 103: salto em relação ao quadro anterior (corr -0.068, dif 30.5) — justificado: mesmo salto na V10 aprovada (540, mesma cena) (corr ref. -0.069; novo × ref. 1.000)
+00:30:36 C3 quadro 104: salto em relação ao quadro anterior (corr -0.010, dif 30.2) — justificado: mesmo salto na V10 aprovada (540, mesma cena) (corr ref. -0.012; novo × ref. 1.000)
+00:30:36 C3 quadro 105: salto em relação ao quadro anterior (corr 0.063, dif 25.6) — justificado: mesmo salto na V10 aprovada (540, mesma cena) (corr ref. 0.060; novo × ref. 0.999)
+00:30:36 C3 quadro 106: salto em relação ao quadro anterior (corr 0.010, dif 28.7) — justificado: mesmo salto na V10 aprovada (540, mesma cena) (corr ref. 0.016; novo × ref. 1.000)
+00:30:36 C3 quadro 107: salto em relação ao quadro anterior (corr 0.176, dif 22.6) — justificado: mesmo salto na V10 aprovada (540, mesma cena) (corr ref. 0.174; novo × ref. 1.000)
+00:30:36 C3 quadro 108: salto em relação ao quadro anterior (corr 0.137, dif 26.8) — justificado: mesmo salto na V10 aprovada (540, mesma cena) (corr ref. 0.136; novo × ref. 1.000)
+00:30:36 C3 quadro 109: salto em relação ao quadro anterior (corr 0.210, dif 23.2) — justificado: mesmo salto na V10 aprovada (540, mesma cena) (corr ref. 0.210; novo × ref. 1.000)
+00:30:36 C3 quadro 110: salto em relação ao quadro anterior (corr 0.105, dif 26.8) — justificado: mesmo salto na V10 aprovada (540, mesma cena) (corr ref. 0.105; novo × ref. 1.000)
+00:30:36 C3 quadro 111: salto em relação ao quadro anterior (corr 0.107, dif 25.2) — justificado: mesmo salto na V10 aprovada (540, mesma cena) (corr ref. 0.105; novo × ref. 1.000)
+00:30:36 C3 quadro 112: salto em relação ao quadro anterior (corr 0.121, dif 25.5) — justificado: mesmo salto na V10 aprovada (540, mesma cena) (corr ref. 0.120; novo × ref. 1.000)
+00:30:36 C3 quadro 113: salto em relação ao quadro anterior (corr 0.141, dif 25.2) — justificado: mesmo salto na V10 aprovada (540, mesma cena) (corr ref. 0.139; novo × ref. 1.000)
+00:30:36 C3 quadro 114: salto em relação ao quadro anterior (corr 0.146, dif 26.1) — justificado: mesmo salto na V10 aprovada (540, mesma cena) (corr ref. 0.144; novo × ref. 1.000)
+00:30:36 C3 quadro 115: salto em relação ao quadro anterior (corr 0.158, dif 26.4) — justificado: mesmo salto na V10 aprovada (540, mesma cena) (corr ref. 0.157; novo × ref. 1.000)
+00:30:36 C3 quadro 116: salto em relação ao quadro anterior (corr 0.220, dif 25.7) — justificado: mesmo salto na V10 aprovada (540, mesma cena) (corr ref. 0.218; novo × ref. 1.000)
+00:30:36 C3 quadro 117: salto em relação ao quadro anterior (corr 0.255, dif 25.0) — justificado: mesmo salto na V10 aprovada (540, mesma cena) (corr ref. 0.251; novo × ref. 1.000)
+00:30:37 C3 quadro 118: salto em relação ao quadro anterior (corr 0.305, dif 23.9) — justificado: mesmo salto na V10 aprovada (540, mesma cena) (corr ref. 0.299; novo × ref. 1.000)
+00:30:37 C3 quadro 119: salto em relação ao quadro anterior (corr 0.413, dif 21.2) — justificado: mesmo salto na V10 aprovada (540, mesma cena) (corr ref. 0.411; novo × ref. 1.000)
+00:30:37 C3: bloco 60–119 (60 quadros) em 1334 s
+00:46:56 C3 quadro 120: salto em relação ao quadro anterior (corr 0.393, dif 21.7) — justificado: mesmo salto na V10 aprovada (540, mesma cena) (corr ref. 0.391; novo × ref. 1.000)
+00:46:56 C3 quadro 121: salto em relação ao quadro anterior (corr 0.513, dif 17.2) — justificado: mesmo salto na V10 aprovada (540, mesma cena) (corr ref. 0.510; novo × ref. 1.000)
+00:46:56 C3 quadro 122: salto em relação ao quadro anterior (corr 0.564, dif 17.0) — justificado: mesmo salto na V10 aprovada (540, mesma cena) (corr ref. 0.563; novo × ref. 1.000)
+00:46:56 C3 quadro 123: salto em relação ao quadro anterior (corr 0.563, dif 17.5) — justificado: mesmo salto na V10 aprovada (540, mesma cena) (corr ref. 0.563; novo × ref. 1.000)
+00:46:56 C3 quadro 124: salto em relação ao quadro anterior (corr 0.582, dif 17.4) — justificado: mesmo salto na V10 aprovada (540, mesma cena) (corr ref. 0.577; novo × ref. 1.000)
+00:46:56 C3 quadro 125: salto em relação ao quadro anterior (corr 0.630, dif 15.7) — justificado: mesmo salto na V10 aprovada (540, mesma cena) (corr ref. 0.631; novo × ref. 1.000)
+00:46:56 C3 quadro 126: salto em relação ao quadro anterior (corr 0.595, dif 18.0) — justificado: mesmo salto na V10 aprovada (540, mesma cena) (corr ref. 0.619; novo × ref. 0.995)
+00:46:56 C3 quadro 127: salto em relação ao quadro anterior (corr 0.632, dif 16.2) — justificado: mesmo salto na V10 aprovada (540, mesma cena) (corr ref. 0.631; novo × ref. 1.000)
+00:46:56 C3 quadro 128: salto em relação ao quadro anterior (corr 0.661, dif 15.5) — justificado: mesmo salto na V10 aprovada (540, mesma cena) (corr ref. 0.660; novo × ref. 1.000)
+00:46:56 C3 quadro 129: salto em relação ao quadro anterior (corr 0.687, dif 14.6) — justificado: mesmo salto na V10 aprovada (540, mesma cena) (corr ref. 0.687; novo × ref. 1.000)
+00:46:56 C3 quadro 130: salto em relação ao quadro anterior (corr 0.705, dif 14.2) — justificado: mesmo salto na V10 aprovada (540, mesma cena) (corr ref. 0.705; novo × ref. 1.000)
+00:46:56 C3 quadro 131: salto em relação ao quadro anterior (corr 0.736, dif 13.6) — justificado: mesmo salto na V10 aprovada (540, mesma cena) (corr ref. 0.735; novo × ref. 1.000)
+00:46:56 C3 quadro 132: salto em relação ao quadro anterior (corr 0.755, dif 13.3) — justificado: mesmo salto na V10 aprovada (540, mesma cena) (corr ref. 0.755; novo × ref. 1.000)
+00:46:56 C3 quadro 133: salto em relação ao quadro anterior (corr 0.778, dif 12.5) — justificado: mesmo salto na V10 aprovada (540, mesma cena) (corr ref. 0.777; novo × ref. 1.000)
+00:46:56 C3 quadro 134: salto em relação ao quadro anterior (corr 0.799, dif 12.0) — justificado: mesmo salto na V10 aprovada (540, mesma cena) (corr ref. 0.799; novo × ref. 1.000)
+00:46:56 C3 quadro 135: salto em relação ao quadro anterior (corr 0.819, dif 11.5) — justificado: mesmo salto na V10 aprovada (540, mesma cena) (corr ref. 0.818; novo × ref. 1.000)
+00:46:56 C3 quadro 136: salto em relação ao quadro anterior (corr 0.837, dif 10.8) — justificado: mesmo salto na V10 aprovada (540, mesma cena) (corr ref. 0.838; novo × ref. 1.000)
+00:46:56 C3 quadro 137: salto em relação ao quadro anterior (corr 0.838, dif 11.9) — justificado: mesmo salto na V10 aprovada (540, mesma cena) (corr ref. 0.837; novo × ref. 1.000)
+00:46:56 C3 quadro 138: salto em relação ao quadro anterior (corr 0.863, dif 10.2) — justificado: mesmo salto na V10 aprovada (540, mesma cena) (corr ref. 0.863; novo × ref. 1.000)
+00:46:56 C3 quadro 139: salto em relação ao quadro anterior (corr 0.883, dif 9.7) — justificado: mesmo salto na V10 aprovada (540, mesma cena) (corr ref. 0.882; novo × ref. 1.000)
+00:46:56 C3 quadro 140: salto em relação ao quadro anterior (corr 0.901, dif 8.9) — justificado: mesmo salto na V10 aprovada (540, mesma cena) (corr ref. 0.901; novo × ref. 1.000)
+00:46:56 C3 quadro 141: salto em relação ao quadro anterior (corr 0.919, dif 7.9) — justificado: mesmo salto na V10 aprovada (540, mesma cena) (corr ref. 0.918; novo × ref. 1.000)
+00:46:56 C3 quadro 142: salto em relação ao quadro anterior (corr 0.919, dif 8.2) — justificado: mesmo salto na V10 aprovada (540, mesma cena) (corr ref. 0.933; novo × ref. 0.987)
+00:46:57 C3: bloco 120–162 (43 quadros) em 980 s
+01:07:27 C4: bloco 0–59 (60 quadros) em 1230 s
+01:18:16 RETOMADA após reinício do contêiner (render anterior interrompido no C4 bloco 60–119; 1.906 quadros conferidos por manifesto + SHA-256)
+01:18:16 A1: completo (57 quadros conferidos por SHA-256)
+01:18:16 A2: completo (57 quadros conferidos por SHA-256)
+01:18:16 A3: completo (80 quadros conferidos por SHA-256)
+01:18:16 A4: completo (174 quadros conferidos por SHA-256)
+01:18:16 A4b: completo (174 quadros conferidos por SHA-256)
+01:18:16 B1: completo (83 quadros conferidos por SHA-256)
+01:18:16 B2: completo (81 quadros conferidos por SHA-256)
+01:18:16 B3: completo (73 quadros conferidos por SHA-256)
+01:18:16 B4: completo (108 quadros conferidos por SHA-256)
+01:18:16 B5: completo (149 quadros conferidos por SHA-256)
+01:18:16 B6: completo (87 quadros conferidos por SHA-256)
+01:18:17 B7: completo (81 quadros conferidos por SHA-256)
+01:18:17 C1: completo (180 quadros conferidos por SHA-256)
+01:18:17 C2: completo (139 quadros conferidos por SHA-256)
+01:18:17 C3: completo (163 quadros conferidos por SHA-256)
+01:37:17 C4: bloco 60–119 (60 quadros) em 1140 s
+01:39:32 C4: bloco 120–125 (6 quadros) em 135 s
+03:21:00 C4 quadro 148: salto em relação ao quadro anterior (corr 0.925, dif 13.7) — justificado: mesmo salto na V10 aprovada (540, mesma cena) (corr ref. 0.925; novo × ref. 1.000)
+03:21:01 C4 quadro 149: salto em relação ao quadro anterior (corr 0.919, dif 13.8) — justificado: mesmo salto na V10 aprovada (540, mesma cena) (corr ref. 0.920; novo × ref. 1.000)
+03:21:01 C4 quadro 150: salto em relação ao quadro anterior (corr 0.914, dif 14.4) — justificado: mesmo salto na V10 aprovada (540, mesma cena) (corr ref. 0.915; novo × ref. 1.000)
+03:21:01 C4 quadro 151: salto em relação ao quadro anterior (corr 0.906, dif 14.3) — justificado: mesmo salto na V10 aprovada (540, mesma cena) (corr ref. 0.906; novo × ref. 1.000)
+03:21:01 C4 quadro 152: salto em relação ao quadro anterior (corr 0.897, dif 15.0) — justificado: mesmo salto na V10 aprovada (540, mesma cena) (corr ref. 0.898; novo × ref. 1.000)
+03:21:01 C4 quadro 153: salto em relação ao quadro anterior (corr 0.904, dif 14.4) — justificado: mesmo salto na V10 aprovada (540, mesma cena) (corr ref. 0.904; novo × ref. 1.000)
+03:21:01 C4 quadro 154: salto em relação ao quadro anterior (corr 0.902, dif 14.5) — justificado: mesmo salto na V10 aprovada (540, mesma cena) (corr ref. 0.903; novo × ref. 1.000)
+03:21:01 C4 quadro 155: salto em relação ao quadro anterior (corr 0.908, dif 14.1) — justificado: mesmo salto na V10 aprovada (540, mesma cena) (corr ref. 0.909; novo × ref. 1.000)
+03:21:01 C4 quadro 156: salto em relação ao quadro anterior (corr 0.915, dif 13.7) — justificado: mesmo salto na V10 aprovada (540, mesma cena) (corr ref. 0.916; novo × ref. 1.000)
+03:21:01 C4 quadro 157: salto em relação ao quadro anterior (corr 0.925, dif 12.6) — justificado: mesmo salto na V10 aprovada (540, mesma cena) (corr ref. 0.926; novo × ref. 1.000)
+03:21:02 C4: bloco 126–184 (59 quadros × 5 sub) em 6090 s
+03:40:06 D1: bloco 0–59 (60 quadros) em 1145 s
+04:00:31 D1: bloco 60–119 (60 quadros) em 1225 s
+04:12:10 D1: bloco 120–151 (32 quadros) em 699 s
+04:24:48 D2: bloco 0–59 (60 quadros) em 758 s
+04:37:07 D2: bloco 60–119 (60 quadros) em 739 s
+04:49:29 D2: bloco 120–179 (60 quadros) em 742 s
+04:49:58 D2: bloco 180–180 (1 quadros) em 29 s
+05:09:02 D3: bloco 0–59 (60 quadros) em 1144 s
+05:27:50 D3: bloco 60–119 (60 quadros) em 1128 s
+05:46:43 D3: bloco 120–179 (60 quadros) em 1133 s
+05:47:46 D3: bloco 180–181 (2 quadros) em 63 s
+05:54:33 D4 quadro 36: salto em relação ao quadro anterior (corr 0.812, dif 6.3) — justificado: mesmo salto na V10 aprovada (540, mesma cena) (corr ref. 0.812; novo × ref. 1.000)
+05:54:33 D4 quadro 37: salto em relação ao quadro anterior (corr 0.789, dif 6.9) — justificado: mesmo salto na V10 aprovada (540, mesma cena) (corr ref. 0.790; novo × ref. 1.000)
+05:54:33 D4 quadro 38: salto em relação ao quadro anterior (corr 0.778, dif 7.4) — justificado: mesmo salto na V10 aprovada (540, mesma cena) (corr ref. 0.778; novo × ref. 1.000)
+05:54:33 D4 quadro 39: salto em relação ao quadro anterior (corr 0.761, dif 7.9) — justificado: mesmo salto na V10 aprovada (540, mesma cena) (corr ref. 0.761; novo × ref. 1.000)
+05:54:33 D4 quadro 40: salto em relação ao quadro anterior (corr 0.753, dif 8.5) — justificado: mesmo salto na V10 aprovada (540, mesma cena) (corr ref. 0.754; novo × ref. 1.000)
+05:54:33 D4 quadro 41: salto em relação ao quadro anterior (corr 0.733, dif 8.7) — justificado: mesmo salto na V10 aprovada (540, mesma cena) (corr ref. 0.733; novo × ref. 1.000)
+05:54:33 D4 quadro 42: salto em relação ao quadro anterior (corr 0.712, dif 9.2) — justificado: mesmo salto na V10 aprovada (540, mesma cena) (corr ref. 0.712; novo × ref. 1.000)
+05:54:33 D4 quadro 43: salto em relação ao quadro anterior (corr 0.699, dif 9.7) — justificado: mesmo salto na V10 aprovada (540, mesma cena) (corr ref. 0.698; novo × ref. 1.000)
+05:54:33 D4 quadro 44: salto em relação ao quadro anterior (corr 0.673, dif 10.3) — justificado: mesmo salto na V10 aprovada (540, mesma cena) (corr ref. 0.673; novo × ref. 1.000)
+05:54:33 D4 quadro 45: salto em relação ao quadro anterior (corr 0.648, dif 10.9) — justificado: mesmo salto na V10 aprovada (540, mesma cena) (corr ref. 0.648; novo × ref. 1.000)
+05:54:33 D4 quadro 46: salto em relação ao quadro anterior (corr 0.632, dif 11.3) — justificado: mesmo salto na V10 aprovada (540, mesma cena) (corr ref. 0.632; novo × ref. 1.000)
+05:54:33 D4 quadro 47: salto em relação ao quadro anterior (corr 0.615, dif 11.9) — justificado: mesmo salto na V10 aprovada (540, mesma cena) (corr ref. 0.615; novo × ref. 1.000)
+05:54:33 D4 quadro 48: salto em relação ao quadro anterior (corr 0.649, dif 11.0) — justificado: mesmo salto na V10 aprovada (540, mesma cena) (corr ref. 0.649; novo × ref. 1.000)
+05:54:33 D4 quadro 49: salto em relação ao quadro anterior (corr 0.676, dif 9.8) — justificado: mesmo salto na V10 aprovada (540, mesma cena) (corr ref. 0.675; novo × ref. 1.000)
+05:54:33 D4 quadro 50: salto em relação ao quadro anterior (corr 0.695, dif 9.4) — justificado: mesmo salto na V10 aprovada (540, mesma cena) (corr ref. 0.696; novo × ref. 1.000)
+05:54:33 D4 quadro 51: salto em relação ao quadro anterior (corr 0.670, dif 10.2) — justificado: mesmo salto na V10 aprovada (540, mesma cena) (corr ref. 0.670; novo × ref. 1.000)
+05:54:33 D4 quadro 52: salto em relação ao quadro anterior (corr 0.660, dif 10.4) — justificado: mesmo salto na V10 aprovada (540, mesma cena) (corr ref. 0.660; novo × ref. 1.000)
+05:54:33 D4 quadro 53: salto em relação ao quadro anterior (corr 0.635, dif 10.8) — justificado: mesmo salto na V10 aprovada (540, mesma cena) (corr ref. 0.636; novo × ref. 1.000)
+05:54:34 D4 quadro 54: salto em relação ao quadro anterior (corr 0.614, dif 11.1) — justificado: mesmo salto na V10 aprovada (540, mesma cena) (corr ref. 0.615; novo × ref. 1.000)
+05:54:34 D4 quadro 55: salto em relação ao quadro anterior (corr 0.594, dif 11.6) — justificado: mesmo salto na V10 aprovada (540, mesma cena) (corr ref. 0.594; novo × ref. 1.000)
+05:54:34 D4 quadro 56: salto em relação ao quadro anterior (corr 0.574, dif 11.9) — justificado: mesmo salto na V10 aprovada (540, mesma cena) (corr ref. 0.575; novo × ref. 1.000)
+05:54:34 D4 quadro 57: salto em relação ao quadro anterior (corr 0.547, dif 12.1) — justificado: mesmo salto na V10 aprovada (540, mesma cena) (corr ref. 0.547; novo × ref. 1.000)
+05:54:34 D4 quadro 58: salto em relação ao quadro anterior (corr 0.513, dif 12.7) — justificado: mesmo salto na V10 aprovada (540, mesma cena) (corr ref. 0.514; novo × ref. 1.000)
+05:54:34 D4 quadro 59: salto em relação ao quadro anterior (corr 0.492, dif 13.2) — justificado: mesmo salto na V10 aprovada (540, mesma cena) (corr ref. 0.492; novo × ref. 1.000)
+05:54:34 D4: bloco 0–59 (60 quadros) em 408 s
+06:01:13 D4 quadro 60: salto em relação ao quadro anterior (corr 0.473, dif 13.5) — justificado: mesmo salto na V10 aprovada (540, mesma cena) (corr ref. 0.474; novo × ref. 1.000)
+06:01:13 D4 quadro 61: salto em relação ao quadro anterior (corr 0.450, dif 14.3) — justificado: mesmo salto na V10 aprovada (540, mesma cena) (corr ref. 0.450; novo × ref. 1.000)
+06:01:13 D4 quadro 62: salto em relação ao quadro anterior (corr 0.525, dif 12.7) — justificado: mesmo salto na V10 aprovada (540, mesma cena) (corr ref. 0.525; novo × ref. 1.000)
+06:01:13 D4 quadro 63: salto em relação ao quadro anterior (corr 0.583, dif 11.1) — justificado: mesmo salto na V10 aprovada (540, mesma cena) (corr ref. 0.583; novo × ref. 1.000)
+06:01:13 D4 quadro 64: salto em relação ao quadro anterior (corr 0.604, dif 10.7) — justificado: mesmo salto na V10 aprovada (540, mesma cena) (corr ref. 0.604; novo × ref. 1.000)
+06:01:13 D4 quadro 65: salto em relação ao quadro anterior (corr 0.605, dif 11.1) — justificado: mesmo salto na V10 aprovada (540, mesma cena) (corr ref. 0.605; novo × ref. 1.000)
+06:01:13 D4 quadro 66: salto em relação ao quadro anterior (corr 0.592, dif 11.5) — justificado: mesmo salto na V10 aprovada (540, mesma cena) (corr ref. 0.592; novo × ref. 1.000)
+06:01:13 D4 quadro 67: salto em relação ao quadro anterior (corr 0.577, dif 11.7) — justificado: mesmo salto na V10 aprovada (540, mesma cena) (corr ref. 0.577; novo × ref. 1.000)
+06:01:13 D4 quadro 68: salto em relação ao quadro anterior (corr 0.564, dif 11.6) — justificado: mesmo salto na V10 aprovada (540, mesma cena) (corr ref. 0.564; novo × ref. 1.000)
+06:01:13 D4 quadro 69: salto em relação ao quadro anterior (corr 0.548, dif 11.8) — justificado: mesmo salto na V10 aprovada (540, mesma cena) (corr ref. 0.548; novo × ref. 1.000)
+06:01:13 D4 quadro 70: salto em relação ao quadro anterior (corr 0.542, dif 11.9) — justificado: mesmo salto na V10 aprovada (540, mesma cena) (corr ref. 0.541; novo × ref. 1.000)
+06:01:13 D4 quadro 71: salto em relação ao quadro anterior (corr 0.522, dif 12.5) — justificado: mesmo salto na V10 aprovada (540, mesma cena) (corr ref. 0.522; novo × ref. 1.000)
+06:01:13 D4 quadro 72: salto em relação ao quadro anterior (corr 0.503, dif 13.7) — justificado: mesmo salto na V10 aprovada (540, mesma cena) (corr ref. 0.504; novo × ref. 1.000)
+06:01:13 D4 quadro 73: salto em relação ao quadro anterior (corr 0.531, dif 14.4) — justificado: mesmo salto na V10 aprovada (540, mesma cena) (corr ref. 0.532; novo × ref. 1.000)
+06:01:13 D4 quadro 74: salto em relação ao quadro anterior (corr 0.528, dif 15.3) — justificado: mesmo salto na V10 aprovada (540, mesma cena) (corr ref. 0.529; novo × ref. 1.000)
+06:01:13 D4 quadro 75: salto em relação ao quadro anterior (corr 0.574, dif 13.9) — justificado: mesmo salto na V10 aprovada (540, mesma cena) (corr ref. 0.574; novo × ref. 1.000)
+06:01:13 D4 quadro 76: salto em relação ao quadro anterior (corr 0.601, dif 12.0) — justificado: mesmo salto na V10 aprovada (540, mesma cena) (corr ref. 0.602; novo × ref. 1.000)
+06:01:13 D4 quadro 77: salto em relação ao quadro anterior (corr 0.667, dif 9.8) — justificado: mesmo salto na V10 aprovada (540, mesma cena) (corr ref. 0.668; novo × ref. 1.000)
+06:01:13 D4 quadro 78: salto em relação ao quadro anterior (corr 0.671, dif 9.4) — justificado: mesmo salto na V10 aprovada (540, mesma cena) (corr ref. 0.671; novo × ref. 1.000)
+06:01:13 D4 quadro 79: salto em relação ao quadro anterior (corr 0.668, dif 9.3) — justificado: mesmo salto na V10 aprovada (540, mesma cena) (corr ref. 0.669; novo × ref. 1.000)
+06:01:13 D4 quadro 80: salto em relação ao quadro anterior (corr 0.675, dif 9.3) — justificado: mesmo salto na V10 aprovada (540, mesma cena) (corr ref. 0.675; novo × ref. 1.000)
+06:01:13 D4 quadro 81: salto em relação ao quadro anterior (corr 0.673, dif 9.4) — justificado: mesmo salto na V10 aprovada (540, mesma cena) (corr ref. 0.674; novo × ref. 1.000)
+06:01:13 D4 quadro 82: salto em relação ao quadro anterior (corr 0.670, dif 9.5) — justificado: mesmo salto na V10 aprovada (540, mesma cena) (corr ref. 0.669; novo × ref. 1.000)
+06:01:14 D4 quadro 83: salto em relação ao quadro anterior (corr 0.673, dif 9.3) — justificado: mesmo salto na V10 aprovada (540, mesma cena) (corr ref. 0.674; novo × ref. 1.000)
+06:01:14 D4 quadro 84: salto em relação ao quadro anterior (corr 0.680, dif 9.1) — justificado: mesmo salto na V10 aprovada (540, mesma cena) (corr ref. 0.681; novo × ref. 1.000)
+06:01:14 D4 quadro 85: salto em relação ao quadro anterior (corr 0.693, dif 9.1) — justificado: mesmo salto na V10 aprovada (540, mesma cena) (corr ref. 0.692; novo × ref. 1.000)
+06:01:14 D4 quadro 86: salto em relação ao quadro anterior (corr 0.702, dif 9.0) — justificado: mesmo salto na V10 aprovada (540, mesma cena) (corr ref. 0.703; novo × ref. 1.000)
+06:01:14 D4 quadro 87: salto em relação ao quadro anterior (corr 0.703, dif 8.8) — justificado: mesmo salto na V10 aprovada (540, mesma cena) (corr ref. 0.704; novo × ref. 1.000)
+06:01:14 D4 quadro 88: salto em relação ao quadro anterior (corr 0.712, dif 8.6) — justificado: mesmo salto na V10 aprovada (540, mesma cena) (corr ref. 0.713; novo × ref. 1.000)
+06:01:14 D4 quadro 89: salto em relação ao quadro anterior (corr 0.728, dif 8.5) — justificado: mesmo salto na V10 aprovada (540, mesma cena) (corr ref. 0.728; novo × ref. 1.000)
+06:01:14 D4 quadro 90: salto em relação ao quadro anterior (corr 0.739, dif 8.4) — justificado: mesmo salto na V10 aprovada (540, mesma cena) (corr ref. 0.740; novo × ref. 1.000)
+06:01:14 D4 quadro 91: salto em relação ao quadro anterior (corr 0.747, dif 8.0) — justificado: mesmo salto na V10 aprovada (540, mesma cena) (corr ref. 0.747; novo × ref. 1.000)
+06:01:14 D4 quadro 92: salto em relação ao quadro anterior (corr 0.781, dif 7.3) — justificado: mesmo salto na V10 aprovada (540, mesma cena) (corr ref. 0.781; novo × ref. 1.000)
+06:01:14 D4 quadro 93: salto em relação ao quadro anterior (corr 0.818, dif 6.2) — justificado: mesmo salto na V10 aprovada (540, mesma cena) (corr ref. 0.819; novo × ref. 1.000)
+06:01:14 D4: bloco 60–119 (60 quadros) em 400 s
+06:02:23 D4: bloco 120–128 (9 quadros) em 69 s
+06:23:05 D5: bloco 0–59 (60 quadros) em 1242 s
+06:44:34 D5: bloco 60–119 (60 quadros) em 1289 s
+06:46:25 D5: bloco 120–123 (4 quadros) em 111 s
+06:58:50 E1 quadro 29: salto em relação ao quadro anterior (corr 0.929, dif 6.7) — justificado: mesmo salto na V10 aprovada (540, mesma cena) (corr ref. 0.929; novo × ref. 0.999)
+06:58:50 E1 quadro 30: salto em relação ao quadro anterior (corr 0.927, dif 7.0) — justificado: mesmo salto na V10 aprovada (540, mesma cena) (corr ref. 0.927; novo × ref. 0.999)
+06:58:51 E1 quadro 31: salto em relação ao quadro anterior (corr 0.929, dif 6.9) — justificado: mesmo salto na V10 aprovada (540, mesma cena) (corr ref. 0.929; novo × ref. 0.999)
+06:58:51 E1 quadro 32: salto em relação ao quadro anterior (corr 0.930, dif 6.7) — justificado: mesmo salto na V10 aprovada (540, mesma cena) (corr ref. 0.929; novo × ref. 0.999)
+06:58:51 E1 quadro 34: salto em relação ao quadro anterior (corr 0.929, dif 6.7) — justificado: mesmo salto na V10 aprovada (540, mesma cena) (corr ref. 0.929; novo × ref. 0.999)
+06:58:51 E1 quadro 35: salto em relação ao quadro anterior (corr 0.927, dif 6.9) — justificado: mesmo salto na V10 aprovada (540, mesma cena) (corr ref. 0.927; novo × ref. 0.999)
+06:58:51 E1 quadro 36: salto em relação ao quadro anterior (corr 0.929, dif 6.8) — justificado: mesmo salto na V10 aprovada (540, mesma cena) (corr ref. 0.929; novo × ref. 0.999)
+06:58:51 E1 quadro 56: salto em relação ao quadro anterior (corr 0.877, dif 6.1) — justificado: mesmo salto na V10 aprovada (540, mesma cena) (corr ref. 0.873; novo × ref. 0.999)
+06:58:51 E1 quadro 57: salto em relação ao quadro anterior (corr 0.852, dif 6.6) — justificado: mesmo salto na V10 aprovada (540, mesma cena) (corr ref. 0.846; novo × ref. 0.999)
+06:58:51 E1 quadro 58: salto em relação ao quadro anterior (corr 0.816, dif 7.4) — justificado: mesmo salto na V10 aprovada (540, mesma cena) (corr ref. 0.808; novo × ref. 0.999)
+06:58:51 E1 quadro 59: salto em relação ao quadro anterior (corr 0.769, dif 8.4) — justificado: mesmo salto na V10 aprovada (540, mesma cena) (corr ref. 0.760; novo × ref. 0.999)
+06:58:51 E1: bloco 0–59 (60 quadros) em 746 s
+07:06:50 E1 quadro 60: salto em relação ao quadro anterior (corr 0.713, dif 9.5) — justificado: mesmo salto na V10 aprovada (540, mesma cena) (corr ref. 0.702; novo × ref. 0.999)
+07:06:50 E1 quadro 61: salto em relação ao quadro anterior (corr 0.665, dif 10.7) — justificado: mesmo salto na V10 aprovada (540, mesma cena) (corr ref. 0.655; novo × ref. 0.999)
+07:06:50 E1 quadro 62: salto em relação ao quadro anterior (corr 0.679, dif 10.7) — justificado: mesmo salto na V10 aprovada (540, mesma cena) (corr ref. 0.670; novo × ref. 0.999)
+07:06:50 E1 quadro 63: salto em relação ao quadro anterior (corr 0.702, dif 10.5) — justificado: mesmo salto na V10 aprovada (540, mesma cena) (corr ref. 0.695; novo × ref. 0.999)
+07:06:50 E1 quadro 64: salto em relação ao quadro anterior (corr 0.722, dif 10.4) — justificado: mesmo salto na V10 aprovada (540, mesma cena) (corr ref. 0.716; novo × ref. 1.000)
+07:06:50 E1 quadro 65: salto em relação ao quadro anterior (corr 0.736, dif 10.4) — justificado: mesmo salto na V10 aprovada (540, mesma cena) (corr ref. 0.731; novo × ref. 0.999)
+07:06:50 E1 quadro 66: salto em relação ao quadro anterior (corr 0.744, dif 10.5) — justificado: mesmo salto na V10 aprovada (540, mesma cena) (corr ref. 0.739; novo × ref. 1.000)
+07:06:50 E1 quadro 67: salto em relação ao quadro anterior (corr 0.748, dif 10.7) — justificado: mesmo salto na V10 aprovada (540, mesma cena) (corr ref. 0.743; novo × ref. 0.999)
+07:06:50 E1 quadro 68: salto em relação ao quadro anterior (corr 0.748, dif 11.0) — justificado: mesmo salto na V10 aprovada (540, mesma cena) (corr ref. 0.743; novo × ref. 0.999)
+07:06:50 E1 quadro 69: salto em relação ao quadro anterior (corr 0.757, dif 11.0) — justificado: mesmo salto na V10 aprovada (540, mesma cena) (corr ref. 0.753; novo × ref. 0.999)
+07:06:50 E1 quadro 70: salto em relação ao quadro anterior (corr 0.771, dif 11.2) — justificado: mesmo salto na V10 aprovada (540, mesma cena) (corr ref. 0.769; novo × ref. 1.000)
+07:06:50 E1 quadro 71: salto em relação ao quadro anterior (corr 0.788, dif 10.7) — justificado: mesmo salto na V10 aprovada (540, mesma cena) (corr ref. 0.786; novo × ref. 1.000)
+07:06:50 E1 quadro 72: salto em relação ao quadro anterior (corr 0.805, dif 10.6) — justificado: mesmo salto na V10 aprovada (540, mesma cena) (corr ref. 0.804; novo × ref. 1.000)
+07:06:50 E1 quadro 73: salto em relação ao quadro anterior (corr 0.824, dif 10.1) — justificado: mesmo salto na V10 aprovada (540, mesma cena) (corr ref. 0.822; novo × ref. 1.000)
+07:06:50 E1 quadro 74: salto em relação ao quadro anterior (corr 0.844, dif 9.4) — justificado: mesmo salto na V10 aprovada (540, mesma cena) (corr ref. 0.842; novo × ref. 1.000)
+07:06:50 E1 quadro 75: salto em relação ao quadro anterior (corr 0.863, dif 8.9) — justificado: mesmo salto na V10 aprovada (540, mesma cena) (corr ref. 0.862; novo × ref. 1.000)
+07:06:50 E1 quadro 76: salto em relação ao quadro anterior (corr 0.882, dif 8.4) — justificado: mesmo salto na V10 aprovada (540, mesma cena) (corr ref. 0.881; novo × ref. 1.000)
+07:06:50 E1 quadro 77: salto em relação ao quadro anterior (corr 0.898, dif 7.9) — justificado: mesmo salto na V10 aprovada (540, mesma cena) (corr ref. 0.897; novo × ref. 1.000)
+07:06:50 E1 quadro 78: salto em relação ao quadro anterior (corr 0.913, dif 7.3) — justificado: mesmo salto na V10 aprovada (540, mesma cena) (corr ref. 0.913; novo × ref. 1.000)
+07:06:50 E1 quadro 79: salto em relação ao quadro anterior (corr 0.927, dif 6.8) — justificado: mesmo salto na V10 aprovada (540, mesma cena) (corr ref. 0.926; novo × ref. 1.000)
+07:06:51 E1: bloco 60–98 (39 quadros) em 479 s
+07:24:09 E2: bloco 0–59 (60 quadros) em 1039 s
+07:42:12 E2: bloco 60–119 (60 quadros) em 1082 s
+07:47:05 E2: bloco 120–134 (15 quadros) em 293 s
+08:09:49 E3: bloco 0–59 (60 quadros) em 1364 s
+08:33:07 E3: bloco 60–119 (60 quadros) em 1398 s
+08:49:01 E3: bloco 120–159 (40 quadros) em 954 s
+09:04:37 E4: bloco 0–59 (60 quadros) em 936 s
+09:19:17 E4: bloco 60–119 (60 quadros) em 880 s
+09:21:30 E4: bloco 120–127 (8 quadros) em 133 s
+09:43:48 F1: bloco 0–59 (60 quadros) em 1338 s
+10:05:35 F1: bloco 60–119 (60 quadros) em 1307 s
+10:22:34 F1: bloco 120–170 (51 quadros) em 1019 s
+10:28:12 F2 quadro 42: salto em relação ao quadro anterior (corr 0.918, dif 6.3) — justificado: mesmo salto na V10 aprovada (540, mesma cena) (corr ref. 0.919; novo × ref. 1.000)
+10:28:13 F2 quadro 43: salto em relação ao quadro anterior (corr 0.909, dif 6.4) — justificado: mesmo salto na V10 aprovada (540, mesma cena) (corr ref. 0.910; novo × ref. 1.000)
+10:28:13 F2 quadro 44: salto em relação ao quadro anterior (corr 0.905, dif 6.8) — justificado: mesmo salto na V10 aprovada (540, mesma cena) (corr ref. 0.905; novo × ref. 1.000)
+10:28:13 F2 quadro 45: salto em relação ao quadro anterior (corr 0.895, dif 7.0) — justificado: mesmo salto na V10 aprovada (540, mesma cena) (corr ref. 0.896; novo × ref. 1.000)
+10:28:13 F2 quadro 46: salto em relação ao quadro anterior (corr 0.890, dif 7.5) — justificado: mesmo salto na V10 aprovada (540, mesma cena) (corr ref. 0.891; novo × ref. 1.000)
+10:28:13 F2 quadro 47: salto em relação ao quadro anterior (corr 0.879, dif 7.7) — justificado: mesmo salto na V10 aprovada (540, mesma cena) (corr ref. 0.880; novo × ref. 1.000)
+10:28:13 F2 quadro 48: salto em relação ao quadro anterior (corr 0.873, dif 8.3) — justificado: mesmo salto na V10 aprovada (540, mesma cena) (corr ref. 0.873; novo × ref. 1.000)
+10:28:13 F2 quadro 49: salto em relação ao quadro anterior (corr 0.857, dif 9.0) — justificado: mesmo salto na V10 aprovada (540, mesma cena) (corr ref. 0.857; novo × ref. 1.000)
+10:28:13 F2 quadro 50: salto em relação ao quadro anterior (corr 0.856, dif 8.8) — justificado: mesmo salto na V10 aprovada (540, mesma cena) (corr ref. 0.857; novo × ref. 1.000)
+10:28:13 F2 quadro 51: salto em relação ao quadro anterior (corr 0.887, dif 8.0) — justificado: mesmo salto na V10 aprovada (540, mesma cena) (corr ref. 0.888; novo × ref. 1.000)
+10:28:13 F2 quadro 52: salto em relação ao quadro anterior (corr 0.885, dif 7.7) — justificado: mesmo salto na V10 aprovada (540, mesma cena) (corr ref. 0.886; novo × ref. 1.000)
+10:28:13 F2 quadro 53: salto em relação ao quadro anterior (corr 0.902, dif 6.9) — justificado: mesmo salto na V10 aprovada (540, mesma cena) (corr ref. 0.902; novo × ref. 1.000)
+10:28:13 F2 quadro 54: salto em relação ao quadro anterior (corr 0.899, dif 7.0) — justificado: mesmo salto na V10 aprovada (540, mesma cena) (corr ref. 0.899; novo × ref. 1.000)
+10:28:13 F2 quadro 55: salto em relação ao quadro anterior (corr 0.896, dif 7.3) — justificado: mesmo salto na V10 aprovada (540, mesma cena) (corr ref. 0.897; novo × ref. 1.000)
+10:28:13 F2 quadro 56: salto em relação ao quadro anterior (corr 0.893, dif 7.7) — justificado: mesmo salto na V10 aprovada (540, mesma cena) (corr ref. 0.893; novo × ref. 1.000)
+10:28:14 F2 quadro 57: salto em relação ao quadro anterior (corr 0.885, dif 7.9) — justificado: mesmo salto na V10 aprovada (540, mesma cena) (corr ref. 0.886; novo × ref. 1.000)
+10:28:14 F2 quadro 58: salto em relação ao quadro anterior (corr 0.881, dif 8.3) — justificado: mesmo salto na V10 aprovada (540, mesma cena) (corr ref. 0.882; novo × ref. 1.000)
+10:28:14 F2 quadro 59: salto em relação ao quadro anterior (corr 0.874, dif 8.5) — justificado: mesmo salto na V10 aprovada (540, mesma cena) (corr ref. 0.874; novo × ref. 1.000)
+10:28:14 F2: bloco 0–59 (60 quadros) em 340 s
+10:33:41 F2 quadro 60: salto em relação ao quadro anterior (corr 0.866, dif 8.7) — justificado: mesmo salto na V10 aprovada (540, mesma cena) (corr ref. 0.867; novo × ref. 1.000)
+10:33:41 F2 quadro 61: salto em relação ao quadro anterior (corr 0.861, dif 9.1) — justificado: mesmo salto na V10 aprovada (540, mesma cena) (corr ref. 0.861; novo × ref. 1.000)
+10:33:41 F2 quadro 62: salto em relação ao quadro anterior (corr 0.852, dif 9.3) — justificado: mesmo salto na V10 aprovada (540, mesma cena) (corr ref. 0.853; novo × ref. 1.000)
+10:33:41 F2 quadro 63: salto em relação ao quadro anterior (corr 0.843, dif 9.4) — justificado: mesmo salto na V10 aprovada (540, mesma cena) (corr ref. 0.844; novo × ref. 1.000)
+10:33:41 F2 quadro 64: salto em relação ao quadro anterior (corr 0.837, dif 9.9) — justificado: mesmo salto na V10 aprovada (540, mesma cena) (corr ref. 0.838; novo × ref. 1.000)
+10:33:41 F2 quadro 65: salto em relação ao quadro anterior (corr 0.831, dif 10.4) — justificado: mesmo salto na V10 aprovada (540, mesma cena) (corr ref. 0.832; novo × ref. 1.000)
+10:33:41 F2 quadro 66: salto em relação ao quadro anterior (corr 0.825, dif 10.8) — justificado: mesmo salto na V10 aprovada (540, mesma cena) (corr ref. 0.826; novo × ref. 1.000)
+10:33:41 F2 quadro 67: salto em relação ao quadro anterior (corr 0.806, dif 11.8) — justificado: mesmo salto na V10 aprovada (540, mesma cena) (corr ref. 0.806; novo × ref. 1.000)
+10:33:41 F2 quadro 68: salto em relação ao quadro anterior (corr 0.834, dif 10.7) — justificado: mesmo salto na V10 aprovada (540, mesma cena) (corr ref. 0.834; novo × ref. 1.000)
+10:33:41 F2 quadro 69: salto em relação ao quadro anterior (corr 0.852, dif 9.6) — justificado: mesmo salto na V10 aprovada (540, mesma cena) (corr ref. 0.853; novo × ref. 1.000)
+10:33:41 F2 quadro 70: salto em relação ao quadro anterior (corr 0.878, dif 8.5) — justificado: mesmo salto na V10 aprovada (540, mesma cena) (corr ref. 0.878; novo × ref. 1.000)
+10:33:42 F2 quadro 71: salto em relação ao quadro anterior (corr 0.880, dif 8.6) — justificado: mesmo salto na V10 aprovada (540, mesma cena) (corr ref. 0.881; novo × ref. 1.000)
+10:33:42 F2 quadro 72: salto em relação ao quadro anterior (corr 0.877, dif 8.5) — justificado: mesmo salto na V10 aprovada (540, mesma cena) (corr ref. 0.878; novo × ref. 1.000)
+10:33:42 F2 quadro 73: salto em relação ao quadro anterior (corr 0.874, dif 9.0) — justificado: mesmo salto na V10 aprovada (540, mesma cena) (corr ref. 0.875; novo × ref. 1.000)
+10:33:42 F2 quadro 74: salto em relação ao quadro anterior (corr 0.872, dif 9.4) — justificado: mesmo salto na V10 aprovada (540, mesma cena) (corr ref. 0.872; novo × ref. 1.000)
+10:33:42 F2 quadro 75: salto em relação ao quadro anterior (corr 0.866, dif 9.4) — justificado: mesmo salto na V10 aprovada (540, mesma cena) (corr ref. 0.867; novo × ref. 1.000)
+10:33:42 F2 quadro 76: salto em relação ao quadro anterior (corr 0.861, dif 9.5) — justificado: mesmo salto na V10 aprovada (540, mesma cena) (corr ref. 0.862; novo × ref. 1.000)
+10:33:42 F2 quadro 77: salto em relação ao quadro anterior (corr 0.858, dif 9.8) — justificado: mesmo salto na V10 aprovada (540, mesma cena) (corr ref. 0.858; novo × ref. 1.000)
+10:33:42 F2 quadro 78: salto em relação ao quadro anterior (corr 0.855, dif 10.1) — justificado: mesmo salto na V10 aprovada (540, mesma cena) (corr ref. 0.856; novo × ref. 1.000)
+10:33:42 F2 quadro 79: salto em relação ao quadro anterior (corr 0.852, dif 10.3) — justificado: mesmo salto na V10 aprovada (540, mesma cena) (corr ref. 0.852; novo × ref. 1.000)
+10:33:42 F2 quadro 80: salto em relação ao quadro anterior (corr 0.848, dif 10.3) — justificado: mesmo salto na V10 aprovada (540, mesma cena) (corr ref. 0.848; novo × ref. 1.000)
+10:33:42 F2 quadro 81: salto em relação ao quadro anterior (corr 0.845, dif 10.4) — justificado: mesmo salto na V10 aprovada (540, mesma cena) (corr ref. 0.845; novo × ref. 1.000)
+10:33:42 F2 quadro 82: salto em relação ao quadro anterior (corr 0.839, dif 11.0) — justificado: mesmo salto na V10 aprovada (540, mesma cena) (corr ref. 0.839; novo × ref. 1.000)
+10:33:42 F2 quadro 83: salto em relação ao quadro anterior (corr 0.835, dif 11.6) — justificado: mesmo salto na V10 aprovada (540, mesma cena) (corr ref. 0.836; novo × ref. 1.000)
+10:33:42 F2 quadro 84: salto em relação ao quadro anterior (corr 0.878, dif 9.9) — justificado: mesmo salto na V10 aprovada (540, mesma cena) (corr ref. 0.878; novo × ref. 1.000)
+10:33:42 F2 quadro 85: salto em relação ao quadro anterior (corr 0.889, dif 9.1) — justificado: mesmo salto na V10 aprovada (540, mesma cena) (corr ref. 0.890; novo × ref. 1.000)
+10:33:42 F2 quadro 86: salto em relação ao quadro anterior (corr 0.910, dif 8.0) — justificado: mesmo salto na V10 aprovada (540, mesma cena) (corr ref. 0.910; novo × ref. 1.000)
+10:33:42 F2 quadro 87: salto em relação ao quadro anterior (corr 0.912, dif 8.1) — justificado: mesmo salto na V10 aprovada (540, mesma cena) (corr ref. 0.913; novo × ref. 1.000)
+10:33:42 F2 quadro 88: salto em relação ao quadro anterior (corr 0.912, dif 8.0) — justificado: mesmo salto na V10 aprovada (540, mesma cena) (corr ref. 0.912; novo × ref. 1.000)
+10:33:42 F2 quadro 89: salto em relação ao quadro anterior (corr 0.911, dif 8.0) — justificado: mesmo salto na V10 aprovada (540, mesma cena) (corr ref. 0.911; novo × ref. 1.000)
+10:33:42 F2 quadro 90: salto em relação ao quadro anterior (corr 0.912, dif 8.2) — justificado: mesmo salto na V10 aprovada (540, mesma cena) (corr ref. 0.912; novo × ref. 1.000)
+10:33:42 F2 quadro 91: salto em relação ao quadro anterior (corr 0.910, dif 8.0) — justificado: mesmo salto na V10 aprovada (540, mesma cena) (corr ref. 0.911; novo × ref. 1.000)
+10:33:42 F2 quadro 92: salto em relação ao quadro anterior (corr 0.911, dif 8.1) — justificado: mesmo salto na V10 aprovada (540, mesma cena) (corr ref. 0.911; novo × ref. 1.000)
+10:33:42 F2 quadro 93: salto em relação ao quadro anterior (corr 0.912, dif 8.1) — justificado: mesmo salto na V10 aprovada (540, mesma cena) (corr ref. 0.912; novo × ref. 1.000)
+10:33:42 F2 quadro 94: salto em relação ao quadro anterior (corr 0.912, dif 8.0) — justificado: mesmo salto na V10 aprovada (540, mesma cena) (corr ref. 0.912; novo × ref. 1.000)
+10:33:42 F2 quadro 95: salto em relação ao quadro anterior (corr 0.914, dif 8.2) — justificado: mesmo salto na V10 aprovada (540, mesma cena) (corr ref. 0.914; novo × ref. 1.000)
+10:33:42 F2 quadro 96: salto em relação ao quadro anterior (corr 0.914, dif 8.1) — justificado: mesmo salto na V10 aprovada (540, mesma cena) (corr ref. 0.914; novo × ref. 1.000)
+10:33:42 F2 quadro 97: salto em relação ao quadro anterior (corr 0.914, dif 8.0) — justificado: mesmo salto na V10 aprovada (540, mesma cena) (corr ref. 0.914; novo × ref. 1.000)
+10:33:42 F2 quadro 98: salto em relação ao quadro anterior (corr 0.917, dif 8.2) — justificado: mesmo salto na V10 aprovada (540, mesma cena) (corr ref. 0.917; novo × ref. 1.000)
+10:33:42 F2 quadro 99: salto em relação ao quadro anterior (corr 0.916, dif 8.1) — justificado: mesmo salto na V10 aprovada (540, mesma cena) (corr ref. 0.916; novo × ref. 1.000)
+10:33:42 F2 quadro 100: salto em relação ao quadro anterior (corr 0.917, dif 8.2) — justificado: mesmo salto na V10 aprovada (540, mesma cena) (corr ref. 0.917; novo × ref. 1.000)
+10:33:42 F2 quadro 101: salto em relação ao quadro anterior (corr 0.918, dif 8.3) — justificado: mesmo salto na V10 aprovada (540, mesma cena) (corr ref. 0.918; novo × ref. 1.000)
+10:33:43 F2 quadro 102: salto em relação ao quadro anterior (corr 0.928, dif 7.2) — justificado: mesmo salto na V10 aprovada (540, mesma cena) (corr ref. 0.928; novo × ref. 1.000)
+10:33:43 F2: bloco 60–119 (60 quadros) em 329 s
+10:36:30 F2: bloco 120–148 (29 quadros) em 168 s
+10:59:03 G1: bloco 0–59 (60 quadros) em 1353 s
+11:02:32 G1: bloco 60–67 (8 quadros) em 209 s
+11:25:45 G2: bloco 0–59 (60 quadros) em 1393 s
+11:48:03 G2: bloco 60–119 (60 quadros) em 1337 s
+11:55:22 G2: bloco 120–138 (19 quadros) em 439 s
+12:05:54 G3: bloco 0–59 (60 quadros) em 632 s
+12:16:51 G3: bloco 60–119 (60 quadros) em 657 s
+12:26:35 G3: bloco 120–172 (53 quadros) em 584 s
+12:33:46 G3z: bloco 0–59 (60 quadros) em 431 s
+12:40:39 G3z: bloco 60–119 (60 quadros) em 413 s
+12:46:40 G3z: bloco 120–172 (53 quadros) em 361 s
+13:07:51 H1: bloco 0–59 (60 quadros) em 1272 s
+13:29:35 H1: bloco 60–119 (60 quadros) em 1304 s
+13:39:47 H1: bloco 120–149 (30 quadros) em 612 s
+14:00:54 H2: bloco 0–59 (60 quadros) em 1267 s
+14:22:17 H2: bloco 60–119 (60 quadros) em 1283 s
+14:26:27 H2: bloco 120–130 (11 quadros) em 250 s
+14:39:42 I1: bloco 0–59 (60 quadros) em 795 s
+14:52:34 I1 quadro 78: salto em relação ao quadro anterior (corr 0.915, dif 8.7) — justificado: mesmo salto na V10 aprovada (540, mesma cena) (corr ref. 0.915; novo × ref. 1.000)
+14:52:35 I1 quadro 102: salto em relação ao quadro anterior (corr 0.927, dif 12.1) — justificado: mesmo salto na V10 aprovada (540, mesma cena) (corr ref. 0.927; novo × ref. 1.000)
+14:52:35 I1 quadro 103: salto em relação ao quadro anterior (corr 0.912, dif 13.1) — justificado: mesmo salto na V10 aprovada (540, mesma cena) (corr ref. 0.912; novo × ref. 1.000)
+14:52:35 I1 quadro 104: salto em relação ao quadro anterior (corr 0.918, dif 13.3) — justificado: mesmo salto na V10 aprovada (540, mesma cena) (corr ref. 0.919; novo × ref. 1.000)
+14:52:35 I1 quadro 105: salto em relação ao quadro anterior (corr 0.925, dif 12.3) — justificado: mesmo salto na V10 aprovada (540, mesma cena) (corr ref. 0.926; novo × ref. 1.000)
+14:52:35 I1 quadro 106: salto em relação ao quadro anterior (corr 0.924, dif 11.7) — justificado: mesmo salto na V10 aprovada (540, mesma cena) (corr ref. 0.924; novo × ref. 1.000)
+14:52:35 I1 quadro 107: salto em relação ao quadro anterior (corr 0.921, dif 11.5) — justificado: mesmo salto na V10 aprovada (540, mesma cena) (corr ref. 0.920; novo × ref. 1.000)
+14:52:36 I1 quadro 108: salto em relação ao quadro anterior (corr 0.908, dif 11.2) — justificado: mesmo salto na V10 aprovada (540, mesma cena) (corr ref. 0.908; novo × ref. 1.000)
+14:52:36 I1 quadro 109: salto em relação ao quadro anterior (corr 0.895, dif 10.7) — justificado: mesmo salto na V10 aprovada (540, mesma cena) (corr ref. 0.895; novo × ref. 1.000)
+14:52:36 I1 quadro 110: salto em relação ao quadro anterior (corr 0.903, dif 9.2) — justificado: mesmo salto na V10 aprovada (540, mesma cena) (corr ref. 0.902; novo × ref. 1.000)
+14:52:36 I1 quadro 111: salto em relação ao quadro anterior (corr 0.917, dif 7.5) — justificado: mesmo salto na V10 aprovada (540, mesma cena) (corr ref. 0.916; novo × ref. 1.000)
+14:52:36 I1: bloco 60–119 (60 quadros) em 774 s
+14:53:33 I1: bloco 120–122 (3 quadros) em 57 s
+15:09:39 I2: bloco 0–59 (60 quadros) em 967 s
+15:25:59 I2: bloco 60–119 (60 quadros) em 979 s
+15:39:44 I2: bloco 120–170 (51 quadros) em 826 s
+15:51:20 I3: bloco 0–59 (60 quadros) em 696 s
+16:03:07 I3: bloco 60–119 (60 quadros) em 707 s
+16:13:51 I3: bloco 120–172 (53 quadros) em 644 s
+16:25:46 I4: bloco 0–59 (60 quadros) em 715 s
+16:38:01 I4: bloco 60–119 (60 quadros) em 735 s
+16:50:17 I4: bloco 120–179 (60 quadros) em 736 s
+16:52:20 I4: bloco 180–187 (8 quadros) em 124 s
+17:06:42 J1: bloco 0–59 (60 quadros) em 861 s
+17:20:52 J1: bloco 60–119 (60 quadros) em 850 s
+17:22:41 J1: bloco 120–125 (6 quadros) em 109 s
+17:43:10 J1b: bloco 0–59 (60 quadros) em 1229 s
+18:02:27 J1b: bloco 60–119 (60 quadros) em 1157 s
+18:04:47 J1b: bloco 120–125 (6 quadros) em 140 s
+18:19:18 J2: bloco 0–59 (60 quadros) em 871 s
+18:27:55 J2: bloco 60–95 (36 quadros) em 516 s
+18:46:52 J3: bloco 0–59 (60 quadros) em 1137 s
+19:06:10 J3: bloco 60–119 (60 quadros) em 1158 s
+19:10:27 J3: bloco 120–131 (12 quadros) em 257 s
+19:28:22 J4: bloco 0–59 (60 quadros) em 1075 s
+19:44:51 J4: bloco 60–119 (60 quadros) em 989 s
+19:59:47 J4: bloco 120–179 (60 quadros) em 896 s
+20:02:11 J4: bloco 180–187 (8 quadros) em 144 s
+20:02:11 FIM: todos os planos completos
+21:22:54 RODADA 12: correção da ordem dos transparentes (garrafa × prateleira) em H2, C4, H1 — render localizado com prova de reuso
+21:22:55 H2: ordem dos transparentes congelada no quadro 0 (ordemtransp=1, rodada 12) — 48 quadros reaproveitados por prova; antigos dos demais em /home/user/videos/episodio_02_geladeira/episodio/quadros_final/H2/_descartados/20261125_212255_config_localizada
+21:43:26 H2: bloco 48–107 (60 quadros) em 1231 s
+21:51:42 H2: bloco 108–130 (23 quadros) em 496 s
+21:51:42 C4: ordem dos transparentes congelada no quadro 0 (ordemtransp=1, rodada 12) — 52 quadros reaproveitados por prova; antigos dos demais em /home/user/videos/episodio_02_geladeira/episodio/quadros_final/C4/_descartados/20261125_215142_config_localizada
+22:11:58 C4: bloco 52–111 (60 quadros) em 1216 s
+22:16:44 C4: bloco 112–125 (14 quadros) em 286 s
+23:59:27 C4 quadro 148: salto em relação ao quadro anterior (corr 0.925, dif 13.6) — justificado: mesmo salto na V10 aprovada (540, mesma cena) (corr ref. 0.925; novo × ref. 0.998)
+23:59:27 C4 quadro 149: salto em relação ao quadro anterior (corr 0.920, dif 13.8) — justificado: mesmo salto na V10 aprovada (540, mesma cena) (corr ref. 0.920; novo × ref. 0.998)
+23:59:28 C4 quadro 150: salto em relação ao quadro anterior (corr 0.915, dif 14.3) — justificado: mesmo salto na V10 aprovada (540, mesma cena) (corr ref. 0.915; novo × ref. 0.998)
+23:59:28 C4 quadro 151: salto em relação ao quadro anterior (corr 0.906, dif 14.3) — justificado: mesmo salto na V10 aprovada (540, mesma cena) (corr ref. 0.906; novo × ref. 0.998)
+23:59:28 C4 quadro 152: salto em relação ao quadro anterior (corr 0.898, dif 14.9) — justificado: mesmo salto na V10 aprovada (540, mesma cena) (corr ref. 0.898; novo × ref. 0.998)
+23:59:28 C4 quadro 153: salto em relação ao quadro anterior (corr 0.904, dif 14.3) — justificado: mesmo salto na V10 aprovada (540, mesma cena) (corr ref. 0.904; novo × ref. 0.998)
+23:59:28 C4 quadro 154: salto em relação ao quadro anterior (corr 0.903, dif 14.4) — justificado: mesmo salto na V10 aprovada (540, mesma cena) (corr ref. 0.903; novo × ref. 0.998)
+23:59:28 C4 quadro 155: salto em relação ao quadro anterior (corr 0.909, dif 14.1) — justificado: mesmo salto na V10 aprovada (540, mesma cena) (corr ref. 0.909; novo × ref. 0.998)
+23:59:28 C4 quadro 156: salto em relação ao quadro anterior (corr 0.916, dif 13.6) — justificado: mesmo salto na V10 aprovada (540, mesma cena) (corr ref. 0.916; novo × ref. 0.998)
+23:59:28 C4 quadro 157: salto em relação ao quadro anterior (corr 0.926, dif 12.5) — justificado: mesmo salto na V10 aprovada (540, mesma cena) (corr ref. 0.926; novo × ref. 0.998)
+23:59:28 C4: bloco 126–184 (59 quadros × 5 sub) em 6164 s
+23:59:28 H1: ordem dos transparentes congelada no quadro 0 (ordemtransp=1, rodada 12) — 75 quadros reaproveitados por prova; antigos dos demais em /home/user/videos/episodio_02_geladeira/episodio/quadros_final/H1/_descartados/20261125_235928_config_localizada
+00:19:21 H1: bloco 75–134 (60 quadros) em 1192 s
+00:24:13 H1: bloco 135–149 (15 quadros) em 293 s
+00:24:13 FIM: todos os planos completos

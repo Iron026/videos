@@ -1,0 +1,80 @@
+{
+ "01_efeitos_retirados_014_112_148.mp4": {
+  "trechos": [
+   [
+    11.8,
+    17.2,
+    "0:14 impacto depois de \"não fabrica frio.\""
+   ],
+   [
+    70.4,
+    75.4,
+    "1:12 whoosh da descida (E1)"
+   ],
+   [
+    106.8,
+    112.0,
+    "1:48 sopro do recuo (H1)"
+   ]
+  ],
+  "versoes": [
+   [
+    "A",
+    "R13B (como você ouviu)",
+    "audio_ep02_r13_r13_teste.wav"
+   ],
+   [
+    "B",
+    "R13C: efeito retirado",
+    "audio_ep02_r13_r13c_moderada_r13_teste.wav"
+   ]
+  ]
+ },
+ "02_revelacao_033.mp4": {
+  "trechos": [
+   [
+    29.0,
+    39.5,
+    "0:33"
+   ]
+  ],
+  "versoes": [
+   [
+    "A",
+    "R13B (como você ouviu)",
+    "audio_ep02_r13_r13_teste.wav"
+   ],
+   [
+    "B",
+    "Redução moderada",
+    "audio_ep02_r13_r13c_moderada_r13_teste.wav"
+   ],
+   [
+    "C",
+    "Mais discreta",
+    "audio_ep02_r13_r13c_discreta_r13_teste.wav"
+   ]
+  ]
+ },
+ "03_passos_155.mp4": {
+  "trechos": [
+   [
+    114.6,
+    121.0,
+    "1:55"
+   ]
+  ],
+  "versoes": [
+   [
+    "A",
+    "R13B (como você ouviu)",
+    "audio_ep02_r13_r13_teste.wav"
+   ],
+   [
+    "B",
+    "R13C: passos discretos",
+    "audio_ep02_r13_r13c_moderada_r13_teste.wav"
+   ]
+  ]
+ }
+}

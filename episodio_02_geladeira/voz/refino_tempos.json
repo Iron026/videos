@@ -1,0 +1,477 @@
+{
+ "pausas_detectadas": 78,
+ "palavras_ajustadas_ao_ataque": 78,
+ "delta_medio_s": 0.286,
+ "delta_min_s": 0.05,
+ "delta_max_s": 0.64,
+ "ajustes": [
+  {
+   "palavra": "quente",
+   "whisper": 3.54,
+   "ataque": 3.85,
+   "delta": 0.31
+  },
+  {
+   "palavra": "Parece",
+   "whisper": 4.94,
+   "ataque": 5.12,
+   "delta": 0.18
+  },
+  {
+   "palavra": "como",
+   "whisper": 5.96,
+   "ataque": 6.31,
+   "delta": 0.35
+  },
+  {
+   "palavra": "A",
+   "whisper": 10.12,
+   "ataque": 10.39,
+   "delta": 0.27
+  },
+  {
+   "palavra": "A",
+   "whisper": 12.36,
+   "ataque": 12.63,
+   "delta": 0.27
+  },
+  {
+   "palavra": "Ela",
+   "whisper": 14.46,
+   "ataque": 14.79,
+   "delta": 0.33
+  },
+  {
+   "palavra": "Imagine",
+   "whisper": 16.32,
+   "ataque": 16.69,
+   "delta": 0.37
+  },
+  {
+   "palavra": "Quando",
+   "whisper": 19.44,
+   "ataque": 19.77,
+   "delta": 0.33
+  },
+  {
+   "palavra": "ela",
+   "whisper": 21.44,
+   "ataque": 21.69,
+   "delta": 0.25
+  },
+  {
+   "palavra": "Mas",
+   "whisper": 23.88,
+   "ataque": 24.19,
+   "delta": 0.31
+  },
+  {
+   "palavra": "Ele",
+   "whisper": 26.22,
+   "ataque": 26.55,
+   "delta": 0.33
+  },
+  {
+   "palavra": "Para",
+   "whisper": 28.16,
+   "ataque": 28.71,
+   "delta": 0.55
+  },
+  {
+   "palavra": "vamos",
+   "whisper": 30.0,
+   "ataque": 30.25,
+   "delta": 0.25
+  },
+  {
+   "palavra": "Escondido",
+   "whisper": 33.68,
+   "ataque": 33.92,
+   "delta": 0.24
+  },
+  {
+   "palavra": "existe",
+   "whisper": 35.5,
+   "ataque": 35.74,
+   "delta": 0.24
+  },
+  {
+   "palavra": "Dentro",
+   "whisper": 37.96,
+   "ataque": 38.27,
+   "delta": 0.31
+  },
+  {
+   "palavra": "o",
+   "whisper": 40.92,
+   "ataque": 41.26,
+   "delta": 0.34
+  },
+  {
+   "palavra": "fluido",
+   "whisper": 41.26,
+   "ataque": 41.51,
+   "delta": 0.25
+  },
+  {
+   "palavra": "Durante",
+   "whisper": 42.88,
+   "ataque": 43.16,
+   "delta": 0.28
+  },
+  {
+   "palavra": "ele",
+   "whisper": 44.14,
+   "ataque": 44.31,
+   "delta": 0.17
+  },
+  {
+   "palavra": "de",
+   "whisper": 45.48,
+   "ataque": 45.68,
+   "delta": 0.2
+  },
+  {
+   "palavra": "até",
+   "whisper": 46.74,
+   "ataque": 46.79,
+   "delta": 0.05
+  },
+  {
+   "palavra": "Vamos",
+   "whisper": 48.46,
+   "ataque": 48.79,
+   "delta": 0.33
+  },
+  {
+   "palavra": "a",
+   "whisper": 50.62,
+   "ataque": 50.85,
+   "delta": 0.23
+  },
+  {
+   "palavra": "Ali,",
+   "whisper": 53.02,
+   "ataque": 53.31,
+   "delta": 0.29
+  },
+  {
+   "palavra": "o",
+   "whisper": 53.58,
+   "ataque": 53.82,
+   "delta": 0.24
+  },
+  {
+   "palavra": "numa",
+   "whisper": 56.34,
+   "ataque": 56.56,
+   "delta": 0.22
+  },
+  {
+   "palavra": "Como",
+   "whisper": 58.16,
+   "ataque": 58.8,
+   "delta": 0.64
+  },
+  {
+   "palavra": "recebe",
+   "whisper": 61.08,
+   "ataque": 61.37,
+   "delta": 0.29
+  },
+  {
+   "palavra": "Ao",
+   "whisper": 63.96,
+   "ataque": 64.32,
+   "delta": 0.36
+  },
+  {
+   "palavra": "a",
+   "whisper": 65.82,
+   "ataque": 66.02,
+   "delta": 0.2
+  },
+  {
+   "palavra": "O",
+   "whisper": 67.72,
+   "ataque": 68.07,
+   "delta": 0.35
+  },
+  {
+   "palavra": "e",
+   "whisper": 69.42,
+   "ataque": 69.94,
+   "delta": 0.52
+  },
+  {
+   "palavra": "Mas",
+   "whisper": 71.36,
+   "ataque": 71.67,
+   "delta": 0.31
+  },
+  {
+   "palavra": "como",
+   "whisper": 71.72,
+   "ataque": 72.19,
+   "delta": 0.47
+  },
+  {
+   "palavra": "É",
+   "whisper": 74.14,
+   "ataque": 74.43,
+   "delta": 0.29
+  },
+  {
+   "palavra": "aqui",
+   "whisper": 74.46,
+   "ataque": 74.79,
+   "delta": 0.33
+  },
+  {
+   "palavra": "movido",
+   "whisper": 76.28,
+   "ataque": 76.52,
+   "delta": 0.24
+  },
+  {
+   "palavra": "Ele",
+   "whisper": 78.14,
+   "ataque": 78.39,
+   "delta": 0.25
+  },
+  {
+   "palavra": "elevando",
+   "whisper": 80.4,
+   "ataque": 80.62,
+   "delta": 0.22
+  },
+  {
+   "palavra": "Agora,",
+   "whisper": 82.94,
+   "ataque": 83.19,
+   "delta": 0.25
+  },
+  {
+   "palavra": "o",
+   "whisper": 83.44,
+   "ataque": 83.82,
+   "delta": 0.38
+  },
+  {
+   "palavra": "Por",
+   "whisper": 86.54,
+   "ataque": 86.91,
+   "delta": 0.37
+  },
+  {
+   "palavra": "ao",
+   "whisper": 87.32,
+   "ataque": 87.52,
+   "delta": 0.2
+  },
+  {
+   "palavra": "ele",
+   "whisper": 89.06,
+   "ataque": 89.28,
+   "delta": 0.22
+  },
+  {
+   "palavra": "Enquanto",
+   "whisper": 91.8,
+   "ataque": 92.09,
+   "delta": 0.29
+  },
+  {
+   "palavra": "o",
+   "whisper": 93.46,
+   "ataque": 93.66,
+   "delta": 0.2
+  },
+  {
+   "palavra": "Só",
+   "whisper": 96.2,
+   "ataque": 96.51,
+   "delta": 0.31
+  },
+  {
+   "palavra": "Esse",
+   "whisper": 97.98,
+   "ataque": 98.23,
+   "delta": 0.25
+  },
+  {
+   "palavra": "chamado",
+   "whisper": 100.78,
+   "ataque": 100.96,
+   "delta": 0.18
+  },
+  {
+   "palavra": "A",
+   "whisper": 102.04,
+   "ataque": 102.32,
+   "delta": 0.28
+  },
+  {
+   "palavra": "e",
+   "whisper": 103.9,
+   "ataque": 104.23,
+   "delta": 0.33
+  },
+  {
+   "palavra": "resfriando",
+   "whisper": 105.84,
+   "ataque": 106.07,
+   "delta": 0.23
+  },
+  {
+   "palavra": "Assim,",
+   "whisper": 107.32,
+   "ataque": 107.55,
+   "delta": 0.23
+  },
+  {
+   "palavra": "ela",
+   "whisper": 107.92,
+   "ataque": 108.15,
+   "delta": 0.23
+  },
+  {
+   "palavra": "pronta",
+   "whisper": 109.56,
+   "ataque": 109.85,
+   "delta": 0.29
+  },
+  {
+   "palavra": "E",
+   "whisper": 111.7,
+   "ataque": 112.0,
+   "delta": 0.3
+  },
+  {
+   "palavra": "tudo",
+   "whisper": 112.02,
+   "ataque": 112.27,
+   "delta": 0.25
+  },
+  {
+   "palavra": "sempre",
+   "whisper": 113.14,
+   "ataque": 113.31,
+   "delta": 0.17
+  },
+  {
+   "palavra": "Agora",
+   "whisper": 115.48,
+   "ataque": 115.85,
+   "delta": 0.37
+  },
+  {
+   "palavra": "O",
+   "whisper": 119.1,
+   "ataque": 119.43,
+   "delta": 0.33
+  },
+  {
+   "palavra": "continuamente,",
+   "whisper": 120.72,
+   "ataque": 121.01,
+   "delta": 0.29
+  },
+  {
+   "palavra": "e",
+   "whisper": 121.84,
+   "ataque": 122.07,
+   "delta": 0.23
+  },
+  {
+   "palavra": "Se",
+   "whisper": 124.28,
+   "ataque": 124.61,
+   "delta": 0.33
+  },
+  {
+   "palavra": "a",
+   "whisper": 126.84,
+   "ataque": 127.03,
+   "delta": 0.19
+  },
+  {
+   "palavra": "No",
+   "whisper": 129.58,
+   "ataque": 129.83,
+   "delta": 0.25
+  },
+  {
+   "palavra": "ela",
+   "whisper": 130.86,
+   "ataque": 131.07,
+   "delta": 0.21
+  },
+  {
+   "palavra": "mais",
+   "whisper": 132.78,
+   "ataque": 132.98,
+   "delta": 0.2
+  },
+  {
+   "palavra": "Então,",
+   "whisper": 135.28,
+   "ataque": 135.57,
+   "delta": 0.29
+  },
+  {
+   "palavra": "por",
+   "whisper": 135.8,
+   "ataque": 136.15,
+   "delta": 0.35
+  },
+  {
+   "palavra": "quente",
+   "whisper": 137.88,
+   "ataque": 138.09,
+   "delta": 0.21
+  },
+  {
+   "palavra": "Porque",
+   "whisper": 138.96,
+   "ataque": 139.24,
+   "delta": 0.28
+  },
+  {
+   "palavra": "O",
+   "whisper": 141.62,
+   "ataque": 141.9,
+   "delta": 0.28
+  },
+  {
+   "palavra": "e",
+   "whisper": 144.02,
+   "ataque": 144.38,
+   "delta": 0.36
+  },
+  {
+   "palavra": "A",
+   "whisper": 145.32,
+   "ataque": 145.76,
+   "delta": 0.44
+  },
+  {
+   "palavra": "cria",
+   "whisper": 146.6,
+   "ataque": 146.92,
+   "delta": 0.32
+  },
+  {
+   "palavra": "Ela",
+   "whisper": 147.58,
+   "ataque": 147.92,
+   "delta": 0.34
+  },
+  {
+   "palavra": "Você",
+   "whisper": 0.0,
+   "ataque": 0.11,
+   "delta": 0.11
+  }
+ ]
+}

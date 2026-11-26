@@ -1,0 +1,10 @@
+{
+ "config": "perfil final de config/producao.json (1080 × 1920, MSAA 4×, AO 16, bloom 0,18), cenas da V9; quadros em episodio/quadros_final_r9v/ (não versionados)",
+ "trechos": {
+  "I1 q78–q107 (pega do leite, saída, volta da câmera)": {"render_s": 718, "detector_absoluto": "28/28 quadros com blocos; mapa: só bordas em movimento (porta abrindo, braço, câmera voltando a ~10 mm/quadro); sem z-fighting", "pior": {"quadro": 103, "blocos": 483}},
+  "C4 q155–q184 (fim da aproximação ao evaporador)": {"render_s": 1118, "detector_absoluto": "16/28 quadros com blocos, todos na fase rápida (q155–q170); mapa: bordas dos tubos e grade do condensador em movimento rápido → estroboscopia, não z-fighting", "pior": {"quadro": 157, "blocos": 942}, "estroboscopia_grade": "razão deslocamento/passo até 3,61 (V8: 0,84); ver teste do obturador"},
+  "A1 q4–q29 (puxão da porta)": {"render_s": 472, "detector_absoluto": "16/24 quadros; mapa: bordas da porta abrindo, fresta iluminada e braço recuando; sem z-fighting", "pior": {"quadro": 25, "blocos": 171}},
+  "H2 q40–q69 (corte com itens novos)": {"render_s": 754, "detector_absoluto": {"v9": "7 quadros, pior 8 blocos", "r8_aprovada_mesmos_quadros": "7 quadros, pior 9 blocos"}, "porta_vedacao_px_alternando": {"v9": 815, "r8": 817}},
+  "J3 q84–q113 (corte sem leite)": {"render_s": 737, "detector_absoluto": {"v9": "0 quadros", "r8": "0 quadros"}, "porta_vedacao_px_alternando": {"v9": 3, "r8": 3}}
+ }
+}

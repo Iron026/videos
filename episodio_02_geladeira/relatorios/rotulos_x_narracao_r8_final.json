@@ -1,0 +1,242 @@
+[
+ {
+  "plano": "B3",
+  "rotulo": "calor",
+  "aparece": 15.82,
+  "some": 16.69,
+  "linha_de_chamada": false,
+  "palavra": "calor",
+  "fala_em": 15.78,
+  "ok": true
+ },
+ {
+  "plano": "B4",
+  "rotulo": "temperatura ambiente",
+  "aparece": 18.26,
+  "some": 19.76,
+  "linha_de_chamada": false,
+  "palavra": "temperatura",
+  "fala_em": 18.2,
+  "ok": true
+ },
+ {
+  "plano": "C3",
+  "rotulo": "fluido refrigerante",
+  "aparece": 41.54,
+  "some": 43.17,
+  "linha_de_chamada": false,
+  "palavra": "fluido",
+  "fala_em": 41.51,
+  "ok": true
+ },
+ {
+  "plano": "D1",
+  "rotulo": "Evaporador",
+  "aparece": 49.69,
+  "some": 53.32,
+  "linha_de_chamada": false,
+  "palavra": "evaporador",
+  "fala_em": 49.64,
+  "ok": true
+ },
+ {
+  "plano": "D3",
+  "rotulo": "fluido mais frio que o ar",
+  "aparece": 61.07,
+  "some": 64.33,
+  "linha_de_chamada": true,
+  "palavra": "frio",
+  "fala_em": 59.26,
+  "ok": true
+ },
+ {
+  "plano": "D4",
+  "rotulo": "entra: líquido + vapor",
+  "aparece": 64.29,
+  "some": 66.19,
+  "linha_de_chamada": false,
+  "palavra": "vapor",
+  "fala_em": 57.92,
+  "ok": true
+ },
+ {
+  "plano": "D4",
+  "rotulo": "sai: só vapor",
+  "aparece": 66.95,
+  "some": 68.09,
+  "linha_de_chamada": false,
+  "palavra": "evapora",
+  "fala_em": 66.9,
+  "ok": true
+ },
+ {
+  "plano": "E2",
+  "rotulo": "Compressor",
+  "aparece": 75.53,
+  "some": 78.4,
+  "linha_de_chamada": false,
+  "palavra": "compressor",
+  "fala_em": 75.5,
+  "ok": true
+ },
+ {
+  "plano": "E4",
+  "rotulo": "fluido: mais quente",
+  "aparece": 85.06,
+  "some": 86.92,
+  "linha_de_chamada": true,
+  "palavra": "quente",
+  "fala_em": 85.0,
+  "ok": true
+ },
+ {
+  "plano": "E4",
+  "rotulo": "ar da cozinha",
+  "aparece": 86.12,
+  "some": 86.92,
+  "linha_de_chamada": false,
+  "palavra": "cozinha",
+  "fala_em": 86.08,
+  "ok": true
+ },
+ {
+  "plano": "F1",
+  "rotulo": "Condensador",
+  "aparece": 88.34,
+  "some": 92.08,
+  "linha_de_chamada": false,
+  "palavra": "condensador",
+  "fala_em": 88.3,
+  "ok": true
+ },
+ {
+  "plano": "F2",
+  "rotulo": "entra: vapor quente",
+  "aparece": 93.76,
+  "some": 94.59,
+  "linha_de_chamada": false,
+  "palavra": "vapor",
+  "fala_em": 93.72,
+  "ok": true
+ },
+ {
+  "plano": "F2",
+  "rotulo": "sai: líquido",
+  "aparece": 95.76,
+  "some": 96.52,
+  "linha_de_chamada": false,
+  "palavra": "liquido",
+  "fala_em": 95.7,
+  "ok": true
+ },
+ {
+  "plano": "G2",
+  "rotulo": "Capilar",
+  "aparece": 101.2,
+  "some": 102.33,
+  "linha_de_chamada": true,
+  "palavra": "capilar",
+  "fala_em": 101.16,
+  "ok": true
+ },
+ {
+  "plano": "G3z",
+  "rotulo": "começa a evaporar",
+  "aparece": 105.19,
+  "some": 106.49,
+  "linha_de_chamada": true,
+  "palavra": "evapora",
+  "fala_em": 105.16,
+  "ok": true
+ },
+ {
+  "plano": "G3z",
+  "rotulo": "mistura fria",
+  "aparece": 106.75,
+  "some": 107.55,
+  "linha_de_chamada": true,
+  "palavra": "mistura",
+  "fala_em": 106.72,
+  "ok": true
+ },
+ {
+  "plano": "H2",
+  "rotulo": "Evaporador",
+  "aparece": 112.57,
+  "some": 115.83,
+  "linha_de_chamada": false,
+  "palavra": "evaporador",
+  "fala_em": 108.82,
+  "ok": true
+ },
+ {
+  "plano": "H2",
+  "rotulo": "Compressor",
+  "aparece": 112.57,
+  "some": 115.83,
+  "linha_de_chamada": false,
+  "palavra": "compressor",
+  "fala_em": 75.5,
+  "ok": true
+ },
+ {
+  "plano": "H2",
+  "rotulo": "Condensador",
+  "aparece": 112.57,
+  "some": 115.83,
+  "linha_de_chamada": false,
+  "palavra": "condensador",
+  "fala_em": 88.3,
+  "ok": true
+ },
+ {
+  "plano": "H2",
+  "rotulo": "Capilar",
+  "aparece": 112.57,
+  "some": 115.83,
+  "linha_de_chamada": true,
+  "palavra": "capilar",
+  "fala_em": 101.16,
+  "ok": true
+ },
+ {
+  "plano": "I3",
+  "rotulo": "o calor volta para a mesma cozinha",
+  "aparece": 127.28,
+  "some": 129.84,
+  "linha_de_chamada": false,
+  "palavra": "cozinha",
+  "fala_em": 126.2,
+  "ok": true
+ },
+ {
+  "plano": "I4",
+  "rotulo": "calor retirado",
+  "aparece": 132.3,
+  "some": 135.56,
+  "linha_de_chamada": false,
+  "palavra": "retirou",
+  "fala_em": 132.24,
+  "ok": true
+ },
+ {
+  "plano": "I4",
+  "rotulo": "energia elétrica",
+  "aparece": 133.43,
+  "some": 135.56,
+  "linha_de_chamada": true,
+  "palavra": "energia",
+  "fala_em": 133.4,
+  "ok": true
+ },
+ {
+  "plano": "I4",
+  "rotulo": "calor liberado = retirado + elétrica",
+  "aparece": 133.73,
+  "some": 135.56,
+  "linha_de_chamada": false,
+  "palavra": "usada",
+  "fala_em": 133.68,
+  "ok": true
+ }
+]

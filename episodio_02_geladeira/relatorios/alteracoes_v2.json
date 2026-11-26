@@ -1,0 +1,27 @@
+{
+ "planos_alterados": {
+  "A3": "plano 3/4 traseiro quase fixo (a órbita da v1 passava rente à lateral) + calor subindo da serpentina",
+  "A4b": "calor rejeitado subindo da serpentina (contraste da abertura)",
+  "J1b": "mesmos feixes de calor de A4b (a conclusão retoma a abertura)",
+  "B2": "plano médio do congelador e da prateleira (v1: close sem leitura)",
+  "J2": "mesma câmera nova de B2 (rima)",
+  "B4": "garrafa na beira da bancada, recortada contra o interior frio; garrafa interna oculta; rótulo \"temperatura ambiente\"; porta aberta",
+  "B7": "plano mais aberto: a caixa do congelador recebendo os feixes",
+  "C1": "começa de frente (v1: a porta fechando tomava o quadro)",
+  "D4": "canal do evaporador esticado e ampliado (corte ilustrativo): mistura entra, líquido diminui até só vapor; calor entrando",
+  "D5": "começa num plano médio do interior com o calor dos alimentos chegando ao evaporador",
+  "F1": "gabinete sem corte (o interior aparecia através da serpentina)",
+  "F2": "canal do condensador esticado e ampliado: vapor quente → líquido; calor saindo (v1: arames tapavam os tubos)",
+  "G3": "pote vermelho oculto (tapava o capilar)",
+  "H1": "começa fora, no evaporador (v1: começava escuro, no vão do congelador)",
+  "H2": "rótulos dos 4 componentes afastados (v1: \"Compressor\" e \"Capilar\" sobrepostos)",
+  "I3": "3/4 alto com a parede da cozinha; laço fechado: calor entra pela porta, sai pela traseira e volta ao mesmo cômodo",
+  "I4": "mesmo enquadramento de I3; balanço com larguras proporcionais (retirado + elétrica = liberado)",
+  "C3": "pote vermelho oculto (defeito da v1: tapava metade do quadro no início do plano)"
+ },
+ "mudancas_globais": {
+  "shader_fluido": "correção de defeito da v1: líquido embaixo do tubo com limiar 2·lf − 1 (a v1 usava 1 − 2·lf, invertendo líquido e vapor nos planos macro); vapor mais escuro. Só atua onde a escala fina aparece.",
+  "exportacao": "ordem dos objetos determinística (sem efeito visual)",
+  "tempos": "palavras.json da v2 (Whisper oficial + ataque acústico): mudam os cortes de A1/A2/A3, E2/E3/E4, G3/H1"
+ }
+}

@@ -1,0 +1,32 @@
+{
+ "quadros": {
+  "r13": 4537,
+  "r13_1": 4537
+ },
+ "audio_md5": {
+  "r13": "MD5=fce2ed831aae9347b27b887825cd8df8",
+  "r13_1": "MD5=fce2ed831aae9347b27b887825cd8df8"
+ },
+ "quadros_com_aviso_retirado": 3570,
+ "quadros_que_mudaram": 3570,
+ "mudaram_sem_aviso_retirado": [],
+ "regiao_que_mudou_270x480": {
+  "x": [
+   162,
+   262
+  ],
+  "y": [
+   65,
+   105
+  ]
+ },
+ "fora_da_faixa_dos_avisos_dif_max": 17.0,
+ "dif_media_quadros_sem_aviso": 0.065,
+ "aprovado": true,
+ "fora_da_faixa": {
+  "p99_99": 5.0,
+  "pixels_acima_de_10": 7643,
+  "nota": "ruído do codificador (x264) — nenhum pixel acima de 25 fora da faixa dos avisos"
+ },
+ "criterio_faixa": "pilha de até 2 avisos: y ≤ 0,25·H (a 1ª versão do critério, 0,20·H, era mais apertada que a pilha real de 2 avisos, y = 105/480)"
+}

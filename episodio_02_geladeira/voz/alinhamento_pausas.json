@@ -1,0 +1,28 @@
+{
+ "METODO": "alinhamento por pausas (sem reconhecimento de fala): NÃO verifica as palavras",
+ "audio": "ElevenLabs_2026-11-21T21_13_42_Will_-_Deep_pvc_s60_sim75_v4.mp3",
+ "fala_inicio": 0.11,
+ "fala_fim": 149.64,
+ "pausas_detectadas": 77,
+ "fronteiras_roteiro": 67,
+ "fronteiras_casadas": 66,
+ "fins_de_frase": 37,
+ "fins_de_frase_casados": 37,
+ "fins_de_frase_sem_pausa": [],
+ "pausas_sem_fronteira": [
+  41.44,
+  46.7,
+  69.87,
+  72.12,
+  83.74,
+  108.06,
+  113.24,
+  120.95,
+  138.03,
+  144.3,
+  146.85
+ ],
+ "residuo_medio_s": 0.429,
+ "residuo_max_s": 1.277,
+ "escala_fala_vs_ep01": 0.9097
+}

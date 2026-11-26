@@ -1,0 +1,32 @@
+{
+ "C4": {
+  "trios_com_faixa": 28,
+  "px_alternando_total": 16976,
+  "px_max_quadro": 1053,
+  "trios_mais_200px": 19
+ },
+ "H2": {
+  "trios_com_faixa": 28,
+  "px_alternando_total": 19067,
+  "px_max_quadro": 831,
+  "trios_mais_200px": 28
+ },
+ "G3": {
+  "trios_com_faixa": 28,
+  "px_alternando_total": 7,
+  "px_max_quadro": 1,
+  "trios_mais_200px": 0
+ },
+ "J3": {
+  "trios_com_faixa": 28,
+  "px_alternando_total": 2,
+  "px_max_quadro": 1,
+  "trios_mais_200px": 0
+ },
+ "C3": {
+  "trios_com_faixa": 0,
+  "px_alternando_total": 0,
+  "px_max_quadro": 0,
+  "trios_mais_200px": 0
+ }
+}

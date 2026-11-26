@@ -1,0 +1,703 @@
+{
+ "nota": "medidas, não audição; a aprovação auditiva é do usuário",
+ "camadas_r12": {
+  "tom_de_comodo": {
+   "tempo_presente_pct": 100.0,
+   "lufs_mediana": -37.3,
+   "menos_voz_na_fala_lu": -22.7,
+   "celular_menos_voz_db": -33.0,
+   "energia_acima_1k_pct": 1.9
+  },
+  "compressor": {
+   "tempo_presente_pct": 99.9,
+   "lufs_mediana": -37.9,
+   "menos_voz_na_fala_lu": -22.9,
+   "celular_menos_voz_db": -34.4,
+   "energia_acima_1k_pct": 0.2
+  },
+  "musica": {
+   "tempo_presente_pct": 82.4,
+   "lufs_mediana": -35.8,
+   "menos_voz_na_fala_lu": -21.4,
+   "celular_menos_voz_db": -24.6,
+   "energia_acima_1k_pct": 1.5
+  }
+ },
+ "picos_tonais_db_acima_da_vizinhanca": {
+  "tom_de_comodo": {
+   "50": 9.7,
+   "60": 7.6,
+   "120": 25.8
+  },
+  "compressor": {
+   "50": 24.8,
+   "60": 6.4,
+   "120": 39.7
+  }
+ },
+ "narracao_piso_dbfs": {
+  "p1": -89.0,
+  "p5": -85.6,
+  "conclusao": "narração limpa: nenhuma redução de ruído aplicada à voz"
+ },
+ "musica_r12_cadeia": {
+  "nivel_antes_do_abaixamento": "voz −13,5 LU (MUSICA_REL_DB)",
+  "abaixamento_durante_a_fala_db": -8,
+  "corte_fixo": "−3 dB em 0,9–3,2 kHz",
+  "passa_altas_hz": 60,
+  "limitador_max_db": -4.03,
+  "resultado_lu_abaixo_da_voz": -21.23,
+  "faixa_termina_s": 128.9,
+  "sem_musica": "0–4,87 s e 129,6–151,2 s"
+ },
+ "por_plano": [
+  {
+   "plano": "A1",
+   "t0": 0.0,
+   "musica": [
+    -150.7,
+    -150.7
+   ],
+   "camada_continua": [
+    -36.7,
+    -150.7
+   ],
+   "efeitos_max": [
+    -22.9,
+    -22.9
+   ]
+  },
+  {
+   "plano": "A2",
+   "t0": 1.35,
+   "musica": [
+    -150.7,
+    -150.7
+   ],
+   "camada_continua": [
+    -36.9,
+    -150.7
+   ],
+   "efeitos_max": [
+    -36.0,
+    -36.0
+   ]
+  },
+  {
+   "plano": "A3",
+   "t0": 2.73,
+   "musica": [
+    -150.7,
+    -150.7
+   ],
+   "camada_continua": [
+    -36.0,
+    -50.2
+   ],
+   "efeitos_max": [
+    -29.2,
+    -29.2
+   ]
+  },
+  {
+   "plano": "A4",
+   "t0": 4.87,
+   "musica": [
+    -35.6,
+    -31.5
+   ],
+   "camada_continua": [
+    -35.8,
+    -54.0
+   ],
+   "efeitos_max": [
+    -113.1,
+    -20.0
+   ]
+  },
+  {
+   "plano": "B1",
+   "t0": 10.14,
+   "musica": [
+    -35.6,
+    -32.6
+   ],
+   "camada_continua": [
+    -36.1,
+    -150.7
+   ],
+   "efeitos_max": [
+    -150.7,
+    -150.7
+   ]
+  },
+  {
+   "plano": "B2",
+   "t0": 12.38,
+   "musica": [
+    -35.0,
+    -33.4
+   ],
+   "camada_continua": [
+    -35.9,
+    -150.7
+   ],
+   "efeitos_max": [
+    -150.7,
+    -26.3
+   ]
+  },
+  {
+   "plano": "B3",
+   "t0": 14.54,
+   "musica": [
+    -35.0,
+    -33.3
+   ],
+   "camada_continua": [
+    -36.6,
+    -150.7
+   ],
+   "efeitos_max": [
+    -150.7,
+    -23.4
+   ]
+  },
+  {
+   "plano": "B4",
+   "t0": 16.44,
+   "musica": [
+    -36.5,
+    -31.4
+   ],
+   "camada_continua": [
+    -36.4,
+    -150.7
+   ],
+   "efeitos_max": [
+    -150.7,
+    -44.9
+   ]
+  },
+  {
+   "plano": "B5",
+   "t0": 19.52,
+   "musica": [
+    -36.1,
+    -31.3
+   ],
+   "camada_continua": [
+    -35.3,
+    -150.7
+   ],
+   "efeitos_max": [
+    -25.9,
+    -26.0
+   ]
+  },
+  {
+   "plano": "B6",
+   "t0": 23.94,
+   "musica": [
+    -35.1,
+    -31.3
+   ],
+   "camada_continua": [
+    -35.3,
+    -150.7
+   ],
+   "efeitos_max": [
+    -150.7,
+    -150.7
+   ]
+  },
+  {
+   "plano": "B7",
+   "t0": 26.3,
+   "musica": [
+    -35.4,
+    -32.9
+   ],
+   "camada_continua": [
+    -36.2,
+    -150.7
+   ],
+   "efeitos_max": [
+    -150.7,
+    -150.7
+   ]
+  },
+  {
+   "plano": "C1",
+   "t0": 28.46,
+   "musica": [
+    -34.1,
+    -30.5
+   ],
+   "camada_continua": [
+    -36.0,
+    -150.7
+   ],
+   "efeitos_max": [
+    -20.5,
+    -20.5
+   ]
+  },
+  {
+   "plano": "C2",
+   "t0": 33.92,
+   "musica": [
+    -31.7,
+    -30.1
+   ],
+   "camada_continua": [
+    -34.2,
+    -150.7
+   ],
+   "efeitos_max": [
+    -150.7,
+    -19.5
+   ]
+  },
+  {
+   "plano": "C3",
+   "t0": 38.02,
+   "musica": [
+    -35.0,
+    -30.5
+   ],
+   "camada_continua": [
+    -29.5,
+    -150.7
+   ],
+   "efeitos_max": [
+    -34.0,
+    -29.9
+   ]
+  },
+  {
+   "plano": "C4",
+   "t0": 42.91,
+   "musica": [
+    -36.0,
+    -30.6
+   ],
+   "camada_continua": [
+    -34.1,
+    -150.7
+   ],
+   "efeitos_max": [
+    -63.1,
+    -28.2
+   ]
+  },
+  {
+   "plano": "D1",
+   "t0": 48.54,
+   "musica": [
+    -36.7,
+    -29.5
+   ],
+   "camada_continua": [
+    -31.6,
+    -150.7
+   ],
+   "efeitos_max": [
+    -26.5,
+    -23.0
+   ]
+  },
+  {
+   "plano": "D2",
+   "t0": 53.06,
+   "musica": [
+    -37.7,
+    -31.2
+   ],
+   "camada_continua": [
+    -31.3,
+    -150.7
+   ],
+   "efeitos_max": [
+    -42.4,
+    -43.3
+   ]
+  },
+  {
+   "plano": "D3",
+   "t0": 58.55,
+   "musica": [
+    -36.6,
+    -29.3
+   ],
+   "camada_continua": [
+    -30.3,
+    -150.7
+   ],
+   "efeitos_max": [
+    -50.1,
+    -51.0
+   ]
+  },
+  {
+   "plano": "D4",
+   "t0": 64.07,
+   "musica": [
+    -35.4,
+    -29.8
+   ],
+   "camada_continua": [
+    -33.9,
+    -150.7
+   ],
+   "efeitos_max": [
+    -53.1,
+    -52.5
+   ]
+  },
+  {
+   "plano": "D5",
+   "t0": 67.82,
+   "musica": [
+    -35.0,
+    -28.2
+   ],
+   "camada_continua": [
+    -32.0,
+    -150.7
+   ],
+   "efeitos_max": [
+    -51.5,
+    -51.9
+   ]
+  },
+  {
+   "plano": "E1",
+   "t0": 71.42,
+   "musica": [
+    -35.8,
+    -29.6
+   ],
+   "camada_continua": [
+    -29.9,
+    -150.7
+   ],
+   "efeitos_max": [
+    -67.0,
+    -19.6
+   ]
+  },
+  {
+   "plano": "E2",
+   "t0": 74.18,
+   "musica": [
+    -38.2,
+    -28.9
+   ],
+   "camada_continua": [
+    -26.2,
+    -28.6
+   ],
+   "efeitos_max": [
+    -29.0,
+    -24.8
+   ]
+  },
+  {
+   "plano": "E3",
+   "t0": 78.14,
+   "musica": [
+    -38.4,
+    -29.1
+   ],
+   "camada_continua": [
+    -21.0,
+    -24.3
+   ],
+   "efeitos_max": [
+    -47.5,
+    -23.5
+   ]
+  },
+  {
+   "plano": "E4",
+   "t0": 82.94,
+   "musica": [
+    -38.7,
+    -28.9
+   ],
+   "camada_continua": [
+    -28.2,
+    -40.3
+   ],
+   "efeitos_max": [
+    -148.2,
+    -150.7
+   ]
+  },
+  {
+   "plano": "F1",
+   "t0": 86.66,
+   "musica": [
+    -35.1,
+    -29.9
+   ],
+   "camada_continua": [
+    -33.9,
+    -150.7
+   ],
+   "efeitos_max": [
+    -24.5,
+    -21.3
+   ]
+  },
+  {
+   "plano": "F2",
+   "t0": 91.84,
+   "musica": [
+    -33.9,
+    -29.9
+   ],
+   "camada_continua": [
+    -31.0,
+    -150.7
+   ],
+   "efeitos_max": [
+    -150.7,
+    -150.7
+   ]
+  },
+  {
+   "plano": "G1",
+   "t0": 96.26,
+   "musica": [
+    -36.0,
+    -31.3
+   ],
+   "camada_continua": [
+    -26.0,
+    -150.7
+   ],
+   "efeitos_max": [
+    -150.7,
+    -150.7
+   ]
+  },
+  {
+   "plano": "G2",
+   "t0": 97.98,
+   "musica": [
+    -33.9,
+    -29.8
+   ],
+   "camada_continua": [
+    -24.3,
+    -150.7
+   ],
+   "efeitos_max": [
+    -31.7,
+    -26.5
+   ]
+  },
+  {
+   "plano": "G3",
+   "t0": 102.07,
+   "musica": [
+    -34.5,
+    -29.4
+   ],
+   "camada_continua": [
+    -35.1,
+    -150.7
+   ],
+   "efeitos_max": [
+    -39.4,
+    -31.2
+   ]
+  },
+  {
+   "plano": "H1",
+   "t0": 107.3,
+   "musica": [
+    -35.5,
+    -29.3
+   ],
+   "camada_continua": [
+    -33.1,
+    -150.7
+   ],
+   "efeitos_max": [
+    -46.4,
+    -19.5
+   ]
+  },
+  {
+   "plano": "H2",
+   "t0": 111.75,
+   "musica": [
+    -34.7,
+    -29.8
+   ],
+   "camada_continua": [
+    -35.1,
+    -150.7
+   ],
+   "efeitos_max": [
+    -150.7,
+    -150.7
+   ]
+  },
+  {
+   "plano": "I1",
+   "t0": 115.6,
+   "musica": [
+    -36.1,
+    -30.0
+   ],
+   "camada_continua": [
+    -37.6,
+    -150.7
+   ],
+   "efeitos_max": [
+    -20.1,
+    -20.1
+   ]
+  },
+  {
+   "plano": "I2",
+   "t0": 119.18,
+   "musica": [
+    -36.2,
+    -29.6
+   ],
+   "camada_continua": [
+    -37.0,
+    -50.5
+   ],
+   "efeitos_max": [
+    -21.4,
+    -21.4
+   ]
+  },
+  {
+   "plano": "I3",
+   "t0": 124.36,
+   "musica": [
+    -39.9,
+    -30.5
+   ],
+   "camada_continua": [
+    -37.5,
+    -150.7
+   ],
+   "efeitos_max": [
+    -150.7,
+    -150.7
+   ]
+  },
+  {
+   "plano": "I4",
+   "t0": 129.58,
+   "musica": [
+    -108.1,
+    -29.9
+   ],
+   "camada_continua": [
+    -37.0,
+    -150.7
+   ],
+   "efeitos_max": [
+    -150.7,
+    -150.7
+   ]
+  },
+  {
+   "plano": "J1",
+   "t0": 135.32,
+   "musica": [
+    -150.7,
+    -32.1
+   ],
+   "camada_continua": [
+    -36.3,
+    -150.7
+   ],
+   "efeitos_max": [
+    -150.7,
+    -150.7
+   ]
+  },
+  {
+   "plano": "J2",
+   "t0": 138.99,
+   "musica": [
+    -150.7,
+    -33.2
+   ],
+   "camada_continua": [
+    -35.8,
+    -150.7
+   ],
+   "efeitos_max": [
+    -150.7,
+    -150.7
+   ]
+  },
+  {
+   "plano": "J3",
+   "t0": 141.65,
+   "musica": [
+    -150.7,
+    -33.0
+   ],
+   "camada_continua": [
+    -33.8,
+    -150.7
+   ],
+   "efeitos_max": [
+    -150.7,
+    -150.7
+   ]
+  },
+  {
+   "plano": "J4",
+   "t0": 145.51,
+   "musica": [
+    -150.7,
+    -33.6
+   ],
+   "camada_continua": [
+    -36.5,
+    -65.1
+   ],
+   "efeitos_max": [
+    -150.7,
+    -150.7
+   ]
+  }
+ ],
+ "resumo_R12": {
+  "musica_menos_voz_na_fala_lu": -21.4,
+  "musica_celular_menos_voz_db": -24.6,
+  "musica_presente_na_fala_pct": 83.1,
+  "camada_continua_presente_pct": 100.0,
+  "voz_menos_resto_celular": {
+   "pior": -8.7,
+   "p5": 10.3,
+   "mediana": 23.3,
+   "janelas": 370
+  }
+ },
+ "resumo_R13": {
+  "musica_menos_voz_na_fala_lu": -16.0,
+  "musica_celular_menos_voz_db": -23.7,
+  "musica_presente_na_fala_pct": 96.6,
+  "camada_continua_presente_pct": 15.1,
+  "voz_menos_resto_celular": {
+   "pior": -4.1,
+   "p5": 10.5,
+   "mediana": 22.7,
+   "janelas": 370
+  }
+ }
+}

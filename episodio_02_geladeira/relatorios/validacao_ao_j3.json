@@ -1,0 +1,36 @@
+{
+ "J3": {
+  "quadros": 132,
+  "trios": 130,
+  "trios_com_blocos_padrao": 0,
+  "trios_com_blocos_sensivel_nos_cortes": 11,
+  "pixels_sensivel_nos_cortes": 50262,
+  "area_tampas_pct": 18.5,
+  "piores": [
+   {
+    "quadro": "q0062.jpg",
+    "blocos_sensivel": 1,
+    "pixels_sensivel": 565,
+    "blocos_padrao": 0
+   },
+   {
+    "quadro": "q0066.jpg",
+    "blocos_sensivel": 1,
+    "pixels_sensivel": 559,
+    "blocos_padrao": 0
+   },
+   {
+    "quadro": "q0068.jpg",
+    "blocos_sensivel": 1,
+    "pixels_sensivel": 552,
+    "blocos_padrao": 0
+   },
+   {
+    "quadro": "q0054.jpg",
+    "blocos_sensivel": 1,
+    "pixels_sensivel": 536,
+    "blocos_padrao": 0
+   }
+  ]
+ }
+}

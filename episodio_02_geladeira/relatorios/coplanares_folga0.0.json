@@ -1,0 +1,410 @@
+[
+ {
+  "a": "armario_baixo",
+  "b": "armario_rodape",
+  "area_mm2": 1226400.1,
+  "tipo": "encostadas",
+  "eixo": "z",
+  "plano_m": 0.1
+ },
+ {
+  "a": "armario_baixo",
+  "b": "porta_armario0",
+  "area_mm2": 305299.9,
+  "tipo": "encostadas",
+  "eixo": "y",
+  "plano_m": -0.15
+ },
+ {
+  "a": "armario_baixo",
+  "b": "porta_armario1",
+  "area_mm2": 305300.1,
+  "tipo": "encostadas",
+  "eixo": "y",
+  "plano_m": -0.15
+ },
+ {
+  "a": "armario_baixo",
+  "b": "porta_armario2",
+  "area_mm2": 305300.1,
+  "tipo": "encostadas",
+  "eixo": "y",
+  "plano_m": -0.15
+ },
+ {
+  "a": "armario_baixo",
+  "b": "porta_armario3",
+  "area_mm2": 305300.1,
+  "tipo": "encostadas",
+  "eixo": "y",
+  "plano_m": -0.15
+ },
+ {
+  "a": "armario_baixo",
+  "b": "porta_armario4",
+  "area_mm2": 305300.0,
+  "tipo": "encostadas",
+  "eixo": "y",
+  "plano_m": -0.15
+ },
+ {
+  "a": "gab_lado_d",
+  "b": "pe1",
+  "area_mm2": 343.2,
+  "tipo": "mesmo sentido",
+  "eixo": "z",
+  "plano_m": 0.0
+ },
+ {
+  "a": "gab_lado_d",
+  "b": "pe3",
+  "area_mm2": 343.2,
+  "tipo": "mesmo sentido",
+  "eixo": "z",
+  "plano_m": 0.0
+ },
+ {
+  "a": "gab_lado_d",
+  "b": "rodape_gab",
+  "area_mm2": 350.0,
+  "tipo": "mesmo sentido",
+  "eixo": "z",
+  "plano_m": 0.0
+ },
+ {
+  "a": "gab_lado_e",
+  "b": "pe0",
+  "area_mm2": 343.2,
+  "tipo": "mesmo sentido",
+  "eixo": "z",
+  "plano_m": 0.0
+ },
+ {
+  "a": "gab_lado_e",
+  "b": "pe2",
+  "area_mm2": 343.2,
+  "tipo": "mesmo sentido",
+  "eixo": "z",
+  "plano_m": 0.0
+ },
+ {
+  "a": "gab_lado_e",
+  "b": "rodape_gab",
+  "area_mm2": 350.0,
+  "tipo": "mesmo sentido",
+  "eixo": "z",
+  "plano_m": 0.0
+ },
+ {
+  "a": "forro_b",
+  "b": "forro_d",
+  "area_mm2": 1022.8,
+  "tipo": "mesmo sentido",
+  "eixo": "z",
+  "plano_m": 0.1004
+ },
+ {
+  "a": "forro_b",
+  "b": "forro_e",
+  "area_mm2": 1022.8,
+  "tipo": "mesmo sentido",
+  "eixo": "z",
+  "plano_m": 0.1004
+ },
+ {
+  "a": "forro_d",
+  "b": "forro_t",
+  "area_mm2": 1570.7,
+  "tipo": "mesmo sentido",
+  "eixo": "y",
+  "plano_m": -0.295
+ },
+ {
+  "a": "forro_e",
+  "b": "forro_t",
+  "area_mm2": 1570.7,
+  "tipo": "mesmo sentido",
+  "eixo": "y",
+  "plano_m": -0.295
+ },
+ {
+  "a": "forro_bt",
+  "b": "forro_d",
+  "area_mm2": 235.4,
+  "tipo": "mesmo sentido",
+  "eixo": "x",
+  "plano_m": 0.2546
+ },
+ {
+  "a": "forro_bt",
+  "b": "forro_f",
+  "area_mm2": 1429.6,
+  "tipo": "mesmo sentido",
+  "eixo": "x",
+  "plano_m": 0.2546
+ },
+ {
+  "a": "forro_d",
+  "b": "forro_f",
+  "area_mm2": 3593.7,
+  "tipo": "mesmo sentido",
+  "eixo": "x",
+  "plano_m": 0.2546
+ },
+ {
+  "a": "forro_f",
+  "b": "forro_t",
+  "area_mm2": 1429.5,
+  "tipo": "mesmo sentido",
+  "eixo": "x",
+  "plano_m": 0.2546
+ },
+ {
+  "a": "forro_bt",
+  "b": "forro_e",
+  "area_mm2": 235.4,
+  "tipo": "mesmo sentido",
+  "eixo": "x",
+  "plano_m": -0.2546
+ },
+ {
+  "a": "forro_e",
+  "b": "forro_f",
+  "area_mm2": 3593.7,
+  "tipo": "mesmo sentido",
+  "eixo": "x",
+  "plano_m": -0.2546
+ },
+ {
+  "a": "gab_base",
+  "b": "pe0",
+  "area_mm2": 655.2,
+  "tipo": "encostadas",
+  "eixo": "z",
+  "plano_m": 0.035
+ },
+ {
+  "a": "gab_base",
+  "b": "pe1",
+  "area_mm2": 655.2,
+  "tipo": "encostadas",
+  "eixo": "z",
+  "plano_m": 0.035
+ },
+ {
+  "a": "gab_base",
+  "b": "gab_degrau_f",
+  "area_mm2": 80.0,
+  "tipo": "mesmo sentido",
+  "eixo": "x",
+  "plano_m": 0.255
+ },
+ {
+  "a": "gab_base",
+  "b": "gab_lado_d",
+  "area_mm2": 24700.0,
+  "tipo": "encostadas",
+  "eixo": "x",
+  "plano_m": 0.255
+ },
+ {
+  "a": "gab_degrau",
+  "b": "gab_degrau_f",
+  "area_mm2": 17460.0,
+  "tipo": "mesmo sentido",
+  "eixo": "x",
+  "plano_m": 0.255
+ },
+ {
+  "a": "gab_degrau",
+  "b": "gab_lado_d",
+  "area_mm2": 8100.0,
+  "tipo": "encostadas",
+  "eixo": "x",
+  "plano_m": 0.255
+ },
+ {
+  "a": "gab_degrau_f",
+  "b": "gab_lado_d",
+  "area_mm2": 8228.0,
+  "tipo": "encostadas",
+  "eixo": "x",
+  "plano_m": 0.255
+ },
+ {
+  "a": "gab_fundo_tras",
+  "b": "gab_lado_d",
+  "area_mm2": 51975.0,
+  "tipo": "encostadas",
+  "eixo": "x",
+  "plano_m": 0.255
+ },
+ {
+  "a": "gab_lado_d",
+  "b": "gab_topo",
+  "area_mm2": 29250.0,
+  "tipo": "encostadas",
+  "eixo": "x",
+  "plano_m": 0.255
+ },
+ {
+  "a": "gab_lado_d",
+  "b": "porta_contraporta",
+  "area_mm2": 38400.0,
+  "tipo": "encostadas",
+  "eixo": "x",
+  "plano_m": 0.255
+ },
+ {
+  "a": "gab_base",
+  "b": "gab_lado_e",
+  "area_mm2": 24700.0,
+  "tipo": "encostadas",
+  "eixo": "x",
+  "plano_m": -0.255
+ },
+ {
+  "a": "gab_degrau",
+  "b": "gab_lado_e",
+  "area_mm2": 8100.0,
+  "tipo": "encostadas",
+  "eixo": "x",
+  "plano_m": -0.255
+ },
+ {
+  "a": "gab_degrau_f",
+  "b": "gab_lado_e",
+  "area_mm2": 8228.0,
+  "tipo": "encostadas",
+  "eixo": "x",
+  "plano_m": -0.255
+ },
+ {
+  "a": "gab_fundo_tras",
+  "b": "gab_lado_e",
+  "area_mm2": 51975.0,
+  "tipo": "encostadas",
+  "eixo": "x",
+  "plano_m": -0.255
+ },
+ {
+  "a": "gab_lado_e",
+  "b": "gab_topo",
+  "area_mm2": 29250.0,
+  "tipo": "encostadas",
+  "eixo": "x",
+  "plano_m": -0.255
+ },
+ {
+  "a": "gab_lado_e",
+  "b": "porta_contraporta",
+  "area_mm2": 38400.0,
+  "tipo": "encostadas",
+  "eixo": "x",
+  "plano_m": -0.255
+ },
+ {
+  "a": "gab_degrau",
+  "b": "gab_fundo_tras",
+  "area_mm2": 16320.0,
+  "tipo": "encostadas",
+  "eixo": "y",
+  "plano_m": 0.265
+ },
+ {
+  "a": "gab_fundo_tras",
+  "b": "gab_topo",
+  "area_mm2": 22950.0,
+  "tipo": "encostadas",
+  "eixo": "z",
+  "plano_m": 1.455
+ },
+ {
+  "a": "prat_borda_0.5",
+  "b": "prat_vidro_0.5",
+  "area_mm2": 120.0,
+  "tipo": "mesmo sentido",
+  "eixo": "x",
+  "plano_m": 0.25
+ },
+ {
+  "a": "prat_borda_0.84",
+  "b": "prat_vidro_0.84",
+  "area_mm2": 120.0,
+  "tipo": "mesmo sentido",
+  "eixo": "x",
+  "plano_m": 0.25
+ },
+ {
+  "a": "porta_armario0",
+  "b": "puxador_arm0",
+  "area_mm2": 1200.0,
+  "tipo": "encostadas",
+  "eixo": "y",
+  "plano_m": -0.158
+ },
+ {
+  "a": "porta_armario1",
+  "b": "puxador_arm1",
+  "area_mm2": 1200.0,
+  "tipo": "encostadas",
+  "eixo": "y",
+  "plano_m": -0.158
+ },
+ {
+  "a": "porta_armario2",
+  "b": "puxador_arm2",
+  "area_mm2": 1200.0,
+  "tipo": "encostadas",
+  "eixo": "y",
+  "plano_m": -0.158
+ },
+ {
+  "a": "porta_armario3",
+  "b": "puxador_arm3",
+  "area_mm2": 1200.0,
+  "tipo": "encostadas",
+  "eixo": "y",
+  "plano_m": -0.158
+ },
+ {
+  "a": "porta_armario4",
+  "b": "puxador_arm4",
+  "area_mm2": 1200.0,
+  "tipo": "encostadas",
+  "eixo": "y",
+  "plano_m": -0.158
+ },
+ {
+  "a": "porta_grade0.32",
+  "b": "porta_prat0.32",
+  "area_mm2": 24.6,
+  "tipo": "mesmo sentido",
+  "eixo": "x",
+  "plano_m": 0.235
+ },
+ {
+  "a": "porta_grade0.7",
+  "b": "porta_prat0.7",
+  "area_mm2": 24.4,
+  "tipo": "mesmo sentido",
+  "eixo": "x",
+  "plano_m": 0.235
+ },
+ {
+  "a": "porta_grade1.08",
+  "b": "porta_prat1.08",
+  "area_mm2": 24.6,
+  "tipo": "mesmo sentido",
+  "eixo": "x",
+  "plano_m": 0.235
+ },
+ {
+  "a": "porta_painel",
+  "b": "porta_vedacao",
+  "area_mm2": 798000.0,
+  "tipo": "encostadas",
+  "eixo": "y",
+  "plano_m": -0.341
+ }
+]

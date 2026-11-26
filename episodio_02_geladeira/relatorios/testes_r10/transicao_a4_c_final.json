@@ -1,0 +1,207 @@
+{
+ "perfil": "final",
+ "W": 1080,
+ "H": 1920,
+ "instante_corte_s": 5.7367,
+ "duracao_s": 0.3,
+ "quadros": [
+  {
+   "quadro": 164,
+   "t": 5.4667,
+   "na_transicao": false,
+   "identico_ao_corte": true
+  },
+  {
+   "quadro": 165,
+   "t": 5.5,
+   "na_transicao": false,
+   "identico_ao_corte": true
+  },
+  {
+   "quadro": 166,
+   "t": 5.5333,
+   "na_transicao": false,
+   "identico_ao_corte": true
+  },
+  {
+   "quadro": 167,
+   "t": 5.5667,
+   "na_transicao": false,
+   "identico_ao_corte": true
+  },
+  {
+   "quadro": 168,
+   "t": 5.6,
+   "na_transicao": true,
+   "igual_ao_empurrao_puro": true,
+   "faixa_mistura_px": 15,
+   "faixa_mistura_pct_largura": 1.39,
+   "emenda_x": 1074,
+   "deslocamento_desde_quadro_anterior_px": 6,
+   "rastro_px": 15,
+   "rastro_sobre_deslocamento": 0.491
+  },
+  {
+   "quadro": 169,
+   "t": 5.6333,
+   "na_transicao": true,
+   "igual_ao_empurrao_puro": true,
+   "faixa_mistura_px": 47,
+   "faixa_mistura_pct_largura": 4.35,
+   "emenda_x": 1010,
+   "deslocamento_desde_quadro_anterior_px": 64,
+   "rastro_px": 47,
+   "rastro_sobre_deslocamento": 0.497
+  },
+  {
+   "quadro": 170,
+   "t": 5.6667,
+   "na_transicao": true,
+   "igual_ao_empurrao_puro": true,
+   "faixa_mistura_px": 70,
+   "faixa_mistura_pct_largura": 6.48,
+   "emenda_x": 891,
+   "deslocamento_desde_quadro_anterior_px": 119,
+   "rastro_px": 70,
+   "rastro_sobre_deslocamento": 0.497,
+   "erro_posicao_interior_px": -60,
+   "correlacao": 0.694
+  },
+  {
+   "quadro": 171,
+   "t": 5.7,
+   "na_transicao": true,
+   "igual_ao_empurrao_puro": true,
+   "faixa_mistura_px": 84,
+   "faixa_mistura_pct_largura": 7.78,
+   "emenda_x": 735,
+   "deslocamento_desde_quadro_anterior_px": 156,
+   "rastro_px": 84,
+   "rastro_sobre_deslocamento": 0.496,
+   "erro_posicao_interior_px": 1,
+   "correlacao": 0.886
+  },
+  {
+   "quadro": 172,
+   "t": 5.7333,
+   "na_transicao": true,
+   "igual_ao_empurrao_puro": true,
+   "faixa_mistura_px": 89,
+   "faixa_mistura_pct_largura": 8.24,
+   "emenda_x": 558,
+   "deslocamento_desde_quadro_anterior_px": 177,
+   "rastro_px": 89,
+   "rastro_sobre_deslocamento": 0.495,
+   "erro_posicao_interior_px": 2,
+   "correlacao": 0.91
+  },
+  {
+   "quadro": 173,
+   "t": 5.7667,
+   "na_transicao": true,
+   "igual_ao_empurrao_puro": true,
+   "faixa_mistura_px": 86,
+   "faixa_mistura_pct_largura": 7.96,
+   "emenda_x": 381,
+   "deslocamento_desde_quadro_anterior_px": 177,
+   "rastro_px": 86,
+   "rastro_sobre_deslocamento": 0.498,
+   "erro_posicao_interior_px": 3,
+   "correlacao": 0.95
+  },
+  {
+   "quadro": 174,
+   "t": 5.8,
+   "na_transicao": true,
+   "igual_ao_empurrao_puro": true,
+   "faixa_mistura_px": 73,
+   "faixa_mistura_pct_largura": 6.76,
+   "emenda_x": 219,
+   "deslocamento_desde_quadro_anterior_px": 162,
+   "rastro_px": 73,
+   "rastro_sobre_deslocamento": 0.494,
+   "erro_posicao_interior_px": 2,
+   "correlacao": 0.968
+  },
+  {
+   "quadro": 175,
+   "t": 5.8333,
+   "na_transicao": true,
+   "igual_ao_empurrao_puro": true,
+   "faixa_mistura_px": 52,
+   "faixa_mistura_pct_largura": 4.81,
+   "emenda_x": 91,
+   "deslocamento_desde_quadro_anterior_px": 128,
+   "rastro_px": 52,
+   "rastro_sobre_deslocamento": 0.494,
+   "erro_posicao_interior_px": 1,
+   "correlacao": 0.967
+  },
+  {
+   "quadro": 176,
+   "t": 5.8667,
+   "na_transicao": true,
+   "igual_ao_empurrao_puro": true,
+   "faixa_mistura_px": 22,
+   "faixa_mistura_pct_largura": 2.04,
+   "emenda_x": 14,
+   "deslocamento_desde_quadro_anterior_px": 77,
+   "rastro_px": 22,
+   "rastro_sobre_deslocamento": 0.491,
+   "erro_posicao_interior_px": 1,
+   "correlacao": 0.996
+  },
+  {
+   "quadro": 177,
+   "t": 5.9,
+   "na_transicao": false,
+   "identico_ao_corte": true
+  },
+  {
+   "quadro": 178,
+   "t": 5.9333,
+   "na_transicao": false,
+   "identico_ao_corte": true
+  },
+  {
+   "quadro": 179,
+   "t": 5.9667,
+   "na_transicao": false,
+   "identico_ao_corte": true
+  },
+  {
+   "quadro": 180,
+   "t": 6.0,
+   "na_transicao": false,
+   "identico_ao_corte": true
+  }
+ ],
+ "continuidade_rosto_q30_a_q38": {
+  "saltos": [
+   4.78,
+   6.05,
+   7.35,
+   6.75,
+   6.34,
+   6.3,
+   6.4,
+   6.79
+  ],
+  "nota": "q≤33 = A4 aprovado; q≥34 = quadro-ponte A4_rosto_c (câmera aprovada continuada). Junção = 4º valor (q33→q34). A transição usa até q37"
+ },
+ "continuidade_interior_q27_a_q37": {
+  "saltos": [
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.79,
+   3.0,
+   4.37,
+   4.28
+  ],
+  "nota": "q≤33 = quadro-ponte (interior antes do corte); q≥34 = A4 aprovado. Junção = 7º valor (q33→q34)"
+ }
+}

@@ -1,0 +1,39 @@
+{
+ "rodada": "R13 definitivo",
+ "intactos": {
+  "som/audio_ep02_r13_r13_teste.wav": true,
+  "som/preservado_r13/audio_ep02_r13B.flac": true,
+  "som/stems/r13/efeitos_cc0_e_proprios.wav": true,
+  "som/preservado_r13/ep02_efeitos_cc0_e_proprios_r13B_x0,5.flac": true,
+  "som/stems/r13/musica.wav": true,
+  "som/stems/r13/efeitos_mixkit.wav": true,
+  "som/preservado_r12/audio_ep02_r12_musica_m5.flac": true,
+  "episodio/ep02_definitivo_r12_1080x1920.mp4 (53cb24f5…)": true,
+  "episodio/ep02_master_imagem_sem_legendas_r12_1080.mp4 (92a17870…)": true,
+  "episodio/quadros_final/E3 (R12, 160 quadros pelo manifesto)": true,
+  "episodio/cenas/E3 (R12, hash f28eb3ab…)": true
+ },
+ "tudo_intacto": true,
+ "r13": {
+  "definitivo": {
+   "arquivo": "episodio/ep02_definitivo_r13_1080x1920.mp4",
+   "sha256": "bd3a33d2690a05d14b507aadbdf7dd7052628cdafee8b0b8a6c5a053c708124c"
+  },
+  "master_sem_legendas": {
+   "arquivo": "episodio/ep02_master_imagem_sem_legendas_r13_1080.mp4",
+   "sha256": "76da28ee244275025779f9a076b19b3b32e1c675bfaa36ed6ab306d916889be3"
+  },
+  "audio": {
+   "arquivo": "som/audio_ep02_r13_r13c_final_r13_teste.wav",
+   "sha256": "5aa11c8ba6cca8c434658ba266f06a475516b19ca027c5e637e8e1a49b6a8635",
+   "flac": "som/preservado_r13c/audio_ep02_r13C_final.flac"
+  },
+  "cena_E3": {
+   "pasta": "episodio/cenas/E3_r13c_v2",
+   "hash": "d620f89ce8acbb97",
+   "reconstruir": "python3 episodio/bobina_r13c.py E3 _r13c_faces faces && python3 episodio/bloco_r13c.py E3_r13c_faces E3_r13c_v2"
+  },
+  "quadros_E3": "episodio/quadros_final_r13c2/E3 (fora do git; manifesto com SHA-256 em relatorios/testes_r13c/e3/manifesto_quadros_E3_r13c2.json; render: CENA_R13C=E3_r13c_v2 PASTA_R13C=quadros_final_r13c2 python3 episodio/render_r13c_e3.py)",
+  "montagem": "bash episodio/montar_r13.sh final ep02_definitivo_r13_1080x1920.mp4  (SEM_LEGENDAS=1 → master)"
+ }
+}

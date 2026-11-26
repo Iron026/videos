@@ -1,0 +1,23 @@
+{
+ "arquivo": "ep02_r13C_moderada_escuta_1080x1920.mp4",
+ "lufs_aac": -14.17,
+ "pico_verdadeiro_aac_dbtp": -1.78,
+ "perda_mono_db": -0.0,
+ "ultimo_0_5s_dbfs": -71.0,
+ "stems_medidos": {
+  "voz": "r13_r13c_moderada/voz.wav",
+  "resto": "r13_r13c_moderada/musica.wav,r13_r13c_moderada/efeitos_mecanismos.wav"
+ },
+ "voz_menos_resto_celular_db": {
+  "pior": -4.0,
+  "p5": 11.0,
+  "mediana": 23.5,
+  "janelas": 370
+ },
+ "metas": {
+  "lufs": -14.0,
+  "tp_max": -1.5,
+  "voz_celular_min_db": 10.0
+ },
+ "aprovado_tecnico": true
+}

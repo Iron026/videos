@@ -1,0 +1,1300 @@
+{
+ "A1": {
+  "afetado": true,
+  "cena_json_difere": [
+   "animacao"
+  ],
+  "materiais_com_parametro_diferente": [],
+  "malhas_novas": [
+   "ANIM|porta_pivo|item_caixa_bege @porta_pivo",
+   "ANIM|porta_pivo|item_ovo @porta_pivo",
+   "ANIM|porta_pivo|item_vidro_verde @porta_pivo",
+   "item_alface",
+   "item_ervilhas",
+   "item_lima",
+   "item_marmita",
+   "item_marmita_tampa"
+  ],
+  "malhas_removidas": [],
+  "malhas_mudadas": [
+   "ANIM|porta_pivo|molho_claro @porta_pivo",
+   "ANIM|porta_pivo|molho_verde @porta_pivo",
+   "ANIM|porta_pivo|plast_cinza @porta_pivo",
+   "caixa_leite",
+   "iogurte",
+   "leite_faixa",
+   "pote_baixo",
+   "suco",
+   "tampa_verde"
+  ],
+  "quadros_com_diferenca_no_quadro_ampliado": 0,
+  "quadros": 57,
+  "motivo": "cena.json: animacao"
+ },
+ "A2": {
+  "afetado": true,
+  "cena_json_difere": [
+   "animacao"
+  ],
+  "materiais_com_parametro_diferente": [],
+  "malhas_novas": [
+   "ANIM|porta_pivo|item_caixa_bege @porta_pivo",
+   "ANIM|porta_pivo|item_ovo @porta_pivo",
+   "ANIM|porta_pivo|item_vidro_verde @porta_pivo",
+   "item_alface",
+   "item_ervilhas",
+   "item_lima",
+   "item_marmita",
+   "item_marmita_tampa"
+  ],
+  "malhas_removidas": [],
+  "malhas_mudadas": [
+   "ANIM|porta_pivo|molho_claro @porta_pivo",
+   "ANIM|porta_pivo|molho_verde @porta_pivo",
+   "ANIM|porta_pivo|plast_cinza @porta_pivo",
+   "caixa_leite",
+   "iogurte",
+   "leite_faixa",
+   "pote_baixo",
+   "suco",
+   "tampa_verde"
+  ],
+  "quadros_com_diferenca_no_quadro_ampliado": 0,
+  "quadros": 57,
+  "motivo": "cena.json: animacao"
+ },
+ "A3": {
+  "afetado": true,
+  "cena_json_difere": [],
+  "materiais_com_parametro_diferente": [],
+  "malhas_novas": [
+   "ANIM|porta_pivo|item_caixa_bege @porta_pivo",
+   "ANIM|porta_pivo|item_ovo @porta_pivo",
+   "ANIM|porta_pivo|item_vidro_verde @porta_pivo",
+   "item_alface",
+   "item_ervilhas",
+   "item_lima",
+   "item_marmita",
+   "item_marmita_tampa"
+  ],
+  "malhas_removidas": [],
+  "malhas_mudadas": [
+   "ANIM|porta_pivo|molho_claro @porta_pivo",
+   "ANIM|porta_pivo|molho_verde @porta_pivo",
+   "ANIM|porta_pivo|plast_cinza @porta_pivo",
+   "caixa_leite",
+   "iogurte",
+   "leite_faixa",
+   "pote_baixo",
+   "suco",
+   "tampa_verde"
+  ],
+  "quadros_com_diferenca_no_quadro_ampliado": 80,
+  "quadros": 80,
+  "motivo": "80 quadros com geometria alterada no quadro"
+ },
+ "A4": {
+  "afetado": true,
+  "cena_json_difere": [],
+  "materiais_com_parametro_diferente": [],
+  "malhas_novas": [
+   "ANIM|porta_pivo|item_caixa_bege @porta_pivo",
+   "ANIM|porta_pivo|item_ovo @porta_pivo",
+   "ANIM|porta_pivo|item_vidro_verde @porta_pivo",
+   "item_alface",
+   "item_ervilhas",
+   "item_lima",
+   "item_marmita",
+   "item_marmita_tampa"
+  ],
+  "malhas_removidas": [],
+  "malhas_mudadas": [
+   "ANIM|porta_pivo|molho_claro @porta_pivo",
+   "ANIM|porta_pivo|molho_verde @porta_pivo",
+   "ANIM|porta_pivo|plast_cinza @porta_pivo",
+   "caixa_leite",
+   "iogurte",
+   "leite_faixa",
+   "pote_baixo",
+   "suco",
+   "tampa_verde"
+  ],
+  "quadros_com_diferenca_no_quadro_ampliado": 100,
+  "quadros": 174,
+  "motivo": "100 quadros com geometria alterada no quadro"
+ },
+ "A4b": {
+  "afetado": true,
+  "cena_json_difere": [],
+  "materiais_com_parametro_diferente": [],
+  "malhas_novas": [
+   "ANIM|porta_pivo|item_caixa_bege @porta_pivo",
+   "ANIM|porta_pivo|item_ovo @porta_pivo",
+   "ANIM|porta_pivo|item_vidro_verde @porta_pivo",
+   "item_alface",
+   "item_ervilhas",
+   "item_lima",
+   "item_marmita",
+   "item_marmita_tampa"
+  ],
+  "malhas_removidas": [],
+  "malhas_mudadas": [
+   "ANIM|porta_pivo|molho_claro @porta_pivo",
+   "ANIM|porta_pivo|molho_verde @porta_pivo",
+   "ANIM|porta_pivo|plast_cinza @porta_pivo",
+   "caixa_leite",
+   "iogurte",
+   "leite_faixa",
+   "pote_baixo",
+   "suco",
+   "tampa_verde"
+  ],
+  "quadros_com_diferenca_no_quadro_ampliado": 174,
+  "quadros": 174,
+  "motivo": "174 quadros com geometria alterada no quadro"
+ },
+ "B1": {
+  "afetado": true,
+  "cena_json_difere": [],
+  "materiais_com_parametro_diferente": [],
+  "malhas_novas": [
+   "ANIM|porta_pivo|item_caixa_bege @porta_pivo",
+   "ANIM|porta_pivo|item_ovo @porta_pivo",
+   "ANIM|porta_pivo|item_vidro_verde @porta_pivo",
+   "item_alface",
+   "item_ervilhas",
+   "item_lima",
+   "item_marmita",
+   "item_marmita_tampa"
+  ],
+  "malhas_removidas": [],
+  "malhas_mudadas": [
+   "ANIM|porta_pivo|molho_claro @porta_pivo",
+   "ANIM|porta_pivo|molho_verde @porta_pivo",
+   "ANIM|porta_pivo|plast_cinza @porta_pivo",
+   "caixa_leite",
+   "iogurte",
+   "leite_faixa",
+   "pote_baixo",
+   "suco",
+   "tampa_verde"
+  ],
+  "quadros_com_diferenca_no_quadro_ampliado": 83,
+  "quadros": 83,
+  "motivo": "83 quadros com geometria alterada no quadro"
+ },
+ "B2": {
+  "afetado": true,
+  "cena_json_difere": [],
+  "materiais_com_parametro_diferente": [],
+  "malhas_novas": [
+   "ANIM|porta_pivo|item_caixa_bege @porta_pivo",
+   "ANIM|porta_pivo|item_ovo @porta_pivo",
+   "ANIM|porta_pivo|item_vidro_verde @porta_pivo",
+   "item_alface",
+   "item_ervilhas",
+   "item_lima",
+   "item_marmita",
+   "item_marmita_tampa"
+  ],
+  "malhas_removidas": [],
+  "malhas_mudadas": [
+   "ANIM|porta_pivo|molho_claro @porta_pivo",
+   "ANIM|porta_pivo|molho_verde @porta_pivo",
+   "ANIM|porta_pivo|plast_cinza @porta_pivo",
+   "caixa_leite",
+   "iogurte",
+   "leite_faixa",
+   "pote_baixo",
+   "suco",
+   "tampa_verde"
+  ],
+  "quadros_com_diferenca_no_quadro_ampliado": 81,
+  "quadros": 81,
+  "motivo": "81 quadros com geometria alterada no quadro"
+ },
+ "B3": {
+  "afetado": true,
+  "cena_json_difere": [],
+  "materiais_com_parametro_diferente": [],
+  "malhas_novas": [
+   "ANIM|porta_pivo|item_caixa_bege @porta_pivo",
+   "ANIM|porta_pivo|item_ovo @porta_pivo",
+   "ANIM|porta_pivo|item_vidro_verde @porta_pivo",
+   "item_alface",
+   "item_ervilhas",
+   "item_lima",
+   "item_marmita",
+   "item_marmita_tampa"
+  ],
+  "malhas_removidas": [],
+  "malhas_mudadas": [
+   "ANIM|porta_pivo|molho_claro @porta_pivo",
+   "ANIM|porta_pivo|molho_verde @porta_pivo",
+   "ANIM|porta_pivo|plast_cinza @porta_pivo",
+   "caixa_leite",
+   "iogurte",
+   "leite_faixa",
+   "pote_baixo",
+   "suco",
+   "tampa_verde"
+  ],
+  "quadros_com_diferenca_no_quadro_ampliado": 73,
+  "quadros": 73,
+  "motivo": "73 quadros com geometria alterada no quadro"
+ },
+ "B4": {
+  "afetado": true,
+  "cena_json_difere": [],
+  "materiais_com_parametro_diferente": [],
+  "malhas_novas": [
+   "ANIM|porta_pivo|item_caixa_bege @porta_pivo",
+   "ANIM|porta_pivo|item_ovo @porta_pivo",
+   "ANIM|porta_pivo|item_vidro_verde @porta_pivo",
+   "item_alface",
+   "item_ervilhas",
+   "item_lima",
+   "item_marmita",
+   "item_marmita_tampa"
+  ],
+  "malhas_removidas": [],
+  "malhas_mudadas": [
+   "ANIM|porta_pivo|molho_claro @porta_pivo",
+   "ANIM|porta_pivo|molho_verde @porta_pivo",
+   "ANIM|porta_pivo|plast_cinza @porta_pivo",
+   "caixa_leite",
+   "iogurte",
+   "leite_faixa",
+   "pote_baixo",
+   "suco",
+   "tampa_verde"
+  ],
+  "quadros_com_diferenca_no_quadro_ampliado": 108,
+  "quadros": 108,
+  "motivo": "108 quadros com geometria alterada no quadro"
+ },
+ "B5": {
+  "afetado": true,
+  "cena_json_difere": [],
+  "materiais_com_parametro_diferente": [],
+  "malhas_novas": [
+   "ANIM|porta_pivo|item_caixa_bege @porta_pivo",
+   "ANIM|porta_pivo|item_ovo @porta_pivo",
+   "ANIM|porta_pivo|item_vidro_verde @porta_pivo",
+   "item_alface",
+   "item_ervilhas",
+   "item_lima",
+   "item_marmita",
+   "item_marmita_tampa"
+  ],
+  "malhas_removidas": [],
+  "malhas_mudadas": [
+   "ANIM|porta_pivo|molho_claro @porta_pivo",
+   "ANIM|porta_pivo|molho_verde @porta_pivo",
+   "ANIM|porta_pivo|plast_cinza @porta_pivo",
+   "caixa_leite",
+   "iogurte",
+   "leite_faixa",
+   "pote_baixo",
+   "suco",
+   "tampa_verde"
+  ],
+  "quadros_com_diferenca_no_quadro_ampliado": 149,
+  "quadros": 149,
+  "motivo": "149 quadros com geometria alterada no quadro"
+ },
+ "B6": {
+  "afetado": true,
+  "cena_json_difere": [],
+  "materiais_com_parametro_diferente": [],
+  "malhas_novas": [
+   "ANIM|porta_pivo|item_caixa_bege @porta_pivo",
+   "ANIM|porta_pivo|item_ovo @porta_pivo",
+   "ANIM|porta_pivo|item_vidro_verde @porta_pivo",
+   "item_alface",
+   "item_ervilhas",
+   "item_lima",
+   "item_marmita",
+   "item_marmita_tampa"
+  ],
+  "malhas_removidas": [],
+  "malhas_mudadas": [
+   "ANIM|porta_pivo|molho_claro @porta_pivo",
+   "ANIM|porta_pivo|molho_verde @porta_pivo",
+   "ANIM|porta_pivo|plast_cinza @porta_pivo",
+   "caixa_leite",
+   "iogurte",
+   "leite_faixa",
+   "pote_baixo",
+   "suco",
+   "tampa_verde"
+  ],
+  "quadros_com_diferenca_no_quadro_ampliado": 87,
+  "quadros": 87,
+  "motivo": "87 quadros com geometria alterada no quadro"
+ },
+ "B7": {
+  "afetado": true,
+  "cena_json_difere": [],
+  "materiais_com_parametro_diferente": [],
+  "malhas_novas": [
+   "ANIM|porta_pivo|item_caixa_bege @porta_pivo",
+   "ANIM|porta_pivo|item_ovo @porta_pivo",
+   "ANIM|porta_pivo|item_vidro_verde @porta_pivo",
+   "item_alface",
+   "item_ervilhas",
+   "item_lima",
+   "item_marmita",
+   "item_marmita_tampa"
+  ],
+  "malhas_removidas": [],
+  "malhas_mudadas": [
+   "ANIM|porta_pivo|molho_claro @porta_pivo",
+   "ANIM|porta_pivo|molho_verde @porta_pivo",
+   "ANIM|porta_pivo|plast_cinza @porta_pivo",
+   "caixa_leite",
+   "iogurte",
+   "leite_faixa",
+   "pote_baixo",
+   "suco",
+   "tampa_verde"
+  ],
+  "quadros_com_diferenca_no_quadro_ampliado": 81,
+  "quadros": 81,
+  "motivo": "81 quadros com geometria alterada no quadro"
+ },
+ "C1": {
+  "afetado": true,
+  "cena_json_difere": [],
+  "materiais_com_parametro_diferente": [],
+  "malhas_novas": [
+   "ANIM|porta_pivo|item_caixa_bege @porta_pivo",
+   "ANIM|porta_pivo|item_ovo @porta_pivo",
+   "ANIM|porta_pivo|item_vidro_verde @porta_pivo",
+   "item_alface",
+   "item_ervilhas",
+   "item_lima",
+   "item_marmita",
+   "item_marmita_tampa"
+  ],
+  "malhas_removidas": [],
+  "malhas_mudadas": [
+   "ANIM|porta_pivo|molho_claro @porta_pivo",
+   "ANIM|porta_pivo|molho_verde @porta_pivo",
+   "ANIM|porta_pivo|plast_cinza @porta_pivo",
+   "caixa_leite",
+   "iogurte",
+   "leite_faixa",
+   "pote_baixo",
+   "suco",
+   "tampa_verde"
+  ],
+  "quadros_com_diferenca_no_quadro_ampliado": 180,
+  "quadros": 180,
+  "motivo": "180 quadros com geometria alterada no quadro"
+ },
+ "C2": {
+  "afetado": true,
+  "cena_json_difere": [],
+  "materiais_com_parametro_diferente": [],
+  "malhas_novas": [
+   "ANIM|porta_pivo|item_caixa_bege @porta_pivo",
+   "ANIM|porta_pivo|item_ovo @porta_pivo",
+   "ANIM|porta_pivo|item_vidro_verde @porta_pivo",
+   "item_alface",
+   "item_ervilhas",
+   "item_lima",
+   "item_marmita",
+   "item_marmita_tampa"
+  ],
+  "malhas_removidas": [],
+  "malhas_mudadas": [
+   "ANIM|porta_pivo|molho_claro @porta_pivo",
+   "ANIM|porta_pivo|molho_verde @porta_pivo",
+   "ANIM|porta_pivo|plast_cinza @porta_pivo",
+   "caixa_leite",
+   "iogurte",
+   "leite_faixa",
+   "pote_baixo",
+   "suco",
+   "tampa_verde"
+  ],
+  "quadros_com_diferenca_no_quadro_ampliado": 139,
+  "quadros": 139,
+  "motivo": "139 quadros com geometria alterada no quadro"
+ },
+ "C2_obt": {
+  "afetado": true,
+  "cena_json_difere": [],
+  "materiais_com_parametro_diferente": [],
+  "malhas_novas": [
+   "ANIM|porta_pivo|item_caixa_bege @porta_pivo",
+   "ANIM|porta_pivo|item_ovo @porta_pivo",
+   "ANIM|porta_pivo|item_vidro_verde @porta_pivo",
+   "item_alface",
+   "item_ervilhas",
+   "item_lima",
+   "item_marmita",
+   "item_marmita_tampa"
+  ],
+  "malhas_removidas": [],
+  "malhas_mudadas": [
+   "ANIM|porta_pivo|molho_claro @porta_pivo",
+   "ANIM|porta_pivo|molho_verde @porta_pivo",
+   "ANIM|porta_pivo|plast_cinza @porta_pivo",
+   "caixa_leite",
+   "iogurte",
+   "leite_faixa",
+   "pote_baixo",
+   "suco",
+   "tampa_verde"
+  ],
+  "quadros_com_diferenca_no_quadro_ampliado": 695,
+  "quadros": 695,
+  "motivo": "695 quadros com geometria alterada no quadro"
+ },
+ "C3": {
+  "afetado": true,
+  "cena_json_difere": [],
+  "materiais_com_parametro_diferente": [],
+  "malhas_novas": [
+   "ANIM|porta_pivo|item_caixa_bege @porta_pivo",
+   "ANIM|porta_pivo|item_ovo @porta_pivo",
+   "ANIM|porta_pivo|item_vidro_verde @porta_pivo",
+   "item_alface",
+   "item_ervilhas",
+   "item_lima",
+   "item_marmita",
+   "item_marmita_tampa"
+  ],
+  "malhas_removidas": [
+   "caixa_leite",
+   "leite_faixa"
+  ],
+  "malhas_mudadas": [
+   "ANIM|porta_pivo|molho_claro @porta_pivo",
+   "ANIM|porta_pivo|molho_verde @porta_pivo",
+   "ANIM|porta_pivo|plast_cinza @porta_pivo",
+   "iogurte",
+   "pote_baixo",
+   "suco",
+   "tampa_verde"
+  ],
+  "quadros_com_diferenca_no_quadro_ampliado": 91,
+  "quadros": 163,
+  "motivo": "91 quadros com geometria alterada no quadro"
+ },
+ "C4": {
+  "afetado": true,
+  "cena_json_difere": [
+   "animacao"
+  ],
+  "materiais_com_parametro_diferente": [],
+  "malhas_novas": [
+   "ANIM|porta_pivo|item_caixa_bege @porta_pivo",
+   "ANIM|porta_pivo|item_ovo @porta_pivo",
+   "ANIM|porta_pivo|item_vidro_verde @porta_pivo",
+   "item_alface",
+   "item_ervilhas",
+   "item_lima",
+   "item_marmita",
+   "item_marmita_tampa"
+  ],
+  "malhas_removidas": [],
+  "malhas_mudadas": [
+   "ANIM|porta_pivo|molho_claro @porta_pivo",
+   "ANIM|porta_pivo|molho_verde @porta_pivo",
+   "ANIM|porta_pivo|plast_cinza @porta_pivo",
+   "caixa_leite",
+   "iogurte",
+   "leite_faixa",
+   "pote_baixo",
+   "suco",
+   "tampa_verde"
+  ],
+  "quadros_com_diferenca_no_quadro_ampliado": 0,
+  "quadros": 185,
+  "motivo": "cena.json: animacao"
+ },
+ "D1": {
+  "afetado": true,
+  "cena_json_difere": [],
+  "materiais_com_parametro_diferente": [],
+  "malhas_novas": [
+   "ANIM|porta_pivo|item_caixa_bege @porta_pivo",
+   "ANIM|porta_pivo|item_ovo @porta_pivo",
+   "ANIM|porta_pivo|item_vidro_verde @porta_pivo",
+   "item_alface",
+   "item_ervilhas",
+   "item_lima",
+   "item_marmita",
+   "item_marmita_tampa"
+  ],
+  "malhas_removidas": [],
+  "malhas_mudadas": [
+   "ANIM|porta_pivo|molho_claro @porta_pivo",
+   "ANIM|porta_pivo|molho_verde @porta_pivo",
+   "ANIM|porta_pivo|plast_cinza @porta_pivo",
+   "caixa_leite",
+   "iogurte",
+   "leite_faixa",
+   "pote_baixo",
+   "suco",
+   "tampa_verde"
+  ],
+  "quadros_com_diferenca_no_quadro_ampliado": 152,
+  "quadros": 152,
+  "motivo": "152 quadros com geometria alterada no quadro"
+ },
+ "D2": {
+  "afetado": false,
+  "cena_json_difere": [],
+  "materiais_com_parametro_diferente": [],
+  "malhas_novas": [
+   "ANIM|porta_pivo|item_caixa_bege @porta_pivo",
+   "ANIM|porta_pivo|item_ovo @porta_pivo",
+   "ANIM|porta_pivo|item_vidro_verde @porta_pivo",
+   "item_alface",
+   "item_ervilhas",
+   "item_lima",
+   "item_marmita",
+   "item_marmita_tampa"
+  ],
+  "malhas_removidas": [],
+  "malhas_mudadas": [
+   "ANIM|porta_pivo|molho_claro @porta_pivo",
+   "ANIM|porta_pivo|molho_verde @porta_pivo",
+   "ANIM|porta_pivo|plast_cinza @porta_pivo",
+   "caixa_leite",
+   "iogurte",
+   "leite_faixa",
+   "pote_baixo",
+   "suco",
+   "tampa_verde"
+  ],
+  "quadros_com_diferenca_no_quadro_ampliado": 0,
+  "quadros": 181,
+  "motivo": "nenhuma diferença visível (reaproveitar com prova)"
+ },
+ "D3": {
+  "afetado": true,
+  "cena_json_difere": [],
+  "materiais_com_parametro_diferente": [],
+  "malhas_novas": [
+   "ANIM|porta_pivo|item_caixa_bege @porta_pivo",
+   "ANIM|porta_pivo|item_ovo @porta_pivo",
+   "ANIM|porta_pivo|item_vidro_verde @porta_pivo",
+   "item_alface",
+   "item_ervilhas",
+   "item_lima",
+   "item_marmita",
+   "item_marmita_tampa"
+  ],
+  "malhas_removidas": [],
+  "malhas_mudadas": [
+   "ANIM|porta_pivo|molho_claro @porta_pivo",
+   "ANIM|porta_pivo|molho_verde @porta_pivo",
+   "ANIM|porta_pivo|plast_cinza @porta_pivo",
+   "caixa_leite",
+   "calor_D3_1",
+   "iogurte",
+   "leite_faixa",
+   "pote_baixo",
+   "suco",
+   "tampa_verde"
+  ],
+  "quadros_com_diferenca_no_quadro_ampliado": 182,
+  "quadros": 182,
+  "motivo": "182 quadros com geometria alterada no quadro"
+ },
+ "D4": {
+  "afetado": false,
+  "cena_json_difere": [],
+  "materiais_com_parametro_diferente": [],
+  "malhas_novas": [
+   "ANIM|porta_pivo|item_caixa_bege @porta_pivo",
+   "ANIM|porta_pivo|item_ovo @porta_pivo",
+   "ANIM|porta_pivo|item_vidro_verde @porta_pivo",
+   "item_alface",
+   "item_ervilhas",
+   "item_lima",
+   "item_marmita",
+   "item_marmita_tampa"
+  ],
+  "malhas_removidas": [],
+  "malhas_mudadas": [
+   "ANIM|porta_pivo|molho_claro @porta_pivo",
+   "ANIM|porta_pivo|molho_verde @porta_pivo",
+   "ANIM|porta_pivo|plast_cinza @porta_pivo",
+   "caixa_leite",
+   "iogurte",
+   "leite_faixa",
+   "pote_baixo",
+   "suco",
+   "tampa_verde"
+  ],
+  "quadros_com_diferenca_no_quadro_ampliado": 0,
+  "quadros": 129,
+  "motivo": "nenhuma diferença visível (reaproveitar com prova)"
+ },
+ "D5": {
+  "afetado": true,
+  "cena_json_difere": [],
+  "materiais_com_parametro_diferente": [],
+  "malhas_novas": [
+   "ANIM|porta_pivo|item_caixa_bege @porta_pivo",
+   "ANIM|porta_pivo|item_ovo @porta_pivo",
+   "ANIM|porta_pivo|item_vidro_verde @porta_pivo",
+   "item_alface",
+   "item_ervilhas",
+   "item_lima",
+   "item_marmita",
+   "item_marmita_tampa"
+  ],
+  "malhas_removidas": [],
+  "malhas_mudadas": [
+   "ANIM|porta_pivo|molho_claro @porta_pivo",
+   "ANIM|porta_pivo|molho_verde @porta_pivo",
+   "ANIM|porta_pivo|plast_cinza @porta_pivo",
+   "caixa_leite",
+   "calor_D5_1",
+   "iogurte",
+   "leite_faixa",
+   "pote_baixo",
+   "suco",
+   "tampa_verde"
+  ],
+  "quadros_com_diferenca_no_quadro_ampliado": 124,
+  "quadros": 124,
+  "motivo": "124 quadros com geometria alterada no quadro"
+ },
+ "E1": {
+  "afetado": true,
+  "cena_json_difere": [],
+  "materiais_com_parametro_diferente": [],
+  "malhas_novas": [
+   "ANIM|porta_pivo|item_caixa_bege @porta_pivo",
+   "ANIM|porta_pivo|item_ovo @porta_pivo",
+   "ANIM|porta_pivo|item_vidro_verde @porta_pivo",
+   "item_alface",
+   "item_ervilhas",
+   "item_lima",
+   "item_marmita",
+   "item_marmita_tampa"
+  ],
+  "malhas_removidas": [],
+  "malhas_mudadas": [
+   "ANIM|porta_pivo|molho_claro @porta_pivo",
+   "ANIM|porta_pivo|molho_verde @porta_pivo",
+   "ANIM|porta_pivo|plast_cinza @porta_pivo",
+   "caixa_leite",
+   "iogurte",
+   "leite_faixa",
+   "pote_baixo",
+   "suco",
+   "tampa_verde"
+  ],
+  "quadros_com_diferenca_no_quadro_ampliado": 16,
+  "quadros": 99,
+  "motivo": "16 quadros com geometria alterada no quadro"
+ },
+ "E2": {
+  "afetado": true,
+  "cena_json_difere": [],
+  "materiais_com_parametro_diferente": [],
+  "malhas_novas": [
+   "ANIM|porta_pivo|item_caixa_bege @porta_pivo",
+   "ANIM|porta_pivo|item_ovo @porta_pivo",
+   "ANIM|porta_pivo|item_vidro_verde @porta_pivo",
+   "item_alface",
+   "item_ervilhas",
+   "item_lima",
+   "item_marmita",
+   "item_marmita_tampa"
+  ],
+  "malhas_removidas": [],
+  "malhas_mudadas": [
+   "ANIM|porta_pivo|molho_claro @porta_pivo",
+   "ANIM|porta_pivo|molho_verde @porta_pivo",
+   "ANIM|porta_pivo|plast_cinza @porta_pivo",
+   "caixa_leite",
+   "iogurte",
+   "leite_faixa",
+   "pote_baixo",
+   "suco",
+   "tampa_verde"
+  ],
+  "quadros_com_diferenca_no_quadro_ampliado": 135,
+  "quadros": 135,
+  "motivo": "135 quadros com geometria alterada no quadro"
+ },
+ "E3": {
+  "afetado": true,
+  "cena_json_difere": [],
+  "materiais_com_parametro_diferente": [],
+  "malhas_novas": [
+   "ANIM|porta_pivo|item_caixa_bege @porta_pivo",
+   "ANIM|porta_pivo|item_ovo @porta_pivo",
+   "ANIM|porta_pivo|item_vidro_verde @porta_pivo",
+   "item_alface",
+   "item_ervilhas",
+   "item_lima",
+   "item_marmita",
+   "item_marmita_tampa"
+  ],
+  "malhas_removidas": [],
+  "malhas_mudadas": [
+   "ANIM|porta_pivo|molho_claro @porta_pivo",
+   "ANIM|porta_pivo|molho_verde @porta_pivo",
+   "ANIM|porta_pivo|plast_cinza @porta_pivo",
+   "caixa_leite",
+   "iogurte",
+   "leite_faixa",
+   "pote_baixo",
+   "suco",
+   "tampa_verde"
+  ],
+  "quadros_com_diferenca_no_quadro_ampliado": 160,
+  "quadros": 160,
+  "motivo": "160 quadros com geometria alterada no quadro"
+ },
+ "E4": {
+  "afetado": true,
+  "cena_json_difere": [],
+  "materiais_com_parametro_diferente": [],
+  "malhas_novas": [
+   "ANIM|porta_pivo|item_caixa_bege @porta_pivo",
+   "ANIM|porta_pivo|item_ovo @porta_pivo",
+   "ANIM|porta_pivo|item_vidro_verde @porta_pivo",
+   "item_alface",
+   "item_ervilhas",
+   "item_lima",
+   "item_marmita",
+   "item_marmita_tampa"
+  ],
+  "malhas_removidas": [],
+  "malhas_mudadas": [
+   "ANIM|porta_pivo|molho_claro @porta_pivo",
+   "ANIM|porta_pivo|molho_verde @porta_pivo",
+   "ANIM|porta_pivo|plast_cinza @porta_pivo",
+   "caixa_leite",
+   "iogurte",
+   "leite_faixa",
+   "pote_baixo",
+   "suco",
+   "tampa_verde"
+  ],
+  "quadros_com_diferenca_no_quadro_ampliado": 128,
+  "quadros": 128,
+  "motivo": "128 quadros com geometria alterada no quadro"
+ },
+ "F1": {
+  "afetado": true,
+  "cena_json_difere": [],
+  "materiais_com_parametro_diferente": [],
+  "malhas_novas": [
+   "ANIM|porta_pivo|item_caixa_bege @porta_pivo",
+   "ANIM|porta_pivo|item_ovo @porta_pivo",
+   "ANIM|porta_pivo|item_vidro_verde @porta_pivo",
+   "item_alface",
+   "item_ervilhas",
+   "item_lima",
+   "item_marmita",
+   "item_marmita_tampa"
+  ],
+  "malhas_removidas": [],
+  "malhas_mudadas": [
+   "ANIM|porta_pivo|molho_claro @porta_pivo",
+   "ANIM|porta_pivo|molho_verde @porta_pivo",
+   "ANIM|porta_pivo|plast_cinza @porta_pivo",
+   "caixa_leite",
+   "iogurte",
+   "leite_faixa",
+   "pote_baixo",
+   "suco",
+   "tampa_verde"
+  ],
+  "quadros_com_diferenca_no_quadro_ampliado": 171,
+  "quadros": 171,
+  "motivo": "171 quadros com geometria alterada no quadro"
+ },
+ "F2": {
+  "afetado": false,
+  "cena_json_difere": [],
+  "materiais_com_parametro_diferente": [],
+  "malhas_novas": [
+   "ANIM|porta_pivo|item_caixa_bege @porta_pivo",
+   "ANIM|porta_pivo|item_ovo @porta_pivo",
+   "ANIM|porta_pivo|item_vidro_verde @porta_pivo",
+   "item_alface",
+   "item_ervilhas",
+   "item_lima",
+   "item_marmita",
+   "item_marmita_tampa"
+  ],
+  "malhas_removidas": [],
+  "malhas_mudadas": [
+   "ANIM|porta_pivo|molho_claro @porta_pivo",
+   "ANIM|porta_pivo|molho_verde @porta_pivo",
+   "ANIM|porta_pivo|plast_cinza @porta_pivo",
+   "caixa_leite",
+   "iogurte",
+   "leite_faixa",
+   "pote_baixo",
+   "suco",
+   "tampa_verde"
+  ],
+  "quadros_com_diferenca_no_quadro_ampliado": 0,
+  "quadros": 149,
+  "motivo": "nenhuma diferença visível (reaproveitar com prova)"
+ },
+ "G1": {
+  "afetado": true,
+  "cena_json_difere": [],
+  "materiais_com_parametro_diferente": [],
+  "malhas_novas": [
+   "ANIM|porta_pivo|item_caixa_bege @porta_pivo",
+   "ANIM|porta_pivo|item_ovo @porta_pivo",
+   "ANIM|porta_pivo|item_vidro_verde @porta_pivo",
+   "item_alface",
+   "item_ervilhas",
+   "item_lima",
+   "item_marmita",
+   "item_marmita_tampa"
+  ],
+  "malhas_removidas": [],
+  "malhas_mudadas": [
+   "ANIM|porta_pivo|molho_claro @porta_pivo",
+   "ANIM|porta_pivo|molho_verde @porta_pivo",
+   "ANIM|porta_pivo|plast_cinza @porta_pivo",
+   "caixa_leite",
+   "iogurte",
+   "leite_faixa",
+   "pote_baixo",
+   "suco",
+   "tampa_verde"
+  ],
+  "quadros_com_diferenca_no_quadro_ampliado": 68,
+  "quadros": 68,
+  "motivo": "68 quadros com geometria alterada no quadro"
+ },
+ "G2": {
+  "afetado": true,
+  "cena_json_difere": [],
+  "materiais_com_parametro_diferente": [],
+  "malhas_novas": [
+   "ANIM|porta_pivo|item_caixa_bege @porta_pivo",
+   "ANIM|porta_pivo|item_ovo @porta_pivo",
+   "ANIM|porta_pivo|item_vidro_verde @porta_pivo",
+   "item_alface",
+   "item_ervilhas",
+   "item_lima",
+   "item_marmita",
+   "item_marmita_tampa"
+  ],
+  "malhas_removidas": [],
+  "malhas_mudadas": [
+   "ANIM|porta_pivo|molho_claro @porta_pivo",
+   "ANIM|porta_pivo|molho_verde @porta_pivo",
+   "ANIM|porta_pivo|plast_cinza @porta_pivo",
+   "caixa_leite",
+   "iogurte",
+   "leite_faixa",
+   "pote_baixo",
+   "suco",
+   "tampa_verde"
+  ],
+  "quadros_com_diferenca_no_quadro_ampliado": 139,
+  "quadros": 139,
+  "motivo": "139 quadros com geometria alterada no quadro"
+ },
+ "G3": {
+  "afetado": true,
+  "cena_json_difere": [],
+  "materiais_com_parametro_diferente": [],
+  "malhas_novas": [
+   "ANIM|porta_pivo|item_caixa_bege @porta_pivo",
+   "ANIM|porta_pivo|item_ovo @porta_pivo",
+   "ANIM|porta_pivo|item_vidro_verde @porta_pivo",
+   "item_alface",
+   "item_ervilhas",
+   "item_lima",
+   "item_marmita",
+   "item_marmita_tampa"
+  ],
+  "malhas_removidas": [],
+  "malhas_mudadas": [
+   "ANIM|porta_pivo|molho_claro @porta_pivo",
+   "ANIM|porta_pivo|molho_verde @porta_pivo",
+   "ANIM|porta_pivo|plast_cinza @porta_pivo",
+   "caixa_leite",
+   "iogurte",
+   "leite_faixa",
+   "pote_baixo",
+   "suco",
+   "tampa_verde"
+  ],
+  "quadros_com_diferenca_no_quadro_ampliado": 173,
+  "quadros": 173,
+  "motivo": "173 quadros com geometria alterada no quadro"
+ },
+ "G3z": {
+  "afetado": false,
+  "cena_json_difere": [],
+  "materiais_com_parametro_diferente": [],
+  "malhas_novas": [
+   "ANIM|porta_pivo|item_caixa_bege @porta_pivo",
+   "ANIM|porta_pivo|item_ovo @porta_pivo",
+   "ANIM|porta_pivo|item_vidro_verde @porta_pivo",
+   "item_alface",
+   "item_ervilhas",
+   "item_lima",
+   "item_marmita",
+   "item_marmita_tampa"
+  ],
+  "malhas_removidas": [],
+  "malhas_mudadas": [
+   "ANIM|porta_pivo|molho_claro @porta_pivo",
+   "ANIM|porta_pivo|molho_verde @porta_pivo",
+   "ANIM|porta_pivo|plast_cinza @porta_pivo",
+   "caixa_leite",
+   "iogurte",
+   "leite_faixa",
+   "pote_baixo",
+   "suco",
+   "tampa_verde"
+  ],
+  "quadros_com_diferenca_no_quadro_ampliado": 0,
+  "quadros": 173,
+  "motivo": "nenhuma diferença visível (reaproveitar com prova)"
+ },
+ "H1": {
+  "afetado": true,
+  "cena_json_difere": [],
+  "materiais_com_parametro_diferente": [],
+  "malhas_novas": [
+   "ANIM|porta_pivo|item_caixa_bege @porta_pivo",
+   "ANIM|porta_pivo|item_ovo @porta_pivo",
+   "ANIM|porta_pivo|item_vidro_verde @porta_pivo",
+   "item_alface",
+   "item_ervilhas",
+   "item_lima",
+   "item_marmita",
+   "item_marmita_tampa"
+  ],
+  "malhas_removidas": [],
+  "malhas_mudadas": [
+   "ANIM|porta_pivo|molho_claro @porta_pivo",
+   "ANIM|porta_pivo|molho_verde @porta_pivo",
+   "ANIM|porta_pivo|plast_cinza @porta_pivo",
+   "caixa_leite",
+   "iogurte",
+   "leite_faixa",
+   "pote_baixo",
+   "suco",
+   "tampa_verde"
+  ],
+  "quadros_com_diferenca_no_quadro_ampliado": 150,
+  "quadros": 150,
+  "motivo": "150 quadros com geometria alterada no quadro"
+ },
+ "H2": {
+  "afetado": true,
+  "cena_json_difere": [],
+  "materiais_com_parametro_diferente": [],
+  "malhas_novas": [
+   "ANIM|porta_pivo|item_caixa_bege @porta_pivo",
+   "ANIM|porta_pivo|item_ovo @porta_pivo",
+   "ANIM|porta_pivo|item_vidro_verde @porta_pivo",
+   "item_alface",
+   "item_ervilhas",
+   "item_lima",
+   "item_marmita",
+   "item_marmita_tampa"
+  ],
+  "malhas_removidas": [],
+  "malhas_mudadas": [
+   "ANIM|porta_pivo|molho_claro @porta_pivo",
+   "ANIM|porta_pivo|molho_verde @porta_pivo",
+   "ANIM|porta_pivo|plast_cinza @porta_pivo",
+   "caixa_leite",
+   "calor_H2_in1",
+   "iogurte",
+   "leite_faixa",
+   "pote_baixo",
+   "suco",
+   "tampa_verde"
+  ],
+  "quadros_com_diferenca_no_quadro_ampliado": 131,
+  "quadros": 131,
+  "motivo": "131 quadros com geometria alterada no quadro"
+ },
+ "I1": {
+  "afetado": true,
+  "cena_json_difere": [
+   "animacao"
+  ],
+  "materiais_com_parametro_diferente": [],
+  "malhas_novas": [
+   "ANIM|porta_pivo|item_caixa_bege @porta_pivo",
+   "ANIM|porta_pivo|item_ovo @porta_pivo",
+   "ANIM|porta_pivo|item_vidro_verde @porta_pivo",
+   "item_alface",
+   "item_ervilhas",
+   "item_lima",
+   "item_marmita",
+   "item_marmita_tampa"
+  ],
+  "malhas_removidas": [],
+  "malhas_mudadas": [
+   "ANIM|porta_pivo|molho_claro @porta_pivo",
+   "ANIM|porta_pivo|molho_verde @porta_pivo",
+   "ANIM|porta_pivo|plast_cinza @porta_pivo",
+   "iogurte",
+   "pote_baixo",
+   "suco",
+   "tampa_verde"
+  ],
+  "quadros_com_diferenca_no_quadro_ampliado": 0,
+  "quadros": 123,
+  "motivo": "cena.json: animacao"
+ },
+ "I2": {
+  "afetado": true,
+  "cena_json_difere": [],
+  "materiais_com_parametro_diferente": [],
+  "malhas_novas": [
+   "ANIM|porta_pivo|item_caixa_bege @porta_pivo",
+   "ANIM|porta_pivo|item_ovo @porta_pivo",
+   "ANIM|porta_pivo|item_vidro_verde @porta_pivo",
+   "item_alface",
+   "item_ervilhas",
+   "item_lima",
+   "item_marmita",
+   "item_marmita_tampa"
+  ],
+  "malhas_removidas": [],
+  "malhas_mudadas": [
+   "ANIM|porta_pivo|molho_claro @porta_pivo",
+   "ANIM|porta_pivo|molho_verde @porta_pivo",
+   "ANIM|porta_pivo|plast_cinza @porta_pivo",
+   "iogurte",
+   "pote_baixo",
+   "suco",
+   "tampa_verde"
+  ],
+  "quadros_com_diferenca_no_quadro_ampliado": 171,
+  "quadros": 171,
+  "motivo": "171 quadros com geometria alterada no quadro"
+ },
+ "I3": {
+  "afetado": true,
+  "cena_json_difere": [],
+  "materiais_com_parametro_diferente": [],
+  "malhas_novas": [
+   "ANIM|porta_pivo|item_caixa_bege @porta_pivo",
+   "ANIM|porta_pivo|item_ovo @porta_pivo",
+   "ANIM|porta_pivo|item_vidro_verde @porta_pivo",
+   "item_alface",
+   "item_ervilhas",
+   "item_lima",
+   "item_marmita",
+   "item_marmita_tampa"
+  ],
+  "malhas_removidas": [],
+  "malhas_mudadas": [
+   "ANIM|porta_pivo|molho_claro @porta_pivo",
+   "ANIM|porta_pivo|molho_verde @porta_pivo",
+   "ANIM|porta_pivo|plast_cinza @porta_pivo",
+   "iogurte",
+   "pote_baixo",
+   "suco",
+   "tampa_verde"
+  ],
+  "quadros_com_diferenca_no_quadro_ampliado": 173,
+  "quadros": 173,
+  "motivo": "173 quadros com geometria alterada no quadro"
+ },
+ "I4": {
+  "afetado": true,
+  "cena_json_difere": [],
+  "materiais_com_parametro_diferente": [],
+  "malhas_novas": [
+   "ANIM|porta_pivo|item_caixa_bege @porta_pivo",
+   "ANIM|porta_pivo|item_ovo @porta_pivo",
+   "ANIM|porta_pivo|item_vidro_verde @porta_pivo",
+   "item_alface",
+   "item_ervilhas",
+   "item_lima",
+   "item_marmita",
+   "item_marmita_tampa"
+  ],
+  "malhas_removidas": [],
+  "malhas_mudadas": [
+   "ANIM|porta_pivo|molho_claro @porta_pivo",
+   "ANIM|porta_pivo|molho_verde @porta_pivo",
+   "ANIM|porta_pivo|plast_cinza @porta_pivo",
+   "iogurte",
+   "pote_baixo",
+   "suco",
+   "tampa_verde"
+  ],
+  "quadros_com_diferenca_no_quadro_ampliado": 188,
+  "quadros": 188,
+  "motivo": "188 quadros com geometria alterada no quadro"
+ },
+ "J1": {
+  "afetado": true,
+  "cena_json_difere": [],
+  "materiais_com_parametro_diferente": [],
+  "malhas_novas": [
+   "ANIM|porta_pivo|item_caixa_bege @porta_pivo",
+   "ANIM|porta_pivo|item_ovo @porta_pivo",
+   "ANIM|porta_pivo|item_vidro_verde @porta_pivo",
+   "item_alface",
+   "item_ervilhas",
+   "item_lima",
+   "item_marmita",
+   "item_marmita_tampa"
+  ],
+  "malhas_removidas": [
+   "caixa_leite",
+   "leite_faixa"
+  ],
+  "malhas_mudadas": [
+   "ANIM|porta_pivo|molho_claro @porta_pivo",
+   "ANIM|porta_pivo|molho_verde @porta_pivo",
+   "ANIM|porta_pivo|plast_cinza @porta_pivo",
+   "iogurte",
+   "pote_baixo",
+   "suco",
+   "tampa_verde"
+  ],
+  "quadros_com_diferenca_no_quadro_ampliado": 126,
+  "quadros": 126,
+  "motivo": "126 quadros com geometria alterada no quadro"
+ },
+ "J1b": {
+  "afetado": true,
+  "cena_json_difere": [],
+  "materiais_com_parametro_diferente": [],
+  "malhas_novas": [
+   "ANIM|porta_pivo|item_caixa_bege @porta_pivo",
+   "ANIM|porta_pivo|item_ovo @porta_pivo",
+   "ANIM|porta_pivo|item_vidro_verde @porta_pivo",
+   "item_alface",
+   "item_ervilhas",
+   "item_lima",
+   "item_marmita",
+   "item_marmita_tampa"
+  ],
+  "malhas_removidas": [
+   "caixa_leite",
+   "leite_faixa"
+  ],
+  "malhas_mudadas": [
+   "ANIM|porta_pivo|molho_claro @porta_pivo",
+   "ANIM|porta_pivo|molho_verde @porta_pivo",
+   "ANIM|porta_pivo|plast_cinza @porta_pivo",
+   "iogurte",
+   "pote_baixo",
+   "suco",
+   "tampa_verde"
+  ],
+  "quadros_com_diferenca_no_quadro_ampliado": 126,
+  "quadros": 126,
+  "motivo": "126 quadros com geometria alterada no quadro"
+ },
+ "J2": {
+  "afetado": true,
+  "cena_json_difere": [],
+  "materiais_com_parametro_diferente": [],
+  "malhas_novas": [
+   "ANIM|porta_pivo|item_caixa_bege @porta_pivo",
+   "ANIM|porta_pivo|item_ovo @porta_pivo",
+   "ANIM|porta_pivo|item_vidro_verde @porta_pivo",
+   "item_alface",
+   "item_ervilhas",
+   "item_lima",
+   "item_marmita",
+   "item_marmita_tampa"
+  ],
+  "malhas_removidas": [
+   "caixa_leite",
+   "leite_faixa"
+  ],
+  "malhas_mudadas": [
+   "ANIM|porta_pivo|molho_claro @porta_pivo",
+   "ANIM|porta_pivo|molho_verde @porta_pivo",
+   "ANIM|porta_pivo|plast_cinza @porta_pivo",
+   "iogurte",
+   "pote_baixo",
+   "suco",
+   "tampa_verde"
+  ],
+  "quadros_com_diferenca_no_quadro_ampliado": 96,
+  "quadros": 96,
+  "motivo": "96 quadros com geometria alterada no quadro"
+ },
+ "J3": {
+  "afetado": true,
+  "cena_json_difere": [],
+  "materiais_com_parametro_diferente": [],
+  "malhas_novas": [
+   "ANIM|porta_pivo|item_caixa_bege @porta_pivo",
+   "ANIM|porta_pivo|item_ovo @porta_pivo",
+   "ANIM|porta_pivo|item_vidro_verde @porta_pivo",
+   "item_alface",
+   "item_ervilhas",
+   "item_lima",
+   "item_marmita",
+   "item_marmita_tampa"
+  ],
+  "malhas_removidas": [
+   "caixa_leite",
+   "leite_faixa"
+  ],
+  "malhas_mudadas": [
+   "ANIM|porta_pivo|molho_claro @porta_pivo",
+   "ANIM|porta_pivo|molho_verde @porta_pivo",
+   "ANIM|porta_pivo|plast_cinza @porta_pivo",
+   "iogurte",
+   "pote_baixo",
+   "suco",
+   "tampa_verde"
+  ],
+  "quadros_com_diferenca_no_quadro_ampliado": 132,
+  "quadros": 132,
+  "motivo": "132 quadros com geometria alterada no quadro"
+ },
+ "J4": {
+  "afetado": true,
+  "cena_json_difere": [],
+  "materiais_com_parametro_diferente": [],
+  "malhas_novas": [
+   "ANIM|porta_pivo|item_caixa_bege @porta_pivo",
+   "ANIM|porta_pivo|item_ovo @porta_pivo",
+   "ANIM|porta_pivo|item_vidro_verde @porta_pivo",
+   "item_alface",
+   "item_ervilhas",
+   "item_lima",
+   "item_marmita",
+   "item_marmita_tampa"
+  ],
+  "malhas_removidas": [],
+  "malhas_mudadas": [
+   "ANIM|porta_pivo|molho_claro @porta_pivo",
+   "ANIM|porta_pivo|molho_verde @porta_pivo",
+   "ANIM|porta_pivo|plast_cinza @porta_pivo",
+   "caixa_leite",
+   "iogurte",
+   "leite_faixa",
+   "pote_baixo",
+   "suco",
+   "tampa_verde"
+  ],
+  "quadros_com_diferenca_no_quadro_ampliado": 188,
+  "quadros": 188,
+  "motivo": "188 quadros com geometria alterada no quadro"
+ }
+}

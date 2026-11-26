@@ -1,0 +1,10 @@
+{
+ "_nota": "Escolhidas por MEDIÇÃO (analise_fontes.json) e título/autor no Freesound, todas CC0. Eu não escuto: a aprovação auditiva é do usuário. Trocar uma fonte = mudar o id aqui (mesmos instantes).",
+ "cozinha": {"id": "329568", "db": -6.0, "motivo": "tom de cômodo de apartamento, estável (desvio 2,3 dB), sem eventos; vetado 455826 (gotejamento)"},
+ "zumbido": {"id": "455776", "db": -8.0, "motivo": "compressor de geladeira gravado de perto, estável (1,4 dB), 84 % da energia < 120 Hz"},
+ "gorgolejo": {"id": "635547", "db": -12.0, "motivo": "gorgolejo interno de geladeira (fluido no evaporador)"},
+ "porta_abre": {"id": "682744", "ini": 0.0, "dur": 2.6, "ataque": 0.315, "db": -6.0, "motivo": "porta de geladeira abrindo; ataque medido (vedação) 0,315 s"},
+ "porta_fecha": {"id": "489749", "ini": 5.2, "dur": 1.4, "ataque": 0.525, "db": -6.0, "motivo": "batida da porta em 5,725 s da gravação"},
+ "passos": {"id": "138052", "passos": [1.195, 1.715, 2.325, 2.88, 3.64, 4.4, 4.865, 5.3], "db": -12.0, "motivo": "tênis em piso cerâmico (combina com o personagem e o porcelanato); pousos medidos"},
+ "chiado": {"sintese": true, "db": -24.0, "motivo": "não há gravação real adequada de expansão no capilar entre os candidatos; síntese discreta (ruído 2,5–7 kHz), declarada como síntese"}
+}

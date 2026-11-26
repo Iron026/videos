@@ -1,0 +1,13 @@
+quadro 0 / 4537
+quadro 600 / 4537
+quadro 1200 / 4537
+quadro 1800 / 4537
+quadro 2400 / 4537
+quadro 3000 / 4537
+quadro 3600 / 4537
+quadro 4200 / 4537
+ok ep02_master_imagem_sem_legendas_r13_1_1080.mp4
+
+real	20m51.071s
+user	27m21.165s
+sys	2m4.087s

@@ -1,0 +1,86 @@
+[
+ {
+  "trecho": "abertura",
+  "ini": 0.0,
+  "fim": 10.5,
+  "lufs_voz_A": -14.46,
+  "lufs_voz_B": -14.46,
+  "lufs_total_A": -14.49,
+  "lufs_total_B": -14.41,
+  "voz_menos_resto_celular_db": {
+   "pior": 13.7,
+   "mediana": 28.3
+  },
+  "lufs_resto_B": -32.2
+ },
+ {
+  "trecho": "revelacao",
+  "ini": 28.0,
+  "fim": 38.5,
+  "lufs_voz_A": -14.13,
+  "lufs_voz_B": -14.13,
+  "lufs_total_A": -14.26,
+  "lufs_total_B": -14.32,
+  "voz_menos_resto_celular_db": {
+   "pior": 16.8,
+   "mediana": 27.7
+  },
+  "lufs_resto_B": -31.71
+ },
+ {
+  "trecho": "compressor",
+  "ini": 74.0,
+  "fim": 87.0,
+  "lufs_voz_A": -14.03,
+  "lufs_voz_B": -14.03,
+  "lufs_total_A": -14.07,
+  "lufs_total_B": -13.76,
+  "voz_menos_resto_celular_db": {
+   "pior": -0.8,
+   "mediana": 24.6
+  },
+  "lufs_resto_B": -23.59
+ },
+ {
+  "trecho": "capilar",
+  "ini": 101.8,
+  "fim": 107.6,
+  "lufs_voz_A": -14.79,
+  "lufs_voz_B": -14.79,
+  "lufs_total_A": -14.86,
+  "lufs_total_B": -14.87,
+  "voz_menos_resto_celular_db": {
+   "pior": 18.8,
+   "mediana": 29.8
+  },
+  "lufs_resto_B": -33.37
+ },
+ {
+  "trecho": "porta_aberta",
+  "ini": 115.0,
+  "fim": 124.5,
+  "lufs_voz_A": -14.22,
+  "lufs_voz_B": -14.22,
+  "lufs_total_A": -14.27,
+  "lufs_total_B": -14.26,
+  "voz_menos_resto_celular_db": {
+   "pior": 5.3,
+   "mediana": 29.2
+  },
+  "lufs_resto_B": -27.77
+ },
+ {
+  "trecho": "final",
+  "ini": 145.0,
+  "fim": 151.2,
+  "lufs_voz_A": -14.77,
+  "lufs_voz_B": -14.77,
+  "lufs_total_A": -14.77,
+  "lufs_total_B": -14.74,
+  "voz_menos_resto_celular_db": {
+   "pior": 16.9,
+   "mediana": 29.7
+  },
+  "lufs_resto_B": -36.32
+ }
+]

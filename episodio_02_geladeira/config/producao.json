@@ -1,0 +1,53 @@
+{
+ "_nota": "Configuração ÚNICA de render do Ep. 02 (lição do Ep. 01: scripts antigos guardavam parâmetros desatualizados). Todos os scripts leem daqui.",
+ "fps": 30,
+ "perfis": {
+  "animatic": {
+   "escala": 0.25,
+   "passo": 2,
+   "consulta": "aoamostras=8&msaa=4"
+  },
+  "revisao": {
+   "escala": 0.5,
+   "passo": 1,
+   "consulta": "aoamostras=16&msaa=4&bloom=0.18"
+  },
+  "final": {
+   "escala": 1.0,
+   "passo": 1,
+   "consulta": "aoamostras=16&msaa=4&bloom=0.18"
+  }
+ },
+ "por_plano": {
+  "C4": "&ordemtransp=1",
+  "H1": "&ordemtransp=1",
+  "H2": "&ordemtransp=1"
+ },
+ "verificacao": {
+  "bytes_min": 4000,
+  "media_min": 3
+ },
+ "obturador": {
+  "C2": {
+   "graus": 180,
+   "sub": 5,
+   "_nota": "rodada 8 (aprovado): desfoque de movimento por integração temporal de 5 sub-quadros em [−¼, +¼] de quadro; cena cenas/C2_obt (OBTURADOR_SUB=5)"
+  },
+  "C4": {
+   "graus": 180,
+   "sub": 5,
+   "quadros": [
+    126,
+    184
+   ],
+   "_nota": "rodada 10 (aprovado): obturador de 180° no fim do C4, quadros 126–184 (estendido de 178 a 184 por decisão do usuário para eliminar a troca 178→179); 5 sub-quadros em [−¼, +¼]; cena cenas/C4_obt"
+  }
+ },
+ "motor_equivalente": {
+  "79b25d43c4395dc535da39da": {
+   "novo": "0418be25695320f735da39da",
+   "prova": "rodada 12: só acrescenta ordemtransp (desligado por padrão); H2 q46–49 em 540: motor novo sem a opção × motor aprovado = 1,38–1,39, variação natural entre renders idênticos = 1,37 (relatorios/testes_r10/ordem_transparentes_r12.json)"
+  }
+ },
+ "_nota_por_plano_r12": "rodada 12: ordemtransp=1 em C4, H1 e H2 (troca de ordem garrafa × prateleira de vidro visível); C2 e F1 têm troca invisível e ficam como aprovados"
+}

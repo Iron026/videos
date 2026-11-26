@@ -1,0 +1,23 @@
+{
+ "arquivo": "r13_teste.m4a",
+ "lufs_aac": -14.13,
+ "pico_verdadeiro_aac_dbtp": -1.6,
+ "perda_mono_db": -0.03,
+ "ultimo_0_5s_dbfs": -47.7,
+ "stems_medidos": {
+  "voz": "r13/voz.wav",
+  "resto": "r13/musica.wav,r13/efeitos_mecanismos.wav"
+ },
+ "voz_menos_resto_celular_db": {
+  "pior": -4.1,
+  "p5": 10.5,
+  "mediana": 22.7,
+  "janelas": 370
+ },
+ "metas": {
+  "lufs": -14.0,
+  "tp_max": -1.5,
+  "voz_celular_min_db": 10.0
+ },
+ "aprovado_tecnico": true
+}

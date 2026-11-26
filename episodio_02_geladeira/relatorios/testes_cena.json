@@ -1,0 +1,11 @@
+{
+ "passaram": [
+  "6 continuidade e ciclo fechado: emendas abertas: nenhuma · comprimento total 21.98 m",
+  "s global monotônico: evaporador 0.000–0.317 (6.96 m) · succao 0.317–0.382 (1.43 m) · compressor 0.382–0.391 (0.21 m) · descarga 0.391–0.466 (1.64 m) · condensador 0.466–0.860 (8.67 m) · linha_liquido 0.860–0.871 (0.22 m) · capilar 0.871–1.000 (2.84 m)",
+  "8 folga entre tubos diferentes ≥ 3 mm: succao×capilar 15.4 mm · descarga×condensador 16.8 mm · linha_liquido×capilar 33.4 mm · condensador×linha_liquido 40.1 mm",
+  "8 trechos sem auto-interseção: descarga 16.8 mm · evaporador 31.6 mm · succao 46.3 mm",
+  "8 espiras do capilar separadas: passo 13.6 mm, diâmetro 2.2 mm",
+  "8 tubos fora do compressor: nenhum"
+ ],
+ "falharam": []
+}

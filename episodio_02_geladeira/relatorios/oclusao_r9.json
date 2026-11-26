@@ -1,0 +1,82 @@
+{
+ "A3": {
+  "quadros": 8,
+  "r9_x_v8": {
+   "media_max": 1.58,
+   "px40_max": 6,
+   "maior_mancha_px": 2
+  },
+  "v8_x_v8_ruido": null
+ },
+ "C3": {
+  "quadros": 17,
+  "obs": "leite oculto no C3 (close t\u00e9cnico, como o pote desde a V2)",
+  "r9_x_v8": {
+   "media_max": 1.72,
+   "px40_max": 579,
+   "maior_mancha_px": 574
+  }
+ },
+ "E1": {
+  "quadros": 10,
+  "r9_x_v8": {
+   "media_max": 1.01,
+   "px40_max": 6,
+   "maior_mancha_px": 2
+  },
+  "v8_x_v8_ruido": {
+   "media_max": 1.01,
+   "px40_max": 10,
+   "maior_mancha_px": 3
+  }
+ },
+ "E2": {
+  "quadros": 14,
+  "r9_x_v8": {
+   "media_max": 1.09,
+   "px40_max": 86,
+   "maior_mancha_px": 4
+  },
+  "v8_x_v8_ruido": null
+ },
+ "E3": {
+  "quadros": 16,
+  "r9_x_v8": {
+   "media_max": 0.85,
+   "px40_max": 1,
+   "maior_mancha_px": 1
+  },
+  "v8_x_v8_ruido": null
+ },
+ "E4": {
+  "quadros": 13,
+  "r9_x_v8": {
+   "media_max": 0.92,
+   "px40_max": 3,
+   "maior_mancha_px": 1
+  },
+  "v8_x_v8_ruido": null
+ },
+ "F1": {
+  "quadros": 18,
+  "r9_x_v8": {
+   "media_max": 1.94,
+   "px40_max": 5,
+   "maior_mancha_px": 1
+  },
+  "v8_x_v8_ruido": null
+ },
+ "J4": {
+  "quadros": 19,
+  "r9_x_v8": {
+   "media_max": 0.45,
+   "px40_max": 11,
+   "maior_mancha_px": 2
+  },
+  "v8_x_v8_ruido": {
+   "media_max": 0.46,
+   "px40_max": 11,
+   "maior_mancha_px": 2
+  }
+ }
+}

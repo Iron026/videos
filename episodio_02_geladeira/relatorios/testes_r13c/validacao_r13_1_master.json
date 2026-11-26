@@ -1,0 +1,26 @@
+{
+ "quadros": {
+  "r13": 4537,
+  "r13_1": 4537
+ },
+ "audio_md5": {
+  "r13": "MD5=fce2ed831aae9347b27b887825cd8df8",
+  "r13_1": "MD5=fce2ed831aae9347b27b887825cd8df8"
+ },
+ "quadros_com_aviso_retirado": 3570,
+ "quadros_que_mudaram": 3570,
+ "mudaram_sem_aviso_retirado": [],
+ "regiao_que_mudou_270x480": {
+  "x": [
+   162,
+   262
+  ],
+  "y": [
+   65,
+   105
+  ]
+ },
+ "fora_da_faixa_dos_avisos_dif_max": 17.0,
+ "dif_media_quadros_sem_aviso": 0.133,
+ "aprovado": false
+}

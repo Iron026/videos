@@ -1,0 +1,66 @@
+{
+ "aprovado_r7": {
+  "quadros": 613,
+  "problemas": {
+   "texto do manômetro × legenda": [
+    "G3 106.30s: capilar:baixa × resfriando a mistura",
+    "G3 106.30s: capilar:alta × resfriando a mistura"
+   ],
+   "mostrador × legenda": [
+    "G3 106.30s: capilar × resfriando a mistura",
+    "G3 106.33s: capilar × resfriando a mistura"
+   ],
+   "linha sobre texto": [
+    "G3 106.47s: ligacao_man capilar × capilar:alta",
+    "G3 106.50s: ligacao_man capilar × capilar:alta",
+    "G3 106.53s: ligacao_man capilar × capilar:alta",
+    "G3 106.53s: ligacao_man capilar × capilar:pressão",
+    "G3 106.53s: ligacao_man capilar × capilar:pressão"
+   ]
+  },
+  "alturas_texto_px": [
+   33,
+   35,
+   41
+  ],
+  "resumo": {
+   "texto do manômetro × legenda": 2,
+   "mostrador × legenda": 2,
+   "linha sobre texto": 5
+  }
+ },
+ "cartao_r8": {
+  "quadros": 613,
+  "problemas": {},
+  "alturas_texto_px": [
+   200
+  ],
+  "resumo": {}
+ },
+ "ponteiros_identicos": {
+  "comparados": 845,
+  "iguais": 845
+ },
+ "estabilidade_cartao_1080": {
+  "C4": {
+   "desloc_max_px_por_quadro": 5.3,
+   "trocas_com_fusao": []
+  },
+  "D2": {
+   "desloc_max_px_por_quadro": 4.5,
+   "trocas_com_fusao": []
+  },
+  "E3": {
+   "desloc_max_px_por_quadro": 1.6,
+   "trocas_com_fusao": []
+  },
+  "G3": {
+   "desloc_max_px_por_quadro": 0.0,
+   "trocas_com_fusao": []
+  },
+  "H2": {
+   "desloc_max_px_por_quadro": 0.4,
+   "trocas_com_fusao": []
+  }
+ }
+}

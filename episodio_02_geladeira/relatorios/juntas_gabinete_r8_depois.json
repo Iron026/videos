@@ -1,0 +1,19 @@
+{
+ "E2": {
+  "degrau×fundo_tras (y = IY1)": {
+   "quadros_com_junta_no_quadro": 133,
+   "px_alternando_30": 1144,
+   "px_alternando_12": 1637,
+   "pior": [
+    69,
+    "q0079.jpg"
+   ]
+  },
+  "fundo_tras×topo (z = IZ1)": {
+   "quadros_com_junta_no_quadro": 0,
+   "px_alternando_30": 0,
+   "px_alternando_12": 0,
+   "pior": null
+  }
+ }
+}

@@ -1,0 +1,2 @@
+{ "name": "ep02-motor", "private": true, "type": "module",
+  "dependencies": { "three": "0.170.0", "@fontsource/montserrat": "5.1.0" } }

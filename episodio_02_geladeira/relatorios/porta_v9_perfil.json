@@ -1,0 +1,34 @@
+{
+ "A1→A2": {
+  "inicio": 0.217,
+  "pico_w": 120.9,
+  "pico_em": 0.55,
+  "para_em": 1.867,
+  "aceleracoes_depois_do_pico": [],
+  "no_corte": [
+   {
+    "t": 1.367,
+    "ang_antes": 86.9,
+    "ang_depois": 89.3,
+    "w_antes": 49.5,
+    "w_depois": 46.7
+   }
+  ]
+ },
+ "I1→I2": {
+  "inicio": 117.583,
+  "pico_w": 119.3,
+  "pico_em": 117.95,
+  "para_em": 119.197,
+  "aceleracoes_depois_do_pico": [],
+  "no_corte": [
+   {
+    "t": 119.197,
+    "ang_antes": 99.8,
+    "ang_depois": 100.0,
+    "w_antes": 8.0,
+    "w_depois": 4.8
+   }
+  ]
+ }
+}

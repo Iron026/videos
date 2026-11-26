@@ -1,0 +1,11 @@
+{
+ "origem": "audio_ep02_r12_musica_m5.wav",
+ "formato": "PCM_24",
+ "sha256_origem": "b34885b32c5f9ef6a9e6529e0cb11c47042d43608098e36acdd94884f9363fb1",
+ "flac": "preservado_r12/audio_ep02_r12_musica_m5.flac",
+ "sha256_flac": "5c3b593ed6ddd4a15990fb9e3c256eac643bf0c5e194739ff42e8b055b40800f",
+ "identico": true,
+ "comando": "GARRAFA_B5=1 APRESENTA_R11=pop APRESENTA_REL_DB=-9 MUSICA=spice_intrigue MUSICA_REL_DB=-13.5 SUF_R10=_si_r12_m5 python3 som/som_r10.py; python3 som/ajuste_pico_local.py som/audio_ep02_r10_completo_si_r12_m5.wav som/audio_ep02_r12_musica_m5.wav -2.0 85.9",
+ "escolha": "usuário (25/11): \"+5db\" — música +5,0 dB em relação à mixagem aprovada R11 (MUSICA_REL_DB −18,5 → −13,5); efeitos e mecanismo idênticos (diferença 0)",
+ "nota": "stem de música isolado fora do git (licença Pixabay); efeitos/mecanismo r12 = si_final (diferença 0), já preservados em som/preservado_r11"
+}

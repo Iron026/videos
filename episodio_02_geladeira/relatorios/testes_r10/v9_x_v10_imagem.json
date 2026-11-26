@@ -1,0 +1,22 @@
+{
+ "quadros": 4537,
+ "trechos_alterados": [
+  {
+   "de_s": 5.6,
+   "ate_s": 12.4,
+   "dif_max": 23.3
+  },
+  {
+   "de_s": 45.833,
+   "ate_s": 45.9,
+   "dif_max": 0.83
+  },
+  {
+   "de_s": 45.967,
+   "ate_s": 56.867,
+   "dif_max": 7.24
+  }
+ ],
+ "dif_max_fora": 0.498,
+ "leitura": "Mudanças de imagem: A4 q34 (5,77 s, dif 23,3: o quadro corrigido) e C4 126–178 (47,0–48,5 s, até 7,2: obturador). O resto das diferenças (≤ 1,6) está nos GOPs do x264 que contêm esses quadros (5,8–12,4 s termina no quadro-chave 12,43 s; 45,9–56,9 s termina no quadro-chave 56,90 s): os quadros-fonte desses trechos são os MESMOS da rodada 9 (A4: 173 quadros, C4: 132 quadros, SHA-256 iguais; A4b/D1/D3 não re-renderizados). É o codificador, não a imagem."
+}

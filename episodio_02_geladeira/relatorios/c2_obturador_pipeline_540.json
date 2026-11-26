@@ -1,0 +1,17 @@
+{
+ "trecho": "36,07–37,74 s (540)",
+ "sem_obturador": {
+  "pixels_vai_e_volta": 1863678,
+  "pior_blocos": 418
+ },
+ "obturador_180": {
+  "pixels_vai_e_volta": 1115887,
+  "pior_blocos": 267
+ },
+ "reducao_pct": 40.1,
+ "trecho_lento_integrado_x_central": [
+  0.37,
+  2.89,
+  2.84
+ ]
+}

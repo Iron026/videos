@@ -1,0 +1,630 @@
+{
+ "A1": {
+  "transparentes": [
+   "garrafa_pet#16",
+   "garrafa_agua#17",
+   "prateleira_vidro#20",
+   "prateleira_vidro#83"
+  ],
+  "trocas": []
+ },
+ "A2": {
+  "transparentes": [
+   "garrafa_pet#16",
+   "garrafa_agua#17",
+   "prateleira_vidro#20",
+   "prateleira_vidro#83"
+  ],
+  "trocas": []
+ },
+ "A3": {
+  "transparentes": [
+   "garrafa_pet#19",
+   "garrafa_agua#20",
+   "prateleira_vidro#23",
+   "prateleira_vidro#56"
+  ],
+  "trocas": []
+ },
+ "A4": {
+  "transparentes": [
+   "garrafa_pet#16",
+   "garrafa_agua#17",
+   "prateleira_vidro#20",
+   "prateleira_vidro#83"
+  ],
+  "trocas": []
+ },
+ "A4_h_interior": {
+  "transparentes": [
+   "garrafa_pet#16",
+   "garrafa_agua#17",
+   "prateleira_vidro#20",
+   "prateleira_vidro#83"
+  ],
+  "trocas": []
+ },
+ "A4_h_rosto": {
+  "transparentes": [
+   "garrafa_pet#16",
+   "garrafa_agua#17",
+   "prateleira_vidro#20",
+   "prateleira_vidro#83"
+  ],
+  "trocas": []
+ },
+ "A4_h_rosto_c": {
+  "transparentes": [
+   "garrafa_pet#16",
+   "garrafa_agua#17",
+   "prateleira_vidro#20",
+   "prateleira_vidro#83"
+  ],
+  "trocas": []
+ },
+ "A4b": {
+  "transparentes": [
+   "garrafa_pet#19",
+   "garrafa_agua#20",
+   "prateleira_vidro#23",
+   "prateleira_vidro#56"
+  ],
+  "trocas": []
+ },
+ "B1": {
+  "transparentes": [
+   "garrafa_pet#16",
+   "garrafa_agua#17",
+   "prateleira_vidro#20",
+   "prateleira_vidro#53"
+  ],
+  "trocas": []
+ },
+ "B2": {
+  "transparentes": [
+   "garrafa_pet#16",
+   "garrafa_agua#17",
+   "prateleira_vidro#20",
+   "prateleira_vidro#53"
+  ],
+  "trocas": []
+ },
+ "B3": {
+  "transparentes": [
+   "garrafa_pet#17",
+   "garrafa_agua#18",
+   "prateleira_vidro#21",
+   "prateleira_vidro#54"
+  ],
+  "trocas": []
+ },
+ "B4": {
+  "transparentes": [
+   "garrafa_pet#16",
+   "garrafa_agua#17",
+   "prateleira_vidro#20",
+   "prateleira_vidro#53"
+  ],
+  "trocas": []
+ },
+ "B5": {
+  "transparentes": [
+   "garrafa_pet#19",
+   "garrafa_agua#20",
+   "prateleira_vidro#23",
+   "prateleira_vidro#56"
+  ],
+  "trocas": []
+ },
+ "B6": {
+  "transparentes": [
+   "garrafa_pet#19",
+   "garrafa_agua#20",
+   "prateleira_vidro#23",
+   "prateleira_vidro#56"
+  ],
+  "trocas": []
+ },
+ "B7": {
+  "transparentes": [
+   "garrafa_pet#19",
+   "garrafa_agua#20",
+   "prateleira_vidro#23",
+   "prateleira_vidro#56"
+  ],
+  "trocas": []
+ },
+ "C1": {
+  "transparentes": [
+   "garrafa_pet#16",
+   "garrafa_agua#17",
+   "prateleira_vidro#20",
+   "prateleira_vidro#53"
+  ],
+  "trocas": []
+ },
+ "C2": {
+  "transparentes": [
+   "garrafa_pet#16",
+   "garrafa_agua#17",
+   "prateleira_vidro#20",
+   "prateleira_vidro#53"
+  ],
+  "trocas": [
+   {
+    "quadro": 83,
+    "t": 36.437,
+    "a": "prateleira_vidro#20",
+    "b": "prateleira_vidro#53",
+    "sobrepostos": true,
+    "antes": "b primeiro",
+    "depois": "a primeiro"
+   },
+   {
+    "quadro": 111,
+    "t": 37.37,
+    "a": "prateleira_vidro#20",
+    "b": "prateleira_vidro#53",
+    "sobrepostos": true,
+    "antes": "a primeiro",
+    "depois": "b primeiro"
+   }
+  ]
+ },
+ "C2_obt": {
+  "transparentes": [
+   "garrafa_pet#16",
+   "garrafa_agua#17",
+   "prateleira_vidro#20",
+   "prateleira_vidro#53"
+  ],
+  "trocas": [
+   {
+    "quadro": 415,
+    "t": 47.503,
+    "a": "prateleira_vidro#20",
+    "b": "prateleira_vidro#53",
+    "sobrepostos": true,
+    "antes": "b primeiro",
+    "depois": "a primeiro"
+   },
+   {
+    "quadro": 556,
+    "t": 52.203,
+    "a": "prateleira_vidro#20",
+    "b": "prateleira_vidro#53",
+    "sobrepostos": true,
+    "antes": "a primeiro",
+    "depois": "b primeiro"
+   }
+  ]
+ },
+ "C2_sub8": {
+  "transparentes": [
+   "garrafa_pet#14",
+   "garrafa_agua#15",
+   "prateleira_vidro#18",
+   "prateleira_vidro#38"
+  ],
+  "trocas": [
+   {
+    "quadro": 661,
+    "t": 55.703,
+    "a": "prateleira_vidro#18",
+    "b": "prateleira_vidro#38",
+    "sobrepostos": true,
+    "antes": "b primeiro",
+    "depois": "a primeiro"
+   },
+   {
+    "quadro": 887,
+    "t": 63.237,
+    "a": "prateleira_vidro#18",
+    "b": "prateleira_vidro#38",
+    "sobrepostos": true,
+    "antes": "a primeiro",
+    "depois": "b primeiro"
+   }
+  ]
+ },
+ "C3": {
+  "transparentes": [
+   "garrafa_pet#16",
+   "garrafa_agua#17",
+   "prateleira_vidro#20",
+   "prateleira_vidro#51"
+  ],
+  "trocas": []
+ },
+ "C4": {
+  "transparentes": [
+   "garrafa_pet#16",
+   "garrafa_agua#17",
+   "prateleira_vidro#20",
+   "prateleira_vidro#53"
+  ],
+  "trocas": [
+   {
+    "quadro": 52,
+    "t": 44.393,
+    "a": "garrafa_pet#16",
+    "b": "prateleira_vidro#20",
+    "sobrepostos": true,
+    "antes": "b primeiro",
+    "depois": "a primeiro"
+   }
+  ]
+ },
+ "C4_folga015": {
+  "transparentes": [
+   "garrafa_pet#16",
+   "garrafa_agua#17",
+   "prateleira_vidro#20",
+   "prateleira_vidro#45"
+  ],
+  "trocas": [
+   {
+    "quadro": 52,
+    "t": 44.393,
+    "a": "garrafa_pet#16",
+    "b": "prateleira_vidro#20",
+    "sobrepostos": true,
+    "antes": "b primeiro",
+    "depois": "a primeiro"
+   }
+  ]
+ },
+ "C4_obt": {
+  "transparentes": [
+   "garrafa_pet#16",
+   "garrafa_agua#17",
+   "prateleira_vidro#20",
+   "prateleira_vidro#53"
+  ],
+  "trocas": [
+   {
+    "quadro": 262,
+    "t": 51.393,
+    "a": "garrafa_pet#16",
+    "b": "prateleira_vidro#20",
+    "sobrepostos": true,
+    "antes": "b primeiro",
+    "depois": "a primeiro"
+   }
+  ]
+ },
+ "C4_sobrepoe": {
+  "transparentes": [
+   "garrafa_pet#16",
+   "garrafa_agua#17",
+   "prateleira_vidro#20",
+   "prateleira_vidro#45"
+  ],
+  "trocas": [
+   {
+    "quadro": 52,
+    "t": 44.393,
+    "a": "garrafa_pet#16",
+    "b": "prateleira_vidro#20",
+    "sobrepostos": true,
+    "antes": "b primeiro",
+    "depois": "a primeiro"
+   }
+  ]
+ },
+ "D1": {
+  "transparentes": [
+   "garrafa_pet#16",
+   "garrafa_agua#17",
+   "prateleira_vidro#20",
+   "prateleira_vidro#53"
+  ],
+  "trocas": []
+ },
+ "D2": {
+  "transparentes": [
+   "garrafa_pet#16",
+   "garrafa_agua#17",
+   "prateleira_vidro#20",
+   "prateleira_vidro#53"
+  ],
+  "trocas": []
+ },
+ "D3": {
+  "transparentes": [
+   "garrafa_pet#20",
+   "garrafa_agua#21",
+   "prateleira_vidro#24",
+   "prateleira_vidro#57"
+  ],
+  "trocas": []
+ },
+ "D4": {
+  "transparentes": [
+   "garrafa_pet#23",
+   "garrafa_agua#24",
+   "prateleira_vidro#27",
+   "prateleira_vidro#60"
+  ],
+  "trocas": []
+ },
+ "D5": {
+  "transparentes": [
+   "garrafa_pet#19",
+   "garrafa_agua#20",
+   "prateleira_vidro#23",
+   "prateleira_vidro#56"
+  ],
+  "trocas": []
+ },
+ "E1": {
+  "transparentes": [
+   "garrafa_pet#16",
+   "garrafa_agua#17",
+   "prateleira_vidro#20",
+   "prateleira_vidro#53"
+  ],
+  "trocas": []
+ },
+ "E2": {
+  "transparentes": [
+   "garrafa_pet#16",
+   "garrafa_agua#17",
+   "prateleira_vidro#20",
+   "prateleira_vidro#53"
+  ],
+  "trocas": []
+ },
+ "E3": {
+  "transparentes": [
+   "garrafa_pet#16",
+   "garrafa_agua#17",
+   "prateleira_vidro#20",
+   "prateleira_vidro#53"
+  ],
+  "trocas": []
+ },
+ "E4": {
+  "transparentes": [
+   "garrafa_pet#16",
+   "garrafa_agua#17",
+   "prateleira_vidro#20",
+   "prateleira_vidro#53"
+  ],
+  "trocas": []
+ },
+ "F1": {
+  "transparentes": [
+   "garrafa_pet#22",
+   "garrafa_agua#23",
+   "prateleira_vidro#26",
+   "prateleira_vidro#59"
+  ],
+  "trocas": [
+   {
+    "quadro": 8,
+    "t": 86.677,
+    "a": "garrafa_pet#22",
+    "b": "garrafa_agua#23",
+    "sobrepostos": true,
+    "antes": "a primeiro",
+    "depois": "b primeiro"
+   }
+  ]
+ },
+ "F2": {
+  "transparentes": [
+   "garrafa_pet#23",
+   "garrafa_agua#24",
+   "prateleira_vidro#27",
+   "prateleira_vidro#60"
+  ],
+  "trocas": []
+ },
+ "G1": {
+  "transparentes": [
+   "garrafa_pet#16",
+   "garrafa_agua#17",
+   "prateleira_vidro#20",
+   "prateleira_vidro#53"
+  ],
+  "trocas": []
+ },
+ "G2": {
+  "transparentes": [
+   "garrafa_pet#16",
+   "garrafa_agua#17",
+   "prateleira_vidro#20",
+   "prateleira_vidro#53"
+  ],
+  "trocas": []
+ },
+ "G3": {
+  "transparentes": [
+   "garrafa_pet#16",
+   "garrafa_agua#17",
+   "prateleira_vidro#20",
+   "prateleira_vidro#53"
+  ],
+  "trocas": []
+ },
+ "G3z": {
+  "transparentes": [
+   "garrafa_pet#17",
+   "garrafa_agua#18",
+   "prateleira_vidro#21",
+   "prateleira_vidro#54"
+  ],
+  "trocas": []
+ },
+ "H1": {
+  "transparentes": [
+   "garrafa_pet#16",
+   "garrafa_agua#17",
+   "prateleira_vidro#20",
+   "prateleira_vidro#53"
+  ],
+  "trocas": [
+   {
+    "quadro": 75,
+    "t": 109.55,
+    "a": "garrafa_agua#17",
+    "b": "prateleira_vidro#20",
+    "sobrepostos": true,
+    "antes": "b primeiro",
+    "depois": "a primeiro"
+   }
+  ]
+ },
+ "H2": {
+  "transparentes": [
+   "garrafa_pet#20",
+   "garrafa_agua#21",
+   "prateleira_vidro#24",
+   "prateleira_vidro#57"
+  ],
+  "trocas": [
+   {
+    "quadro": 48,
+    "t": 113.1,
+    "a": "garrafa_pet#20",
+    "b": "prateleira_vidro#24",
+    "sobrepostos": true,
+    "antes": "b primeiro",
+    "depois": "a primeiro"
+   }
+  ]
+ },
+ "H2_folga015": {
+  "transparentes": [
+   "garrafa_pet#20",
+   "garrafa_agua#21",
+   "prateleira_vidro#24",
+   "prateleira_vidro#49"
+  ],
+  "trocas": [
+   {
+    "quadro": 48,
+    "t": 113.1,
+    "a": "garrafa_pet#20",
+    "b": "prateleira_vidro#24",
+    "sobrepostos": true,
+    "antes": "b primeiro",
+    "depois": "a primeiro"
+   }
+  ]
+ },
+ "H2_sobrepoe": {
+  "transparentes": [
+   "garrafa_pet#20",
+   "garrafa_agua#21",
+   "prateleira_vidro#24",
+   "prateleira_vidro#49"
+  ],
+  "trocas": [
+   {
+    "quadro": 48,
+    "t": 113.1,
+    "a": "garrafa_pet#20",
+    "b": "prateleira_vidro#24",
+    "sobrepostos": true,
+    "antes": "b primeiro",
+    "depois": "a primeiro"
+   }
+  ]
+ },
+ "I1": {
+  "transparentes": [
+   "garrafa_pet#16",
+   "garrafa_agua#17",
+   "prateleira_vidro#20",
+   "prateleira_vidro#83"
+  ],
+  "trocas": []
+ },
+ "I2": {
+  "transparentes": [
+   "garrafa_pet#19",
+   "garrafa_agua#20",
+   "prateleira_vidro#23",
+   "prateleira_vidro#54"
+  ],
+  "trocas": []
+ },
+ "I3": {
+  "transparentes": [
+   "garrafa_pet#17",
+   "garrafa_agua#18",
+   "prateleira_vidro#21",
+   "prateleira_vidro#52"
+  ],
+  "trocas": []
+ },
+ "I4": {
+  "transparentes": [
+   "garrafa_pet#19",
+   "garrafa_agua#20",
+   "prateleira_vidro#23",
+   "prateleira_vidro#54"
+  ],
+  "trocas": []
+ },
+ "J1": {
+  "transparentes": [
+   "garrafa_pet#16",
+   "garrafa_agua#17",
+   "prateleira_vidro#20",
+   "prateleira_vidro#51"
+  ],
+  "trocas": []
+ },
+ "J1b": {
+  "transparentes": [
+   "garrafa_pet#19",
+   "garrafa_agua#20",
+   "prateleira_vidro#23",
+   "prateleira_vidro#54"
+  ],
+  "trocas": []
+ },
+ "J2": {
+  "transparentes": [
+   "garrafa_pet#16",
+   "garrafa_agua#17",
+   "prateleira_vidro#20",
+   "prateleira_vidro#51"
+  ],
+  "trocas": []
+ },
+ "J3": {
+  "transparentes": [
+   "garrafa_pet#17",
+   "garrafa_agua#18",
+   "prateleira_vidro#21",
+   "prateleira_vidro#52"
+  ],
+  "trocas": []
+ },
+ "J3_gab": {
+  "transparentes": [
+   "garrafa_pet#15",
+   "garrafa_agua#16",
+   "prateleira_vidro#19",
+   "prateleira_vidro#39"
+  ],
+  "trocas": []
+ },
+ "J4": {
+  "transparentes": [
+   "garrafa_pet#19",
+   "garrafa_agua#20",
+   "prateleira_vidro#23",
+   "prateleira_vidro#56"
+  ],
+  "trocas": []
+ },
+ "REF_PERS": {
+  "transparentes": [],
+  "trocas": []
+ }
+}

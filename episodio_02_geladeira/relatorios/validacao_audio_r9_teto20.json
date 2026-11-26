@@ -1,0 +1,19 @@
+{
+ "arquivo": "v9a_audio_r9_teto20.mp4",
+ "lufs_aac": -14.12,
+ "pico_verdadeiro_aac_dbtp": -1.78,
+ "perda_mono_db": -0.01,
+ "ultimo_0_5s_dbfs": -45.6,
+ "voz_menos_resto_celular_db": {
+  "pior": -0.8,
+  "p5": 16.2,
+  "mediana": 28.8,
+  "janelas": 370
+ },
+ "metas": {
+  "lufs": -14.0,
+  "tp_max": -1.5,
+  "voz_celular_min_db": 10.0
+ },
+ "aprovado_tecnico": true
+}

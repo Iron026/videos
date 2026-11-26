@@ -1,0 +1,62 @@
+{
+ "quadros": 4537,
+ "limiar_dif_media": 1.0,
+ "trechos_que_mudaram": [
+  [
+   0.0,
+   2.8
+  ],
+  [
+   4.8,
+   10.27
+  ],
+  [
+   12.33,
+   12.33
+  ],
+  [
+   28.37,
+   38.1
+  ],
+  [
+   48.43,
+   48.43
+  ],
+  [
+   48.5,
+   48.5
+  ],
+  [
+   115.5,
+   119.23
+  ],
+  [
+   124.3,
+   124.3
+  ]
+ ],
+ "fora_dos_planos_pedidos": {
+  "quadros_acima_do_limiar": [
+   [
+    12.33,
+    1.02
+   ],
+   [
+    48.43,
+    1.02
+   ],
+   [
+    48.5,
+    1.01
+   ],
+   [
+    124.3,
+    1.02
+   ]
+  ],
+  "dif_media": 0.0774,
+  "dif_max": 1.023,
+  "p99": 0.734
+ },
+ "quadros_v2_identicos_byte_a_byte": "35 de 41 planos (A1, A2, A4, C1, C2, I1 renderizados de novo)"
+}

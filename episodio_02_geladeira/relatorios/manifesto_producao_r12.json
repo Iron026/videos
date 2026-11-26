@@ -1,0 +1,247 @@
+{
+ "rodada": 12,
+ "data": "2026-11-25/26",
+ "nada_publicado": true,
+ "episodio_01_alterado": false,
+ "pedidos_do_usuario": [
+  "em 1:53 a água da garrafa fica branca de repente, conserte",
+  "aumente mais a música",
+  "escolha no A/B: +5db"
+ ],
+ "base": {
+  "entrega": "R11 (commit f5c7d4e)",
+  "definitivo_sha256": "32baf7334a461e2b00525ea0c5f27f46a06a5fcb77dd5bd28fc8fe6846efd4fa",
+  "master_sha256": "50cd04cfd2c9c26b3d50b0eab98e160353310f0001943d3b77e9df8d07ff21a0",
+  "preservada_em": "episodio/definitivo/ (intacta, conferida)"
+ },
+ "entrega_definitiva_r12": {
+  "definitivo": {
+   "arquivo": "ep02_definitivo_r12_1080x1920.mp4",
+   "bytes": 160040293,
+   "sha256": "53cb24f5abaf06806f6f50d05708e0d69171a95f29fc62e8c0aa96e0ac6aa6b9",
+   "quadros": 4537,
+   "duracao_s": 151.233333
+  },
+  "master_sem_legendas": {
+   "arquivo": "ep02_master_imagem_sem_legendas_r12_1080.mp4",
+   "bytes": 161177250,
+   "sha256": "92a178704c6ede957e1531ab996b0deacdc6e8c4c26eb0ba27c510f547fb1c93",
+   "quadros": 4537
+  },
+  "partes_95MiB": "episodio/definitivo_r12/ (partes.sha256, LEIA-ME.md)",
+  "partes": {
+   "ep02_definitivo_r12_1080x1920.mp4.parte00": "5d40c9491093785ce79c320dd18db6c9e64d4cb73d6684e688d30f7c48b77d14",
+   "ep02_definitivo_r12_1080x1920.mp4.parte01": "3b0193c400306e942e8d1e994bc06e8611a275c4b16ccef36c18f1a7de3c3dd0",
+   "ep02_master_imagem_sem_legendas_r12_1080.mp4.parte00": "cfdeb64c440cf8c203edcf3aa68c2ef9e66f689250e354921621eccfb931d677",
+   "ep02_master_imagem_sem_legendas_r12_1080.mp4.parte01": "94b8dd61f262c497ee347ec5b13c9d642bed4d0fbdc3a26a0f6106fb5fcde9e5"
+  },
+  "comandos": [
+   "cd episodio && bash montar_r11.sh final ep02_definitivo_r12_1080x1920.mp4 ../som/audio_ep02_r12_musica_m5.wav",
+   "cd episodio && SEM_LEGENDAS=1 bash montar_r11.sh final ep02_master_imagem_sem_legendas_r12_1080.mp4 ../som/audio_ep02_r12_musica_m5.wav  (rodado em paralelo com nome temporário e renomeado; a montagem não grava arquivos intermediários)"
+  ]
+ },
+ "correcao_garrafa": {
+  "sintoma": "água da garrafa fica esbranquiçada de um quadro para o outro (H2, 1:53,1)",
+  "causa": "three.js r170 ordena os transparentes pela profundidade do centro da esfera envolvente; com a câmera em movimento a garrafa e a prateleira de vidro trocavam de ordem e a mistura mudava de uma vez",
+  "correcao": "opção ordemtransp=1 no motor (desligada por padrão): congela a profundidade de ordenação dos transparentes na do quadro 0 do plano; o ambiente (CubeCamera) é capturado antes, igual ao aprovado",
+  "escopo": "varredura de todas as cenas (episodio/varrer_ordem_transparentes.py → relatorios/testes_r10/ordem_transparentes.json): trocas com sobreposição na tela em H2 q48, C4 q52, H1 q75, C2 q83/q111 e F1 q8. Visibilidade medida em 540 ligando × desligando a opção: H2 1.592 px e C4 1.723 px só na garrafa (visível), H1 181 px (garrafa cortada na borda de baixo, ≈3 níveis), C2 nada acima da variação natural, F1 9 px. Corrigidos H2, C4, H1; C2 e F1 mantidos como aprovados (troca invisível)",
+  "por_plano": {
+   "C4": "&ordemtransp=1",
+   "H1": "&ordemtransp=1",
+   "H2": "&ordemtransp=1"
+  },
+  "motor_equivalente": {
+   "79b25d43c4395dc535da39da": {
+    "novo": "0418be25695320f735da39da",
+    "prova": "rodada 12: só acrescenta ordemtransp (desligado por padrão); H2 q46–49 em 540: motor novo sem a opção × motor aprovado = 1,38–1,39, variação natural entre renders idênticos = 1,37 (relatorios/testes_r10/ordem_transparentes_r12.json)"
+   }
+  },
+  "render3_js_sha256": "0418be25695320f7ab78cf697b22261476735177208c4aaec76d4d719df677ee",
+  "render": {
+   "H2": {
+    "reaproveitados": 48,
+    "renderizados": "48–130 (83)"
+   },
+   "C4": {
+    "reaproveitados": 52,
+    "renderizados": "52–184 (133; 126–184 com obturador 5 sub)"
+   },
+   "H1": {
+    "reaproveitados": 75,
+    "renderizados": "75–149 (75)"
+   },
+   "quadros": 291,
+   "renders_do_motor": 527,
+   "tempo_s": 10878,
+   "descartados": "quadros_final/<plano>/_descartados/*_config_localizada (não apagados)",
+   "saltos_aceitos_no_render": "C4 q155–157: mesmo salto na V10 aprovada (justificado no log)",
+   "provas_reuso": "relatorios/testes_r10/provas_reuso_r12/"
+  },
+  "diagnostico": "relatorios/testes_r10/ordem_transparentes_r12.json",
+  "brilho_medio_agua_no_video": {
+   "H2 · 1:53,1 (defeito relatado)": {
+    "R11": [
+     106.5,
+     106.4,
+     121.4,
+     121.3
+    ],
+    "R12": [
+     106.5,
+     106.4,
+     106.3,
+     105.9
+    ]
+   },
+   "C4 · 0:44,4": {
+    "R11": [
+     107.2,
+     107.3,
+     120.8,
+     120.8
+    ],
+    "R12": [
+     107.4,
+     107.1,
+     106.9,
+     106.6
+    ]
+   },
+   "H1 · 1:49,6": {
+    "R11": [
+     125.0,
+     113.5,
+     113.5,
+     103.9
+    ],
+    "R12": [
+     125.0,
+     113.6,
+     113.6,
+     103.9
+    ]
+   }
+  },
+  "comparativo": [
+   "episodio/previas_r12/garrafa_antes_depois_r12.png",
+   "episodio/previas_r12/ab_garrafa_1m53_r11_x_r12.mp4"
+  ]
+ },
+ "musica": {
+  "variante": "+5 dB (MUSICA_REL_DB −13,5 em vez de −18,5)",
+  "mixagem_wav_sha256": "b34885b32c5f9ef6a9e6529e0cb11c47042d43608098e36acdd94884f9363fb1",
+  "flac": "preservado_r12/audio_ep02_r12_musica_m5.flac",
+  "flac_sha256": "5c3b593ed6ddd4a15990fb9e3c256eac643bf0c5e194739ff42e8b055b40800f",
+  "comando": "GARRAFA_B5=1 APRESENTA_R11=pop APRESENTA_REL_DB=-9 MUSICA=spice_intrigue MUSICA_REL_DB=-13.5 SUF_R10=_si_r12_m5 python3 som/som_r10.py; python3 som/ajuste_pico_local.py som/audio_ep02_r10_completo_si_r12_m5.wav som/audio_ep02_r12_musica_m5.wav -2.0 85.9",
+  "prova_so_musica": "efeitos e mecanismo diferem 0; música exatamente +5,0 dB (resíduo −133 dBFS); ambiências e voz são os mesmos stems",
+  "aac_decodificado_identico_ao_teste_aprovado": "583b3d4322a137ba (definitivo R12 = rev_m5.mp4 do A/B)"
+ },
+ "validacoes": {
+  "quadros": "5.638 conferidos (manifesto × SHA-256 × decodificação × 1080×1920 × não-preto), 0 problemas; --simular: 0 a renderizar",
+  "r11_x_r12": {
+   "arquivo": "relatorios/testes_r10/comparacao_r11_x_r12_video.json",
+   "totais": {
+    "igual": 3914,
+    "esperado": 284,
+    "codificador": 339,
+    "inesperado": 0
+   },
+   "planos_identicos": 32,
+   "quadros_chave_iguais": true,
+   "codificador": "D1/D2 até o quadro-chave 1594 e I1/I2 até 3577; quadros-fonte desses planos iguais aos manifestos e anteriores à R12; montagem, grade, decupagem, cenas e pontes sem mudança desde a R11"
+  },
+  "video": {
+   "arquivo": "relatorios/testes_r10/validacao_final_r11_video_r12.json",
+   "fluxo_ok": {
+    "resolucao": true,
+    "fps": true,
+    "quadros": true,
+    "h264": true,
+    "aac_48k": true,
+    "sem_marcacao_no_titulo": true
+   },
+   "quadros_pretos": [],
+   "final_x_revisao540": {
+    "corr_min": 0.973,
+    "corr_mediana": 0.9975,
+    "dif_max": 5.7,
+    "abaixo_do_limiar": []
+   },
+   "saltos_fora_dos_cortes": 284,
+   "saltos_iguais_na_revisao_aprovada": 278,
+   "saltos_no_limite": [
+    278,
+    1158,
+    1431,
+    3259,
+    3304,
+    4084
+   ],
+   "saltos_novos": 0,
+   "sem_legendas_x_final": {
+    "quadros": 4537,
+    "quadros_sem_diferenca": 373,
+    "linhas_com_diferenca_pct_altura": [
+     64.1,
+     78.1
+    ]
+   }
+  },
+  "cintilacao_1080": {
+   "arquivo": "relatorios/testes_r10/cintilacao_final_1080_em_540_r12.json",
+   "H2": 6,
+   "C4": 52,
+   "H1": 95,
+   "R11": {
+    "H2": 6,
+    "C4": 51,
+    "H1": 95
+   },
+   "nota": "C4 +1: q122, bloco no alto do quadro (x≈768, y≈64 em 1080) com fração 0,250 × 0,238 na R11, limiar 0,25; longe da garrafa"
+  },
+  "audio": {
+   "arquivo": "som/validacao_audio_r12_final.json",
+   "lufs": -14.09,
+   "pico_dbtp": -1.52,
+   "perda_mono_db": -0.02,
+   "fim_dbfs": -45.6,
+   "voz_menos_resto": {
+    "pior": -8.7,
+    "p5": 10.3,
+    "mediana": 23.3,
+    "janelas": 370
+   },
+   "pior_janela": "104,0–104,4 s: pausa depois de \"bruscamente,\" + \"e\" (104,23 s); voz −44,7 dB na janela; música −36,2 dB (R11: −4,0 dB na mesma janela)"
+  },
+  "pops": {
+   "arquivo": "relatorios/testes_r10/validacao_pops_r11_r12_final.json",
+   "aprovado": true,
+   "atraso": 0,
+   "eventos": {
+    "garrafa pousa na prateleira de vidro (B5)": 12.0,
+    "apresentação: fluido refrigerante (C3)": 8.9,
+    "apresentação: Evaporador (D1)": 8.9,
+    "apresentação: Compressor (E2)": 8.8,
+    "apresentação: Condensador (F1)": 9.0,
+    "apresentação: Capilar (G2)": 8.0
+   }
+  },
+  "recuperacao": {
+   "commit": "73b8e57",
+   "metodo": "clone novo --filter=blob:none --sparse --depth 1 em pasta vazia",
+   "partes": "4/4 OK",
+   "definitivo": "53cb24f5… igual",
+   "master": "92a17870… igual",
+   "quadros": 4537,
+   "flac": "5c3b593e… igual",
+   "r11": "partes OK"
+  }
+ },
+ "licencas": {
+  "narracao": "ElevenLabs plano gratuito: sem uso comercial, atribuição obrigatória",
+  "trilha": "Spice Intrigue (RomanSenykMusic), Pixabay Content License — conferência na página da faixa com o usuário; arquivo isolado fora do git",
+  "efeitos": "relatorios/licencas_r10.md",
+  "correcao": "\"Mixkit\" corrigido para Pixabay nos documentos da R11 (25/11)"
+ },
+ "aviso_conteiner": "quadros_final/ (1,7 GB, com manifestos e descartados) não está no git e se perde quando a sessão acabar"
+}

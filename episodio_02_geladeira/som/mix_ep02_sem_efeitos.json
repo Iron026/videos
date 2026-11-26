@@ -1,0 +1,16 @@
+{
+ "compressao_voz_max_db": -4.7,
+ "compressao_voz_limiar_dbfs": -16.4,
+ "compressao_voz_razao": 2.0,
+ "compressao_voz_media_na_fala_db": -0.4,
+ "master_db": 5.45,
+ "ganhos_stems_db": {
+  "efeitos": 0.0,
+  "mecanismo": 0.0,
+  "ambiencias": 0.0
+ },
+ "ducking_max_db": 0.0,
+ "limitador_max_db": -2.67,
+ "lufs_wav": -14.12,
+ "tp_wav": -1.8
+}

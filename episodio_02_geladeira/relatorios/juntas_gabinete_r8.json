@@ -1,0 +1,342 @@
+{
+ "C2": {
+  "degrau×fundo_tras (y = IY1)": {
+   "quadros_com_junta_no_quadro": 137,
+   "px_alternando_30": 12217,
+   "px_alternando_12": 21592,
+   "pior": [
+    849,
+    "q0120.jpg"
+   ]
+  },
+  "fundo_tras×topo (z = IZ1)": {
+   "quadros_com_junta_no_quadro": 111,
+   "px_alternando_30": 1757,
+   "px_alternando_12": 8402,
+   "pior": [
+    602,
+    "q0098.jpg"
+   ]
+  }
+ },
+ "C2_obt": {
+  "degrau×fundo_tras (y = IY1)": {
+   "quadros_com_junta_no_quadro": 693,
+   "px_alternando_30": 28090,
+   "px_alternando_12": 49733,
+   "pior": [
+    481,
+    "q0400.jpg"
+   ]
+  },
+  "fundo_tras×topo (z = IZ1)": {
+   "quadros_com_junta_no_quadro": 559,
+   "px_alternando_30": 25933,
+   "px_alternando_12": 41618,
+   "pior": [
+    712,
+    "q0489.jpg"
+   ]
+  }
+ },
+ "C3": {
+  "degrau×fundo_tras (y = IY1)": {
+   "quadros_com_junta_no_quadro": 0,
+   "px_alternando_30": 0,
+   "px_alternando_12": 0,
+   "pior": null
+  },
+  "fundo_tras×topo (z = IZ1)": {
+   "quadros_com_junta_no_quadro": 0,
+   "px_alternando_30": 0,
+   "px_alternando_12": 0,
+   "pior": null
+  }
+ },
+ "C4": {
+  "degrau×fundo_tras (y = IY1)": {
+   "quadros_com_junta_no_quadro": 183,
+   "px_alternando_30": 520,
+   "px_alternando_12": 2682,
+   "pior": [
+    80,
+    "q0170.jpg"
+   ]
+  },
+  "fundo_tras×topo (z = IZ1)": {
+   "quadros_com_junta_no_quadro": 138,
+   "px_alternando_30": 1587,
+   "px_alternando_12": 4585,
+   "pior": [
+    266,
+    "q0101.jpg"
+   ]
+  }
+ },
+ "D1": {
+  "degrau×fundo_tras (y = IY1)": {
+   "quadros_com_junta_no_quadro": 0,
+   "px_alternando_30": 0,
+   "px_alternando_12": 0,
+   "pior": null
+  },
+  "fundo_tras×topo (z = IZ1)": {
+   "quadros_com_junta_no_quadro": 150,
+   "px_alternando_30": 1359,
+   "px_alternando_12": 3965,
+   "pior": [
+    422,
+    "q0014.jpg"
+   ]
+  }
+ },
+ "D2": {
+  "degrau×fundo_tras (y = IY1)": {
+   "quadros_com_junta_no_quadro": 0,
+   "px_alternando_30": 0,
+   "px_alternando_12": 0,
+   "pior": null
+  },
+  "fundo_tras×topo (z = IZ1)": {
+   "quadros_com_junta_no_quadro": 179,
+   "px_alternando_30": 0,
+   "px_alternando_12": 57,
+   "pior": [
+    5,
+    "q0010.jpg"
+   ]
+  }
+ },
+ "D3": {
+  "degrau×fundo_tras (y = IY1)": {
+   "quadros_com_junta_no_quadro": 0,
+   "px_alternando_30": 0,
+   "px_alternando_12": 0,
+   "pior": null
+  },
+  "fundo_tras×topo (z = IZ1)": {
+   "quadros_com_junta_no_quadro": 0,
+   "px_alternando_30": 0,
+   "px_alternando_12": 0,
+   "pior": null
+  }
+ },
+ "D4": {
+  "degrau×fundo_tras (y = IY1)": {
+   "quadros_com_junta_no_quadro": 0,
+   "px_alternando_30": 0,
+   "px_alternando_12": 0,
+   "pior": null
+  },
+  "fundo_tras×topo (z = IZ1)": {
+   "quadros_com_junta_no_quadro": 0,
+   "px_alternando_30": 0,
+   "px_alternando_12": 0,
+   "pior": null
+  }
+ },
+ "D5": {
+  "degrau×fundo_tras (y = IY1)": {
+   "quadros_com_junta_no_quadro": 0,
+   "px_alternando_30": 0,
+   "px_alternando_12": 0,
+   "pior": null
+  },
+  "fundo_tras×topo (z = IZ1)": {
+   "quadros_com_junta_no_quadro": 122,
+   "px_alternando_30": 17459,
+   "px_alternando_12": 21856,
+   "pior": [
+    500,
+    "q0048.jpg"
+   ]
+  }
+ },
+ "E1": {
+  "degrau×fundo_tras (y = IY1)": {
+   "quadros_com_junta_no_quadro": 41,
+   "px_alternando_30": 1591,
+   "px_alternando_12": 7803,
+   "pior": [
+    613,
+    "q0065.jpg"
+   ]
+  },
+  "fundo_tras×topo (z = IZ1)": {
+   "quadros_com_junta_no_quadro": 0,
+   "px_alternando_30": 0,
+   "px_alternando_12": 0,
+   "pior": null
+  }
+ },
+ "E2": {
+  "degrau×fundo_tras (y = IY1)": {
+   "quadros_com_junta_no_quadro": 133,
+   "px_alternando_30": 144421,
+   "px_alternando_12": 183500,
+   "pior": [
+    6438,
+    "q0082.jpg"
+   ]
+  },
+  "fundo_tras×topo (z = IZ1)": {
+   "quadros_com_junta_no_quadro": 0,
+   "px_alternando_30": 0,
+   "px_alternando_12": 0,
+   "pior": null
+  }
+ },
+ "E3": {
+  "degrau×fundo_tras (y = IY1)": {
+   "quadros_com_junta_no_quadro": 0,
+   "px_alternando_30": 0,
+   "px_alternando_12": 0,
+   "pior": null
+  },
+  "fundo_tras×topo (z = IZ1)": {
+   "quadros_com_junta_no_quadro": 0,
+   "px_alternando_30": 0,
+   "px_alternando_12": 0,
+   "pior": null
+  }
+ },
+ "E4": {
+  "degrau×fundo_tras (y = IY1)": {
+   "quadros_com_junta_no_quadro": 126,
+   "px_alternando_30": 0,
+   "px_alternando_12": 0,
+   "pior": [
+    0,
+    "q0126.jpg"
+   ]
+  },
+  "fundo_tras×topo (z = IZ1)": {
+   "quadros_com_junta_no_quadro": 0,
+   "px_alternando_30": 0,
+   "px_alternando_12": 0,
+   "pior": null
+  }
+ },
+ "G1": {
+  "degrau×fundo_tras (y = IY1)": {
+   "quadros_com_junta_no_quadro": 0,
+   "px_alternando_30": 0,
+   "px_alternando_12": 0,
+   "pior": null
+  },
+  "fundo_tras×topo (z = IZ1)": {
+   "quadros_com_junta_no_quadro": 0,
+   "px_alternando_30": 0,
+   "px_alternando_12": 0,
+   "pior": null
+  }
+ },
+ "G2": {
+  "degrau×fundo_tras (y = IY1)": {
+   "quadros_com_junta_no_quadro": 0,
+   "px_alternando_30": 0,
+   "px_alternando_12": 0,
+   "pior": null
+  },
+  "fundo_tras×topo (z = IZ1)": {
+   "quadros_com_junta_no_quadro": 0,
+   "px_alternando_30": 0,
+   "px_alternando_12": 0,
+   "pior": null
+  }
+ },
+ "G3": {
+  "degrau×fundo_tras (y = IY1)": {
+   "quadros_com_junta_no_quadro": 171,
+   "px_alternando_30": 12,
+   "px_alternando_12": 43,
+   "pior": [
+    38,
+    "q0154.jpg"
+   ]
+  },
+  "fundo_tras×topo (z = IZ1)": {
+   "quadros_com_junta_no_quadro": 171,
+   "px_alternando_30": 63,
+   "px_alternando_12": 198,
+   "pior": [
+    11,
+    "q0092.jpg"
+   ]
+  }
+ },
+ "G3z": {
+  "degrau×fundo_tras (y = IY1)": {
+   "quadros_com_junta_no_quadro": 0,
+   "px_alternando_30": 0,
+   "px_alternando_12": 0,
+   "pior": null
+  },
+  "fundo_tras×topo (z = IZ1)": {
+   "quadros_com_junta_no_quadro": 0,
+   "px_alternando_30": 0,
+   "px_alternando_12": 0,
+   "pior": null
+  }
+ },
+ "H1": {
+  "degrau×fundo_tras (y = IY1)": {
+   "quadros_com_junta_no_quadro": 80,
+   "px_alternando_30": 508,
+   "px_alternando_12": 3964,
+   "pior": [
+    133,
+    "q0090.jpg"
+   ]
+  },
+  "fundo_tras×topo (z = IZ1)": {
+   "quadros_com_junta_no_quadro": 148,
+   "px_alternando_30": 2029,
+   "px_alternando_12": 5853,
+   "pior": [
+    296,
+    "q0113.jpg"
+   ]
+  }
+ },
+ "H2": {
+  "degrau×fundo_tras (y = IY1)": {
+   "quadros_com_junta_no_quadro": 129,
+   "px_alternando_30": 82,
+   "px_alternando_12": 859,
+   "pior": [
+    57,
+    "q0058.jpg"
+   ]
+  },
+  "fundo_tras×topo (z = IZ1)": {
+   "quadros_com_junta_no_quadro": 129,
+   "px_alternando_30": 5707,
+   "px_alternando_12": 8610,
+   "pior": [
+    368,
+    "q0103.jpg"
+   ]
+  }
+ },
+ "J3": {
+  "degrau×fundo_tras (y = IY1)": {
+   "quadros_com_junta_no_quadro": 130,
+   "px_alternando_30": 357,
+   "px_alternando_12": 1782,
+   "pior": [
+    96,
+    "q0067.jpg"
+   ]
+  },
+  "fundo_tras×topo (z = IZ1)": {
+   "quadros_com_junta_no_quadro": 130,
+   "px_alternando_30": 25,
+   "px_alternando_12": 124,
+   "pior": [
+    17,
+    "q0063.jpg"
+   ]
+  }
+ }
+}

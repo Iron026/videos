@@ -1,0 +1,119 @@
+{
+ "versao": "1.0.0",
+ "episodio": "Ep. 02 — Como a geladeira esfria sem produzir frio?",
+ "origem": "R13.1",
+ "aprovado_em": "2026-11-26",
+ "aprovado_por": "usuário (aprovação integral, mensagem de 26/11/2026)",
+ "commit_base": "c45cd33cf14a6a5383eb2c59ae2ecd815ec280be",
+ "entregaveis": {
+  "episodio/ep02_definitivo_r13_1_1080x1920.mp4": "1c7cdd5bd4300b4c035c3328f996c7aff1be8c0572c985552c556ee95349b7f5",
+  "episodio/ep02_master_imagem_sem_legendas_r13_1_1080.mp4": "67eb850e73801555862146dfa86d08a4f4584804ea826ec5a77204fb63850cd3"
+ },
+ "partes": {
+  "episodio/definitivo_r13_1/ep02_definitivo_r13_1_1080x1920.mp4.parte00": "56ec8275e3295cfc69c500163b8b7caeab391ad096728e3f43ffafd8d523c5ff",
+  "episodio/definitivo_r13_1/ep02_definitivo_r13_1_1080x1920.mp4.parte01": "8101598aaedd9a6c673f91c5510fb36965c8e849dc23a15025e2fafc8f80bb76",
+  "episodio/definitivo_r13_1/ep02_master_imagem_sem_legendas_r13_1_1080.mp4.parte00": "be671023d094b7a90314c2123d5fc8c66ce7fb31b17ed2d95d3fdd44b9b4b1d7",
+  "episodio/definitivo_r13_1/ep02_master_imagem_sem_legendas_r13_1_1080.mp4.parte01": "8478623a9dda1115cf77a635ad4830c36d833801020b296cc7d675e3f7396de1"
+ },
+ "audio": {
+  "som/audio_ep02_r13_r13c_final_r13_teste.wav (fora do git)": "5aa11c8ba6cca8c434658ba266f06a475516b19ca027c5e637e8e1a49b6a8635",
+  "som/preservado_r13c/audio_ep02_r13C_final.flac": "9ec504ad9f8e6b1af27a48b3ec0e88d60a545882f5d0c2108d9944769f265252",
+  "som/mix_ep02_r13_r13c_final.json": "6172e59fbce60821b26493c6ef41603aca6d229f8808b1e21db2aa5aee8f2ca9",
+  "md5_fluxo_aac_no_mp4": "fce2ed831aae9347b27b887825cd8df8",
+  "stems": {
+   "camada_apresentacoes.wav": "af021e96ffbb6262b39e3d2abc74d0d5787498cf32720fe41c9a1a2429e75688",
+   "camada_fluxo.wav": "09aa627a4f56e6ce06fdd18304d3e366ba84ea14845b403bad9b340b5d95bd25",
+   "camada_mecanismo.wav": "ee9e73fa099ed87f98acde030cac0e0610442b3f1d2ec09e48f8e9b8342a0ab7",
+   "camada_transicoes.wav": "49232cb78a9a4135be620541d3a410f3ea2c435f00492579bad139e47a94f898",
+   "chiado.wav": "d6028f9ac358cd54293ef45a2747dd4949bb2cc43e3f8db559562179e3285878",
+   "compressor_contexto.wav": "2f0468965fb0cdcce58331ae400e1a0fc35617b0518196e37175e26dc91a0789",
+   "efeitos_cc0_e_proprios.wav": "cea7c4fa6db68e40b290e6c8e4da8438ab519a3ae6bd302f0d58d787c624c666",
+   "efeitos_mecanismos.wav": "7673e2a5e67673053ea36673d7fa7c8e23b72e9a3f897b9085a1da7830569ede",
+   "efeitos_mixkit.wav": "2f4fc81299988f12f47a25b633dee4efe2609f419638bee4a89035efc3227568",
+   "gorgolejo.wav": "30b3e4dd1a4a5a5b5457f57a370977f1f7b0f34bb96d385633890f4fc0365b8d",
+   "musica.wav": "ba42e1444a92b304a852c7b3318a00f78809c34ccf9481b273d04bcfcbf86631",
+   "objetos_mantidos.wav": "f15c9c4741b4ed66550570ea309da0958e830acbf6e2eaec4b8b95058cef48bc",
+   "voz.wav": "8b8cf17079cfd52f3b8dff24161908eca5c36af0a8915ba05afd85d3d72b662b"
+  }
+ },
+ "cenas": {
+  "arquivo": "VERSAO_1.0.0/cenas_definitivo_ep02.tar.xz",
+  "sha256": "df42c36449e771b7e2b70d7b265a7aeca5e5408a9bb6d28fcb86d1268dc1beec",
+  "hash_por_cena": {
+   "A1": "b57af3dfaeecd8bf",
+   "A2": "ff23a600fed285b9",
+   "A3": "ca11d52ffd03c4d3",
+   "A4": "f5b556ea5269d29b",
+   "A4b": "82b726cb9564667c",
+   "B1": "ae2742f900b3bd96",
+   "B2": "ff1f3da1231c2b36",
+   "B3": "313635401969f7d5",
+   "B4": "3b984c9716450e9d",
+   "B5": "817bd0cc784fd02a",
+   "B6": "6f2be0a942590f8b",
+   "B7": "5d3c956c9c40d978",
+   "C1": "c633b2cb5c2cfbee",
+   "C2": "7191814bfcf2ee4f",
+   "C3": "78cb8fbf8b9f5d1d",
+   "C4": "4f106bffe4862288",
+   "D1": "c0e7556a655347d0",
+   "D2": "356b005012318edc",
+   "D3": "1654dcc30c12aea8",
+   "D4": "44fb023152e4d86a",
+   "D5": "4bd57ce8a6a50ec0",
+   "E1": "450291e911daddc5",
+   "E2": "b330933dcdfd6bba",
+   "E3": "f28eb3ab3cafa811",
+   "E3_r13c_v2": "d620f89ce8acbb97",
+   "E4": "ffe9008f282f4d78",
+   "F1": "0f8d47717a8802c3",
+   "F2": "b867a89fdae6c370",
+   "G1": "453e53d8be286015",
+   "G2": "f4e81a9c96aa23a8",
+   "G3": "66f26fd22b86df00",
+   "G3z": "f2d5a0a0f10c796b",
+   "H1": "5e5e2a067447838b",
+   "H2": "65e42c31c4eac384",
+   "I1": "0dc166fbf8767125",
+   "I2": "9ab35ca986e90ea1",
+   "I3": "79f42d0c009a70eb",
+   "I4": "4eb1f7da065cbf4a",
+   "J1": "131aa4fb84bd41e4",
+   "J1b": "5367b85145a0ff79",
+   "J2": "166b0835b90cff9a",
+   "J3": "11e1d724ff20997b",
+   "J4": "8dc608272e56250e",
+   "A4_h_interior": "7fd9d2875db7c83c",
+   "A4_h_rosto": "637ef1f211d7592b",
+   "A4_h_rosto_c": "0d8e9a14cbc1bcbb"
+  },
+  "nota": "hash por cena = SHA-256 (16 hex) de nomes + conteúdos, o MESMO registrado nos manifestos de render"
+ },
+ "manifestos_render": {
+  "arquivo": "VERSAO_1.0.0/manifestos_render_ep02.tar.xz",
+  "sha256": "032eb349766ad8ecd9b9ffdf5fa26bdd307074c86aa52c13e26c2795708b51fc"
+ },
+ "montagem": {
+  "script": "episodio/montar_r13_1.sh",
+  "sha256": "aa074ab04117d7941663af2e264400ddf8d85887112d5107026f23e2fb3174ec",
+  "montar_ep02": "034d597343fa3592c9a9f411e023d4e8cbc5c876002e35b1c732728bfc41ad0e",
+  "opcoes": "COMPOSICAO_R9=1 TRANSICAO_A4=corte TRANSICAO_A4_INTERNA=empurrao GARRAFA_B5=1 MIXAGEM_EP02=1 QUADROS_R13C=E3=quadros_final_r13c2/E3 ARRED_QUADROS=1 AVISOS_OCULTOS=…"
+ },
+ "motor": {
+  "render3_js": "0418be25695320f7ab78cf697b22261476735177208c4aaec76d4d719df677ee",
+  "render_anim_mjs": "35da39daa4b5bfe6649c9ec7a7b1061312769220793925433b7a452fb4985ef9",
+  "equivalencia": "config/producao.json → motor_equivalente"
+ },
+ "versoes_anteriores_preservadas": [
+  "episodio/definitivo (R11)",
+  "episodio/definitivo_r12",
+  "episodio/definitivo_r13",
+  "som/preservado_r12",
+  "som/preservado_r13 (R13B)",
+  "som/preservado_r13c"
+ ],
+ "fora_do_git": [
+  "quadros renderizados (episodio/quadros_*): regeneráveis das cenas congeladas; prova por variação natural, não por hash",
+  "stems de música (Pixabay) e efeitos Mixkit: licença proíbe o arquivo isolado; SHA-256 registrado"
+ ]
+}

@@ -1,0 +1,35 @@
+{
+ "revisao": {
+  "quadros": 4537,
+  "diferentes": [
+   168,
+   169,
+   170,
+   171,
+   172,
+   173,
+   174,
+   175,
+   176
+  ],
+  "inicio_s": 5.6,
+  "fim_s": 5.867
+ },
+ "final": {
+  "quadros": 195,
+  "diferentes": [
+   168,
+   169,
+   170,
+   171,
+   172,
+   173,
+   174,
+   175,
+   176
+  ],
+  "inicio_s": 5.6,
+  "fim_s": 5.867
+ },
+ "nota": "SHA-256 de cada quadro COMPOSTO (antes do codificador): corte seco (código de 3656e7b, antes das edições da garrafa) × Opção C (código atual, com a regressão dos avisos corrigida). 540 = episódio inteiro (4.537 quadros); 1080 = 0–6,5 s (planos já renderizados em 1080). Uma 1ª rodada achou 2.450 quadros diferentes em 33,9–115,6 s: era a regressão (comentário que desligava os avisos C2–H2 e D4), corrigida em 98ef0b3."
+}
