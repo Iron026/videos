@@ -366,3 +366,10 @@ Arquivos-chave (em `episodio_01_navio_v2/`): `episodio/decupagem_ep01_v3.md` (de
   depois do ataque (gravação "Piston sound" contínua, sem golpes). Eventos vizinhos na mesma camada confundem a medida.
 - O p5 de voz − resto é dominado por janelas de pausa e borda de palavra: medir também só nas janelas com fala.
 - Baixar vídeo do YouTube para análise foi bloqueado pela política da sessão: não contornar; pedir autorização ao usuário.
+- **Emendas musicais respeitam a frase** (aqui, 4 compassos: croma com 4 antes 0,84 × 1 antes 0,72): inserir múltiplos da
+  frase vindos de um trecho DISTANTE (≥ 1 frase de intervalo), nunca repetir o que acabou de tocar nem 1 compasso solto.
+  Validar cada emenda contra a variação natural da faixa (salto espectral, croma, nível, batida).
+- **Música no alto-falante de celular durante fala contínua** tem teto físico: voz e trilha disputam 450 Hz–4 kHz. EQ
+  dinâmica por banda só ganhou presença cobrando inteligibilidade (índice tipo SII e p5); medir antes de prometer.
+- **Curva de visualização ≠ estado físico:** `uTrab` 0→1 no E2 é o desenho do trabalho elétrico, não o compressor ligando;
+  som de "partida" ali ensinava errado. Conferir o que cada curva representa antes de sonorizá-la.

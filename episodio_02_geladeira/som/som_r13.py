@@ -86,18 +86,22 @@ def colocar(camada, t, fonte, ini, dur, ataque, rel_db, pan=0.0, pan_fim=None, t
     vk = (VKW[max(0, a_ - SR // 2):b_ + SR // 2] ** 2).sum(1).mean(); lim = db(teto_lu) * math.sqrt(vk / (pe + 1e-15))
     gf = min(g, g * lim) if lim < 1 else g
     CAMADAS.setdefault(camada, np.zeros((N, 2))); CAMADAS[camada] += y * gf
+    lic = 'mixkit' if fonte[0] == 'mk' else 'cc0'; POR_LICENCA.setdefault(lic, np.zeros((N, 2))); POR_LICENCA[lic] += y * gf   # preservação por licença
     REG['eventos'].append(dict(t=round(t, 3), camada=camada, fonte=f'{fonte[0]}:{fonte[1]}', trecho=[round(ini, 3), round(ini + dur, 3)], ataque=ataque, tom=tom,
                                rel_voz_celular_db=rel_db, referencia=('fala ativa em %.2f–%.2f s' % ref_janela) if ref_janela else 'fala ativa em ±0,8 s', limitado_pelo_teto=bool(lim < 1), ganho_db=round(20 * math.log10(gf + 1e-12), 1), pan=[pan, pan_fim], uso=uso,
                                representacao_didatica=representacao))
     REG['fontes_usadas'][f'{fonte[0]}:{fonte[1]}'] = uso
 CAMADAS = {}
+POR_LICENCA = {}
 passa_baixa = lambda fc, o=2: (lambda x: lpz(x, fc, o))
 passa_alta = lambda fc, o=2: (lambda x: hpz(x, fc, o))
 
 # ------------------------------------------------------------------ 1. camadas contínuas: tom de cômodo removido; compressor por contexto
 E2_LIGA = 75.37   # cena E2: curva uTrab 0→1 em 75,37–75,96 s (pulsos violeta: o trabalho elétrico chega ao compressor)
 COMP_CTX = [(0.0, 0.0), (2.55, 0.0), (3.10, 0.75), (4.87, 0.75), (5.70, 0.45), (9.10, 0.45), (10.10, 0.0),       # A3/A4: traseira à vista
-            (E2_LIGA - 0.05, 0.0), (E2_LIGA + 0.55, 0.80), (78.14, 0.80), (78.30, 0.62), (82.94, 0.62),          # E2 liga · E3 (câmera lenta)
+            (71.42, 0.0), (73.40, 0.80), (78.14, 0.80), (78.30, 0.62), (82.94, 0.62),                          # E1→E2: a câmera CHEGA a um compressor que já funcionava · E3 (câmera lenta)
+            # (verificação R13: o clique de relé + subida em 75,37 s dizia 'o compressor liga agora'; uTrab 0→1 é só a visualização
+            #  didática do trabalho elétrico, e o compressor está ligado desde a abertura — relé removido)
             (83.40, 0.50), (86.40, 0.0),                                                                          # E4: a câmera segue a descarga
             (119.18, 0.0), (119.80, 0.45), (121.25, 0.45), (122.81, 0.85), (124.36, 0.85), (125.30, 0.0),         # I2: trabalha mais (uTrabVel 1→2,2)
             (145.30, 0.0), (145.80, 0.40), (149.90, 0.0), (DUR, 0.0)]                                                             # J4: o trabalho cai a zero (uTrab 1→0)
@@ -116,7 +120,7 @@ colocar('transicoes', 5.737, ('mk', '175'), 0.15, 0.46, 0.462, -19.0, 0.6, -0.6,
 # B2 → B3: "A geladeira não fabrica frio." impacto discreto NA PAUSA depois de "frio." (14,42 s); depois o calor viaja
 t_frio = pal('frio', 13.0)['fim'] + 0.02
 colocar('impactos', t_frio, ('fs', '754424'), 0.0, 1.6, 0.009, -9.0, 0.0, fo=0.9, teto_lu=-8.0, uso='revelação "não fabrica frio" — impacto na pausa')
-colocar('transicoes', 15.55, ('mk', '1474'), 0.2, 2.6, 1.168, -18.0, -0.35, 0.35, fo=0.6, uso='B3: o calor é transportado (feixe contorna a parede)')
+# (retirado na verificação R13 — 1,1 s depois do impacto do 'não fabrica frio.': efeito sobre efeito) colocar('transicoes', 15.55, ('mk', '1474'), 0.2, 2.6, 1.168, -18.0, -0.35, 0.35, fo=0.6, uso='B3: o calor é transportado (feixe contorna a parede)')
 # C2: "Escondido…" — revelação do circuito (uRevela 34,33→35,36) e pulso que dá a volta (uPulso 34,74→37,86)
 colocar('transicoes', 34.33, ('mk', '2615'), 0.4, 2.6, 1.607, -14.0, 0.0, fo=0.7, uso='C2: revelação do circuito (aproximação misteriosa)')
 colocar('impactos', 34.33, ('fs', '754422'), 0.0, 2.2, 0.034, -10.0, 0.0, fo=1.2, teto_lu=-7.0, uso='C2: o circuito surge (impacto principal do episódio)')
@@ -126,11 +130,11 @@ for ev in json.load(open(os.path.join(A, 'apresentacoes_r11.json')))['eventos']:
     colocar('apresentacoes', ev['t'], ('mk', '3005'), 0.0, 0.18, 0.021, -10.5, round((ev['u'] - 0.5) * 0.5, 2), fo=0.05, teto_lu=-6.0,
             uso=f"apresentação: {ev['nome']} ({ev['plano']})")
 # movimentos de câmera que levam a outro ponto do circuito (só 3; cortes comuns NÃO ganham som)
-colocar('transicoes', 47.73, ('mk', '2608'), 0.2, 0.9, 0.454, -13.0, 0.3, -0.2, uso='C4 → D1: câmera vai à caixa do congelador')
+# (retirado na verificação R13 — 2 s antes do pop do rótulo 'Evaporador': dois acentos para a mesma chegada) colocar('transicoes', 47.73, ('mk', '2608'), 0.2, 0.9, 0.454, -13.0, 0.3, -0.2, uso='C4 → D1: câmera vai à caixa do congelador')
 colocar('transicoes', 72.77, ('mk', '1474'), 0.2, 2.6, 1.168, -14.0, 0.0, 0.0, fo=0.6, uso='E1: câmera desce com o vapor pela linha de sucção')
 colocar('transicoes', 109.88, ('mk', '1489'), 0.1, 1.9, 0.713, -13.0, -0.2, 0.3, fo=0.5, uso='H1: câmera se afasta até o circuito inteiro')
 # compressor: relé fecha quando o trabalho elétrico chega (E2), pistão e válvulas na câmera lenta (E3)
-colocar('mecanismo', E2_LIGA, ('fs', '876593'), 0.0, 0.12, 0.015, -17.0, 0.1, filtro=passa_baixa(4000), fo=0.05, uso='E2: relé de partida do compressor (trabalho elétrico liga)')
+# (removido na verificação R13) relé de partida em E2_LIGA: comunicava incorretamente que o compressor só começa a funcionar ali
 for t in TDC_E3:
     colocar('mecanismo', t, ('fs', '669468'), 0.0, 0.22, 0.014, -19.0, 0.1, tom=0.8, filtro=passa_baixa(2500), fo=0.10,   # 'Low Click 1' (CC0): toque grave e curto; 414055 descartado (som contínuo, sem golpes isolados)
             ref_janela=(78.14, 82.94),
@@ -155,21 +159,28 @@ else:
 
 # ------------------------------------------------------------------ 3. música: Spice Intrigue estendida + automação de contexto
 GRADE = dict(batida=0.6385, fase=0.330, forte=2)          # 93,97 BPM; tempo forte na 3ª batida da grade (medido)
-BAR = 4 * GRADE['batida']; P_EMENDA = 98.659              # emenda no tempo forte de 98,66 s da faixa (melhor similaridade)
+BAR = 4 * GRADE['batida']
+# Rodada 13 (verificação): a 1ª versão repetia IMEDIATAMENTE os 8 compassos recém-ouvidos (1:43,6) e repetia 1 compasso no
+# meio de uma frase de 4 (2:04,0). Agora: 8 compassos (17–24 da faixa, 45,04–65,46 s) entram no início do compasso 29
+# (75,67 s): mesma posição na frase de 4 compassos, emendas com maior semelhança de croma e espectro (entrada 1,82 / saída
+# 1,94 de 2,0), Δ nível 0,7 dB; o trecho repetido foi ouvido ~30 s antes, com outra passagem no meio (reprise de seção, não eco).
+# Nenhum compasso isolado do final emenda bem (0,39–0,74), então não há "+1 compasso": o acorde final cai em "não cria frio.".
+EMENDA = dict(insere_no_compasso=29, t_insercao=75.67, trecho_compassos=(17, 24), trecho_ini=45.04, trecho_fim=65.46)
 def musica_estendida():
     r = subprocess.run(['ffmpeg', '-v', 'error', '-i', os.path.join(A, 'bib', 'pixabay', '334566.mp3'), '-ac', '2', '-ar', str(SR), '-f', 'f32le', '-'], capture_output=True, check=True)
     m = np.frombuffer(r.stdout, np.float32).astype(np.float64).reshape(-1, 2)
     def ataque(t):   # refina o tempo forte pelo ataque real mais próximo (±40 ms)
         a = m[int((t - 0.04) * SR):int((t + 0.04) * SR)].mean(1); e = np.convolve(a ** 2, np.ones(96) / 96, 'same'); d = np.diff(e)
         return t - 0.04 + int(np.argmax(d)) / SR
-    P = ataque(P_EMENDA); Q8 = ataque(P_EMENDA - 8 * BAR); Q1 = ataque(P_EMENDA - BAR)
-    segs = [(0.0, P), (Q8, P), (Q1, len(m) / SR)]; xf = n_(0.040); out = None
+    P = ataque(EMENDA['t_insercao']); Q0 = ataque(EMENDA['trecho_ini']); Q1 = ataque(EMENDA['trecho_fim'])
+    segs = [(0.0, P), (Q0, Q1), (P, len(m) / SR)]; xf = n_(0.040); out = None
     for (a, b) in segs:
         s = m[int(a * SR) - (xf if a > 0 else 0):int(b * SR)]
         if out is None: out = s; continue
         w = np.linspace(0, np.pi / 2, xf)[:, None]; out = np.concatenate([out[:-xf], out[-xf:] * np.cos(w) + s[:xf] * np.sin(w), s[xf:]])   # emenda 40 ms antes do tempo forte
-    REG['musica_emendas'] = dict(ponto_P=round(P, 4), repete_8_compassos_desde=round(Q8, 4), repete_1_compasso_desde=round(Q1, 4), compasso_s=round(BAR, 4),
-                                 inseridos_s=round((P - Q8) + (P - Q1), 3), duracao_nova_s=round(len(out) / SR, 2))
+    REG['musica_emendas'] = dict(insercao_na_faixa=round(P, 4), trecho_inserido=[round(Q0, 4), round(Q1, 4)], compassos_inseridos='17–24 (8)', compasso_s=round(BAR, 4),
+                                 inseridos_s=round(Q1 - Q0, 3), duracao_nova_s=round(len(out) / SR, 2),
+                                 emendas_no_episodio_s=[round(4.87 + P, 3), round(4.87 + P + (Q1 - Q0), 3)])
     return out
 ENTRA = 4.87                                           # entra com o rosto do rapaz ("Parece estranho…"), como na R12
 ms = musica_estendida(); mus = np.zeros((N, 2)); i0 = int(ENTRA * SR); n = min(N - i0, len(ms)); mus[i0:i0 + n] = ms[:n]
@@ -194,7 +205,7 @@ AUTO = [(0.0, 0.0), (5.40, 0.0), (5.65, 3.0), (6.40, 3.0), (6.90, 0.0),         
         (78.14, 0.0), (78.40, -2.5), (82.94, -2.5), (83.40, 0.0),                                # E3: pistão e válvulas em primeiro plano
         (102.07, 0.0), (102.40, -1.5), (107.0, -1.5), (107.30, 0.0),                             # G3: capilar
         (109.50, 0.0), (109.90, 2.5), (112.30, 2.5), (113.00, 0.0),                              # "E tudo recomeça"
-        (149.64, 0.0), (149.70, 3.0), (DUR, 3.0)]                                                 # acorde final depois de "calor."
+        (147.56, 0.0), (147.62, 2.0), (147.86, 2.0), (147.92, 0.0), (DUR, 0.0)]                   # acorde final em "frio." abre na pausa antes de "Ela dá…"
 PAUSA_DB = float(os.environ.get('PAUSA_DB', '1.5')); PAUSAS = [(0.0, 0.0)]                                                                             # pausas ≥ 0,45 s: a música aparece +2 dB
 for a, b in gaps: PAUSAS += [(a + 0.30, 0.0), (a + 0.45, PAUSA_DB), (b - 0.22, PAUSA_DB), (b - 0.10, 0.0)]   # começa 0,3 s depois da palavra (não cobre a cauda)
 PAUSAS.append((DUR, 0.0))
@@ -208,15 +219,40 @@ def momentaneo(x):
     return -0.691 + 10 * np.log10((c[i + w4] - c[i]) / w4 + 1e-15)
 # abaixamento DINÂMICO só na banda da voz (250 Hz–4 kHz): a cada instante de fala a música fica ≥ SEP dB abaixo da voz
 # nessa banda (no máximo MAXD dB de redução); graves e agudos da música seguem (presença sem disputar as palavras).
-lo = sosfiltfilt(butter(4, 250, 'lowpass', fs=SR, output='sos'), mus, axis=0); hi = sosfiltfilt(butter(4, 4000, 'highpass', fs=SR, output='sos'), mus, axis=0); meio = mus - lo - hi
+REL_S = float(os.environ.get('REL_S', '0.5'))
+FATIAS = os.environ.get('FATIAS', '0') == '1'; PRESENCA = float(os.environ.get('PRESENCA_DB', '0'))
+if PRESENCA: mus = mus + (db(PRESENCA) - 1) * sosfiltfilt(butter(2, 2000, 'highpass', fs=SR, output='sos'), mus, axis=0)   # realce suave > 2 kHz (faixa forte do celular)
 wv = n_(0.03); mmv = lambda x: np.sqrt(np.convolve(x ** 2, np.ones(wv) / wv, 'same')) + 1e-9
-env_v = mmv(sosfiltfilt(BANDA_VOZ, VOZ.mean(1))); env_m = mmv(meio.mean(1)); REL_S = float(os.environ.get('REL_S', '0.5')); g_tot = suaviza(1 - (1 - db(DUCK_TOTAL)) * ativa, 0.06, REL_S)
-vm_ = momentaneo(VOZ); GM = ALVO + 6.0
-for it in range(5):
-    g = np.clip(env_v * db(-SEP) / (env_m * db(GM)), db(MAXD), 1.0); g = 1 - (1 - g) * ativa; g_meio = suaviza(g, 0.02, REL_S)
-    cand = (lo + meio * g_meio[:, None] + hi) * g_tot[:, None] * db(GM); mm_ = momentaneo(cand); ok = (vm_ > -45) & (mm_ > -70)
-    err = ALVO - float(np.median(mm_[ok] - vm_[ok])); GM += err
-    if abs(err) < 0.1: break
+g_tot = suaviza(1 - (1 - db(DUCK_TOTAL)) * ativa, 0.06, REL_S); vm_ = momentaneo(VOZ); GM = ALVO + 6.0
+if not FATIAS:   # abaixamento dinâmico numa banda só (250 Hz–4 kHz)
+    lo = sosfiltfilt(butter(4, 250, 'lowpass', fs=SR, output='sos'), mus, axis=0); hi = sosfiltfilt(butter(4, 4000, 'highpass', fs=SR, output='sos'), mus, axis=0); meio = mus - lo - hi
+    env_v = mmv(sosfiltfilt(BANDA_VOZ, VOZ.mean(1))); env_m = mmv(meio.mean(1))
+    for it in range(5):
+        g = np.clip(env_v * db(-SEP) / (env_m * db(GM)), db(MAXD), 1.0); g = 1 - (1 - g) * ativa; g_meio = suaviza(g, 0.02, REL_S)
+        cand = (lo + meio * g_meio[:, None] + hi) * g_tot[:, None] * db(GM); mm_ = momentaneo(cand); ok = (vm_ > -45) & (mm_ > -70)
+        err = ALVO - float(np.median(mm_[ok] - vm_[ok])); GM += err
+        if abs(err) < 0.1: break
+else:            # EQ dinâmica por banda ("fatias"): a música só recua nas bandas em que a VOZ tem energia naquele instante
+    CORTES = [250, 500, 1000, 2000, 4000, 8000]
+    def dividir(x):   # bandas complementares por subtração (soma exata)
+        partes = []; resto = x
+        for fc in CORTES:
+            lp = sosfiltfilt(butter(4, fc, 'lowpass', fs=SR, output='sos'), resto, axis=0); partes.append(lp); resto = resto - lp
+        partes.append(resto); return partes   # [<250, 250–500, …, 4k–8k, >8k]
+    PM = dividir(mus); PV = dividir(VOZ.mean(1))
+    EV = [mmv(PV[b]) for b in range(1, 6)]; EM = [mmv(PM[b].mean(1)) for b in range(1, 6)]
+    EVdb = np.array([20 * np.log10(e) for e in EV]); vmax = EVdb.max(0)
+    FAIXA = float(os.environ.get('FAT_FAIXA', '18')); SIG = [np.clip((EVdb[b] - (vmax - FAIXA)) / 8.0, 0, 1) for b in range(5)]   # banda "importante" se a voz está a < 10–18 dB do seu pico naquele instante
+    for it in range(5):
+        cand = PM[0] + PM[6]
+        for b in range(5):
+            g = np.clip(EV[b] * db(-SEP) / (EM[b] * db(GM)), db(MAXD), 1.0); g = 1 - (1 - g) * SIG[b] * ativa
+            cand = cand + PM[b + 1] * suaviza(g, 0.02, REL_S)[:, None]
+        cand = cand * g_tot[:, None] * db(GM); mm_ = momentaneo(cand); ok = (vm_ > -45) & (mm_ > -70)
+        err = ALVO - float(np.median(mm_[ok] - vm_[ok])); GM += err
+        if abs(err) < 0.1: break
+    g_meio = np.ones(N)
+REG['musica_eq_dinamica'] = dict(fatias=FATIAS, presenca_db=PRESENCA, faixa_protegida_db=float(os.environ.get('FAT_FAIXA', '18')), sep_db=SEP)
 MUSICA = cand; REG['musica_abaixamento_medio_na_fala_db'] = round(float(20 * np.log10(np.mean(g_meio[ativa > 0.5]) + 1e-9)), 1)
 REG['musica'] = dict(ganho_db=round(GM, 2), alvo_lu_abaixo_da_voz_na_fala=ALVO, abaixamento='dinâmico na banda 250 Hz–4 kHz: música ≥ %g dB abaixo da voz, no máximo %g dB' % (SEP, MAXD), abaixamento_total_db=DUCK_TOTAL,
                      passa_altas_hz=45, corte_fixo_removido='−3 dB em 0,9–3,2 kHz (R12)', entra_s=ENTRA)
@@ -228,7 +264,7 @@ EF12 = L9['porta'] + L9['passos'] + L9['gorgolejo'] + L9['chiado_capilar'] + R12
 RUIDO12 = L9['tom_de_comodo'] + L9['compressor']
 def limitar(x, teto):
     return B.limitador(x, teto)
-TETO = float(os.environ.get('TETO_R13', '-2.0'))
+TETO = float(os.environ.get('TETO_R13', '-2.2'))   # verificação R13: −2,0 deixava o AAC em −1,53 dBTP (margem de 0,03 dB)
 VARIANTES = {   # (nome: soma) — A/B usam o master FIXO da V9 (voz idêntica); o teste completo é normalizado a −14 LUFS
     'ruido_isolado_r12': (RUIDO12, None),
     'tom_de_comodo_isolado_r12': (L9['tom_de_comodo'], None),
@@ -252,6 +288,10 @@ mg13 = -14.0 - B.lufs(VOZ + MUSICA + EF13); REG['master_r13_db'] = round(mg13, 2
 for k, x in (('voz', VOZ), ('musica', MUSICA), ('efeitos_mecanismos', EF13), ('objetos_mantidos', OBJ), ('compressor_contexto', COMPRESSOR),
              ('gorgolejo', GORGOLEJO), ('chiado', CHIADO), *[(f'camada_{c}', v) for c, v in CAMADAS.items()]):
     sf.write(os.path.join(OUT, f'{k}.wav'), (x * db(mg13)).astype(np.float32), SR, subtype='FLOAT')   # stems no MESMO ganho do teste completo
+# preservação por licença: CC0 + camadas próprias (podem ir ao git em FLAC) × Mixkit (não podem: item isolado)
+CC0 = OBJ + GORGOLEJO + CHIADO + COMPRESSOR + POR_LICENCA.get('cc0', 0); MK = POR_LICENCA.get('mixkit', np.zeros((N, 2)))
+for k, x in (('efeitos_cc0_e_proprios', CC0), ('efeitos_mixkit', MK)): sf.write(os.path.join(OUT, f'{k}.wav'), (x * db(mg13)).astype(np.float32), SR, subtype='FLOAT')
+REG['prova_divisao_por_licenca_dbfs'] = round(20 * math.log10(np.abs(CC0 + MK - EF13).max() + 1e-15), 1)
 REG['stems'] = sorted(os.listdir(OUT)); REG['teto_limitador_dbfs'] = TETO
 json.dump(REG, open(os.path.join(A, f'mix_ep02_r13{SUF}.json'), 'w'), ensure_ascii=False, indent=1)
 print(json.dumps({k: v for k, v in REG.items() if k in ('musica', 'musica_emendas', 'musica_acorde_final_s', 'master_r13_db')}, ensure_ascii=False, indent=1))

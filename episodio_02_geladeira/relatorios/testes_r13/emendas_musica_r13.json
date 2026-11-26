@@ -1,0 +1,38 @@
+{
+ "emenda 1 (entrada do trecho)": {
+  "t_no_episodio": 80.541,
+  "desvio_batida_depois_ms": 106.1,
+  "desvio_batida_antes_ms": 150.4,
+  "novidade_espectral": 244.4,
+  "croma_antes_x_depois": 0.758,
+  "salto_nivel_db": -1.7
+ },
+ "emenda 2 (volta ao compasso 29)": {
+  "t_no_episodio": 100.986,
+  "desvio_batida_depois_ms": 164.1,
+  "desvio_batida_antes_ms": 137.7,
+  "novidade_espectral": 159.2,
+  "croma_antes_x_depois": 0.641,
+  "salto_nivel_db": -1.27
+ },
+ "referencia": {
+  "novidade_mediana": 201.5,
+  "novidade_p90": 293.44,
+  "croma_mediana": 0.72,
+  "croma_p10": 0.59,
+  "salto_nivel_p90_abs": 2.08,
+  "desvio_batida_mediana_ms": 147.2
+ },
+ "repeticao": {
+  "trecho_inserido_no_episodio": [
+   80.54,
+   100.99
+  ],
+  "ouvido_antes_em": [
+   49.92,
+   70.36
+  ],
+  "intervalo_entre_o_fim_da_1a_vez_e_o_inicio_da_2a_s": 10.18,
+  "versao_anterior": "repetia os 8 compassos IMEDIATAMENTE (intervalo 0 s) e 1 compasso no meio da frase"
+ }
+}

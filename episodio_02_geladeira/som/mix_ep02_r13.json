@@ -64,27 +64,6 @@
    "representacao_didatica": false
   },
   {
-   "t": 15.55,
-   "camada": "transicoes",
-   "fonte": "mk:1474",
-   "trecho": [
-    0.2,
-    2.8
-   ],
-   "ataque": 1.168,
-   "tom": 1.0,
-   "rel_voz_celular_db": -18.0,
-   "referencia": "fala ativa em ±0,8 s",
-   "limitado_pelo_teto": false,
-   "ganho_db": -17.2,
-   "pan": [
-    -0.35,
-    0.35
-   ],
-   "uso": "B3: o calor é transportado (feixe contorna a parede)",
-   "representacao_didatica": false
-  },
-  {
    "t": 34.33,
    "camada": "transicoes",
    "fonte": "mk:2615",
@@ -253,27 +232,6 @@
    "representacao_didatica": false
   },
   {
-   "t": 47.73,
-   "camada": "transicoes",
-   "fonte": "mk:2608",
-   "trecho": [
-    0.2,
-    1.1
-   ],
-   "ataque": 0.454,
-   "tom": 1.0,
-   "rel_voz_celular_db": -13.0,
-   "referencia": "fala ativa em ±0,8 s",
-   "limitado_pelo_teto": false,
-   "ganho_db": -15.7,
-   "pan": [
-    0.3,
-    -0.2
-   ],
-   "uso": "C4 → D1: câmera vai à caixa do congelador",
-   "representacao_didatica": false
-  },
-  {
    "t": 72.77,
    "camada": "transicoes",
    "fonte": "mk:1474",
@@ -313,27 +271,6 @@
     0.3
    ],
    "uso": "H1: câmera se afasta até o circuito inteiro",
-   "representacao_didatica": false
-  },
-  {
-   "t": 75.37,
-   "camada": "mecanismo",
-   "fonte": "fs:876593",
-   "trecho": [
-    0.0,
-    0.12
-   ],
-   "ataque": 0.015,
-   "tom": 1.0,
-   "rel_voz_celular_db": -17.0,
-   "referencia": "fala ativa em ±0,8 s",
-   "limitado_pelo_teto": false,
-   "ganho_db": -12.2,
-   "pan": [
-    0.1,
-    null
-   ],
-   "uso": "E2: relé de partida do compressor (trabalho elétrico liga)",
    "representacao_didatica": false
   },
   {
@@ -641,11 +578,11 @@
     0.0
    ],
    [
-    75.32000000000001,
+    71.42,
     0.0
    ],
    [
-    75.92,
+    73.4,
     0.8
    ],
    [
@@ -865,16 +802,24 @@
     0.0
    ],
    [
-    149.64,
+    147.56,
     0.0
    ],
    [
-    149.7,
-    3.0
+    147.62,
+    2.0
+   ],
+   [
+    147.86,
+    2.0
+   ],
+   [
+    147.92,
+    0.0
    ],
    [
     151.24,
-    3.0
+    0.0
    ]
   ],
   "musica_pausas_s": [
@@ -924,30 +869,41 @@
   "mk:166": "transição C: empurrão rosto → interior (corpo)",
   "mk:175": "transição C: empurrão rosto → interior (ar)",
   "fs:754424": "revelação \"não fabrica frio\" — impacto na pausa",
-  "mk:1474": "E1: câmera desce com o vapor pela linha de sucção",
   "mk:2615": "C2: revelação do circuito (aproximação misteriosa)",
   "fs:754422": "C2: o circuito surge (impacto principal do episódio)",
+  "mk:1474": "E1: câmera desce com o vapor pela linha de sucção",
   "mk:3005": "apresentação: Capilar (G2)",
-  "mk:2608": "C4 → D1: câmera vai à caixa do congelador",
   "mk:1489": "H1: câmera se afasta até o circuito inteiro",
-  "fs:876593": "E2: relé de partida do compressor (trabalho elétrico liga)",
   "fs:669468": "E3: pistão no fim da compressão (câmera lenta)",
   "mk:2857": "E3: válvula de sucção abre",
   "fs:553257": "C3: fluido refrigerante circulando no tubo",
   "fs:453443": "G3: líquido expande ao sair do capilar (chiado real)"
  },
  "musica_emendas": {
-  "ponto_P": 98.6872,
-  "repete_8_compassos_desde": 78.2475,
-  "repete_1_compasso_desde": 96.1332,
+  "insercao_na_faixa": 75.6714,
+  "trecho_inserido": [
+   45.0463,
+   65.4905
+  ],
+  "compassos_inseridos": "17–24 (8)",
   "compasso_s": 2.554,
-  "inseridos_s": 22.994,
-  "duracao_nova_s": 154.57
+  "inseridos_s": 20.444,
+  "duracao_nova_s": 152.02,
+  "emendas_no_episodio_s": [
+   80.541,
+   100.986
+  ]
  },
- "musica_acorde_final_s": 149.764,
- "musica_abaixamento_medio_na_fala_db": -8.8,
+ "musica_acorde_final_s": 147.214,
+ "musica_eq_dinamica": {
+  "fatias": false,
+  "presenca_db": 0.0,
+  "faixa_protegida_db": 18.0,
+  "sep_db": 16.0
+ },
+ "musica_abaixamento_medio_na_fala_db": -8.7,
  "musica": {
-  "ganho_db": -13.9,
+  "ganho_db": -13.99,
   "alvo_lu_abaixo_da_voz_na_fala": -16.0,
   "abaixamento": "dinâmico na banda 250 Hz–4 kHz: música ≥ 16 dB abaixo da voz, no máximo -12 dB",
   "abaixamento_total_db": -1.0,
@@ -975,37 +931,38 @@
    "modo": null
   },
   "r12_sem_ruido": {
-   "lufs": -14.12,
-   "tp": -2.0,
-   "limitador_max_db": -4.15,
+   "lufs": -14.14,
+   "tp": -2.2,
+   "limitador_max_db": -4.35,
    "modo": "fixo"
   },
   "base_musica_r13": {
-   "lufs": -14.1,
-   "tp": -2.0,
-   "limitador_max_db": -4.37,
+   "lufs": -14.12,
+   "tp": -2.2,
+   "limitador_max_db": -4.56,
    "modo": "fixo"
   },
   "efeitos_r12": {
-   "lufs": -14.11,
-   "tp": -2.0,
-   "limitador_max_db": -4.37,
+   "lufs": -14.13,
+   "tp": -2.2,
+   "limitador_max_db": -4.56,
    "modo": "fixo"
   },
   "efeitos_r13": {
-   "lufs": -14.08,
-   "tp": -2.0,
-   "limitador_max_db": -4.37,
+   "lufs": -14.1,
+   "tp": -2.2,
+   "limitador_max_db": -4.56,
    "modo": "fixo"
   },
   "r13_teste": {
-   "lufs": -14.1,
-   "tp": -2.0,
-   "limitador_max_db": -4.33,
+   "lufs": -14.12,
+   "tp": -2.2,
+   "limitador_max_db": -4.53,
    "modo": "norm"
   }
  },
  "master_r13_db": -0.03,
+ "prova_divisao_por_licenca_dbfs": -299.5,
  "stems": [
   "camada_apresentacoes.wav",
   "camada_fluxo.wav",
@@ -1014,11 +971,13 @@
   "camada_transicoes.wav",
   "chiado.wav",
   "compressor_contexto.wav",
+  "efeitos_cc0_e_proprios.wav",
   "efeitos_mecanismos.wav",
+  "efeitos_mixkit.wav",
   "gorgolejo.wav",
   "musica.wav",
   "objetos_mantidos.wav",
   "voz.wav"
  ],
- "teto_limitador_dbfs": -2.0
+ "teto_limitador_dbfs": -2.2
 }

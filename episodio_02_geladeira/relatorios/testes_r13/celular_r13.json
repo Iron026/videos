@@ -1,0 +1,72 @@
+{
+ "metodo": "simulação de alto-falante de celular (mono, passa-altas 4ª ordem 450 Hz, passa-baixas 10 kHz); 13 bandas de 1/3 de oitava 500 Hz–8 kHz, quadros de 50 ms durante a fala; música \"aparece\" numa banda se ≥ voz+efeitos − 6 dB; perceptível = aparece em ≥ 2 bandas; inteligibilidade = índice simplificado tipo SII (±15 dB, pesos ANSI S3.5). Medida, não audição.",
+ "versoes": {
+  "R12": {
+   "musica_perceptivel_na_fala_pct": 23.1,
+   "sii_mediana": 0.886,
+   "sii_p5": 0.561,
+   "voz_menos_resto_p5": 10.3
+  },
+  "B (escolhida)": {
+   "musica_perceptivel_na_fala_pct": 33.5,
+   "sii_mediana": 0.917,
+   "sii_p5": 0.527,
+   "voz_menos_resto_p5": 10.7
+  },
+  "C (+3 dB, descartada)": {
+   "musica_perceptivel_na_fala_pct": 48.2,
+   "sii_mediana": 0.863,
+   "sii_p5": 0.461,
+   "voz_menos_resto_p5": 8.0
+  },
+  "B + EQ dinâmica por banda": {
+   "musica_perceptivel_na_fala_pct": 42.7,
+   "sii_mediana": 0.886,
+   "sii_p5": 0.47,
+   "voz_menos_resto_p5": 9.9
+  },
+  "B + EQ por banda + realce > 2 kHz (+4 dB)": {
+   "musica_perceptivel_na_fala_pct": 46.9,
+   "sii_mediana": 0.869,
+   "sii_p5": 0.453,
+   "voz_menos_resto_p5": 9.8
+  },
+  "B + EQ por banda conservadora (faixa 30 dB)": {
+   "musica_perceptivel_na_fala_pct": 32.3,
+   "sii_mediana": 0.919,
+   "sii_p5": 0.518,
+   "voz_menos_resto_p5": 10.6
+  },
+  "B + EQ por banda conservadora (faixa 24 dB, sep. 18 dB)": {
+   "musica_perceptivel_na_fala_pct": 35.6,
+   "sii_mediana": 0.907,
+   "sii_p5": 0.502,
+   "voz_menos_resto_p5": 10.5
+  }
+ },
+ "conclusao": "a EQ dinâmica por banda só aumenta a presença da música no celular cobrando clareza da voz (p5 < 10 e índice de inteligibilidade menor); nas calibrações que preservam a voz o ganho é ±2 pontos. B mantida.",
+ "B_detalhe": {
+  "quadros_de_fala": 2450,
+  "musica_perceptivel_na_fala_pct": 33.5,
+  "bandas_com_musica_media": 1.42,
+  "musica_menos_mascarador_por_banda_db": {
+   "500": -24.9,
+   "630": -17.8,
+   "800": -19.3,
+   "1000": -19.5,
+   "1250": -21.3,
+   "1600": -21.5,
+   "2000": -22.9,
+   "2500": -25.8,
+   "3150": -22.1,
+   "4000": -24.0,
+   "5000": -26.2,
+   "6300": -30.4,
+   "8000": -33.4
+  },
+  "indice_inteligibilidade_sii": {
+   "mediana": 0.917,
+   "p5": 0.527
+  }
+ }
+}

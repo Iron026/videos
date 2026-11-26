@@ -36,7 +36,7 @@ Domínio público: uso comercial livre e **sem atribuição**. A licença de cad
 | 669468 | Low Click 1 | CJspellsfish | E3: pistão no fim da compressão (câmera lenta) |
 | 453443 | hiss small pipe ext like propane gas | kyles | G3: expansão do líquido ao sair do capilar |
 | 553257 | Water Pipe | NachtmahrTV | C3: fluido refrigerante circulando no tubo (discreto, abafado) |
-| 876593 | relay1.wav | Mihacappy | E2: relé de partida do compressor; já usado na R10, agora com outra função |
+| ~~876593~~ | relay1.wav | Mihacappy | **retirado na verificação da R13**: o clique de partida dizia que o compressor só liga no E2, e ele já funcionava |
 
 ### Mixkit, Sound Effects Free License
 
@@ -51,9 +51,9 @@ Por isso os arquivos ficam em `som/bib/mixkit_sfx/`, fora do git. O registro est
 |---|---|---|
 | 166 | Fast small sweep transition | transição C, aos 5,74 s: empurrão do rosto para o interior (corpo) |
 | 175 | Short transition sweep | transição C (ar) |
-| 1474 | Transition windy swoosh | B3: o calor é transportado · C2: o pulso percorre o circuito · E1: a câmera desce com o vapor |
+| 1474 | Transition windy swoosh | C2: o pulso percorre o circuito · E1: a câmera desce com o vapor (o uso no B3 foi retirado na verificação: vinha 1,1 s depois do impacto) |
 | 2615 | Mighty mysterious swoosh | C2: aproximação da revelação ("Escondido…") |
-| 2608 | Air zoom vacuum | C4 → D1: a câmera vai até a caixa do congelador |
+| ~~2608~~ | Air zoom vacuum | **retirado na verificação**: o whoosh C4 → D1 vinha 2 s antes do pop do rótulo "Evaporador" |
 | 1489 | Air woosh | H1: a câmera se afasta até o circuito inteiro |
 | 3005 | Explainer video pops whoosh light pop | apresentação dos 5 componentes, no primeiro quadro de cada rótulo |
 | 2857 | Gear fast lock tap | E3: válvulas de descarga e de sucção (pré-clique cortado) |
