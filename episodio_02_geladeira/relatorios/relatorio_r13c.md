@@ -102,7 +102,101 @@ Registros: `relatorios/testes_r13c/verificacao_r13c_{moderada,discreta}.json` e 
 
 ## 3. Erro visual em 1:18 (E3, compressor em corte)
 
-PENDENTE_VISUAL
+### O que eu conferi, item por item
+
+Conferi nos quadros definitivos em 1080, nos quadros brutos do render e nos dados exportados da cena:
+
+| Suspeita | Resultado |
+|---|---|
+| **Z-fighting / geometria coincidente** | **É o defeito.** Detalhes abaixo |
+| Carcaça sobreposta / transparência / fantasma | A fusão padrão de 0,2 s (q2342–q2347, 78,07–78,23 s) mistura a carcaça fechada do E2 com o interior do E3, de outra câmera, com pesos 5 %, 22 %, 45 %, 70 %, 90 % e 99,7 %. É composição, não render. É a mesma transição do resto do episódio. Há uma alternativa de corte seco, desligada, no comparativo `08` |
+| Animação do pistão e da biela | Fecha. A biela fica no pino da manivela (erro < 0,0001 mm) e chega ao pistão sempre a 9,000 mm. O pistão não sai do eixo. Espaço morto mínimo de 0,80 mm, sem colisão com a placa de válvulas |
+| Continuidade de câmera no E3 | Lisa: no máximo 0,97 mm por quadro, variação do passo ≤ 0,02 mm, sem saltos |
+| Oclusão | Sem falha nova. O rotor aparece inteiro dentro do corte, como projetado: peças que giram não são cortadas |
+| Barra bege sobre o disco branco | É a marca do rotor (`mec_marca`), que mostra a rotação. É proposital e gira junto com ele |
+
+### Causa demonstrada
+
+As cabeças de bobina de cobre são cilindros de raio 52 mm, nas alturas 58–70 mm e 120–132 mm. O estator é um cilindro de raio 60 mm, de 70 a 120 mm. Por isso as faces z = 70 mm e z = 120 mm das duas peças coincidem por definição.
+
+O corte ilustrativo do E3 (plano y = 0,18) passa exatamente pelo eixo. O raio que entra na tampa do estator encontra, no mesmo plano, duas superfícies: a face interna do estator (amarela) e a face da bobina (cobre, ou cinza na junção de cima). O renderizador alterna entre as duas de um quadro para o outro, e isso gera listras horizontais e uma região que troca de cor:
+- amarela no q69;
+- laranja listrada no q48;
+- amarela listrada no q27.
+
+**A prova foi desligar uma coisa de cada vez** no quadro 48, renderizado de novo na mesma configuração do definitivo:
+
+| Render | Listras |
+|---|---|
+| Controle (igual ao definitivo, diferença média de 0,58) | **sim** |
+| AO desligado | **sim**: não é o AO |
+| Sem o rotor | **sim**, e mais visíveis: não é o rotor |
+| Sem o estator | não |
+| Sem a bobina | não |
+
+**Origem:** está no render 3D. O quadro bruto `quadros_final/E3/q0048.jpg` já tem as listras, antes da composição.
+
+**Extensão:** todo o E3, nos quadros 0–159, que aparecem no vídeo de 1:18,0 a 1:23,0. Só o E3 tem o compressor cortado; nos outros planos a carcaça fecha e esconde essas faces.
+
+### Correção: só a malha da bobina
+
+Saem as duas faces de contato, 68 dos 280 triângulos da `mec_enrolamento`. Elas ficam por dentro do estator, que é mais largo (60 mm contra 52 mm), e nunca aparecem por fora. A cena de origem `cenas/E3` continua intocada; a cena corrigida é `cenas/E3_r13c_faces`, gerada por `episodio/bobina_r13c.py`.
+
+Testei três opções nos quadros 27, 48 e 69:
+
+| Opção | Resultado |
+|---|---|
+| Folga de 0,02 e 0,05 mm | Sem listras, mas abre uma **fresta tracejada** |
+| Sobreposição de 0,3 mm | Sem fresta, mas o cobre aparece através do estator cortado |
+| **Retirar as faces de contato (escolhida)** | A tampa do estator fica amarela e estável, como no q69 do definitivo, e a cunha cinza fica com as bordas retas. Sem fresta |
+
+**Re-render só do E3:**
+- 160 quadros em `quadros_final_r13c/E3`, na mesma configuração do definitivo (o motor é equivalente pelo registro da R12, conferido de novo com o render de controle);
+- blocos de 40 quadros, manifesto com SHA-256 e verificação de cada quadro: semelhança mínima de 0,983 e diferença média máxima de 1,35;
+- **os quadros definitivos não foram substituídos.**
+
+### Medidas (todos os 160 quadros)
+
+| | Definitivo | Corrigido |
+|---|---|---|
+| Listras, pixels por quadro (média / p95 / máx.) | 922 / 2838 / 7622 | 92 / 302 / 568 |
+| Variação da contagem de um quadro para o outro | 1105 | 48 |
+| Cintilação na junção (\|Δ\| entre quadros, média / máx.) | 11,07 / 23,54 | **1,32 / 3,77** |
+| Fora da junção: corrigido × definitivo | — | ≤ 0,32 (abaixo da variação natural, 0,46–0,65) |
+
+A contagem residual no corrigido vem do degradê da faixa laranja grande: é falso positivo do detector, que aparece também no definitivo.
+
+A janela composta de 76,9 a 83,6 s confere com o esperado: só mudam os quadros em que o E3 aparece. Veja os vídeos `05` (normal), `06` (câmera lenta), `07` (detalhe 2×) e, para a transição, `08`.
+
+## 3b. Início "travado" (pedido depois da escuta)
+
+**Causa:** está na montagem, não no render. O quadro é escolhido por `round((g − g0) × 30)`, e o `round` do Python arredonda empates para o par.
+
+Em 4 planos, o g0 cai exatamente a meio quadro: A1 (−0,25 s), B7 (26,05 s), H1 (107,05 s) e I1 (115,35 s). Ali todo instante é empate, e o índice sai 8, 8, 10, 10… Cada quadro aparece duas vezes, o que dá **15 qps efetivos**. Erros de ponto flutuante quebram o empate em alguns trechos, e por isso o travamento é irregular.
+
+Os quadros brutos estão todos diferentes e a animação exportada é lisa. A sequência de quadros repetidos prevista pela conta bate com o vídeo:
+
+| Plano | Pares previstos que batem com o vídeo |
+|---|---|
+| A1 | 40 de 43 |
+| B7 | 64 de 71 |
+| H1 | 132 de 135 |
+| I1 | 93 de 97 |
+
+As poucas diferenças são quadros em fusão ou com rótulos mudando.
+
+**Correção:** `ARRED_QUADROS=1`, só na montagem. No empate, escolhe sempre o quadro seguinte. Vale para os quadros, rótulos, manômetros, pontes e rosto.
+
+| Plano | Trecho | Sem a chave, igual ao aprovado | Quadros alterados | Repetidos em sequência |
+|---|---|---|---|---|
+| A1 | 0:00–0:01,4 | 48 de 48 | 23 | 16 → 0 |
+| B7 | 0:26,2–0:28,6 | 78 de 78 | 49 | 16 → 0 |
+| H1 | 1:47,3–1:51,8 | 140 de 140 | 42 | 16 → 0 |
+| I1 | 1:55,9–1:59,1 | 102 de 102 | 11 | 9 → 0 |
+
+O primeiro quadro do vídeo não muda. Sem render 3D. Comparativos: `09` (lado a lado, normal) e `10` (câmera lenta).
+
+O B7, o H1 e o I1 tinham o mesmo defeito, menos visível. A correção é uma regra só e alcança os quatro planos.
 
 ## 4. O que não mudou
 
