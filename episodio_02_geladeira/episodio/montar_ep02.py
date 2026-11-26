@@ -79,6 +79,12 @@ def pasta(pid):
         return os.path.join(A, f'quadros_previa_r11_{PERFIL}' if PERFIL != 'revisao' else 'quadros_previa_r11', 'B5_garrafa')
     if PREVIA_R9 and os.path.isdir(os.path.join(A, 'quadros_previa_r9', pid + '_r9')): return os.path.join(A, 'quadros_previa_r9', pid + '_r9')
     return os.path.join(A, f'quadros_{PERFIL}', pid)
+# rodada 13C: round() do Python arredonda EMPATES para o par. Planos com g0 a MEIO quadro (A1 −0,25; B7 26,05; H1 107,05;
+# I1 115,35) caem em empate em todo quadro → índices 8, 8, 10, 10… (15 qps efetivos). ARRED_QUADROS=1: empate vai sempre para
+# o quadro seguinte (30 qps); fora dos empates o índice é o mesmo de antes.
+ARRED_QUADROS = os.environ.get('ARRED_QUADROS', '0') == '1'
+def _iq(x):
+    return int(math.floor(x + 0.5 + 1e-6)) if ARRED_QUADROS else int(round(x))
 _idx = {}; _meta = {}
 def meta(pid):
     if pid not in _meta:
@@ -109,7 +115,7 @@ TC_A4I = 4.62 + 33.5 / 30   # instante do corte (entre os quadros 33 e 34 do A4)
 def _ponte(lado, g):   # quadros-ponte (render à parte): rosto continuado depois do corte / interior antes dele; fora deles, o próprio A4
     # rosto: ponte com a câmera APROVADA continuada (A4_rosto_c, ver pontes_camera_continua.py); PONTE_ROSTO_ANTIGA=1 reproduz a prévia de 24/11
     sub = 'A4_rosto_c' if lado == 'rosto' and os.environ.get('PONTE_ROSTO_ANTIGA') != '1' else 'A4_' + lado
-    d = os.path.join(A, 'quadros_pontes_r11', PERFIL, sub); f = int(round((g - meta('A4')) * FPS))
+    d = os.path.join(A, 'quadros_pontes_r11', PERFIL, sub); f = _iq((g - meta('A4')) * FPS)
     q = os.path.join(d, f'q{f:04d}.jpg')
     if (lado == 'rosto' and f >= 34) or (lado == 'interior' and f <= 33):
         return graduar(Image.open(q).convert('RGB').resize((W, H), Image.BICUBIC))
@@ -138,7 +144,7 @@ def quadro_simples(pid, g):
 def _quadro_simples(pid, g):
     d = pasta(pid)
     if d not in _idx: _idx[d] = sorted(int(f[1:5]) for f in os.listdir(d) if f.endswith('.jpg'))
-    idx = _idx[d]; f = int(round((g - meta(pid)) * FPS)); f = idx[max(0, int(np.searchsorted(idx, f, side='right')) - 1)]
+    idx = _idx[d]; f = _iq((g - meta(pid)) * FPS); f = idx[max(0, int(np.searchsorted(idx, f, side='right')) - 1)]
     img = Image.open(os.path.join(d, f'q{f:04d}.jpg')).convert('RGB').resize((W, H), Image.BICUBIC)
     return graduar(img)
 
@@ -151,7 +157,7 @@ def dados(pid, arq, g):
         p9 = os.path.join(A, 'rotulos_r9', pid + '.json')   # rodada 9: âncoras visíveis (mesmos tempos; ver rotulos_r9.py)
         if arq == 'rotulos2d.json' and os.environ.get('COMPOSICAO_R9', '0') == '1' and os.path.exists(p9): p = p9
         _dados[k] = json.load(open(p)) if os.path.exists(p) else dict(g0=0, quadros=[])
-    d = _dados[k]; f = int(round((g - d['g0']) * FPS)); q = d['quadros']
+    d = _dados[k]; f = _iq((g - d['g0']) * FPS); q = d['quadros']
     return q[f] if 0 <= f < len(q) else []
 
 
@@ -369,7 +375,7 @@ def valido(centros, ob, circ, anc, lupa=None):
         if any(_seg_cruza(ini, fim, _extensao_man(cx, cy, R_)) for (cx, cy) in centros if not MAN_CARTAO): return False
     return True
 def posicoes_manometro(pid, nome, g):
-    g0, L = layout_manometros(pid); f = int(round((g - g0) * FPS))
+    g0, L = layout_manometros(pid); f = _iq((g - g0) * FPS)
     return L[f].get(nome, []) if 0 <= f < len(L) else []
 def posicao_manometro(pid, nome, g):
     ps = posicoes_manometro(pid, nome, g); return max(ps, key=lambda p: p[2])[:2] if ps else None
@@ -486,7 +492,7 @@ def rosto(pid, g):
     if pid not in _rosto_cache:
         f = os.path.join(A, 'cenas', _id(pid), 'cena.json'); c = json.load(open(f)) if os.path.exists(f) else {}
         _rosto_cache[pid] = (c.get('g0', 0), c.get('animacao', {}).get('quadros', []))
-    g0, Q = _rosto_cache[pid]; i = int(round((g - g0) * FPS))
+    g0, Q = _rosto_cache[pid]; i = _iq((g - g0) * FPS)
     if not (0 <= i < len(Q)) or 'pers_cabeca' not in Q[i]['objetos']: return None
     m = Q[i]['objetos']['pers_cabeca']; P = (m[12], m[13], m[14] + 0.12)
     x, y, z, t = _proj(Q[i]['camera'], P)
@@ -502,7 +508,7 @@ MECS = [((-0.10, 0.12, 0.12), (0.06, 0.26, 0.30)),          # compressor (carca�
 def mecanismos(pid, g):
     if curva_cena(pid, 'uRevela', g, 0.0) < 0.5: return []
     if pid not in _rosto_cache: rosto(pid, g)
-    g0, Q = _rosto_cache[pid]; i = int(round((g - g0) * FPS))
+    g0, Q = _rosto_cache[pid]; i = _iq((g - g0) * FPS)
     if not (0 <= i < len(Q)): return []
     cam = Q[i]['camera']; out = []
     pts = [MECS[k] for k in range(len(MECS))] + [((m[12] - 0.04, m[13] - 0.04, m[14] - 0.04), (m[12] + 0.04, m[13] + 0.04, m[14] + 0.04))

@@ -9,7 +9,8 @@ VID = os.path.join(EP, 'ep02_definitivo_r12_1080x1920.mp4'); W, H = 720, 1280
 F = lambda t, s: ImageFont.truetype(os.path.join(A, '..', 'fontes', f'Montserrat-{t}.ttf'), s)
 WAV = {'R13B': os.path.join(A, 'audio_ep02_r13_r13_teste.wav'),
        'moderada': os.path.join(A, 'audio_ep02_r13_r13c_moderada_r13_teste.wav'),
-       'discreta': os.path.join(A, 'audio_ep02_r13_r13c_discreta_r13_teste.wav')}
+       'discreta': os.path.join(A, 'audio_ep02_r13_r13c_discreta_r13_teste.wav'),
+       'final': os.path.join(A, 'audio_ep02_r13_r13c_final_r13_teste.wav')}
 TMP = tempfile.mkdtemp(prefix='ab_r13c_')
 ENC = ['-c:v', 'libx264', '-preset', 'medium', '-crf', '20', '-pix_fmt', 'yuv420p', '-r', '30', '-c:a', 'aac', '-b:a', '192k', '-ar', '48000', '-ac', '2']
 n = [0]
@@ -52,6 +53,12 @@ def ab(nome, titulo, trechos, versoes):
     return juntar(nome, partes)
 
 
+import sys
+SO = sys.argv[1:]   # nomes a gerar (vazio = os 3 originais); ex.: python3 ab_r13c.py porta
+if 'porta' in SO:
+    ab('11_batida_porta_029.mp4', 'Porta da geladeira fechando (C1)', [(27.6, 31.6, '0:29,6')],
+       [('A', 'R13B (como você ouviu)', 'R13B'), ('B', 'Final: batida mais baixa', 'final')])
+    json.dump(REG, open(os.path.join(OUT, 'trechos_r13c_porta.json'), 'w'), ensure_ascii=False, indent=1); sys.exit(0)
 ab('01_efeitos_retirados_014_112_148.mp4', 'Efeitos retirados (nada no lugar)',
    [(11.8, 17.2, '0:14 impacto depois de "não fabrica frio."'), (70.4, 75.4, '1:12 whoosh da descida (E1)'), (106.8, 112.0, '1:48 sopro do recuo (H1)')],
    [('A', 'R13B (como você ouviu)', 'R13B'), ('B', 'R13C: efeito retirado', 'moderada')])

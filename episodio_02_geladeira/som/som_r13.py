@@ -291,7 +291,22 @@ if R13C:
         REG['r13c']['passos'].append(dict(t=t, distancia_m=d, antes_rel_voz_celular_db=round(rel_cel, 1), antes_rel_voz_k_lu=round(rel_k, 1), ganho_db=round(g_db, 1)))
     gp = _med(gp, n_(0.03))   # rampas de 30 ms (média móvel por soma acumulada)
     PASSOS = L9['passos'] * gp[:, None]
-OBJ = L9['porta'] + PASSOS + SEMPOP                                                   # efeitos já adequados, mantidos
+# R13C (pedido depois da escuta): a BATIDA da porta fechando no C1 (Freesound 489749, ângulo chega a zero em 29,577 s; som em
+# 29,569 s) — mesma regra dos passos: voz − 18 dB (celular) e − 18 LU (K 0,4 s), menos 20·log10(d / 2,4 m), d = 2,9 m (câmera →
+# borda da porta no quadro do fechamento). Só o trecho 29,2–30,6 s da camada da porta; abertura no A1 e no I1 intactas.
+PORTA = L9['porta']
+if R13C and os.environ.get('PORTA_R13C', '0') == '1':
+    def _med2(x, w): c = np.cumsum(np.concatenate([[0.0], x])); y = (c[w:] - c[:-w]) / w; return np.pad(y, (w // 2, len(x) - len(y) - w // 2), mode='edge')
+    t, d = 29.569, 2.9; i0, i1 = int(28.4 * SR), int(31.0 * SR); i = int(t * SR) - i0
+    pc = sosfiltfilt(CEL, PORTA[i0:i1].mean(1)); ep = np.sqrt(_med2(pc ** 2, n_(0.05))); kp = 10 * np.log10(_med2((kw(PORTA[i0:i1]) ** 2).sum(1), n_(0.4)) + 1e-15)
+    vk = 10 * np.log10(_med2((VKW[i0:i1] ** 2).sum(1), n_(0.4)) + 1e-15)
+    a_, b_ = i - n_(0.05), i + n_(0.40); ra, rb = int((t - 0.8) * SR), int((t + 0.8) * SR); sel = VATIVA[ra:rb]; rv = rms(VCEL[ra:rb][sel]) if sel.sum() > SR // 20 else VREF_GLOBAL
+    dist = -20 * math.log10(d / 2.4); rel_cel = 20 * math.log10(ep[a_:b_].max() / rv); rel_k = kp[a_:b_].max() - vk[i - n_(0.8):i + n_(0.8)].max()
+    g_db = min(0.0, -18.0 + dist - rel_cel, -18.0 + dist - rel_k)
+    gpt = np.ones(N); gpt[int(29.2 * SR):int(30.6 * SR)] = db(g_db); gpt = _med2(gpt, n_(0.03))
+    PORTA = L9['porta'] * gpt[:, None]
+    REG['r13c']['porta_c1'] = dict(t=t, distancia_m=d, antes_rel_voz_celular_db=round(rel_cel, 1), antes_rel_voz_k_lu=round(rel_k, 1), ganho_db=round(g_db, 1), trecho_s=[29.2, 30.6])
+OBJ = PORTA + PASSOS + SEMPOP                                                   # efeitos já adequados, mantidos
 EF13 = OBJ + GORGOLEJO + CHIADO + COMPRESSOR + sum(CAMADAS.values())                         # efeitos + mecanismos R13
 EF12 = L9['porta'] + L9['passos'] + L9['gorgolejo'] + L9['chiado_capilar'] + R12['efeitos_r10'] + R12['valvulas']   # efeitos R12 (sem as camadas contínuas)
 RUIDO12 = L9['tom_de_comodo'] + L9['compressor']
