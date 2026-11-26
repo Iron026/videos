@@ -330,3 +330,20 @@ Arquivos-chave (em `episodio_01_navio_v2/`): `episodio/decupagem_ep01_v3.md` (de
 - **Re-render localizado: passar os planos** (`render_definitivo.py --perfil revisao B5`). Sem a lista, o script percorre o
   episódio e refaz planos cujos quadros de 540 vieram de outros scripts (sem `_manifesto_quadros.json`: D2, D4, E1–E4,
   F1, F2, G3z, J4) — no Ep. 02 isso re-renderizou o D2 em 540 sem necessidade (conteúdo equivalente; vídeo V10 intacto).
+
+## Lições novas do Ep. 02 (rodada 12)
+
+- **Transparente que "muda de cor" de um quadro para o outro = ordem de desenho invertida.** O three.js ordena os
+  transparentes pela profundidade do CENTRO de cada malha; com a câmera andando, garrafa × prateleira de vidro trocam de
+  ordem e a mistura muda de uma vez. Varrer todas as cenas por trocas de pares sobrepostos na tela
+  (`varrer_ordem_transparentes.py`) e MEDIR cada uma (opção ligada × desligada): das 5 trocas, só 3 mudavam a imagem.
+  Correção: congelar a ordem no quadro 0 do plano (`ordemtransp=1`, desligada por padrão), só nos planos visíveis.
+- Opção nova no motor muda o hash do motor e invalidaria todo o render: provar equivalência (motor novo sem a opção ×
+  aprovado = variação natural) e registrar `motor_equivalente`; quadros anteriores à troca são reaproveitados por prova.
+- Montagens são determinísticas e não gravam intermediários: definitivo e master podem rodar EM PARALELO (−30 min).
+  Processo destacado com `setsid`; ao matar por padrão use `[.]` na regex para o `pkill -f` não casar com o próprio laço.
+- Validadores com nome de saída fixo sobrescrevem registros aprovados: sufixo opcional (`SUF_VALIDACAO`) e conferir antes.
+- Diferenças só do x264 podem atravessar quadros-chave intermediários e terminar num quadro-chave adiante (1594, 3577):
+  provar com quadros-fonte inalterados + entradas da montagem inalteradas + posição dos quadros-chave.
+- Música mais alta: o p5 passa (10,3), mas o PIOR caso caiu para −8,7 dB numa pausa antes de um "e" curto. Localizar as
+  piores janelas nas palavras e pedir ao usuário que escute esses instantes; pico −1,52 dBTP = margem de 0,02 dB.
