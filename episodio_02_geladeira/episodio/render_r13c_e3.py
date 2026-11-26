@@ -8,7 +8,8 @@ import os, sys, json, hashlib, subprocess, time, shutil
 import numpy as np
 from PIL import Image
 A = os.path.dirname(os.path.abspath(__file__)); MOTOR = os.path.join(A, '..', 'motor')
-CENA = 'E3_r13c_faces'; DEF = os.path.join(A, 'quadros_final', 'E3'); OUT = os.path.join(A, 'quadros_final_r13c', 'E3'); os.makedirs(OUT, exist_ok=True)
+CENA = os.environ.get('CENA_R13C', 'E3_r13c_faces'); DEF = os.path.join(A, 'quadros_final', 'E3')
+OUT = os.path.join(A, os.environ.get('PASTA_R13C', 'quadros_final_r13c'), 'E3'); os.makedirs(OUT, exist_ok=True)   # 2ª parte: CENA_R13C=E3_r13c_v2 (bobina + bloco) PASTA_R13C=quadros_final_r13c2
 sha = lambda p: hashlib.sha256(open(p, 'rb').read()).hexdigest()
 def hcena(d):
     h = hashlib.sha256()
