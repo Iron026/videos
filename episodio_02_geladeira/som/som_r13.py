@@ -119,20 +119,30 @@ colocar('transicoes', 5.737, ('mk', '166'), 0.0, 0.78, 0.296, -12.0, 0.5, -0.5, 
 colocar('transicoes', 5.737, ('mk', '175'), 0.15, 0.46, 0.462, -19.0, 0.6, -0.6, uso='transição C: empurrão rosto → interior (ar)')
 # B2 → B3: "A geladeira não fabrica frio." impacto discreto NA PAUSA depois de "frio." (14,42 s); depois o calor viaja
 t_frio = pal('frio', 13.0)['fim'] + 0.02
-colocar('impactos', t_frio, ('fs', '754424'), 0.0, 1.6, 0.009, -9.0, 0.0, fo=0.9, teto_lu=-8.0, uso='revelação "não fabrica frio" — impacto na pausa')
+R13C = os.environ.get('R13C', '0') == '1'   # rodada 13C (correções pontuais depois da escuta da R13B); desligada = R13B idêntica
+C2_REVELA = os.environ.get('C2_REVELA', 'atual')   # 0:33 — 'atual' (R13B) | 'moderada' | 'discreta'
+if not R13C:   # R13C: retirado (0:14) — o impacto na pausa depois de 'não fabrica frio.' sobrava
+    colocar('impactos', t_frio, ('fs', '754424'), 0.0, 1.6, 0.009, -9.0, 0.0, fo=0.9, teto_lu=-8.0, uso='revelação "não fabrica frio" — impacto na pausa')
 # (retirado na verificação R13 — 1,1 s depois do impacto do 'não fabrica frio.': efeito sobre efeito) colocar('transicoes', 15.55, ('mk', '1474'), 0.2, 2.6, 1.168, -18.0, -0.35, 0.35, fo=0.6, uso='B3: o calor é transportado (feixe contorna a parede)')
 # C2: "Escondido…" — revelação do circuito (uRevela 34,33→35,36) e pulso que dá a volta (uPulso 34,74→37,86)
-colocar('transicoes', 34.33, ('mk', '2615'), 0.4, 2.6, 1.607, -14.0, 0.0, fo=0.7, uso='C2: revelação do circuito (aproximação misteriosa)')
-colocar('impactos', 34.33, ('fs', '754422'), 0.0, 2.2, 0.034, -10.0, 0.0, fo=1.2, teto_lu=-7.0, uso='C2: o circuito surge (impacto principal do episódio)')
-colocar('fluxo', 35.90, ('mk', '1474'), 0.0, 3.2, 1.168, -18.0, -0.5, 0.5, fi=0.3, fo=0.8, uso='C2: pulso percorre o circuito', representacao=True)
+# R13C (0:33): sem o impacto cinematográfico; ficam só a aproximação (o circuito aparece) e o sopro que acompanha o pulso
+# (o caminho do circuito). Mesmas fontes, trechos e instantes; só níveis: moderada = aproximação −4 dB; discreta = −8 dB e pulso −2 dB.
+REV_DB = dict(atual=(0.0, 0.0), moderada=(-4.0, 0.0), discreta=(-8.0, -2.0))[C2_REVELA]
+REG['r13c'] = dict(ativa=R13C, c2_revela=C2_REVELA, c2_aproximacao_db=REV_DB[0], c2_pulso_db=REV_DB[1])
+colocar('transicoes', 34.33, ('mk', '2615'), 0.4, 2.6, 1.607, -14.0 + REV_DB[0], 0.0, fo=0.7, uso='C2: revelação do circuito (aproximação misteriosa)')
+if C2_REVELA == 'atual':
+    colocar('impactos', 34.33, ('fs', '754422'), 0.0, 2.2, 0.034, -10.0, 0.0, fo=1.2, teto_lu=-7.0, uso='C2: o circuito surge (impacto principal do episódio)')
+colocar('fluxo', 35.90, ('mk', '1474'), 0.0, 3.2, 1.168, -18.0 + REV_DB[1], -0.5, 0.5, fi=0.3, fo=0.8, uso='C2: pulso percorre o circuito', representacao=True)
 # apresentações dos componentes: pop de vídeo explicativo no 1º quadro visível do rótulo, pan pela posição do rótulo
 for ev in json.load(open(os.path.join(A, 'apresentacoes_r11.json')))['eventos']:
     colocar('apresentacoes', ev['t'], ('mk', '3005'), 0.0, 0.18, 0.021, -10.5, round((ev['u'] - 0.5) * 0.5, 2), fo=0.05, teto_lu=-6.0,
             uso=f"apresentação: {ev['nome']} ({ev['plano']})")
 # movimentos de câmera que levam a outro ponto do circuito (só 3; cortes comuns NÃO ganham som)
 # (retirado na verificação R13 — 2 s antes do pop do rótulo 'Evaporador': dois acentos para a mesma chegada) colocar('transicoes', 47.73, ('mk', '2608'), 0.2, 0.9, 0.454, -13.0, 0.3, -0.2, uso='C4 → D1: câmera vai à caixa do congelador')
-colocar('transicoes', 72.77, ('mk', '1474'), 0.2, 2.6, 1.168, -14.0, 0.0, 0.0, fo=0.6, uso='E1: câmera desce com o vapor pela linha de sucção')
-colocar('transicoes', 109.88, ('mk', '1489'), 0.1, 1.9, 0.713, -13.0, -0.2, 0.3, fo=0.5, uso='H1: câmera se afasta até o circuito inteiro')
+if not R13C:   # R13C: retirados — 1:12 (E1, whoosh da descida; o zumbido do compressor que entra junto é outra camada e fica)
+    colocar('transicoes', 72.77, ('mk', '1474'), 0.2, 2.6, 1.168, -14.0, 0.0, 0.0, fo=0.6, uso='E1: câmera desce com o vapor pela linha de sucção')
+if not R13C:   # R13C: retirado — 1:48 (H1, sopro do recuo de câmera; não é apresentação de mecanismo; a imagem fica igual)
+    colocar('transicoes', 109.88, ('mk', '1489'), 0.1, 1.9, 0.713, -13.0, -0.2, 0.3, fo=0.5, uso='H1: câmera se afasta até o circuito inteiro')
 # compressor: relé fecha quando o trabalho elétrico chega (E2), pistão e válvulas na câmera lenta (E3)
 # (removido na verificação R13) relé de partida em E2_LIGA: comunicava incorretamente que o compressor só começa a funcionar ali
 for t in TDC_E3:
@@ -258,7 +268,30 @@ REG['musica'] = dict(ganho_db=round(GM, 2), alvo_lu_abaixo_da_voz_na_fala=ALVO, 
                      passa_altas_hz=45, corte_fixo_removido='−3 dB em 0,9–3,2 kHz (R12)', entra_s=ENTRA)
 
 # ------------------------------------------------------------------ 4. somas, variantes e master
-OBJ = L9['porta'] + L9['passos'] + SEMPOP                                                   # efeitos já adequados, mantidos
+# R13C (1:55): passos do I1 discretos e coerentes com a perspectiva — ganho PRÓPRIO de cada passo (instantes intactos), medido:
+# alvo = voz − 18 dB na faixa do celular (fala ativa em ±0,8 s) e voz − 18 LU em loudness K (janela 0,4 s), menos a
+# atenuação de distância 20·log10(d / 2,4 m) (distância câmera → pé, cena I1). Só reduz; fora de 115,9–120,0 s nada muda.
+PASSOS = L9['passos']
+if R13C:
+    PASSOS_I1 = [(116.017, 2.39), (116.483, 2.37), (116.950, 2.66), (118.220, 2.68), (119.085, 2.47), (119.550, 2.26)]
+    ALVO_P = float(os.environ.get('PASSOS_ALVO_DB', '-18'))
+    def _med(x, w): c = np.cumsum(np.concatenate([[0.0], x])); y = (c[w:] - c[:-w]) / w; return np.pad(y, (w // 2, len(x) - len(y) - w // 2), mode='edge')
+    i0, i1 = int(114 * SR), int(121 * SR); pc = sosfiltfilt(CEL, PASSOS[i0:i1].mean(1)); pkw = kw(PASSOS[i0:i1])
+    ep = np.sqrt(_med(pc ** 2, n_(0.05))); kp = 10 * np.log10(_med((pkw ** 2).sum(1), n_(0.4)) + 1e-15)
+    vk = 10 * np.log10(_med((VKW[i0:i1] ** 2).sum(1), n_(0.4)) + 1e-15)
+    gp = np.ones(N); REG['r13c']['passos'] = []
+    for j, (t, d) in enumerate(PASSOS_I1):
+        i = int((t - 114) * SR); a_, b_ = i - n_(0.02), i + n_(0.25); ra, rb = int((t - 0.8) * SR), int((t + 0.8) * SR)
+        sel = VATIVA[ra:rb]; rv = rms(VCEL[ra:rb][sel]) if sel.sum() > SR // 20 else VREF_GLOBAL
+        dist = -20 * math.log10(d / 2.4)
+        rel_cel = 20 * math.log10(ep[a_:b_].max() / rv); rel_k = kp[a_:b_].max() - vk[i - n_(0.8):i + n_(0.8)].max()
+        g_db = min(0.0, ALVO_P + dist - rel_cel, ALVO_P + dist - rel_k)
+        ini = t - 0.06; fim = (PASSOS_I1[j + 1][0] - 0.06) if j + 1 < len(PASSOS_I1) else 120.0
+        r = n_(0.03); s0, s1 = int(ini * SR), int(fim * SR); gp[s0:s1] = db(g_db)
+        REG['r13c']['passos'].append(dict(t=t, distancia_m=d, antes_rel_voz_celular_db=round(rel_cel, 1), antes_rel_voz_k_lu=round(rel_k, 1), ganho_db=round(g_db, 1)))
+    gp = _med(gp, n_(0.03))   # rampas de 30 ms (média móvel por soma acumulada)
+    PASSOS = L9['passos'] * gp[:, None]
+OBJ = L9['porta'] + PASSOS + SEMPOP                                                   # efeitos já adequados, mantidos
 EF13 = OBJ + GORGOLEJO + CHIADO + COMPRESSOR + sum(CAMADAS.values())                         # efeitos + mecanismos R13
 EF12 = L9['porta'] + L9['passos'] + L9['gorgolejo'] + L9['chiado_capilar'] + R12['efeitos_r10'] + R12['valvulas']   # efeitos R12 (sem as camadas contínuas)
 RUIDO12 = L9['tom_de_comodo'] + L9['compressor']
@@ -276,15 +309,18 @@ VARIANTES = {   # (nome: soma) — A/B usam o master FIXO da V9 (voz idêntica);
     'r13_teste': (VOZ + MUSICA + EF13, 'norm'),
 }
 REG['variantes'] = {}
+SO_VAR = [v for v in os.environ.get('SO_VARIANTES', '').split(',') if v]   # R13C: gerar só estas variantes (as demais já existem na R13B)
+MASTER_FIXO = os.environ.get('MASTER_R13_DB')   # R13C: o MESMO master da R13B → voz e música idênticas amostra a amostra
 for nome, (soma, modo) in VARIANTES.items():
+    if SO_VAR and nome not in SO_VAR: continue
     if modo is None: mix = soma; red = 0.0
     else:
-        mg = 0.0 if modo == 'fixo' else (-14.0 - B.lufs(soma))
+        mg = 0.0 if modo == 'fixo' else (float(MASTER_FIXO) if MASTER_FIXO else (-14.0 - B.lufs(soma)))
         mix, red = limitar(soma * db(mg), TETO)
     sf.write(os.path.join(A, f'audio_ep02_r13{SUF}_{nome}.wav'), mix.astype(np.float32), SR, subtype='FLOAT')
     REG['variantes'][nome] = dict(lufs=round(B.lufs(mix), 2) if np.abs(mix).max() > 0 else None, tp=round(B.pico_verdadeiro(mix), 2), limitador_max_db=round(red, 2), modo=modo)
     print(nome, REG['variantes'][nome], flush=True)
-mg13 = -14.0 - B.lufs(VOZ + MUSICA + EF13); REG['master_r13_db'] = round(mg13, 2)
+mg13 = float(MASTER_FIXO) if MASTER_FIXO else -14.0 - B.lufs(VOZ + MUSICA + EF13); REG['master_r13_db'] = round(mg13, 2); REG['master_fixo'] = bool(MASTER_FIXO)
 for k, x in (('voz', VOZ), ('musica', MUSICA), ('efeitos_mecanismos', EF13), ('objetos_mantidos', OBJ), ('compressor_contexto', COMPRESSOR),
              ('gorgolejo', GORGOLEJO), ('chiado', CHIADO), *[(f'camada_{c}', v) for c, v in CAMADAS.items()]):
     sf.write(os.path.join(OUT, f'{k}.wav'), (x * db(mg13)).astype(np.float32), SR, subtype='FLOAT')   # stems no MESMO ganho do teste completo

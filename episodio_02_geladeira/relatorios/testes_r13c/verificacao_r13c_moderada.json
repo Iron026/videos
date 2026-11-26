@@ -1,0 +1,405 @@
+{
+ "variante": "moderada",
+ "arquivo": "episodio/previas_r13c/ep02_r13C_moderada_escuta_1080x1920.mp4",
+ "atraso_aac_amostras": 0,
+ "eventos_mantidos": [
+  {
+   "t": 5.737,
+   "uso": "transição C: empurrão rosto → interior (corpo)",
+   "fonte": "mk:166",
+   "na_pausa": false,
+   "voz_menos_resto_evento_db": 16.9,
+   "inicio_ms": -124,
+   "pico_ms": 38,
+   "aac_x_wav_corr": 0.9985,
+   "representacao_didatica": false
+  },
+  {
+   "t": 5.737,
+   "uso": "transição C: empurrão rosto → interior (ar)",
+   "fonte": "mk:175",
+   "na_pausa": false,
+   "voz_menos_resto_evento_db": 16.9,
+   "inicio_ms": -124,
+   "pico_ms": 38,
+   "aac_x_wav_corr": 0.9985,
+   "representacao_didatica": false
+  },
+  {
+   "t": 34.33,
+   "uso": "C2: revelação do circuito (aproximação misteriosa)",
+   "fonte": "mk:2615",
+   "na_pausa": false,
+   "voz_menos_resto_evento_db": 18.8,
+   "inicio_ms": -300,
+   "pico_ms": 2,
+   "aac_x_wav_corr": 0.9993,
+   "representacao_didatica": false
+  },
+  {
+   "t": 35.9,
+   "uso": "C2: pulso percorre o circuito",
+   "fonte": "mk:1474",
+   "na_pausa": false,
+   "voz_menos_resto_evento_db": 13.1,
+   "inicio_ms": -300,
+   "pico_ms": 35,
+   "aac_x_wav_corr": 0.9983,
+   "representacao_didatica": true
+  },
+  {
+   "t": 41.57,
+   "uso": "apresentação: Capilar (G2)",
+   "fonte": "mk:3005",
+   "na_pausa": false,
+   "voz_menos_resto_evento_db": 8.7,
+   "inicio_ms": -7,
+   "pico_ms": 0,
+   "aac_x_wav_corr": 0.9998,
+   "representacao_didatica": false
+  },
+  {
+   "t": 49.69,
+   "uso": "apresentação: Capilar (G2)",
+   "fonte": "mk:3005",
+   "na_pausa": false,
+   "voz_menos_resto_evento_db": 9.1,
+   "inicio_ms": -7,
+   "pico_ms": 0,
+   "aac_x_wav_corr": 1.0,
+   "representacao_didatica": false
+  },
+  {
+   "t": 75.563,
+   "uso": "apresentação: Capilar (G2)",
+   "fonte": "mk:3005",
+   "na_pausa": false,
+   "voz_menos_resto_evento_db": 8.8,
+   "inicio_ms": -6,
+   "pico_ms": 0,
+   "aac_x_wav_corr": 0.9997,
+   "representacao_didatica": false
+  },
+  {
+   "t": 88.343,
+   "uso": "apresentação: Capilar (G2)",
+   "fonte": "mk:3005",
+   "na_pausa": false,
+   "voz_menos_resto_evento_db": 9.4,
+   "inicio_ms": -6,
+   "pico_ms": 0,
+   "aac_x_wav_corr": 0.9997,
+   "representacao_didatica": false
+  },
+  {
+   "t": 101.23,
+   "uso": "apresentação: Capilar (G2)",
+   "fonte": "mk:3005",
+   "na_pausa": false,
+   "voz_menos_resto_evento_db": 7.4,
+   "inicio_ms": -7,
+   "pico_ms": 0,
+   "aac_x_wav_corr": 0.9998,
+   "representacao_didatica": false
+  },
+  {
+   "t": 78.69,
+   "uso": "E3: pistão no fim da compressão (câmera lenta)",
+   "fonte": "fs:669468",
+   "na_pausa": false,
+   "voz_menos_resto_evento_db": 14.2,
+   "inicio_ms": -102,
+   "pico_ms": 0,
+   "aac_x_wav_corr": 0.9997,
+   "representacao_didatica": true
+  },
+  {
+   "t": 79.957,
+   "uso": "E3: pistão no fim da compressão (câmera lenta)",
+   "fonte": "fs:669468",
+   "na_pausa": false,
+   "voz_menos_resto_evento_db": 9.8,
+   "inicio_ms": -136,
+   "pico_ms": 0,
+   "aac_x_wav_corr": 0.9999,
+   "representacao_didatica": true
+  },
+  {
+   "t": 81.19,
+   "uso": "E3: pistão no fim da compressão (câmera lenta)",
+   "fonte": "fs:669468",
+   "na_pausa": false,
+   "voz_menos_resto_evento_db": 19.1,
+   "inicio_ms": -102,
+   "pico_ms": 0,
+   "aac_x_wav_corr": 0.9998,
+   "representacao_didatica": true
+  },
+  {
+   "t": 82.457,
+   "uso": "E3: pistão no fim da compressão (câmera lenta)",
+   "fonte": "fs:669468",
+   "na_pausa": false,
+   "voz_menos_resto_evento_db": 18.4,
+   "inicio_ms": -136,
+   "pico_ms": 0,
+   "aac_x_wav_corr": 0.9998,
+   "representacao_didatica": true
+  },
+  {
+   "t": 78.59,
+   "uso": "E3: válvula de sucção abre",
+   "fonte": "mk:2857",
+   "na_pausa": false,
+   "voz_menos_resto_evento_db": 8.4,
+   "inicio_ms": -2,
+   "pico_ms": 100,
+   "aac_x_wav_corr": 0.9997,
+   "representacao_didatica": true
+  },
+  {
+   "t": 79.823,
+   "uso": "E3: válvula de sucção abre",
+   "fonte": "mk:2857",
+   "na_pausa": false,
+   "voz_menos_resto_evento_db": 11.6,
+   "inicio_ms": -2,
+   "pico_ms": 134,
+   "aac_x_wav_corr": 0.9999,
+   "representacao_didatica": true
+  },
+  {
+   "t": 81.09,
+   "uso": "E3: válvula de sucção abre",
+   "fonte": "mk:2857",
+   "na_pausa": false,
+   "voz_menos_resto_evento_db": 15.4,
+   "inicio_ms": -2,
+   "pico_ms": 100,
+   "aac_x_wav_corr": 0.9999,
+   "representacao_didatica": true
+  },
+  {
+   "t": 82.323,
+   "uso": "E3: válvula de sucção abre",
+   "fonte": "mk:2857",
+   "na_pausa": false,
+   "voz_menos_resto_evento_db": 18.1,
+   "inicio_ms": -2,
+   "pico_ms": 134,
+   "aac_x_wav_corr": 0.9998,
+   "representacao_didatica": true
+  },
+  {
+   "t": 79.323,
+   "uso": "E3: válvula de sucção abre",
+   "fonte": "mk:2857",
+   "na_pausa": false,
+   "voz_menos_resto_evento_db": 21.9,
+   "inicio_ms": -2,
+   "pico_ms": 0,
+   "aac_x_wav_corr": 0.9998,
+   "representacao_didatica": true
+  },
+  {
+   "t": 80.59,
+   "uso": "E3: válvula de sucção abre",
+   "fonte": "mk:2857",
+   "na_pausa": false,
+   "voz_menos_resto_evento_db": 17.6,
+   "inicio_ms": -2,
+   "pico_ms": 0,
+   "aac_x_wav_corr": 0.9998,
+   "representacao_didatica": true
+  },
+  {
+   "t": 81.823,
+   "uso": "E3: válvula de sucção abre",
+   "fonte": "mk:2857",
+   "na_pausa": false,
+   "voz_menos_resto_evento_db": 10.8,
+   "inicio_ms": -2,
+   "pico_ms": 0,
+   "aac_x_wav_corr": 0.9999,
+   "representacao_didatica": true
+  },
+  {
+   "t": 40.3,
+   "uso": "C3: fluido refrigerante circulando no tubo",
+   "fonte": "fs:553257",
+   "na_pausa": false,
+   "voz_menos_resto_evento_db": 13.4,
+   "inicio_ms": -300,
+   "pico_ms": -30,
+   "aac_x_wav_corr": 0.9996,
+   "representacao_didatica": true
+  },
+  {
+   "t": 104.34,
+   "uso": "G3: líquido expande ao sair do capilar (chiado real)",
+   "fonte": "fs:453443",
+   "na_pausa": false,
+   "voz_menos_resto_evento_db": 23.1,
+   "inicio_ms": -210,
+   "pico_ms": 47,
+   "aac_x_wav_corr": 0.9985,
+   "representacao_didatica": false
+  }
+ ],
+ "eventos_aprovados": true,
+ "criterio": "sobre a fala: voz − resto ≥ 6 dB na janela t−0,02…t+0,20 (celular); efeitos NA PAUSA fora do critério; AAC × WAV ≥ 0,98; sincronia no som isolado (stem da camada)",
+ "retirados": {
+  "0:14 impacto (fs:754424)": {
+   "efeitos_k_pico_r13b_lufs": -26.1,
+   "efeitos_k_pico_r13c_lufs": -150.7,
+   "voz_k_pico_lufs": -13.4,
+   "mixagem_k_pico_r13b": -13.3,
+   "mixagem_k_pico_r13c": -13.3
+  },
+  "1:12 whoosh E1 (mk:1474)": {
+   "efeitos_k_pico_r13b_lufs": -19.5,
+   "efeitos_k_pico_r13c_lufs": -29.6,
+   "voz_k_pico_lufs": -11.8,
+   "mixagem_k_pico_r13b": -11.5,
+   "mixagem_k_pico_r13c": -11.9
+  },
+  "1:48 sopro H1 (mk:1489)": {
+   "efeitos_k_pico_r13b_lufs": -19.5,
+   "efeitos_k_pico_r13c_lufs": -150.7,
+   "voz_k_pico_lufs": -10.7,
+   "mixagem_k_pico_r13b": -10.7,
+   "mixagem_k_pico_r13c": -10.7
+  }
+ },
+ "revelacao_033": {
+  "janela_s": [
+   33.0,
+   38.6
+  ],
+  "efeitos_k_pico_r13b_lufs": -19.4,
+  "efeitos_k_pico_r13c_lufs": -27.4,
+  "voz_k_pico_lufs": -12.3,
+  "camadas_r13b": [
+   "mk:2615 aproximação",
+   "fs:754422 impacto",
+   "mk:1474 pulso"
+  ],
+  "camadas_r13c": [
+   "mk:2615 aproximação",
+   "mk:1474 pulso"
+  ],
+  "ajustes_db": {
+   "ativa": true,
+   "c2_revela": "moderada",
+   "c2_aproximacao_db": -4.0,
+   "c2_pulso_db": 0.0,
+   "passos": [
+    {
+     "t": 116.017,
+     "distancia_m": 2.39,
+     "antes_rel_voz_celular_db": -9.0,
+     "antes_rel_voz_k_lu": -11.6,
+     "ganho_db": -9.0
+    },
+    {
+     "t": 116.483,
+     "distancia_m": 2.37,
+     "antes_rel_voz_celular_db": -10.5,
+     "antes_rel_voz_k_lu": -7.7,
+     "ganho_db": -10.2
+    },
+    {
+     "t": 116.95,
+     "distancia_m": 2.66,
+     "antes_rel_voz_celular_db": -6.1,
+     "antes_rel_voz_k_lu": -9.7,
+     "ganho_db": -12.8
+    },
+    {
+     "t": 118.22,
+     "distancia_m": 2.68,
+     "antes_rel_voz_celular_db": -25.5,
+     "antes_rel_voz_k_lu": -11.0,
+     "ganho_db": -7.9
+    },
+    {
+     "t": 119.085,
+     "distancia_m": 2.47,
+     "antes_rel_voz_celular_db": -11.8,
+     "antes_rel_voz_k_lu": -15.9,
+     "ganho_db": -6.5
+    },
+    {
+     "t": 119.55,
+     "distancia_m": 2.26,
+     "antes_rel_voz_celular_db": -18.5,
+     "antes_rel_voz_k_lu": -12.0,
+     "ganho_db": -5.4
+    }
+   ]
+  }
+ },
+ "passos_155": [
+  {
+   "t": 116.017,
+   "distancia_m": 2.39,
+   "atraso_amostras": 0,
+   "ganho_medido_db": -9.0,
+   "ganho_aplicado_db": -9.0,
+   "k_pico_r13b_lufs": -24.0,
+   "k_pico_r13c_lufs": -33.0,
+   "voz_k_pico_lufs": -12.4
+  },
+  {
+   "t": 116.483,
+   "distancia_m": 2.37,
+   "atraso_amostras": 0,
+   "ganho_medido_db": -10.2,
+   "ganho_aplicado_db": -10.2,
+   "k_pico_r13b_lufs": -20.1,
+   "k_pico_r13c_lufs": -30.3,
+   "voz_k_pico_lufs": -12.4
+  },
+  {
+   "t": 116.95,
+   "distancia_m": 2.66,
+   "atraso_amostras": 0,
+   "ganho_medido_db": -12.8,
+   "ganho_aplicado_db": -12.8,
+   "k_pico_r13b_lufs": -22.1,
+   "k_pico_r13c_lufs": -34.9,
+   "voz_k_pico_lufs": -12.8
+  },
+  {
+   "t": 118.22,
+   "distancia_m": 2.68,
+   "atraso_amostras": 0,
+   "ganho_medido_db": -5.8,
+   "ganho_aplicado_db": -7.9,
+   "k_pico_r13b_lufs": -23.0,
+   "k_pico_r13c_lufs": -26.9,
+   "voz_k_pico_lufs": -13.5
+  },
+  {
+   "t": 119.085,
+   "distancia_m": 2.47,
+   "atraso_amostras": 0,
+   "ganho_medido_db": -6.3,
+   "ganho_aplicado_db": -6.5,
+   "k_pico_r13b_lufs": -25.0,
+   "k_pico_r13c_lufs": -30.5,
+   "voz_k_pico_lufs": -12.1
+  },
+  {
+   "t": 119.55,
+   "distancia_m": 2.26,
+   "atraso_amostras": 0,
+   "ganho_medido_db": -5.6,
+   "ganho_aplicado_db": -5.4,
+   "k_pico_r13b_lufs": -21.5,
+   "k_pico_r13c_lufs": -26.7,
+   "voz_k_pico_lufs": -9.4
+  }
+ ],
+ "objetos_fora_de_115_9_120_05_dif_max_dbfs": -162.6
+}

@@ -1,0 +1,904 @@
+{
+ "eventos": [
+  {
+   "t": 5.737,
+   "camada": "transicoes",
+   "fonte": "mk:166",
+   "trecho": [
+    0.0,
+    0.78
+   ],
+   "ataque": 0.296,
+   "tom": 1.0,
+   "rel_voz_celular_db": -12.0,
+   "referencia": "fala ativa em ±0,8 s",
+   "limitado_pelo_teto": true,
+   "ganho_db": -7.5,
+   "pan": [
+    0.5,
+    -0.5
+   ],
+   "uso": "transição C: empurrão rosto → interior (corpo)",
+   "representacao_didatica": false
+  },
+  {
+   "t": 5.737,
+   "camada": "transicoes",
+   "fonte": "mk:175",
+   "trecho": [
+    0.15,
+    0.61
+   ],
+   "ataque": 0.462,
+   "tom": 1.0,
+   "rel_voz_celular_db": -19.0,
+   "referencia": "fala ativa em ±0,8 s",
+   "limitado_pelo_teto": false,
+   "ganho_db": -12.1,
+   "pan": [
+    0.6,
+    -0.6
+   ],
+   "uso": "transição C: empurrão rosto → interior (ar)",
+   "representacao_didatica": false
+  },
+  {
+   "t": 34.33,
+   "camada": "transicoes",
+   "fonte": "mk:2615",
+   "trecho": [
+    0.4,
+    3.0
+   ],
+   "ataque": 1.607,
+   "tom": 1.0,
+   "rel_voz_celular_db": -18.0,
+   "referencia": "fala ativa em ±0,8 s",
+   "limitado_pelo_teto": false,
+   "ganho_db": -18.5,
+   "pan": [
+    0.0,
+    null
+   ],
+   "uso": "C2: revelação do circuito (aproximação misteriosa)",
+   "representacao_didatica": false
+  },
+  {
+   "t": 35.9,
+   "camada": "fluxo",
+   "fonte": "mk:1474",
+   "trecho": [
+    0.0,
+    3.2
+   ],
+   "ataque": 1.168,
+   "tom": 1.0,
+   "rel_voz_celular_db": -18.0,
+   "referencia": "fala ativa em ±0,8 s",
+   "limitado_pelo_teto": false,
+   "ganho_db": -24.6,
+   "pan": [
+    -0.5,
+    0.5
+   ],
+   "uso": "C2: pulso percorre o circuito",
+   "representacao_didatica": true
+  },
+  {
+   "t": 41.57,
+   "camada": "apresentacoes",
+   "fonte": "mk:3005",
+   "trecho": [
+    0.0,
+    0.18
+   ],
+   "ataque": 0.021,
+   "tom": 1.0,
+   "rel_voz_celular_db": -10.5,
+   "referencia": "fala ativa em ±0,8 s",
+   "limitado_pelo_teto": false,
+   "ganho_db": -15.8,
+   "pan": [
+    -0.05,
+    null
+   ],
+   "uso": "apresentação: fluido refrigerante (C3)",
+   "representacao_didatica": false
+  },
+  {
+   "t": 49.69,
+   "camada": "apresentacoes",
+   "fonte": "mk:3005",
+   "trecho": [
+    0.0,
+    0.18
+   ],
+   "ataque": 0.021,
+   "tom": 1.0,
+   "rel_voz_celular_db": -10.5,
+   "referencia": "fala ativa em ±0,8 s",
+   "limitado_pelo_teto": false,
+   "ganho_db": -8.2,
+   "pan": [
+    0.1,
+    null
+   ],
+   "uso": "apresentação: Evaporador (D1)",
+   "representacao_didatica": false
+  },
+  {
+   "t": 75.563,
+   "camada": "apresentacoes",
+   "fonte": "mk:3005",
+   "trecho": [
+    0.0,
+    0.18
+   ],
+   "ataque": 0.021,
+   "tom": 1.0,
+   "rel_voz_celular_db": -10.5,
+   "referencia": "fala ativa em ±0,8 s",
+   "limitado_pelo_teto": false,
+   "ganho_db": -10.5,
+   "pan": [
+    0.05,
+    null
+   ],
+   "uso": "apresentação: Compressor (E2)",
+   "representacao_didatica": false
+  },
+  {
+   "t": 88.343,
+   "camada": "apresentacoes",
+   "fonte": "mk:3005",
+   "trecho": [
+    0.0,
+    0.18
+   ],
+   "ataque": 0.021,
+   "tom": 1.0,
+   "rel_voz_celular_db": -10.5,
+   "referencia": "fala ativa em ±0,8 s",
+   "limitado_pelo_teto": false,
+   "ganho_db": -6.5,
+   "pan": [
+    -0.17,
+    null
+   ],
+   "uso": "apresentação: Condensador (F1)",
+   "representacao_didatica": false
+  },
+  {
+   "t": 101.23,
+   "camada": "apresentacoes",
+   "fonte": "mk:3005",
+   "trecho": [
+    0.0,
+    0.18
+   ],
+   "ataque": 0.021,
+   "tom": 1.0,
+   "rel_voz_celular_db": -10.5,
+   "referencia": "fala ativa em ±0,8 s",
+   "limitado_pelo_teto": true,
+   "ganho_db": -11.7,
+   "pan": [
+    -0.16,
+    null
+   ],
+   "uso": "apresentação: Capilar (G2)",
+   "representacao_didatica": false
+  },
+  {
+   "t": 78.69,
+   "camada": "mecanismo",
+   "fonte": "fs:669468",
+   "trecho": [
+    0.0,
+    0.22
+   ],
+   "ataque": 0.014,
+   "tom": 0.8,
+   "rel_voz_celular_db": -19.0,
+   "referencia": "fala ativa em 78.14–82.94 s",
+   "limitado_pelo_teto": false,
+   "ganho_db": -6.9,
+   "pan": [
+    0.1,
+    null
+   ],
+   "uso": "E3: pistão no fim da compressão (câmera lenta)",
+   "representacao_didatica": true
+  },
+  {
+   "t": 79.957,
+   "camada": "mecanismo",
+   "fonte": "fs:669468",
+   "trecho": [
+    0.0,
+    0.22
+   ],
+   "ataque": 0.014,
+   "tom": 0.8,
+   "rel_voz_celular_db": -19.0,
+   "referencia": "fala ativa em 78.14–82.94 s",
+   "limitado_pelo_teto": false,
+   "ganho_db": -6.9,
+   "pan": [
+    0.1,
+    null
+   ],
+   "uso": "E3: pistão no fim da compressão (câmera lenta)",
+   "representacao_didatica": true
+  },
+  {
+   "t": 81.19,
+   "camada": "mecanismo",
+   "fonte": "fs:669468",
+   "trecho": [
+    0.0,
+    0.22
+   ],
+   "ataque": 0.014,
+   "tom": 0.8,
+   "rel_voz_celular_db": -19.0,
+   "referencia": "fala ativa em 78.14–82.94 s",
+   "limitado_pelo_teto": false,
+   "ganho_db": -6.9,
+   "pan": [
+    0.1,
+    null
+   ],
+   "uso": "E3: pistão no fim da compressão (câmera lenta)",
+   "representacao_didatica": true
+  },
+  {
+   "t": 82.457,
+   "camada": "mecanismo",
+   "fonte": "fs:669468",
+   "trecho": [
+    0.0,
+    0.22
+   ],
+   "ataque": 0.014,
+   "tom": 0.8,
+   "rel_voz_celular_db": -19.0,
+   "referencia": "fala ativa em 78.14–82.94 s",
+   "limitado_pelo_teto": false,
+   "ganho_db": -6.9,
+   "pan": [
+    0.1,
+    null
+   ],
+   "uso": "E3: pistão no fim da compressão (câmera lenta)",
+   "representacao_didatica": true
+  },
+  {
+   "t": 78.59,
+   "camada": "mecanismo",
+   "fonte": "mk:2857",
+   "trecho": [
+    0.085,
+    0.245
+   ],
+   "ataque": 0.097,
+   "tom": 1.0,
+   "rel_voz_celular_db": -22.0,
+   "referencia": "fala ativa em 78.14–82.94 s",
+   "limitado_pelo_teto": false,
+   "ganho_db": -17.1,
+   "pan": [
+    0.15,
+    null
+   ],
+   "uso": "E3: válvula de descarga abre",
+   "representacao_didatica": true
+  },
+  {
+   "t": 79.823,
+   "camada": "mecanismo",
+   "fonte": "mk:2857",
+   "trecho": [
+    0.085,
+    0.245
+   ],
+   "ataque": 0.097,
+   "tom": 1.0,
+   "rel_voz_celular_db": -22.0,
+   "referencia": "fala ativa em 78.14–82.94 s",
+   "limitado_pelo_teto": false,
+   "ganho_db": -17.1,
+   "pan": [
+    0.15,
+    null
+   ],
+   "uso": "E3: válvula de descarga abre",
+   "representacao_didatica": true
+  },
+  {
+   "t": 81.09,
+   "camada": "mecanismo",
+   "fonte": "mk:2857",
+   "trecho": [
+    0.085,
+    0.245
+   ],
+   "ataque": 0.097,
+   "tom": 1.0,
+   "rel_voz_celular_db": -22.0,
+   "referencia": "fala ativa em 78.14–82.94 s",
+   "limitado_pelo_teto": false,
+   "ganho_db": -17.1,
+   "pan": [
+    0.15,
+    null
+   ],
+   "uso": "E3: válvula de descarga abre",
+   "representacao_didatica": true
+  },
+  {
+   "t": 82.323,
+   "camada": "mecanismo",
+   "fonte": "mk:2857",
+   "trecho": [
+    0.085,
+    0.245
+   ],
+   "ataque": 0.097,
+   "tom": 1.0,
+   "rel_voz_celular_db": -22.0,
+   "referencia": "fala ativa em 78.14–82.94 s",
+   "limitado_pelo_teto": false,
+   "ganho_db": -17.1,
+   "pan": [
+    0.15,
+    null
+   ],
+   "uso": "E3: válvula de descarga abre",
+   "representacao_didatica": true
+  },
+  {
+   "t": 79.323,
+   "camada": "mecanismo",
+   "fonte": "mk:2857",
+   "trecho": [
+    0.085,
+    0.245
+   ],
+   "ataque": 0.097,
+   "tom": 1.0,
+   "rel_voz_celular_db": -26.0,
+   "referencia": "fala ativa em 78.14–82.94 s",
+   "limitado_pelo_teto": false,
+   "ganho_db": -21.2,
+   "pan": [
+    -0.1,
+    null
+   ],
+   "uso": "E3: válvula de sucção abre",
+   "representacao_didatica": true
+  },
+  {
+   "t": 80.59,
+   "camada": "mecanismo",
+   "fonte": "mk:2857",
+   "trecho": [
+    0.085,
+    0.245
+   ],
+   "ataque": 0.097,
+   "tom": 1.0,
+   "rel_voz_celular_db": -26.0,
+   "referencia": "fala ativa em 78.14–82.94 s",
+   "limitado_pelo_teto": false,
+   "ganho_db": -21.2,
+   "pan": [
+    -0.1,
+    null
+   ],
+   "uso": "E3: válvula de sucção abre",
+   "representacao_didatica": true
+  },
+  {
+   "t": 81.823,
+   "camada": "mecanismo",
+   "fonte": "mk:2857",
+   "trecho": [
+    0.085,
+    0.245
+   ],
+   "ataque": 0.097,
+   "tom": 1.0,
+   "rel_voz_celular_db": -26.0,
+   "referencia": "fala ativa em 78.14–82.94 s",
+   "limitado_pelo_teto": false,
+   "ganho_db": -21.2,
+   "pan": [
+    -0.1,
+    null
+   ],
+   "uso": "E3: válvula de sucção abre",
+   "representacao_didatica": true
+  },
+  {
+   "t": 40.3,
+   "camada": "fluxo",
+   "fonte": "fs:553257",
+   "trecho": [
+    5.0,
+    9.6
+   ],
+   "ataque": 7.0,
+   "tom": 1.0,
+   "rel_voz_celular_db": -20.0,
+   "referencia": "fala ativa em ±0,8 s",
+   "limitado_pelo_teto": false,
+   "ganho_db": -18.6,
+   "pan": [
+    0.0,
+    null
+   ],
+   "uso": "C3: fluido refrigerante circulando no tubo",
+   "representacao_didatica": true
+  },
+  {
+   "t": 104.34,
+   "camada": "mecanismo",
+   "fonte": "fs:453443",
+   "trecho": [
+    4.0,
+    6.8
+   ],
+   "ataque": 4.25,
+   "tom": 1.0,
+   "rel_voz_celular_db": -20.0,
+   "referencia": "fala ativa em ±0,8 s",
+   "limitado_pelo_teto": false,
+   "ganho_db": -23.2,
+   "pan": [
+    0.1,
+    null
+   ],
+   "uso": "G3: líquido expande ao sair do capilar (chiado real)",
+   "representacao_didatica": false
+  }
+ ],
+ "automacoes": {
+  "compressor_contexto": [
+   [
+    0.0,
+    0.0
+   ],
+   [
+    2.55,
+    0.0
+   ],
+   [
+    3.1,
+    0.75
+   ],
+   [
+    4.87,
+    0.75
+   ],
+   [
+    5.7,
+    0.45
+   ],
+   [
+    9.1,
+    0.45
+   ],
+   [
+    10.1,
+    0.0
+   ],
+   [
+    71.42,
+    0.0
+   ],
+   [
+    73.4,
+    0.8
+   ],
+   [
+    78.14,
+    0.8
+   ],
+   [
+    78.3,
+    0.62
+   ],
+   [
+    82.94,
+    0.62
+   ],
+   [
+    83.4,
+    0.5
+   ],
+   [
+    86.4,
+    0.0
+   ],
+   [
+    119.18,
+    0.0
+   ],
+   [
+    119.8,
+    0.45
+   ],
+   [
+    121.25,
+    0.45
+   ],
+   [
+    122.81,
+    0.85
+   ],
+   [
+    124.36,
+    0.85
+   ],
+   [
+    125.3,
+    0.0
+   ],
+   [
+    145.3,
+    0.0
+   ],
+   [
+    145.8,
+    0.4
+   ],
+   [
+    149.9,
+    0.0
+   ],
+   [
+    151.24,
+    0.0
+   ]
+  ],
+  "gorgolejo_contexto": [
+   [
+    0.0,
+    0.0
+   ],
+   [
+    48.54,
+    0.0
+   ],
+   [
+    49.6,
+    0.55
+   ],
+   [
+    53.06,
+    0.9
+   ],
+   [
+    64.07,
+    0.9
+   ],
+   [
+    64.8,
+    1.35
+   ],
+   [
+    67.82,
+    1.2
+   ],
+   [
+    69.2,
+    0.0
+   ],
+   [
+    151.24,
+    0.0
+   ]
+  ],
+  "musica_contexto_db": [
+   [
+    0.0,
+    0.0
+   ],
+   [
+    5.4,
+    0.0
+   ],
+   [
+    5.65,
+    3.0
+   ],
+   [
+    6.4,
+    3.0
+   ],
+   [
+    6.9,
+    0.0
+   ],
+   [
+    33.4,
+    0.0
+   ],
+   [
+    33.85,
+    2.5
+   ],
+   [
+    36.2,
+    2.5
+   ],
+   [
+    37.2,
+    0.0
+   ],
+   [
+    47.4,
+    0.0
+   ],
+   [
+    47.7,
+    2.0
+   ],
+   [
+    48.7,
+    2.0
+   ],
+   [
+    49.2,
+    0.0
+   ],
+   [
+    53.06,
+    0.0
+   ],
+   [
+    53.6,
+    -1.5
+   ],
+   [
+    63.6,
+    -1.5
+   ],
+   [
+    64.07,
+    0.0
+   ],
+   [
+    78.14,
+    0.0
+   ],
+   [
+    78.4,
+    -2.5
+   ],
+   [
+    82.94,
+    -2.5
+   ],
+   [
+    83.4,
+    0.0
+   ],
+   [
+    102.07,
+    0.0
+   ],
+   [
+    102.4,
+    -1.5
+   ],
+   [
+    107.0,
+    -1.5
+   ],
+   [
+    107.3,
+    0.0
+   ],
+   [
+    109.5,
+    0.0
+   ],
+   [
+    109.9,
+    2.5
+   ],
+   [
+    112.3,
+    2.5
+   ],
+   [
+    113.0,
+    0.0
+   ],
+   [
+    147.56,
+    0.0
+   ],
+   [
+    147.62,
+    2.0
+   ],
+   [
+    147.86,
+    2.0
+   ],
+   [
+    147.92,
+    0.0
+   ],
+   [
+    151.24,
+    0.0
+   ]
+  ],
+  "musica_pausas_s": [
+   [
+    15.98,
+    16.69
+   ],
+   [
+    19.02,
+    19.77
+   ],
+   [
+    33.28,
+    33.92
+   ],
+   [
+    40.62,
+    41.26
+   ],
+   [
+    52.66,
+    53.31
+   ],
+   [
+    58.14,
+    58.8
+   ],
+   [
+    75.88,
+    76.52
+   ],
+   [
+    82.58,
+    83.19
+   ],
+   [
+    91.38,
+    92.09
+   ],
+   [
+    93.04,
+    93.66
+   ]
+  ]
+ },
+ "fontes_usadas": {
+  "mk:166": "transição C: empurrão rosto → interior (corpo)",
+  "mk:175": "transição C: empurrão rosto → interior (ar)",
+  "mk:2615": "C2: revelação do circuito (aproximação misteriosa)",
+  "mk:1474": "C2: pulso percorre o circuito",
+  "mk:3005": "apresentação: Capilar (G2)",
+  "fs:669468": "E3: pistão no fim da compressão (câmera lenta)",
+  "mk:2857": "E3: válvula de sucção abre",
+  "fs:553257": "C3: fluido refrigerante circulando no tubo",
+  "fs:453443": "G3: líquido expande ao sair do capilar (chiado real)"
+ },
+ "r13c": {
+  "ativa": true,
+  "c2_revela": "moderada",
+  "c2_aproximacao_db": -4.0,
+  "c2_pulso_db": 0.0,
+  "passos": [
+   {
+    "t": 116.017,
+    "distancia_m": 2.39,
+    "antes_rel_voz_celular_db": -9.0,
+    "antes_rel_voz_k_lu": -11.6,
+    "ganho_db": -9.0
+   },
+   {
+    "t": 116.483,
+    "distancia_m": 2.37,
+    "antes_rel_voz_celular_db": -10.5,
+    "antes_rel_voz_k_lu": -7.7,
+    "ganho_db": -10.2
+   },
+   {
+    "t": 116.95,
+    "distancia_m": 2.66,
+    "antes_rel_voz_celular_db": -6.1,
+    "antes_rel_voz_k_lu": -9.7,
+    "ganho_db": -12.8
+   },
+   {
+    "t": 118.22,
+    "distancia_m": 2.68,
+    "antes_rel_voz_celular_db": -25.5,
+    "antes_rel_voz_k_lu": -11.0,
+    "ganho_db": -7.9
+   },
+   {
+    "t": 119.085,
+    "distancia_m": 2.47,
+    "antes_rel_voz_celular_db": -11.8,
+    "antes_rel_voz_k_lu": -15.9,
+    "ganho_db": -6.5
+   },
+   {
+    "t": 119.55,
+    "distancia_m": 2.26,
+    "antes_rel_voz_celular_db": -18.5,
+    "antes_rel_voz_k_lu": -12.0,
+    "ganho_db": -5.4
+   }
+  ]
+ },
+ "musica_emendas": {
+  "insercao_na_faixa": 75.6714,
+  "trecho_inserido": [
+   45.0463,
+   65.4905
+  ],
+  "compassos_inseridos": "17–24 (8)",
+  "compasso_s": 2.554,
+  "inseridos_s": 20.444,
+  "duracao_nova_s": 152.02,
+  "emendas_no_episodio_s": [
+   80.541,
+   100.986
+  ]
+ },
+ "musica_acorde_final_s": 147.214,
+ "musica_eq_dinamica": {
+  "fatias": false,
+  "presenca_db": 0.0,
+  "faixa_protegida_db": 18.0,
+  "sep_db": 16.0
+ },
+ "musica_abaixamento_medio_na_fala_db": -8.7,
+ "musica": {
+  "ganho_db": -13.99,
+  "alvo_lu_abaixo_da_voz_na_fala": -16.0,
+  "abaixamento": "dinâmico na banda 250 Hz–4 kHz: música ≥ 16 dB abaixo da voz, no máximo -12 dB",
+  "abaixamento_total_db": -1.0,
+  "passa_altas_hz": 45,
+  "corte_fixo_removido": "−3 dB em 0,9–3,2 kHz (R12)",
+  "entra_s": 4.87
+ },
+ "variantes": {
+  "r13_teste": {
+   "lufs": -14.13,
+   "tp": -2.2,
+   "limitador_max_db": -4.53,
+   "modo": "norm"
+  }
+ },
+ "master_r13_db": -0.03,
+ "master_fixo": true,
+ "prova_divisao_por_licenca_dbfs": -299.5,
+ "stems": [
+  "camada_apresentacoes.wav",
+  "camada_fluxo.wav",
+  "camada_mecanismo.wav",
+  "camada_transicoes.wav",
+  "chiado.wav",
+  "compressor_contexto.wav",
+  "efeitos_cc0_e_proprios.wav",
+  "efeitos_mecanismos.wav",
+  "efeitos_mixkit.wav",
+  "gorgolejo.wav",
+  "musica.wav",
+  "objetos_mantidos.wav",
+  "voz.wav"
+ ],
+ "teto_limitador_dbfs": -2.2
+}

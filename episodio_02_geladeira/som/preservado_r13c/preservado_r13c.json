@@ -1,0 +1,64 @@
+{
+ "rodada": "13C — correções pontuais depois da escuta da R13B; candidatas, NÃO são o definitivo (aguardam aprovação auditiva)",
+ "variantes": {
+  "moderada": {
+   "origem": "audio_ep02_r13_r13c_moderada_r13_teste.wav",
+   "sha256_origem": "7f871bee65eb0b2ee755c6c53b0ce90605afb95f4917c5291dfafd1b5f02214f",
+   "flac": "preservado_r13c/audio_ep02_r13C_moderada.flac",
+   "sha256_flac": "40f0e12e0f68d13c2d87b4fdc1c9208c90293247f6b024ddf380fc82acabee46",
+   "erro_max_dbfs": -144.5,
+   "stems_sha256": {
+    "camada_apresentacoes.wav": "49224ecf04e40af758e3cf27eb135f867594e9dfc02ac4710fbc1af5e5b42f41",
+    "camada_fluxo.wav": "ec75f5ee1709be3b7f46d140510f332f73b503bfe40e0f49f7e4e6732751ca29",
+    "camada_mecanismo.wav": "afd3cd05f55551236e3cf55551caf07390469172d899f80367b7142f83c0f23c",
+    "camada_transicoes.wav": "64b92d8a5e7d5d2ae8d33821bbc692925a6cd20ae1de9a6930e793eb8d643a47",
+    "chiado.wav": "ce5a27187f70273598924e50c660cb532ae30a62f31086e48b1a871aa106d2d6",
+    "compressor_contexto.wav": "86b24a5327846c68bf636598add749924f2d7df7a26fc05f2f9abb3b7437a47c",
+    "efeitos_cc0_e_proprios.wav": "6b3169f9da718a48008592cc63fe46e7e24d4213d8efced69cf5f257780b0b3e",
+    "efeitos_mecanismos.wav": "73e5086e00c6b9ac129086a2c910c2f55e82a479d52e09da74466c698b0cca06",
+    "efeitos_mixkit.wav": "10fbbc5700961b7f6202cc92baa68ffc44352a0645e0361016420084677df402",
+    "gorgolejo.wav": "078ad263599d4e1290c4b4586beccd4cb7c7dfede166c0fce52b5e694e9e4322",
+    "musica.wav": "7da0203f81613699d5b05f7e3d869f1e083aea116e46e21c81f1097afa87f059",
+    "objetos_mantidos.wav": "9e3a4514d662713f40e13b8f3926981484c6b05b4e3366a165e85901e72be9ce",
+    "voz.wav": "963eafd72cfeb60fe17866ba2d89e69dbd6835e4d172b5c863c6718e71505115"
+   },
+   "comando": "R13C=1 C2_REVELA=moderada SUF_R13=_r13c_moderada MASTER_R13_DB=-0.03170566623698933 SO_VARIANTES=r13_teste python3 som/som_r13.py",
+   "registro": "som/mix_ep02_r13_r13c_moderada.json"
+  },
+  "discreta": {
+   "origem": "audio_ep02_r13_r13c_discreta_r13_teste.wav",
+   "sha256_origem": "89eb9a54ade215f4f8f8c85b561e20ca6cf2c036f321cc8f4260cb124eaa0c70",
+   "flac": "preservado_r13c/audio_ep02_r13C_discreta.flac",
+   "sha256_flac": "736c6f2d8a81789d65a4a3eb92d18eb8c264814e163bc84f8061d7322ce528ba",
+   "erro_max_dbfs": -144.5,
+   "stems_sha256": {
+    "camada_apresentacoes.wav": "ef817211331d74aef430a44edd0adde153ad8d981ff5c804107ba671b6702b4c",
+    "camada_fluxo.wav": "0c6ddb145a8da4052c19fb1ab8c80e8d2c95a94a2b9c33201f83600b0fd99a0b",
+    "camada_mecanismo.wav": "94cbfbf34befb3453fe3496232f9c9773bc41196c52bb940a286199f9b8e35c6",
+    "camada_transicoes.wav": "79f61651f3ae08da2b067532520d592be6c52aa347414513122ac2f605e05831",
+    "chiado.wav": "dd4d4774ea4ae7a1a046dc744c14da74eff6e8f4571bfcb71c8f04ed021669af",
+    "compressor_contexto.wav": "9f854fb81689657461531f320878b7970068727fc4fec00e068e9e0ceb14fc74",
+    "efeitos_cc0_e_proprios.wav": "d0adfb8b1fcde4837b8b5867df934feb25108bb3f9267ee8b3ab0a69e2b546c0",
+    "efeitos_mecanismos.wav": "8cd6eb9c3f0b6ef880cc5f9d20550e8f89e00350de1c884d88e1c38412f07970",
+    "efeitos_mixkit.wav": "187ee91d0a975716a00fc16c8293ab767eac35d4fbfbd19277eba6dae0aa0283",
+    "gorgolejo.wav": "24bd77d5d80dec25fe669a49efda892d76df29ffbf878abcc3974904e153e210",
+    "musica.wav": "def07337ba17d9dff4b46c02e7a0c2a0a03a304994233f5ed76e0d1efe2ddfc9",
+    "objetos_mantidos.wav": "533f58564c5ede5c1179abcc3c8824e37b83fddcdafd090c9292bb366cf86960",
+    "voz.wav": "7d04b6ca25ef836993b4c40ba5d7519bdf74f46c4d415fc45c8883a70e97332b"
+   },
+   "comando": "R13C=1 C2_REVELA=discreta SUF_R13=_r13c_discreta MASTER_R13_DB=-0.03170566623698933 SO_VARIANTES=r13_teste python3 som/som_r13.py",
+   "registro": "som/mix_ep02_r13_r13c_discreta.json"
+  }
+ },
+ "r13b_e_r12_intactos": {
+  "audio_ep02_r13_r13_teste.wav": true,
+  "preservado_r13/audio_ep02_r13B.flac": true,
+  "stems/r13/efeitos_cc0_e_proprios.wav": true,
+  "preservado_r13/ep02_efeitos_cc0_e_proprios_r13B_x0,5.flac": true,
+  "stems/r13/musica.wav": true,
+  "stems/r13/efeitos_mixkit.wav": true,
+  "preservado_r12/audio_ep02_r12_musica_m5.flac (5c3b593e…)": true
+ },
+ "tudo_intacto": true,
+ "master": "o MESMO da R13B (−0,031706 dB, obtido por mínimos quadrados do stem de voz da R13B): voz e música idênticas (≤ −150 dBFS)"
+}

@@ -25,6 +25,7 @@ FUSAO = 0.20
 TRANSICAO_A4 = os.environ.get('TRANSICAO_A4', 'fusao')   # rodada 9 (teste): fusao (V8/V9a) | escuro | corte
 FUSOES = {'B1': 0.30, 'C1': 0.30, 'C2': 0.0, 'D1': 0.30, 'E1': 0.30, 'F1': 0.30, 'I1': 0.30, 'J1': 0.30, 'J4': 0.40}   # fusão na ENTRADA do plano   # v3: C2 em corte SECO no ataque de "Escondido"
 if TRANSICAO_A4 == 'corte': FUSOES['A4'] = 0.0
+if os.environ.get('CORTE_E3') == '1': FUSOES['E3'] = 0.0   # rodada 13C (teste, desligado): corte seco E2 → E3 (sem a carcaça fechada sobreposta ao interior por 5 quadros)
 SEM_LEGENDAS = os.environ.get('SEM_LEGENDAS') == '1'   # rodada 11: master de imagem sem legendas (o áudio troca depois, sem refazer a imagem)
 # avisos honestos (canto superior direito), por plano
 CAIXAS = [] if os.environ.get('CAIXAS_EP02') == '1' else None   # rodada 7: registro das caixas desenhadas (testes de sobreposição)
@@ -71,7 +72,9 @@ GARRAFA_B5 = os.environ.get('GARRAFA_B5') == '1'   # rodada 11 (teste): B5 com a
 def _id(pid):
     if GARRAFA_B5 and pid == 'B5' and os.path.isdir(os.path.join(A, 'cenas', 'B5_garrafa')): return 'B5_garrafa'
     return pid + '_r9' if PREVIA_R9 and os.path.isdir(os.path.join(A, 'cenas', pid + '_r9')) else pid
+QUADROS_R13C = dict(x.split('=') for x in os.environ.get('QUADROS_R13C', '').split(',') if x)   # rodada 13C (teste): plano=pasta de quadros corrigidos (ex.: E3=quadros_final_r13c/E3)
 def pasta(pid):
+    if pid in QUADROS_R13C: return os.path.join(A, QUADROS_R13C[pid])
     if GARRAFA_B5 and pid == 'B5' and os.path.isdir(os.path.join(A, f'quadros_previa_r11_{PERFIL}' if PERFIL != 'revisao' else 'quadros_previa_r11', 'B5_garrafa')):
         return os.path.join(A, f'quadros_previa_r11_{PERFIL}' if PERFIL != 'revisao' else 'quadros_previa_r11', 'B5_garrafa')
     if PREVIA_R9 and os.path.isdir(os.path.join(A, 'quadros_previa_r9', pid + '_r9')): return os.path.join(A, 'quadros_previa_r9', pid + '_r9')
