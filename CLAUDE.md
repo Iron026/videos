@@ -373,3 +373,17 @@ Arquivos-chave (em `episodio_01_navio_v2/`): `episodio/decupagem_ep01_v3.md` (de
   dinâmica por banda só ganhou presença cobrando inteligibilidade (índice tipo SII e p5); medir antes de prometer.
 - **Curva de visualização ≠ estado físico:** `uTrab` 0→1 no E2 é o desenho do trabalho elétrico, não o compressor ligando;
   som de "partida" ali ensinava errado. Conferir o que cada curva representa antes de sonorizá-la.
+
+## Lições novas do Ep. 02 (rodada 13C)
+
+- **`round()` do Python arredonda empates para o PAR:** plano com g0 a meio quadro (t0 − 0,25 s com t0 múltiplo de 1/30) escolhe
+  os quadros 8, 8, 10, 10… → 15 qps efetivos ("início travado"). Varrer todas as cenas por frac(g0·30) = 0,5 e usar
+  `floor(x + 0,5)`. Validar por índice (passo único) e por imagem (sem pares idênticos), classificando legendas que aparecem.
+- **Peças que se encostam face a face dentro de um corte** (bobina × estator, cilindro × placa de válvulas) brigam mesmo com a
+  tampa por face interna: provar ocultando peça a peça e varrer TODOS os pares de faces coplanares da cena cortada.
+- Escolha da correção pela semântica da tampa: **retirar a face de contato** quando ela fica escondida pela peça maior
+  (sem fresta); **folga mínima (0,02 mm)** quando a fresta cai numa borda que já existe; sobreposição mostra a peça interna
+  através do corte; folga no meio de uma tampa vira linha tracejada.
+- A região que "troca de cor" entre quadros (amarelo num, laranja listrado no outro) é z-fighting, não iluminação.
+- Pedido de efeito "mais baixo": mesma regra de perspectiva para todos os objetos (voz − 18 dB no celular e − 18 LU em K,
+  menos 20·log10(d / 2,4 m)), ganho por evento, instante intocado (atraso 0 provado por correlação).

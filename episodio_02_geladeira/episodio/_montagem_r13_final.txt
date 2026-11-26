@@ -1,0 +1,13 @@
+quadro 0 / 4537
+quadro 600 / 4537
+quadro 1200 / 4537
+quadro 1800 / 4537
+quadro 2400 / 4537
+quadro 3000 / 4537
+quadro 3600 / 4537
+quadro 4200 / 4537
+ok ep02_definitivo_r13_1080x1920.mp4
+
+real	23m13.943s
+user	26m59.724s
+sys	4m31.337s
