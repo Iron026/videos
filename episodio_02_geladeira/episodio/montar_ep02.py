@@ -170,6 +170,7 @@ def caixa_rotulo(txt, u, v, dx, dy, linha=True):
     else: lx = min(max(lx, 0.04 * W), 0.96 * W - w); ly = min(max(ly, 0.09 * H), 0.62 * H - h)
     return lx, ly, w, h
 LUPA_AVISO = 'Lupa: canal ampliado (esquema)'
+AVISOS_OCULTOS = set(x for x in os.environ.get('AVISOS_OCULTOS', '').split(',') if x)   # R13.1 (pedido do usuário): avisos que não são desenhados
 def avisos_topo(g):
     vs = chips_dinamicos(g) + [t for (a, b, t) in CHIPS if a <= g < b]
     return [t for t in vs if not (R9 and t == LUPA_AVISO)]
@@ -696,7 +697,7 @@ def compor(g):
         for (a, b, txt) in LEG:
             if a <= g < b: d.text((W // 2, int(0.74 * H)), txt, font=F_LEG, fill=(255, 255, 255), stroke_width=max(2, int(7 * ESC)), stroke_fill=ESCURO, anchor='mm'); _cx('legenda', txt, d.textbbox((W // 2, int(0.74 * H)), txt, font=F_LEG, anchor='mm', stroke_width=max(2, int(7 * ESC))))
     y = int((ZONA['topo'] + 12) * ESC) if R9 else int(70 * ESC)   # rodada 9: avisos abaixo da faixa superior das plataformas
-    for txt in avisos_topo(g):
+    for txt in [t for t in avisos_topo(g) if not any(t.startswith(o) for o in AVISOS_OCULTOS)]:   # R13.1: avisos retirados a pedido (só o DESENHO; posições de rótulos e cartões continuam calculadas com eles)
         if True:
             tw = d.textlength(txt, font=F_TAG); x1 = W - int(30 * ESC); x0 = x1 - tw - 36 * ESC
             d.rounded_rectangle((x0, y, x1, y + 46 * ESC), radius=23 * ESC, fill=AMARELO); _cx('aviso', txt, (x0, y, x1, y + 46 * ESC)); d.text((x0 + 18 * ESC, y + 23 * ESC), txt, font=F_TAG, fill=AZUL, anchor='lm')
