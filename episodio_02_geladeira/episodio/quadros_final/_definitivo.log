@@ -493,3 +493,25 @@
 19:59:47 J4: bloco 120–179 (60 quadros) em 896 s
 20:02:11 J4: bloco 180–187 (8 quadros) em 144 s
 20:02:11 FIM: todos os planos completos
+21:22:54 RODADA 12: correção da ordem dos transparentes (garrafa × prateleira) em H2, C4, H1 — render localizado com prova de reuso
+21:22:55 H2: ordem dos transparentes congelada no quadro 0 (ordemtransp=1, rodada 12) — 48 quadros reaproveitados por prova; antigos dos demais em /home/user/videos/episodio_02_geladeira/episodio/quadros_final/H2/_descartados/20261125_212255_config_localizada
+21:43:26 H2: bloco 48–107 (60 quadros) em 1231 s
+21:51:42 H2: bloco 108–130 (23 quadros) em 496 s
+21:51:42 C4: ordem dos transparentes congelada no quadro 0 (ordemtransp=1, rodada 12) — 52 quadros reaproveitados por prova; antigos dos demais em /home/user/videos/episodio_02_geladeira/episodio/quadros_final/C4/_descartados/20261125_215142_config_localizada
+22:11:58 C4: bloco 52–111 (60 quadros) em 1216 s
+22:16:44 C4: bloco 112–125 (14 quadros) em 286 s
+23:59:27 C4 quadro 148: salto em relação ao quadro anterior (corr 0.925, dif 13.6) — justificado: mesmo salto na V10 aprovada (540, mesma cena) (corr ref. 0.925; novo × ref. 0.998)
+23:59:27 C4 quadro 149: salto em relação ao quadro anterior (corr 0.920, dif 13.8) — justificado: mesmo salto na V10 aprovada (540, mesma cena) (corr ref. 0.920; novo × ref. 0.998)
+23:59:28 C4 quadro 150: salto em relação ao quadro anterior (corr 0.915, dif 14.3) — justificado: mesmo salto na V10 aprovada (540, mesma cena) (corr ref. 0.915; novo × ref. 0.998)
+23:59:28 C4 quadro 151: salto em relação ao quadro anterior (corr 0.906, dif 14.3) — justificado: mesmo salto na V10 aprovada (540, mesma cena) (corr ref. 0.906; novo × ref. 0.998)
+23:59:28 C4 quadro 152: salto em relação ao quadro anterior (corr 0.898, dif 14.9) — justificado: mesmo salto na V10 aprovada (540, mesma cena) (corr ref. 0.898; novo × ref. 0.998)
+23:59:28 C4 quadro 153: salto em relação ao quadro anterior (corr 0.904, dif 14.3) — justificado: mesmo salto na V10 aprovada (540, mesma cena) (corr ref. 0.904; novo × ref. 0.998)
+23:59:28 C4 quadro 154: salto em relação ao quadro anterior (corr 0.903, dif 14.4) — justificado: mesmo salto na V10 aprovada (540, mesma cena) (corr ref. 0.903; novo × ref. 0.998)
+23:59:28 C4 quadro 155: salto em relação ao quadro anterior (corr 0.909, dif 14.1) — justificado: mesmo salto na V10 aprovada (540, mesma cena) (corr ref. 0.909; novo × ref. 0.998)
+23:59:28 C4 quadro 156: salto em relação ao quadro anterior (corr 0.916, dif 13.6) — justificado: mesmo salto na V10 aprovada (540, mesma cena) (corr ref. 0.916; novo × ref. 0.998)
+23:59:28 C4 quadro 157: salto em relação ao quadro anterior (corr 0.926, dif 12.5) — justificado: mesmo salto na V10 aprovada (540, mesma cena) (corr ref. 0.926; novo × ref. 0.998)
+23:59:28 C4: bloco 126–184 (59 quadros × 5 sub) em 6164 s
+23:59:28 H1: ordem dos transparentes congelada no quadro 0 (ordemtransp=1, rodada 12) — 75 quadros reaproveitados por prova; antigos dos demais em /home/user/videos/episodio_02_geladeira/episodio/quadros_final/H1/_descartados/20261125_235928_config_localizada
+00:19:21 H1: bloco 75–134 (60 quadros) em 1192 s
+00:24:13 H1: bloco 135–149 (15 quadros) em 293 s
+00:24:13 FIM: todos os planos completos
