@@ -2914,7 +2914,8 @@
   "atribuicao_exigida": false,
   "arquivo_local": "som/bib/freesound/845625.mp3",
   "papeis": [
-   "rele"
+   "rele",
+   "valvula"
   ],
   "consulta": "relay click",
   "descricao": "Freesound: collaborative database of creative-commons licensed sound for musicians and sound lovers. Have you freed your sound today?",
@@ -3189,7 +3190,8 @@
   "atribuicao_exigida": false,
   "arquivo_local": "som/bib/freesound/844241.mp3",
   "papeis": [
-   "apresentacao"
+   "apresentacao",
+   "bolhas"
   ],
   "consulta": "subtle pop ui",
   "descricao": "Freesound: collaborative database of creative-commons licensed sound for musicians and sound lovers. Have you freed your sound today?",
@@ -3484,6 +3486,3067 @@
    "shake",
    "soft",
    "toy"
+  ],
+  "obs": "prévia pública em MP3 128 kb/s do Freesound (o original exige login)"
+ },
+ {
+  "id": "521052",
+  "titulo": "Whoosh_StutterMuted_ER_SFX_14.wav",
+  "autor": "Alex_hears_things",
+  "url_pagina": "https://freesound.org/people/Alex_hears_things/sounds/521052/",
+  "url_arquivo": "https://cdn.freesound.org/previews/521/521052_2309965-hq.mp3",
+  "licenca": "CC0 1.0",
+  "atribuicao_exigida": false,
+  "arquivo_local": "som/bib/freesound/521052.mp3",
+  "papeis": [
+   "whoosh"
+  ],
+  "consulta": "soft whoosh",
+  "descricao": "Freesound: collaborative database of creative-commons licensed sound for musicians and sound lovers. Have you freed your sound today?",
+  "etiquetas": [
+   "air",
+   "chop",
+   "chopped",
+   "choppy",
+   "long",
+   "soft",
+   "stutter",
+   "swish",
+   "swoosh",
+   "swosh",
+   "transition",
+   "whoosh",
+   "woosh"
+  ],
+  "obs": "prévia pública em MP3 128 kb/s do Freesound (o original exige login)"
+ },
+ {
+  "id": "620399",
+  "titulo": "A simple voice saying Whoosh",
+  "autor": "LadyImperatrix",
+  "url_pagina": "https://freesound.org/people/LadyImperatrix/sounds/620399/",
+  "url_arquivo": "https://cdn.freesound.org/previews/620/620399_10089976-hq.mp3",
+  "licenca": "CC0 1.0",
+  "atribuicao_exigida": false,
+  "arquivo_local": "som/bib/freesound/620399.mp3",
+  "papeis": [
+   "whoosh"
+  ],
+  "consulta": "soft whoosh",
+  "descricao": "Freesound: collaborative database of creative-commons licensed sound for musicians and sound lovers. Have you freed your sound today?",
+  "etiquetas": [
+   "soft",
+   "sound-effect",
+   "voice",
+   "whoosh"
+  ],
+  "obs": "prévia pública em MP3 128 kb/s do Freesound (o original exige login)"
+ },
+ {
+  "id": "810037",
+  "titulo": "audio",
+  "autor": "gothpsychopath",
+  "url_pagina": "https://freesound.org/people/gothpsychopath/sounds/810037/",
+  "url_arquivo": "https://cdn.freesound.org/previews/810/810037_17434608-hq.mp3",
+  "licenca": "CC0 1.0",
+  "atribuicao_exigida": false,
+  "arquivo_local": "som/bib/freesound/810037.mp3",
+  "papeis": [
+   "whoosh"
+  ],
+  "consulta": "soft whoosh",
+  "descricao": "Freesound: collaborative database of creative-commons licensed sound for musicians and sound lovers. Have you freed your sound today?",
+  "etiquetas": [
+   "aerosol",
+   "ambient",
+   "background",
+   "calming",
+   "fabric",
+   "gentle",
+   "hair",
+   "hairspray",
+   "hum",
+   "light",
+   "low",
+   "noise",
+   "puff",
+   "room",
+   "rubbing",
+   "rustle",
+   "short",
+   "soft",
+   "spray",
+   "tone"
+  ],
+  "obs": "prévia pública em MP3 128 kb/s do Freesound (o original exige login)"
+ },
+ {
+  "id": "843664",
+  "titulo": "StuffedCreatureFur5",
+  "autor": "Huglex",
+  "url_pagina": "https://freesound.org/people/Huglex/sounds/843664/",
+  "url_arquivo": "https://cdn.freesound.org/previews/843/843664_12419669-hq.mp3",
+  "licenca": "CC0 1.0",
+  "atribuicao_exigida": false,
+  "arquivo_local": "som/bib/freesound/843664.mp3",
+  "papeis": [
+   "whoosh"
+  ],
+  "consulta": "soft whoosh",
+  "descricao": "Freesound: collaborative database of creative-commons licensed sound for musicians and sound lovers. Have you freed your sound today?",
+  "etiquetas": [
+   "recorded",
+   "soft",
+   "whoosh"
+  ],
+  "obs": "prévia pública em MP3 128 kb/s do Freesound (o original exige login)"
+ },
+ {
+  "id": "242721",
+  "titulo": "burning air",
+  "autor": "sergeeo",
+  "url_pagina": "https://freesound.org/people/sergeeo/sounds/242721/",
+  "url_arquivo": "https://cdn.freesound.org/previews/242/242721_2042115-hq.mp3",
+  "licenca": "CC0 1.0",
+  "atribuicao_exigida": false,
+  "arquivo_local": "som/bib/freesound/242721.mp3",
+  "papeis": [
+   "whoosh"
+  ],
+  "consulta": "soft whoosh",
+  "descricao": "Freesound: collaborative database of creative-commons licensed sound for musicians and sound lovers. Have you freed your sound today?",
+  "etiquetas": [
+   "air",
+   "aire",
+   "burning",
+   "fire",
+   "flame",
+   "fuego",
+   "panned",
+   "particles",
+   "pass-by",
+   "quemando",
+   "soft",
+   "swoosh",
+   "whoosh"
+  ],
+  "obs": "prévia pública em MP3 128 kb/s do Freesound (o original exige login)"
+ },
+ {
+  "id": "719637",
+  "titulo": "Fast whoosh, bamboo swoosh through air, version 2",
+  "autor": "zapsplat.com",
+  "url_pagina": "https://freesound.org/people/zapsplat.com/sounds/719637/",
+  "url_arquivo": "https://cdn.freesound.org/previews/719/719637_15601358-hq.mp3",
+  "licenca": "CC0 1.0",
+  "atribuicao_exigida": false,
+  "arquivo_local": "som/bib/freesound/719637.mp3",
+  "papeis": [
+   "whoosh"
+  ],
+  "consulta": "air whoosh",
+  "descricao": "Freesound: collaborative database of creative-commons licensed sound for musicians and sound lovers. Have you freed your sound today?",
+  "etiquetas": [
+   "Bamboo",
+   "Swing",
+   "Swinging",
+   "Swish",
+   "Whoosh",
+   "Whooshing",
+   "Woosh",
+   "air",
+   "attack",
+   "bamboo",
+   "swash",
+   "swhish",
+   "swing",
+   "swinging",
+   "swish",
+   "swoosh",
+   "swosh",
+   "weapon",
+   "whip",
+   "whoosh"
+  ],
+  "obs": "prévia pública em MP3 128 kb/s do Freesound (o original exige login)"
+ },
+ {
+  "id": "719636",
+  "titulo": "Fast whoosh, bamboo swoosh through air, version 1",
+  "autor": "zapsplat.com",
+  "url_pagina": "https://freesound.org/people/zapsplat.com/sounds/719636/",
+  "url_arquivo": "https://cdn.freesound.org/previews/719/719636_15601358-hq.mp3",
+  "licenca": "CC0 1.0",
+  "atribuicao_exigida": false,
+  "arquivo_local": "som/bib/freesound/719636.mp3",
+  "papeis": [
+   "whoosh"
+  ],
+  "consulta": "air whoosh",
+  "descricao": "Freesound: collaborative database of creative-commons licensed sound for musicians and sound lovers. Have you freed your sound today?",
+  "etiquetas": [
+   "Bamboo",
+   "Swing",
+   "Swinging",
+   "Swish",
+   "Whoosh",
+   "Whooshing",
+   "Woosh",
+   "air",
+   "attack",
+   "bamboo",
+   "swash",
+   "swhish",
+   "swing",
+   "swinging",
+   "swish",
+   "swoosh",
+   "swosh",
+   "weapon",
+   "whip",
+   "whoosh"
+  ],
+  "obs": "prévia pública em MP3 128 kb/s do Freesound (o original exige login)"
+ },
+ {
+  "id": "19317",
+  "titulo": "floating whoosh slow.wav",
+  "autor": "martian",
+  "url_pagina": "https://freesound.org/people/martian/sounds/19317/",
+  "url_arquivo": "https://cdn.freesound.org/previews/19/19317_84709-hq.mp3",
+  "licenca": "CC0 1.0",
+  "atribuicao_exigida": false,
+  "arquivo_local": "som/bib/freesound/19317.mp3",
+  "papeis": [
+   "whoosh"
+  ],
+  "consulta": "air whoosh",
+  "descricao": "Freesound: collaborative database of creative-commons licensed sound for musicians and sound lovers. Have you freed your sound today?",
+  "etiquetas": [
+   "air",
+   "slow",
+   "whoosh"
+  ],
+  "obs": "prévia pública em MP3 128 kb/s do Freesound (o original exige login)"
+ },
+ {
+  "id": "491321",
+  "titulo": "air_pod.wav",
+  "autor": "c.void",
+  "url_pagina": "https://freesound.org/people/c.void/sounds/491321/",
+  "url_arquivo": "https://cdn.freesound.org/previews/491/491321_10622488-hq.mp3",
+  "licenca": "CC0 1.0",
+  "atribuicao_exigida": false,
+  "arquivo_local": "som/bib/freesound/491321.mp3",
+  "papeis": [
+   "whoosh"
+  ],
+  "consulta": "air whoosh",
+  "descricao": "Freesound: collaborative database of creative-commons licensed sound for musicians and sound lovers. Have you freed your sound today?",
+  "etiquetas": [
+   "air",
+   "airy",
+   "filler",
+   "light",
+   "short",
+   "swoosh",
+   "transition",
+   "whoosh"
+  ],
+  "obs": "prévia pública em MP3 128 kb/s do Freesound (o original exige login)"
+ },
+ {
+  "id": "766759",
+  "titulo": "WGSH_Whoosh_ODIMog_OWISFX",
+  "autor": "OMogadime",
+  "url_pagina": "https://freesound.org/people/OMogadime/sounds/766759/",
+  "url_arquivo": "https://cdn.freesound.org/previews/766/766759_16546279-hq.mp3",
+  "licenca": "CC0 1.0",
+  "atribuicao_exigida": false,
+  "arquivo_local": "som/bib/freesound/766759.mp3",
+  "papeis": [
+   "whoosh"
+  ],
+  "consulta": "air whoosh",
+  "descricao": "Freesound: collaborative database of creative-commons licensed sound for musicians and sound lovers. Have you freed your sound today?",
+  "etiquetas": [
+   "air",
+   "stick",
+   "whoosh"
+  ],
+  "obs": "prévia pública em MP3 128 kb/s do Freesound (o original exige login)"
+ },
+ {
+  "id": "729226",
+  "titulo": "DSGNWhsh_Cinematic Sci-fi Whoosh 02_KVV AUDIO_FREE",
+  "autor": "KVV_Audio",
+  "url_pagina": "https://freesound.org/people/KVV_Audio/sounds/729226/",
+  "url_arquivo": "https://cdn.freesound.org/previews/729/729226_12846320-hq.mp3",
+  "licenca": "CC0 1.0",
+  "atribuicao_exigida": false,
+  "arquivo_local": "som/bib/freesound/729226.mp3",
+  "papeis": [
+   "whoosh"
+  ],
+  "consulta": "cinematic whoosh",
+  "descricao": "Freesound: collaborative database of creative-commons licensed sound for musicians and sound lovers. Have you freed your sound today?",
+  "etiquetas": [
+   "cinematic",
+   "sci-fi",
+   "swish",
+   "trailer",
+   "whoosh"
+  ],
+  "obs": "prévia pública em MP3 128 kb/s do Freesound (o original exige login)"
+ },
+ {
+  "id": "730959",
+  "titulo": "Heavy Whoosh",
+  "autor": "SoundBiterSFX",
+  "url_pagina": "https://freesound.org/people/SoundBiterSFX/sounds/730959/",
+  "url_arquivo": "https://cdn.freesound.org/previews/730/730959_15857333-hq.mp3",
+  "licenca": "CC0 1.0",
+  "atribuicao_exigida": false,
+  "arquivo_local": "som/bib/freesound/730959.mp3",
+  "papeis": [
+   "whoosh"
+  ],
+  "consulta": "cinematic whoosh",
+  "descricao": "Freesound: collaborative database of creative-commons licensed sound for musicians and sound lovers. Have you freed your sound today?",
+  "etiquetas": [
+   "air",
+   "airflow",
+   "blast",
+   "blow",
+   "cinematic",
+   "fast",
+   "gust",
+   "motion",
+   "rush",
+   "swhish",
+   "swift",
+   "swoosh",
+   "transition",
+   "whirl",
+   "whoosh",
+   "wind",
+   "woosh"
+  ],
+  "obs": "prévia pública em MP3 128 kb/s do Freesound (o original exige login)"
+ },
+ {
+  "id": "848212",
+  "titulo": "DSGNWhsh_Whoosh, Futuristic, Synthetic, Pass-By, Cinematic_03_JW Audio",
+  "autor": "JW_Audio",
+  "url_pagina": "https://freesound.org/people/JW_Audio/sounds/848212/",
+  "url_arquivo": "https://cdn.freesound.org/previews/848/848212_13183432-hq.mp3",
+  "licenca": "CC0 1.0",
+  "atribuicao_exigida": false,
+  "arquivo_local": "som/bib/freesound/848212.mp3",
+  "papeis": [
+   "whoosh"
+  ],
+  "consulta": "cinematic whoosh",
+  "descricao": "Freesound: collaborative database of creative-commons licensed sound for musicians and sound lovers. Have you freed your sound today?",
+  "etiquetas": [
+   "cinematic",
+   "designed",
+   "electronic",
+   "pass-by",
+   "transition",
+   "whoosh"
+  ],
+  "obs": "prévia pública em MP3 128 kb/s do Freesound (o original exige login)"
+ },
+ {
+  "id": "812674",
+  "titulo": "Sound Design Elements Whoosh SFX 039",
+  "autor": "AudioPapkin",
+  "url_pagina": "https://freesound.org/people/AudioPapkin/sounds/812674/",
+  "url_arquivo": "https://cdn.freesound.org/previews/812/812674_8698658-hq.mp3",
+  "licenca": "CC0 1.0",
+  "atribuicao_exigida": false,
+  "arquivo_local": "som/bib/freesound/812674.mp3",
+  "papeis": [
+   "whoosh"
+  ],
+  "consulta": "cinematic whoosh",
+  "descricao": "Freesound: collaborative database of creative-commons licensed sound for musicians and sound lovers. Have you freed your sound today?",
+  "etiquetas": [
+   "ambient",
+   "audio",
+   "cinematic",
+   "design",
+   "dynamic",
+   "effect",
+   "effects",
+   "element",
+   "elements",
+   "fast",
+   "film",
+   "fx",
+   "motion",
+   "movement",
+   "production",
+   "sound",
+   "sweeping",
+   "swoosh",
+   "trailer",
+   "transition"
+  ],
+  "obs": "prévia pública em MP3 128 kb/s do Freesound (o original exige login)"
+ },
+ {
+  "id": "812671",
+  "titulo": "Sound Design Elements Whoosh SFX 036",
+  "autor": "AudioPapkin",
+  "url_pagina": "https://freesound.org/people/AudioPapkin/sounds/812671/",
+  "url_arquivo": "https://cdn.freesound.org/previews/812/812671_8698658-hq.mp3",
+  "licenca": "CC0 1.0",
+  "atribuicao_exigida": false,
+  "arquivo_local": "som/bib/freesound/812671.mp3",
+  "papeis": [
+   "whoosh"
+  ],
+  "consulta": "cinematic whoosh",
+  "descricao": "Freesound: collaborative database of creative-commons licensed sound for musicians and sound lovers. Have you freed your sound today?",
+  "etiquetas": [
+   "ambient",
+   "audio",
+   "cinematic",
+   "design",
+   "dynamic",
+   "effect",
+   "effects",
+   "element",
+   "elements",
+   "fast",
+   "film",
+   "fx",
+   "motion",
+   "movement",
+   "production",
+   "sound",
+   "sweeping",
+   "swoosh",
+   "trailer",
+   "transition"
+  ],
+  "obs": "prévia pública em MP3 128 kb/s do Freesound (o original exige login)"
+ },
+ {
+  "id": "614170",
+  "titulo": "Swishes_4_strong_fast.wav",
+  "autor": "videofueralle",
+  "url_pagina": "https://freesound.org/people/videofueralle/sounds/614170/",
+  "url_arquivo": "https://cdn.freesound.org/previews/614/614170_1130120-hq.mp3",
+  "licenca": "CC0 1.0",
+  "atribuicao_exigida": false,
+  "arquivo_local": "som/bib/freesound/614170.mp3",
+  "papeis": [
+   "whoosh"
+  ],
+  "consulta": "swish transition",
+  "descricao": "Freesound: collaborative database of creative-commons licensed sound for musicians and sound lovers. Have you freed your sound today?",
+  "etiquetas": [
+   "air",
+   "editing",
+   "foley",
+   "luft",
+   "sound",
+   "swish",
+   "swoosh",
+   "transition",
+   "video",
+   "wisch",
+   "woosh"
+  ],
+  "obs": "prévia pública em MP3 128 kb/s do Freesound (o original exige login)"
+ },
+ {
+  "id": "794818",
+  "titulo": "SWSH_Swish Of Heavy Stick.Artificial 1_EM",
+  "autor": "newlocknew",
+  "url_pagina": "https://freesound.org/people/newlocknew/sounds/794818/",
+  "url_arquivo": "https://cdn.freesound.org/previews/794/794818_5828667-hq.mp3",
+  "licenca": "CC0 1.0",
+  "atribuicao_exigida": false,
+  "arquivo_local": "som/bib/freesound/794818.mp3",
+  "papeis": [
+   "whoosh"
+  ],
+  "consulta": "swish transition",
+  "descricao": "Freesound: collaborative database of creative-commons licensed sound for musicians and sound lovers. Have you freed your sound today?",
+  "etiquetas": [
+   "artificial",
+   "cinematic",
+   "designed",
+   "effect",
+   "film",
+   "flamethrower",
+   "fx",
+   "game",
+   "motion",
+   "movie",
+   "score",
+   "sfx",
+   "sound",
+   "sound-design",
+   "sounddesign",
+   "stick",
+   "swish",
+   "swoosh",
+   "trailer",
+   "transition"
+  ],
+  "obs": "prévia pública em MP3 128 kb/s do Freesound (o original exige login)"
+ },
+ {
+  "id": "683101",
+  "titulo": "quick woosh",
+  "autor": "florianreichelt",
+  "url_pagina": "https://freesound.org/people/florianreichelt/sounds/683101/",
+  "url_arquivo": "https://cdn.freesound.org/previews/683/683101_6253486-hq.mp3",
+  "licenca": "CC0 1.0",
+  "atribuicao_exigida": false,
+  "arquivo_local": "som/bib/freesound/683101.mp3",
+  "papeis": [
+   "whoosh"
+  ],
+  "consulta": "swish transition",
+  "descricao": "Freesound: collaborative database of creative-commons licensed sound for musicians and sound lovers. Have you freed your sound today?",
+  "etiquetas": [
+   "Air",
+   "Blade",
+   "Dynamic",
+   "Fast",
+   "Fly",
+   "Flying",
+   "Jet",
+   "Motion",
+   "Movement",
+   "Noise",
+   "Pass",
+   "Powerful",
+   "Quick",
+   "Racing",
+   "Rush",
+   "Rushing",
+   "Sleek",
+   "Smooth",
+   "Sound",
+   "Speed"
+  ],
+  "obs": "prévia pública em MP3 128 kb/s do Freesound (o original exige login)"
+ },
+ {
+  "id": "558826",
+  "titulo": "Deep Whoosh #6",
+  "autor": "Kinoton",
+  "url_pagina": "https://freesound.org/people/Kinoton/sounds/558826/",
+  "url_arquivo": "https://cdn.freesound.org/previews/558/558826_2247456-hq.mp3",
+  "licenca": "CC0 1.0",
+  "atribuicao_exigida": false,
+  "arquivo_local": "som/bib/freesound/558826.mp3",
+  "papeis": [
+   "whoosh"
+  ],
+  "consulta": "swish transition",
+  "descricao": "Freesound: collaborative database of creative-commons licensed sound for musicians and sound lovers. Have you freed your sound today?",
+  "etiquetas": [
+   "air",
+   "pass-by",
+   "sfx",
+   "sound-design",
+   "sweeping",
+   "swish",
+   "swoosh",
+   "swosh",
+   "transition",
+   "whoosh",
+   "wind"
+  ],
+  "obs": "prévia pública em MP3 128 kb/s do Freesound (o original exige login)"
+ },
+ {
+  "id": "877978",
+  "titulo": "Whoosh Fast Pass-By",
+  "autor": "Qvantor",
+  "url_pagina": "https://freesound.org/people/Qvantor/sounds/877978/",
+  "url_arquivo": "https://cdn.freesound.org/previews/877/877978_19512113-hq.mp3",
+  "licenca": "CC0 1.0",
+  "atribuicao_exigida": false,
+  "arquivo_local": "som/bib/freesound/877978.mp3",
+  "papeis": [
+   "whoosh"
+  ],
+  "consulta": "swish transition",
+  "descricao": "Freesound: collaborative database of creative-commons licensed sound for musicians and sound lovers. Have you freed your sound today?",
+  "etiquetas": [
+   "air",
+   "airy",
+   "chisper",
+   "fast",
+   "movement",
+   "pass-by",
+   "quick",
+   "sfx",
+   "sound-design",
+   "swipe",
+   "swish",
+   "swoosh",
+   "synthesized",
+   "transition",
+   "video",
+   "white-noise",
+   "whoosh",
+   "woosh"
+  ],
+  "obs": "prévia pública em MP3 128 kb/s do Freesound (o original exige login)"
+ },
+ {
+  "id": "834213",
+  "titulo": "Massive Explosion FX",
+  "autor": "Artem_Zaitsev",
+  "url_pagina": "https://freesound.org/people/Artem_Zaitsev/sounds/834213/",
+  "url_arquivo": "https://cdn.freesound.org/previews/834/834213_15618458-hq.mp3",
+  "licenca": "CC0 1.0",
+  "atribuicao_exigida": false,
+  "arquivo_local": "som/bib/freesound/834213.mp3",
+  "papeis": [
+   "impacto"
+  ],
+  "consulta": "cinematic impact soft",
+  "descricao": "Freesound: collaborative database of creative-commons licensed sound for musicians and sound lovers. Have you freed your sound today?",
+  "etiquetas": [
+   "blast",
+   "cinematic",
+   "effects",
+   "explosion",
+   "game",
+   "impact",
+   "massiv",
+   "sci-fi",
+   "sfx",
+   "synth",
+   "synthesized"
+  ],
+  "obs": "prévia pública em MP3 128 kb/s do Freesound (o original exige login)"
+ },
+ {
+  "id": "402655",
+  "titulo": "Convoy",
+  "autor": "OSFX",
+  "url_pagina": "https://freesound.org/people/OSFX/sounds/402655/",
+  "url_arquivo": "https://cdn.freesound.org/previews/402/402655_7583126-hq.mp3",
+  "licenca": "CC0 1.0",
+  "atribuicao_exigida": false,
+  "arquivo_local": "som/bib/freesound/402655.mp3",
+  "papeis": [
+   "impacto"
+  ],
+  "consulta": "cinematic impact soft",
+  "descricao": "Freesound: collaborative database of creative-commons licensed sound for musicians and sound lovers. Have you freed your sound today?",
+  "etiquetas": [
+   "ambience",
+   "ambient",
+   "cinematic",
+   "convoy",
+   "cry",
+   "dark",
+   "drone",
+   "guitar",
+   "hard",
+   "heavy",
+   "impact",
+   "industrial",
+   "metal",
+   "scary",
+   "screech",
+   "sounds",
+   "space",
+   "thriller",
+   "wail"
+  ],
+  "obs": "prévia pública em MP3 128 kb/s do Freesound (o original exige login)"
+ },
+ {
+  "id": "879260",
+  "titulo": "Distant Boom",
+  "autor": "Qvantor",
+  "url_pagina": "https://freesound.org/people/Qvantor/sounds/879260/",
+  "url_arquivo": "https://cdn.freesound.org/previews/879/879260_19512113-hq.mp3",
+  "licenca": "CC0 1.0",
+  "atribuicao_exigida": false,
+  "arquivo_local": "som/bib/freesound/879260.mp3",
+  "papeis": [
+   "impacto"
+  ],
+  "consulta": "cinematic impact soft",
+  "descricao": "Freesound: collaborative database of creative-commons licensed sound for musicians and sound lovers. Have you freed your sound today?",
+  "etiquetas": [
+   "atmosphere",
+   "bass",
+   "boom",
+   "chisper",
+   "cinematic",
+   "deep",
+   "distant",
+   "far",
+   "film",
+   "hit",
+   "impact",
+   "low",
+   "movie",
+   "rumble",
+   "sfx",
+   "sound-design",
+   "sub",
+   "synthesized",
+   "thunder",
+   "trailer"
+  ],
+  "obs": "prévia pública em MP3 128 kb/s do Freesound (o original exige login)"
+ },
+ {
+  "id": "728515",
+  "titulo": "Impact Hit at soft but big material",
+  "autor": "doudar41",
+  "url_pagina": "https://freesound.org/people/doudar41/sounds/728515/",
+  "url_arquivo": "https://cdn.freesound.org/previews/728/728515_2393492-hq.mp3",
+  "licenca": "CC0 1.0",
+  "atribuicao_exigida": false,
+  "arquivo_local": "som/bib/freesound/728515.mp3",
+  "papeis": [
+   "impacto"
+  ],
+  "consulta": "cinematic impact soft",
+  "descricao": "Freesound: collaborative database of creative-commons licensed sound for musicians and sound lovers. Have you freed your sound today?",
+  "etiquetas": [
+   "boom",
+   "cinematic",
+   "hit",
+   "impact",
+   "raw",
+   "shot",
+   "trailer",
+   "variations"
+  ],
+  "obs": "prévia pública em MP3 128 kb/s do Freesound (o original exige login)"
+ },
+ {
+  "id": "560156",
+  "titulo": "Soft Cinematic Impact",
+  "autor": "Rizzard",
+  "url_pagina": "https://freesound.org/people/Rizzard/sounds/560156/",
+  "url_arquivo": "https://cdn.freesound.org/previews/560/560156_10825267-hq.mp3",
+  "licenca": "CC0 1.0",
+  "atribuicao_exigida": false,
+  "arquivo_local": "som/bib/freesound/560156.mp3",
+  "papeis": [
+   "impacto"
+  ],
+  "consulta": "cinematic impact soft",
+  "descricao": "Freesound: collaborative database of creative-commons licensed sound for musicians and sound lovers. Have you freed your sound today?",
+  "etiquetas": [
+   "boom",
+   "cinema",
+   "cinematic",
+   "dark",
+   "drama",
+   "dramatic",
+   "film",
+   "filmscore",
+   "fx",
+   "gamescore",
+   "hit",
+   "impact",
+   "industrial",
+   "movie",
+   "orchestral",
+   "sfx",
+   "soundeffect",
+   "soundtrack",
+   "trailer"
+  ],
+  "obs": "prévia pública em MP3 128 kb/s do Freesound (o original exige login)"
+ },
+ {
+  "id": "826216",
+  "titulo": "POWERFUL RUMBLY HELLISH IMPACT",
+  "autor": "ROHHSADOTCOM",
+  "url_pagina": "https://freesound.org/people/ROHHSADOTCOM/sounds/826216/",
+  "url_arquivo": "https://cdn.freesound.org/previews/826/826216_13332713-hq.mp3",
+  "licenca": "CC0 1.0",
+  "atribuicao_exigida": false,
+  "arquivo_local": "som/bib/freesound/826216.mp3",
+  "papeis": [
+   "impacto"
+  ],
+  "consulta": "low boom impact",
+  "descricao": "Freesound: collaborative database of creative-commons licensed sound for musicians and sound lovers. Have you freed your sound today?",
+  "etiquetas": [
+   "BASSY",
+   "BOOM",
+   "DEEP",
+   "DIFFERENT",
+   "EXPERIMENTAL",
+   "EXPLOSION",
+   "HIPHOP",
+   "HIT",
+   "IMPACT",
+   "INNOVATIVE",
+   "LOW",
+   "RAP",
+   "RATTLING",
+   "RUMBLING",
+   "TRAP",
+   "UNIQUE"
+  ],
+  "obs": "prévia pública em MP3 128 kb/s do Freesound (o original exige login)"
+ },
+ {
+  "id": "535615",
+  "titulo": "LOW BIT BOOM",
+  "autor": "XHALE303",
+  "url_pagina": "https://freesound.org/people/XHALE303/sounds/535615/",
+  "url_arquivo": "https://cdn.freesound.org/previews/535/535615_9015615-hq.mp3",
+  "licenca": "CC0 1.0",
+  "atribuicao_exigida": false,
+  "arquivo_local": "som/bib/freesound/535615.mp3",
+  "papeis": [
+   "impacto"
+  ],
+  "consulta": "low boom impact",
+  "descricao": "Freesound: collaborative database of creative-commons licensed sound for musicians and sound lovers. Have you freed your sound today?",
+  "etiquetas": [
+   "Bit",
+   "Boom",
+   "Crushed",
+   "Low",
+   "impact",
+   "kick",
+   "kickdrum"
+  ],
+  "obs": "prévia pública em MP3 128 kb/s do Freesound (o original exige login)"
+ },
+ {
+  "id": "523783",
+  "titulo": "Boom Explosion",
+  "autor": "BennettFilmTeacher",
+  "url_pagina": "https://freesound.org/people/BennettFilmTeacher/sounds/523783/",
+  "url_arquivo": "https://cdn.freesound.org/previews/523/523783_7254895-hq.mp3",
+  "licenca": "CC0 1.0",
+  "atribuicao_exigida": false,
+  "arquivo_local": "som/bib/freesound/523783.mp3",
+  "papeis": [
+   "impacto"
+  ],
+  "consulta": "low boom impact",
+  "descricao": "Freesound: collaborative database of creative-commons licensed sound for musicians and sound lovers. Have you freed your sound today?",
+  "etiquetas": [
+   "boom",
+   "explosion",
+   "hit",
+   "impact",
+   "low"
+  ],
+  "obs": "prévia pública em MP3 128 kb/s do Freesound (o original exige login)"
+ },
+ {
+  "id": "879282",
+  "titulo": "Synthesized Explosion",
+  "autor": "Qvantor",
+  "url_pagina": "https://freesound.org/people/Qvantor/sounds/879282/",
+  "url_arquivo": "https://cdn.freesound.org/previews/879/879282_19512113-hq.mp3",
+  "licenca": "CC0 1.0",
+  "atribuicao_exigida": false,
+  "arquivo_local": "som/bib/freesound/879282.mp3",
+  "papeis": [
+   "impacto"
+  ],
+  "consulta": "low boom impact",
+  "descricao": "Freesound: collaborative database of creative-commons licensed sound for musicians and sound lovers. Have you freed your sound today?",
+  "etiquetas": [
+   "bass",
+   "blast",
+   "bomb",
+   "boom",
+   "chisper",
+   "cinematic",
+   "crackle",
+   "debris",
+   "deep",
+   "explode",
+   "explosion",
+   "film",
+   "game",
+   "hit",
+   "impact",
+   "low",
+   "movie",
+   "rumble",
+   "sfx",
+   "sound-design"
+  ],
+  "obs": "prévia pública em MP3 128 kb/s do Freesound (o original exige login)"
+ },
+ {
+  "id": "150523",
+  "titulo": "Percussive Sounddesign 1 (F)",
+  "autor": "Khoon",
+  "url_pagina": "https://freesound.org/people/Khoon/sounds/150523/",
+  "url_arquivo": "https://cdn.freesound.org/previews/150/150523_2536633-hq.mp3",
+  "licenca": "CC0 1.0",
+  "atribuicao_exigida": false,
+  "arquivo_local": "som/bib/freesound/150523.mp3",
+  "papeis": [
+   "impacto"
+  ],
+  "consulta": "low boom impact",
+  "descricao": "Freesound: collaborative database of creative-commons licensed sound for musicians and sound lovers. Have you freed your sound today?",
+  "etiquetas": [
+   "ambiance",
+   "ambient",
+   "boom",
+   "boomer",
+   "cinematic",
+   "dark",
+   "design",
+   "drum",
+   "film",
+   "filmscore",
+   "game",
+   "gamescore",
+   "impact",
+   "low",
+   "movie",
+   "perc",
+   "percussion",
+   "reverb",
+   "score",
+   "sound"
+  ],
+  "obs": "prévia pública em MP3 128 kb/s do Freesound (o original exige login)"
+ },
+ {
+  "id": "81149",
+  "titulo": "SUB OCEANO G sharp.wav",
+  "autor": "uzerx",
+  "url_pagina": "https://freesound.org/people/uzerx/sounds/81149/",
+  "url_arquivo": "https://cdn.freesound.org/previews/81/81149_704648-hq.mp3",
+  "licenca": "CC0 1.0",
+  "atribuicao_exigida": false,
+  "arquivo_local": "som/bib/freesound/81149.mp3",
+  "papeis": [
+   "impacto"
+  ],
+  "consulta": "sub hit",
+  "descricao": "Freesound: collaborative database of creative-commons licensed sound for musicians and sound lovers. Have you freed your sound today?",
+  "etiquetas": [
+   "bass",
+   "drop",
+   "g",
+   "hit",
+   "sharp",
+   "sub"
+  ],
+  "obs": "prévia pública em MP3 128 kb/s do Freesound (o original exige login)"
+ },
+ {
+  "id": "339437",
+  "titulo": "super low bass hit kick drum wAv",
+  "autor": "phluidbox",
+  "url_pagina": "https://freesound.org/people/phluidbox/sounds/339437/",
+  "url_arquivo": "https://cdn.freesound.org/previews/339/339437_2908654-hq.mp3",
+  "licenca": "CC0 1.0",
+  "atribuicao_exigida": false,
+  "arquivo_local": "som/bib/freesound/339437.mp3",
+  "papeis": [
+   "impacto"
+  ],
+  "consulta": "sub hit",
+  "descricao": "Freesound: collaborative database of creative-commons licensed sound for musicians and sound lovers. Have you freed your sound today?",
+  "etiquetas": [
+   "base-drum",
+   "bass",
+   "bass-drum",
+   "boom",
+   "deep",
+   "drum",
+   "hit",
+   "kick",
+   "low",
+   "lowend",
+   "percussion",
+   "sub",
+   "subs",
+   "super",
+   "thump"
+  ],
+  "obs": "prévia pública em MP3 128 kb/s do Freesound (o original exige login)"
+ },
+ {
+  "id": "231545",
+  "titulo": "Sub percussion",
+  "autor": "EKVelika",
+  "url_pagina": "https://freesound.org/people/EKVelika/sounds/231545/",
+  "url_arquivo": "https://cdn.freesound.org/previews/231/231545_1137749-hq.mp3",
+  "licenca": "CC0 1.0",
+  "atribuicao_exigida": false,
+  "arquivo_local": "som/bib/freesound/231545.mp3",
+  "papeis": [
+   "impacto"
+  ],
+  "consulta": "sub hit",
+  "descricao": "Freesound: collaborative database of creative-commons licensed sound for musicians and sound lovers. Have you freed your sound today?",
+  "etiquetas": [
+   "hit",
+   "lo",
+   "percussion",
+   "sub"
+  ],
+  "obs": "prévia pública em MP3 128 kb/s do Freesound (o original exige login)"
+ },
+ {
+  "id": "711069",
+  "titulo": "Riser Hit sfx 050",
+  "autor": "AudioPapkin",
+  "url_pagina": "https://freesound.org/people/AudioPapkin/sounds/711069/",
+  "url_arquivo": "https://cdn.freesound.org/previews/711/711069_8698658-hq.mp3",
+  "licenca": "CC0 1.0",
+  "atribuicao_exigida": false,
+  "arquivo_local": "som/bib/freesound/711069.mp3",
+  "papeis": [
+   "impacto"
+  ],
+  "consulta": "sub hit",
+  "descricao": "Freesound: collaborative database of creative-commons licensed sound for musicians and sound lovers. Have you freed your sound today?",
+  "etiquetas": [
+   "bass",
+   "boom",
+   "cinematic",
+   "deep",
+   "effect",
+   "epic",
+   "explosion",
+   "game",
+   "gameplay",
+   "hit",
+   "impact",
+   "implosion",
+   "indent",
+   "industrial",
+   "logo",
+   "metal",
+   "movement",
+   "reveal",
+   "riser",
+   "sound"
+  ],
+  "obs": "prévia pública em MP3 128 kb/s do Freesound (o original exige login)"
+ },
+ {
+  "id": "711068",
+  "titulo": "Riser Hit sfx 049",
+  "autor": "AudioPapkin",
+  "url_pagina": "https://freesound.org/people/AudioPapkin/sounds/711068/",
+  "url_arquivo": "https://cdn.freesound.org/previews/711/711068_8698658-hq.mp3",
+  "licenca": "CC0 1.0",
+  "atribuicao_exigida": false,
+  "arquivo_local": "som/bib/freesound/711068.mp3",
+  "papeis": [
+   "impacto"
+  ],
+  "consulta": "sub hit",
+  "descricao": "Freesound: collaborative database of creative-commons licensed sound for musicians and sound lovers. Have you freed your sound today?",
+  "etiquetas": [
+   "bass",
+   "boom",
+   "cinematic",
+   "deep",
+   "effect",
+   "epic",
+   "explosion",
+   "game",
+   "gameplay",
+   "hit",
+   "impact",
+   "implosion",
+   "indent",
+   "industrial",
+   "logo",
+   "metal",
+   "movement",
+   "reveal",
+   "riser",
+   "sound"
+  ],
+  "obs": "prévia pública em MP3 128 kb/s do Freesound (o original exige login)"
+ },
+ {
+  "id": "713523",
+  "titulo": "Deep Impact",
+  "autor": "tgerginov",
+  "url_pagina": "https://freesound.org/people/tgerginov/sounds/713523/",
+  "url_arquivo": "https://cdn.freesound.org/previews/713/713523_4898018-hq.mp3",
+  "licenca": "CC0 1.0",
+  "atribuicao_exigida": false,
+  "arquivo_local": "som/bib/freesound/713523.mp3",
+  "papeis": [
+   "impacto"
+  ],
+  "consulta": "deep impact",
+  "descricao": "Freesound: collaborative database of creative-commons licensed sound for musicians and sound lovers. Have you freed your sound today?",
+  "etiquetas": [
+   "bass",
+   "deep",
+   "impact",
+   "sfx"
+  ],
+  "obs": "prévia pública em MP3 128 kb/s do Freesound (o original exige login)"
+ },
+ {
+  "id": "665093",
+  "titulo": "Deep impact",
+  "autor": "tgerginov",
+  "url_pagina": "https://freesound.org/people/tgerginov/sounds/665093/",
+  "url_arquivo": "https://cdn.freesound.org/previews/665/665093_4898018-hq.mp3",
+  "licenca": "CC0 1.0",
+  "atribuicao_exigida": false,
+  "arquivo_local": "som/bib/freesound/665093.mp3",
+  "papeis": [
+   "impacto"
+  ],
+  "consulta": "deep impact",
+  "descricao": "Freesound: collaborative database of creative-commons licensed sound for musicians and sound lovers. Have you freed your sound today?",
+  "etiquetas": [
+   "dark",
+   "deep",
+   "impact"
+  ],
+  "obs": "prévia pública em MP3 128 kb/s do Freesound (o original exige login)"
+ },
+ {
+  "id": "754424",
+  "titulo": "DSGNImpt_Deep Cinematic Impact 5_ZAZZ",
+  "autor": "zazz.sound.design",
+  "url_pagina": "https://freesound.org/people/zazz.sound.design/sounds/754424/",
+  "url_arquivo": "https://cdn.freesound.org/previews/754/754424_726853-hq.mp3",
+  "licenca": "CC0 1.0",
+  "atribuicao_exigida": false,
+  "arquivo_local": "som/bib/freesound/754424.mp3",
+  "papeis": [
+   "impacto"
+  ],
+  "consulta": "deep impact",
+  "descricao": "Freesound: collaborative database of creative-commons licensed sound for musicians and sound lovers. Have you freed your sound today?",
+  "etiquetas": [
+   "Cinematic",
+   "Deep",
+   "Hit",
+   "Huge",
+   "Impact",
+   "Reverberant"
+  ],
+  "obs": "prévia pública em MP3 128 kb/s do Freesound (o original exige login)"
+ },
+ {
+  "id": "754420",
+  "titulo": "DSGNImpt_Deep Cinematic Impact 1_ZAZZ",
+  "autor": "zazz.sound.design",
+  "url_pagina": "https://freesound.org/people/zazz.sound.design/sounds/754420/",
+  "url_arquivo": "https://cdn.freesound.org/previews/754/754420_726853-hq.mp3",
+  "licenca": "CC0 1.0",
+  "atribuicao_exigida": false,
+  "arquivo_local": "som/bib/freesound/754420.mp3",
+  "papeis": [
+   "impacto"
+  ],
+  "consulta": "deep impact",
+  "descricao": "Freesound: collaborative database of creative-commons licensed sound for musicians and sound lovers. Have you freed your sound today?",
+  "etiquetas": [
+   "Cinematic",
+   "Deep",
+   "Hit",
+   "Huge",
+   "Impact",
+   "Reverberant"
+  ],
+  "obs": "prévia pública em MP3 128 kb/s do Freesound (o original exige login)"
+ },
+ {
+  "id": "754422",
+  "titulo": "DSGNImpt_Deep Cinematic Impact 3_ZAZZ",
+  "autor": "zazz.sound.design",
+  "url_pagina": "https://freesound.org/people/zazz.sound.design/sounds/754422/",
+  "url_arquivo": "https://cdn.freesound.org/previews/754/754422_726853-hq.mp3",
+  "licenca": "CC0 1.0",
+  "atribuicao_exigida": false,
+  "arquivo_local": "som/bib/freesound/754422.mp3",
+  "papeis": [
+   "impacto"
+  ],
+  "consulta": "deep impact",
+  "descricao": "Freesound: collaborative database of creative-commons licensed sound for musicians and sound lovers. Have you freed your sound today?",
+  "etiquetas": [
+   "Cinematic",
+   "Deep",
+   "Hit",
+   "Huge",
+   "Impact",
+   "Reverberant"
+  ],
+  "obs": "prévia pública em MP3 128 kb/s do Freesound (o original exige login)"
+ },
+ {
+  "id": "414055",
+  "titulo": "Piston sound",
+  "autor": "felix.blume",
+  "url_pagina": "https://freesound.org/people/felix.blume/sounds/414055/",
+  "url_arquivo": "https://cdn.freesound.org/previews/414/414055_1661766-hq.mp3",
+  "licenca": "CC0 1.0",
+  "atribuicao_exigida": false,
+  "arquivo_local": "som/bib/freesound/414055.mp3",
+  "papeis": [
+   "pistao"
+  ],
+  "consulta": "piston",
+  "descricao": "Freesound: collaborative database of creative-commons licensed sound for musicians and sound lovers. Have you freed your sound today?",
+  "etiquetas": [
+   "Argentina",
+   "Blume",
+   "Felix",
+   "Fuego",
+   "PUESTOSST368",
+   "Patagonia",
+   "Tierra",
+   "del",
+   "field",
+   "gear",
+   "machine",
+   "piston",
+   "recording",
+   "rhythm"
+  ],
+  "obs": "prévia pública em MP3 128 kb/s do Freesound (o original exige login)"
+ },
+ {
+  "id": "737571",
+  "titulo": "N386EP (2022 TEXTRON AVIATION INC 172S)",
+  "autor": "TheRandomSoundByte2637",
+  "url_pagina": "https://freesound.org/people/TheRandomSoundByte2637/sounds/737571/",
+  "url_arquivo": "https://cdn.freesound.org/previews/737/737571_13395205-hq.mp3",
+  "licenca": "CC0 1.0",
+  "atribuicao_exigida": false,
+  "arquivo_local": "som/bib/freesound/737571.mp3",
+  "papeis": [
+   "pistao"
+  ],
+  "consulta": "piston",
+  "descricao": "Freesound: collaborative database of creative-commons licensed sound for musicians and sound lovers. Have you freed your sound today?",
+  "etiquetas": [
+   "75hz",
+   "Cessna",
+   "Cessna-172",
+   "airplane",
+   "engine",
+   "field-recording",
+   "flight",
+   "flying",
+   "piston",
+   "plane",
+   "prop",
+   "propeller"
+  ],
+  "obs": "prévia pública em MP3 128 kb/s do Freesound (o original exige login)"
+ },
+ {
+  "id": "125211",
+  "titulo": "steam-train-leaving-moor-st-station.wav",
+  "autor": "keithpeter",
+  "url_pagina": "https://freesound.org/people/keithpeter/sounds/125211/",
+  "url_arquivo": "https://cdn.freesound.org/previews/125/125211_1848966-hq.mp3",
+  "licenca": "CC0 1.0",
+  "atribuicao_exigida": false,
+  "arquivo_local": "som/bib/freesound/125211.mp3",
+  "papeis": [
+   "pistao"
+  ],
+  "consulta": "piston",
+  "descricao": "Freesound: collaborative database of creative-commons licensed sound for musicians and sound lovers. Have you freed your sound today?",
+  "etiquetas": [
+   "field-recording",
+   "hiss",
+   "piston",
+   "steam",
+   "steam-train",
+   "train",
+   "whistle"
+  ],
+  "obs": "prévia pública em MP3 128 kb/s do Freesound (o original exige login)"
+ },
+ {
+  "id": "623275",
+  "titulo": "Mechanical Piston.wav",
+  "autor": "elzbth.ep",
+  "url_pagina": "https://freesound.org/people/elzbth.ep/sounds/623275/",
+  "url_arquivo": "https://cdn.freesound.org/previews/623/623275_13531321-hq.mp3",
+  "licenca": "CC0 1.0",
+  "atribuicao_exigida": false,
+  "arquivo_local": "som/bib/freesound/623275.mp3",
+  "papeis": [
+   "pistao"
+  ],
+  "consulta": "piston",
+  "descricao": "Freesound: collaborative database of creative-commons licensed sound for musicians and sound lovers. Have you freed your sound today?",
+  "etiquetas": [
+   "MACHINE",
+   "MOTOR",
+   "construction",
+   "industrial",
+   "machine",
+   "machinery",
+   "mechanical",
+   "piston"
+  ],
+  "obs": "prévia pública em MP3 128 kb/s do Freesound (o original exige login)"
+ },
+ {
+  "id": "391281",
+  "titulo": "Crack the knuckles",
+  "autor": "Igor1998",
+  "url_pagina": "https://freesound.org/people/Igor1998/sounds/391281/",
+  "url_arquivo": "https://cdn.freesound.org/previews/391/391281_7361678-hq.mp3",
+  "licenca": "CC0 1.0",
+  "atribuicao_exigida": false,
+  "arquivo_local": "som/bib/freesound/391281.mp3",
+  "papeis": [
+   "pistao"
+  ],
+  "consulta": "piston",
+  "descricao": "Freesound: collaborative database of creative-commons licensed sound for musicians and sound lovers. Have you freed your sound today?",
+  "etiquetas": [
+   "5maudio17",
+   "clacking",
+   "clicking",
+   "fingers",
+   "fingersnap",
+   "piston",
+   "press",
+   "printing-press",
+   "rhythmic",
+   "slapping",
+   "tapping",
+   "thumping",
+   "uam"
+  ],
+  "obs": "prévia pública em MP3 128 kb/s do Freesound (o original exige login)"
+ },
+ {
+  "id": "234238",
+  "titulo": "engine4.wav",
+  "autor": "vumseplutten1709",
+  "url_pagina": "https://freesound.org/people/vumseplutten1709/sounds/234238/",
+  "url_arquivo": "https://cdn.freesound.org/previews/234/234238_3406193-hq.mp3",
+  "licenca": "CC0 1.0",
+  "atribuicao_exigida": false,
+  "arquivo_local": "som/bib/freesound/234238.mp3",
+  "papeis": [
+   "pistao"
+  ],
+  "consulta": "pump stroke",
+  "descricao": "Freesound: collaborative database of creative-commons licensed sound for musicians and sound lovers. Have you freed your sound today?",
+  "etiquetas": [
+   "diesel",
+   "engines",
+   "marine",
+   "ship"
+  ],
+  "obs": "prévia pública em MP3 128 kb/s do Freesound (o original exige login)"
+ },
+ {
+  "id": "118804",
+  "titulo": "15_Air_Compressor_On_Off.wav",
+  "autor": "lmbubec",
+  "url_pagina": "https://freesound.org/people/lmbubec/sounds/118804/",
+  "url_arquivo": "https://cdn.freesound.org/previews/118/118804_1990688-hq.mp3",
+  "licenca": "CC0 1.0",
+  "atribuicao_exigida": false,
+  "arquivo_local": "som/bib/freesound/118804.mp3",
+  "papeis": [
+   "pistao"
+  ],
+  "consulta": "air compressor running",
+  "descricao": "Freesound: collaborative database of creative-commons licensed sound for musicians and sound lovers. Have you freed your sound today?",
+  "etiquetas": [
+   "air",
+   "compressor",
+   "engine",
+   "generator",
+   "motor",
+   "off"
+  ],
+  "obs": "prévia pública em MP3 128 kb/s do Freesound (o original exige login)"
+ },
+ {
+  "id": "732688",
+  "titulo": "Basement Ambience_Air Compressor",
+  "autor": "LewisEmmott5",
+  "url_pagina": "https://freesound.org/people/LewisEmmott5/sounds/732688/",
+  "url_arquivo": "https://cdn.freesound.org/previews/732/732688_15889796-hq.mp3",
+  "licenca": "CC0 1.0",
+  "atribuicao_exigida": false,
+  "arquivo_local": "som/bib/freesound/732688.mp3",
+  "papeis": [
+   "pistao"
+  ],
+  "consulta": "air compressor running",
+  "descricao": "Freesound: collaborative database of creative-commons licensed sound for musicians and sound lovers. Have you freed your sound today?",
+  "etiquetas": [
+   "Ambience",
+   "Basement",
+   "air",
+   "compressor"
+  ],
+  "obs": "prévia pública em MP3 128 kb/s do Freesound (o original exige login)"
+ },
+ {
+  "id": "166942",
+  "titulo": "AIR CONDITIONER_COMPRESSOR RUNNING.wav",
+  "autor": "sengjinn",
+  "url_pagina": "https://freesound.org/people/sengjinn/sounds/166942/",
+  "url_arquivo": "https://cdn.freesound.org/previews/166/166942_2979997-hq.mp3",
+  "licenca": "CC0 1.0",
+  "atribuicao_exigida": false,
+  "arquivo_local": "som/bib/freesound/166942.mp3",
+  "papeis": [
+   "pistao"
+  ],
+  "consulta": "air compressor running",
+  "descricao": "Freesound: collaborative database of creative-commons licensed sound for musicians and sound lovers. Have you freed your sound today?",
+  "etiquetas": [
+   "air-conditioner",
+   "aircond",
+   "belts",
+   "compressor",
+   "factory",
+   "fan",
+   "industry",
+   "machine",
+   "motor",
+   "noisy",
+   "old",
+   "running",
+   "squeak",
+   "squeaking"
+  ],
+  "obs": "prévia pública em MP3 128 kb/s do Freesound (o original exige login)"
+ },
+ {
+  "id": "120941",
+  "titulo": "mrecord19_compressor_edit.wav",
+  "autor": "Klerrp",
+  "url_pagina": "https://freesound.org/people/Klerrp/sounds/120941/",
+  "url_arquivo": "https://cdn.freesound.org/previews/120/120941_2015227-hq.mp3",
+  "licenca": "CC0 1.0",
+  "atribuicao_exigida": false,
+  "arquivo_local": "som/bib/freesound/120941.mp3",
+  "papeis": [
+   "pistao"
+  ],
+  "consulta": "air compressor running",
+  "descricao": "Freesound: collaborative database of creative-commons licensed sound for musicians and sound lovers. Have you freed your sound today?",
+  "etiquetas": [
+   "air",
+   "compressor"
+  ],
+  "obs": "prévia pública em MP3 128 kb/s do Freesound (o original exige login)"
+ },
+ {
+  "id": "378147",
+  "titulo": "oxygen concentrator close prospect.flac",
+  "autor": "kb7clx",
+  "url_pagina": "https://freesound.org/people/kb7clx/sounds/378147/",
+  "url_arquivo": "https://cdn.freesound.org/previews/378/378147_922322-hq.mp3",
+  "licenca": "CC0 1.0",
+  "atribuicao_exigida": false,
+  "arquivo_local": "som/bib/freesound/378147.mp3",
+  "papeis": [
+   "pistao"
+  ],
+  "consulta": "air compressor running",
+  "descricao": "Freesound: collaborative database of creative-commons licensed sound for musicians and sound lovers. Have you freed your sound today?",
+  "etiquetas": [
+   "COMPRESSOR",
+   "Compressor",
+   "Hum",
+   "MACHINE",
+   "MOTOR",
+   "Sounds",
+   "air",
+   "air-compressor",
+   "breathing",
+   "clank",
+   "compressor",
+   "cycles",
+   "electric",
+   "hiss",
+   "home-health",
+   "home-healthcare",
+   "humming",
+   "machine",
+   "machinery",
+   "mechanical"
+  ],
+  "obs": "prévia pública em MP3 128 kb/s do Freesound (o original exige login)"
+ },
+ {
+  "id": "678219",
+  "titulo": "Mine pit open general ambiance with water jet, flowing stream, miners hitting a hose pipe, plane passing by in the forest",
+  "autor": "felix.blume",
+  "url_pagina": "https://freesound.org/people/felix.blume/sounds/678219/",
+  "url_arquivo": "https://cdn.freesound.org/previews/678/678219_1661766-hq.mp3",
+  "licenca": "CC0 1.0",
+  "atribuicao_exigida": false,
+  "arquivo_local": "som/bib/freesound/678219.mp3",
+  "papeis": [
+   "fluxo"
+  ],
+  "consulta": "water flowing pipe",
+  "descricao": "Freesound: collaborative database of creative-commons licensed sound for musicians and sound lovers. Have you freed your sound today?",
+  "etiquetas": [
+   "Blume",
+   "Felix",
+   "Felixblume",
+   "Venezuela",
+   "ambiance",
+   "field-recording",
+   "flowing",
+   "forest",
+   "hose",
+   "jet",
+   "mine",
+   "miners",
+   "open",
+   "pipe",
+   "pit",
+   "plane",
+   "stream",
+   "water"
+  ],
+  "obs": "prévia pública em MP3 128 kb/s do Freesound (o original exige login)"
+ },
+ {
+  "id": "833472",
+  "titulo": "Rain Water flowing through Pipe",
+  "autor": "marlonnnnnn",
+  "url_pagina": "https://freesound.org/people/marlonnnnnn/sounds/833472/",
+  "url_arquivo": "https://cdn.freesound.org/previews/833/833472_195590-hq.mp3",
+  "licenca": "CC0 1.0",
+  "atribuicao_exigida": false,
+  "arquivo_local": "som/bib/freesound/833472.mp3",
+  "papeis": [
+   "fluxo"
+  ],
+  "consulta": "water flowing pipe",
+  "descricao": "Freesound: collaborative database of creative-commons licensed sound for musicians and sound lovers. Have you freed your sound today?",
+  "etiquetas": [
+   "babbling",
+   "constant",
+   "flow",
+   "flowing",
+   "gurgle",
+   "pipe",
+   "rain",
+   "rainwater",
+   "splashing",
+   "stream",
+   "trickle",
+   "water"
+  ],
+  "obs": "prévia pública em MP3 128 kb/s do Freesound (o original exige login)"
+ },
+ {
+  "id": "554314",
+  "titulo": "water pipe.wav",
+  "autor": "finneganmilla",
+  "url_pagina": "https://freesound.org/people/finneganmilla/sounds/554314/",
+  "url_arquivo": "https://cdn.freesound.org/previews/554/554314_771660-hq.mp3",
+  "licenca": "CC0 1.0",
+  "atribuicao_exigida": false,
+  "arquivo_local": "som/bib/freesound/554314.mp3",
+  "papeis": [
+   "fluxo"
+  ],
+  "consulta": "water flowing pipe",
+  "descricao": "Freesound: collaborative database of creative-commons licensed sound for musicians and sound lovers. Have you freed your sound today?",
+  "etiquetas": [
+   "flow",
+   "flowing",
+   "liquid",
+   "pipe",
+   "pipeline",
+   "piping",
+   "stream",
+   "water"
+  ],
+  "obs": "prévia pública em MP3 128 kb/s do Freesound (o original exige login)"
+ },
+ {
+  "id": "571551",
+  "titulo": "water flowing from a pipe into the sewer.mp3",
+  "autor": "FartMuffin",
+  "url_pagina": "https://freesound.org/people/FartMuffin/sounds/571551/",
+  "url_arquivo": "https://cdn.freesound.org/previews/571/571551_10643288-hq.mp3",
+  "licenca": "CC0 1.0",
+  "atribuicao_exigida": false,
+  "arquivo_local": "som/bib/freesound/571551.mp3",
+  "papeis": [
+   "fluxo"
+  ],
+  "consulta": "water flowing pipe",
+  "descricao": "Freesound: collaborative database of creative-commons licensed sound for musicians and sound lovers. Have you freed your sound today?",
+  "etiquetas": [
+   "flow",
+   "flowing",
+   "fountain",
+   "liquid",
+   "pipe",
+   "sewer",
+   "stream",
+   "water"
+  ],
+  "obs": "prévia pública em MP3 128 kb/s do Freesound (o original exige login)"
+ },
+ {
+  "id": "553257",
+  "titulo": "Water Pipe",
+  "autor": "NachtmahrTV",
+  "url_pagina": "https://freesound.org/people/NachtmahrTV/sounds/553257/",
+  "url_arquivo": "https://cdn.freesound.org/previews/553/553257_5620304-hq.mp3",
+  "licenca": "CC0 1.0",
+  "atribuicao_exigida": false,
+  "arquivo_local": "som/bib/freesound/553257.mp3",
+  "papeis": [
+   "fluxo"
+  ],
+  "consulta": "water flowing pipe",
+  "descricao": "Freesound: collaborative database of creative-commons licensed sound for musicians and sound lovers. Have you freed your sound today?",
+  "etiquetas": [
+   "babbling",
+   "flow",
+   "flowing",
+   "gurgle",
+   "liquid",
+   "pipe",
+   "relaxing",
+   "river",
+   "splash",
+   "stream",
+   "trickle",
+   "water"
+  ],
+  "obs": "prévia pública em MP3 128 kb/s do Freesound (o original exige login)"
+ },
+ {
+  "id": "700254",
+  "titulo": "Water Pipe Flow 210914-006.wav",
+  "autor": "JackRabbott",
+  "url_pagina": "https://freesound.org/people/JackRabbott/sounds/700254/",
+  "url_arquivo": "https://cdn.freesound.org/previews/700/700254_13362003-hq.mp3",
+  "licenca": "CC0 1.0",
+  "atribuicao_exigida": false,
+  "arquivo_local": "som/bib/freesound/700254.mp3",
+  "papeis": [
+   "fluxo"
+  ],
+  "consulta": "liquid flow pipe",
+  "descricao": "Freesound: collaborative database of creative-commons licensed sound for musicians and sound lovers. Have you freed your sound today?",
+  "etiquetas": [
+   "Flow",
+   "Liquid",
+   "Pipe",
+   "Water"
+  ],
+  "obs": "prévia pública em MP3 128 kb/s do Freesound (o original exige login)"
+ },
+ {
+  "id": "443868",
+  "titulo": "water_running_pipe_loop.wav",
+  "autor": "eardeer",
+  "url_pagina": "https://freesound.org/people/eardeer/sounds/443868/",
+  "url_arquivo": "https://cdn.freesound.org/previews/443/443868_2155630-hq.mp3",
+  "licenca": "CC0 1.0",
+  "atribuicao_exigida": false,
+  "arquivo_local": "som/bib/freesound/443868.mp3",
+  "papeis": [
+   "fluxo"
+  ],
+  "consulta": "liquid flow pipe",
+  "descricao": "Freesound: collaborative database of creative-commons licensed sound for musicians and sound lovers. Have you freed your sound today?",
+  "etiquetas": [
+   "babbling",
+   "flow",
+   "flowing",
+   "gurgle",
+   "lapping",
+   "liquid",
+   "loop",
+   "mill",
+   "pipe",
+   "stream",
+   "water"
+  ],
+  "obs": "prévia pública em MP3 128 kb/s do Freesound (o original exige login)"
+ },
+ {
+  "id": "104087",
+  "titulo": "Pressure Meter Pipe Noises 1.aif",
+  "autor": "RutgerMuller",
+  "url_pagina": "https://freesound.org/people/RutgerMuller/sounds/104087/",
+  "url_arquivo": "https://cdn.freesound.org/previews/104/104087_179538-hq.mp3",
+  "licenca": "CC0 1.0",
+  "atribuicao_exigida": false,
+  "arquivo_local": "som/bib/freesound/104087.mp3",
+  "papeis": [
+   "fluxo"
+  ],
+  "consulta": "liquid flow pipe",
+  "descricao": "Freesound: collaborative database of creative-commons licensed sound for musicians and sound lovers. Have you freed your sound today?",
+  "etiquetas": [
+   "air",
+   "building",
+   "construction",
+   "flow",
+   "heating",
+   "hydraulic",
+   "hydraulics",
+   "liquid",
+   "mechanical",
+   "mechanics",
+   "pipe",
+   "pipes",
+   "pressure",
+   "system",
+   "water"
+  ],
+  "obs": "prévia pública em MP3 128 kb/s do Freesound (o original exige login)"
+ },
+ {
+  "id": "504930",
+  "titulo": "Dry Ice Bubbling in Water",
+  "autor": "unfa",
+  "url_pagina": "https://freesound.org/people/unfa/sounds/504930/",
+  "url_arquivo": "https://cdn.freesound.org/previews/504/504930_1038806-hq.mp3",
+  "licenca": "CC0 1.0",
+  "atribuicao_exigida": false,
+  "arquivo_local": "som/bib/freesound/504930.mp3",
+  "papeis": [
+   "bolhas"
+  ],
+  "consulta": "boiling water bubbles",
+  "descricao": "Freesound: collaborative database of creative-commons licensed sound for musicians and sound lovers. Have you freed your sound today?",
+  "etiquetas": [
+   "boiling",
+   "bubbles",
+   "bubbling",
+   "dry-ice",
+   "water"
+  ],
+  "obs": "prévia pública em MP3 128 kb/s do Freesound (o original exige login)"
+ },
+ {
+  "id": "862622",
+  "titulo": "Sausages Sizzling in a Pan with Boiling Eggs Kitchen Ambience",
+  "autor": "bassimat",
+  "url_pagina": "https://freesound.org/people/bassimat/sounds/862622/",
+  "url_arquivo": "https://cdn.freesound.org/previews/862/862622_15636277-hq.mp3",
+  "licenca": "CC0 1.0",
+  "atribuicao_exigida": false,
+  "arquivo_local": "som/bib/freesound/862622.mp3",
+  "papeis": [
+   "bolhas"
+  ],
+  "consulta": "boiling water bubbles",
+  "descricao": "Freesound: collaborative database of creative-commons licensed sound for musicians and sound lovers. Have you freed your sound today?",
+  "etiquetas": [
+   "ambience",
+   "appliance",
+   "boiling",
+   "breakfast",
+   "bubbles",
+   "cooking",
+   "culinary",
+   "domestic",
+   "eggs",
+   "field-recording",
+   "foley",
+   "food",
+   "frying",
+   "home",
+   "household",
+   "kitchen",
+   "pan",
+   "realistic",
+   "recording",
+   "sausages"
+  ],
+  "obs": "prévia pública em MP3 128 kb/s do Freesound (o original exige login)"
+ },
+ {
+  "id": "155625",
+  "titulo": "bubbling water",
+  "autor": "zumbaone",
+  "url_pagina": "https://freesound.org/people/zumbaone/sounds/155625/",
+  "url_arquivo": "https://cdn.freesound.org/previews/155/155625_2803982-hq.mp3",
+  "licenca": "CC0 1.0",
+  "atribuicao_exigida": false,
+  "arquivo_local": "som/bib/freesound/155625.mp3",
+  "papeis": [
+   "bolhas"
+  ],
+  "consulta": "boiling water bubbles",
+  "descricao": "Freesound: collaborative database of creative-commons licensed sound for musicians and sound lovers. Have you freed your sound today?",
+  "etiquetas": [
+   "boiling",
+   "bubbles",
+   "kettle",
+   "water"
+  ],
+  "obs": "prévia pública em MP3 128 kb/s do Freesound (o original exige login)"
+ },
+ {
+  "id": "185617",
+  "titulo": "Water Boiling/Gas Burning ",
+  "autor": "yfjesse",
+  "url_pagina": "https://freesound.org/people/yfjesse/sounds/185617/",
+  "url_arquivo": "https://cdn.freesound.org/previews/185/185617_2391840-hq.mp3",
+  "licenca": "CC0 1.0",
+  "atribuicao_exigida": false,
+  "arquivo_local": "som/bib/freesound/185617.mp3",
+  "papeis": [
+   "bolhas"
+  ],
+  "consulta": "boiling water bubbles",
+  "descricao": "Freesound: collaborative database of creative-commons licensed sound for musicians and sound lovers. Have you freed your sound today?",
+  "etiquetas": [
+   "boiling",
+   "bubbles",
+   "bubbling",
+   "fire",
+   "gas",
+   "heat",
+   "hot",
+   "water",
+   "wet"
+  ],
+  "obs": "prévia pública em MP3 128 kb/s do Freesound (o original exige login)"
+ },
+ {
+  "id": "610010",
+  "titulo": "water bubbles.wav",
+  "autor": "Chrisfiedlermusic",
+  "url_pagina": "https://freesound.org/people/Chrisfiedlermusic/sounds/610010/",
+  "url_arquivo": "https://cdn.freesound.org/previews/610/610010_13501801-hq.mp3",
+  "licenca": "CC0 1.0",
+  "atribuicao_exigida": false,
+  "arquivo_local": "som/bib/freesound/610010.mp3",
+  "papeis": [
+   "bolhas"
+  ],
+  "consulta": "boiling water bubbles",
+  "descricao": "Freesound: collaborative database of creative-commons licensed sound for musicians and sound lovers. Have you freed your sound today?",
+  "etiquetas": [
+   "boiling",
+   "bubbles",
+   "water"
+  ],
+  "obs": "prévia pública em MP3 128 kb/s do Freesound (o original exige login)"
+ },
+ {
+  "id": "95052",
+  "titulo": "ambient bubbling liquid.aif",
+  "autor": "plamdi1",
+  "url_pagina": "https://freesound.org/people/plamdi1/sounds/95052/",
+  "url_arquivo": "https://cdn.freesound.org/previews/95/95052_1496325-hq.mp3",
+  "licenca": "CC0 1.0",
+  "atribuicao_exigida": false,
+  "arquivo_local": "som/bib/freesound/95052.mp3",
+  "papeis": [
+   "bolhas"
+  ],
+  "consulta": "bubbling liquid",
+  "descricao": "Freesound: collaborative database of creative-commons licensed sound for musicians and sound lovers. Have you freed your sound today?",
+  "etiquetas": [
+   "boiling",
+   "bubbling",
+   "liquid",
+   "water"
+  ],
+  "obs": "prévia pública em MP3 128 kb/s do Freesound (o original exige login)"
+ },
+ {
+  "id": "875132",
+  "titulo": "Guggling/Bubbling Water",
+  "autor": "hotpin7",
+  "url_pagina": "https://freesound.org/people/hotpin7/sounds/875132/",
+  "url_arquivo": "https://cdn.freesound.org/previews/875/875132_17707799-hq.mp3",
+  "licenca": "CC0 1.0",
+  "atribuicao_exigida": false,
+  "arquivo_local": "som/bib/freesound/875132.mp3",
+  "papeis": [
+   "bolhas"
+  ],
+  "consulta": "bubbling liquid",
+  "descricao": "Freesound: collaborative database of creative-commons licensed sound for musicians and sound lovers. Have you freed your sound today?",
+  "etiquetas": [
+   "Alchemy",
+   "Bottle",
+   "Bubble",
+   "Bubbles",
+   "Bubbling",
+   "Guggling",
+   "Liquid",
+   "Potion",
+   "Potions",
+   "Pour",
+   "Pouring",
+   "Water"
+  ],
+  "obs": "prévia pública em MP3 128 kb/s do Freesound (o original exige login)"
+ },
+ {
+  "id": "521392",
+  "titulo": "Water bubbles loop",
+  "autor": "GoldenTricycle",
+  "url_pagina": "https://freesound.org/people/GoldenTricycle/sounds/521392/",
+  "url_arquivo": "https://cdn.freesound.org/previews/521/521392_3316626-hq.mp3",
+  "licenca": "CC0 1.0",
+  "atribuicao_exigida": false,
+  "arquivo_local": "som/bib/freesound/521392.mp3",
+  "papeis": [
+   "bolhas"
+  ],
+  "consulta": "bubbling liquid",
+  "descricao": "Freesound: collaborative database of creative-commons licensed sound for musicians and sound lovers. Have you freed your sound today?",
+  "etiquetas": [
+   "acid",
+   "boiling",
+   "bubble",
+   "bubbles",
+   "bubbling",
+   "bubbly",
+   "carbonated",
+   "chemical",
+   "fizzy",
+   "gas",
+   "lava",
+   "liquid",
+   "loop",
+   "looping",
+   "potion",
+   "slurping",
+   "submerged",
+   "underwater",
+   "water"
+  ],
+  "obs": "prévia pública em MP3 128 kb/s do Freesound (o original exige login)"
+ },
+ {
+  "id": "539823",
+  "titulo": "Bubbles 001.wav",
+  "autor": "ristooooo1",
+  "url_pagina": "https://freesound.org/people/ristooooo1/sounds/539823/",
+  "url_arquivo": "https://cdn.freesound.org/previews/539/539823_6205597-hq.mp3",
+  "licenca": "CC0 1.0",
+  "atribuicao_exigida": false,
+  "arquivo_local": "som/bib/freesound/539823.mp3",
+  "papeis": [
+   "bolhas"
+  ],
+  "consulta": "bubbling liquid",
+  "descricao": "Freesound: collaborative database of creative-commons licensed sound for musicians and sound lovers. Have you freed your sound today?",
+  "etiquetas": [
+   "boiling",
+   "bubble",
+   "bubbles",
+   "bubbling",
+   "bubbly",
+   "liquid",
+   "potion",
+   "underwater",
+   "water"
+  ],
+  "obs": "prévia pública em MP3 128 kb/s do Freesound (o original exige login)"
+ },
+ {
+  "id": "186384",
+  "titulo": "small bubbles.wav",
+  "autor": "Yuval",
+  "url_pagina": "https://freesound.org/people/Yuval/sounds/186384/",
+  "url_arquivo": "https://cdn.freesound.org/previews/186/186384_770707-hq.mp3",
+  "licenca": "CC0 1.0",
+  "atribuicao_exigida": false,
+  "arquivo_local": "som/bib/freesound/186384.mp3",
+  "papeis": [
+   "bolhas"
+  ],
+  "consulta": "bubbles small",
+  "descricao": "Freesound: collaborative database of creative-commons licensed sound for musicians and sound lovers. Have you freed your sound today?",
+  "etiquetas": [
+   "bubbles",
+   "sfx",
+   "small",
+   "water"
+  ],
+  "obs": "prévia pública em MP3 128 kb/s do Freesound (o original exige login)"
+ },
+ {
+  "id": "637335",
+  "titulo": "bubbles small in soda.flac",
+  "autor": "kyles",
+  "url_pagina": "https://freesound.org/people/kyles/sounds/637335/",
+  "url_arquivo": "https://cdn.freesound.org/previews/637/637335_612689-hq.mp3",
+  "licenca": "CC0 1.0",
+  "atribuicao_exigida": false,
+  "arquivo_local": "som/bib/freesound/637335.mp3",
+  "papeis": [
+   "bolhas"
+  ],
+  "consulta": "bubbles small",
+  "descricao": "Freesound: collaborative database of creative-commons licensed sound for musicians and sound lovers. Have you freed your sound today?",
+  "etiquetas": [
+   "bubbles",
+   "small",
+   "soda"
+  ],
+  "obs": "prévia pública em MP3 128 kb/s do Freesound (o original exige login)"
+ },
+ {
+  "id": "422666",
+  "titulo": "hydrophone bubbles straw small.wav",
+  "autor": "JavierZumer",
+  "url_pagina": "https://freesound.org/people/JavierZumer/sounds/422666/",
+  "url_arquivo": "https://cdn.freesound.org/previews/422/422666_2836758-hq.mp3",
+  "licenca": "CC0 1.0",
+  "atribuicao_exigida": false,
+  "arquivo_local": "som/bib/freesound/422666.mp3",
+  "papeis": [
+   "bolhas"
+  ],
+  "consulta": "bubbles small",
+  "descricao": "Freesound: collaborative database of creative-commons licensed sound for musicians and sound lovers. Have you freed your sound today?",
+  "etiquetas": [
+   "bubbles",
+   "hydrophone",
+   "small",
+   "straw",
+   "water"
+  ],
+  "obs": "prévia pública em MP3 128 kb/s do Freesound (o original exige login)"
+ },
+ {
+  "id": "640597",
+  "titulo": "Small_Bubbles_Pops.wav",
+  "autor": "gokalp_gonen",
+  "url_pagina": "https://freesound.org/people/gokalp_gonen/sounds/640597/",
+  "url_arquivo": "https://cdn.freesound.org/previews/640/640597_4897512-hq.mp3",
+  "licenca": "CC0 1.0",
+  "atribuicao_exigida": false,
+  "arquivo_local": "som/bib/freesound/640597.mp3",
+  "papeis": [
+   "bolhas"
+  ],
+  "consulta": "bubbles small",
+  "descricao": "Freesound: collaborative database of creative-commons licensed sound for musicians and sound lovers. Have you freed your sound today?",
+  "etiquetas": [
+   "Bubble",
+   "Bubbles",
+   "Burst",
+   "Pop",
+   "Small",
+   "Splash",
+   "Tiny",
+   "Wash",
+   "Washing",
+   "Water",
+   "Wet"
+  ],
+  "obs": "prévia pública em MP3 128 kb/s do Freesound (o original exige login)"
+ },
+ {
+  "id": "640598",
+  "titulo": "Rubbing_Wet_Plastic_Foam_Hard.wav",
+  "autor": "gokalp_gonen",
+  "url_pagina": "https://freesound.org/people/gokalp_gonen/sounds/640598/",
+  "url_arquivo": "https://cdn.freesound.org/previews/640/640598_4897512-hq.mp3",
+  "licenca": "CC0 1.0",
+  "atribuicao_exigida": false,
+  "arquivo_local": "som/bib/freesound/640598.mp3",
+  "papeis": [
+   "bolhas"
+  ],
+  "consulta": "bubbles small",
+  "descricao": "Freesound: collaborative database of creative-commons licensed sound for musicians and sound lovers. Have you freed your sound today?",
+  "etiquetas": [
+   "Bubble",
+   "Bubbles",
+   "Burst",
+   "Cloth",
+   "Fabric",
+   "Move",
+   "Movement",
+   "Pop",
+   "Rub",
+   "Small",
+   "Splash",
+   "Tiny",
+   "Wash",
+   "Washing",
+   "Water",
+   "Wet"
+  ],
+  "obs": "prévia pública em MP3 128 kb/s do Freesound (o original exige login)"
+ },
+ {
+  "id": "575261",
+  "titulo": "Gas hiss 09.flac",
+  "autor": "TRP",
+  "url_pagina": "https://freesound.org/people/TRP/sounds/575261/",
+  "url_arquivo": "https://cdn.freesound.org/previews/575/575261_97550-hq.mp3",
+  "licenca": "CC0 1.0",
+  "atribuicao_exigida": false,
+  "arquivo_local": "som/bib/freesound/575261.mp3",
+  "papeis": [
+   "expansao"
+  ],
+  "consulta": "gas hiss",
+  "descricao": "Freesound: collaborative database of creative-commons licensed sound for musicians and sound lovers. Have you freed your sound today?",
+  "etiquetas": [
+   "furnace",
+   "gas",
+   "hiss"
+  ],
+  "obs": "prévia pública em MP3 128 kb/s do Freesound (o original exige login)"
+ },
+ {
+  "id": "453443",
+  "titulo": "hiss small pipe ext like propane gas.flac",
+  "autor": "kyles",
+  "url_pagina": "https://freesound.org/people/kyles/sounds/453443/",
+  "url_arquivo": "https://cdn.freesound.org/previews/453/453443_612689-hq.mp3",
+  "licenca": "CC0 1.0",
+  "atribuicao_exigida": false,
+  "arquivo_local": "som/bib/freesound/453443.mp3",
+  "papeis": [
+   "expansao"
+  ],
+  "consulta": "gas hiss",
+  "descricao": "Freesound: collaborative database of creative-commons licensed sound for musicians and sound lovers. Have you freed your sound today?",
+  "etiquetas": [
+   "ext",
+   "gas",
+   "hiss",
+   "like",
+   "pipe",
+   "propane",
+   "small"
+  ],
+  "obs": "prévia pública em MP3 128 kb/s do Freesound (o original exige login)"
+ },
+ {
+  "id": "723697",
+  "titulo": "Gas Meter, Two Perspectives",
+  "autor": "HECKFRICKER",
+  "url_pagina": "https://freesound.org/people/HECKFRICKER/sounds/723697/",
+  "url_arquivo": "https://cdn.freesound.org/previews/723/723697_12863902-hq.mp3",
+  "licenca": "CC0 1.0",
+  "atribuicao_exigida": false,
+  "arquivo_local": "som/bib/freesound/723697.mp3",
+  "papeis": [
+   "expansao"
+  ],
+  "consulta": "gas hiss",
+  "descricao": "Freesound: collaborative database of creative-commons licensed sound for musicians and sound lovers. Have you freed your sound today?",
+  "etiquetas": [
+   "gas",
+   "hiss",
+   "industrial",
+   "mechanical",
+   "meter",
+   "metre",
+   "utility"
+  ],
+  "obs": "prévia pública em MP3 128 kb/s do Freesound (o original exige login)"
+ },
+ {
+  "id": "411887",
+  "titulo": "Swamp Gas.mp3",
+  "autor": "Yin_Yang_Jake007",
+  "url_pagina": "https://freesound.org/people/Yin_Yang_Jake007/sounds/411887/",
+  "url_arquivo": "https://cdn.freesound.org/previews/411/411887_7919598-hq.mp3",
+  "licenca": "CC0 1.0",
+  "atribuicao_exigida": false,
+  "arquivo_local": "som/bib/freesound/411887.mp3",
+  "papeis": [
+   "expansao"
+  ],
+  "consulta": "gas hiss",
+  "descricao": "Freesound: collaborative database of creative-commons licensed sound for musicians and sound lovers. Have you freed your sound today?",
+  "etiquetas": [
+   "Bubble",
+   "Bubbles",
+   "Burst",
+   "Cooking",
+   "Gas",
+   "Hiss",
+   "Plop",
+   "Pop",
+   "Pot",
+   "Soup",
+   "Stew",
+   "Swamp",
+   "Thick"
+  ],
+  "obs": "prévia pública em MP3 128 kb/s do Freesound (o original exige login)"
+ },
+ {
+  "id": "608844",
+  "titulo": "gas lighter.wav",
+  "autor": "cupido-1",
+  "url_pagina": "https://freesound.org/people/cupido-1/sounds/608844/",
+  "url_arquivo": "https://cdn.freesound.org/previews/608/608844_1030167-hq.mp3",
+  "licenca": "CC0 1.0",
+  "atribuicao_exigida": false,
+  "arquivo_local": "som/bib/freesound/608844.mp3",
+  "papeis": [
+   "expansao"
+  ],
+  "consulta": "gas hiss",
+  "descricao": "Freesound: collaborative database of creative-commons licensed sound for musicians and sound lovers. Have you freed your sound today?",
+  "etiquetas": [
+   "flame",
+   "gas",
+   "hiss",
+   "lighter",
+   "smoking"
+  ],
+  "obs": "prévia pública em MP3 128 kb/s do Freesound (o original exige login)"
+ },
+ {
+  "id": "861613",
+  "titulo": "Compressed Air Pressure Release Valve Loop (Synthetic)",
+  "autor": "kkenny101",
+  "url_pagina": "https://freesound.org/people/kkenny101/sounds/861613/",
+  "url_arquivo": "https://cdn.freesound.org/previews/861/861613_17997500-hq.mp3",
+  "licenca": "CC0 1.0",
+  "atribuicao_exigida": false,
+  "arquivo_local": "som/bib/freesound/861613.mp3",
+  "papeis": [
+   "expansao"
+  ],
+  "consulta": "air release valve",
+  "descricao": "Freesound: collaborative database of creative-commons licensed sound for musicians and sound lovers. Have you freed your sound today?",
+  "etiquetas": [
+   "air",
+   "ambience",
+   "compressed-air",
+   "factory",
+   "gas",
+   "hiss",
+   "industrial",
+   "loop",
+   "machinery",
+   "mechanical",
+   "pneumatic",
+   "pressure",
+   "pressure-release",
+   "release",
+   "sci-fi",
+   "seamless-loop",
+   "sfx",
+   "sound-design",
+   "steam",
+   "synthetic"
+  ],
+  "obs": "prévia pública em MP3 128 kb/s do Freesound (o original exige login)"
+ },
+ {
+  "id": "475427",
+  "titulo": "Valve_1(air, release).wav",
+  "autor": "o_ciz",
+  "url_pagina": "https://freesound.org/people/o_ciz/sounds/475427/",
+  "url_arquivo": "https://cdn.freesound.org/previews/475/475427_7009965-hq.mp3",
+  "licenca": "CC0 1.0",
+  "atribuicao_exigida": false,
+  "arquivo_local": "som/bib/freesound/475427.mp3",
+  "papeis": [
+   "expansao"
+  ],
+  "consulta": "air release valve",
+  "descricao": "Freesound: collaborative database of creative-commons licensed sound for musicians and sound lovers. Have you freed your sound today?",
+  "etiquetas": [
+   "air",
+   "bicycle",
+   "release",
+   "valve"
+  ],
+  "obs": "prévia pública em MP3 128 kb/s do Freesound (o original exige login)"
+ },
+ {
+  "id": "568858",
+  "titulo": "ventiel lossen.wav",
+  "autor": "gecop",
+  "url_pagina": "https://freesound.org/people/gecop/sounds/568858/",
+  "url_arquivo": "https://cdn.freesound.org/previews/568/568858_3562198-hq.mp3",
+  "licenca": "CC0 1.0",
+  "atribuicao_exigida": false,
+  "arquivo_local": "som/bib/freesound/568858.mp3",
+  "papeis": [
+   "expansao"
+  ],
+  "consulta": "air release valve",
+  "descricao": "Freesound: collaborative database of creative-commons licensed sound for musicians and sound lovers. Have you freed your sound today?",
+  "etiquetas": [
+   "air",
+   "interior",
+   "nozzle",
+   "pressure",
+   "release",
+   "stereo-recording",
+   "valve"
+  ],
+  "obs": "prévia pública em MP3 128 kb/s do Freesound (o original exige login)"
+ },
+ {
+  "id": "879471",
+  "titulo": "Box Pressure release valve after filling it with boiling water",
+  "autor": "Sadiquecat",
+  "url_pagina": "https://freesound.org/people/Sadiquecat/sounds/879471/",
+  "url_arquivo": "https://cdn.freesound.org/previews/879/879471_5287430-hq.mp3",
+  "licenca": "CC0 1.0",
+  "atribuicao_exigida": false,
+  "arquivo_local": "som/bib/freesound/879471.mp3",
+  "papeis": [
+   "expansao"
+  ],
+  "consulta": "air release valve",
+  "descricao": "Freesound: collaborative database of creative-commons licensed sound for musicians and sound lovers. Have you freed your sound today?",
+  "etiquetas": [
+   "Box",
+   "Dji",
+   "Dji-mic3",
+   "air",
+   "omni",
+   "spirty",
+   "steam",
+   "valve"
+  ],
+  "obs": "prévia pública em MP3 128 kb/s do Freesound (o original exige login)"
+ },
+ {
+  "id": "185515",
+  "titulo": "Air compressor valve",
+  "autor": "soneproject",
+  "url_pagina": "https://freesound.org/people/soneproject/sounds/185515/",
+  "url_arquivo": "https://cdn.freesound.org/previews/185/185515_2127539-hq.mp3",
+  "licenca": "CC0 1.0",
+  "atribuicao_exigida": false,
+  "arquivo_local": "som/bib/freesound/185515.mp3",
+  "papeis": [
+   "expansao"
+  ],
+  "consulta": "air release valve",
+  "descricao": "Freesound: collaborative database of creative-commons licensed sound for musicians and sound lovers. Have you freed your sound today?",
+  "etiquetas": [
+   "air",
+   "compressor",
+   "noise",
+   "pshh",
+   "snappy",
+   "valve",
+   "white",
+   "zoom-H1"
+  ],
+  "obs": "prévia pública em MP3 128 kb/s do Freesound (o original exige login)"
+ },
+ {
+  "id": "457294",
+  "titulo": "Air (or steam) pressure release",
+  "autor": "brunoboselli",
+  "url_pagina": "https://freesound.org/people/brunoboselli/sounds/457294/",
+  "url_arquivo": "https://cdn.freesound.org/previews/457/457294_300738-hq.mp3",
+  "licenca": "CC0 1.0",
+  "atribuicao_exigida": false,
+  "arquivo_local": "som/bib/freesound/457294.mp3",
+  "papeis": [
+   "expansao"
+  ],
+  "consulta": "pressure release hiss",
+  "descricao": "Freesound: collaborative database of creative-commons licensed sound for musicians and sound lovers. Have you freed your sound today?",
+  "etiquetas": [
+   "air",
+   "air-pressure",
+   "air-release",
+   "brake",
+   "cooker",
+   "deflate",
+   "evaporation",
+   "hiss",
+   "piston",
+   "poison",
+   "pressure",
+   "pssst",
+   "release",
+   "steam",
+   "steam-release",
+   "train",
+   "vapor"
+  ],
+  "obs": "prévia pública em MP3 128 kb/s do Freesound (o original exige login)"
+ },
+ {
+  "id": "398077",
+  "titulo": "Steam.wav",
+  "autor": "SukritSen",
+  "url_pagina": "https://freesound.org/people/SukritSen/sounds/398077/",
+  "url_arquivo": "https://cdn.freesound.org/previews/398/398077_6996854-hq.mp3",
+  "licenca": "CC0 1.0",
+  "atribuicao_exigida": false,
+  "arquivo_local": "som/bib/freesound/398077.mp3",
+  "papeis": [
+   "expansao"
+  ],
+  "consulta": "pressure release hiss",
+  "descricao": "Freesound: collaborative database of creative-commons licensed sound for musicians and sound lovers. Have you freed your sound today?",
+  "etiquetas": [
+   "air",
+   "gas",
+   "hiss",
+   "hydraulic",
+   "opening",
+   "pressure",
+   "release",
+   "soda",
+   "steam",
+   "steampunk"
+  ],
+  "obs": "prévia pública em MP3 128 kb/s do Freesound (o original exige login)"
+ },
+ {
+  "id": "406994",
+  "titulo": "Balloon.wav",
+  "autor": "Kayo_martins",
+  "url_pagina": "https://freesound.org/people/Kayo_martins/sounds/406994/",
+  "url_arquivo": "https://cdn.freesound.org/previews/406/406994_7934523-hq.mp3",
+  "licenca": "CC0 1.0",
+  "atribuicao_exigida": false,
+  "arquivo_local": "som/bib/freesound/406994.mp3",
+  "papeis": [
+   "expansao"
+  ],
+  "consulta": "pressure release hiss",
+  "descricao": "Freesound: collaborative database of creative-commons licensed sound for musicians and sound lovers. Have you freed your sound today?",
+  "etiquetas": [
+   "Bexiga",
+   "Deflating",
+   "Release",
+   "Releasing",
+   "air",
+   "ar",
+   "bal",
+   "balloon",
+   "blow",
+   "bubble",
+   "deflate",
+   "escape",
+   "escaping",
+   "esvaziar",
+   "flapping",
+   "gas",
+   "hiss",
+   "hissing",
+   "inflar",
+   "inflate"
+  ],
+  "obs": "prévia pública em MP3 128 kb/s do Freesound (o original exige login)"
+ },
+ {
+  "id": "581083",
+  "titulo": "Pressure Hiss",
+  "autor": "magnuswaker",
+  "url_pagina": "https://freesound.org/people/magnuswaker/sounds/581083/",
+  "url_arquivo": "https://cdn.freesound.org/previews/581/581083_11537497-hq.mp3",
+  "licenca": "CC0 1.0",
+  "atribuicao_exigida": false,
+  "arquivo_local": "som/bib/freesound/581083.mp3",
+  "papeis": [
+   "expansao"
+  ],
+  "consulta": "pressure release hiss",
+  "descricao": "Freesound: collaborative database of creative-commons licensed sound for musicians and sound lovers. Have you freed your sound today?",
+  "etiquetas": [
+   "Hiss",
+   "Pressure",
+   "whispy"
+  ],
+  "obs": "prévia pública em MP3 128 kb/s do Freesound (o original exige login)"
+ },
+ {
+  "id": "212604",
+  "titulo": "Water droplets",
+  "autor": "l3ardoc",
+  "url_pagina": "https://freesound.org/people/l3ardoc/sounds/212604/",
+  "url_arquivo": "https://cdn.freesound.org/previews/212/212604_620748-hq.mp3",
+  "licenca": "CC0 1.0",
+  "atribuicao_exigida": false,
+  "arquivo_local": "som/bib/freesound/212604.mp3",
+  "papeis": [
+   "gotas"
+  ],
+  "consulta": "water droplets",
+  "descricao": "Freesound: collaborative database of creative-commons licensed sound for musicians and sound lovers. Have you freed your sound today?",
+  "etiquetas": [
+   "drip",
+   "dripping",
+   "drop",
+   "droplets",
+   "splash",
+   "water",
+   "wet"
+  ],
+  "obs": "prévia pública em MP3 128 kb/s do Freesound (o original exige login)"
+ },
+ {
+  "id": "511488",
+  "titulo": "Water_droplets.wav",
+  "autor": "Lydmakeren",
+  "url_pagina": "https://freesound.org/people/Lydmakeren/sounds/511488/",
+  "url_arquivo": "https://cdn.freesound.org/previews/511/511488_11157357-hq.mp3",
+  "licenca": "CC0 1.0",
+  "atribuicao_exigida": false,
+  "arquivo_local": "som/bib/freesound/511488.mp3",
+  "papeis": [
+   "gotas"
+  ],
+  "consulta": "water droplets",
+  "descricao": "Freesound: collaborative database of creative-commons licensed sound for musicians and sound lovers. Have you freed your sound today?",
+  "etiquetas": [
+   "Water",
+   "ambience",
+   "droplets",
+   "field-recording"
+  ],
+  "obs": "prévia pública em MP3 128 kb/s do Freesound (o original exige login)"
+ },
+ {
+  "id": "846435",
+  "titulo": "Close-Up Stream Droplets – Flowing Water Details",
+  "autor": "NikoletB",
+  "url_pagina": "https://freesound.org/people/NikoletB/sounds/846435/",
+  "url_arquivo": "https://cdn.freesound.org/previews/846/846435_1856262-hq.mp3",
+  "licenca": "CC0 1.0",
+  "atribuicao_exigida": false,
+  "arquivo_local": "som/bib/freesound/846435.mp3",
+  "papeis": [
+   "gotas"
+  ],
+  "consulta": "water droplets",
+  "descricao": "Freesound: collaborative database of creative-commons licensed sound for musicians and sound lovers. Have you freed your sound today?",
+  "etiquetas": [
+   "ambient",
+   "close-up",
+   "delicate",
+   "detailed",
+   "droplets",
+   "flowing",
+   "foley",
+   "fresh",
+   "liquid",
+   "natural",
+   "organic",
+   "outdoor",
+   "ripple",
+   "small",
+   "splash",
+   "stream",
+   "subtle",
+   "texture",
+   "trickle",
+   "water"
+  ],
+  "obs": "prévia pública em MP3 128 kb/s do Freesound (o original exige login)"
+ },
+ {
+  "id": "543649",
+  "titulo": "Water Droplets",
+  "autor": "Legnalegna55",
+  "url_pagina": "https://freesound.org/people/Legnalegna55/sounds/543649/",
+  "url_arquivo": "https://cdn.freesound.org/previews/543/543649_10485775-hq.mp3",
+  "licenca": "CC0 1.0",
+  "atribuicao_exigida": false,
+  "arquivo_local": "som/bib/freesound/543649.mp3",
+  "papeis": [
+   "gotas"
+  ],
+  "consulta": "water droplets",
+  "descricao": "Freesound: collaborative database of creative-commons licensed sound for musicians and sound lovers. Have you freed your sound today?",
+  "etiquetas": [
+   "Water-droplets",
+   "drip",
+   "dripping",
+   "dripping-water",
+   "drips",
+   "drop",
+   "droplet",
+   "droplets",
+   "drops",
+   "rain",
+   "splash",
+   "water",
+   "wet"
+  ],
+  "obs": "prévia pública em MP3 128 kb/s do Freesound (o original exige login)"
+ },
+ {
+  "id": "674985",
+  "titulo": "Water Glug.wav",
+  "autor": "PixaPexelAudio",
+  "url_pagina": "https://freesound.org/people/PixaPexelAudio/sounds/674985/",
+  "url_arquivo": "https://cdn.freesound.org/previews/674/674985_8843416-hq.mp3",
+  "licenca": "CC0 1.0",
+  "atribuicao_exigida": false,
+  "arquivo_local": "som/bib/freesound/674985.mp3",
+  "papeis": [
+   "gotas"
+  ],
+  "consulta": "water droplets",
+  "descricao": "Freesound: collaborative database of creative-commons licensed sound for musicians and sound lovers. Have you freed your sound today?",
+  "etiquetas": [
+   "audio",
+   "droplets",
+   "effect",
+   "foley",
+   "fx",
+   "glug",
+   "noise",
+   "sfx",
+   "sound",
+   "sound-design",
+   "sounddesign",
+   "water"
+  ],
+  "obs": "prévia pública em MP3 128 kb/s do Freesound (o original exige login)"
+ },
+ {
+  "id": "683102",
+  "titulo": "water drop",
+  "autor": "florianreichelt",
+  "url_pagina": "https://freesound.org/people/florianreichelt/sounds/683102/",
+  "url_arquivo": "https://cdn.freesound.org/previews/683/683102_6253486-hq.mp3",
+  "licenca": "CC0 1.0",
+  "atribuicao_exigida": false,
+  "arquivo_local": "som/bib/freesound/683102.mp3",
+  "papeis": [
+   "gotas"
+  ],
+  "consulta": "condensation drip",
+  "descricao": "Freesound: collaborative database of creative-commons licensed sound for musicians and sound lovers. Have you freed your sound today?",
+  "etiquetas": [
+   "Bubble",
+   "Condensation",
+   "Dew",
+   "Drip",
+   "Drizzle",
+   "Drop",
+   "Faucet",
+   "Fluid",
+   "H2O",
+   "Liquid",
+   "Moist",
+   "Plop",
+   "Pouring",
+   "Puddle",
+   "Rain",
+   "Ripple",
+   "Sound",
+   "Spatter",
+   "Splash",
+   "Splashy"
+  ],
+  "obs": "prévia pública em MP3 128 kb/s do Freesound (o original exige login)"
+ },
+ {
+  "id": "863012",
+  "titulo": "Drips",
+  "autor": "DinoKid",
+  "url_pagina": "https://freesound.org/people/DinoKid/sounds/863012/",
+  "url_arquivo": "https://cdn.freesound.org/previews/863/863012_2586361-hq.mp3",
+  "licenca": "CC0 1.0",
+  "atribuicao_exigida": false,
+  "arquivo_local": "som/bib/freesound/863012.mp3",
+  "papeis": [
+   "gotas"
+  ],
+  "consulta": "condensation drip",
+  "descricao": "Freesound: collaborative database of creative-commons licensed sound for musicians and sound lovers. Have you freed your sound today?",
+  "etiquetas": [
+   "Drip",
+   "drip",
+   "glass",
+   "liquid",
+   "water"
+  ],
+  "obs": "prévia pública em MP3 128 kb/s do Freesound (o original exige login)"
+ },
+ {
+  "id": "117302",
+  "titulo": "sink_water_drip.wav",
+  "autor": "swiftoid",
+  "url_pagina": "https://freesound.org/people/swiftoid/sounds/117302/",
+  "url_arquivo": "https://cdn.freesound.org/previews/117/117302_854782-hq.mp3",
+  "licenca": "CC0 1.0",
+  "atribuicao_exigida": false,
+  "arquivo_local": "som/bib/freesound/117302.mp3",
+  "papeis": [
+   "gotas"
+  ],
+  "consulta": "condensation drip",
+  "descricao": "Freesound: collaborative database of creative-commons licensed sound for musicians and sound lovers. Have you freed your sound today?",
+  "etiquetas": [
+   "basin",
+   "bath",
+   "bathroom",
+   "drip",
+   "drop",
+   "droplet",
+   "plop",
+   "sink",
+   "water"
+  ],
+  "obs": "prévia pública em MP3 128 kb/s do Freesound (o original exige login)"
+ },
+ {
+  "id": "250272",
+  "titulo": "Five Minutes of Rain (without reverb).wav",
+  "autor": "LookIMadeAThing",
+  "url_pagina": "https://freesound.org/people/LookIMadeAThing/sounds/250272/",
+  "url_arquivo": "https://cdn.freesound.org/previews/250/250272_3968707-hq.mp3",
+  "licenca": "CC0 1.0",
+  "atribuicao_exigida": false,
+  "arquivo_local": "som/bib/freesound/250272.mp3",
+  "papeis": [
+   "gotas"
+  ],
+  "consulta": "condensation drip",
+  "descricao": "Freesound: collaborative database of creative-commons licensed sound for musicians and sound lovers. Have you freed your sound today?",
+  "etiquetas": [
+   "drain",
+   "drip",
+   "dripping",
+   "drizzle",
+   "drops",
+   "foley",
+   "outdoors",
+   "outside",
+   "rain",
+   "raining",
+   "shower",
+   "splash",
+   "splashes",
+   "splashing",
+   "storm",
+   "trickle",
+   "water",
+   "weather",
+   "wet"
+  ],
+  "obs": "prévia pública em MP3 128 kb/s do Freesound (o original exige login)"
+ },
+ {
+  "id": "23163",
+  "titulo": "drip.mp3",
+  "autor": "billy_magnum",
+  "url_pagina": "https://freesound.org/people/billy_magnum/sounds/23163/",
+  "url_arquivo": "https://cdn.freesound.org/previews/23/23163_88833-hq.mp3",
+  "licenca": "CC0 1.0",
+  "atribuicao_exigida": false,
+  "arquivo_local": "som/bib/freesound/23163.mp3",
+  "papeis": [
+   "gotas"
+  ],
+  "consulta": "condensation drip",
+  "descricao": "Freesound: collaborative database of creative-commons licensed sound for musicians and sound lovers. Have you freed your sound today?",
+  "etiquetas": [
+   "ambient",
+   "cave",
+   "drip",
+   "fx",
+   "mood",
+   "scary",
+   "water",
+   "wind"
+  ],
+  "obs": "prévia pública em MP3 128 kb/s do Freesound (o original exige login)"
+ },
+ {
+  "id": "402461",
+  "titulo": "Button Click Switch Valve Water Drips",
+  "autor": "LampEight",
+  "url_pagina": "https://freesound.org/people/LampEight/sounds/402461/",
+  "url_arquivo": "https://cdn.freesound.org/previews/402/402461_706234-hq.mp3",
+  "licenca": "CC0 1.0",
+  "atribuicao_exigida": false,
+  "arquivo_local": "som/bib/freesound/402461.mp3",
+  "papeis": [
+   "valvula"
+  ],
+  "consulta": "valve click",
+  "descricao": "Freesound: collaborative database of creative-commons licensed sound for musicians and sound lovers. Have you freed your sound today?",
+  "etiquetas": [
+   "Button",
+   "Click",
+   "Drips",
+   "Switch",
+   "Valve",
+   "Water",
+   "field-recording"
+  ],
+  "obs": "prévia pública em MP3 128 kb/s do Freesound (o original exige login)"
+ },
+ {
+  "id": "402462",
+  "titulo": "Button Click Switch Valve Water",
+  "autor": "LampEight",
+  "url_pagina": "https://freesound.org/people/LampEight/sounds/402462/",
+  "url_arquivo": "https://cdn.freesound.org/previews/402/402462_706234-hq.mp3",
+  "licenca": "CC0 1.0",
+  "atribuicao_exigida": false,
+  "arquivo_local": "som/bib/freesound/402462.mp3",
+  "papeis": [
+   "valvula"
+  ],
+  "consulta": "valve click",
+  "descricao": "Freesound: collaborative database of creative-commons licensed sound for musicians and sound lovers. Have you freed your sound today?",
+  "etiquetas": [
+   "Button",
+   "Click",
+   "Switch",
+   "Valve",
+   "Water",
+   "field-recording"
+  ],
+  "obs": "prévia pública em MP3 128 kb/s do Freesound (o original exige login)"
+ },
+ {
+  "id": "494918",
+  "titulo": "grotelue_valve-edit.wav",
+  "autor": "stib",
+  "url_pagina": "https://freesound.org/people/stib/sounds/494918/",
+  "url_arquivo": "https://cdn.freesound.org/previews/494/494918_470543-hq.mp3",
+  "licenca": "CC0 1.0",
+  "atribuicao_exigida": false,
+  "arquivo_local": "som/bib/freesound/494918.mp3",
+  "papeis": [
+   "valvula"
+  ],
+  "consulta": "valve click",
+  "descricao": "Freesound: collaborative database of creative-commons licensed sound for musicians and sound lovers. Have you freed your sound today?",
+  "etiquetas": [
+   "air",
+   "click",
+   "hiss",
+   "switch",
+   "valve"
+  ],
+  "obs": "prévia pública em MP3 128 kb/s do Freesound (o original exige login)"
+ },
+ {
+  "id": "349662",
+  "titulo": "c4armed.ogg",
+  "autor": "insanity54",
+  "url_pagina": "https://freesound.org/people/insanity54/sounds/349662/",
+  "url_arquivo": "https://cdn.freesound.org/previews/349/349662_464940-hq.mp3",
+  "licenca": "CC0 1.0",
+  "atribuicao_exigida": false,
+  "arquivo_local": "som/bib/freesound/349662.mp3",
+  "papeis": [
+   "valvula"
+  ],
+  "consulta": "valve click",
+  "descricao": "Freesound: collaborative database of creative-commons licensed sound for musicians and sound lovers. Have you freed your sound today?",
+  "etiquetas": [
+   "beep",
+   "bleep",
+   "blip",
+   "bomb",
+   "click",
+   "counter",
+   "counter-terrorist",
+   "counterstrike",
+   "digital",
+   "effect",
+   "electronic",
+   "fps",
+   "game",
+   "sfx",
+   "shooter",
+   "sound",
+   "source",
+   "strike",
+   "synthetic",
+   "terrorist"
+  ],
+  "obs": "prévia pública em MP3 128 kb/s do Freesound (o original exige login)"
+ },
+ {
+  "id": "778444",
+  "titulo": "Metallic_Click",
+  "autor": "BlondPanda",
+  "url_pagina": "https://freesound.org/people/BlondPanda/sounds/778444/",
+  "url_arquivo": "https://cdn.freesound.org/previews/778/778444_8927049-hq.mp3",
+  "licenca": "CC0 1.0",
+  "atribuicao_exigida": false,
+  "arquivo_local": "som/bib/freesound/778444.mp3",
+  "papeis": [
+   "valvula"
+  ],
+  "consulta": "metal click mechanical",
+  "descricao": "Freesound: collaborative database of creative-commons licensed sound for musicians and sound lovers. Have you freed your sound today?",
+  "etiquetas": [
+   "Button",
+   "clack",
+   "click",
+   "electric",
+   "mechanical",
+   "mechanics",
+   "metal",
+   "switch"
+  ],
+  "obs": "prévia pública em MP3 128 kb/s do Freesound (o original exige login)"
+ },
+ {
+  "id": "872341",
+  "titulo": "Click_9",
+  "autor": "SignatureSoundsOrg",
+  "url_pagina": "https://freesound.org/people/SignatureSoundsOrg/sounds/872341/",
+  "url_arquivo": "https://cdn.freesound.org/previews/872/872341_19205925-hq.mp3",
+  "licenca": "CC0 1.0",
+  "atribuicao_exigida": false,
+  "arquivo_local": "som/bib/freesound/872341.mp3",
+  "papeis": [
+   "valvula"
+  ],
+  "consulta": "metal click mechanical",
+  "descricao": "Freesound: collaborative database of creative-commons licensed sound for musicians and sound lovers. Have you freed your sound today?",
+  "etiquetas": [
+   "button",
+   "click",
+   "clicking",
+   "clicks",
+   "computer",
+   "digital",
+   "effect",
+   "foley",
+   "game",
+   "interface",
+   "keyboard",
+   "mechanical",
+   "menu",
+   "metal",
+   "mouse",
+   "percussion",
+   "plastic",
+   "sfx",
+   "sharp",
+   "short"
+  ],
+  "obs": "prévia pública em MP3 128 kb/s do Freesound (o original exige login)"
+ },
+ {
+  "id": "767060",
+  "titulo": "Electronic sliding gate",
+  "autor": "ThabzMalik",
+  "url_pagina": "https://freesound.org/people/ThabzMalik/sounds/767060/",
+  "url_arquivo": "https://cdn.freesound.org/previews/767/767060_15764451-hq.mp3",
+  "licenca": "CC0 1.0",
+  "atribuicao_exigida": false,
+  "arquivo_local": "som/bib/freesound/767060.mp3",
+  "papeis": [
+   "valvula"
+  ],
+  "consulta": "metal click mechanical",
+  "descricao": "Freesound: collaborative database of creative-commons licensed sound for musicians and sound lovers. Have you freed your sound today?",
+  "etiquetas": [
+   "Electronic",
+   "Mechanical",
+   "Motor",
+   "OWI",
+   "Outdoor",
+   "Sliding",
+   "click",
+   "gate",
+   "hum",
+   "locking",
+   "metal",
+   "noise"
+  ],
+  "obs": "prévia pública em MP3 128 kb/s do Freesound (o original exige login)"
+ },
+ {
+  "id": "397595",
+  "titulo": "Latch Clicks 2",
+  "autor": "Nightflame",
+  "url_pagina": "https://freesound.org/people/Nightflame/sounds/397595/",
+  "url_arquivo": "https://cdn.freesound.org/previews/397/397595_3302499-hq.mp3",
+  "licenca": "CC0 1.0",
+  "atribuicao_exigida": false,
+  "arquivo_local": "som/bib/freesound/397595.mp3",
+  "papeis": [
+   "valvula"
+  ],
+  "consulta": "metal click mechanical",
+  "descricao": "Freesound: collaborative database of creative-commons licensed sound for musicians and sound lovers. Have you freed your sound today?",
+  "etiquetas": [
+   "clack",
+   "click",
+   "container",
+   "glass",
+   "hit",
+   "jar",
+   "latch",
+   "mechanical",
+   "metal",
+   "small"
+  ],
+  "obs": "prévia pública em MP3 128 kb/s do Freesound (o original exige login)"
+ },
+ {
+  "id": "397602",
+  "titulo": "Latch Clicks",
+  "autor": "Nightflame",
+  "url_pagina": "https://freesound.org/people/Nightflame/sounds/397602/",
+  "url_arquivo": "https://cdn.freesound.org/previews/397/397602_3302499-hq.mp3",
+  "licenca": "CC0 1.0",
+  "atribuicao_exigida": false,
+  "arquivo_local": "som/bib/freesound/397602.mp3",
+  "papeis": [
+   "valvula"
+  ],
+  "consulta": "metal click mechanical",
+  "descricao": "Freesound: collaborative database of creative-commons licensed sound for musicians and sound lovers. Have you freed your sound today?",
+  "etiquetas": [
+   "clack",
+   "click",
+   "container",
+   "glass",
+   "hit",
+   "jar",
+   "latch",
+   "mechanical",
+   "metal",
+   "small"
   ],
   "obs": "prévia pública em MP3 128 kb/s do Freesound (o original exige login)"
  }

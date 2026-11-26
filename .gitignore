@@ -41,6 +41,7 @@ episodio_02_geladeira/som/bib/
 episodio_02_geladeira/episodio/ep02_animatic_v4.mp4
 episodio_02_geladeira/som/*.wav
 episodio_02_geladeira/som/stems/*.wav
+episodio_02_geladeira/som/stems/**/*.wav
 episodio_02_geladeira/som/ab/_*
 episodio_02_geladeira/episodio/ep02_animatic_v5.mp4
 # Ep02 rodada 8: mapas de diagnóstico do detector (regeneráveis por episodio/validar_ao_cortes.py); o relatório leva uma prancha selecionada

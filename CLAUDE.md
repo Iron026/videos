@@ -347,3 +347,22 @@ Arquivos-chave (em `episodio_01_navio_v2/`): `episodio/decupagem_ep01_v3.md` (de
   provar com quadros-fonte inalterados + entradas da montagem inalteradas + posição dos quadros-chave.
 - Música mais alta: o p5 passa (10,3), mas o PIOR caso caiu para −8,7 dB numa pausa antes de um "e" curto. Localizar as
   piores janelas nas palavras e pedir ao usuário que escute esses instantes; pico −1,52 dBTP = margem de 0,02 dB.
+
+## Lições novas do Ep. 02 (rodada 13 — som)
+
+- **"Ruído contínuo" = camada de fundo esquecida:** tom de cômodo e compressor "ligado o episódio todo" vinham da 1ª
+  mixagem; a −37 LUFS cada, ficavam no nível da música e a mascaravam. Medir em TODO stem o % do tempo presente e
+  justificar cada cama por plano (o som existe só quando a fonte é mostrada ou citada; segue a curva da animação).
+- **Decompor stems aprovados por fonte:** a cadeia é linear depois do ganho de abaixamento → gerar cada camada sozinha com
+  o MESMO abaixamento e provar soma = stem aprovado (nulo ≤ −150 dBFS) antes de tirar ou trocar qualquer camada.
+- **Música "inaudível" = nível calibrado ANTES do abaixamento + abaixamento ligado em quase toda a narração** (só 10 pausas
+  ≥ 0,6 s). Medir música − voz DURANTE a fala (era −21 LU). Abaixamento dinâmico só na banda da voz (250 Hz–4 kHz, música
+  ≥ 16 dB abaixo) com retorno de 0,5 s (protege o fim das palavras); subida nas pausas só 0,3 s depois da palavra.
+- Faixa mais curta que o episódio: estender por compassos inteiros (grade de tempo + semelhança espectral nas emendas) e
+  pôr o acorde final depois da última palavra. Anotar os instantes das emendas para o usuário ouvir.
+- **Nível de efeito relativo à voz:** referência = fala ATIVA em ±0,8 s (efeito numa pausa ficava −40 dB); mecanismos
+  repetidos com nível único do plano; teto por loudness K (efeito grave quase sem energia no celular estoura no fone).
+- **Sincronia medida no som ISOLADO e processado** (filtro, tom): achou pré-clique 77 ms antes (válvula) e pico 314 ms
+  depois do ataque (gravação "Piston sound" contínua, sem golpes). Eventos vizinhos na mesma camada confundem a medida.
+- O p5 de voz − resto é dominado por janelas de pausa e borda de palavra: medir também só nas janelas com fala.
+- Baixar vídeo do YouTube para análise foi bloqueado pela política da sessão: não contornar; pedir autorização ao usuário.

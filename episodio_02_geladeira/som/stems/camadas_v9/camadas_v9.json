@@ -1,0 +1,49 @@
+{
+ "camadas": {
+  "tom_de_comodo": {
+   "stem": "ambiencias",
+   "pico_dbfs": -23.2,
+   "lufs": -37.24
+  },
+  "compressor": {
+   "stem": "mecanismo",
+   "pico_dbfs": -10.0,
+   "lufs": -29.95
+  },
+  "gorgolejo": {
+   "stem": "mecanismo",
+   "pico_dbfs": -20.8,
+   "lufs": -49.21
+  },
+  "chiado_capilar": {
+   "stem": "mecanismo",
+   "pico_dbfs": -29.4,
+   "lufs": -41.92
+  },
+  "porta": {
+   "stem": "efeitos",
+   "pico_dbfs": 0.1,
+   "lufs": -27.82
+  },
+  "passos": {
+   "stem": "efeitos",
+   "pico_dbfs": -4.3,
+   "lufs": -24.58
+  }
+ },
+ "nulo_por_stem_dbfs": {
+  "efeitos": -150.6,
+  "mecanismo": -156.5,
+  "ambiencias": -168.9
+ },
+ "condicoes": {
+  "CENAS_SOM": "cenas_v8",
+  "CENA_R9": "1",
+  "master_db": 5.45,
+  "ganhos_stems_db": {
+   "efeitos": 0.15,
+   "mecanismo": -10.85,
+   "ambiencias": -21.13
+  }
+ }
+}

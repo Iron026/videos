@@ -1,0 +1,197 @@
+{
+ "01_ruido_isolado.mp4": "abertura 0–10 (os dois) · 136–146 (tom de cômodo) · 74–84 (compressor) · 0–8 (+12 dB)",
+ "02_ab_ruido.mp4": {
+  "trechos": [
+   [
+    0.0,
+    10.0,
+    "Abertura"
+   ],
+   [
+    38.0,
+    48.0,
+    "Fluido / circuito"
+   ],
+   [
+    72.0,
+    86.0,
+    "Compressor"
+   ],
+   [
+    136.0,
+    151.2,
+    "Encerramento"
+   ]
+  ],
+  "versoes": [
+   [
+    "A",
+    "R12 (como entregue)",
+    "audio_ep02_r12_musica_m5.wav"
+   ],
+   [
+    "B",
+    "R12 sem o ruído contínuo",
+    "audio_ep02_r13_r12_sem_ruido.wav"
+   ]
+  ]
+ },
+ "03_ab_musica.mp4": {
+  "trechos": [
+   [
+    4.0,
+    14.5,
+    "Entrada da música"
+   ],
+   [
+    28.5,
+    40.0,
+    "Revelação do circuito"
+   ],
+   [
+    53.0,
+    64.0,
+    "Explicação contínua"
+   ],
+   [
+    107.3,
+    116.0,
+    "\"E tudo recomeça\""
+   ],
+   [
+    129.6,
+    151.2,
+    "Encerramento"
+   ]
+  ],
+  "versoes": [
+   [
+    "A",
+    "Música R12",
+    "audio_ep02_r13_r12_sem_ruido.wav"
+   ],
+   [
+    "B",
+    "Nova presença musical",
+    "audio_ep02_r13_base_musica_r13.wav"
+   ],
+   [
+    "C",
+    "Opção: música +3 dB",
+    "audio_ep02_r13_mais_base_musica_r13.wav"
+   ]
+  ]
+ },
+ "04_ab_efeitos.mp4": {
+  "trechos": [
+   [
+    3.5,
+    9.0,
+    "Transição do rosto"
+   ],
+   [
+    11.5,
+    17.0,
+    "\"Não fabrica frio\""
+   ],
+   [
+    29.0,
+    39.0,
+    "Revelação do circuito"
+   ],
+   [
+    39.5,
+    51.5,
+    "Apresentações"
+   ],
+   [
+    71.4,
+    86.7,
+    "Compressor"
+   ],
+   [
+    86.5,
+    91.0,
+    "Condensador"
+   ],
+   [
+    99.0,
+    107.5,
+    "Capilar"
+   ],
+   [
+    115.5,
+    120.0,
+    "Leite"
+   ]
+  ],
+  "versoes": [
+   [
+    "A",
+    "Efeitos R12",
+    "audio_ep02_r13_efeitos_r12.wav"
+   ],
+   [
+    "B",
+    "Efeitos revisados",
+    "audio_ep02_r13_efeitos_r13.wav"
+   ]
+  ]
+ },
+ "05_previa_combinada.mp4": {
+  "trechos": [
+   [
+    0.0,
+    10.1,
+    "Abertura"
+   ],
+   [
+    28.5,
+    40.0,
+    "Revelação do circuito"
+   ],
+   [
+    53.0,
+    68.0,
+    "Demonstração: evaporador"
+   ],
+   [
+    71.4,
+    86.7,
+    "Compressor"
+   ],
+   [
+    86.7,
+    96.3,
+    "Condensador"
+   ],
+   [
+    96.3,
+    107.3,
+    "Capilar"
+   ],
+   [
+    115.6,
+    124.4,
+    "Retirada do leite"
+   ],
+   [
+    135.3,
+    151.2,
+    "Encerramento"
+   ]
+  ],
+  "versoes": [
+   [
+    "A",
+    "R12 (como entregue)",
+    "audio_ep02_r12_musica_m5.wav"
+   ],
+   [
+    "B",
+    "Teste R13",
+    "audio_ep02_r13_r13_teste.wav"
+   ]
+  ]
+ }
+}
