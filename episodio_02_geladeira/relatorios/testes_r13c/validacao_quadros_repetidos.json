@@ -1,0 +1,194 @@
+{
+ "quadros_do_episodio": {
+  "antes": 4537,
+  "depois": 4537,
+  "duracao_s": 151.2333
+ },
+ "planos": {
+  "A1": {
+   "trecho_s": [
+    0.0,
+    1.35
+   ],
+   "quadros_no_trecho": 41,
+   "indice_antes": {
+    "repeticoes": 17,
+    "saltos_2": 17,
+    "outros": 0
+   },
+   "indice_depois": {
+    "repeticoes": 0,
+    "saltos": 0,
+    "retrocessos": 0,
+    "passo_unico": true
+   },
+   "deslocamento_temporal_max_ms": 16.67,
+   "imagem_antes": {
+    "pares_identicos": 16,
+    "pares_quase_parados": 16,
+    "saltos": 10,
+    "dif_media": 4.59,
+    "dif_max": 15.407
+   },
+   "imagem_depois": {
+    "pares_identicos": 0,
+    "pares_quase_parados": 0,
+    "saltos": 1,
+    "dif_media": 5.606,
+    "dif_max": 14.746
+   },
+   "aprovado": false,
+   "aprovado_apos_investigacao": true
+  },
+  "B7": {
+   "trecho_s": [
+    26.3,
+    28.46
+   ],
+   "quadros_no_trecho": 65,
+   "indice_antes": {
+    "repeticoes": 20,
+    "saltos_2": 19,
+    "outros": 0
+   },
+   "indice_depois": {
+    "repeticoes": 0,
+    "saltos": 0,
+    "retrocessos": 0,
+    "passo_unico": true
+   },
+   "deslocamento_temporal_max_ms": 16.67,
+   "imagem_antes": {
+    "pares_identicos": 16,
+    "pares_quase_parados": 16,
+    "saltos": 5,
+    "dif_media": 1.364,
+    "dif_max": 13.335
+   },
+   "imagem_depois": {
+    "pares_identicos": 0,
+    "pares_quase_parados": 0,
+    "saltos": 1,
+    "dif_media": 1.393,
+    "dif_max": 13.333
+   },
+   "aprovado": false,
+   "aprovado_apos_investigacao": true
+  },
+  "H1": {
+   "trecho_s": [
+    107.3,
+    111.75
+   ],
+   "quadros_no_trecho": 134,
+   "indice_antes": {
+    "repeticoes": 18,
+    "saltos_2": 18,
+    "outros": 0
+   },
+   "indice_depois": {
+    "repeticoes": 0,
+    "saltos": 0,
+    "retrocessos": 0,
+    "passo_unico": true
+   },
+   "deslocamento_temporal_max_ms": 16.67,
+   "imagem_antes": {
+    "pares_identicos": 16,
+    "pares_quase_parados": 16,
+    "saltos": 0,
+    "dif_media": 9.813,
+    "dif_max": 26.337
+   },
+   "imagem_depois": {
+    "pares_identicos": 0,
+    "pares_quase_parados": 0,
+    "saltos": 0,
+    "dif_media": 10.522,
+    "dif_max": 21.822
+   },
+   "aprovado": true
+  },
+  "I1": {
+   "trecho_s": [
+    115.6,
+    119.18
+   ],
+   "quadros_no_trecho": 108,
+   "indice_antes": {
+    "repeticoes": 11,
+    "saltos_2": 11,
+    "outros": 0
+   },
+   "indice_depois": {
+    "repeticoes": 0,
+    "saltos": 0,
+    "retrocessos": 0,
+    "passo_unico": true
+   },
+   "deslocamento_temporal_max_ms": 16.67,
+   "imagem_antes": {
+    "pares_identicos": 9,
+    "pares_quase_parados": 11,
+    "saltos": 1,
+    "dif_media": 5.854,
+    "dif_max": 24.744
+   },
+   "imagem_depois": {
+    "pares_identicos": 0,
+    "pares_quase_parados": 3,
+    "saltos": 1,
+    "dif_media": 6.069,
+    "dif_max": 17.599
+   },
+   "aprovado": false,
+   "aprovado_apos_investigacao": true
+  }
+ },
+ "aprovado": true,
+ "falsos_positivos_investigados": [
+  {
+   "plano": "A1",
+   "par": [
+    3,
+    4
+   ],
+   "causa": "legenda \"Você já reparou…\" aparece (composição); render bruto q11→q12 diferença 0,67 (vizinhos 0,67–1,56); o mesmo salto existe no aprovado (4,21)"
+  },
+  {
+   "plano": "B7",
+   "par": [
+    796,
+    797
+   ],
+   "causa": "palavra da legenda aparece (faixa y 309–344 de 480); render bruto 0,26 (vizinhos 0,19–0,34); idêntico no aprovado"
+  },
+  {
+   "plano": "I1",
+   "par": [
+    3475,
+    3476
+   ],
+   "causa": "legenda \"Agora pense no que acontece\" aparece; render bruto 0,35"
+  },
+  {
+   "plano": "I1",
+   "pares": [
+    [
+     3474,
+     3475
+    ],
+    [
+     3476,
+     3477
+    ],
+    [
+     3477,
+     3478
+    ]
+   ],
+   "causa": "cozinha vazia e parada antes de o personagem entrar: render bruto também quase parado (0,08–0,12); hashes diferentes — não é congelamento"
+  }
+ ],
+ "conclusao": "índice com passo único em todos os 4 planos (0 repetições, 0 saltos, 0 retrocessos); nenhum par idêntico; duração inalterada (4.537 quadros, 151,233 s); deslocamento máximo de 16,7 ms (meio quadro); sinais restantes são legendas aparecendo e cena parada, iguais no aprovado"
+}
