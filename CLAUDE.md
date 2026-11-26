@@ -40,6 +40,9 @@ Arquivos-chave (em `episodio_01_navio_v2/`): `episodio/decupagem_ep01_v3.md` (de
 - Som natural e interativo. Detesta: excesso de água, graves sintéticos constantes, whoosh em
   cortes comuns, sons para preencher silêncio, cara de "interface de videogame".
 - Valoriza comparativos reais A/B e preservação do que já foi aprovado.
+- Ep. 02 R13.1: o usuário pediu **sem** os avisos "Visão térmica", "Corte ilustrativo", "Tempo acelerado", "Fluxo
+  desacelerado" e "Câmera lenta" (ficaram "Canal ampliado (esquema)" e o da lupa). Perguntar antes de reintroduzir avisos
+  desse tipo em episódios novos; retirar só o desenho (`AVISOS_OCULTOS`) preserva o posicionamento dos rótulos.
 
 ## Narrativa e roteiro
 

@@ -113,3 +113,37 @@ Registro em `relatorios/testes_r13c/preservacao_r13_definitivo.json`.
 - **Efeitos:** Freesound CC0 e Mixkit Sound Effects Free License; os arquivos isolados ficam fora do git. Detalhes em `relatorios/licencas_r13.md`.
 
 **Nada foi publicado.**
+
+---
+
+# R13.1: avisos retirados (pedido depois da R13)
+
+**Pedido:** tirar os avisos "Visão térmica", "Corte ilustrativo", "Tempo acelerado", "Fluxo desacelerado" e "Câmera lenta".
+
+**Arquivos:**
+- `episodio/ep02_definitivo_r13_1_1080x1920.mp4` (SHA-256 `1c7cdd5b…`);
+- `episodio/ep02_master_imagem_sem_legendas_r13_1_1080.mp4` (`67eb850e…`);
+- as partes estão em `episodio/definitivo_r13_1/`;
+- antes × depois em `episodio/previas_r13c/12_avisos_antes_depois.png`.
+
+**Como foi feito:** com a opção `AVISOS_OCULTOS` da montagem (`montar_r13_1.sh`), que só deixa de **desenhar** esses avisos.
+- As posições de rótulos e cartões de pressão continuam calculadas como antes, então nada mais se mexe.
+- Ficam "Canal ampliado (esquema)" (D4, F2) e o aviso da lupa (G3). Quando estava abaixo de um aviso retirado, o "Canal ampliado" sobe para o primeiro lugar.
+- Sem render 3D.
+
+**Prova, R13.1 × R13 quadro a quadro** (`relatorios/testes_r13c/validacao_r13_1.json` e `…_master.json`):
+
+| Medida | Definitivo | Master |
+|---|---|---|
+| Quadros | 4.537 = 4.537 | 4.537 = 4.537 |
+| Quadros que mudaram | **3.570**, exatamente os que tinham um aviso retirado | 3.570, idem |
+| Quadros que mudaram sem aviso retirado | **0** | 0 |
+| Região alterada | só o canto superior direito, onde ficam os avisos | idem |
+| Fora dessa região | nenhum pixel acima de 25; p99,99 = 5 (ruído do codificador) | — |
+| Áudio | **idêntico** (MD5 do AAC `fce2ed83…`) | idêntico |
+
+As medidas de áudio da R13 valem sem mudança: −14,16 LUFS, −1,87 dBTP e voz − resto p5 de 11,1 dB.
+
+**Observação:** o manual do projeto pedia avisos honestos quando a cena dramatiza. A retirada foi decisão sua e está registrada. A R13, com avisos, continua preservada em `episodio/definitivo_r13/`, caso queira voltar a ela.
+
+**Nada foi publicado.**
