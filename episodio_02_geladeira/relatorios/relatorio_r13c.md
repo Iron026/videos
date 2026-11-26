@@ -193,6 +193,26 @@ A contagem residual no corrigido vem do degradê da faixa laranja grande: é fal
 
 A janela composta de 76,9 a 83,6 s confere com o esperado: só mudam os quadros em que o E3 aparece. Veja os vídeos `05` (normal), `06` (câmera lenta), `07` (detalhe 2×) e, para a transição, `08`.
 
+### 2ª parte: placa de válvulas, "perto de onde o pistão bate" (você apontou depois)
+
+**Causa:** o cilindro do bloco termina em x = −58,8 mm, exatamente na face da placa de válvulas. Com o corte, a tampa amarela do bloco e a placa escura ficam no mesmo plano, e o renderizador alterna entre as duas. O resultado são degraus na borda da placa, em volta da palheta de sucção e no topo, perto do gás.
+
+**Prova:** no quadro 42, só sem o bloco os degraus somem. Sem o gás, sem as palhetas e com o AO desligado, continuam.
+
+**Correção:** só a malha `mec_bloco` muda. O fim do cilindro recua 0,02 mm (cerca de 0,17 px), numa cena nova (`cenas/E3_r13c_v2`, gerada por `episodio/bloco_r13c.py`).
+- Retirar a face, como na bobina, não serve: abriria um buraco escuro no corte.
+- A folga fica escondida na borda que já existe entre a tampa amarela e a placa escura.
+
+**Outros contatos encontrados na varredura:** cabeçote, palheta de descarga e placa (−62,8 mm), gás × pistão e gás × placa. Ficam escondidos para a câmera, ou mascarados pela folga do bloco. Os testes confirmam essas regiões limpas.
+
+**Re-render do E3 (bobina + bloco):** 160 quadros em `quadros_final_r13c2/E3`.
+- Verificação de cada quadro × definitivo: semelhança mínima de 0,976 e diferença média máxima de 1,88.
+- Cintilação na região da placa: média de 16,0 para **3,2** e máximo de 52,0 para **13,9**. O que sobra é a palheta de sucção abrindo de verdade (q144 → q145, conferido).
+- Fora da placa, a diferença para a versão só com a bobina é de no máximo 0,31.
+- A correção da bobina continua valendo: listras com média de 77, contra 922 no definitivo.
+
+**Comparativos:** `05_…_v2`, `06_…_v2`, `07_…_v2` (motor) e **`07b_e3_detalhe_placa_v2.mp4`** (placa ampliada 2×). O `08_…_v2` mostra a opção da transição com os quadros novos.
+
 ## 3b. Início "travado" (pedido depois da escuta)
 
 **Causa:** está na montagem, não no render. O quadro é escolhido por `round((g − g0) × 30)`, e o `round` do Python arredonda empates para o par.
@@ -258,13 +278,13 @@ O B7, o H1 e o I1 tinham o mesmo defeito, menos visível. A correção é uma re
 ## 7. Para consolidar o definitivo R13
 
 Você já aprovou as mudanças de som. Falta aprovar a parte visual:
-1. **E3 (1:18):** os quadros corrigidos estão prontos em `quadros_final_r13c/E3`.
+1. **E3 (1:18):** os quadros com bobina e bloco corrigidos estão prontos em `quadros_final_r13c2/E3`.
 2. **Quadros repetidos:** a correção é a opção `ARRED_QUADROS=1`.
 3. **Transição E2 → E3:** manter a fusão (como hoje) ou usar o corte seco (`CORTE_E3=1`).
 
 Com a sua aprovação, a montagem definitiva usa as opções aprovadas e o áudio final:
 
-`QUADROS_R13C=E3=quadros_final_r13c/E3 ARRED_QUADROS=1 [CORTE_E3=1] bash montar_r11.sh final <saída> ../som/audio_ep02_r13_r13c_final_r13_teste.wav`
+`QUADROS_R13C=E3=quadros_final_r13c2/E3 ARRED_QUADROS=1 [CORTE_E3=1] bash montar_r11.sh final <saída> ../som/audio_ep02_r13_r13c_final_r13_teste.wav`
 
 Depois vêm o master sem legendas, as validações e os hashes. Nenhum outro plano é re-renderizado.
 
