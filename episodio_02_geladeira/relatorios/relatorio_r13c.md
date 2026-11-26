@@ -8,16 +8,21 @@ Situação: **teste para a sua aprovação.**
 
 ## Arquivos
 
-| # | Arquivo (em `episodio/previas_r13c/`) | O que mostra |
-|---|---|---|
-| 1 | `01_efeitos_retirados_014_112_148.mp4` | 0:14, 1:12 e 1:48. **A** = R13B, **B** = sem o efeito |
-| 2 | `02_revelacao_033.mp4` | 0:33. **A** = R13B, **B** = redução moderada, **C** = mais discreta |
-| 3 | `03_passos_155.mp4` | 1:55. **A** = R13B, **B** = passos discretos |
-| 4 | `05`–`08_e3_*.mp4` | 1:18 em 1080. Definitivo × corrigido, em velocidade normal, câmera lenta e detalhe 2×. O `08` mostra a opção da transição |
-| 5 | `04_previa_combinada_r13c_{moderada,discreta}_720.mp4` | Episódio inteiro com todas as correções de som |
-| — | `ep02_r13C_{moderada,discreta}_escuta_1080x1920.mp4` | Os mesmos, em 1080, para escuta. Ficam fora do git: 160 MB cada |
+Todos ficam em `episodio/previas_r13c/`.
 
-Nos comparativos de som e nas prévias, a imagem é a do definitivo R12. O fluxo de vídeo é idêntico ao R12 (MD5 `c0342ad0…`).
+| # | Arquivo | O que mostra |
+|---|---|---|
+| 1 | `01_efeitos_retirados_014_112_148.mp4` | 0:14, 1:12 e 1:48. **A** = R13B, **B** = sem o efeito (aprovado) |
+| 2 | `02_revelacao_033.mp4` | 0:33: R13B × moderada × discreta. **Escolhida: C, discreta** |
+| 3 | `03_passos_155.mp4` | 1:55, passos discretos (aprovado) |
+| 3b | `11_batida_porta_029.mp4` | **Novo:** a batida da porta fechando (0:29,6). R13B × final |
+| 4 | `05_e3_1080_lado_a_lado.mp4`, `06_e3_1080_camera_lenta.mp4`, `07_e3_detalhe_motor.mp4` | 1:18 em 1080: definitivo × corrigido, em velocidade normal, a 1/4 e com o motor ampliado 2× |
+| 4b | `08_e2_e3_transicao_opcao.mp4` | Opção, desligada: fusão atual × corte seco no E2 → E3 |
+| 4c | `09_quadros_repetidos_lado_a_lado.mp4`, `10_quadros_repetidos_camera_lenta.mp4` | **Novo:** início travado (A1) e os mesmos quadros repetidos em B7, H1 e I1, aprovado × corrigido |
+| 5 | `04_previa_combinada_r13c_final_720.mp4` | **Episódio inteiro com o som final:** 0:33 discreta, porta mais baixa e as demais correções |
+| — | `ep02_r13C_final_escuta_1080x1920.mp4` | O mesmo, em 1080, para escuta. Fica fora do git (160 MB) |
+
+Nos comparativos de som e nas prévias, a imagem é a do definitivo R12. O fluxo de vídeo é idêntico ao do R12 (MD5 `c0342ad0…`).
 
 ## 1. Causa de cada problema
 
@@ -42,6 +47,19 @@ As duas usam as mesmas fontes, trechos e instantes. Muda só o nível.
 | **C · discreta** | aproximação (−8 dB) + pulso (−2 dB) | −31,4 LUFS | 19,1 LU |
 
 Na janela da revelação, a voz sobre o efeito passou de 13,1 dB para 18,8 dB (moderada) e 22,7 dB (discreta).
+
+**Você escolheu a C, mais discreta.** É a que entra na mixagem final.
+
+### Batida da porta da geladeira (0:29,6), pedido depois da escuta
+
+**O que era:** a porta fechando no C1, Freesound 489749. Na cena, o ângulo da porta chega a zero em 29,577 s, e o som está em 29,569 s: 8 ms de diferença.
+
+**O problema:** era o evento mais forte da camada de porta. Ficava só 6,1 dB abaixo da voz na faixa do celular e 12,0 LU abaixo em loudness K. Era também o que mais forçava o limitador.
+
+**O que foi feito:** apliquei a mesma regra dos passos, com a câmera a 2,9 m da porta. A batida recebeu **−13,5 dB** e ficou 19,6 dB abaixo da voz no celular e 25,6 LU abaixo em K.
+- O instante não mudou: atraso de 0 amostras.
+- Só o trecho 29,2–30,6 s mudou. As aberturas da porta no A1 e no I1 ficaram intactas.
+- A redução máxima do limitador caiu de 4,5 dB para 3,1 dB.
 
 ### 1:55: passos pela perspectiva da câmera
 
@@ -81,7 +99,14 @@ Os décimos a mais no fim de alguns trechos são a liberação do limitador.
 | Apresentações (pops) | −168,6 dBFS |
 | Mecanismos do E3 | −174,6 dBFS |
 
-**Medido no AAC do arquivo de escuta:**
+**Versão final (discreta + porta), medida no AAC:**
+- −14,16 LUFS e −1,87 dBTP;
+- voz − resto no celular: p5 de 11,1 dB, mediana de 23,5 dB;
+- perda em mono de 0,00 dB e último 0,5 s a −71 dBFS;
+- os 22 eventos que ficaram passam no critério;
+- o nulo contra a discreta só acusa diferença em 29,15–30,65 s, o trecho da porta.
+
+**Variantes intermediárias, medidas no AAC do arquivo de escuta:**
 
 | | Moderada | Discreta | R13B | Meta |
 |---|---|---|---|---|
@@ -216,9 +241,9 @@ O B7, o H1 e o I1 tinham o mesmo defeito, menos visível. A correção é uma re
 
 ## 5. Preservação
 
-- **Mixagens candidatas em FLAC 24 bits:** `som/preservado_r13c/audio_ep02_r13C_{moderada,discreta}.flac`, com erro de −144,5 dBFS em relação ao WAV.
+- **Mixagens em FLAC 24 bits:** `som/preservado_r13c/audio_ep02_r13C_{moderada,discreta,final}.flac`, com erro de −144,5 dBFS em relação ao WAV. A **final** é a escolhida.
   - O registro, com os comandos e os SHA-256 de todos os stems, está em `som/preservado_r13c/preservado_r13c.json`.
-- **Reconstrução:** `R13C=1 C2_REVELA=<moderada|discreta> SUF_R13=_r13c_<v> MASTER_R13_DB=-0.03170566623698933 SO_VARIANTES=r13_teste python3 som/som_r13.py`
+- **Reconstrução da final:** `R13C=1 PORTA_R13C=1 C2_REVELA=discreta SUF_R13=_r13c_final MASTER_R13_DB=-0.03170566623698933 SO_VARIANTES=r13_teste python3 som/som_r13.py`
   - Sem `R13C=1`, o mesmo script reproduz a R13B.
 
 ## 6. Licenças
@@ -230,4 +255,17 @@ O B7, o H1 e o I1 tinham o mesmo defeito, menos visível. A correção é uma re
   - O 1474 continua no pulso do C2.
   - Os arquivos Mixkit isolados continuam fora do git.
 
-**Nada foi publicado.** O definitivo R13 só será consolidado depois que você aprovar os comparativos.
+## 7. Para consolidar o definitivo R13
+
+Você já aprovou as mudanças de som. Falta aprovar a parte visual:
+1. **E3 (1:18):** os quadros corrigidos estão prontos em `quadros_final_r13c/E3`.
+2. **Quadros repetidos:** a correção é a opção `ARRED_QUADROS=1`.
+3. **Transição E2 → E3:** manter a fusão (como hoje) ou usar o corte seco (`CORTE_E3=1`).
+
+Com a sua aprovação, a montagem definitiva usa as opções aprovadas e o áudio final:
+
+`QUADROS_R13C=E3=quadros_final_r13c/E3 ARRED_QUADROS=1 [CORTE_E3=1] bash montar_r11.sh final <saída> ../som/audio_ep02_r13_r13c_final_r13_teste.wav`
+
+Depois vêm o master sem legendas, as validações e os hashes. Nenhum outro plano é re-renderizado.
+
+**Nada foi publicado.**
