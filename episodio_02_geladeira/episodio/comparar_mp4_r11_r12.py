@@ -38,13 +38,14 @@ def esperado(i):
 def chaves(f):
     r = subprocess.run(['ffprobe', '-v', 'error', '-select_streams', 'v', '-skip_frame', 'nokey', '-show_entries', 'frame=pts_time', '-of', 'csv=p=0', f],
                        capture_output=True, text=True, check=True).stdout.split()
-    return sorted(int(round(float(x) * FPS)) for x in r if x.strip())
+    return sorted(int(round(float(x.split(',')[0]) * FPS)) for x in r if x.split(',')[0].strip())   # ffprobe pode deixar ',' sobrando
 
 
 def fluxo(f):
     return subprocess.Popen(['ffmpeg', '-v', 'error', '-threads', '2', '-i', f, '-map', '0:v', '-f', 'rawvideo', '-pix_fmt', 'gray', '-'], stdout=subprocess.PIPE, bufsize=W * H * 4)
 
 
+ka, kb = chaves(antes), chaves(depois)   # antes do laço longo: uma falha aqui não custa a comparação inteira
 fa, fb = fluxo(antes), fluxo(depois); n = 0; linhas = []
 while True:
     ba, bb = fa.stdout.read(W * H), fb.stdout.read(W * H)
@@ -58,8 +59,7 @@ while True:
                            caixa=[int(xs.min()), int(xs.max()), int(ys.min()), int(ys.max())] if len(ys) else None))
     n += 1
 fa.wait(); fb.wait()
-ka, kb = chaves(antes), chaves(depois)
-esp = [i for i in range(n) if linhas[i] is not None and esperado(i)]
+esp =[i for i in range(n) if linhas[i] is not None and esperado(i)]
 gop = lambda i, K: max([k for k in K if k <= i] or [0])
 
 

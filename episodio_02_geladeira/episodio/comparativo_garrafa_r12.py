@@ -33,10 +33,10 @@ def tc(q):
 
 # ---------------------------------------------------------------- folha de recortes
 rw, rh = 280, 460; mx, cab, rot = 24, 70, 150
-folha = Image.new('RGB', (rot + 4 * (rw + mx) + mx, sum(cab + 2 * (rh + 40) + mx for _ in EMENDAS) + 110), (24, 28, 36))
+folha = Image.new('RGB', (rot + 4 * (rw + mx) + mx, sum(cab + 2 * (rh + 40) + mx for _ in EMENDAS) + 140), (24, 28, 36))
 d = ImageDraw.Draw(folha); F1, F2, F3 = fonte(800, 34), fonte(700, 24), fonte(700, 20)
-d.text((mx, 30), 'Garrafa: definitivo R11 (antes) × R12 (depois) — recortes 1:1 do vídeo montado', font=F1, fill=(245, 240, 230))
-y = 110; medidas = {}
+d.multiline_text((mx, 24), 'Garrafa: definitivo R11 (antes) × R12 (depois)\nrecortes 1:1 do vídeo montado', font=F1, fill=(245, 240, 230), spacing=10)
+y = 140; medidas = {}
 for e in EMENDAS:
     a, b = quadros(R11, e['q'] - 2, 4), quadros(R12, e['q'] - 2, 4)
     d.text((mx, y + 18), e['nome'] + '  —  a troca de ordem acontecia entre a 2ª e a 3ª coluna', font=F2, fill=(255, 214, 90)); y += cab
