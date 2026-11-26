@@ -1,3 +1,7 @@
+> **Situação: CONCLUÍDO E APROVADO — versão 1.0.0 (R13.1), 26/11/2026.** Arquivos definitivos e prova de recuperação em
+> `VERSAO_1.0.0/`; aprendizados em `APRENDIZADOS_EP02.md`; encerramento em `relatorios/relatorio_encerramento_ep02.md`.
+> Não publicado (pendências de licença comercial).
+
 # Episódio 02 · Como a geladeira esfria sem produzir frio?
 
 Estrutura independente; o Ep. 01 não foi alterado (procedência dos arquivos reaproveitados: `motor/PROCEDENCIA.md`).
