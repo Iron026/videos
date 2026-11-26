@@ -1,0 +1,23 @@
+{
+ "11_batida_porta_029.mp4": {
+  "trechos": [
+   [
+    27.6,
+    31.6,
+    "0:29,6"
+   ]
+  ],
+  "versoes": [
+   [
+    "A",
+    "R13B (como você ouviu)",
+    "audio_ep02_r13_r13_teste.wav"
+   ],
+   [
+    "B",
+    "Final: batida mais baixa",
+    "audio_ep02_r13_r13c_final_r13_teste.wav"
+   ]
+  ]
+ }
+}

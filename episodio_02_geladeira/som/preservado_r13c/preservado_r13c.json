@@ -48,6 +48,30 @@
    },
    "comando": "R13C=1 C2_REVELA=discreta SUF_R13=_r13c_discreta MASTER_R13_DB=-0.03170566623698933 SO_VARIANTES=r13_teste python3 som/som_r13.py",
    "registro": "som/mix_ep02_r13_r13c_discreta.json"
+  },
+  "final": {
+   "origem": "audio_ep02_r13_r13c_final_r13_teste.wav",
+   "sha256_origem": "5aa11c8ba6cca8c434658ba266f06a475516b19ca027c5e637e8e1a49b6a8635",
+   "flac": "preservado_r13c/audio_ep02_r13C_final.flac",
+   "sha256_flac": "9ec504ad9f8e6b1af27a48b3ec0e88d60a545882f5d0c2108d9944769f265252",
+   "erro_max_dbfs": -144.5,
+   "stems_sha256": {
+    "camada_apresentacoes.wav": "af021e96ffbb6262b39e3d2abc74d0d5787498cf32720fe41c9a1a2429e75688",
+    "camada_fluxo.wav": "09aa627a4f56e6ce06fdd18304d3e366ba84ea14845b403bad9b340b5d95bd25",
+    "camada_mecanismo.wav": "ee9e73fa099ed87f98acde030cac0e0610442b3f1d2ec09e48f8e9b8342a0ab7",
+    "camada_transicoes.wav": "49232cb78a9a4135be620541d3a410f3ea2c435f00492579bad139e47a94f898",
+    "chiado.wav": "d6028f9ac358cd54293ef45a2747dd4949bb2cc43e3f8db559562179e3285878",
+    "compressor_contexto.wav": "2f0468965fb0cdcce58331ae400e1a0fc35617b0518196e37175e26dc91a0789",
+    "efeitos_cc0_e_proprios.wav": "cea7c4fa6db68e40b290e6c8e4da8438ab519a3ae6bd302f0d58d787c624c666",
+    "efeitos_mecanismos.wav": "7673e2a5e67673053ea36673d7fa7c8e23b72e9a3f897b9085a1da7830569ede",
+    "efeitos_mixkit.wav": "2f4fc81299988f12f47a25b633dee4efe2609f419638bee4a89035efc3227568",
+    "gorgolejo.wav": "30b3e4dd1a4a5a5b5457f57a370977f1f7b0f34bb96d385633890f4fc0365b8d",
+    "musica.wav": "ba42e1444a92b304a852c7b3318a00f78809c34ccf9481b273d04bcfcbf86631",
+    "objetos_mantidos.wav": "f15c9c4741b4ed66550570ea309da0958e830acbf6e2eaec4b8b95058cef48bc",
+    "voz.wav": "8b8cf17079cfd52f3b8dff24161908eca5c36af0a8915ba05afd85d3d72b662b"
+   },
+   "comando": "R13C=1 PORTA_R13C=1 C2_REVELA=discreta SUF_R13=_r13c_final MASTER_R13_DB=-0.03170566623698933 SO_VARIANTES=r13_teste python3 som/som_r13.py",
+   "registro": "som/mix_ep02_r13_r13c_final.json"
   }
  },
  "r13b_e_r12_intactos": {
