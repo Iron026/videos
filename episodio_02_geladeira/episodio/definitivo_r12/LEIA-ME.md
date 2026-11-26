@@ -10,7 +10,7 @@ Só duas coisas mudaram, e ambas foram pedidas:
 
 1. **A água da garrafa não fica mais branca de repente em 1:53.**
    - **Causa:** o three.js decide a ordem em que desenha os objetos transparentes pela profundidade do centro de cada um. Com a câmera em movimento, a garrafa e a prateleira de vidro trocavam de ordem de um quadro para o outro, e a mistura dos dois materiais mudava de uma vez.
-   - **Correção:** a ordem fica fixa do primeiro ao último quadro de cada plano. Ela foi aplicada só nos três planos em que a varredura achou a troca com sobreposição na tela:
+   - **Correção:** a ordem fica fixa do primeiro ao último quadro de cada plano. A varredura achou cinco trocas com sobreposição na tela, e a correção foi aplicada só nos três planos em que ela muda a imagem. No C2 e no F1, a troca existe mas não muda a imagem, e eles ficaram como aprovados. Planos corrigidos:
      - H2, a partir do quadro 48 da cena;
      - C4, a partir do quadro 52;
      - H1, a partir do quadro 75.

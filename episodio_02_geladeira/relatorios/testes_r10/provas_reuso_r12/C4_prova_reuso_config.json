@@ -1,0 +1,97 @@
+{
+ "valida": true,
+ "quando": "2026-11-25T21:21:30",
+ "motivo": "ordem dos transparentes congelada no quadro 0 (ordemtransp=1, rodada 12)",
+ "criterio": "quadros em que a ordem de todos os pares de malhas com alfa < 1 é a do quadro 0 (a opção não muda nada neles)",
+ "transparentes": [
+  "garrafa_pet#16",
+  "garrafa_agua#17",
+  "prateleira_vidro#20",
+  "prateleira_vidro#53"
+ ],
+ "primeiro_quadro_diferente": 52,
+ "quadros_iguais": [
+  0,
+  1,
+  2,
+  3,
+  4,
+  5,
+  6,
+  7,
+  8,
+  9,
+  10,
+  11,
+  12,
+  13,
+  14,
+  15,
+  16,
+  17,
+  18,
+  19,
+  20,
+  21,
+  22,
+  23,
+  24,
+  25,
+  26,
+  27,
+  28,
+  29,
+  30,
+  31,
+  32,
+  33,
+  34,
+  35,
+  36,
+  37,
+  38,
+  39,
+  40,
+  41,
+  42,
+  43,
+  44,
+  45,
+  46,
+  47,
+  48,
+  49,
+  50,
+  51
+ ],
+ "reg_anterior": {
+  "consulta": "cena=/episodio_02_geladeira/episodio/cenas/C4/&escala=1.0&aoamostras=16&msaa=4&bloom=0.18",
+  "perfil": "final",
+  "motor": "79b25d43c4395dc535da39da",
+  "cena": "4f106bffe4862288",
+  "obturador": {
+   "graus": 180,
+   "sub": 5,
+   "cena_sub": "f41780aaea2a73fe",
+   "quadros": [
+    126,
+    184
+   ]
+  }
+ },
+ "reg_novo": {
+  "consulta": "cena=/episodio_02_geladeira/episodio/cenas/C4/&escala=1.0&aoamostras=16&msaa=4&bloom=0.18&ordemtransp=1",
+  "perfil": "final",
+  "motor": "0418be25695320f735da39da",
+  "cena": "4f106bffe4862288",
+  "obturador": {
+   "graus": 180,
+   "sub": 5,
+   "cena_sub": "f41780aaea2a73fe",
+   "quadros": [
+    126,
+    184
+   ]
+  }
+ }
+}
